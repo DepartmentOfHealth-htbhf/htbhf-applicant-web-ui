@@ -1,8 +1,4 @@
-const startRoutes = require('./start').initialiseRoutes
-
-const initialiseRoutes = (app) => {
-  startRoutes(app)
-}
+const { initialiseRoutes } = require('./initialise-routes')
 
 module.exports = {
   initialiseRoutes

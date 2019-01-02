@@ -1,0 +1,21 @@
+{% extends "templates/form.njk" %}
+{% from "input/macro.njk" import govukInput %}
+
+{% block formContent %}
+  {{ govukInput({
+    label: {
+      text: 'First name'
+    },
+    id: 'first-name',
+    name: 'firstName',
+    errorMessage: null
+  }) }}
+  {{ govukInput({
+    label: {
+      text: 'First name'
+    },
+    id: 'second-name',
+    name: 'secondName',
+    errorMessage: null
+  }) }}
+{% endblock %}
