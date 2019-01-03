@@ -24,7 +24,7 @@ const ensureSession = (req, res, next) => {
 }
 
 const initialiseSession = (client) => (onConnectCallback, config, app) => {
-  const configuration = {
+  const sessionConfig = {
     store: new RedisStore(),
     secret: config.server.SESSION_SECRET,
     saveUninitialized: false,
@@ -32,12 +32,12 @@ const initialiseSession = (client) => (onConnectCallback, config, app) => {
     name: config.server.SESSION_ID_NAME
   }
 
-  if (app.get('env') === 'production') {
+  if (config.environment.NODE_ENV === 'production') {
     app.set('trust proxy', 1)
-    configuration.cookie.secure = true
+    sessionConfig.cookie.secure = true
   }
 
-  app.use(session(configuration))
+  app.use(session(sessionConfig))
   app.use(ensureSession)
 
   client.on('connect', onClientConnection(onConnectCallback))
