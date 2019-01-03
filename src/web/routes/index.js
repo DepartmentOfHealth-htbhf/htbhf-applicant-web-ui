@@ -1,5 +1,5 @@
-const { initialiseRoutes } = require('./initialise-routes')
+const { registerRoutes } = require('./register-routes')
 
 module.exports = {
-  initialiseRoutes
+  registerRoutes
 }

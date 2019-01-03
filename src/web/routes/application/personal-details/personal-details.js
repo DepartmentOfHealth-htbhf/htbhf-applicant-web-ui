@@ -1,9 +1,13 @@
 const { getPersonalDetails } = require('./get')
+const { postPersonalDetails } = require('./post')
 
-const initialisePersonalDetailsRoutes = (app) => {
-  app.get('/personal-details', getPersonalDetails)
+const registerPersonalDetailsRoutes = (app) => {
+  app
+    .route('/personal-details')
+    .get(getPersonalDetails)
+    .post(postPersonalDetails)
 }
 
 module.exports = {
-  initialisePersonalDetailsRoutes
+  registerPersonalDetailsRoutes
 }

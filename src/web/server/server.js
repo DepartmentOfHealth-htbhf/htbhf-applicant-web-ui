@@ -1,7 +1,11 @@
 const express = require('express')
+const bodyParser = require('body-parser')
 const path = require('path')
 const nunjucks = require('nunjucks')
-const { initialiseRoutes } = require('./routes')
+
+const { registerRoutes } = require('../routes')
+const { initialiseSession } = require('./session')
+const { registerErrorHandlers } = require('./error-handlers')
 
 const configureStaticPaths = (app) => {
   /**
@@ -11,7 +15,7 @@ const configureStaticPaths = (app) => {
    */
   app.use('/assets', express.static(path.resolve('node_modules/govuk-frontend/assets'))) /* 1 */
   app.use('/assets', express.static(path.resolve('node_modules/govuk-frontend'))) /* 2 */
-  app.use('/assets', express.static(path.join(__dirname, 'assets'))) /* 3 */
+  app.use('/assets', express.static(path.resolve('src/web/assets'))) /* 3 */
 }
 
 const setViewEngine = (app) => {
@@ -33,13 +37,19 @@ const listen = (config, app) =>
     `App listening on port ${config.server.PORT}`)
   )
 
-const start = (config, app) => {
-  configureStaticPaths(app)
+const start = (config, app) => () => {
+  app.use(bodyParser.urlencoded({ extended: false }))
   setViewEngine(app)
-  initialiseRoutes(app)
+  registerRoutes(app)
+  registerErrorHandlers(app)
   listen(config, app)
 }
 
+const initialise = (config, app) => {
+  configureStaticPaths(app)
+  initialiseSession(start(config, app), config, app)
+}
+
 module.exports = {
-  start
+  initialise
 }

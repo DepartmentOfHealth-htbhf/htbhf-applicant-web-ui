@@ -4,4 +4,4 @@ const server = require('./server')
 
 const app = express()
 
-server.start(config, app)
+server.initialise(config, app)

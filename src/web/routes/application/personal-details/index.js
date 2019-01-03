@@ -1,5 +1,5 @@
-const { initialisePersonalDetailsRoutes } = require('./personal-details')
+const { registerPersonalDetailsRoutes } = require('./personal-details')
 
 module.exports = {
-  initialisePersonalDetailsRoutes
+  registerPersonalDetailsRoutes
 }
