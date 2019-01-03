@@ -1,3 +1,4 @@
+const compression = require('compression')
 const express = require('express')
 const bodyParser = require('body-parser')
 const path = require('path')
@@ -38,7 +39,9 @@ const listen = (config, app) =>
   )
 
 const start = (config, app) => () => {
+  app.use(compression())
   app.use(bodyParser.urlencoded({ extended: false }))
+
   setViewEngine(app)
   registerRoutes(app)
   registerErrorHandlers(app)
