@@ -9,7 +9,9 @@
   "scripts": {
     "start": "npm run build && node src/web",
     "start:dev": "npm run build && nodemon src/web",
-    "test": "standard",
+    "test": "npm run test:lint && npm run test:unit",
+    "test:unit": "tape src/**/*.test.js",
+    "test:lint": "standard",
     "build": "npm run build:sass",
     "build:sass": "node-sass node_modules/govuk-frontend/all.scss src/web/assets/styles/all.css"
   },
@@ -18,7 +20,9 @@
   "devDependencies": {
     "node-sass": "^4.11.0",
     "nodemon": "^1.18.9",
-    "standard": "^12.0.1"
+    "standard": "^12.0.1",
+    "tap-colorize": "^1.2.0",
+    "tape": "^4.9.2"
   },
   "dependencies": {
     "body-parser": "^1.18.3",

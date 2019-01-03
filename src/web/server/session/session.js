@@ -1,6 +1,4 @@
 const session = require('express-session')
-const RedisStore = require('connect-redis')(session)
-const redis = require('redis')
 
 const onClientError = (error) => {
   console.log('Error with redis session:', error)
@@ -23,19 +21,27 @@ const ensureSession = (req, res, next) => {
   next()
 }
 
-const initialiseSession = (client) => (onConnectCallback, config, app) => {
+const getSessionConfig = (store, config) => {
   const sessionConfig = {
-    store: new RedisStore(),
+    store,
     secret: config.server.SESSION_SECRET,
     saveUninitialized: false,
     resave: false,
-    name: config.server.SESSION_ID_NAME
+    name: config.server.SESSION_ID_NAME,
+    cookie: {
+      secure: false
+    }
   }
 
   if (config.environment.NODE_ENV === 'production') {
-    app.set('trust proxy', 1)
     sessionConfig.cookie.secure = true
   }
+
+  return sessionConfig
+}
+
+const initialiseSession = (client, store) => (onConnectCallback, config, app) => {
+  const sessionConfig = getSessionConfig(store, config)
 
   app.use(session(sessionConfig))
   app.use(ensureSession)
@@ -45,5 +51,7 @@ const initialiseSession = (client) => (onConnectCallback, config, app) => {
 }
 
 module.exports = {
-  initialiseSession: initialiseSession(redis.createClient())
+  ensureSession,
+  getSessionConfig,
+  initialiseSession
 }
