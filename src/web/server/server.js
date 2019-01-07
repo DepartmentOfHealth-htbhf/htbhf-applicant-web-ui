@@ -43,7 +43,7 @@ const start = (config, app) => () => {
   app.use(bodyParser.urlencoded({ extended: false }))
 
   setViewEngine(app)
-  registerRoutes(app)
+  registerRoutes(config, app)
   registerErrorHandlers(app)
   listen(config, app)
 }

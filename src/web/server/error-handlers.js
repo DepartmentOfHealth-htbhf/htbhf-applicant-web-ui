@@ -6,11 +6,7 @@ const logErrors = (err, req, res, next) => {
 }
 
 const errorHandler = (err, req, res, next) => {
-  if (!err.statusCode) {
-    err.statusCode = httpStatus.INTERNAL_SERVER_ERROR
-  }
-
-  res.status(err.statusCode)
+  res.status(httpStatus.INTERNAL_SERVER_ERROR)
   res.render('error', { error: err, statusCode: res.statusCode })
 }
 
