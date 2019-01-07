@@ -1,27 +1,11 @@
 const httpStatus = require('http-status-codes')
-const request = require('request-promise')
 
-const postPersonalDetails = (config) => (req, res, next) => {
+const postPersonalDetails = async (req, res, next) => {
   try {
     req.session.body = req.body
-    request.post({
-      uri: config.environment.CLAIM_BASE_URL,
-      json: true,
-      body: {
-        claimant: {
-          ...req.body
-        }
-      }
-    }).then(
-      () => {
-        res.redirect('complete')
-      },
-      err => {
-        next(err)
-      }
-    )
+    res.redirect('confirm')
   } catch (error) {
-    const err = new Error('Error with session:', error)
+    const err = new Error('Error saving the session:', error)
     err.statusCode = httpStatus.INTERNAL_SERVER_ERROR
     next(err)
   }

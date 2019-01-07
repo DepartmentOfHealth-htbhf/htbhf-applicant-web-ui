@@ -1,6 +1,7 @@
 {% extends "templates/form.njk" %}
 {% from "input/macro.njk" import govukInput %}
 
+{% set buttonText = "Save and continue" %}
 {% block formContent %}
   {{ govukInput({
     label: {
