@@ -12,7 +12,7 @@ addons:
   chrome: stable
 before_install:
   - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
-  - npm install -g codecov standard tape
+  - npm install -g standard tape nyc
 
 deploy:
   provider: pages
@@ -33,7 +33,7 @@ script: npm test && ./ci_scripts/ci_deploy.sh
 after_success:
   - ./ci_scripts/tag_version.sh
   - test $TRAVIS_BRANCH = "master" && test $TRAVIS_PULL_REQUEST = "false" && ./${BIN_DIR}/trigger_node_cd_build.sh
-  - test $TRAVIS_BRANCH = "master" && test $TRAVIS_PULL_REQUEST = "false" && npm coverage && codecov
+  - test $TRAVIS_BRANCH = "master" && test $TRAVIS_PULL_REQUEST = "false" && npm run coverage
 
 env:
   global:
