@@ -1,27 +1,27 @@
-'use strict';
+'use strict'
 
-const webdriver = require('selenium-webdriver');
-const chrome = require('selenium-webdriver/chrome');
+const webdriver = require('selenium-webdriver')
+const chrome = require('selenium-webdriver/chrome')
 
-const { SCREEN_RESOLUTION } = require('../config');
+const { SCREEN_RESOLUTION } = require('../config')
 
 class DriverManager {
-  constructor() {
-    this.driver = null;
+  constructor () {
+    this.driver = null
   }
 
-  initialise() {
+  initialise () {
     this.driver = new webdriver.Builder()
       .forBrowser('chrome')
       .setChromeOptions(new chrome.Options().headless().windowSize(SCREEN_RESOLUTION))
-      .build();
+      .build()
 
-    return this.driver;
+    return this.driver
   }
 
-  quit() {
-    this.driver.quit();
+  quit () {
+    this.driver.quit()
   }
 }
 
-module.exports = DriverManager;
+module.exports = DriverManager

@@ -9,7 +9,7 @@ const { BASE_URL } = require('./constants')
 
 const TOTAL_TEST_TIMEOUT_MILLIS = 5000
 
-describe('Personal details', function() {
+describe('Personal details', function () {
   this.timeout(TOTAL_TEST_TIMEOUT_MILLIS)
 
   const driverManager = new DriverManager()
@@ -23,7 +23,7 @@ describe('Personal details', function() {
     personalDetails = new PersonalDetails(driver)
   })
 
-  afterEach(async function() {
+  afterEach(async function () {
     await driverManager.quit()
   })
 
@@ -33,8 +33,8 @@ describe('Personal details', function() {
     const h1ElementText = await overview.getH1Text()
     expect(h1ElementText).to.be.equal('Start page')
 
-    //const h2ElementText = await overview.getH2Text()
-    //expect(h2ElementText).to.be.equal('How to claim')
+    // const h2ElementText = await overview.getH2Text()
+    // expect(h2ElementText).to.be.equal('How to claim')
 
     await overview.clickStartButton()
 
