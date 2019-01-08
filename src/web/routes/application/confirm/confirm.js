@@ -1,11 +1,11 @@
 const { getConfirm } = require('./get')
 const { postConfirm } = require('./post')
 
-const registerConfirmRoutes = (config, app) => {
+const registerConfirmRoutes = (csrfProtection, config, app) => {
   app
     .route('/confirm')
-    .get(getConfirm)
-    .post(postConfirm(config))
+    .get(csrfProtection, getConfirm)
+    .post(csrfProtection, postConfirm(config))
 }
 
 module.exports = {
