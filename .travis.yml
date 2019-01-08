@@ -11,6 +11,9 @@ addons:
 before_install:
   - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
 
+install:
+  - npm install -g codecov
+
 deploy:
   provider: pages
   skip-cleanup: true
@@ -18,7 +21,7 @@ deploy:
   keep-history: true
   on:
     branch: master
-  local-dir: build/reports
+  local-dir: coverage
 
 #don't build tags
 branches:
@@ -30,6 +33,7 @@ script: npm test && ./ci_scripts/ci_deploy.sh
 after_success:
   - ./ci_scripts/tag_version.sh
   - test $TRAVIS_BRANCH = "master" && test $TRAVIS_PULL_REQUEST = "false" && ./${BIN_DIR}/trigger_node_cd_build.sh
+  - test $TRAVIS_BRANCH = "master" && test $TRAVIS_PULL_REQUEST = "false" && npm coverage && codecov
 
 env:
   global:

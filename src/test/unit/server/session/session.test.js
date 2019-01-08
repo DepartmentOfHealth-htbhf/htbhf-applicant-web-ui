@@ -3,7 +3,7 @@ var colorize = require('tap-colorize')
 
 test.createStream().pipe(colorize()).pipe(process.stdout)
 
-const { ensureSession, getSessionConfig } = require('./session')
+const { ensureSession, getSessionConfig } = require('../../../../web/server/session/session')
 
 test('ensureSession', (t) => {
   const reqWithoutSession = {}
