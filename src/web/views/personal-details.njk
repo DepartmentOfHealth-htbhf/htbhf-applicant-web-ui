@@ -1,22 +1,31 @@
 {% extends "templates/form.njk" %}
 {% from "input/macro.njk" import govukInput %}
+{% from "error-summary/macro.njk" import govukErrorSummary %}
 
 {% set buttonText = "Save and continue" %}
 {% block formContent %}
+
+  {% if errors %}
+    {{ govukErrorSummary({
+      titleText: "There is a problem",
+      errorList: errors | toErrorList
+    }) }}
+  {% endif %}
+
   {{ govukInput({
     label: {
       text: 'First name'
     },
-    id: 'first-name',
+    id: 'firstName',
     name: 'firstName',
-    errorMessage: null
+    errorMessage: errors.firstName
   }) }}
   {{ govukInput({
     label: {
       text: 'Last name'
     },
-    id: 'last-name',
+    id: 'lastName',
     name: 'lastName',
-    errorMessage: null
+    errorMessage: errors.lastName
   }) }}
 {% endblock %}
