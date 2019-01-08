@@ -10,10 +10,9 @@
     "start": "npm run build && node src/web",
     "start:dev": "npm run build && nodemon src/web",
     "test": "npm run test:lint && npm run test:unit",
-    "test:unit": "tape src/test/unit/**/*.test.js",
-    "coverage": "istanbul cover tape src/test/unit/**/*.test.js -- -R spec",
     "test:lint": "standard --env mocha",
-    "test:acceptance": "mocha src/test/acceptance/**/*.js",
+    "test:unit": "istanbul cover tape src/test/unit/**/*.test.js",
+    "test:acceptance": "istanbul cover mocha src/test/acceptance/**/*.js",
     "test:smoke": "tape src/test/smoke/**/*.test.js",
     "build": "npm run build:sass",
     "build:sass": "node-sass node_modules/govuk-frontend/all.scss src/web/assets/styles/all.css"
