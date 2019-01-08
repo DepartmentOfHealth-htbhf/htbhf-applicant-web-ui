@@ -18,7 +18,7 @@
     },
     id: 'firstName',
     name: 'firstName',
-    errorMessage: errors.firstName
+    errorMessage: errors | getErrorForField('firstName')
   }) }}
   {{ govukInput({
     label: {
@@ -26,6 +26,6 @@
     },
     id: 'lastName',
     name: 'lastName',
-    errorMessage: errors.lastName
+    errorMessage: errors | getErrorForField('lastName')
   }) }}
 {% endblock %}

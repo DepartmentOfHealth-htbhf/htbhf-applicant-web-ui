@@ -1,5 +1,5 @@
 const nunjucks = require('nunjucks')
-const { toErrorList } = require('./filters')
+const { toErrorList, getErrorForField } = require('./filters')
 
 const setViewEngine = (app) => {
   const env = nunjucks.configure([
@@ -13,6 +13,7 @@ const setViewEngine = (app) => {
   })
 
   env.addFilter('toErrorList', toErrorList)
+  env.addFilter('getErrorForField', getErrorForField)
 
   app.set('view engine', 'njk')
 }

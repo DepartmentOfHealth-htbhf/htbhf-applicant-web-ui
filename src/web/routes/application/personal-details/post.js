@@ -1,8 +1,14 @@
 const httpStatus = require('http-status-codes')
+const { validationResult } = require('express-validator/check');
 const { getPersonalDetails } = require('./get')
 
 const postPersonalDetails = (req, res, next) => {
-  if (res.locals.errors) {
+  const errors = validationResult(req)
+
+  console.log(errors.array())
+
+  if (!errors.isEmpty()) {
+    res.locals.errors = errors.array()
     return getPersonalDetails(req, res)
   }
 

@@ -1,36 +1,16 @@
-const { isEmpty } = require('ramda')
+const { check } = require('express-validator/check')
 
-const FIRST_NAME_MAX_LENGTH = 5
-const LAST_NAME_MAX_LENGTH = 5
+const FIRST_NAME_MAX_LENGTH = 500
+const LAST_NAME_MAX_LENGTH = 500
 const MISSING_LAST_NAME_MSG = 'Missing last name'
 const FIRST_NAME_TOO_LONG_MSG = 'First name is too long'
 const LAST_NAME_TOO_LONG_MSG = 'Last name is too long'
 
-const validate = (req, res, next) => {
-  const err = {}
-  if (req.body.firstName && req.body.firstName.length > FIRST_NAME_MAX_LENGTH) {
-    err.firstName = {
-      text: FIRST_NAME_TOO_LONG_MSG
-    }
-  }
-  if (isEmpty(req.body.lastName)) {
-    err.lastName = {
-      text: MISSING_LAST_NAME_MSG
-    }
-  } else {
-    if (req.body.lastName.length > LAST_NAME_MAX_LENGTH) {
-      err.lastName = {
-        text: LAST_NAME_TOO_LONG_MSG
-      }
-    }
-  }
-
-  if (!isEmpty(err)) {
-    res.locals.errors = err
-  }
-
-  next()
-}
+const validate = [
+  check('firstName').isLength({ max: FIRST_NAME_MAX_LENGTH }).withMessage(FIRST_NAME_TOO_LONG_MSG),
+  check('lastName').not().isEmpty().withMessage(MISSING_LAST_NAME_MSG),
+  check('lastName').isLength({ max: LAST_NAME_MAX_LENGTH }).withMessage(LAST_NAME_TOO_LONG_MSG)
+]
 
 module.exports = {
   validate
