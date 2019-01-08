@@ -14,13 +14,12 @@ const postConfirm = (config) => async (req, res, next) => {
       }
     })
 
-    console.log('About to destroy!!!!!!!!')
     req.session.destroy()
-    res.redirect('complete')
+    return res.redirect('complete')
   } catch (error) {
     const err = new Error('Error posting the request:', error)
     err.statusCode = httpStatus.INTERNAL_SERVER_ERROR
-    next(err)
+    return next(err)
   }
 }
 
