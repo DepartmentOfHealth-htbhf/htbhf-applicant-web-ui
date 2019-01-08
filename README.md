@@ -1,4 +1,4 @@
-# htbhf-applicant-web-ui-2
+# htbhf-applicant-web-ui
 
 ## User interface
 
