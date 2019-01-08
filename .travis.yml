@@ -12,7 +12,7 @@ before_install:
   - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
 
 install:
-  - npm install -g codecov
+  - npm install -g codecov standard
 
 deploy:
   provider: pages
