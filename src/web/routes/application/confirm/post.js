@@ -8,8 +8,8 @@ const postConfirm = (config) => async (req, res, next) => {
       uri: config.environment.CLAIM_BASE_URL,
       json: true,
       body: {
-        claimant: {
-          ...req.body
+        claim: {
+          ...req.claim
         }
       }
     })

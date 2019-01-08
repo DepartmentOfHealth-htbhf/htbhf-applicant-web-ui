@@ -18,6 +18,7 @@
     },
     id: 'firstName',
     name: 'firstName',
+    value: claim.firstName,
     errorMessage: errors | getErrorForField('firstName')
   }) }}
   {{ govukInput({
@@ -26,6 +27,7 @@
     },
     id: 'lastName',
     name: 'lastName',
+    value: claim.lastName,
     errorMessage: errors | getErrorForField('lastName')
   }) }}
 {% endblock %}
