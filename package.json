@@ -7,18 +7,19 @@
     "node": "10.10.x"
   },
   "scripts": {
-    "start": "npm run build && node src/web",
+    "start": "node src/web",
     "start:dev": "npm run build && nodemon src/web",
     "test": "npm-run-all build test:lint test:unit -p -r start test:concurrent",
     "test:lint": "standard --env mocha",
-    "test:unit": "nyc tape src/**/*.test.js",
-    "test:acceptance": "mocha src/test/acceptance/**/*.js",
-    "test:smoke": "tape src/test/smoke/**/*.test.js",
-    "test:a11y": "node ./src/test/a11y/test-suite.js",
+    "test:unit": "nyc tape 'src/web/**/*.test.js'",
+    "test:acceptance": "mocha 'src/test/acceptance/**/*.js'",
+    "test:smoke": "tape 'src/test/smoke/**/*.test.js'",
+    "test:a11y": "node 'src/test/a11y/test-suite.js'",
     "test:concurrent": "npm-run-all -s test:a11y test:acceptance",
     "coverage": "nyc report --reporter=lcov --reporter=text-lcov > coverage.lcov && codecov",
     "build": "npm run build:sass",
-    "build:sass": "node-sass node_modules/govuk-frontend/all.scss src/web/assets/styles/all.css"
+    "build:sass": "node-sass node_modules/govuk-frontend/all.scss src/web/assets/styles/all.css",
+    "postinstall": "npm run build"
   },
   "author": "",
   "license": "MIT",

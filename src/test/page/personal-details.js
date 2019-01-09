@@ -3,6 +3,8 @@
 const Page = require('./page')
 const { expect } = require('chai')
 
+const PAGE_TITLE = 'GOV.UK - The best place to find government services and information'
+
 /**
  * Page object for PersonalDetails page where the name is entered.
  * This will change greatly when the Name page is revisited for HTBHFB-7.
@@ -48,6 +50,7 @@ class PersonalDetails extends Page {
   async waitForPageLoad () {
     const h1Text = await this.getH1Text()
     expect(h1Text).to.be.equal('Personal details')
+    return this.waitForPageWithTitle(PAGE_TITLE)
   }
 }
 
