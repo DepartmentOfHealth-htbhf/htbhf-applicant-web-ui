@@ -6,10 +6,10 @@ const { expect } = require('chai')
 const PAGE_TITLE = 'GOV.UK - The best place to find government services and information'
 
 /**
- * Page object for PersonalDetails page where the name is entered.
+ * Page object for EnterName page where the name is entered.
  * This will change greatly when the Name page is revisited for HTBHFB-7.
  */
-class PersonalDetails extends Page {
+class EnterName extends Page {
   async getFirstNameField () {
     return this.findById('first-name')
   }
@@ -43,15 +43,15 @@ class PersonalDetails extends Page {
   }
 
   async open (baseURL) {
-    await super.open(`${baseURL}/personal-details`)
+    await super.open(`${baseURL}/enter-name`)
     return this.waitForPageLoad()
   }
 
   async waitForPageLoad () {
     const h1Text = await this.getH1Text()
-    expect(h1Text).to.be.equal('Personal details')
+    expect(h1Text).to.be.equal('What is your name?')
     return this.waitForPageWithTitle(PAGE_TITLE)
   }
 }
 
-module.exports = PersonalDetails
+module.exports = EnterName

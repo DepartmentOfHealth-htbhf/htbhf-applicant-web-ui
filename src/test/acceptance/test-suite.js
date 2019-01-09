@@ -2,25 +2,25 @@
 'use strict'
 
 const { expect } = require('chai')
-const PersonalDetails = require('../page/personal-details')
+const EnterName = require('../page/enter-name')
 const Overview = require('../page/overview')
 const DriverManager = require('../driver/driver-manager')
 const { BASE_URL } = require('./constants')
 
 const TOTAL_TEST_TIMEOUT_MILLIS = 5000
 
-describe('Personal details', function () {
+describe('Enter name', function () {
   this.timeout(TOTAL_TEST_TIMEOUT_MILLIS)
 
   const driverManager = new DriverManager()
-  let personalDetails
+  let enterName
   let overview
   let driver
 
   beforeEach(async () => {
     driver = driverManager.initialise()
     overview = new Overview(driver)
-    personalDetails = new PersonalDetails(driver)
+    enterName = new EnterName(driver)
   })
 
   afterEach(async function () {
@@ -38,19 +38,19 @@ describe('Personal details', function () {
 
     await overview.clickStartButton()
 
-    await personalDetails.waitForPageLoad()
-    await personalDetails.enterFirstName('Lisa')
-    await personalDetails.enterLastName('Bloggs')
-    await personalDetails.submitForm()
-    // await personalDetails.waitForPageWithTitle('Confirm details – GOV.UK')
-    // const confirmationHasLoaded = await personalDetails.isConfirmationDisplayed()
+    await enterName.waitForPageLoad()
+    await enterName.enterFirstName('Lisa')
+    await enterName.enterLastName('Bloggs')
+    await enterName.submitForm()
+    // await enterName.waitForPageWithTitle('Confirm details – GOV.UK')
+    // const confirmationHasLoaded = await enterName.isConfirmationDisplayed()
     // expect(confirmationHasLoaded).to.be.true
   })
 
   it('displays an error message when no name is inputted', async () => {
-    await personalDetails.open(BASE_URL)
-    await personalDetails.submitForm()
-    // const errorMessage = await personalDetails.getPageErrorText()
+    await enterName.open(BASE_URL)
+    await enterName.submitForm()
+    // const errorMessage = await enterName.getPageErrorText()
     // expect(errorMessage).to.equal('Please fix the following error')
   })
 })
