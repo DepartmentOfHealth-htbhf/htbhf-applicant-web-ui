@@ -39,5 +39,7 @@ env:
   global:
     - APP_PATH=.
     - APP_NAME=help-to-buy-healthy-foods
+    - APP_PORT=8080
+    - SESSION_SECRET=notsosecret
     - SMOKE_TESTS=./ci_scripts/smoke_tests.sh
     - BIN_DIR=./bin

@@ -11,6 +11,7 @@ The app implements the GOV.UK design system. Visit the project website [https://
 To easily implement the GOV.UK design system, the app uses Nunjucks as a templating language. Visit the website [https://mozilla.github.io/nunjucks](https://mozilla.github.io/nunjucks) for more information and documentation.
 
 ## Tests
+To successfully run tests (or start the application) you need to set the environment variables in sample.env.
 
 ### Linting
 
