@@ -11,11 +11,11 @@ const PAGE_TITLE = 'GOV.UK - The best place to find government services and info
  */
 class PersonalDetails extends Page {
   async getFirstNameField () {
-    return this.findById('firstName')
+    return this.findById('first-name')
   }
 
   async getLastNameField () {
-    return this.findById('lastName')
+    return this.findById('last-name')
   }
 
   async getSubmitButton () {

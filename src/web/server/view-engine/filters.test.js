@@ -1,5 +1,5 @@
 const test = require('tape')
-const { toErrorList, getErrorForField } = require('./filters')
+const { toErrorList, getErrorForField, camelToKebabCase } = require('./filters')
 
 const firstNameTooLong = 'First name is too long'
 const missingLastName = 'Missing last name'
@@ -19,11 +19,11 @@ test('toErrorList', (t) => {
   const expected = [
     {
       text: firstNameTooLong,
-      href: '#firstName-error'
+      href: '#first-name-error'
     },
     {
       text: missingLastName,
-      href: '#lastName-error'
+      href: '#last-name-error'
     }
   ]
 
@@ -53,5 +53,11 @@ test('getErrorForField', (t) => {
 test('getErrorForField', (t) => {
   const result = getErrorForField(undefined, 'lastName')
   t.deepEqual(result, null, 'it should return null when errors are undefined')
+  t.end()
+})
+
+test('camelToKebabCase', (t) => {
+  const result = camelToKebabCase('personsFirstName')
+  t.deepEqual(result, 'persons-first-name', 'it should convert camelcase to kebab case')
   t.end()
 })

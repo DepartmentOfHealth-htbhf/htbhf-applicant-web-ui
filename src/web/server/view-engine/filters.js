@@ -1,8 +1,10 @@
 const { compose, map, values, isNil } = require('ramda')
 
+const camelToKebabCase = (string) => string.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()
+
 const toError = (error) => ({
   text: error.msg,
-  href: `#${error.param}-error`
+  href: `#${camelToKebabCase(error.param)}-error`
 })
 
 const toErrorList = compose(values, map(toError))
@@ -20,5 +22,6 @@ const getErrorForField = (errors, field) => {
 
 module.exports = {
   toErrorList,
-  getErrorForField
+  getErrorForField,
+  camelToKebabCase
 }
