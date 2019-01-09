@@ -1,0 +1,45 @@
+language: node_js
+node_js:
+  - "10.10"
+
+cache: npm
+
+services:
+  - redis-server
+
+dist: trusty
+addons:
+  chrome: stable
+before_install:
+  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
+  - npm install -g standard tape nyc
+
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GH_WRITE_TOKEN
+  keep-history: true
+  on:
+    branch: master
+  local-dir: coverage
+
+#don't build tags
+branches:
+  except:
+    - /^v\d/
+
+script: npm test && ./ci_scripts/ci_deploy.sh
+
+after_success:
+  - ./ci_scripts/tag_version.sh
+  - test $TRAVIS_BRANCH = "master" && test $TRAVIS_PULL_REQUEST = "false" && ./${BIN_DIR}/trigger_node_cd_build.sh
+  - test $TRAVIS_BRANCH = "master" && test $TRAVIS_PULL_REQUEST = "false" && npm run coverage
+
+env:
+  global:
+    - APP_PATH=.
+    - APP_NAME=help-to-buy-healthy-foods
+    - APP_PORT=8080
+    - SESSION_SECRET=notsosecret
+    - SMOKE_TESTS=./ci_scripts/smoke_tests.sh
+    - BIN_DIR=./bin

@@ -11,13 +11,12 @@ pids
 *.seed
 *.pid.lock
 
-# Coverage directories used by tools like istanbul/nyc
-coverage/
-.nyc_output/
-coverage.lcov
+# git
+.gitignore
+.git/
 
-# Dependency directories
-node_modules/
+# Coverage directory used by tools like istanbul
+coverage
 
 # Optional npm cache directory
 .npm
