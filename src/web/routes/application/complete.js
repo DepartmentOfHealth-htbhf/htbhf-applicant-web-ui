@@ -1,5 +1,5 @@
 const getCompletePage = (req, res) => {
-  res.render('complete', { title: 'Application successful' })
+  res.render('complete', { heading: 'Application successful' })
 }
 
 const registerCompleteRoute = (app) => {

@@ -1,13 +1,13 @@
 const csrf = require('csurf')
 const { registerStartRoute } = require('./start')
-const { registerPersonalDetailsRoutes } = require('./application/personal-details')
+const { registerEnterNameRoutes } = require('./application/enter-name')
 const { registerCompleteRoute } = require('./application/complete')
 const { registerConfirmRoutes } = require('./application/confirm')
 
 const registerRoutes = (config, app) => {
   const csrfProtection = csrf({})
   registerStartRoute(app)
-  registerPersonalDetailsRoutes(csrfProtection, app)
+  registerEnterNameRoutes(csrfProtection, app)
   registerConfirmRoutes(csrfProtection, config, app)
   registerCompleteRoute(app)
 }
