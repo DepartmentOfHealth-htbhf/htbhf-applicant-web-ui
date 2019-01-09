@@ -9,11 +9,11 @@ const { expect } = require('chai')
  */
 class PersonalDetails extends Page {
   async getFirstNameField () {
-    return this.findById('first-name')
+    return this.findById('firstName')
   }
 
   async getLastNameField () {
-    return this.findById('second-name')
+    return this.findById('lastName')
   }
 
   async getSubmitButton () {
