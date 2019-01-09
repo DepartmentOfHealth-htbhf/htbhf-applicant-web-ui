@@ -2,7 +2,6 @@
 {% from "button/macro.njk" import govukButton %}
 
 {% block pageContent %}
-  <p class="govuk-body">{{ formDescription }}</p>
   <form method="post">
     <input type="hidden" name="_csrf" value="{{ csrfToken }}">
     {% block formContent %}{% endblock %}
