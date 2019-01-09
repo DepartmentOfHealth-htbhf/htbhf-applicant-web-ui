@@ -2,10 +2,10 @@ const getStartPage = (req, res) => {
   res.render('start', { title: 'Start page' })
 }
 
-const registerStartRoutes = (app) => {
+const registerStartRoute = (app) => {
   app.get('/', getStartPage)
 }
 
 module.exports = {
-  registerStartRoutes
+  registerStartRoute
 }

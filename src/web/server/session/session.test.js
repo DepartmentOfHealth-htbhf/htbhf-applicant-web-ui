@@ -1,26 +1,38 @@
 const test = require('tape')
-var colorize = require('tap-colorize')
+const colorize = require('tap-colorize')
+const sinon = require('sinon')
 
 test.createStream().pipe(colorize()).pipe(process.stdout)
 
 const { ensureSession, getSessionConfig } = require('./session')
 
-test('ensureSession', (t) => {
-  const reqWithoutSession = {}
-  const reqWithSession = { session: {} }
+test('ensureSession should throw an error if session does not exist', (t) => {
+  const req = {}
   const res = {}
-  const next = () => {}
+  const next = sinon.spy()
 
-  t.throws(
-    ensureSession.bind(null, reqWithoutSession, res, next),
-    Error,
+  ensureSession(req, res, next)
+
+  t.equal(
+    next.calledWith(sinon.match.instanceOf(Error)),
+    true,
     'It should throw an error if session does not exist'
   )
 
-  t.doesNotThrow(
-    ensureSession.bind(null, reqWithSession, res, next),
-    null,
-    'It should not throw an error if session does not exist'
+  t.end()
+})
+
+test('ensureSession should not throw an error if session does not exist', (t) => {
+  const req = { session: {} }
+  const res = {}
+  const next = sinon.spy()
+
+  ensureSession(req, res, next)
+
+  t.equal(
+    next.calledWith(),
+    true,
+    'It should throw an error if session does not exist'
   )
 
   t.end()

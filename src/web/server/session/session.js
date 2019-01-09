@@ -1,4 +1,5 @@
 const session = require('express-session')
+const httpStatus = require('http-status-codes')
 
 const onClientError = (error) => {
   console.log('Error with redis session:', error)
@@ -15,8 +16,9 @@ const onClientConnection = (callback) => () => {
  */
 const ensureSession = (req, res, next) => {
   if (!req.session) {
-    res.status(500)
-    return next(new Error('Session is not initialised'))
+    const err = new Error('Error with session')
+    err.statusCode = httpStatus.INTERNAL_SERVER_ERROR
+    return next(err)
   }
   next()
 }
