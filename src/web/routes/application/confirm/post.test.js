@@ -12,7 +12,7 @@ const { postConfirm } = proxyquire('./post', {
 
 const config = {
   environment: {
-    CLAIM_BASE_URL: 'https://claim.com'
+    CLAIMANT_SERVICE_URL: 'https://claim.com'
   }
 }
 
