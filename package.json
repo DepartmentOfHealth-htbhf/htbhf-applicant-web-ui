@@ -11,7 +11,7 @@
     "start:dev": "npm run build && nodemon src/web",
     "test": "npm-run-all build test:lint test:unit -p -r start test:concurrent",
     "test:lint": "standard --env mocha",
-    "test:unit": "nyc tape src/web/**/*.test.js",
+    "test:unit": "nyc tape src/**/*.test.js",
     "test:acceptance": "mocha src/test/acceptance/**/*.js",
     "test:smoke": "tape src/test/smoke/**/*.test.js",
     "test:a11y": "node ./src/test/a11y/test-suite.js",
