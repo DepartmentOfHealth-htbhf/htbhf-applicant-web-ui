@@ -1,7 +1,7 @@
 /* eslint-disable no-process-env */
 'use strict'
 
-const { APP_HOST, SCREEN_RESOLUTION } = require('../config')
+const { APP_HOST, SCREEN_RESOLUTION } = require('../common/config')
 
 const PUBLIC_BASE_URL = `${APP_HOST}`
 

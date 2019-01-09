@@ -2,9 +2,9 @@
 'use strict'
 
 const { expect } = require('chai')
-const PersonalDetails = require('../page/personal-details')
-const Overview = require('../page/overview')
-const DriverManager = require('../driver/driver-manager')
+const PersonalDetails = require('../common/page/personal-details')
+const Overview = require('../common/page/overview')
+const DriverManager = require('../common/driver/driver-manager')
 const { PUBLIC_BASE_URL } = require('./environment')
 
 const TOTAL_TEST_TIMEOUT_MILLIS = 20000
