@@ -27,7 +27,7 @@ describe('Personal details', function () {
     await driverManager.quit()
   })
 
-  it('successfully submits the form when name is inputted', async () => {
+  it('successfully displays the personal details page', async () => {
     await overview.open(PUBLIC_BASE_URL)
 
     const h1ElementText = await overview.getH1Text()
@@ -39,18 +39,5 @@ describe('Personal details', function () {
     await overview.clickStartButton()
 
     await personalDetails.waitForPageLoad()
-    await personalDetails.enterFirstName('Lisa')
-    await personalDetails.enterLastName('Bloggs')
-    await personalDetails.submitForm()
-    // await personalDetails.waitForPageWithTitle('Confirm details – GOV.UK')
-    // const confirmationHasLoaded = await personalDetails.isConfirmationDisplayed()
-    // expect(confirmationHasLoaded).to.be.true
-  })
-
-  it('displays an error message when no name is inputted', async () => {
-    await personalDetails.open(PUBLIC_BASE_URL)
-    await personalDetails.submitForm()
-    // const errorMessage = await personalDetails.getPageErrorText()
-    // expect(errorMessage).to.equal('Please fix the following error')
   })
 })
