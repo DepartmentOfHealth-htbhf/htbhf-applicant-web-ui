@@ -1,0 +1,11 @@
+---
+applications:
+- name: help-to-buy-healthy-foods((suffix))
+  memory: 256M
+  command: node app.js
+  env:
+    SESSION_SECRET: '((session_secret))'
+  buildpacks:
+    - nodejs_buildpack
+  services:
+    - help-to-buy-healthy-foods-redis
