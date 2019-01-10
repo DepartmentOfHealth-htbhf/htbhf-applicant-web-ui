@@ -5,10 +5,11 @@ const { getSIDCookieAndCSRFToken, postFormData } = require('./request')
 const pa11yWithSettings = require('./pally')
 const handleTestResults = require('./results')
 const IGNORE_RULES = require('./ignore-rules')
+const { PORT } = require('../common/config')
 
-const ENTER_NAME_URL = 'http://localhost:8080/enter-name'
-const CONFIRM_URL = 'http://localhost:8080/confirm'
-const COMPLETE_URL = 'http://localhost:8080/complete'
+const ENTER_NAME_URL = `http://localhost:${PORT}/enter-name`
+const CONFIRM_URL = `http://localhost:${PORT}/confirm`
+const COMPLETE_URL = `http://localhost:${PORT}/complete`
 
 /*
   Runs though the application, evaluating each page and performing post requests to populate the necessary
