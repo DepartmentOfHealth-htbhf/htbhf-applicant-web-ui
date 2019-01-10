@@ -1,4 +1,6 @@
 const session = require('express-session')
+const RedisStore = require('connect-redis')(session)
+const redis = require('redis')
 const httpStatus = require('http-status-codes')
 const { path } = require('ramda')
 
@@ -43,7 +45,9 @@ const getSessionConfig = (store, config) => {
   return sessionConfig
 }
 
-const initialiseSession = (client, store) => (onConnectCallback, config, app) => {
+const initialiseSession = (onConnectCallback, config, app) => {
+  const client = redis.createClient(config.redis)
+  const store = new RedisStore()
   const sessionConfig = getSessionConfig(store, config)
 
   app.use(session(sessionConfig))
