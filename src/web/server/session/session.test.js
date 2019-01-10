@@ -1,8 +1,5 @@
 const test = require('tape')
-const colorize = require('tap-colorize')
 const sinon = require('sinon')
-
-test.createStream().pipe(colorize()).pipe(process.stdout)
 
 const { ensureSession, getSessionConfig } = require('./session')
 
