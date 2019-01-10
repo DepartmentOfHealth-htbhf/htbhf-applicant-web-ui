@@ -3,7 +3,7 @@
 
 require('dotenv').config()
 
-module.exports.APP_PORT = process.env.APP_PORT
+module.exports.PORT = process.env.PORT
 module.exports.APP_HOST = process.env.APP_HOST
 module.exports.SCREEN_RESOLUTION = {
   width: 640,
