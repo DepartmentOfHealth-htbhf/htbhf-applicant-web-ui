@@ -50,7 +50,9 @@ describe('Enter name', function () {
   it('displays an error message when no name is inputted', async () => {
     await enterName.open(BASE_URL)
     await enterName.submitForm()
-    // const errorMessage = await enterName.getPageErrorText()
-    // expect(errorMessage).to.equal('Please fix the following error')
+    const errorHeader = await enterName.getPageErrorHeaderText()
+    expect(errorHeader).to.equal('There is a problem')
+    const errorMessage = await enterName.getFirstNameError()
+    expect(errorMessage).to.be.equal('Enter a shorter first or given name')
   })
 })
