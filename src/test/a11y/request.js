@@ -14,7 +14,6 @@ const getCSRFToken = body => body.match('"_csrf" value="(.*)"')[1]
 
 const getSIDCookieAndCSRFToken = (url) =>
   new Promise((resolve, reject) => {
-    console.log('>>>>>>> url is', url)
     const options = {
       url
     }
@@ -22,9 +21,7 @@ const getSIDCookieAndCSRFToken = (url) =>
     request(options, (error, response, body) => {
       if (error) {
         return reject(error)
-      }``
-
-      console.log('headers', response.headers)
+      }
 
       const cookie = getSIDCookie(response)
       resolve({
