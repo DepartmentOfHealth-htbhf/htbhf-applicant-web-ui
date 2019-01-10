@@ -1,4 +1,8 @@
-const hasRedisCredentials = (obj) => !!obj.redis && !!obj.redis.length > 0 && !!obj.redis[0].credentials
+const hasRedisCredentials = (obj) => {
+  return !!obj.redis &&
+    obj.redis.length > 0 &&
+    !!obj.redis[0].credentials
+}
 
 const parseRedisConfig = (defaultConfig, vcapServices) => {
   const redisConfig = { ...defaultConfig }
