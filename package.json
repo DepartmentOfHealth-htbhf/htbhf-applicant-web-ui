@@ -1,6 +1,7 @@
 {
   "name": "htbhf-applicant-web-ui",
-  "version": "1.0.0",
+  "version_notice": "Patch versions are incremented by Travis (in tag_version.sh via .travis.yml) - never manually increment the patch version",
+  "version": "0.1.0",
   "description": "",
   "main": "index.js",
   "engines": {
@@ -13,7 +14,7 @@
     "test:lint": "standard --env mocha",
     "test:unit": "nyc tape 'src/web/**/*.test.js'",
     "test:acceptance": "mocha 'src/test/acceptance/**/*.js'",
-    "test:smoke": "tape 'src/test/smoke/**/*.test.js'",
+    "test:smoke": "mocha 'src/test/smoke/test-suite.js'",
     "test:a11y": "node 'src/test/a11y/test-suite.js'",
     "test:concurrent": "npm-run-all -s test:a11y test:acceptance",
     "coverage": "nyc report --reporter=lcov --reporter=text-lcov > coverage.lcov && codecov",
@@ -28,7 +29,6 @@
     "chromedriver": "^2.45.0",
     "codecov": "^3.1.0",
     "mocha": "^5.2.0",
-    "node-sass": "^4.11.0",
     "nodemon": "^1.18.9",
     "proxyquire": "^2.1.0",
     "sinon": "^7.2.2",
@@ -51,6 +51,7 @@
     "express-validator": "^5.3.1",
     "govuk-frontend": "^2.4.1",
     "http-status-codes": "^1.3.0",
+    "node-sass": "^4.11.0",
     "nunjucks": "^3.1.6",
     "ramda": "^0.26.1",
     "redis": "^2.8.0",
