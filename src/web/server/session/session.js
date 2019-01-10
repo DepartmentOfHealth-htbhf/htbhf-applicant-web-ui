@@ -1,5 +1,6 @@
 const session = require('express-session')
 const httpStatus = require('http-status-codes')
+const { path } = require('ramda')
 
 const onClientError = (error) => {
   console.log('Error with redis session:', error)
@@ -31,12 +32,12 @@ const getSessionConfig = (store, config) => {
     resave: false,
     name: config.server.SESSION_ID_NAME,
     cookie: {
-      secure: false
+      secure: true
     }
   }
 
-  if (config.environment.NODE_ENV === 'production') {
-    sessionConfig.cookie.secure = true
+  if (path(['environment', 'USE_UNSECURE_COOKIE'], config) === true) {
+    sessionConfig.cookie.secure = false
   }
 
   return sessionConfig
