@@ -20,8 +20,8 @@ const configureStaticPaths = (app) => {
 }
 
 const listen = (config, app) =>
-  app.listen(config.server.APP_PORT, () => console.log(
-    `App listening on port ${config.server.APP_PORT}`)
+  app.listen(config.server.PORT, () => console.log(
+    `App listening on port ${config.server.PORT}`)
   )
 
 const start = (config, app) => () => {
