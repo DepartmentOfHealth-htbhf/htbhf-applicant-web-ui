@@ -1,9 +1,6 @@
 const test = require('tape')
-const colorize = require('tap-colorize')
 const sinon = require('sinon')
 const proxyquire = require('proxyquire')
-
-test.createStream().pipe(colorize()).pipe(process.stdout)
 
 const post = sinon.stub()
 const { postConfirm } = proxyquire('./post', {
