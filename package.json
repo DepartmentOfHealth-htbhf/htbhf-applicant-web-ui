@@ -1,6 +1,7 @@
 {
   "name": "htbhf-applicant-web-ui",
-  "version": "1.0.0",
+  "version_notice": "Patch versions are incremented by Travis (in tag_version.sh via .travis.yml) - never manually increment the patch version",
+  "version": "0.1.0",
   "description": "",
   "main": "index.js",
   "engines": {
@@ -13,7 +14,7 @@
     "test:lint": "standard --env mocha",
     "test:unit": "nyc tape 'src/web/**/*.test.js'",
     "test:acceptance": "mocha 'src/test/acceptance/**/*.js'",
-    "test:smoke": "tape 'src/test/smoke/**/*.test.js'",
+    "test:smoke": "mocha 'src/test/smoke/test-suite.js'",
     "test:a11y": "node 'src/test/a11y/test-suite.js'",
     "test:concurrent": "npm-run-all -s test:a11y test:acceptance",
     "coverage": "nyc report --reporter=lcov --reporter=text-lcov > coverage.lcov && codecov",

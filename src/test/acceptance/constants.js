@@ -1,6 +1,6 @@
 'use strict'
 
-const { APP_PORT, SCREEN_RESOLUTION } = require('../config')
+const { APP_PORT, SCREEN_RESOLUTION } = require('../common/config')
 
 module.exports.BASE_URL = `http://localhost:${APP_PORT}`
 

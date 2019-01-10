@@ -3,6 +3,9 @@
 const Page = require('./page')
 const OVERVIEW_PAGE_TITLE = 'GOV.UK - The best place to find government services and information'
 
+/**
+ * Page object for the initial overview page that is shown when the app first loads.
+ */
 class Overview extends Page {
   async open (appURL) {
     await super.open(appURL)
