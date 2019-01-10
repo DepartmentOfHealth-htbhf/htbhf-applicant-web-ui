@@ -1,4 +1,4 @@
 const test = require('tape')
-const colorize = require('tap-colorize')
+const tapSpec = require('tap-spec')
 
-test.createStream().pipe(colorize()).pipe(process.stdout)
+test.createStream().pipe(tapSpec()).pipe(process.stdout)
