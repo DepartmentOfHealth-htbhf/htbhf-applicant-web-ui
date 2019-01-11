@@ -19,7 +19,7 @@ const onClientConnection = (callback) => () => {
  */
 const ensureSession = (req, res, next) => {
   if (!req.session) {
-    const err = new Error('Error with session')
+    const err = new Error('No session found')
     err.statusCode = httpStatus.INTERNAL_SERVER_ERROR
     return next(err)
   }
@@ -28,7 +28,7 @@ const ensureSession = (req, res, next) => {
 
 const getSessionConfig = (store, config) => {
   const sessionConfig = {
-    store,
+    store: store,
     secret: config.server.SESSION_SECRET,
     saveUninitialized: false,
     resave: false,
@@ -41,6 +41,7 @@ const getSessionConfig = (store, config) => {
   if (path(['environment', 'USE_UNSECURE_COOKIE'], config) === true) {
     sessionConfig.cookie.secure = false
   }
+  console.log('sessionConfig.cookie.secure:', sessionConfig.cookie.secure)
 
   return sessionConfig
 }
