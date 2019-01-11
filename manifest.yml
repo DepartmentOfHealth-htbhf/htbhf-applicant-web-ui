@@ -5,6 +5,7 @@ applications:
   command: node src/web
   env:
     SESSION_SECRET: '((session_secret))'
+    CLAIMANT_SERVICE_URL: http://htbhf-claimant-service((suffix)).apps.internal:8080
   buildpacks:
     - nodejs_buildpack
   services:
