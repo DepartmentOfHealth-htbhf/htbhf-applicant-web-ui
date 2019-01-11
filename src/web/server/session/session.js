@@ -48,9 +48,12 @@ const getSessionConfig = (store, config) => {
 
 const initialiseSession = (onConnectCallback, config, app) => {
   const client = redis.createClient(config.redis)
-  const store = new RedisStore()
+  const store = new RedisStore(config.redis)
   const sessionConfig = getSessionConfig(store, config)
 
+  if (sessionConfig.cookie.secure) {
+    app.set('trust proxy', 1) // trust first proxy
+  }
   app.use(session(sessionConfig))
   app.use(ensureSession)
 
