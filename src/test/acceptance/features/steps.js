@@ -1,5 +1,5 @@
 const { Before, Given, When, Then, After } = require('cucumber')
-const { expect } = require('chai')
+const { expect, assert } = require('chai')
 
 const EnterName = require('../../common/page/enter-name')
 const Overview = require('../../common/page/overview')
@@ -33,6 +33,8 @@ const LONG_NAME = 'This name is way too long' +
   'This name is way too long' + // 500
   'This name is way too long'
 
+const BLANK_NAME = ''
+
 Before(function () {
   driver = driverManager.initialise()
   overview = new Overview(driver)
@@ -64,42 +66,58 @@ Given('I start the application process', async function () {
 })
 
 When('I enter a first name which is too long', async function () {
-  await enterName.enterFirstName(LONG_NAME)
-  await enterName.enterLastName('Bloggs')
-  await enterName.submitForm()
-  await enterName.waitForPageLoad()
+  return enterNameAndSubmit(LONG_NAME, 'Bloggs')
 })
 
 When('I enter a last name which is too long', async function () {
-  await enterName.enterFirstName('Joe')
-  await enterName.enterLastName(LONG_NAME)
-  await enterName.submitForm()
-  await enterName.waitForPageLoad()
+  return enterNameAndSubmit('Joe', LONG_NAME)
 })
 
 When('I enter first name only', async function () {
-  await enterName.enterFirstName('Joe')
-  await enterName.submitForm()
-  await enterName.waitForPageLoad()
+  return enterNameAndSubmit('Joe', BLANK_NAME)
 })
 
 Then('I am informed that the first name is too long', async function () {
-  const errorHeader = await enterName.getPageErrorHeaderText()
-  expect(errorHeader).to.equal('There is a problem')
+  await assertErrorHeaderTextPresent()
   const errorMessage = await enterName.getFirstNameError()
   expect(errorMessage).to.be.equal('Enter a shorter first or given name')
 })
 
 Then('I am informed that the last name is too long', async function () {
-  const errorHeader = await enterName.getPageErrorHeaderText()
-  expect(errorHeader).to.equal('There is a problem')
-  const errorMessage = await enterName.getLastNameError()
-  expect(errorMessage).to.be.equal('Enter a shorter last or family name')
+  await assertErrorHeaderTextPresent()
+  await assertLastNameErrorPresent('Enter a shorter last or family name')
 })
 
 Then('I am informed that a last name is required', async function () {
-  const errorHeader = await enterName.getPageErrorHeaderText()
-  expect(errorHeader).to.equal('There is a problem')
-  const errorMessage = await enterName.getLastNameError()
-  expect(errorMessage).to.be.equal('Enter your last or family name')
+  await assertErrorHeaderTextPresent()
+  await assertLastNameErrorPresent('Enter your last or family name')
 })
+
+async function enterNameAndSubmit (firstName, lastName) {
+  try {
+    await enterName.enterFirstName(firstName)
+    await enterName.enterLastName(lastName)
+    await enterName.submitForm()
+    await enterName.waitForPageLoad()
+  } catch (error) {
+    assert.fail(`Unexpected error caught trying to enter the name and submit the page - ${error}`)
+  }
+}
+
+async function assertErrorHeaderTextPresent () {
+  try {
+    const errorHeader = await enterName.getPageErrorHeaderText()
+    expect(errorHeader).to.equal('There is a problem')
+  } catch (error) {
+    assert.fail(`Unexpected error caught trying to assert error header text is present - ${error}`)
+  }
+}
+
+async function assertLastNameErrorPresent (expectedErrorMessage) {
+  try {
+    const errorMessage = await enterName.getLastNameError()
+    expect(errorMessage).to.be.equal(expectedErrorMessage)
+  } catch (error) {
+    assert.fail(`Unexpected error caught trying to assert last name error message is present - ${error}`)
+  }
+}
