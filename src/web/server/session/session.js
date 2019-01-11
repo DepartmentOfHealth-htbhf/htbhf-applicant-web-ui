@@ -48,7 +48,7 @@ const getSessionConfig = (store, config) => {
 
 const initialiseSession = (onConnectCallback, config, app) => {
   const client = redis.createClient(config.redis)
-  const store = new RedisStore()
+  const store = new RedisStore(config.redis)
   const sessionConfig = getSessionConfig(store, config)
 
   app.use(session(sessionConfig))
