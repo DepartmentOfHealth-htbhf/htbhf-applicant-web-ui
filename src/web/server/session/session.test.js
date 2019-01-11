@@ -1,8 +1,5 @@
 const test = require('tape')
-const colorize = require('tap-colorize')
 const sinon = require('sinon')
-
-test.createStream().pipe(colorize()).pipe(process.stdout)
 
 const { ensureSession, getSessionConfig } = require('./session')
 
@@ -47,18 +44,18 @@ test('getSessionConfig', (t) => {
       SESSION_ID_NAME: 'session.sid'
     },
     environment: {
-      NODE_ENV: 'development'
+      USE_UNSECURE_COOKIE: true
     }
   }
 
   const configProduction = {
-    ...configDevelopment,
-    environment: {
-      NODE_ENV: 'production'
+    server: {
+      SESSION_SECRET: 'password123',
+      SESSION_ID_NAME: 'session.sid'
     }
   }
 
-  const expectedDevelopment = {
+  const expectedLocal = {
     store: 'store',
     secret: 'password123',
     saveUninitialized: false,
@@ -70,7 +67,7 @@ test('getSessionConfig', (t) => {
   }
 
   const expectedProduction = {
-    ...expectedDevelopment,
+    ...expectedLocal,
     cookie: {
       secure: true
     }
@@ -80,15 +77,15 @@ test('getSessionConfig', (t) => {
   const resultProduction = getSessionConfig(store, configProduction)
 
   t.deepEqual(
-    expectedDevelopment,
+    expectedLocal,
     resultDevelopment,
-    'it should return the correct session configuration for development environment'
+    'it should return the correct session configuration for local environment'
   )
 
   t.deepEqual(
     expectedProduction,
     resultProduction,
-    'it should return the correct session configuration for production environment'
+    'it should return the correct session configuration for non-local environment'
   )
 
   t.end()
