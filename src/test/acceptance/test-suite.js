@@ -31,7 +31,7 @@ describe('Enter name', function () {
     await overview.open(BASE_URL)
 
     const h1ElementText = await overview.getH1Text()
-    expect(h1ElementText).to.be.equal('Start page')
+    expect(h1ElementText).to.be.equal('Overview')
 
     // const h2ElementText = await overview.getH2Text()
     // expect(h2ElementText).to.be.equal('How to claim')
