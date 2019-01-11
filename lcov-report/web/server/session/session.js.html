@@ -1,14 +1,14 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for server/session/session.js</title>
+    <title>Code coverage report for web/server/session/session.js</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../prettify.css" />
-    <link rel="stylesheet" href="../../base.css" />
+    <link rel="stylesheet" href="../../../prettify.css" />
+    <link rel="stylesheet" href="../../../base.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../sort-arrow-sprite.png);
+            background-image: url(../../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -16,13 +16,13 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../../index.html">All files</a> / <a href="index.html">server/session</a> session.js
+      <a href="../../../index.html">All files</a> / <a href="index.html">web/server/session</a> session.js
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">62.96% </span>
+        <span class="strong">65.63% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>17/27</span>
+        <span class='fraction'>21/32</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -30,14 +30,14 @@
         <span class='fraction'>4/4</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">28.57% </span>
+        <span class="strong">33.33% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>2/7</span>
+        <span class='fraction'>2/6</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">68% </span>
+        <span class="strong">67.74% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>17/25</span>
+        <span class='fraction'>21/31</span>
       </div>
     </div>
     <p class="quiet">
@@ -105,7 +105,16 @@
 <a name='L57'></a><a href='#L57'>57</a>
 <a name='L58'></a><a href='#L58'>58</a>
 <a name='L59'></a><a href='#L59'>59</a>
-<a name='L60'></a><a href='#L60'>60</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -145,11 +154,14 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -165,7 +177,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const session = require('express-session')
+const RedisStore = require('connect-redis')(session)
+const redis = require('redis')
 const httpStatus = require('http-status-codes')
+const { path } = require('ramda')
 &nbsp;
 const onClientError = <span class="fstat-no" title="function not covered" >(e</span>rror) =&gt; {
 <span class="cstat-no" title="statement not covered" >  console.log('Error with redis session:', error)</span>
@@ -182,7 +197,7 @@ const onClientConnection = <span class="fstat-no" title="function not covered" >
  */
 const ensureSession = (req, res, next) =&gt; {
   if (!req.session) {
-    const err = new Error('Error with session')
+    const err = new Error('No session found')
     err.statusCode = httpStatus.INTERNAL_SERVER_ERROR
     return next(err)
   }
@@ -191,24 +206,27 @@ const ensureSession = (req, res, next) =&gt; {
 &nbsp;
 const getSessionConfig = (store, config) =&gt; {
   const sessionConfig = {
-    store,
+    store: store,
     secret: config.server.SESSION_SECRET,
     saveUninitialized: false,
     resave: false,
     name: config.server.SESSION_ID_NAME,
     cookie: {
-      secure: false
+      secure: true
     }
   }
 &nbsp;
-  if (config.environment.NODE_ENV === 'production') {
-    sessionConfig.cookie.secure = true
+  if (path(['environment', 'USE_UNSECURE_COOKIE'], config) === true) {
+    sessionConfig.cookie.secure = false
   }
+  console.log('sessionConfig.cookie.secure:', sessionConfig.cookie.secure)
 &nbsp;
   return sessionConfig
 }
 &nbsp;
-const initialiseSession = <span class="fstat-no" title="function not covered" >(c</span>lient, store) =&gt; <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(o</span>nConnectCallback, config, app) =&gt; {</span>
+const initialiseSession = <span class="fstat-no" title="function not covered" >(o</span>nConnectCallback, config, app) =&gt; {
+  const client = <span class="cstat-no" title="statement not covered" >redis.createClient(config.redis)</span>
+  const store = <span class="cstat-no" title="statement not covered" >new RedisStore(config.redis)</span>
   const sessionConfig = <span class="cstat-no" title="statement not covered" >getSessionConfig(store, config)</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  app.use(session(sessionConfig))</span>
@@ -229,10 +247,10 @@ module.exports = {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Jan 09 2019 17:37:51 GMT+0000 (Coordinated Universal Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Jan 11 2019 10:03:11 GMT+0000 (Coordinated Universal Time)
 </div>
 </div>
-<script src="../../prettify.js"></script>
+<script src="../../../prettify.js"></script>
 <script>
 window.onload = function () {
         if (typeof prettyPrint === 'function') {
@@ -240,7 +258,7 @@ window.onload = function () {
         }
 };
 </script>
-<script src="../../sorter.js"></script>
-<script src="../../block-navigation.js"></script>
+<script src="../../../sorter.js"></script>
+<script src="../../../block-navigation.js"></script>
 </body>
 </html>
