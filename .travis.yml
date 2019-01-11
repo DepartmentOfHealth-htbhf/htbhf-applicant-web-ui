@@ -21,7 +21,7 @@ deploy:
   keep-history: true
   on:
     branch: master
-  local-dir: coverage
+  local-dir: build/reports
 
 #don't build tags
 branches:
