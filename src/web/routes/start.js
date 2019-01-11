@@ -1,5 +1,5 @@
 const getStartPage = (req, res) => {
-  res.render('start', { heading: 'Start page' })
+  res.render('start', { heading: 'Overview' })
 }
 
 const registerStartRoute = (app) => {
