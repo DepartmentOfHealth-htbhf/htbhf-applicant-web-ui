@@ -1,7 +1,7 @@
 'use strict'
 
 const Page = require('./page')
-const OVERVIEW_PAGE_TITLE = 'GOV.UK - The best place to find government services and information'
+const OVERVIEW_PAGE_TITLE = 'GOV.UK - Overview'
 
 /**
  * Page object for the initial overview page that is shown when the app first loads.
