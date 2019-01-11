@@ -49,7 +49,7 @@ Given('I navigate to the HTBHF overview page', async function () {
   await overview.open(BASE_URL)
 
   const h1ElementText = await overview.getH1Text()
-  expect(h1ElementText).to.be.equal('Start page')
+  expect(h1ElementText).to.be.equal('Overview')
 })
 
 When('I select to start the process', async function () {
