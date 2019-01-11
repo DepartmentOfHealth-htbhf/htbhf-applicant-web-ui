@@ -1,8 +1,13 @@
 const { pick } = require('ramda')
 
+const pageContent = {
+  title: 'Confirm',
+  heading: 'Confirm'
+}
+
 const getConfirm = (req, res) => {
   res.render('confirm', {
-    heading: 'Confirm',
+    ...pageContent,
     claim: pick(['firstName', 'lastName'], req.session.claim),
     csrfToken: req.csrfToken()
   })
