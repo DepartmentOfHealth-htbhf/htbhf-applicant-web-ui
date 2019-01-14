@@ -3,7 +3,7 @@
 const Page = require('./page')
 const { expect } = require('chai')
 
-const PAGE_TITLE = 'GOV.UK - The best place to find government services and information'
+const PAGE_TITLE = 'GOV.UK - What is your name?'
 const FIRST_NAME_ERROR_SELECTOR = 'span#first-name-error'
 const LAST_NAME_ERROR_SELECTOR = 'span#last-name-error'
 
