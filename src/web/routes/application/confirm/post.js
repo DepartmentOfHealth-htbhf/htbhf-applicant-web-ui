@@ -17,8 +17,10 @@ const postConfirm = (config) => async (req, res, next) => {
     req.session.destroy()
     return res.redirect('complete')
   } catch (error) {
-    const err = new Error('Error posting the request:', error)
+    console.log(error.error)
+    const err = new Error('Error posting the request')
     err.statusCode = httpStatus.INTERNAL_SERVER_ERROR
+    err.error = error.error
     return next(err)
   }
 }
