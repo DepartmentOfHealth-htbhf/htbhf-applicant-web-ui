@@ -1,17 +1,8 @@
-const { Before, Given, When, Then, After } = require('cucumber')
+const { Given, When, Then } = require('cucumber')
 const { expect, assert } = require('chai')
 
-const EnterName = require('../../common/page/enter-name')
-const Overview = require('../../common/page/overview')
-const Confirmation = require('../../common/page/confirmation')
-const DriverManager = require('../../common/driver/driver-manager')
+const globals = require('./globals')
 const { BASE_URL } = require('../constants')
-
-const driverManager = new DriverManager()
-let enterName
-let overview
-let confirmation
-let driver
 
 const LONG_NAME = 'This name is way too long' +
   'This name is way too long' +
@@ -37,35 +28,24 @@ const LONG_NAME = 'This name is way too long' +
 
 const BLANK_NAME = ''
 
-Before(function () {
-  driver = driverManager.initialise()
-  overview = new Overview(driver)
-  enterName = new EnterName(driver)
-  confirmation = new Confirmation(driver)
-})
-
-After(function () {
-  driver.quit()
-})
-
 Given('I navigate to the HTBHF overview page', async function () {
-  await overview.open(BASE_URL)
+  await globals.overview.open(BASE_URL)
 
-  const h1ElementText = await overview.getH1Text()
+  const h1ElementText = await globals.overview.getH1Text()
   expect(h1ElementText).to.be.equal('Overview')
 })
 
 When('I select to start the process', async function () {
-  await overview.clickStartButton()
+  await globals.overview.clickStartButton()
 })
 
 Then('the enter name page is shown', async function () {
-  await enterName.waitForPageLoad()
+  await globals.enterName.waitForPageLoad()
 })
 
 Given('I start the application process', async function () {
-  await enterName.open(BASE_URL)
-  await enterName.waitForPageLoad()
+  await globals.enterName.open(BASE_URL)
+  await globals.enterName.waitForPageLoad()
 })
 
 When('I enter a first name which is too long', async function () {
@@ -86,7 +66,7 @@ When(/^I enter (.*) and (.*) values$/, async function (firstName, lastName) {
 
 Then('I am informed that the first name is too long', async function () {
   await assertErrorHeaderTextPresent()
-  const errorMessage = await enterName.getFirstNameError()
+  const errorMessage = await globals.enterName.getFirstNameError()
   expect(errorMessage).to.be.equal('Enter a shorter first or given name')
 })
 
@@ -101,14 +81,14 @@ Then('I am informed that a last name is required', async function () {
 })
 
 Then('I am shown the confirmation page', async function () {
-  await confirmation.waitForPageLoad()
+  await globals.confirmation.waitForPageLoad()
 })
 
 async function enterNameAndSubmit (firstName, lastName) {
   try {
-    await enterName.enterFirstName(firstName)
-    await enterName.enterLastName(lastName)
-    await enterName.submitForm()
+    await globals.enterName.enterFirstName(firstName)
+    await globals.enterName.enterLastName(lastName)
+    await globals.enterName.submitForm()
   } catch (error) {
     assert.fail(`Unexpected error caught trying to enter the name and submit the page - ${error}`)
   }
@@ -116,8 +96,8 @@ async function enterNameAndSubmit (firstName, lastName) {
 
 async function assertErrorHeaderTextPresent () {
   try {
-    await enterName.waitForPageLoad()
-    const errorHeader = await enterName.getPageErrorHeaderText()
+    await globals.enterName.waitForPageLoad()
+    const errorHeader = await globals.enterName.getPageErrorHeaderText()
     expect(errorHeader).to.equal('There is a problem')
   } catch (error) {
     assert.fail(`Unexpected error caught trying to assert error header text is present - ${error}`)
@@ -126,7 +106,7 @@ async function assertErrorHeaderTextPresent () {
 
 async function assertLastNameErrorPresent (expectedErrorMessage) {
   try {
-    const errorMessage = await enterName.getLastNameError()
+    const errorMessage = await globals.enterName.getLastNameError()
     expect(errorMessage).to.be.equal(expectedErrorMessage)
   } catch (error) {
     assert.fail(`Unexpected error caught trying to assert last name error message is present - ${error}`)
