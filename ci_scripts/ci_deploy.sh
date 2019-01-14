@@ -16,8 +16,6 @@ check_variable_is_set(){
 }
 
 check_variable_is_set BIN_DIR
-check_variable_is_set DEPLOY_SCRIPTS_URL
-check_variable_is_set DEPLOY_SCRIPT_VERSION
 check_variable_is_set GH_WRITE_TOKEN
 
 # download the deployment script(s)
