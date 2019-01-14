@@ -13,7 +13,7 @@
     "test": "npm-run-all build test:lint test:unit -p -r start test:concurrent",
     "test:lint": "standard --env mocha",
     "test:unit": "nyc tape -r './src/test/unit/setup' 'src/@(web|config)/**/*.test.js'",
-    "test:acceptance": "cucumber-js src/test/acceptance/features/ -f json:build/reports/cucumber-report.json && node src/test/cucumber-report.js",
+    "test:acceptance": "mkdir -p build/reports && cucumber-js src/test/acceptance/features/ -f json:build/reports/cucumber-report.json && node src/test/cucumber-report.js",
     "test:smoke": "mocha 'src/test/smoke/test-suite.js'",
     "test:a11y": "node 'src/test/a11y/test-suite.js'",
     "test:concurrent": "npm-run-all -s test:a11y test:acceptance",
