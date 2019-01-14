@@ -3,12 +3,14 @@ const { expect, assert } = require('chai')
 
 const EnterName = require('../../common/page/enter-name')
 const Overview = require('../../common/page/overview')
+const Confirmation = require('../../common/page/confirmation')
 const DriverManager = require('../../common/driver/driver-manager')
 const { BASE_URL } = require('../constants')
 
 const driverManager = new DriverManager()
 let enterName
 let overview
+let confirmation
 let driver
 
 const LONG_NAME = 'This name is way too long' +
@@ -39,6 +41,7 @@ Before(function () {
   driver = driverManager.initialise()
   overview = new Overview(driver)
   enterName = new EnterName(driver)
+  confirmation = new Confirmation(driver)
 })
 
 After(function () {
@@ -77,6 +80,10 @@ When('I enter first name only', async function () {
   return enterNameAndSubmit('Joe', BLANK_NAME)
 })
 
+When(/^I enter (.*) and (.*) values$/, async function (firstName, lastName) {
+  return enterNameAndSubmit(firstName, lastName)
+})
+
 Then('I am informed that the first name is too long', async function () {
   await assertErrorHeaderTextPresent()
   const errorMessage = await enterName.getFirstNameError()
@@ -93,12 +100,16 @@ Then('I am informed that a last name is required', async function () {
   await assertLastNameErrorPresent('Enter your last or family name')
 })
 
+Then('I am shown the confirmation page', async function () {
+  await confirmation.waitForPageLoad()
+  // Need to then verify the contents on the confirmation page.
+})
+
 async function enterNameAndSubmit (firstName, lastName) {
   try {
     await enterName.enterFirstName(firstName)
     await enterName.enterLastName(lastName)
     await enterName.submitForm()
-    await enterName.waitForPageLoad()
   } catch (error) {
     assert.fail(`Unexpected error caught trying to enter the name and submit the page - ${error}`)
   }
@@ -106,6 +117,7 @@ async function enterNameAndSubmit (firstName, lastName) {
 
 async function assertErrorHeaderTextPresent () {
   try {
+    await enterName.waitForPageLoad()
     const errorHeader = await enterName.getPageErrorHeaderText()
     expect(errorHeader).to.equal('There is a problem')
   } catch (error) {

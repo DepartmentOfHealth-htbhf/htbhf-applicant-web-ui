@@ -2,6 +2,7 @@ Feature:
   In order apply for HTBHF programme
   As a potential claimant
   I want to enter my name
+
   Background:
     Given I start the application process
 
@@ -17,3 +18,13 @@ Feature:
     When I enter first name only
     Then I am informed that a last name is required
 
+  Scenario Outline: Valid first name and last name form submission
+    When I enter <firstName> and <lastName> values
+    Then I am shown the confirmation page
+
+  Examples:
+  | firstName                                                 | lastName                    |
+  | <script>window.location.href=“www.google.com”</script>    | ‘;exec xp_cmdshell ‘dir’;–  |
+  | Henrietta                                                 | Fulsome-Blues               |
+  | Henrietta                                                 | Młynarczyk                  |
+  | Maria                                                     | Nowak                       |
