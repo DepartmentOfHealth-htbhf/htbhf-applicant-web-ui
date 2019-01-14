@@ -3,7 +3,7 @@
 const Page = require('./page')
 const { expect } = require('chai')
 
-const PAGE_TITLE = 'GOV.UK - The best place to find government services and information'
+const PAGE_TITLE = 'GOV.UK - What is your name?'
 
 /**
  * Page object for EnterName page where the name is entered.
