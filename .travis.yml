@@ -32,7 +32,7 @@ script: npm test && ./ci_scripts/ci_deploy.sh
 
 after_success:
   - ./ci_scripts/tag_version.sh
-  - test $TRAVIS_BRANCH = "master" && test $TRAVIS_PULL_REQUEST = "false" && ./${BIN_DIR}/trigger_node_cd_build.sh
+  - test $TRAVIS_BRANCH = "master" && test $TRAVIS_PULL_REQUEST = "false" && ./${SCRIPT_DIR}/trigger_node_cd_build.sh
   - test $TRAVIS_BRANCH = "master" && test $TRAVIS_PULL_REQUEST = "false" && npm run coverage
   - cp src/documentation/gh-pages/index.html build/reports
 
