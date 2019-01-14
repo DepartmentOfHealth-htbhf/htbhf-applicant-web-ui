@@ -43,8 +43,10 @@
     "tap-spec": "^5.0.0",
     "tape": "^4.9.2"
   },
+  "dependencies-comment": "chownr 1.1.1 is imported to fix https://app.snyk.io/vuln/npm:chownr:20180731",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "chownr": "^1.1.1",
     "compression": "^1.7.3",
     "connect-redis": "^3.4.0",
     "csurf": "^1.9.0",
