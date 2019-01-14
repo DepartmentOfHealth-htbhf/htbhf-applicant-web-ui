@@ -4,6 +4,8 @@ const Page = require('./page')
 const { expect } = require('chai')
 
 const PAGE_TITLE = 'GOV.UK - What is your name?'
+const FIRST_NAME_ERROR_SELECTOR = 'span#first-name-error'
+const LAST_NAME_ERROR_SELECTOR = 'span#last-name-error'
 
 /**
  * Page object for EnterName page where the name is entered.
@@ -51,6 +53,18 @@ class EnterName extends Page {
     const h1Text = await this.getH1Text()
     expect(h1Text).to.be.equal('What is your name?')
     return this.waitForPageWithTitle(PAGE_TITLE)
+  }
+
+  async getFirstNameError () {
+    await this.waitForElement({ selector: FIRST_NAME_ERROR_SELECTOR })
+    const firstNameError = await this.findByCSS(FIRST_NAME_ERROR_SELECTOR)
+    return firstNameError.getText()
+  }
+
+  async getLastNameError () {
+    await this.waitForElement({ selector: LAST_NAME_ERROR_SELECTOR })
+    const firstNameError = await this.findByCSS(LAST_NAME_ERROR_SELECTOR)
+    return firstNameError.getText()
   }
 }
 

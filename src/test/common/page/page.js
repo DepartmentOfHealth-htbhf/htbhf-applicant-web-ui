@@ -3,7 +3,7 @@
 
 const webdriver = require('selenium-webdriver')
 
-const ERROR_SELECTOR = '.error-summary h2'
+const ERROR_HEADER_SELECTOR = 'h2#error-summary-title'
 const DEFAULT_WAIT_MILLIS = 5000
 
 /**
@@ -65,13 +65,13 @@ class Page {
     return this.driver.wait(webdriver.until.elementLocated(by[type](selector)), timeout)
   }
 
-  async getPageError () {
-    await this.waitForElement({ selector: ERROR_SELECTOR })
-    return this.findByCSS(ERROR_SELECTOR)
+  async getPageErrorHeader () {
+    await this.waitForElement({ selector: ERROR_HEADER_SELECTOR })
+    return this.findByCSS(ERROR_HEADER_SELECTOR)
   }
 
-  async getPageErrorText () {
-    const pageError = await this.getPageError()
+  async getPageErrorHeaderText () {
+    const pageError = await this.getPageErrorHeader()
     return pageError.getText()
   }
 }
