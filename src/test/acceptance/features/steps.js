@@ -102,7 +102,6 @@ Then('I am informed that a last name is required', async function () {
 
 Then('I am shown the confirmation page', async function () {
   await confirmation.waitForPageLoad()
-  // Need to then verify the contents on the confirmation page.
 })
 
 async function enterNameAndSubmit (firstName, lastName) {
