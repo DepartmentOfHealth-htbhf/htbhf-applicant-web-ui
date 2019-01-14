@@ -5,6 +5,9 @@ const DriverManager = require('../../common/driver/driver-manager')
 
 const driverManager = new DriverManager()
 
+/**
+ * Contains references to anything which needs to be accessed by all the page objects.
+ */
 class Globals {
   constructor () {
     this.driver = null
@@ -13,6 +16,9 @@ class Globals {
     this.confirmation = null
   }
 
+  /**
+   * To be used to (re)initialise the Selenium driver manager and the driver within.
+   */
   initialise () {
     this.driver = driverManager.initialise()
     this.overview = new Overview(this.driver)

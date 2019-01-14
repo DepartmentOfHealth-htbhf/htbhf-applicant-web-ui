@@ -11,7 +11,7 @@ const LONG_NAME = 'This name is way too long' +
   'This name is way too long' +
   'This name is way too long' +
   'This name is way too long' +
-  'This name is way too long' + // 200
+  'This name is way too long' + // 200a
   'This name is way too long' +
   'This name is way too long' +
   'This name is way too long' +
@@ -27,21 +27,6 @@ const LONG_NAME = 'This name is way too long' +
   'This name is way too long'
 
 const BLANK_NAME = ''
-
-Given('I navigate to the HTBHF overview page', async function () {
-  await globals.overview.open(BASE_URL)
-
-  const h1ElementText = await globals.overview.getH1Text()
-  expect(h1ElementText).to.be.equal('Overview')
-})
-
-When('I select to start the process', async function () {
-  await globals.overview.clickStartButton()
-})
-
-Then('the enter name page is shown', async function () {
-  await globals.enterName.waitForPageLoad()
-})
 
 Given('I start the application process', async function () {
   await globals.enterName.open(BASE_URL)
