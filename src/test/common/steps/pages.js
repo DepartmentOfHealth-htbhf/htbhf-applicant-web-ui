@@ -1,7 +1,8 @@
-const EnterName = require('../../common/page/enter-name')
-const Overview = require('../../common/page/overview')
-const Confirmation = require('../../common/page/confirmation')
-const DriverManager = require('../../common/driver/driver-manager')
+const EnterName = require('../page/enter-name')
+const Overview = require('../page/overview')
+const Confirmation = require('../page/confirmation')
+const DriverManager = require('../driver/driver-manager')
+const { URL } = require('./test-startup-config')
 
 const driverManager = new DriverManager()
 
@@ -14,6 +15,7 @@ class Pages {
     this.overview = null
     this.enterName = null
     this.confirmation = null
+    this.url = URL
   }
 
   /**

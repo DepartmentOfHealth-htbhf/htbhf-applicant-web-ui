@@ -2,7 +2,6 @@ const { Given, When, Then } = require('cucumber')
 const { expect, assert } = require('chai')
 
 const pages = require('./pages')
-const { BASE_URL } = require('../constants')
 
 const LONG_NAME = 'This name is way too long' +
   'This name is way too long' +
@@ -29,7 +28,7 @@ const LONG_NAME = 'This name is way too long' +
 const BLANK_NAME = ''
 
 Given('I start the application process', async function () {
-  await pages.enterName.open(BASE_URL)
+  await pages.enterName.open(pages.url)
   await pages.enterName.waitForPageLoad()
 })
 
