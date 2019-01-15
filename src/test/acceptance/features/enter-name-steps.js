@@ -11,7 +11,7 @@ const LONG_NAME = 'This name is way too long' +
   'This name is way too long' +
   'This name is way too long' +
   'This name is way too long' +
-  'This name is way too long' + // 200a
+  'This name is way too long' + // 200
   'This name is way too long' +
   'This name is way too long' +
   'This name is way too long' +
