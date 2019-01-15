@@ -9,7 +9,7 @@ Before(async function () {
 })
 
 /**
- * Function to quite the driver at the end of each Scenario.
+ * Function to quit the driver at the end of each Scenario.
  */
 After(function () {
   pages.driver.quit()
