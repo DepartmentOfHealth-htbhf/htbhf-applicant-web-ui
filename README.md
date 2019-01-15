@@ -36,7 +36,7 @@ Files containing unit tests in files must use the naming convention `*.test.js`.
 ### Acceptance Tests
 The acceptance tests are defined within Gherkin feature files and run via Cucumber-JS. They can be found
 in the `src/test/acceptance/features` directory and can be run via `npm run test:acceptance`.
-The `globals.js` is setup to define anything that can be reused between the various step files, specifically
+The `pages.js` is setup to define anything that can be reused between the various step files, specifically
 the page objects and the Selenium web driver. The page object model that has been implemented in the
 `common/page` directory is specifically set out to be shared between the acceptance and smoke tests.
 

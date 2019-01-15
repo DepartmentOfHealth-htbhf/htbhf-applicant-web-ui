@@ -6,9 +6,9 @@ const DriverManager = require('../../common/driver/driver-manager')
 const driverManager = new DriverManager()
 
 /**
- * Contains references to anything which needs to be accessed by all the page objects.
+ * Contains gloabl references to the driver and all the page objects.
  */
-class Globals {
+class Pages {
   constructor () {
     this.driver = null
     this.overview = null
@@ -27,4 +27,4 @@ class Globals {
   }
 }
 
-module.exports = new Globals()
+module.exports = new Pages()
