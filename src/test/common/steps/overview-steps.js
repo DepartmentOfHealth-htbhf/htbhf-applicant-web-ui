@@ -2,10 +2,9 @@ const { Given, When, Then } = require('cucumber')
 const { expect } = require('chai')
 
 const pages = require('./pages')
-const { BASE_URL } = require('../constants')
 
 Given('I navigate to the HTBHF overview page', async function () {
-  await pages.overview.open(BASE_URL)
+  await pages.overview.open(pages.url)
 
   const h1ElementText = await pages.overview.getH1Text()
   expect(h1ElementText).to.be.equal('Overview')
