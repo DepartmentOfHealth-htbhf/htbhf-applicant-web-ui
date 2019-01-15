@@ -5,6 +5,14 @@ const webdriver = require('selenium-webdriver')
 
 const ERROR_HEADER_SELECTOR = 'h2#error-summary-title'
 const DEFAULT_WAIT_MILLIS = 5000
+const CSS_TYPE = 'CSS'
+const ID_TYPE = 'ID'
+const CLASSNAME_TYPE = 'CLASSNAME'
+const BY = {
+  [CSS_TYPE]: webdriver.By.css,
+  [CLASSNAME_TYPE]: webdriver.By.className,
+  [ID_TYPE]: webdriver.By.id
+}
 
 /**
  * Base Page class containing all core functionality - nothing which is specific for a single page
@@ -24,15 +32,33 @@ class Page {
   }
 
   async findById (id) {
-    return this.driver.findElement(webdriver.By.id(id))
+    try {
+      await this.waitForElement(id, ID_TYPE)
+      return this.driver.findElement(webdriver.By.id(id))
+    } catch (error) {
+      console.log(error)
+      throw new Error(error)
+    }
   }
 
   async findByClassName (className) {
-    return this.driver.findElement(webdriver.By.className(className))
+    try {
+      await this.waitForElement(className, CLASSNAME_TYPE)
+      return this.driver.findElement(webdriver.By.className(className))
+    } catch (error) {
+      console.log(error)
+      throw new Error(error)
+    }
   }
 
   async findByCSS (selector) {
-    return this.driver.findElement(webdriver.By.css(selector))
+    try {
+      await this.waitForElement(selector, CSS_TYPE)
+      return this.driver.findElement(webdriver.By.css(selector))
+    } catch (error) {
+      console.log(error)
+      throw new Error(error)
+    }
   }
 
   async findH1 () {
@@ -57,16 +83,11 @@ class Page {
     return this.driver.wait(webdriver.until.titleIs(title), DEFAULT_WAIT_MILLIS)
   }
 
-  async waitForElement ({ selector, type = 'CSS', timeout = DEFAULT_WAIT_MILLIS }) {
-    const by = {
-      'CSS': webdriver.By.css
-    }
-
-    return this.driver.wait(webdriver.until.elementLocated(by[type](selector)), timeout)
+  async waitForElement (selector, type, timeout = DEFAULT_WAIT_MILLIS) {
+    return this.driver.wait(webdriver.until.elementLocated(BY[type](selector)), timeout)
   }
 
   async getPageErrorHeader () {
-    await this.waitForElement({ selector: ERROR_HEADER_SELECTOR })
     return this.findByCSS(ERROR_HEADER_SELECTOR)
   }
 

@@ -56,13 +56,11 @@ class EnterName extends Page {
   }
 
   async getFirstNameError () {
-    await this.waitForElement({ selector: FIRST_NAME_ERROR_SELECTOR })
     const firstNameError = await this.findByCSS(FIRST_NAME_ERROR_SELECTOR)
     return firstNameError.getText()
   }
 
   async getLastNameError () {
-    await this.waitForElement({ selector: LAST_NAME_ERROR_SELECTOR })
     const firstNameError = await this.findByCSS(LAST_NAME_ERROR_SELECTOR)
     return firstNameError.getText()
   }

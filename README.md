@@ -32,3 +32,17 @@ Unit tests can be started with the command `npm run test:unit`. The application 
 - `./src/web/**/*.test.js`
 
 Files containing unit tests in files must use the naming convention `*.test.js`.
+
+### Acceptance Tests
+The acceptance tests are defined within Gherkin feature files and run via Cucumber-JS. They can be found
+in the `src/test/acceptance/features` directory and can be run via `npm run test:acceptance`.
+The `pages.js` is setup to define anything that can be reused between the various step files, specifically
+the page objects and the Selenium web driver. The page object model that has been implemented in the
+`common/page` directory is specifically set out to be shared between the acceptance and smoke tests.
+
+### Smoke Tests
+The smoke tests can be found in the `src/test/smoke` directory and contain a very small set of tests
+that are run to prove an environment is "up" and nothing more. They use the same page model as the acceptance
+tests and can be run via `npm run test:smoke`. To run these tests against a local instance for debuggging
+purposes, you simply need to set the environment variable `APP_HOST=http://localhost:8080` and it will run
+against your local running instance.
