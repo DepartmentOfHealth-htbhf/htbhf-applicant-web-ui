@@ -1,0 +1,84 @@
+[
+  {
+    "description": "  In order facilitate the beta HTBHF programme\n  As the continuous delivery pipeline\n  I want know that a new release has deployed correctly and is functional",
+    "keyword": "Feature",
+    "name": "",
+    "line": 1,
+    "id": "",
+    "tags": [],
+    "uri": "src/test/smoke/features/smoke-test.feature",
+    "elements": [
+      {
+        "id": ";the-overview-page-is-available-and-starts-the-application-process",
+        "keyword": "Scenario",
+        "line": 6,
+        "name": "The overview page is available and starts the application process",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "match": {
+              "location": "src/test/common/steps/hooks.js:7"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 15000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I navigate to the HTBHF overview page",
+            "match": {
+              "location": "src/test/common/steps/overview-steps.js:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1708000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 8,
+            "name": "I select to start the process",
+            "match": {
+              "location": "src/test/common/steps/overview-steps.js:13"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 482000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 9,
+            "name": "the enter name page is shown",
+            "match": {
+              "location": "src/test/common/steps/overview-steps.js:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 38000000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "src/test/common/steps/hooks.js:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
