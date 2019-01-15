@@ -20,11 +20,11 @@
             "keyword": "Before",
             "hidden": true,
             "match": {
-              "location": "src/test/acceptance/features/steps.js:40"
+              "location": "src/test/acceptance/features/hooks.js:7"
             },
             "result": {
               "status": "passed",
-              "duration": 11000000
+              "duration": 15000000
             }
           },
           {
@@ -33,11 +33,11 @@
             "line": 7,
             "name": "I start the application process",
             "match": {
-              "location": "src/test/acceptance/features/steps.js:66"
+              "location": "src/test/acceptance/features/enter-name-steps.js:31"
             },
             "result": {
               "status": "passed",
-              "duration": 520000000
+              "duration": 532000000
             }
           },
           {
@@ -46,11 +46,11 @@
             "line": 10,
             "name": "I enter a first name which is too long",
             "match": {
-              "location": "src/test/acceptance/features/steps.js:71"
+              "location": "src/test/acceptance/features/enter-name-steps.js:36"
             },
             "result": {
               "status": "passed",
-              "duration": 1242000000
+              "duration": 1309000000
             }
           },
           {
@@ -59,22 +59,21 @@
             "line": 11,
             "name": "I am informed that the first name is too long",
             "match": {
-              "location": "src/test/acceptance/features/steps.js:87"
+              "location": "src/test/acceptance/features/enter-name-steps.js:52"
             },
             "result": {
               "status": "passed",
-              "duration": 135000000
+              "duration": 126000000
             }
           },
           {
             "keyword": "After",
             "hidden": true,
             "match": {
-              "location": "src/test/acceptance/features/steps.js:47"
+              "location": "src/test/acceptance/features/hooks.js:14"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
@@ -91,7 +90,7 @@
             "keyword": "Before",
             "hidden": true,
             "match": {
-              "location": "src/test/acceptance/features/steps.js:40"
+              "location": "src/test/acceptance/features/hooks.js:7"
             },
             "result": {
               "status": "passed",
@@ -104,11 +103,11 @@
             "line": 7,
             "name": "I start the application process",
             "match": {
-              "location": "src/test/acceptance/features/steps.js:66"
+              "location": "src/test/acceptance/features/enter-name-steps.js:31"
             },
             "result": {
               "status": "passed",
-              "duration": 485000000
+              "duration": 495000000
             }
           },
           {
@@ -117,11 +116,11 @@
             "line": 14,
             "name": "I enter a last name which is too long",
             "match": {
-              "location": "src/test/acceptance/features/steps.js:75"
+              "location": "src/test/acceptance/features/enter-name-steps.js:40"
             },
             "result": {
               "status": "passed",
-              "duration": 1201000000
+              "duration": 1260000000
             }
           },
           {
@@ -130,18 +129,18 @@
             "line": 15,
             "name": "I am informed that the last name is too long",
             "match": {
-              "location": "src/test/acceptance/features/steps.js:93"
+              "location": "src/test/acceptance/features/enter-name-steps.js:58"
             },
             "result": {
               "status": "passed",
-              "duration": 110000000
+              "duration": 122000000
             }
           },
           {
             "keyword": "After",
             "hidden": true,
             "match": {
-              "location": "src/test/acceptance/features/steps.js:47"
+              "location": "src/test/acceptance/features/hooks.js:14"
             },
             "result": {
               "status": "passed"
@@ -161,10 +160,11 @@
             "keyword": "Before",
             "hidden": true,
             "match": {
-              "location": "src/test/acceptance/features/steps.js:40"
+              "location": "src/test/acceptance/features/hooks.js:7"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           },
           {
@@ -173,11 +173,11 @@
             "line": 7,
             "name": "I start the application process",
             "match": {
-              "location": "src/test/acceptance/features/steps.js:66"
+              "location": "src/test/acceptance/features/enter-name-steps.js:31"
             },
             "result": {
               "status": "passed",
-              "duration": 438000000
+              "duration": 474000000
             }
           },
           {
@@ -186,11 +186,11 @@
             "line": 18,
             "name": "I enter first name only",
             "match": {
-              "location": "src/test/acceptance/features/steps.js:79"
+              "location": "src/test/acceptance/features/enter-name-steps.js:44"
             },
             "result": {
               "status": "passed",
-              "duration": 233000000
+              "duration": 262000000
             }
           },
           {
@@ -199,18 +199,18 @@
             "line": 19,
             "name": "I am informed that a last name is required",
             "match": {
-              "location": "src/test/acceptance/features/steps.js:98"
+              "location": "src/test/acceptance/features/enter-name-steps.js:63"
             },
             "result": {
               "status": "passed",
-              "duration": 120000000
+              "duration": 119000000
             }
           },
           {
             "keyword": "After",
             "hidden": true,
             "match": {
-              "location": "src/test/acceptance/features/steps.js:47"
+              "location": "src/test/acceptance/features/hooks.js:14"
             },
             "result": {
               "status": "passed"
@@ -230,10 +230,11 @@
             "keyword": "Before",
             "hidden": true,
             "match": {
-              "location": "src/test/acceptance/features/steps.js:40"
+              "location": "src/test/acceptance/features/hooks.js:7"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           },
           {
@@ -242,11 +243,11 @@
             "line": 7,
             "name": "I start the application process",
             "match": {
-              "location": "src/test/acceptance/features/steps.js:66"
+              "location": "src/test/acceptance/features/enter-name-steps.js:31"
             },
             "result": {
               "status": "passed",
-              "duration": 476000000
+              "duration": 492000000
             }
           },
           {
@@ -255,11 +256,11 @@
             "line": 22,
             "name": "I enter <script>window.location.href=“www.google.com”</script> and ‘;exec xp_cmdshell ‘dir’;– values",
             "match": {
-              "location": "src/test/acceptance/features/steps.js:83"
+              "location": "src/test/acceptance/features/enter-name-steps.js:48"
             },
             "result": {
               "status": "passed",
-              "duration": 389000000
+              "duration": 429000000
             }
           },
           {
@@ -268,7 +269,7 @@
             "line": 23,
             "name": "I am shown the confirmation page",
             "match": {
-              "location": "src/test/acceptance/features/steps.js:103"
+              "location": "src/test/acceptance/features/enter-name-steps.js:68"
             },
             "result": {
               "status": "passed",
@@ -279,7 +280,7 @@
             "keyword": "After",
             "hidden": true,
             "match": {
-              "location": "src/test/acceptance/features/steps.js:47"
+              "location": "src/test/acceptance/features/hooks.js:14"
             },
             "result": {
               "status": "passed"
@@ -299,7 +300,7 @@
             "keyword": "Before",
             "hidden": true,
             "match": {
-              "location": "src/test/acceptance/features/steps.js:40"
+              "location": "src/test/acceptance/features/hooks.js:7"
             },
             "result": {
               "status": "passed",
@@ -312,11 +313,11 @@
             "line": 7,
             "name": "I start the application process",
             "match": {
-              "location": "src/test/acceptance/features/steps.js:66"
+              "location": "src/test/acceptance/features/enter-name-steps.js:31"
             },
             "result": {
               "status": "passed",
-              "duration": 415000000
+              "duration": 437000000
             }
           },
           {
@@ -325,11 +326,11 @@
             "line": 22,
             "name": "I enter Henrietta and Fulsome-Blues values",
             "match": {
-              "location": "src/test/acceptance/features/steps.js:83"
+              "location": "src/test/acceptance/features/enter-name-steps.js:48"
             },
             "result": {
               "status": "passed",
-              "duration": 284000000
+              "duration": 315000000
             }
           },
           {
@@ -338,21 +339,22 @@
             "line": 23,
             "name": "I am shown the confirmation page",
             "match": {
-              "location": "src/test/acceptance/features/steps.js:103"
+              "location": "src/test/acceptance/features/enter-name-steps.js:68"
             },
             "result": {
               "status": "passed",
-              "duration": 4000000
+              "duration": 7000000
             }
           },
           {
             "keyword": "After",
             "hidden": true,
             "match": {
-              "location": "src/test/acceptance/features/steps.js:47"
+              "location": "src/test/acceptance/features/hooks.js:14"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           }
         ]
@@ -369,7 +371,7 @@
             "keyword": "Before",
             "hidden": true,
             "match": {
-              "location": "src/test/acceptance/features/steps.js:40"
+              "location": "src/test/acceptance/features/hooks.js:7"
             },
             "result": {
               "status": "passed"
@@ -381,11 +383,11 @@
             "line": 7,
             "name": "I start the application process",
             "match": {
-              "location": "src/test/acceptance/features/steps.js:66"
+              "location": "src/test/acceptance/features/enter-name-steps.js:31"
             },
             "result": {
               "status": "passed",
-              "duration": 468000000
+              "duration": 485000000
             }
           },
           {
@@ -394,11 +396,11 @@
             "line": 22,
             "name": "I enter Henrietta and Młynarczyk values",
             "match": {
-              "location": "src/test/acceptance/features/steps.js:83"
+              "location": "src/test/acceptance/features/enter-name-steps.js:48"
             },
             "result": {
               "status": "passed",
-              "duration": 270000000
+              "duration": 299000000
             }
           },
           {
@@ -407,18 +409,18 @@
             "line": 23,
             "name": "I am shown the confirmation page",
             "match": {
-              "location": "src/test/acceptance/features/steps.js:103"
+              "location": "src/test/acceptance/features/enter-name-steps.js:68"
             },
             "result": {
               "status": "passed",
-              "duration": 5000000
+              "duration": 6000000
             }
           },
           {
             "keyword": "After",
             "hidden": true,
             "match": {
-              "location": "src/test/acceptance/features/steps.js:47"
+              "location": "src/test/acceptance/features/hooks.js:14"
             },
             "result": {
               "status": "passed"
@@ -438,7 +440,7 @@
             "keyword": "Before",
             "hidden": true,
             "match": {
-              "location": "src/test/acceptance/features/steps.js:40"
+              "location": "src/test/acceptance/features/hooks.js:7"
             },
             "result": {
               "status": "passed",
@@ -451,11 +453,11 @@
             "line": 7,
             "name": "I start the application process",
             "match": {
-              "location": "src/test/acceptance/features/steps.js:66"
+              "location": "src/test/acceptance/features/enter-name-steps.js:31"
             },
             "result": {
               "status": "passed",
-              "duration": 1402000000
+              "duration": 438000000
             }
           },
           {
@@ -464,11 +466,11 @@
             "line": 22,
             "name": "I enter Maria and Nowak values",
             "match": {
-              "location": "src/test/acceptance/features/steps.js:83"
+              "location": "src/test/acceptance/features/enter-name-steps.js:48"
             },
             "result": {
               "status": "passed",
-              "duration": 259000000
+              "duration": 292000000
             }
           },
           {
@@ -477,18 +479,18 @@
             "line": 23,
             "name": "I am shown the confirmation page",
             "match": {
-              "location": "src/test/acceptance/features/steps.js:103"
+              "location": "src/test/acceptance/features/enter-name-steps.js:68"
             },
             "result": {
               "status": "passed",
-              "duration": 4000000
+              "duration": 7000000
             }
           },
           {
             "keyword": "After",
             "hidden": true,
             "match": {
-              "location": "src/test/acceptance/features/steps.js:47"
+              "location": "src/test/acceptance/features/hooks.js:14"
             },
             "result": {
               "status": "passed"
@@ -519,10 +521,11 @@
             "keyword": "Before",
             "hidden": true,
             "match": {
-              "location": "src/test/acceptance/features/steps.js:40"
+              "location": "src/test/acceptance/features/hooks.js:7"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           },
           {
@@ -531,11 +534,11 @@
             "line": 7,
             "name": "I navigate to the HTBHF overview page",
             "match": {
-              "location": "src/test/acceptance/features/steps.js:51"
+              "location": "src/test/acceptance/features/overview-steps.js:7"
             },
             "result": {
               "status": "passed",
-              "duration": 457000000
+              "duration": 454000000
             }
           },
           {
@@ -544,11 +547,11 @@
             "line": 8,
             "name": "I select to start the process",
             "match": {
-              "location": "src/test/acceptance/features/steps.js:58"
+              "location": "src/test/acceptance/features/overview-steps.js:14"
             },
             "result": {
               "status": "passed",
-              "duration": 131000000
+              "duration": 117000000
             }
           },
           {
@@ -557,21 +560,22 @@
             "line": 9,
             "name": "the enter name page is shown",
             "match": {
-              "location": "src/test/acceptance/features/steps.js:62"
+              "location": "src/test/acceptance/features/overview-steps.js:18"
             },
             "result": {
               "status": "passed",
-              "duration": 29000000
+              "duration": 43000000
             }
           },
           {
             "keyword": "After",
             "hidden": true,
             "match": {
-              "location": "src/test/acceptance/features/steps.js:47"
+              "location": "src/test/acceptance/features/hooks.js:14"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           }
         ]
