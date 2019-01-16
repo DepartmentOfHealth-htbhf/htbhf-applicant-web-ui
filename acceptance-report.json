@@ -24,7 +24,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 15000000
+              "duration": 14000000
             }
           },
           {
@@ -37,7 +37,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 464000000
+              "duration": 510000000
             }
           },
           {
@@ -50,7 +50,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1179000000
+              "duration": 1220000000
             }
           },
           {
@@ -63,7 +63,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 121000000
+              "duration": 122000000
             }
           },
           {
@@ -73,8 +73,7 @@
               "location": "src/test/common/steps/hooks.js:14"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
@@ -95,7 +94,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2000000
+              "duration": 1000000
             }
           },
           {
@@ -108,7 +107,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 454000000
+              "duration": 473000000
             }
           },
           {
@@ -121,7 +120,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1182000000
+              "duration": 1212000000
             }
           },
           {
@@ -134,7 +133,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 120000000
+              "duration": 123000000
             }
           },
           {
@@ -164,8 +163,7 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           },
           {
@@ -178,7 +176,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 421000000
+              "duration": 435000000
             }
           },
           {
@@ -191,7 +189,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 222000000
+              "duration": 233000000
             }
           },
           {
@@ -204,7 +202,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 115000000
+              "duration": 119000000
             }
           },
           {
@@ -234,7 +232,8 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           },
           {
@@ -260,20 +259,20 @@
             },
             "result": {
               "status": "passed",
-              "duration": 400000000
+              "duration": 410000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
             "line": 23,
-            "name": "I am shown the confirmation page",
+            "name": "I am shown the enter national insurance number page",
             "match": {
               "location": "src/test/common/steps/enter-name-steps.js:67"
             },
             "result": {
               "status": "passed",
-              "duration": 5000000
+              "duration": 36000000
             }
           },
           {
@@ -317,7 +316,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 427000000
+              "duration": 420000000
             }
           },
           {
@@ -330,20 +329,20 @@
             },
             "result": {
               "status": "passed",
-              "duration": 299000000
+              "duration": 291000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
             "line": 23,
-            "name": "I am shown the confirmation page",
+            "name": "I am shown the enter national insurance number page",
             "match": {
               "location": "src/test/common/steps/enter-name-steps.js:67"
             },
             "result": {
               "status": "passed",
-              "duration": 5000000
+              "duration": 39000000
             }
           },
           {
@@ -353,8 +352,7 @@
               "location": "src/test/common/steps/hooks.js:14"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
@@ -388,7 +386,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 466000000
+              "duration": 456000000
             }
           },
           {
@@ -408,13 +406,13 @@
             "arguments": [],
             "keyword": "Then ",
             "line": 23,
-            "name": "I am shown the confirmation page",
+            "name": "I am shown the enter national insurance number page",
             "match": {
               "location": "src/test/common/steps/enter-name-steps.js:67"
             },
             "result": {
               "status": "passed",
-              "duration": 4000000
+              "duration": 39000000
             }
           },
           {
@@ -458,7 +456,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 420000000
+              "duration": 439000000
             }
           },
           {
@@ -471,20 +469,20 @@
             },
             "result": {
               "status": "passed",
-              "duration": 269000000
+              "duration": 273000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
             "line": 23,
-            "name": "I am shown the confirmation page",
+            "name": "I am shown the enter national insurance number page",
             "match": {
               "location": "src/test/common/steps/enter-name-steps.js:67"
             },
             "result": {
               "status": "passed",
-              "duration": 4000000
+              "duration": 39000000
             }
           },
           {
@@ -526,7 +524,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1000000
+              "duration": 4000000
             }
           },
           {
@@ -539,7 +537,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 435000000
+              "duration": 447000000
             }
           },
           {
@@ -552,7 +550,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 97000000
+              "duration": 98000000
             }
           },
           {
@@ -565,7 +563,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 37000000
+              "duration": 40000000
             }
           },
           {
@@ -575,7 +573,8 @@
               "location": "src/test/common/steps/hooks.js:14"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           }
         ]
