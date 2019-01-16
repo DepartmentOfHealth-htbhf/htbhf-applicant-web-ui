@@ -1,14 +1,34 @@
-const { getEnterName } = require('./get')
-const { postEnterName } = require('./post')
+const { renderView } = require('../common/render-view')
+const { handlePost } = require('../common/handle-post')
 const { validate } = require('./validate')
 const { getSessionDetails } = require('./session-details')
 const { sanitize } = require('./sanitize')
 
+const pageContent = {
+  title: 'What is your name?',
+  heading: 'What is your name?',
+  formDescription: 'Tell us your full legal name as it appears on your passport or other benefit claims.'
+}
+
+const renderEnterName = renderView('enter-name', pageContent, 'confirm')
+
 const registerEnterNameRoutes = (csrfProtection, app) => {
   app
     .route('/enter-name')
-    .get(csrfProtection, getSessionDetails, getEnterName)
-    .post(csrfProtection, sanitize, validate, getSessionDetails, postEnterName)
+    .get(
+      csrfProtection,
+      getSessionDetails,
+      renderEnterName
+    )
+
+    .post(
+      csrfProtection,
+      sanitize,
+      validate,
+      getSessionDetails,
+      handlePost,
+      renderEnterName
+    )
 }
 
 module.exports = {
