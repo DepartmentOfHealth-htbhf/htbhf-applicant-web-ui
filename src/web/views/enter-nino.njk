@@ -1,0 +1,36 @@
+{% extends "templates/form.njk" %}
+{% from "input/macro.njk" import govukInput %}
+{% from "error-summary/macro.njk" import govukErrorSummary %}
+{% from "fieldset/macro.njk" import govukFieldset %}
+
+{% set buttonText = "Save and continue" %}
+{% block formContent %}
+
+  {{ govukFieldset({
+    legend: {
+      text: heading,
+      classes: "govuk-fieldset__legend--xl",
+      isPageHeading: true
+    }
+  }) }}
+  <p class="govuk-body">{{ formDescription }}</p>
+
+  {% if errors %}
+    {{ govukErrorSummary({
+      titleText: "There is a problem",
+      errorList: errors | toErrorList
+    }) }}
+  {% endif %}
+
+  {{ govukInput({
+    label: {
+      text: "National Insurance number"
+    },
+    hint: {
+      text: hint
+    },
+    classes: "govuk-input--width-10",
+    id: "nino",
+    name: "nino"
+  }) }}
+{% endblock %}

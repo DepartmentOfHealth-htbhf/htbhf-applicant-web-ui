@@ -11,7 +11,10 @@ const handlePost = (req, res, next) => {
   }
 
   try {
-    req.session.claim = req.body
+    req.session.claim = {
+      ...req.session.claim,
+      ...req.body
+    }
     return next()
   } catch (error) {
     const err = new Error('Error posting', req.path, error)

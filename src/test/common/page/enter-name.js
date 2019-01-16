@@ -9,7 +9,6 @@ const LAST_NAME_ERROR_SELECTOR = 'span#last-name-error'
 
 /**
  * Page object for EnterName page where the name is entered.
- * This will change greatly when the Name page is revisited for HTBHFB-7.
  */
 class EnterName extends Page {
   async getFirstNameField () {
