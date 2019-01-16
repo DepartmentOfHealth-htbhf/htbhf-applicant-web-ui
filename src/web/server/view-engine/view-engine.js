@@ -1,7 +1,7 @@
 const nunjucks = require('nunjucks')
 const { toErrorList, getErrorForField } = require('./filters')
 
-const setViewEngine = (app) => {
+const setViewEngine = (config, app) => {
   const env = nunjucks.configure([
     'src/web/views',
     'node_modules/govuk-frontend/',
@@ -9,7 +9,7 @@ const setViewEngine = (app) => {
   ], {
     autoescape: true,
     express: app,
-    noCache: true
+    noCache: config.server.CACHE_VIEW_TEMPLATES
   })
 
   env.addFilter('toErrorList', toErrorList)
