@@ -8,8 +8,8 @@ const { registerConfirmRoutes } = require('./application/confirm')
 const registerRoutes = (config, app) => {
   const csrfProtection = csrf({})
   registerStartRoute(app)
-  registerEnterNameRoutes(csrfProtection, app)
   registerEnterNinoRoutes(csrfProtection, app)
+  registerEnterNameRoutes(csrfProtection, app)
   registerConfirmRoutes(csrfProtection, config, app)
   registerCompleteRoute(app)
 }
