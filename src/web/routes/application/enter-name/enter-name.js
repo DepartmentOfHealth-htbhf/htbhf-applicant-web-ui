@@ -1,7 +1,7 @@
 const { renderView } = require('../common/render-view')
 const { handlePost } = require('../common/handle-post')
 const { validate } = require('./validate')
-const { getSessionDetails } = require('./session-details')
+const { getSessionDetails } = require('../common/session-details')
 const { sanitize } = require('./sanitize')
 
 const pageContent = {
@@ -10,7 +10,7 @@ const pageContent = {
   formDescription: 'Tell us your full legal name as it appears on your passport or other benefit claims.'
 }
 
-const renderEnterName = renderView('enter-name', pageContent, 'confirm')
+const renderEnterName = renderView('enter-name', pageContent, 'enter-nino')
 
 const registerEnterNameRoutes = (csrfProtection, app) => {
   app

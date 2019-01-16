@@ -8,7 +8,7 @@ const pageContent = {
 const getConfirm = (req, res) => {
   res.render('confirm', {
     ...pageContent,
-    claim: pick(['firstName', 'lastName'], req.session.claim),
+    claim: pick(['firstName', 'lastName', 'nino'], req.session.claim),
     csrfToken: req.csrfToken()
   })
 }
