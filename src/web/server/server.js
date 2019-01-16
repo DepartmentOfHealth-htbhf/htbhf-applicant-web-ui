@@ -28,7 +28,7 @@ const start = (config, app) => () => {
   app.use(compression())
   app.use(bodyParser.urlencoded({ extended: false }))
 
-  setViewEngine(app)
+  setViewEngine(config, app)
   registerRoutes(config, app)
   registerErrorHandlers(app)
   listen(config, app)

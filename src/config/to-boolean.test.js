@@ -1,0 +1,16 @@
+const test = require('tape')
+const { toBoolean } = require('./to-boolean')
+
+test('toBoolean()', (t) => {
+  t.equal(toBoolean(), false, 'an undefined value should return false')
+  t.equal(toBoolean(null), false, 'a null value should return false')
+  t.equal(toBoolean(33), false, 'an integer value should return false')
+  t.equal(toBoolean('random string'), false, 'a random string should return false')
+  t.equal(toBoolean('false'), false, 'the string "false" should return false')
+  t.equal(toBoolean('FALSE'), false, 'the string "FALSE" should return false')
+  t.equal(toBoolean('true'), true, 'the string "true" should return true')
+  t.equal(toBoolean('TRUE'), true, 'the string "TRUE" should return true')
+  t.equal(toBoolean(false), false, 'the boolean "false" should return false')
+  t.equal(toBoolean(true), true, 'the boolean "true" should return true')
+  t.end()
+})
