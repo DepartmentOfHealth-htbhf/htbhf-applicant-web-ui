@@ -8,7 +8,7 @@ const pageContent = {
   hint: 'It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.'
 }
 
-const renderEnterNino = renderView('enter-nino', pageContent, 'confirm')
+const renderEnterNino = renderView('enter-nino', pageContent, 'enter-name')
 
 const registerEnterNinoRoutes = (csrfProtection, app) => {
   app

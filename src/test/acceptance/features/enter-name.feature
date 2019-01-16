@@ -20,7 +20,7 @@ Feature:
 
   Scenario Outline: Valid first name and last name form submission
     When I enter <firstName> and <lastName> values
-    Then I am shown the enter national insurance number page
+    Then I am shown the confirmation page
 
   Examples:
   | firstName                                                 | lastName                    |

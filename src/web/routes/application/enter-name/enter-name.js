@@ -10,7 +10,7 @@ const pageContent = {
   formDescription: 'Tell us your full legal name as it appears on your passport or other benefit claims.'
 }
 
-const renderEnterName = renderView('enter-name', pageContent, 'enter-nino')
+const renderEnterName = renderView('enter-name', pageContent, 'confirm')
 
 const registerEnterNameRoutes = (csrfProtection, app) => {
   app

@@ -64,8 +64,8 @@ Then('I am informed that a last name is required', async function () {
   await assertLastNameErrorPresent('Enter your last or family name')
 })
 
-Then('I am shown the enter national insurance number page', async function () {
-  await pages.enterNino.waitForPageLoad()
+Then('I am shown the confirmation page', async function () {
+  await pages.confirmation.waitForPageLoad()
 })
 
 async function enterNameAndSubmit (firstName, lastName) {
