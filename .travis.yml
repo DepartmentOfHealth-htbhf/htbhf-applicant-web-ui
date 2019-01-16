@@ -44,4 +44,3 @@ env:
     - SESSION_SECRET=notsosecret
     - SMOKE_TESTS=./ci_scripts/smoke_tests.sh
     - BIN_DIR=./bin
-    - NODE_ENV=production
