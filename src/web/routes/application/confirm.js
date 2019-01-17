@@ -3,14 +3,14 @@ const pageContent = {
   heading: 'Application successful'
 }
 
-const getCompletePage = (req, res) => {
+const getConfirmPage = (req, res) => {
   res.render('confirm', pageContent)
 }
 
-const registerCompleteRoute = (app) => {
-  app.get('/confirm', getCompletePage)
+const registerConfirmRoute = (app) => {
+  app.get('/confirm', getConfirmPage)
 }
 
 module.exports = {
-  registerCompleteRoute
+  registerConfirmRoute
 }

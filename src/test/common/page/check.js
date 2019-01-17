@@ -1,12 +1,12 @@
 'use strict'
 
 const Page = require('./page')
-const OVERVIEW_PAGE_TITLE = 'GOV.UK - Confirm'
+const OVERVIEW_PAGE_TITLE = 'GOV.UK - Check'
 
 /**
  * Page object for the confirmation page before submit.
  */
-class Confirmation extends Page {
+class Check extends Page {
   async open (appURL) {
     await super.open(appURL)
     return this.waitForPageLoad()
@@ -17,4 +17,4 @@ class Confirmation extends Page {
   }
 }
 
-module.exports = Confirmation
+module.exports = Check

@@ -1,7 +1,7 @@
 const EnterName = require('../page/enter-name')
 const EnterNino = require('../page/enter-nino')
 const Overview = require('../page/overview')
-const Confirmation = require('../page/confirmation')
+const Check = require('../page/check')
 const DriverManager = require('../driver/driver-manager')
 const { URL } = require('./test-startup-config')
 
@@ -16,7 +16,7 @@ class Pages {
     this.overview = null
     this.enterName = null
     this.enterNino = null
-    this.confirmation = null
+    this.check = null
     this.url = URL
   }
 
@@ -28,7 +28,7 @@ class Pages {
     this.overview = new Overview(this.driver)
     this.enterName = new EnterName(this.driver)
     this.enterNino = new EnterNino(this.driver)
-    this.confirmation = new Confirmation(this.driver)
+    this.check = new Check(this.driver)
   }
 }
 

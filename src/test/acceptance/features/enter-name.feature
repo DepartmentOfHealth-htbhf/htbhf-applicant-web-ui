@@ -20,7 +20,7 @@ Feature:
 
   Scenario Outline: Valid first name and last name form submission
     When I enter <firstName> and <lastName> values
-    Then I am shown the confirmation page
+    Then I am shown the check page
 
   Examples:
   | firstName                                                 | lastName                    |
