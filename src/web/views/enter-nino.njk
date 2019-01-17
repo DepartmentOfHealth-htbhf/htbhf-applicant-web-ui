@@ -31,6 +31,8 @@
     },
     classes: "govuk-input--width-10",
     id: "nino",
-    name: "nino"
+    name: "nino",
+    value: claim.nino,
+    errorMessage: errors | getErrorForField('nino')
   }) }}
 {% endblock %}

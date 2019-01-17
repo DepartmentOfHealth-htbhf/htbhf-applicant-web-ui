@@ -1,3 +1,6 @@
+const { sanitize } = require('./sanitize')
+const { validate } = require('./validate')
+
 const pageContent = {
   title: 'What is your national insurance number?',
   heading: 'What is your national insurance number?',
@@ -8,8 +11,8 @@ const enterNino = {
   path: '/enter-nino',
   next: '/enter-name',
   template: 'enter-nino',
-  sanitize: (req, res, next) => { next() },
-  validate: [],
+  sanitize,
+  validate,
   pageContent
 }
 
