@@ -18,6 +18,23 @@ The application implements the GOV.UK design system. Visit the project website [
 ### Templating
 To easily implement the GOV.UK design system, the application uses Nunjucks as a templating language. Visit the website [https://mozilla.github.io/nunjucks](https://mozilla.github.io/nunjucks) for more information and documentation.
 
+### Creating a new step in the form
+To add a new form step to the application, create an object matching the following schema 
+
+```
+{
+  path: String,
+  next: String,
+  template: String,
+  sanitize: Express middleware (function or array),
+  validate: Express middleware (function or array),
+  pageContent : Object
+}
+```
+See [enter-name](src/web/routes/application/enter-name/enter-name.js) for an example. 
+
+Then add the step to the [list of steps](src/web/routes/application/steps.js)
+
 ## Tests
 
 ### Linting
@@ -33,14 +50,14 @@ Unit tests can be started with the command `npm run test:unit`. The application 
 
 Files containing unit tests in files must use the naming convention `*.test.js`.
 
-### Acceptance Tests
+### Acceptance
 The acceptance tests are defined within Gherkin feature files and run via Cucumber-JS. They can be found
 in the `src/test/acceptance/features` directory and can be run via `npm run test:acceptance`.
 The `pages.js` is setup to define anything that can be reused between the various step files, specifically
 the page objects and the Selenium web driver. The page object model that has been implemented in the
 `common/page` directory is specifically set out to be shared between the acceptance and smoke tests.
 
-### Smoke Tests
+### Smoke
 The smoke tests can be found in the `src/test/smoke` directory and contain a very small set of tests
 that are run to prove an environment is "up" and nothing more. They use the same page model as the acceptance
 tests and can be run via `npm run test:smoke`. To run these tests against a local instance for debuggging
