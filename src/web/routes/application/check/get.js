@@ -1,12 +1,12 @@
 const { pick } = require('ramda')
 
 const pageContent = {
-  title: 'Confirm',
-  heading: 'Confirm'
+  title: 'Check',
+  heading: 'Check'
 }
 
-const getConfirm = (req, res) => {
-  res.render('confirm', {
+const getCheck = (req, res) => {
+  res.render('check', {
     ...pageContent,
     claim: pick(['firstName', 'lastName', 'nino'], req.session.claim),
     csrfToken: req.csrfToken()
@@ -14,5 +14,5 @@ const getConfirm = (req, res) => {
 }
 
 module.exports = {
-  getConfirm
+  getCheck
 }

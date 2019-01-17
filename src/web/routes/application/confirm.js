@@ -4,11 +4,11 @@ const pageContent = {
 }
 
 const getCompletePage = (req, res) => {
-  res.render('complete', pageContent)
+  res.render('confirm', pageContent)
 }
 
 const registerCompleteRoute = (app) => {
-  app.get('/complete', getCompletePage)
+  app.get('/confirm', getCompletePage)
 }
 
 module.exports = {
