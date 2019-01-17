@@ -1,5 +1,5 @@
-const { registerEnterNameRoutes } = require('./enter-name')
+const { enterName } = require('./enter-name')
 
 module.exports = {
-  registerEnterNameRoutes
+  enterName
 }
