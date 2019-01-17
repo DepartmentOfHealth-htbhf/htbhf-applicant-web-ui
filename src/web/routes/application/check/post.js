@@ -3,7 +3,7 @@ const request = require('request-promise')
 
 const CLAIMS_ENDPOINT = `/v1/claims`
 
-const postConfirm = (config) => async (req, res, next) => {
+const postCheck = (config) => async (req, res, next) => {
   try {
     req.session.body = req.body
     await request.post({
@@ -15,7 +15,7 @@ const postConfirm = (config) => async (req, res, next) => {
     })
 
     req.session.destroy()
-    return res.redirect('complete')
+    return res.redirect('confirm')
   } catch (error) {
     console.log(error.error)
     const err = new Error('Error posting the request')
@@ -26,5 +26,5 @@ const postConfirm = (config) => async (req, res, next) => {
 }
 
 module.exports = {
-  postConfirm
+  postCheck
 }

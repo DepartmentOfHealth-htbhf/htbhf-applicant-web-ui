@@ -3,7 +3,7 @@ const sinon = require('sinon')
 const proxyquire = require('proxyquire')
 
 const post = sinon.stub()
-const { postConfirm } = proxyquire('./post', {
+const { postCheck } = proxyquire('./post', {
   'request-promise': { post }
 })
 
@@ -27,7 +27,7 @@ test('successful post clears the session and redirects', async (t) => {
   post.returns(Promise.resolve())
 
   try {
-    await postConfirm(config)(req, res, next)
+    await postCheck(config)(req, res, next)
     t.equal(destroy.called, true)
     t.end()
   } catch (error) {
@@ -43,7 +43,7 @@ test('unsuccessful post calls next with error', async (t) => {
   post.returns(new Error('error'))
 
   try {
-    await postConfirm(config)(req, res, next)
+    await postCheck(config)(req, res, next)
     t.equal(next.calledWith(sinon.match.instanceOf(Error)), true)
     t.end()
   } catch (error) {
