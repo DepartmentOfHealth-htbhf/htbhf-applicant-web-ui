@@ -1,5 +1,5 @@
-const { registerEnterNinoRoutes } = require('./enter-nino')
+const { enterNino } = require('./enter-nino')
 
 module.exports = {
-  registerEnterNinoRoutes
+  enterNino
 }
