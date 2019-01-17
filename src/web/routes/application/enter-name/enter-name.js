@@ -10,7 +10,6 @@ const pageContent = {
 const enterName = {
   path: '/enter-name',
   next: '/confirm',
-  view: 'form',
   template: 'enter-name',
   sanitize,
   validate,

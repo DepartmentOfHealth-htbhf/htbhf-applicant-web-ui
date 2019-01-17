@@ -7,7 +7,6 @@ const pageContent = {
 const enterNino = {
   path: '/enter-nino',
   next: '/enter-name',
-  view: 'form',
   template: 'enter-nino',
   sanitize: (req, res, next) => { next() },
   validate: [],
