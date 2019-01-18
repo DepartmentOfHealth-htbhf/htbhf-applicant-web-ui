@@ -10,6 +10,7 @@ const { URL, DRIVER_MANAGER } = require('./test-startup-config')
 class Pages {
   constructor () {
     this.driverManager = DRIVER_MANAGER
+    this.driver = null
     this.overview = null
     this.enterName = null
     this.enterNino = null
