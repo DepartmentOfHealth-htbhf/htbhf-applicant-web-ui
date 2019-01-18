@@ -2,13 +2,10 @@ const EnterName = require('../page/enter-name')
 const EnterNino = require('../page/enter-nino')
 const Overview = require('../page/overview')
 const Check = require('../page/check')
-const DriverManager = require('../driver/driver-manager')
 const { URL } = require('./test-startup-config')
 
-const driverManager = new DriverManager()
-
 /**
- * Contains gloabl references to the driver and all the page objects.
+ * Contains global references to the driver and all the page objects.
  */
 class Pages {
   constructor () {
@@ -23,7 +20,7 @@ class Pages {
   /**
    * To be used to (re)initialise the Selenium driver manager and the driver within.
    */
-  initialise () {
+  initialise (driverManager) {
     this.driver = driverManager.initialise()
     this.overview = new Overview(this.driver)
     this.enterName = new EnterName(this.driver)

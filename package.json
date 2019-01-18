@@ -18,6 +18,7 @@
     "test:smoke": "npm-run-all -s test:smoke:test test:smoke:report",
     "test:smoke:test": "mkdir -p build/reports && cross-env TESTS=smoke cucumber-js src/test/smoke/features/ --require 'src/test/common/steps/*.js' --require 'src/test/smoke/config' -f json:build/reports/smoke-report.json",
     "test:smoke:report": "node src/test/smoke/smoke-report.js",
+    "test:compatibility": "mkdir -p build/reports && cross-env TESTS=compatibility cucumber-js src/test/compatibility/features/ --require 'src/test/common/steps/*.js' --require 'src/test/compatibility/config' -f json:build/reports/compatibility-report.json",
     "test:accessibility": "node 'src/test/a11y/test-suite.js'",
     "test:browser": "npm-run-all -s test:accessibility test:acceptance test:acceptance:report",
     "coverage": "nyc report --reporter=lcov --reporter=text-lcov > coverage.lcov && codecov",
