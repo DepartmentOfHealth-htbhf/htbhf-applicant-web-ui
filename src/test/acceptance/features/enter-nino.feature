@@ -7,17 +7,17 @@ Feature:
     Given I am on the enter national insurance number page
 
   Scenario: Enter in a valid national insurance number
-    When: I enter a valid national insurance number
-    Then: I am shown the enter name page
+    When I enter a valid national insurance number
+    Then I am shown the enter name page
 
   Scenario: Do not enter in a "national insurance number"
-    When: I do not enter a national insurance number
-    Then: I am informed that the national insurance number is in the wrong format
+    When I do not enter a national insurance number
+    Then I am informed that the national insurance number is in the wrong format
 
   Scenario Outline: Fill "national insurance number" with invalid format
-    When: I enter <invalidNino> as my national insurance number
-    Then: I am informed that the national insurance number is in the wrong format
-    Then: I see the value <invalidNino> in the textbox
+    When I enter <invalidNino> as my national insurance number
+    Then I am informed that the national insurance number is in the wrong format
+    Then I see the value <invalidNino> in the textbox
 
     Examples:
       | invalidNino        |

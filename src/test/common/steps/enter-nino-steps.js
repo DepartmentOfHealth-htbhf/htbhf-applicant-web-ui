@@ -3,16 +3,22 @@ const { expect, assert } = require('chai')
 
 const pages = require('./pages')
 
+const VALID_NINO = 'QQ123456C'
+
 Given('I am on the enter national insurance number page', async function () {
   await pages.enterNino.open(pages.url)
   await pages.enterNino.waitForPageLoad()
+})
+
+When(/^I enter a valid national insurance number$/, async function () {
+  return enterNinoAndSubmit(VALID_NINO)
 })
 
 When(/^I enter (.*) as my national insurance number$/, async function (nino) {
   return enterNinoAndSubmit(nino)
 })
 
-When(/^ I do not enter a national insurance number$/, async function () {
+When(/^I do not enter a national insurance number$/, async function () {
   return enterNinoAndSubmit('')
 })
 
@@ -22,7 +28,7 @@ Then(/^I am informed that the national insurance number is in the wrong format$/
   expect(errorMessage).to.be.equal('Enter a National Insurance number in the correct format')
 })
 
-Then(/^I see the value <invalidNino> in the textbox$/, async function (nino) {
+Then(/^I see the value (.*) in the textbox$/, async function (nino) {
   const enteredNino = await pages.enterNino.getNinoValue()
   expect(enteredNino).to.be.equal(nino)
 })
@@ -34,7 +40,7 @@ Then(/^I am shown the enter name page$/, async function () {
 async function enterNinoAndSubmit (nino) {
   try {
     await pages.enterNino.enterNino(nino)
-    await pages.enterName.submitForm()
+    await pages.enterNino.submitForm()
   } catch (error) {
     assert.fail(`Unexpected error caught trying to enter the national insurance number and submit the page - ${error}`)
   }
