@@ -5,18 +5,20 @@ require('dotenv').config()
 const request = require('request')
 const DriverManager = require('../../common/driver/driver-manager')
 const webdriver = require('selenium-webdriver')
-const { Status } = require('cucumber')
+const { Status, setDefaultTimeout } = require('cucumber')
 
 const BROWSER_STACK_USER = process.env.BROWSER_STACK_USER
 const BROWSER_STACK_KEY = process.env.BROWSER_STACK_KEY
 
 const BROWSER_STACK_URL = 'https://hub-cloud.browserstack.com/wd/hub'
 
+
 /**
  * Page object for the initial overview page that is shown when the app first loads.
  */
 class BrowserstackDriver extends DriverManager {
   initialise () {
+    setDefaultTimeout(30 * 1000)
     this.driver = new webdriver.Builder()
       .withCapabilities({
         'browserName': process.env.BROWSER_STACK_BROWSER,
@@ -31,9 +33,6 @@ class BrowserstackDriver extends DriverManager {
       })
       .usingServer(BROWSER_STACK_URL)
       .build()
-
-    const sessionData = this.driver.getSession()
-    this.sessionID = sessionData.getId()
 
     return this.driver
   }
