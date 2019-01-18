@@ -2,8 +2,8 @@ const { sanitize } = require('./sanitize')
 const { validate } = require('./validate')
 
 const pageContent = {
-  title: 'What is your national insurance number?',
-  heading: 'What is your national insurance number?',
+  title: 'What is your National Insurance number?',
+  heading: 'What is your National Insurance number?',
   hint: 'It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.'
 }
 

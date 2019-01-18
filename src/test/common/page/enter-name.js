@@ -15,8 +15,18 @@ class EnterName extends Page {
     return this.findById('first-name')
   }
 
+  async getFirstNameValue () {
+    const firstNameText = await this.getFirstNameField()
+    return firstNameText.getAttribute('value')
+  }
+
   async getLastNameField () {
     return this.findById('last-name')
+  }
+
+  async getLastNameValue () {
+    const lastNameText = await this.getLastNameField()
+    return lastNameText.getAttribute('value')
   }
 
   async getSubmitButton () {

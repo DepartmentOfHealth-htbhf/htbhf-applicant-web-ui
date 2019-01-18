@@ -27,7 +27,7 @@ const LONG_NAME = 'This name is way too long' +
 
 const BLANK_NAME = ''
 
-Given('I start the application process', async function () {
+Given('I am on the enter name page', async function () {
   await pages.enterName.open(pages.url)
   await pages.enterName.waitForPageLoad()
 })
@@ -52,6 +52,16 @@ Then('I am informed that the first name is too long', async function () {
   await assertErrorHeaderTextPresent()
   const errorMessage = await pages.enterName.getFirstNameError()
   expect(errorMessage).to.be.equal('Enter a shorter first or given name')
+})
+
+Then(/^I see the first name I entered in the textbox$/, async function () {
+  const enteredFirstName = await pages.enterName.getFirstNameValue()
+  expect(enteredFirstName).to.be.equal(LONG_NAME)
+})
+
+Then(/^I see the last name I entered in the textbox$/, async function () {
+  const enteredFirstName = await pages.enterName.getLastNameValue()
+  expect(enteredFirstName).to.be.equal(LONG_NAME)
 })
 
 Then('I am informed that the last name is too long', async function () {
