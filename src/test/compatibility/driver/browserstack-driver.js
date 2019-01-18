@@ -12,7 +12,6 @@ const BROWSER_STACK_KEY = process.env.BROWSER_STACK_KEY
 
 const BROWSER_STACK_URL = 'https://hub-cloud.browserstack.com/wd/hub'
 
-
 /**
  * Page object for the initial overview page that is shown when the app first loads.
  */
@@ -38,12 +37,18 @@ class BrowserstackDriver extends DriverManager {
   }
 
   afterQuit (scenario) {
-    console.log(scenario)
+    this.driver.getSession().then((sessionData) => {
+      this.updateScenarioStatus(sessionData, scenario)
+    })
+  }
+
+  updateScenarioStatus (sessionData, scenario) {
+    const sessionID = sessionData.getId()
     const name = scenario.name
     const status = (scenario.result.status === Status.PASSED) ? 'passed' : 'failed'
 
     request({
-      uri: `https://${BROWSER_STACK_USER}:${BROWSER_STACK_KEY}@api.browserstack.com/automate/sessions/${this.sessionID}.json`,
+      uri: `https://${BROWSER_STACK_USER}:${BROWSER_STACK_KEY}@api.browserstack.com/automate/sessions/${sessionID}.json`,
       method: 'PUT',
       form: {
         name,

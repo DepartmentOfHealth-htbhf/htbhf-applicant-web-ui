@@ -12,5 +12,5 @@ Before(async function () {
  * Function to quit the driver at the end of each Scenario.
  */
 After(function (scenario) {
-  pages.driver.quit(scenario)
+  pages.driverManager.quit(scenario)
 })
