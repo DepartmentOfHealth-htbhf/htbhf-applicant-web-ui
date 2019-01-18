@@ -19,8 +19,13 @@ class DriverManager {
     return this.driver
   }
 
-  quit () {
+  quit (scenario) {
     this.driver.quit()
+    this.afterQuit(scenario)
+  }
+
+  afterQuit (scenario) {
+    // nothing to do
   }
 }
 
