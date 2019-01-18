@@ -16,8 +16,8 @@ class EnterName extends Page {
   }
 
   async getFirstNameValue () {
-    const firstNameText = await this.getFirstNameField()
-    return firstNameText.getAttribute('value')
+    const firstNameField = await this.getFirstNameField()
+    return firstNameField.getAttribute('value')
   }
 
   async getLastNameField () {
@@ -25,8 +25,8 @@ class EnterName extends Page {
   }
 
   async getLastNameValue () {
-    const lastNameText = await this.getLastNameField()
-    return lastNameText.getAttribute('value')
+    const lastNameField = await this.getLastNameField()
+    return lastNameField.getAttribute('value')
   }
 
   async getSubmitButton () {

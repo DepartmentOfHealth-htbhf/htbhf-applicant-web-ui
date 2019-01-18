@@ -9,7 +9,7 @@ Feature:
   Scenario: Fill “First name” textbox with text which exceeds maximum length
     When I enter a first name which is too long
     Then I am informed that the first name is too long
-    Then I see the first name I entered in the textbox
+    Then I see the invalid first name I entered in the textbox
 
   Scenario: Fill “Last name” textbox with text which exceeds maximum length
     When I enter a last name which is too long

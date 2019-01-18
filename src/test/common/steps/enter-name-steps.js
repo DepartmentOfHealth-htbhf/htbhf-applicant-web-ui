@@ -54,7 +54,7 @@ Then('I am informed that the first name is too long', async function () {
   expect(errorMessage).to.be.equal('Enter a shorter first or given name')
 })
 
-Then(/^I see the first name I entered in the textbox$/, async function () {
+Then(/^I see the invalid first name I entered in the textbox$/, async function () {
   const enteredFirstName = await pages.enterName.getFirstNameValue()
   expect(enteredFirstName).to.be.equal(LONG_NAME)
 })
