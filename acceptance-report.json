@@ -24,20 +24,20 @@
             },
             "result": {
               "status": "passed",
-              "duration": 16000000
+              "duration": 14000000
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
             "line": 7,
-            "name": "I start the application process",
+            "name": "I am on the enter name page",
             "match": {
               "location": "src/test/common/steps/enter-name-steps.js:30"
             },
             "result": {
               "status": "passed",
-              "duration": 497000000
+              "duration": 482000000
             }
           },
           {
@@ -50,7 +50,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1251000000
+              "duration": 1290000000
             }
           },
           {
@@ -67,14 +67,26 @@
             }
           },
           {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 12,
+            "name": "I see the invalid first name I entered in the textbox",
+            "match": {
+              "location": "src/test/common/steps/enter-name-steps.js:57"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 23000000
+            }
+          },
+          {
             "keyword": "After",
             "hidden": true,
             "match": {
               "location": "src/test/common/steps/hooks.js:14"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
@@ -82,7 +94,7 @@
       {
         "id": ";fill-“last-name”-textbox-with-text-which-exceeds-maximum-length",
         "keyword": "Scenario",
-        "line": 13,
+        "line": 14,
         "name": "Fill “Last name” textbox with text which exceeds maximum length",
         "tags": [],
         "type": "scenario",
@@ -102,39 +114,52 @@
             "arguments": [],
             "keyword": "Given ",
             "line": 7,
-            "name": "I start the application process",
+            "name": "I am on the enter name page",
             "match": {
               "location": "src/test/common/steps/enter-name-steps.js:30"
             },
             "result": {
               "status": "passed",
-              "duration": 424000000
+              "duration": 406000000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 14,
+            "line": 15,
             "name": "I enter a last name which is too long",
             "match": {
               "location": "src/test/common/steps/enter-name-steps.js:39"
             },
             "result": {
               "status": "passed",
-              "duration": 1200000000
+              "duration": 1249000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 15,
+            "line": 16,
             "name": "I am informed that the last name is too long",
             "match": {
-              "location": "src/test/common/steps/enter-name-steps.js:57"
+              "location": "src/test/common/steps/enter-name-steps.js:67"
             },
             "result": {
               "status": "passed",
-              "duration": 116000000
+              "duration": 123000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 17,
+            "name": "I see the last name I entered in the textbox",
+            "match": {
+              "location": "src/test/common/steps/enter-name-steps.js:62"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 21000000
             }
           },
           {
@@ -152,7 +177,7 @@
       {
         "id": ";fail-to-fill-“last-name”-textbox-shows-error",
         "keyword": "Scenario",
-        "line": 17,
+        "line": 19,
         "name": "Fail to fill “Last name” textbox shows error",
         "tags": [],
         "type": "scenario",
@@ -172,178 +197,39 @@
             "arguments": [],
             "keyword": "Given ",
             "line": 7,
-            "name": "I start the application process",
+            "name": "I am on the enter name page",
             "match": {
               "location": "src/test/common/steps/enter-name-steps.js:30"
             },
             "result": {
               "status": "passed",
-              "duration": 461000000
+              "duration": 477000000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 18,
+            "line": 20,
             "name": "I enter first name only",
             "match": {
               "location": "src/test/common/steps/enter-name-steps.js:43"
             },
             "result": {
               "status": "passed",
-              "duration": 221000000
+              "duration": 222000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 19,
+            "line": 21,
             "name": "I am informed that a last name is required",
             "match": {
-              "location": "src/test/common/steps/enter-name-steps.js:62"
+              "location": "src/test/common/steps/enter-name-steps.js:72"
             },
             "result": {
               "status": "passed",
-              "duration": 115000000
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:14"
-            },
-            "result": {
-              "status": "passed"
-            }
-          }
-        ]
-      },
-      {
-        "id": ";valid-first-name-and-last-name-form-submission",
-        "keyword": "Scenario",
-        "line": 27,
-        "name": "Valid first name and last name form submission",
-        "tags": [],
-        "type": "scenario",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:7"
-            },
-            "result": {
-              "status": "passed"
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 7,
-            "name": "I start the application process",
-            "match": {
-              "location": "src/test/common/steps/enter-name-steps.js:30"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 412000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 22,
-            "name": "I enter <script>window.location.href=“www.google.com”</script> and ‘;exec xp_cmdshell ‘dir’;– values",
-            "match": {
-              "location": "src/test/common/steps/enter-name-steps.js:47"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 422000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 23,
-            "name": "I am shown the check page",
-            "match": {
-              "location": "src/test/common/steps/enter-name-steps.js:67"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 6000000
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:14"
-            },
-            "result": {
-              "status": "passed"
-            }
-          }
-        ]
-      },
-      {
-        "id": ";valid-first-name-and-last-name-form-submission",
-        "keyword": "Scenario",
-        "line": 28,
-        "name": "Valid first name and last name form submission",
-        "tags": [],
-        "type": "scenario",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 7,
-            "name": "I start the application process",
-            "match": {
-              "location": "src/test/common/steps/enter-name-steps.js:30"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 447000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 22,
-            "name": "I enter Henrietta and Fulsome-Blues values",
-            "match": {
-              "location": "src/test/common/steps/enter-name-steps.js:47"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 287000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 23,
-            "name": "I am shown the check page",
-            "match": {
-              "location": "src/test/common/steps/enter-name-steps.js:67"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 5000000
+              "duration": 121000000
             }
           },
           {
@@ -381,35 +267,35 @@
             "arguments": [],
             "keyword": "Given ",
             "line": 7,
-            "name": "I start the application process",
+            "name": "I am on the enter name page",
             "match": {
               "location": "src/test/common/steps/enter-name-steps.js:30"
             },
             "result": {
               "status": "passed",
-              "duration": 422000000
+              "duration": 433000000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 22,
-            "name": "I enter Henrietta and Młynarczyk values",
+            "line": 24,
+            "name": "I enter <script>window.location.href=“www.google.com”</script> and ‘;exec xp_cmdshell ‘dir’;– values",
             "match": {
               "location": "src/test/common/steps/enter-name-steps.js:47"
             },
             "result": {
               "status": "passed",
-              "duration": 281000000
+              "duration": 430000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 23,
+            "line": 25,
             "name": "I am shown the check page",
             "match": {
-              "location": "src/test/common/steps/enter-name-steps.js:67"
+              "location": "src/test/common/steps/enter-name-steps.js:77"
             },
             "result": {
               "status": "passed",
@@ -452,39 +338,661 @@
             "arguments": [],
             "keyword": "Given ",
             "line": 7,
-            "name": "I start the application process",
+            "name": "I am on the enter name page",
             "match": {
               "location": "src/test/common/steps/enter-name-steps.js:30"
             },
             "result": {
               "status": "passed",
-              "duration": 452000000
+              "duration": 466000000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 22,
+            "line": 24,
+            "name": "I enter Henrietta and Fulsome-Blues values",
+            "match": {
+              "location": "src/test/common/steps/enter-name-steps.js:47"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 299000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 25,
+            "name": "I am shown the check page",
+            "match": {
+              "location": "src/test/common/steps/enter-name-steps.js:77"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 5000000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "src/test/common/steps/hooks.js:14"
+            },
+            "result": {
+              "status": "passed"
+            }
+          }
+        ]
+      },
+      {
+        "id": ";valid-first-name-and-last-name-form-submission",
+        "keyword": "Scenario",
+        "line": 31,
+        "name": "Valid first name and last name form submission",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "match": {
+              "location": "src/test/common/steps/hooks.js:7"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I am on the enter name page",
+            "match": {
+              "location": "src/test/common/steps/enter-name-steps.js:30"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 434000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 24,
+            "name": "I enter Henrietta and Młynarczyk values",
+            "match": {
+              "location": "src/test/common/steps/enter-name-steps.js:47"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 295000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 25,
+            "name": "I am shown the check page",
+            "match": {
+              "location": "src/test/common/steps/enter-name-steps.js:77"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 6000000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "src/test/common/steps/hooks.js:14"
+            },
+            "result": {
+              "status": "passed"
+            }
+          }
+        ]
+      },
+      {
+        "id": ";valid-first-name-and-last-name-form-submission",
+        "keyword": "Scenario",
+        "line": 32,
+        "name": "Valid first name and last name form submission",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "match": {
+              "location": "src/test/common/steps/hooks.js:7"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I am on the enter name page",
+            "match": {
+              "location": "src/test/common/steps/enter-name-steps.js:30"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 455000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 24,
             "name": "I enter Maria and Nowak values",
             "match": {
               "location": "src/test/common/steps/enter-name-steps.js:47"
             },
             "result": {
               "status": "passed",
-              "duration": 267000000
+              "duration": 274000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 23,
+            "line": 25,
             "name": "I am shown the check page",
             "match": {
-              "location": "src/test/common/steps/enter-name-steps.js:67"
+              "location": "src/test/common/steps/enter-name-steps.js:77"
             },
             "result": {
               "status": "passed",
-              "duration": 3000000
+              "duration": 6000000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "src/test/common/steps/hooks.js:14"
+            },
+            "result": {
+              "status": "passed"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "description": "  In order apply for HTBHF programme\n  As a potential claimant\n  I want to enter my national insurance number",
+    "keyword": "Feature",
+    "name": "",
+    "line": 1,
+    "id": "",
+    "tags": [],
+    "uri": "src/test/acceptance/features/enter-nino.feature",
+    "elements": [
+      {
+        "id": ";enter-in-a-valid-national-insurance-number",
+        "keyword": "Scenario",
+        "line": 9,
+        "name": "Enter in a valid national insurance number",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "match": {
+              "location": "src/test/common/steps/hooks.js:7"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 8000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I am on the enter national insurance number page",
+            "match": {
+              "location": "src/test/common/steps/enter-nino-steps.js:8"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 443000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 10,
+            "name": "I enter a valid national insurance number",
+            "match": {
+              "location": "src/test/common/steps/enter-nino-steps.js:13"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 212000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 11,
+            "name": "I am shown the enter name page",
+            "match": {
+              "location": "src/test/common/steps/enter-nino-steps.js:36"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 35000000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "src/test/common/steps/hooks.js:14"
+            },
+            "result": {
+              "status": "passed"
+            }
+          }
+        ]
+      },
+      {
+        "id": ";do-not-enter-in-a-\"national-insurance-number\"",
+        "keyword": "Scenario",
+        "line": 13,
+        "name": "Do not enter in a \"national insurance number\"",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "match": {
+              "location": "src/test/common/steps/hooks.js:7"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I am on the enter national insurance number page",
+            "match": {
+              "location": "src/test/common/steps/enter-nino-steps.js:8"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 475000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 14,
+            "name": "I do not enter a national insurance number",
+            "match": {
+              "location": "src/test/common/steps/enter-nino-steps.js:21"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 173000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 15,
+            "name": "I am informed that the national insurance number is in the wrong format",
+            "match": {
+              "location": "src/test/common/steps/enter-nino-steps.js:25"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 127000000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "src/test/common/steps/hooks.js:14"
+            },
+            "result": {
+              "status": "passed"
+            }
+          }
+        ]
+      },
+      {
+        "id": ";fill-\"national-insurance-number\"-with-invalid-format",
+        "keyword": "Scenario",
+        "line": 24,
+        "name": "Fill \"national insurance number\" with invalid format",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "match": {
+              "location": "src/test/common/steps/hooks.js:7"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I am on the enter national insurance number page",
+            "match": {
+              "location": "src/test/common/steps/enter-nino-steps.js:8"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 450000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 18,
+            "name": "I enter ab123456Q as my national insurance number",
+            "match": {
+              "location": "src/test/common/steps/enter-nino-steps.js:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 175000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 19,
+            "name": "I am informed that the national insurance number is in the wrong format",
+            "match": {
+              "location": "src/test/common/steps/enter-nino-steps.js:25"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 120000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 20,
+            "name": "I see the value ab123456Q in the textbox",
+            "match": {
+              "location": "src/test/common/steps/enter-nino-steps.js:31"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 22000000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "src/test/common/steps/hooks.js:14"
+            },
+            "result": {
+              "status": "passed"
+            }
+          }
+        ]
+      },
+      {
+        "id": ";fill-\"national-insurance-number\"-with-invalid-format",
+        "keyword": "Scenario",
+        "line": 25,
+        "name": "Fill \"national insurance number\" with invalid format",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "match": {
+              "location": "src/test/common/steps/hooks.js:7"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I am on the enter national insurance number page",
+            "match": {
+              "location": "src/test/common/steps/enter-nino-steps.js:8"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 459000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 18,
+            "name": "I enter QQ123456CQQ123456C as my national insurance number",
+            "match": {
+              "location": "src/test/common/steps/enter-nino-steps.js:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 194000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 19,
+            "name": "I am informed that the national insurance number is in the wrong format",
+            "match": {
+              "location": "src/test/common/steps/enter-nino-steps.js:25"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 121000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 20,
+            "name": "I see the value QQ123456CQQ123456C in the textbox",
+            "match": {
+              "location": "src/test/common/steps/enter-nino-steps.js:31"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 22000000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "src/test/common/steps/hooks.js:14"
+            },
+            "result": {
+              "status": "passed"
+            }
+          }
+        ]
+      },
+      {
+        "id": ";fill-\"national-insurance-number\"-with-invalid-format",
+        "keyword": "Scenario",
+        "line": 26,
+        "name": "Fill \"national insurance number\" with invalid format",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "match": {
+              "location": "src/test/common/steps/hooks.js:7"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I am on the enter national insurance number page",
+            "match": {
+              "location": "src/test/common/steps/enter-nino-steps.js:8"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 456000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 18,
+            "name": "I enter QQ123456CQtest as my national insurance number",
+            "match": {
+              "location": "src/test/common/steps/enter-nino-steps.js:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 182000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 19,
+            "name": "I am informed that the national insurance number is in the wrong format",
+            "match": {
+              "location": "src/test/common/steps/enter-nino-steps.js:25"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 128000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 20,
+            "name": "I see the value QQ123456CQtest in the textbox",
+            "match": {
+              "location": "src/test/common/steps/enter-nino-steps.js:31"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 21000000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "src/test/common/steps/hooks.js:14"
+            },
+            "result": {
+              "status": "passed"
+            }
+          }
+        ]
+      },
+      {
+        "id": ";fill-\"national-insurance-number\"-with-invalid-format",
+        "keyword": "Scenario",
+        "line": 27,
+        "name": "Fill \"national insurance number\" with invalid format",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "match": {
+              "location": "src/test/common/steps/hooks.js:7"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I am on the enter national insurance number page",
+            "match": {
+              "location": "src/test/common/steps/enter-nino-steps.js:8"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 457000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 18,
+            "name": "I enter testQQ123456CQ as my national insurance number",
+            "match": {
+              "location": "src/test/common/steps/enter-nino-steps.js:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 188000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 19,
+            "name": "I am informed that the national insurance number is in the wrong format",
+            "match": {
+              "location": "src/test/common/steps/enter-nino-steps.js:25"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 116000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 20,
+            "name": "I see the value testQQ123456CQ in the textbox",
+            "match": {
+              "location": "src/test/common/steps/enter-nino-steps.js:31"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 22000000
             }
           },
           {
@@ -526,7 +1034,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 7000000
+              "duration": 1000000
             }
           },
           {
@@ -539,7 +1047,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 390000000
+              "duration": 418000000
             }
           },
           {
@@ -552,7 +1060,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 105000000
+              "duration": 95000000
             }
           },
           {
@@ -565,7 +1073,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 58000000
+              "duration": 40000000
             }
           },
           {
