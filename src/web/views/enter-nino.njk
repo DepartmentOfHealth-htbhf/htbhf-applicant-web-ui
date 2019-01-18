@@ -2,6 +2,7 @@
 {% from "input/macro.njk" import govukInput %}
 {% from "error-summary/macro.njk" import govukErrorSummary %}
 {% from "fieldset/macro.njk" import govukFieldset %}
+{% from "details/macro.njk" import govukDetails %}
 
 {% set buttonText = "Continue" %}
 {% block formContent %}
@@ -35,4 +36,10 @@
     value: claim.nino,
     errorMessage: errors | getErrorForField('nino')
   }) }}
+
+  {{ govukDetails({
+      summaryText: detail.summaryText,
+      text: detail.text | safe
+  }) }}
+
 {% endblock %}
