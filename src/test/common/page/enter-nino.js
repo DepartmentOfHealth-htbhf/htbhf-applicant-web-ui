@@ -23,7 +23,7 @@ class EnterNino extends Page {
 
   async enterNino (nino) {
     const ninoField = await this.getNinoField()
-    ninoField.sendKeys(nino)
+    await ninoField.sendKeys(nino)
   }
 
   async getNinoField () {
