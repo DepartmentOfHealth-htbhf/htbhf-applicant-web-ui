@@ -28,6 +28,6 @@ test('valid national insurance number matches regex', (t) => {
 
   const matches = validNino.match(NINO_PATTERN)
 
-  t.deepEqual(matches, [validNino])
+  t.deepEqual(matches[0], validNino)
   t.end()
 })
