@@ -18,7 +18,6 @@ const internationalization = (config, app) => {
     .init({
       ns: ['common', 'validation', 'buttons'],
       defaultNS: 'common',
-      preload: ['en', 'cy'],
       detection: detection(config),
       backend: {
         loadPath: path.join(__dirname, '/locales/{{lng}}/{{ns}}.json')
