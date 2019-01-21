@@ -8,7 +8,8 @@
       "summaryText": "Lectus quam id leo in",
       "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit <br><a target=\"_blank\" href=\"{{ninoLink}}\">sed do eiusmod tempor incididunt ut labore et dolore</a> magna aliqua."
     },
-    "buttonText": "Commodo"
+    "buttonText": "Commodo",
+    "invalidNino": "Dictum fusce ut placerat orci nulla pellentesque"
   },
   "enterName": {
     "title": "Vulputate dignissim suspendisse?",
@@ -16,6 +17,9 @@
     "formDescription": "Tempus egestas sed sed risus pretium quam vulputate dignissim suspendisse.",
     "firstNameLabel": "Id faucibus nisl tincidunt eget nullam non",
     "lastNameLabel": "Cras sed felis eget velit aliquet sagittis id consectetur",
-    "buttonText": "Commodo"
+    "buttonText": "Commodo",
+    "firstNameTooLong": "Tristique nulla aliquet enim tortor at",
+    "missingLastName": "Sed nisi lacus sed viverra tellus in",
+    "lastNameTooLong": "Interdum velit laoreet id donec ultrices tincidunt"
   }
 }
