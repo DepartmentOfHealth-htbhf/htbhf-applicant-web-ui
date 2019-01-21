@@ -3,7 +3,7 @@ const sinon = require('sinon')
 const { renderView } = require('./render-view')
 
 const template = 'template'
-const pageContent = { title: 'What is your name?' }
+const pageContent = () => ({ title: 'What is your name?' })
 const redirectPath = 'redirect'
 
 test('renderView() should redirect on POST request when no response errors', async (t) => {

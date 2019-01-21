@@ -1,16 +1,16 @@
 const { sanitize } = require('./sanitize')
 const { validate } = require('./validate')
 
-const pageContent = (t) => ({
-  title: t('enterNino.title'),
-  heading: t('enterNino.heading'),
-  ninoLabel: t('enterNino.ninoLabel'),
-  hint: t('enterNino.hint'),
+const pageContent = (translate) => ({
+  title: translate('enterNino.title'),
+  heading: translate('enterNino.heading'),
+  ninoLabel: translate('enterNino.ninoLabel'),
+  hint: translate('enterNino.hint'),
   detail: {
-    summaryText: t('enterNino.detail.summaryText'),
-    text: t('enterNino.detail.text', { ninoLink: 'https://www.gov.uk/lost-national-insurance-number' })
+    summaryText: translate('enterNino.detail.summaryText'),
+    text: translate('enterNino.detail.text', { ninoLink: 'https://www.gov.uk/lost-national-insurance-number' })
   },
-  buttonText: t('enterNino.buttonText')
+  buttonText: translate('enterNino.buttonText')
 })
 
 const enterNino = {

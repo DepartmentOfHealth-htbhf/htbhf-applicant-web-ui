@@ -1,13 +1,13 @@
 const { validate } = require('./validate')
 const { sanitize } = require('./sanitize')
 
-const pageContent = (t) => ({
-  title: t('enterName.title'),
-  heading: t('enterName.heading'),
-  formDescription: t('enterName.formDescription'),
-  firstNameLabel: t('enterName.firstNameLabel'),
-  lastNameLabel: t('enterName.lastNameLabel'),
-  buttonText: t('enterName.buttonText')
+const pageContent = (translate) => ({
+  title: translate('enterName.title'),
+  heading: translate('enterName.heading'),
+  formDescription: translate('enterName.formDescription'),
+  firstNameLabel: translate('enterName.firstNameLabel'),
+  lastNameLabel: translate('enterName.lastNameLabel'),
+  buttonText: translate('enterName.buttonText')
 })
 
 const enterName = {
