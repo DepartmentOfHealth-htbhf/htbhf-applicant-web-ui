@@ -35,6 +35,16 @@ See [enter-name](src/web/routes/application/enter-name/enter-name.js) for an exa
 
 Then add the step to the [list of steps](src/web/routes/application/steps.js)
 
+### Translations
+The application uses the library [i18next](https://github.com/i18next/i18next) to allow the user to view pages in different languages. 
+The requests [accept-language](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Language) header is used to determine which language to render the page in.
+Currently English and Welsh are supported (currently using Lorem Ipsum for Welsh until translations are provided).
+
+To add support for a new language, the translation document must be added to [src/web/server/locales/](src/web/server/locales). 
+See [src/web/server/locales/en/translation.json](src/web/server/locales/en/translation.json) for an example.
+
+If no accept-language header is provided the application will default to English.
+
 ## Tests
 
 ### Linting

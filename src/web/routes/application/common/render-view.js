@@ -1,10 +1,10 @@
-const renderView = (template, pageContent, redirect) => (req, res) => {
+const renderView = (template, getPageContent, redirect) => (req, res) => {
   if (req.method === 'POST' && !res.locals.errors) {
     return res.redirect(redirect)
   }
 
   res.render(template, {
-    ...pageContent,
+    ...getPageContent({ translate: req.t }),
     csrfToken: req.csrfToken()
   })
 }
