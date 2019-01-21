@@ -11,3 +11,4 @@ applications:
     - nodejs_buildpack
   services:
     - help-to-buy-healthy-foods-redis
+    - logit-ssl-drain
