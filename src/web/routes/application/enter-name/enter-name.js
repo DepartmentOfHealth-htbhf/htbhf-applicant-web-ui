@@ -1,7 +1,7 @@
 const { validate } = require('./validate')
 const { sanitize } = require('./sanitize')
 
-const pageContent = (translate) => ({
+const pageContent = ({ translate }) => ({
   title: translate('enterName.title'),
   heading: translate('enterName.heading'),
   formDescription: translate('enterName.formDescription'),
