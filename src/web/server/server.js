@@ -7,6 +7,7 @@ const { registerRoutes } = require('../routes')
 const { initialiseSession } = require('./session')
 const { registerErrorHandlers } = require('./error-handlers')
 const { setViewEngine } = require('./view-engine')
+const { translations } = require('./translations')
 
 const configureStaticPaths = (app) => {
   /**
@@ -31,6 +32,7 @@ const start = (config, app) => () => {
   setViewEngine(config, app)
   registerRoutes(config, app)
   registerErrorHandlers(app)
+  translations(config, app)
   listen(config, app)
 }
 
