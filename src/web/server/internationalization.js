@@ -16,7 +16,8 @@ const internationalization = (config, app) => {
     .use(Backend)
     .use(middleware.LanguageDetector)
     .init({
-      preload: ['en', 'cy'],
+      ns: ['common', 'validation', 'buttons'],
+      defaultNS: 'common',
       detection: detection(config),
       backend: {
         loadPath: path.join(__dirname, '/locales/{{lng}}/{{ns}}.json')

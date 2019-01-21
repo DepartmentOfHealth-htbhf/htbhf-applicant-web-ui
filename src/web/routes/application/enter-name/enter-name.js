@@ -7,7 +7,7 @@ const pageContent = ({ translate }) => ({
   formDescription: translate('enterName.formDescription'),
   firstNameLabel: translate('enterName.firstNameLabel'),
   lastNameLabel: translate('enterName.lastNameLabel'),
-  buttonText: translate('enterName.buttonText')
+  buttonText: translate('buttons:continue')
 })
 
 const enterName = {

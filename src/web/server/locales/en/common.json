@@ -7,15 +7,13 @@
     "detail": {
       "summaryText": "I do not have my National Insurance number",
       "text": "We need to know your National Insurance number to check if you are eligible for Healthy Start vouchers. If you do not have a National Insurance number, please<br /><a target=\"_blank\" href=\"{{ninoLink}}\">visit GOV.UK (link opens in a new tab)</a> for help."
-    },
-    "buttonText": "Continue"
+    }
   },
   "enterName": {
     "title": "What is your name?",
     "heading": "What is your name?",
     "formDescription": "Tell us your full legal name as it appears on your passport or other benefit claims.",
     "firstNameLabel": "First or given name",
-    "lastNameLabel": "Last or family name",
-    "buttonText": "Continue"
+    "lastNameLabel": "Last or family name"
   }
 }

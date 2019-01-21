@@ -41,7 +41,7 @@ The requests [accept-language](https://developer.mozilla.org/en-US/docs/Web/HTTP
 Currently English and Welsh are supported (currently using Lorem Ipsum for Welsh until translations are provided).
 
 To add support for a new language, the translation document must be added to [src/web/server/locales/](src/web/server/locales). 
-See [src/web/server/locales/en/translation.json](src/web/server/locales/en/translation.json) for an example.
+See [src/web/server/locales/en/common.json](src/web/server/locales/en/common.json) for an example.
 
 If no accept-language header is provided the application will default to English.
 

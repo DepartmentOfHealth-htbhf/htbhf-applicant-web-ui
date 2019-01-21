@@ -10,7 +10,7 @@ const pageContent = ({ translate }) => ({
     summaryText: translate('enterNino.detail.summaryText'),
     text: translate('enterNino.detail.text', { ninoLink: 'https://www.gov.uk/lost-national-insurance-number' })
   },
-  buttonText: translate('enterNino.buttonText')
+  buttonText: translate('buttons:continue')
 })
 
 const enterNino = {
