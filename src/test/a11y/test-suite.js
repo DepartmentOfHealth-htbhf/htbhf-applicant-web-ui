@@ -7,9 +7,11 @@ const handleTestResults = require('./results')
 const IGNORE_RULES = require('./ignore-rules')
 const { PORT } = require('../common/config')
 
-const ENTER_NAME_URL = `http://localhost:${PORT}/enter-name`
-const CONFIRM_URL = `http://localhost:${PORT}/confirm`
-const COMPLETE_URL = `http://localhost:${PORT}/complete`
+const BASE_URL = `http://localhost:${PORT}`
+const ENTER_NINO_URL = `${BASE_URL}/enter-nino`
+const ENTER_NAME_URL = `${BASE_URL}/enter-name`
+const CHECK_URL = `${BASE_URL}/check`
+const CONFIRM_URL = `${BASE_URL}/confirm`
 
 /*
   Runs though the application, evaluating each page and performing post requests to populate the necessary
@@ -18,19 +20,23 @@ const COMPLETE_URL = `http://localhost:${PORT}/complete`
 const runTests = async () => {
   try {
     let results = []
-    const { requestCookie, csrfToken } = await getSIDCookieAndCSRFToken(ENTER_NAME_URL)
+    const { requestCookie, csrfToken } = await getSIDCookieAndCSRFToken(ENTER_NINO_URL)
     const pa11y = pa11yWithSettings(IGNORE_RULES, { Cookie: requestCookie })
     const formData = { '_csrf': csrfToken }
+
+    results.push(await pa11y(ENTER_NINO_URL))
+
+    await postFormData(ENTER_NINO_URL, { ...formData, nino: 'QQ123456C' }, requestCookie)
 
     results.push(await pa11y(ENTER_NAME_URL))
 
     await postFormData(ENTER_NAME_URL, { ...formData, lastName: 'Lisa' }, requestCookie)
 
+    results.push(await pa11y(CHECK_URL))
+
+    await postFormData(CHECK_URL, formData, requestCookie)
+
     results.push(await pa11y(CONFIRM_URL))
-
-    await postFormData(CONFIRM_URL, formData, requestCookie)
-
-    results.push(await pa11y(COMPLETE_URL))
 
     handleTestResults(results)
   } catch (error) {
