@@ -4,7 +4,7 @@
 {% from "fieldset/macro.njk" import govukFieldset %}
 {% from "details/macro.njk" import govukDetails %}
 
-{% set buttonText = "Continue" %}
+{% set buttonText = buttonText %}
 {% block formContent %}
 
   {{ govukFieldset({
@@ -25,7 +25,7 @@
 
   {{ govukInput({
     label: {
-      text: "National Insurance number"
+      text: ninoLabel
     },
     hint: {
       text: hint

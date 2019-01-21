@@ -1,11 +1,14 @@
 const { validate } = require('./validate')
 const { sanitize } = require('./sanitize')
 
-const pageContent = {
-  title: 'What is your name?',
-  heading: 'What is your name?',
-  formDescription: 'Tell us your full legal name as it appears on your passport or other benefit claims.'
-}
+const pageContent = (t) => ({
+  title: t('enterName.title'),
+  heading: t('enterName.heading'),
+  formDescription: t('enterName.formDescription'),
+  firstNameLabel: t('enterName.firstNameLabel'),
+  lastNameLabel: t('enterName.lastNameLabel'),
+  buttonText: t('enterName.buttonText')
+})
 
 const enterName = {
   path: '/enter-name',

@@ -3,7 +3,7 @@
 {% from "error-summary/macro.njk" import govukErrorSummary %}
 {% from "fieldset/macro.njk" import govukFieldset %}
 
-{% set buttonText = "Continue" %}
+{% set buttonText = buttonText %}
 {% block formContent %}
 
   {{ govukFieldset({
@@ -24,7 +24,7 @@
 
   {{ govukInput({
     label: {
-      text: 'First or given name'
+      text: firstNameLabel
     },
     id: 'first-name',
     name: 'firstName',
@@ -33,7 +33,7 @@
   }) }}
   {{ govukInput({
     label: {
-      text: 'Last or family name'
+      text: lastNameLabel
     },
     id: 'last-name',
     name: 'lastName',

@@ -3,12 +3,14 @@ const { validate } = require('./validate')
 
 const pageContent = (t) => ({
   title: t('enterNino.title'),
-  heading: 'What is your National Insurance number?',
-  hint: 'It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.',
+  heading: t('enterNino.heading'),
+  ninoLabel: t('enterNino.ninoLabel'),
+  hint: t('enterNino.hint'),
   detail: {
-    summaryText: 'I do not have my National Insurance number',
+    summaryText: t('enterNino.detail.summaryText'),
     text: t('enterNino.detail.text', { ninoLink: 'https://www.gov.uk/lost-national-insurance-number' })
-  }
+  },
+  buttonText: t('enterNino.buttonText')
 })
 
 const enterNino = {
