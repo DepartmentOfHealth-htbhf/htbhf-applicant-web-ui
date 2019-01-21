@@ -16,6 +16,8 @@ const internationalization = (config, app) => {
     .use(Backend)
     .use(middleware.LanguageDetector)
     .init({
+      ns: ['common', 'validation', 'buttons'],
+      defaultNS: 'common',
       preload: ['en', 'cy'],
       detection: detection(config),
       backend: {
