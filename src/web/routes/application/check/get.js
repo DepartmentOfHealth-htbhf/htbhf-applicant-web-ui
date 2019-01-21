@@ -1,5 +1,3 @@
-const { pick } = require('ramda')
-
 const pageContent = {
   title: 'Check',
   heading: 'Check'
@@ -8,7 +6,7 @@ const pageContent = {
 const getCheck = (req, res) => {
   res.render('check', {
     ...pageContent,
-    claim: pick(['firstName', 'lastName', 'nino'], req.session.claim),
+    claim: req.session.claim,
     csrfToken: req.csrfToken()
   })
 }
