@@ -12,7 +12,7 @@ const pageContent = ({ translate }) => ({
 
 const enterName = {
   path: '/enter-name',
-  next: '/check',
+  next: '/enter-dob',
   template: 'enter-name',
   sanitize,
   validate,

@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "node src/web",
-    "start:dev": "npm run build && nodemon src/web",
+    "start:dev": "npm run build && nodemon src/web -e js,json,html,njk",
     "test": "npm-run-all build test:lint test:unit -p -r start test:browser",
     "test:lint": "standard",
     "test:unit": "nyc tape -r './src/test/unit/setup' 'src/@(web|config)/**/*.test.js'",
