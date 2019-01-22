@@ -15,7 +15,7 @@ const pageContent = ({ translate }) => ({
 
 const enterNino = {
   path: '/enter-nino',
-  next: '/enter-name',
+  next: '/enter-dob',
   template: 'enter-nino',
   sanitize,
   validate,
