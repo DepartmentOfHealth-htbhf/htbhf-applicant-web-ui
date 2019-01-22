@@ -14,6 +14,6 @@ When('I select to start the process', async function () {
   await pages.overview.clickStartButton()
 })
 
-Then('the enter national insurance page is shown', async function () {
-  await pages.enterNino.waitForPageLoad()
+Then('the enter name page is shown', async function () {
+  await pages.enterName.waitForPageLoad()
 })

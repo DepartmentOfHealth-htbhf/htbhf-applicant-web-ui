@@ -19,7 +19,7 @@ Given('I am on the enter national insurance number page with Welsh language sele
 })
 
 Then('I am on the next page which is displayed in Welsh', async function () {
-  await pages.enterName.waitForPageLoad(WELSH_LANG_CODE)
-  const language = await pages.enterName.getLangAttribute()
+  await pages.enterDOB.waitForPageLoad(WELSH_LANG_CODE)
+  const language = await pages.enterDOB.getLangAttribute()
   expect(language).to.be.equal(WELSH_LANG_CODE)
 })
