@@ -22,7 +22,7 @@
     "test:compatibility:debug": "node $NODE_DEBUG_OPTION node_modules/cucumber/bin/cucumber-js src/test/compatibility/features/ --require 'src/test/common/steps/*.js' --require 'src/test/compatibility/config' -f json:build/reports/compatibility-report.json",
     "test:accessibility": "node 'src/test/a11y/test-suite.js'",
     "test:browser": "npm run test:wait && npm-run-all -s test:accessibility test:acceptance test:acceptance:report",
-    "test:wait": "./npm_scripts/waitForAppToStart.sh",
+    "test:wait": "./npm_scripts/wait_for_app_to_start.sh",
     "coverage": "nyc report --reporter=lcov --reporter=text-lcov > coverage.lcov && codecov",
     "build": "npm run build:sass",
     "build:sass": "node-sass node_modules/govuk-frontend/all.scss src/web/assets/styles/all.css",
