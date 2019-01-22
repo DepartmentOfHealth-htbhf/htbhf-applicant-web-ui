@@ -1,8 +1,19 @@
 const express = require('express')
 
+const { sanitize } = require('./common/sanitize')
 const { renderView } = require('./common/render-view')
 const { handlePost } = require('./common/handle-post')
 const { getSessionDetails } = require('./common/session-details')
+
+const middlewareNoop = (req, res, next) => next()
+
+const handleOptionalMiddleware = (operation, fallback = middlewareNoop) => {
+  if (typeof operation === 'undefined') {
+    return fallback
+  }
+
+  return operation
+}
 
 const createRoute = (csrfProtection, steps, router) => (step) =>
   router
@@ -14,8 +25,9 @@ const createRoute = (csrfProtection, steps, router) => (step) =>
     )
     .post(
       csrfProtection,
-      step.sanitize,
-      step.validate,
+      sanitize,
+      handleOptionalMiddleware(step.sanitize),
+      handleOptionalMiddleware(step.validate),
       getSessionDetails,
       handlePost,
       renderView(step.template, step.pageContent, step.next)
@@ -28,5 +40,6 @@ const registerFormRoutes = (csrfProtection, steps, app) => {
 }
 
 module.exports = {
-  registerFormRoutes
+  registerFormRoutes,
+  handleOptionalMiddleware
 }

@@ -1,5 +1,4 @@
 const { validate } = require('./validate')
-const { sanitize } = require('./sanitize')
 
 const pageContent = ({ translate }) => ({
   title: translate('enterName.title'),
@@ -14,7 +13,6 @@ const enterName = {
   path: '/enter-name',
   next: '/enter-dob',
   template: 'enter-name',
-  sanitize,
   validate,
   pageContent
 }
