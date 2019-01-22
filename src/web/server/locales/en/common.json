@@ -15,5 +15,13 @@
     "formDescription": "Tell us your full legal name as it appears on your passport or other benefit claims.",
     "firstNameLabel": "First or given name",
     "lastNameLabel": "Last or family name"
+  },
+  "enterDob": {
+    "title": "What is your date of birth?",
+    "heading": "What is your date of birth?",
+    "dayLabel": "Day",
+    "monthLabel": "Month",
+    "yearLabel": "Year",
+    "hint": "For example, 31 3 1980"
   }
 }

@@ -1,24 +1,52 @@
 {% extends "templates/form.njk" %}
-{% from "input/macro.njk" import govukInput %}
 {% from "error-summary/macro.njk" import govukErrorSummary %}
 {% from "fieldset/macro.njk" import govukFieldset %}
+{% from "date-input/macro.njk" import govukDateInput %}
 
 {% set buttonText = buttonText %}
+
+{% set items = [
+  {
+    id: 'day',
+    name: 'day',
+    label: dayLabel,
+    classes: 'govuk-input--width-2'
+  },
+  {
+    id: 'month',
+    name: 'month',
+    label: monthLabel,
+    classes: 'govuk-input--width-2'
+  },
+  {
+    id: 'year',
+    name: 'year',
+    label: yearLabel,
+    classes: 'govuk-input--width-4'
+  }
+] %}
+
 {% block formContent %}
-
-  {{ govukFieldset({
-    legend: {
-      text: heading,
-      classes: "govuk-fieldset__legend--xl",
-      isPageHeading: true
-    }
-  }) }}
-  <p class="govuk-body">{{ formDescription }}</p>
-
   {% if errors %}
     {{ govukErrorSummary({
       titleText: "There is a problem",
       errorList: errors | toErrorList
     }) }}
   {% endif %}
+
+  {{ govukDateInput({
+    id: "dob",
+    namePrefix: "dob",
+    items: items,
+    fieldset: {
+      legend: {
+        text: heading,
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--xl"
+      }
+    },
+    hint: {
+      text: hint
+    }
+  }) }}
 {% endblock %}
