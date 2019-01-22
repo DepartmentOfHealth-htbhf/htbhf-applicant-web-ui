@@ -8,8 +8,9 @@ const IGNORE_RULES = require('./ignore-rules')
 const { PORT } = require('../common/config')
 
 const BASE_URL = `http://localhost:${PORT}`
-const ENTER_NINO_URL = `${BASE_URL}/enter-nino`
 const ENTER_NAME_URL = `${BASE_URL}/enter-name`
+const ENTER_NINO_URL = `${BASE_URL}/enter-nino`
+const ENTER_DOB_URL = `${BASE_URL}/enter-dob`
 const CHECK_URL = `${BASE_URL}/check`
 const CONFIRM_URL = `${BASE_URL}/confirm`
 
@@ -20,17 +21,26 @@ const CONFIRM_URL = `${BASE_URL}/confirm`
 const runTests = async () => {
   try {
     let results = []
-    const { requestCookie, csrfToken } = await getSIDCookieAndCSRFToken(ENTER_NINO_URL)
+    const { requestCookie, csrfToken } = await getSIDCookieAndCSRFToken(ENTER_NAME_URL)
     const pa11y = pa11yWithSettings(IGNORE_RULES, { Cookie: requestCookie })
     const formData = { '_csrf': csrfToken }
+
+    results.push(await pa11y(ENTER_NAME_URL))
+
+    await postFormData(ENTER_NAME_URL, { ...formData, lastName: 'Lisa' }, requestCookie)
 
     results.push(await pa11y(ENTER_NINO_URL))
 
     await postFormData(ENTER_NINO_URL, { ...formData, nino: 'QQ123456C' }, requestCookie)
 
-    results.push(await pa11y(ENTER_NAME_URL))
+    results.push(await pa11y(ENTER_DOB_URL))
 
-    await postFormData(ENTER_NAME_URL, { ...formData, lastName: 'Lisa' }, requestCookie)
+    await postFormData(ENTER_DOB_URL, {
+      ...formData,
+      'dob-day': '1',
+      'dob-month': '10',
+      'dob-year': '1980'
+    }, requestCookie)
 
     results.push(await pa11y(CHECK_URL))
 
