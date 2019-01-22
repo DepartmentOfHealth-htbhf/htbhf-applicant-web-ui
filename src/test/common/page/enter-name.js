@@ -3,7 +3,16 @@
 const Page = require('./page')
 const { expect } = require('chai')
 
-const PAGE_TITLE = 'GOV.UK - What is your name?'
+const PAGE_TITLES = {
+  en: 'GOV.UK - What is your name?',
+  cy: 'GOV.UK - Vulputate dignissim suspendisse?'
+}
+
+const PAGE_HEADINGS = {
+  en: 'What is your name?',
+  cy: 'Vulputate dignissim suspendisse?'
+}
+
 const FIRST_NAME_ERROR_SELECTOR = 'span#first-name-error'
 const LAST_NAME_ERROR_SELECTOR = 'span#last-name-error'
 
@@ -58,10 +67,10 @@ class EnterName extends Page {
     return this.waitForPageLoad()
   }
 
-  async waitForPageLoad () {
+  async waitForPageLoad (lang = 'en') {
     const h1Text = await this.getH1Text()
-    expect(h1Text).to.be.equal('What is your name?')
-    return this.waitForPageWithTitle(PAGE_TITLE)
+    expect(h1Text).to.be.equal(PAGE_HEADINGS[lang])
+    return this.waitForPageWithTitle(PAGE_TITLES[lang])
   }
 
   async getFirstNameError () {
