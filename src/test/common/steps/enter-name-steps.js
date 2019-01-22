@@ -73,8 +73,8 @@ Then('I am informed that a last name is required', async function () {
   await assertLastNameErrorPresent('Enter your last or family name')
 })
 
-Then('I am shown the date of birth page', async function () {
-  await pages.enterDOB.waitForPageLoad()
+Then('I am shown the enter national insurance page', async function () {
+  await pages.enterNino.waitForPageLoad()
 })
 
 async function enterNameAndSubmit (firstName, lastName) {

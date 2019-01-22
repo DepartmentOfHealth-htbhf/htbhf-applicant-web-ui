@@ -11,7 +11,7 @@ const pageContent = ({ translate }) => ({
 
 const enterName = {
   path: '/enter-name',
-  next: '/enter-dob',
+  next: '/enter-nino',
   template: 'enter-name',
   validate,
   pageContent

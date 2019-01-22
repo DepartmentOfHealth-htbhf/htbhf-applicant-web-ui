@@ -8,7 +8,7 @@ Feature:
 
   Scenario: Enter in a valid national insurance number
     When I enter a valid national insurance number
-    Then I am shown the enter name page
+    Then the enter date of birth page is shown
 
   Scenario: Do not enter in a "national insurance number"
     When I do not enter a national insurance number

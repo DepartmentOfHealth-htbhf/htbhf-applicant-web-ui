@@ -32,8 +32,8 @@ Then(/^I see the value (.*) in the textbox$/, async function (nino) {
   expect(enteredNino).to.be.equal(nino)
 })
 
-Then(/^I am shown the enter name page$/, async function () {
-  await pages.enterName.waitForPageLoad()
+Then(/^the enter date of birth page is shown$/, async function () {
+  await pages.enterDOB.waitForPageLoad()
 })
 
 async function enterNinoAndSubmit (nino) {
