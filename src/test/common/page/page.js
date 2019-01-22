@@ -23,9 +23,10 @@ class Page {
     this.driver = driver
   }
 
-  async open (url, lang = 'en') {
+  async open (url, lang) {
+    const queryParam = lang ? `?lang=${lang}` : ''
     try {
-      return this.driver.get(`${url}?lang=${lang}`)
+      return this.driver.get(`${url}${queryParam}`)
     } catch (error) {
       console.error('Unable to open page at', url, error)
     }
