@@ -24,7 +24,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 14000000
+              "duration": 18000000
             }
           },
           {
@@ -37,7 +37,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1828000000
+              "duration": 1795000000
             }
           },
           {
@@ -50,20 +50,20 @@
             },
             "result": {
               "status": "passed",
-              "duration": 440000000
+              "duration": 473000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
             "line": 9,
-            "name": "the enter national insurance page is shown",
+            "name": "the enter name page is shown",
             "match": {
               "location": "src/test/common/steps/overview-steps.js:17"
             },
             "result": {
               "status": "passed",
-              "duration": 39000000
+              "duration": 38000000
             }
           },
           {
@@ -73,7 +73,8 @@
               "location": "src/test/common/steps/hooks.js:14"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           }
         ]
