@@ -1,4 +1,5 @@
 const { isNil } = require('ramda')
+const { check } = require('express-validator/check')
 
 const nilToString = (value) => isNil(value) ? '' : value
 
@@ -9,6 +10,17 @@ const toDateString = (day, month, year) => {
   return [year, parseMonth, parseDay].join('-')
 }
 
+const addDateToBody = (req, res, next) => {
+  req.body.dob = toDateString(req.body['dob-day'], req.body['dob-month'], req.body['dob-year'])
+  next()
+}
+
+const validate = [
+  addDateToBody,
+  check('dob').isISO8601().withMessage((value, { req }) => req.t('validation:dobInvalid', { value }))
+]
+
 module.exports = {
-  toDateString
+  toDateString,
+  validate
 }

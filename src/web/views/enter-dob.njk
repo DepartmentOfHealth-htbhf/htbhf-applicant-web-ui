@@ -4,25 +4,29 @@
 {% from "date-input/macro.njk" import govukDateInput %}
 
 {% set buttonText = buttonText %}
+{% set errorClass = '' %}
+{% if errors %}
+  {% set errorClass = ' govuk-input--error' %}
+{% endif %}
 
 {% set items = [
   {
     id: 'day',
     name: 'day',
     label: dayLabel,
-    classes: 'govuk-input--width-2'
+    classes: 'govuk-input--width-2' + errorClass
   },
   {
     id: 'month',
     name: 'month',
     label: monthLabel,
-    classes: 'govuk-input--width-2'
+    classes: 'govuk-input--width-2' + errorClass
   },
   {
     id: 'year',
     name: 'year',
     label: yearLabel,
-    classes: 'govuk-input--width-4'
+    classes: 'govuk-input--width-4' + errorClass
   }
 ] %}
 
@@ -38,6 +42,7 @@
     id: "dob",
     namePrefix: "dob",
     items: items,
+    errorMessage: errors | getErrorForField('dob'),
     fieldset: {
       legend: {
         text: heading,
