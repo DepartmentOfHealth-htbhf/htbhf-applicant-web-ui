@@ -23,9 +23,10 @@ class Page {
     this.driver = driver
   }
 
-  async open (url) {
+  async open (url, lang) {
+    const queryParam = lang ? `?lang=${lang}` : ''
     try {
-      return this.driver.get(url)
+      return this.driver.get(`${url}${queryParam}`)
     } catch (error) {
       console.error('Unable to open page at', url, error)
     }
@@ -94,6 +95,11 @@ class Page {
   async getPageErrorHeaderText () {
     const pageError = await this.getPageErrorHeader()
     return pageError.getText()
+  }
+
+  async getLangAttribute () {
+    const html = await this.findByClassName('govuk-template')
+    return html.getAttribute('lang')
   }
 }
 

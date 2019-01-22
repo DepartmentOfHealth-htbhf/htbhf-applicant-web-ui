@@ -3,22 +3,31 @@
 const Page = require('./page')
 const { expect } = require('chai')
 
-const PAGE_TITLE = 'GOV.UK - What is your National Insurance number?'
+const PAGE_TITLES = {
+  en: 'GOV.UK - What is your National Insurance number?',
+  cy: 'GOV.UK - Excepteur sint occaecat cupidatat non proident?'
+}
+
+const PAGE_HEADINGS = {
+  en: 'What is your National Insurance number?',
+  cy: 'Excepteur sint occaecat cupidatat non proident?'
+}
+
 const NINO_ERROR_ID = 'nino-error'
 
 /**
  * Page object for EnterNino page where the name is entered.
  */
 class EnterNino extends Page {
-  async waitForPageLoad () {
+  async waitForPageLoad (lang = 'en') {
     const h1Text = await this.getH1Text()
-    expect(h1Text).to.be.equal('What is your National Insurance number?')
-    return this.waitForPageWithTitle(PAGE_TITLE)
+    expect(h1Text).to.be.equal(PAGE_HEADINGS[lang])
+    return this.waitForPageWithTitle(PAGE_TITLES[lang])
   }
 
-  async open (baseURL) {
-    await super.open(`${baseURL}/enter-nino`)
-    return this.waitForPageLoad()
+  async open (baseURL, lang) {
+    await super.open(`${baseURL}/enter-nino`, lang)
+    return this.waitForPageLoad(lang)
   }
 
   async enterNino (nino) {

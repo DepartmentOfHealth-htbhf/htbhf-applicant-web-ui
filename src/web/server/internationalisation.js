@@ -11,7 +11,7 @@ const detection = (config) => ({
   caches: ['cookie']
 })
 
-const internationalization = (config, app) => {
+const internationalisation = (config, app) => {
   i18next
     .use(Backend)
     .use(middleware.LanguageDetector)
@@ -29,5 +29,5 @@ const internationalization = (config, app) => {
 }
 
 module.exports = {
-  internationalization
+  internationalisation
 }

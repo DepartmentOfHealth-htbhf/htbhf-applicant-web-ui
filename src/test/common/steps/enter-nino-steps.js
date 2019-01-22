@@ -7,7 +7,6 @@ const VALID_NINO = 'QQ123456C'
 
 Given('I am on the enter national insurance number page', async function () {
   await pages.enterNino.open(pages.url)
-  await pages.enterNino.waitForPageLoad()
 })
 
 When(/^I enter a valid national insurance number$/, async function () {

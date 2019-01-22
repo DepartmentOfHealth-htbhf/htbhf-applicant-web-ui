@@ -29,7 +29,6 @@ const BLANK_NAME = ''
 
 Given('I am on the enter name page', async function () {
   await pages.enterName.open(pages.url)
-  await pages.enterName.waitForPageLoad()
 })
 
 When('I enter a first name which is too long', async function () {
