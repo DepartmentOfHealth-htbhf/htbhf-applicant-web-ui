@@ -5,7 +5,7 @@ Feature:
 
   Scenario:
     When I go to the enter national insurance number page with Welsh language selected
-    Then The enter national insurance page is in Welsh
+    Then the enter national insurance page is in Welsh
 
   Scenario:
     Given I am on the enter national insurance number page with Welsh language selected

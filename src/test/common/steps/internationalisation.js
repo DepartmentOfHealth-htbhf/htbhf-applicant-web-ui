@@ -9,7 +9,7 @@ When('I go to the enter national insurance number page with Welsh language selec
   await pages.enterNino.open(pages.url, WELSH_LANG_CODE)
 })
 
-Then('The enter national insurance page is in Welsh', async function () {
+Then('the enter national insurance page is in Welsh', async function () {
   const language = await pages.enterNino.getLangAttribute()
   expect(language).to.be.equal(WELSH_LANG_CODE)
 })
