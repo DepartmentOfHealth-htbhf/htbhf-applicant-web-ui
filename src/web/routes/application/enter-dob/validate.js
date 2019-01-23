@@ -11,13 +11,17 @@ const toDateString = (day, month, year) => {
 }
 
 const addDateToBody = (req, res, next) => {
-  req.body.dob = toDateString(req.body['dob-day'], req.body['dob-month'], req.body['dob-year'])
+  req.body.dateOfBirth = toDateString(
+    req.body['dateOfBirth-day'],
+    req.body['dateOfBirth-month'],
+    req.body['dateOfBirth-year']
+  )
   next()
 }
 
 const validate = [
   addDateToBody,
-  check('dob').isISO8601().withMessage((value, { req }) => req.t('validation:dobInvalid', { value }))
+  check('dateOfBirth').isISO8601().withMessage((value, { req }) => req.t('validation:dobInvalid', { value }))
 ]
 
 module.exports = {
