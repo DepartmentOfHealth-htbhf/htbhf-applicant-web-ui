@@ -12,31 +12,35 @@
     }) }}
   {% endif %}
 
-  {{ govukFieldset({
+  {% call govukFieldset({
     legend: {
       text: heading,
       classes: "govuk-fieldset__legend--xl",
       isPageHeading: true
     }
-  }) }}
-  <p class="govuk-body">{{ formDescription }}</p>
+  }) %}
 
-  {{ govukInput({
-    label: {
-      text: firstNameLabel
-    },
-    id: 'first-name',
-    name: 'firstName',
-    value: claim.firstName,
-    errorMessage: errors | getErrorForField('firstName')
-  }) }}
-  {{ govukInput({
-    label: {
-      text: lastNameLabel
-    },
-    id: 'last-name',
-    name: 'lastName',
-    value: claim.lastName,
-    errorMessage: errors | getErrorForField('lastName')
-  }) }}
+    <p class="govuk-body">{{ formDescription }}</p>
+
+    {{ govukInput({
+      label: {
+        text: firstNameLabel
+      },
+      id: 'first-name',
+      name: 'firstName',
+      value: claim.firstName,
+      errorMessage: errors | getErrorForField('firstName')
+    }) }}
+
+    {{ govukInput({
+      label: {
+        text: lastNameLabel
+      },
+      id: 'last-name',
+      name: 'lastName',
+      value: claim.lastName,
+      errorMessage: errors | getErrorForField('lastName')
+    }) }}
+
+  {% endcall %}
 {% endblock %}
