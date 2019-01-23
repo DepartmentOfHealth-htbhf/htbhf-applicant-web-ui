@@ -5,39 +5,42 @@
 
 {% set buttonText = buttonText %}
 {% block formContent %}
+  {% if errors %}
+    {{ govukErrorSummary({
+      titleText: "There is a problem",
+      errorList: errors | toErrorList
+    }) }}
+  {% endif %}
 
-  {{ govukFieldset({
+  {% call govukFieldset({
     legend: {
       text: heading,
       classes: "govuk-fieldset__legend--xl",
       isPageHeading: true
     }
-  }) }}
-  <p class="govuk-body">{{ formDescription }}</p>
+  }) %}
 
-  {% if errors %}
-    {{ govukErrorSummary({
-      titleText: errorSummaryText,
-      errorList: errors | toErrorList
+    <p class="govuk-body">{{ formDescription }}</p>
+
+    {{ govukInput({
+      label: {
+        text: firstNameLabel
+      },
+      id: 'first-name',
+      name: 'firstName',
+      value: claim.firstName,
+      errorMessage: errors | getErrorForField('firstName')
     }) }}
-  {% endif %}
 
-  {{ govukInput({
-    label: {
-      text: firstNameLabel
-    },
-    id: 'first-name',
-    name: 'firstName',
-    value: claim.firstName,
-    errorMessage: errors | getErrorForField('firstName')
-  }) }}
-  {{ govukInput({
-    label: {
-      text: lastNameLabel
-    },
-    id: 'last-name',
-    name: 'lastName',
-    value: claim.lastName,
-    errorMessage: errors | getErrorForField('lastName')
-  }) }}
+    {{ govukInput({
+      label: {
+        text: lastNameLabel
+      },
+      id: 'last-name',
+      name: 'lastName',
+      value: claim.lastName,
+      errorMessage: errors | getErrorForField('lastName')
+    }) }}
+
+  {% endcall %}
 {% endblock %}

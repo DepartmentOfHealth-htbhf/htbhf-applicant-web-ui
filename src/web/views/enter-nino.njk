@@ -6,36 +6,36 @@
 
 {% set buttonText = buttonText %}
 {% block formContent %}
+  {% if errors %}
+    {{ govukErrorSummary({
+      titleText: "There is a problem",
+      errorList: errors | toErrorList
+    }) }}
+  {% endif %}
 
-  {{ govukFieldset({
+  {% call govukFieldset({
     legend: {
       text: heading,
       classes: "govuk-fieldset__legend--xl",
       isPageHeading: true
     }
-  }) }}
-  <p class="govuk-body">{{ formDescription }}</p>
+  }) %}
 
-  {% if errors %}
-    {{ govukErrorSummary({
-      titleText: errorSummaryText,
-      errorList: errors | toErrorList
+    {{ govukInput({
+      label: {
+        text: ninoLabel
+      },
+      hint: {
+        text: hint
+      },
+      classes: "govuk-input--width-10",
+      id: "nino",
+      name: "nino",
+      value: claim.nino,
+      errorMessage: errors | getErrorForField('nino')
     }) }}
-  {% endif %}
 
-  {{ govukInput({
-    label: {
-      text: ninoLabel
-    },
-    hint: {
-      text: hint
-    },
-    classes: "govuk-input--width-10",
-    id: "nino",
-    name: "nino",
-    value: claim.nino,
-    errorMessage: errors | getErrorForField('nino')
-  }) }}
+  {% endcall %}
 
   {{ govukDetails({
       summaryText: detail.summaryText,
