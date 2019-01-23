@@ -9,10 +9,10 @@
     "uri": "src/test/acceptance/features/enter-dob.feature",
     "elements": [
       {
-        "id": ";enter-in-a-valid-date-of-birth",
+        "id": ";enter-a-date-of-birth-in-the-future",
         "keyword": "Scenario",
-        "line": 15,
-        "name": "Enter in a valid date of birth",
+        "line": 9,
+        "name": "Enter a date of birth in the future",
         "tags": [],
         "type": "scenario",
         "steps": [
@@ -24,7 +24,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 15000000
+              "duration": 14000000
             }
           },
           {
@@ -37,33 +37,33 @@
             },
             "result": {
               "status": "passed",
-              "duration": 514000000
+              "duration": 502000000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
             "line": 10,
-            "name": "I enter my date of birth as 30, 12 and 1980",
+            "name": "I enter my date of birth as day: 03, month: 09 and year: 9999",
             "match": {
               "location": "src/test/common/steps/enter-dob-steps.js:10"
             },
             "result": {
               "status": "passed",
-              "duration": 348000000
+              "duration": 296000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
             "line": 11,
-            "name": "the check your details page is shown",
+            "name": "I am informed that my date of birth should be in the past",
             "match": {
-              "location": "src/test/common/steps/enter-dob-steps.js:14"
+              "location": "src/test/common/steps/enter-dob-steps.js:23"
             },
             "result": {
               "status": "passed",
-              "duration": 6000000
+              "duration": 122000000
             }
           },
           {
@@ -79,10 +79,10 @@
         ]
       },
       {
-        "id": ";enter-in-a-valid-date-of-birth",
+        "id": ";enter-an-invalid-date-of-birth",
         "keyword": "Scenario",
-        "line": 16,
-        "name": "Enter in a valid date of birth",
+        "line": 18,
+        "name": "Enter an invalid date of birth",
         "tags": [],
         "type": "scenario",
         "steps": [
@@ -107,33 +107,33 @@
             },
             "result": {
               "status": "passed",
-              "duration": 419000000
+              "duration": 413000000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 10,
-            "name": "I enter my date of birth as 29, 02 and 2000",
+            "line": 14,
+            "name": "I enter my date of birth as day: , month:  and year: ",
             "match": {
               "location": "src/test/common/steps/enter-dob-steps.js:10"
             },
             "result": {
               "status": "passed",
-              "duration": 335000000
+              "duration": 279000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 11,
-            "name": "the check your details page is shown",
+            "line": 15,
+            "name": "I am informed that a valid date of birth is required",
             "match": {
-              "location": "src/test/common/steps/enter-dob-steps.js:14"
+              "location": "src/test/common/steps/enter-dob-steps.js:18"
             },
             "result": {
               "status": "passed",
-              "duration": 7000000
+              "duration": 120000000
             }
           },
           {
@@ -149,10 +149,430 @@
         ]
       },
       {
-        "id": ";enter-in-a-valid-date-of-birth",
+        "id": ";enter-an-invalid-date-of-birth",
         "keyword": "Scenario",
-        "line": 17,
-        "name": "Enter in a valid date of birth",
+        "line": 19,
+        "name": "Enter an invalid date of birth",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "match": {
+              "location": "src/test/common/steps/hooks.js:7"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I am on the enter date of birth page",
+            "match": {
+              "location": "src/test/common/steps/enter-dob-steps.js:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 431000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 14,
+            "name": "I enter my date of birth as day: 30, month: 02 and year: 2000",
+            "match": {
+              "location": "src/test/common/steps/enter-dob-steps.js:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 303000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 15,
+            "name": "I am informed that a valid date of birth is required",
+            "match": {
+              "location": "src/test/common/steps/enter-dob-steps.js:18"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 119000000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "src/test/common/steps/hooks.js:14"
+            },
+            "result": {
+              "status": "passed"
+            }
+          }
+        ]
+      },
+      {
+        "id": ";enter-an-invalid-date-of-birth",
+        "keyword": "Scenario",
+        "line": 20,
+        "name": "Enter an invalid date of birth",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "match": {
+              "location": "src/test/common/steps/hooks.js:7"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I am on the enter date of birth page",
+            "match": {
+              "location": "src/test/common/steps/enter-dob-steps.js:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 397000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 14,
+            "name": "I enter my date of birth as day: 40, month: 1 and year: 1985",
+            "match": {
+              "location": "src/test/common/steps/enter-dob-steps.js:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 298000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 15,
+            "name": "I am informed that a valid date of birth is required",
+            "match": {
+              "location": "src/test/common/steps/enter-dob-steps.js:18"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 120000000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "src/test/common/steps/hooks.js:14"
+            },
+            "result": {
+              "status": "passed"
+            }
+          }
+        ]
+      },
+      {
+        "id": ";enter-an-invalid-date-of-birth",
+        "keyword": "Scenario",
+        "line": 21,
+        "name": "Enter an invalid date of birth",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "match": {
+              "location": "src/test/common/steps/hooks.js:7"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I am on the enter date of birth page",
+            "match": {
+              "location": "src/test/common/steps/enter-dob-steps.js:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 432000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 14,
+            "name": "I enter my date of birth as day: 03, month: 37 and year: 1978",
+            "match": {
+              "location": "src/test/common/steps/enter-dob-steps.js:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 292000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 15,
+            "name": "I am informed that a valid date of birth is required",
+            "match": {
+              "location": "src/test/common/steps/enter-dob-steps.js:18"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 121000000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "src/test/common/steps/hooks.js:14"
+            },
+            "result": {
+              "status": "passed"
+            }
+          }
+        ]
+      },
+      {
+        "id": ";enter-a-valid-date-of-birth",
+        "keyword": "Scenario",
+        "line": 28,
+        "name": "Enter a valid date of birth",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "match": {
+              "location": "src/test/common/steps/hooks.js:7"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I am on the enter date of birth page",
+            "match": {
+              "location": "src/test/common/steps/enter-dob-steps.js:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 419000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 24,
+            "name": "I enter my date of birth as day: 30, month: 12 and year: 1980",
+            "match": {
+              "location": "src/test/common/steps/enter-dob-steps.js:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 332000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 25,
+            "name": "the check your details page is shown",
+            "match": {
+              "location": "src/test/common/steps/enter-dob-steps.js:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 4000000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "src/test/common/steps/hooks.js:14"
+            },
+            "result": {
+              "status": "passed"
+            }
+          }
+        ]
+      },
+      {
+        "id": ";enter-a-valid-date-of-birth",
+        "keyword": "Scenario",
+        "line": 29,
+        "name": "Enter a valid date of birth",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "match": {
+              "location": "src/test/common/steps/hooks.js:7"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I am on the enter date of birth page",
+            "match": {
+              "location": "src/test/common/steps/enter-dob-steps.js:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 428000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 24,
+            "name": "I enter my date of birth as day: 29, month: 02 and year: 2000",
+            "match": {
+              "location": "src/test/common/steps/enter-dob-steps.js:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 364000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 25,
+            "name": "the check your details page is shown",
+            "match": {
+              "location": "src/test/common/steps/enter-dob-steps.js:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 5000000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "src/test/common/steps/hooks.js:14"
+            },
+            "result": {
+              "status": "passed"
+            }
+          }
+        ]
+      },
+      {
+        "id": ";enter-a-valid-date-of-birth",
+        "keyword": "Scenario",
+        "line": 30,
+        "name": "Enter a valid date of birth",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "match": {
+              "location": "src/test/common/steps/hooks.js:7"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I am on the enter date of birth page",
+            "match": {
+              "location": "src/test/common/steps/enter-dob-steps.js:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 396000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 24,
+            "name": "I enter my date of birth as day: 1, month: 1 and year: 1985",
+            "match": {
+              "location": "src/test/common/steps/enter-dob-steps.js:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 318000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 25,
+            "name": "the check your details page is shown",
+            "match": {
+              "location": "src/test/common/steps/enter-dob-steps.js:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 4000000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "src/test/common/steps/hooks.js:14"
+            },
+            "result": {
+              "status": "passed"
+            }
+          }
+        ]
+      },
+      {
+        "id": ";enter-a-valid-date-of-birth",
+        "keyword": "Scenario",
+        "line": 31,
+        "name": "Enter a valid date of birth",
         "tags": [],
         "type": "scenario",
         "steps": [
@@ -183,20 +603,20 @@
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 10,
-            "name": "I enter my date of birth as 1, 1 and 1985",
+            "line": 24,
+            "name": "I enter my date of birth as day: 03, month: 09 and year: 1999",
             "match": {
               "location": "src/test/common/steps/enter-dob-steps.js:10"
             },
             "result": {
               "status": "passed",
-              "duration": 340000000
+              "duration": 335000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 11,
+            "line": 25,
             "name": "the check your details page is shown",
             "match": {
               "location": "src/test/common/steps/enter-dob-steps.js:14"
@@ -204,76 +624,6 @@
             "result": {
               "status": "passed",
               "duration": 4000000
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:14"
-            },
-            "result": {
-              "status": "passed"
-            }
-          }
-        ]
-      },
-      {
-        "id": ";enter-in-a-valid-date-of-birth",
-        "keyword": "Scenario",
-        "line": 18,
-        "name": "Enter in a valid date of birth",
-        "tags": [],
-        "type": "scenario",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 7,
-            "name": "I am on the enter date of birth page",
-            "match": {
-              "location": "src/test/common/steps/enter-dob-steps.js:6"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 406000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 10,
-            "name": "I enter my date of birth as 03, 09 and 1999",
-            "match": {
-              "location": "src/test/common/steps/enter-dob-steps.js:10"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 349000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 11,
-            "name": "the check your details page is shown",
-            "match": {
-              "location": "src/test/common/steps/enter-dob-steps.js:14"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 6000000
             }
           },
           {
@@ -328,7 +678,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 440000000
+              "duration": 409000000
             }
           },
           {
@@ -341,7 +691,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1353000000
+              "duration": 1265000000
             }
           },
           {
@@ -354,7 +704,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 132000000
+              "duration": 117000000
             }
           },
           {
@@ -367,7 +717,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 24000000
+              "duration": 21000000
             }
           },
           {
@@ -411,7 +761,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 433000000
+              "duration": 387000000
             }
           },
           {
@@ -424,7 +774,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1303000000
+              "duration": 1252000000
             }
           },
           {
@@ -437,7 +787,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 125000000
+              "duration": 119000000
             }
           },
           {
@@ -450,7 +800,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 23000000
+              "duration": 21000000
             }
           },
           {
@@ -494,7 +844,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 435000000
+              "duration": 398000000
             }
           },
           {
@@ -507,7 +857,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 242000000
+              "duration": 220000000
             }
           },
           {
@@ -564,7 +914,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 419000000
+              "duration": 403000000
             }
           },
           {
@@ -577,7 +927,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 434000000
+              "duration": 399000000
             }
           },
           {
@@ -590,7 +940,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 42000000
+              "duration": 40000000
             }
           },
           {
@@ -634,7 +984,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 447000000
+              "duration": 393000000
             }
           },
           {
@@ -647,7 +997,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 309000000
+              "duration": 300000000
             }
           },
           {
@@ -660,7 +1010,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 41000000
+              "duration": 39000000
             }
           },
           {
@@ -690,8 +1040,7 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           },
           {
@@ -704,7 +1053,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 414000000
+              "duration": 424000000
             }
           },
           {
@@ -717,7 +1066,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 319000000
+              "duration": 294000000
             }
           },
           {
@@ -730,7 +1079,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 40000000
+              "duration": 35000000
             }
           },
           {
@@ -760,8 +1109,7 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed",
-              "duration": 3000000
+              "status": "passed"
             }
           },
           {
@@ -774,7 +1122,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 408000000
+              "duration": 379000000
             }
           },
           {
@@ -787,7 +1135,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 290000000
+              "duration": 274000000
             }
           },
           {
@@ -810,8 +1158,7 @@
               "location": "src/test/common/steps/hooks.js:14"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
@@ -842,8 +1189,7 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           },
           {
@@ -856,7 +1202,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 422000000
+              "duration": 402000000
             }
           },
           {
@@ -869,7 +1215,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 228000000
+              "duration": 227000000
             }
           },
           {
@@ -882,7 +1228,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 41000000
+              "duration": 43000000
             }
           },
           {
@@ -913,7 +1259,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 4000000
+              "duration": 1000000
             }
           },
           {
@@ -926,7 +1272,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 441000000
+              "duration": 439000000
             }
           },
           {
@@ -939,7 +1285,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 172000000
+              "duration": 190000000
             }
           },
           {
@@ -952,7 +1298,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 122000000
+              "duration": 121000000
             }
           },
           {
@@ -996,7 +1342,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 410000000
+              "duration": 433000000
             }
           },
           {
@@ -1009,7 +1355,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 205000000
+              "duration": 178000000
             }
           },
           {
@@ -1022,7 +1368,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 120000000
+              "duration": 119000000
             }
           },
           {
@@ -1035,7 +1381,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 22000000
+              "duration": 21000000
             }
           },
           {
@@ -1045,7 +1391,8 @@
               "location": "src/test/common/steps/hooks.js:14"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           }
         ]
@@ -1066,7 +1413,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1000000
+              "duration": 2000000
             }
           },
           {
@@ -1079,7 +1426,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 433000000
+              "duration": 441000000
             }
           },
           {
@@ -1092,7 +1439,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 210000000
+              "duration": 201000000
             }
           },
           {
@@ -1105,7 +1452,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 121000000
+              "duration": 116000000
             }
           },
           {
@@ -1149,7 +1496,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2000000
+              "duration": 1000000
             }
           },
           {
@@ -1162,7 +1509,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 412000000
+              "duration": 394000000
             }
           },
           {
@@ -1175,7 +1522,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 205000000
+              "duration": 188000000
             }
           },
           {
@@ -1188,7 +1535,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 118000000
+              "duration": 123000000
             }
           },
           {
@@ -1201,7 +1548,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 25000000
+              "duration": 20000000
             }
           },
           {
@@ -1245,7 +1592,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 454000000
+              "duration": 428000000
             }
           },
           {
@@ -1258,7 +1605,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 195000000
+              "duration": 192000000
             }
           },
           {
@@ -1271,7 +1618,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 125000000
+              "duration": 118000000
             }
           },
           {
@@ -1284,7 +1631,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 21000000
+              "duration": 20000000
             }
           },
           {
@@ -1325,8 +1672,7 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           },
           {
@@ -1339,7 +1685,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 412000000
+              "duration": 394000000
             }
           },
           {
@@ -1352,7 +1698,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 33000000
+              "duration": 30000000
             }
           },
           {
@@ -1382,7 +1728,8 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 2000000
             }
           },
           {
@@ -1395,7 +1742,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 442000000
+              "duration": 427000000
             }
           },
           {
@@ -1408,7 +1755,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 225000000
+              "duration": 219000000
             }
           },
           {
@@ -1421,7 +1768,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 73000000
+              "duration": 68000000
             }
           },
           {
@@ -1476,7 +1823,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 441000000
+              "duration": 388000000
             }
           },
           {
@@ -1489,7 +1836,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 106000000
+              "duration": 95000000
             }
           },
           {
