@@ -1,5 +1,5 @@
 Feature:
-  In order apply for HTBHF programme
+  In order to apply for the HTBHF programme
   As a potential claimant
   I want to enter my name
 

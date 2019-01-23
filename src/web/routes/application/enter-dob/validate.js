@@ -1,14 +1,6 @@
-const { isNil } = require('ramda')
 const { check } = require('express-validator/check')
-
-const nilToString = (value) => isNil(value) ? '' : value
-
-const toDateString = (day, month, year) => {
-  const parseDay = nilToString(day).padStart(2, '0')
-  const parseMonth = nilToString(month).padStart(2, '0')
-
-  return [year, parseMonth, parseDay].join('-')
-}
+const { toDateString } = require('../common/formatters')
+const { isValidDate, isDateInPast } = require('../common/validators')
 
 const addDateToBody = (req, res, next) => {
   req.body.dateOfBirth = toDateString(
@@ -19,12 +11,22 @@ const addDateToBody = (req, res, next) => {
   next()
 }
 
+const validateDateOfBirth = (dob, { req }) => {
+  if (!isValidDate(dob)) {
+    throw new Error(req.t('validation:dateOfBirthInvalid'))
+  }
+  if (!isDateInPast(dob)) {
+    throw new Error(req.t('validation:dateOfBirthInPast'))
+  }
+  return true
+}
+
 const validate = [
   addDateToBody,
-  check('dateOfBirth').isISO8601().withMessage((value, { req }) => req.t('validation:dobInvalid', { value }))
+  check('dateOfBirth').custom(validateDateOfBirth)
 ]
 
 module.exports = {
-  toDateString,
+  validateDateOfBirth,
   validate
 }

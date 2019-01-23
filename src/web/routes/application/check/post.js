@@ -5,12 +5,11 @@ const CLAIMS_ENDPOINT = `/v1/claims`
 
 const postCheck = (config) => async (req, res, next) => {
   try {
-    req.session.body = req.body
     await request.post({
       uri: `${config.environment.CLAIMANT_SERVICE_URL}${CLAIMS_ENDPOINT}`,
       json: true,
       body: {
-        claimant: req.body
+        claimant: req.session.claim
       }
     })
 
