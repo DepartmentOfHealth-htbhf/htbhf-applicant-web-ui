@@ -1,3 +1,5 @@
+const { validate } = require('./validate')
+
 const pageContent = ({ translate }) => ({
   title: translate('enterDob.title'),
   heading: translate('enterDob.heading'),
@@ -13,9 +15,8 @@ const enterDob = {
   path: '/enter-dob',
   next: '/check',
   template: 'enter-dob',
-  sanitize: [],
-  validate: [],
-  pageContent
+  pageContent,
+  validate
 }
 
 module.exports = {
