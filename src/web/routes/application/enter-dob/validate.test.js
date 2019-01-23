@@ -1,26 +1,15 @@
 const test = require('tape')
-const { toDateString } = require('./validate')
+const { validateDateOfBirth } = require('./validate')
 
-test('toDateString() should concatenate digits with hyphens', (t) => {
-  const result = toDateString('31', '13', '1980')
-  const expected = '1980-13-31'
+test('validateDateOfBirth()', (t) => {
+  const req = {
+    t: (string) => string
+  }
 
-  t.equal(result, expected, 'should concatenate digits with hyphens')
-  t.end()
-})
-
-test('toDateString() should pad day and month', (t) => {
-  const result = toDateString('1', '3', '1980')
-  const expected = '1980-03-01'
-
-  t.equal(result, expected, 'should pad day and month')
-  t.end()
-})
-
-test('toDateString() should coerce all arguments to strings', (t) => {
-  const result = toDateString(undefined, null, 22)
-  const expected = '22-00-00'
-
-  t.equal(result, expected, 'should coerce all arguments to strings')
+  t.equal(validateDateOfBirth('1980-03-31', { req }), true, 'should return true for a valid date')
+  t.throws(validateDateOfBirth.bind(null, null, { req }), /validation:dateOfBirthInvalid/, 'should throw an error for a null date')
+  t.throws(validateDateOfBirth.bind(null, 'invalid', { req }), /validation:dateOfBirthInvalid/, 'should throw an error for "invalid"')
+  t.throws(validateDateOfBirth.bind(null, '2009-02-29', { req }), /validation:dateOfBirthInvalid/, 'should throw an error for "2009-02-29"')
+  t.throws(validateDateOfBirth.bind(null, '2199-01-01', { req }), /validation:dateOfBirthInPast/, 'should throw an error for "2199-01-01"')
   t.end()
 })
