@@ -21,7 +21,7 @@ PACKAGE_VERSION=$(sed -nE 's/^[ \\t]*"version": "([0-9]{1,}\.[0-9]{1,}\.)[0-9x]{
 # Get the latest git tag (e.g. v1.2.43)
 GIT_LATEST_TAG=$(git describe --tags $(git rev-list --tags --max-count=1))
 # Split out the major and minor version and the patch version into separate parts (e.g. 1.2. 43):
-GIT_VERSION=$(echo "$GIT_LATEST_TAG" | sed -E 's/^v([0-9]{1,}\.[0-9]{1,}\.)([0-9]{1,})$/\1 \2/g';)
+GIT_VERSION=$(echo "$GIT_LATEST_TAG" | sed -E 's/^v?([0-9]{1,}\.[0-9]{1,}\.)([0-9]{1,})$/\1 \2/g';)
 # If PACKAGE_VERSION matches the first part of GIT_VERSION (major.minor.), just increment the patch version, otherwise use major.minor from package.json and reset patch to 1
 NEW_VERSION=$(echo "$PACKAGE_VERSION $GIT_VERSION" | awk '{printf($1==$2?$2$3+1:$1"1")}')
 echo "PACKAGE_VERSION=$PACKAGE_VERSION, GIT_VERSION=$GIT_VERSION, NEW_VERSION=$NEW_VERSION"
