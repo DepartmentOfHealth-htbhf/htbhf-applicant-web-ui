@@ -12,6 +12,8 @@ const PAGE_HEADINGS = {
   cy: 'Tempus egestas sed sed risus pretium?'
 }
 
+const DATE_OF_BIRTH_ERROR_SELECTOR = 'a[href="#date-of-birth-error"]'
+
 /**
  * Page object for EnterDOB page where the name is entered.
  */
@@ -59,6 +61,11 @@ class EnterDOB extends Page {
   async submitForm () {
     const submitButton = await this.getSubmitButton()
     await submitButton.click()
+  }
+
+  async getDateOfBirthError () {
+    const errorLink = await this.findByCSS(DATE_OF_BIRTH_ERROR_SELECTOR)
+    return errorLink.getText()
   }
 }
 
