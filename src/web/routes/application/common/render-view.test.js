@@ -27,7 +27,8 @@ test('renderView() should call res.render() on POST request when response errors
 
   const req = {
     method: 'POST',
-    csrfToken: () => {}
+    csrfToken: () => {},
+    t: () => {}
   }
 
   const res = {
@@ -52,7 +53,8 @@ test('renderView() should call res.render() on GET request', async (t) => {
 
   const req = {
     method: 'GET',
-    csrfToken
+    csrfToken,
+    t: () => {}
   }
 
   const res = {
