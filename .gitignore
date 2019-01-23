@@ -38,3 +38,7 @@ test/screenshots
 # ci build files
 bin
 build
+
+# Acceptance and Smoke Test Reports
+src/documentation/gh-pages/acceptance-report.html
+src/documentation/gh-pages/smoke-report.html

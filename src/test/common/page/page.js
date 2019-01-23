@@ -2,6 +2,7 @@
 'use strict'
 
 const webdriver = require('selenium-webdriver')
+const { expect } = require('chai')
 
 const ERROR_HEADER_SELECTOR = 'h2#error-summary-title'
 const DEFAULT_WAIT_MILLIS = 5000
@@ -78,6 +79,12 @@ class Page {
   async getH2Text () {
     const h2Element = await this.findH2()
     return h2Element.getText()
+  }
+
+  async waitForPageLoad (pageHeading, pageTitle) {
+    const h1Text = await this.getH1Text()
+    expect(h1Text).to.be.equal(pageHeading)
+    return this.waitForPageWithTitle(pageTitle)
   }
 
   async waitForPageWithTitle (title) {
