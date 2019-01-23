@@ -1,6 +1,8 @@
 {
+  "dateOfBirthInPast": "Date of birth must be in the past",
+  "dateOfBirthInvalid": "Enter a valid date of birth",
   "firstNameTooLong": "Enter a shorter first or given name",
-  "missingLastName": "Enter your last or family name",
+  "invalidNino": "Enter a National Insurance number in the correct format",
   "lastNameTooLong": "Enter a shorter last or family name",
-  "invalidNino": "Enter a National Insurance number in the correct format"
+  "missingLastName": "Enter your last or family name"
 }
