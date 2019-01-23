@@ -6,10 +6,23 @@ Feature:
   Background:
     Given I am on the enter date of birth page
 
-  Scenario Outline: Enter in a valid date of birth
-    When I enter my date of birth as <day>, <month> and <year>
-    Then the check your details page is shown
+  Scenario: Enter a date of birth in the future
+    When I enter my date of birth as day: 03, month: 09 and year: 9999
+    Then I am informed that my date of birth should be in the past
 
+  Scenario Outline: Enter an invalid date of birth
+    When I enter my date of birth as day: <day>, month: <month> and year: <year>
+    Then I am informed that a valid date of birth is required
+    Examples:
+      | day | month | year |
+      |     |       |      |
+      | 30  | 02    | 2000 |
+      | 40  | 1     | 1985 |
+      | 03  | 37    | 1978 |
+
+  Scenario Outline: Enter a valid date of birth
+    When I enter my date of birth as day: <day>, month: <month> and year: <year>
+    Then the check your details page is shown
     Examples:
       | day | month | year |
       | 30  | 12    | 1980 |
