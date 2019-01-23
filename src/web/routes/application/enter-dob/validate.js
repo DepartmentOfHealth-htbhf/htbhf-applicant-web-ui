@@ -27,6 +27,6 @@ const validate = [
 ]
 
 module.exports = {
-  validateDateOfBirth: validateDateOfBirth,
+  validateDateOfBirth,
   validate
 }
