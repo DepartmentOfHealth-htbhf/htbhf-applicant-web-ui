@@ -24,6 +24,42 @@ class EnterDOB extends Page {
   async waitForPageLoad (lang = 'en') {
     return super.waitForPageLoad(PAGE_HEADINGS[lang], PAGE_TITLES[lang])
   }
+
+  async getDayField () {
+    return this.findById('day')
+  }
+
+  async getMonthField () {
+    return this.findById('month')
+  }
+
+  async getYearField () {
+    return this.findById('year')
+  }
+
+  async enterDay (day) {
+    const dayField = await this.getDayField()
+    return dayField.sendKeys(day)
+  }
+
+  async enterMonth (month) {
+    const monthField = await this.getMonthField()
+    return monthField.sendKeys(month)
+  }
+
+  async enterYear (year) {
+    const yearField = await this.getYearField()
+    return yearField.sendKeys(year)
+  }
+
+  async getSubmitButton () {
+    return this.findByClassName('govuk-button')
+  }
+
+  async submitForm () {
+    const submitButton = await this.getSubmitButton()
+    await submitButton.click()
+  }
 }
 
 module.exports = EnterDOB
