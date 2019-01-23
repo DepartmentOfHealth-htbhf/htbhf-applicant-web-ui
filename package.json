@@ -1,7 +1,7 @@
 {
   "name": "htbhf-applicant-web-ui",
   "version_notice": "Patch versions are incremented by Travis (in tag_version.sh via .travis.yml) - never manually increment the patch version",
-  "version": "0.1.33",
+  "version": "0.1.34",
   "description": "",
   "main": "index.js",
   "engines": {
@@ -21,7 +21,7 @@
     "test:compatibility": "mkdir -p build/reports && cross-env TESTS=compatibility cucumber-js src/test/compatibility/features/ --require 'src/test/common/steps/*.js' --require 'src/test/compatibility/config' -f json:build/reports/compatibility-report.json",
     "test:compatibility:debug": "node $NODE_DEBUG_OPTION node_modules/cucumber/bin/cucumber-js src/test/compatibility/features/ --require 'src/test/common/steps/*.js' --require 'src/test/compatibility/config' -f json:build/reports/compatibility-report.json",
     "test:accessibility": "node 'src/test/a11y/test-suite.js'",
-    "test:browser": "npm run test:wait && npm-run-all -s test:accessibility test:acceptance test:acceptance:report",
+    "test:browser": "npm run test:wait && npm-run-all -s test:smoke test:accessibility test:acceptance test:acceptance:report",
     "test:wait": "./npm_scripts/wait_for_app_to_start.sh",
     "coverage": "nyc report --reporter=lcov --reporter=text-lcov > coverage.lcov && codecov",
     "build": "npm run build:sass",
