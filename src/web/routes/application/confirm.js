@@ -5,6 +5,7 @@ const pageContent = {
 
 const getConfirmPage = (req, res) => {
   res.clearCookie('lang')
+  req.session.destroy()
   res.render('confirm', pageContent)
 }
 
