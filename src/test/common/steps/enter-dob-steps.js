@@ -17,7 +17,7 @@ Then(/^the check your details page is shown$/, async function () {
 
 Then(/^I am informed that a valid date of birth is required$/, async function () {
   await assertErrorHeaderTextPresent()
-  await assertDateOfBirthErrorPresent('Enter a valid date of birth')
+  await assertDateOfBirthErrorPresent('Enter your date of birth')
 })
 
 Then(/^I am informed that my date of birth should be in the past$/, async function () {
