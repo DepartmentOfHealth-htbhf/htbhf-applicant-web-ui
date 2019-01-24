@@ -7,7 +7,7 @@ const renderView = (template, getPageContent, redirect) => (req, res) => {
     ...getPageContent({ translate: req.t }),
     csrfToken: req.csrfToken(),
     htmlLang: req.language,
-    errorSummaryText: req.t('validation:errorSummaryText')
+    errorTitleText: req.t('validation:errorTitleText')
   })
 }
 
