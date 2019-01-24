@@ -5,7 +5,7 @@
   <form method="post">
     {% if errors %}
       {{ govukErrorSummary({
-        titleText: errorSummaryText,
+        titleText: errorTitleText,
         errorList: errors | toErrorList
       }) }}
     {% endif %}
