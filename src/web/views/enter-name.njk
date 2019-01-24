@@ -3,14 +3,7 @@
 {% from "error-summary/macro.njk" import govukErrorSummary %}
 {% from "fieldset/macro.njk" import govukFieldset %}
 
-{% set buttonText = buttonText %}
 {% block formContent %}
-  {% if errors %}
-    {{ govukErrorSummary({
-      titleText: errorSummaryText,
-      errorList: errors | toErrorList
-    }) }}
-  {% endif %}
 
   {% call govukFieldset({
     legend: {
@@ -43,4 +36,5 @@
     }) }}
 
   {% endcall %}
+
 {% endblock %}

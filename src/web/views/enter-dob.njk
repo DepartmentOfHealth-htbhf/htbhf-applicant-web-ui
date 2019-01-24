@@ -3,11 +3,7 @@
 {% from "fieldset/macro.njk" import govukFieldset %}
 {% from "date-input/macro.njk" import govukDateInput %}
 
-{% set buttonText = buttonText %}
-{% set errorClass = '' %}
-{% if errors %}
-  {% set errorClass = ' govuk-input--error' %}
-{% endif %}
+{% set errorClass = ' govuk-input--error' if errors else '' %}
 
 {% set items = [
   {
@@ -34,13 +30,6 @@
 ] %}
 
 {% block formContent %}
-  {% if errors %}
-    {{ govukErrorSummary({
-      titleText: errorSummaryText,
-      errorList: errors | toErrorList
-    }) }}
-  {% endif %}
-
   {{ govukDateInput({
     id: "date-of-birth",
     namePrefix: "dateOfBirth",
