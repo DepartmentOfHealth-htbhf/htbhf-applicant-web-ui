@@ -4,6 +4,7 @@ const pageContent = {
 }
 
 const getConfirmPage = (req, res) => {
+  res.clearCookie('lang')
   res.render('confirm', pageContent)
 }
 
