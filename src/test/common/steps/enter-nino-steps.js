@@ -1,7 +1,8 @@
 const { Given, When, Then } = require('cucumber')
-const { expect, assert } = require('chai')
+const { expect } = require('chai')
 
 const pages = require('./pages')
+const { enterNinoAndSubmit, assertErrorHeaderTextPresent } = require('./common-steps')
 
 const VALID_NINO = 'QQ123456C'
 
@@ -22,7 +23,7 @@ When(/^I do not enter a national insurance number$/, async function () {
 })
 
 Then(/^I am informed that the national insurance number is in the wrong format$/, async function () {
-  await assertErrorHeaderTextPresent()
+  await assertErrorHeaderTextPresent(pages.enterNino)
   const errorMessage = await pages.enterNino.getNinoError()
   expect(errorMessage).to.be.equal('Enter a National Insurance number in the correct format')
 })
@@ -35,22 +36,3 @@ Then(/^I see the value (.*) in the textbox$/, async function (nino) {
 Then(/^the enter date of birth page is shown$/, async function () {
   await pages.enterDOB.waitForPageLoad()
 })
-
-async function enterNinoAndSubmit (nino) {
-  try {
-    await pages.enterNino.enterNino(nino)
-    await pages.enterNino.submitForm()
-  } catch (error) {
-    assert.fail(`Unexpected error caught trying to enter the national insurance number and submit the page - ${error}`)
-  }
-}
-
-async function assertErrorHeaderTextPresent () {
-  try {
-    await pages.enterNino.waitForPageLoad()
-    const errorHeader = await pages.enterNino.getPageErrorHeaderText()
-    expect(errorHeader).to.equal('There is a problem')
-  } catch (error) {
-    assert.fail(`Unexpected error caught trying to assert error header text is present - ${error}`)
-  }
-}
