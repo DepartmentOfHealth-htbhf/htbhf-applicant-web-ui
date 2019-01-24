@@ -24,7 +24,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 15000000
+              "duration": 13000000
             }
           },
           {
@@ -33,11 +33,11 @@
             "line": 7,
             "name": "I am on the enter date of birth page",
             "match": {
-              "location": "src/test/common/steps/enter-dob-steps.js:6"
+              "location": "src/test/common/steps/enter-dob-steps.js:7"
             },
             "result": {
               "status": "passed",
-              "duration": 540000000
+              "duration": 484000000
             }
           },
           {
@@ -46,11 +46,11 @@
             "line": 10,
             "name": "I enter my date of birth as day: 03, month: 09 and year: 9999",
             "match": {
-              "location": "src/test/common/steps/enter-dob-steps.js:10"
+              "location": "src/test/common/steps/enter-dob-steps.js:11"
             },
             "result": {
               "status": "passed",
-              "duration": 319000000
+              "duration": 303000000
             }
           },
           {
@@ -59,11 +59,11 @@
             "line": 11,
             "name": "I am informed that my date of birth should be in the past",
             "match": {
-              "location": "src/test/common/steps/enter-dob-steps.js:23"
+              "location": "src/test/common/steps/enter-dob-steps.js:24"
             },
             "result": {
               "status": "passed",
-              "duration": 124000000
+              "duration": 117000000
             }
           },
           {
@@ -94,7 +94,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2000000
+              "duration": 1000000
             }
           },
           {
@@ -103,11 +103,11 @@
             "line": 7,
             "name": "I am on the enter date of birth page",
             "match": {
-              "location": "src/test/common/steps/enter-dob-steps.js:6"
+              "location": "src/test/common/steps/enter-dob-steps.js:7"
             },
             "result": {
               "status": "passed",
-              "duration": 416000000
+              "duration": 409000000
             }
           },
           {
@@ -116,11 +116,11 @@
             "line": 14,
             "name": "I enter my date of birth as day: , month:  and year: ",
             "match": {
-              "location": "src/test/common/steps/enter-dob-steps.js:10"
+              "location": "src/test/common/steps/enter-dob-steps.js:11"
             },
             "result": {
               "status": "passed",
-              "duration": 286000000
+              "duration": 267000000
             }
           },
           {
@@ -129,11 +129,11 @@
             "line": 15,
             "name": "I am informed that a valid date of birth is required",
             "match": {
-              "location": "src/test/common/steps/enter-dob-steps.js:18"
+              "location": "src/test/common/steps/enter-dob-steps.js:19"
             },
             "result": {
               "status": "passed",
-              "duration": 120000000
+              "duration": 118000000
             }
           },
           {
@@ -143,8 +143,7 @@
               "location": "src/test/common/steps/hooks.js:14"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
@@ -165,7 +164,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 11000000
+              "duration": 1000000
             }
           },
           {
@@ -174,11 +173,11 @@
             "line": 7,
             "name": "I am on the enter date of birth page",
             "match": {
-              "location": "src/test/common/steps/enter-dob-steps.js:6"
+              "location": "src/test/common/steps/enter-dob-steps.js:7"
             },
             "result": {
               "status": "passed",
-              "duration": 443000000
+              "duration": 429000000
             }
           },
           {
@@ -187,11 +186,11 @@
             "line": 14,
             "name": "I enter my date of birth as day: 30, month: 02 and year: 2000",
             "match": {
-              "location": "src/test/common/steps/enter-dob-steps.js:10"
+              "location": "src/test/common/steps/enter-dob-steps.js:11"
             },
             "result": {
               "status": "passed",
-              "duration": 310000000
+              "duration": 298000000
             }
           },
           {
@@ -200,11 +199,11 @@
             "line": 15,
             "name": "I am informed that a valid date of birth is required",
             "match": {
-              "location": "src/test/common/steps/enter-dob-steps.js:18"
+              "location": "src/test/common/steps/enter-dob-steps.js:19"
             },
             "result": {
               "status": "passed",
-              "duration": 124000000
+              "duration": 113000000
             }
           },
           {
@@ -244,11 +243,11 @@
             "line": 7,
             "name": "I am on the enter date of birth page",
             "match": {
-              "location": "src/test/common/steps/enter-dob-steps.js:6"
+              "location": "src/test/common/steps/enter-dob-steps.js:7"
             },
             "result": {
               "status": "passed",
-              "duration": 420000000
+              "duration": 392000000
             }
           },
           {
@@ -257,11 +256,11 @@
             "line": 14,
             "name": "I enter my date of birth as day: 40, month: 1 and year: 1985",
             "match": {
-              "location": "src/test/common/steps/enter-dob-steps.js:10"
+              "location": "src/test/common/steps/enter-dob-steps.js:11"
             },
             "result": {
               "status": "passed",
-              "duration": 310000000
+              "duration": 289000000
             }
           },
           {
@@ -270,11 +269,11 @@
             "line": 15,
             "name": "I am informed that a valid date of birth is required",
             "match": {
-              "location": "src/test/common/steps/enter-dob-steps.js:18"
+              "location": "src/test/common/steps/enter-dob-steps.js:19"
             },
             "result": {
               "status": "passed",
-              "duration": 121000000
+              "duration": 116000000
             }
           },
           {
@@ -314,11 +313,11 @@
             "line": 7,
             "name": "I am on the enter date of birth page",
             "match": {
-              "location": "src/test/common/steps/enter-dob-steps.js:6"
+              "location": "src/test/common/steps/enter-dob-steps.js:7"
             },
             "result": {
               "status": "passed",
-              "duration": 454000000
+              "duration": 429000000
             }
           },
           {
@@ -327,11 +326,11 @@
             "line": 14,
             "name": "I enter my date of birth as day: 03, month: 37 and year: 1978",
             "match": {
-              "location": "src/test/common/steps/enter-dob-steps.js:10"
+              "location": "src/test/common/steps/enter-dob-steps.js:11"
             },
             "result": {
               "status": "passed",
-              "duration": 306000000
+              "duration": 288000000
             }
           },
           {
@@ -340,11 +339,11 @@
             "line": 15,
             "name": "I am informed that a valid date of birth is required",
             "match": {
-              "location": "src/test/common/steps/enter-dob-steps.js:18"
+              "location": "src/test/common/steps/enter-dob-steps.js:19"
             },
             "result": {
               "status": "passed",
-              "duration": 150000000
+              "duration": 119000000
             }
           },
           {
@@ -375,7 +374,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1000000
+              "duration": 7000000
             }
           },
           {
@@ -384,11 +383,11 @@
             "line": 7,
             "name": "I am on the enter date of birth page",
             "match": {
-              "location": "src/test/common/steps/enter-dob-steps.js:6"
+              "location": "src/test/common/steps/enter-dob-steps.js:7"
             },
             "result": {
               "status": "passed",
-              "duration": 421000000
+              "duration": 385000000
             }
           },
           {
@@ -397,11 +396,11 @@
             "line": 24,
             "name": "I enter my date of birth as day: 30, month: 12 and year: 1980",
             "match": {
-              "location": "src/test/common/steps/enter-dob-steps.js:10"
+              "location": "src/test/common/steps/enter-dob-steps.js:11"
             },
             "result": {
               "status": "passed",
-              "duration": 346000000
+              "duration": 350000000
             }
           },
           {
@@ -410,11 +409,11 @@
             "line": 25,
             "name": "the check your details page is shown",
             "match": {
-              "location": "src/test/common/steps/enter-dob-steps.js:14"
+              "location": "src/test/common/steps/enter-dob-steps.js:15"
             },
             "result": {
               "status": "passed",
-              "duration": 4000000
+              "duration": 5000000
             }
           },
           {
@@ -446,7 +445,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2000000
+              "duration": 1000000
             }
           },
           {
@@ -455,11 +454,11 @@
             "line": 7,
             "name": "I am on the enter date of birth page",
             "match": {
-              "location": "src/test/common/steps/enter-dob-steps.js:6"
+              "location": "src/test/common/steps/enter-dob-steps.js:7"
             },
             "result": {
               "status": "passed",
-              "duration": 482000000
+              "duration": 432000000
             }
           },
           {
@@ -468,11 +467,11 @@
             "line": 24,
             "name": "I enter my date of birth as day: 29, month: 02 and year: 2000",
             "match": {
-              "location": "src/test/common/steps/enter-dob-steps.js:10"
+              "location": "src/test/common/steps/enter-dob-steps.js:11"
             },
             "result": {
               "status": "passed",
-              "duration": 341000000
+              "duration": 316000000
             }
           },
           {
@@ -481,11 +480,11 @@
             "line": 25,
             "name": "the check your details page is shown",
             "match": {
-              "location": "src/test/common/steps/enter-dob-steps.js:14"
+              "location": "src/test/common/steps/enter-dob-steps.js:15"
             },
             "result": {
               "status": "passed",
-              "duration": 4000000
+              "duration": 8000000
             }
           },
           {
@@ -525,11 +524,11 @@
             "line": 7,
             "name": "I am on the enter date of birth page",
             "match": {
-              "location": "src/test/common/steps/enter-dob-steps.js:6"
+              "location": "src/test/common/steps/enter-dob-steps.js:7"
             },
             "result": {
               "status": "passed",
-              "duration": 427000000
+              "duration": 415000000
             }
           },
           {
@@ -538,11 +537,11 @@
             "line": 24,
             "name": "I enter my date of birth as day: 1, month: 1 and year: 1985",
             "match": {
-              "location": "src/test/common/steps/enter-dob-steps.js:10"
+              "location": "src/test/common/steps/enter-dob-steps.js:11"
             },
             "result": {
               "status": "passed",
-              "duration": 341000000
+              "duration": 323000000
             }
           },
           {
@@ -551,11 +550,11 @@
             "line": 25,
             "name": "the check your details page is shown",
             "match": {
-              "location": "src/test/common/steps/enter-dob-steps.js:14"
+              "location": "src/test/common/steps/enter-dob-steps.js:15"
             },
             "result": {
               "status": "passed",
-              "duration": 5000000
+              "duration": 4000000
             }
           },
           {
@@ -595,11 +594,11 @@
             "line": 7,
             "name": "I am on the enter date of birth page",
             "match": {
-              "location": "src/test/common/steps/enter-dob-steps.js:6"
+              "location": "src/test/common/steps/enter-dob-steps.js:7"
             },
             "result": {
               "status": "passed",
-              "duration": 455000000
+              "duration": 435000000
             }
           },
           {
@@ -608,11 +607,11 @@
             "line": 24,
             "name": "I enter my date of birth as day: 03, month: 09 and year: 1999",
             "match": {
-              "location": "src/test/common/steps/enter-dob-steps.js:10"
+              "location": "src/test/common/steps/enter-dob-steps.js:11"
             },
             "result": {
               "status": "passed",
-              "duration": 358000000
+              "duration": 334000000
             }
           },
           {
@@ -621,11 +620,11 @@
             "line": 25,
             "name": "the check your details page is shown",
             "match": {
-              "location": "src/test/common/steps/enter-dob-steps.js:14"
+              "location": "src/test/common/steps/enter-dob-steps.js:15"
             },
             "result": {
               "status": "passed",
-              "duration": 4000000
+              "duration": 5000000
             }
           },
           {
@@ -635,7 +634,8 @@
               "location": "src/test/common/steps/hooks.js:14"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 12000000
             }
           }
         ]
@@ -667,7 +667,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2000000
+              "duration": 5000000
             }
           },
           {
@@ -676,11 +676,11 @@
             "line": 7,
             "name": "I am on the enter name page",
             "match": {
-              "location": "src/test/common/steps/enter-name-steps.js:30"
+              "location": "src/test/common/steps/enter-name-steps.js:31"
             },
             "result": {
               "status": "passed",
-              "duration": 427000000
+              "duration": 392000000
             }
           },
           {
@@ -689,11 +689,11 @@
             "line": 10,
             "name": "I enter a first name which is too long",
             "match": {
-              "location": "src/test/common/steps/enter-name-steps.js:34"
+              "location": "src/test/common/steps/enter-name-steps.js:35"
             },
             "result": {
               "status": "passed",
-              "duration": 1515000000
+              "duration": 1221000000
             }
           },
           {
@@ -702,11 +702,11 @@
             "line": 11,
             "name": "I am informed that the first name is too long",
             "match": {
-              "location": "src/test/common/steps/enter-name-steps.js:50"
+              "location": "src/test/common/steps/enter-name-steps.js:51"
             },
             "result": {
               "status": "passed",
-              "duration": 125000000
+              "duration": 119000000
             }
           },
           {
@@ -715,7 +715,7 @@
             "line": 12,
             "name": "I see the invalid first name I entered in the textbox",
             "match": {
-              "location": "src/test/common/steps/enter-name-steps.js:56"
+              "location": "src/test/common/steps/enter-name-steps.js:57"
             },
             "result": {
               "status": "passed",
@@ -750,7 +750,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1000000
+              "duration": 4000000
             }
           },
           {
@@ -759,11 +759,11 @@
             "line": 7,
             "name": "I am on the enter name page",
             "match": {
-              "location": "src/test/common/steps/enter-name-steps.js:30"
+              "location": "src/test/common/steps/enter-name-steps.js:31"
             },
             "result": {
               "status": "passed",
-              "duration": 396000000
+              "duration": 422000000
             }
           },
           {
@@ -772,11 +772,11 @@
             "line": 15,
             "name": "I enter a last name which is too long",
             "match": {
-              "location": "src/test/common/steps/enter-name-steps.js:38"
+              "location": "src/test/common/steps/enter-name-steps.js:39"
             },
             "result": {
               "status": "passed",
-              "duration": 1493000000
+              "duration": 1201000000
             }
           },
           {
@@ -785,11 +785,11 @@
             "line": 16,
             "name": "I am informed that the last name is too long",
             "match": {
-              "location": "src/test/common/steps/enter-name-steps.js:66"
+              "location": "src/test/common/steps/enter-name-steps.js:67"
             },
             "result": {
               "status": "passed",
-              "duration": 125000000
+              "duration": 118000000
             }
           },
           {
@@ -798,11 +798,11 @@
             "line": 17,
             "name": "I see the last name I entered in the textbox",
             "match": {
-              "location": "src/test/common/steps/enter-name-steps.js:61"
+              "location": "src/test/common/steps/enter-name-steps.js:62"
             },
             "result": {
               "status": "passed",
-              "duration": 21000000
+              "duration": 20000000
             }
           },
           {
@@ -842,11 +842,11 @@
             "line": 7,
             "name": "I am on the enter name page",
             "match": {
-              "location": "src/test/common/steps/enter-name-steps.js:30"
+              "location": "src/test/common/steps/enter-name-steps.js:31"
             },
             "result": {
               "status": "passed",
-              "duration": 422000000
+              "duration": 413000000
             }
           },
           {
@@ -855,11 +855,11 @@
             "line": 20,
             "name": "I enter first name only",
             "match": {
-              "location": "src/test/common/steps/enter-name-steps.js:42"
+              "location": "src/test/common/steps/enter-name-steps.js:43"
             },
             "result": {
               "status": "passed",
-              "duration": 238000000
+              "duration": 227000000
             }
           },
           {
@@ -868,11 +868,11 @@
             "line": 21,
             "name": "I am informed that a last name is required",
             "match": {
-              "location": "src/test/common/steps/enter-name-steps.js:71"
+              "location": "src/test/common/steps/enter-name-steps.js:72"
             },
             "result": {
               "status": "passed",
-              "duration": 129000000
+              "duration": 126000000
             }
           },
           {
@@ -912,11 +912,11 @@
             "line": 7,
             "name": "I am on the enter name page",
             "match": {
-              "location": "src/test/common/steps/enter-name-steps.js:30"
+              "location": "src/test/common/steps/enter-name-steps.js:31"
             },
             "result": {
               "status": "passed",
-              "duration": 443000000
+              "duration": 435000000
             }
           },
           {
@@ -925,11 +925,11 @@
             "line": 24,
             "name": "I enter <script>window.location.href=“www.google.com”</script> and ‘;exec xp_cmdshell ‘dir’;– values",
             "match": {
-              "location": "src/test/common/steps/enter-name-steps.js:46"
+              "location": "src/test/common/steps/enter-name-steps.js:47"
             },
             "result": {
               "status": "passed",
-              "duration": 449000000
+              "duration": 414000000
             }
           },
           {
@@ -938,11 +938,11 @@
             "line": 25,
             "name": "I am shown the enter national insurance page",
             "match": {
-              "location": "src/test/common/steps/enter-name-steps.js:76"
+              "location": "src/test/common/steps/enter-name-steps.js:77"
             },
             "result": {
               "status": "passed",
-              "duration": 41000000
+              "duration": 40000000
             }
           },
           {
@@ -982,11 +982,11 @@
             "line": 7,
             "name": "I am on the enter name page",
             "match": {
-              "location": "src/test/common/steps/enter-name-steps.js:30"
+              "location": "src/test/common/steps/enter-name-steps.js:31"
             },
             "result": {
               "status": "passed",
-              "duration": 410000000
+              "duration": 400000000
             }
           },
           {
@@ -995,11 +995,11 @@
             "line": 24,
             "name": "I enter Henrietta and Fulsome-Blues values",
             "match": {
-              "location": "src/test/common/steps/enter-name-steps.js:46"
+              "location": "src/test/common/steps/enter-name-steps.js:47"
             },
             "result": {
               "status": "passed",
-              "duration": 319000000
+              "duration": 303000000
             }
           },
           {
@@ -1008,11 +1008,11 @@
             "line": 25,
             "name": "I am shown the enter national insurance page",
             "match": {
-              "location": "src/test/common/steps/enter-name-steps.js:76"
+              "location": "src/test/common/steps/enter-name-steps.js:77"
             },
             "result": {
               "status": "passed",
-              "duration": 38000000
+              "duration": 39000000
             }
           },
           {
@@ -1022,7 +1022,8 @@
               "location": "src/test/common/steps/hooks.js:14"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           }
         ]
@@ -1052,11 +1053,11 @@
             "line": 7,
             "name": "I am on the enter name page",
             "match": {
-              "location": "src/test/common/steps/enter-name-steps.js:30"
+              "location": "src/test/common/steps/enter-name-steps.js:31"
             },
             "result": {
               "status": "passed",
-              "duration": 447000000
+              "duration": 393000000
             }
           },
           {
@@ -1065,11 +1066,11 @@
             "line": 24,
             "name": "I enter Henrietta and Młynarczyk values",
             "match": {
-              "location": "src/test/common/steps/enter-name-steps.js:46"
+              "location": "src/test/common/steps/enter-name-steps.js:47"
             },
             "result": {
               "status": "passed",
-              "duration": 320000000
+              "duration": 286000000
             }
           },
           {
@@ -1078,11 +1079,11 @@
             "line": 25,
             "name": "I am shown the enter national insurance page",
             "match": {
-              "location": "src/test/common/steps/enter-name-steps.js:76"
+              "location": "src/test/common/steps/enter-name-steps.js:77"
             },
             "result": {
               "status": "passed",
-              "duration": 39000000
+              "duration": 37000000
             }
           },
           {
@@ -1092,7 +1093,8 @@
               "location": "src/test/common/steps/hooks.js:14"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           }
         ]
@@ -1113,7 +1115,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 4000000
+              "duration": 1000000
             }
           },
           {
@@ -1122,11 +1124,11 @@
             "line": 7,
             "name": "I am on the enter name page",
             "match": {
-              "location": "src/test/common/steps/enter-name-steps.js:30"
+              "location": "src/test/common/steps/enter-name-steps.js:31"
             },
             "result": {
               "status": "passed",
-              "duration": 418000000
+              "duration": 405000000
             }
           },
           {
@@ -1135,11 +1137,11 @@
             "line": 24,
             "name": "I enter Maria and Nowak values",
             "match": {
-              "location": "src/test/common/steps/enter-name-steps.js:46"
+              "location": "src/test/common/steps/enter-name-steps.js:47"
             },
             "result": {
               "status": "passed",
-              "duration": 291000000
+              "duration": 271000000
             }
           },
           {
@@ -1148,7 +1150,7 @@
             "line": 25,
             "name": "I am shown the enter national insurance page",
             "match": {
-              "location": "src/test/common/steps/enter-name-steps.js:76"
+              "location": "src/test/common/steps/enter-name-steps.js:77"
             },
             "result": {
               "status": "passed",
@@ -1194,7 +1196,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 4000000
+              "duration": 1000000
             }
           },
           {
@@ -1203,11 +1205,11 @@
             "line": 7,
             "name": "I am on the enter national insurance number page",
             "match": {
-              "location": "src/test/common/steps/enter-nino-steps.js:8"
+              "location": "src/test/common/steps/enter-nino-steps.js:9"
             },
             "result": {
               "status": "passed",
-              "duration": 399000000
+              "duration": 427000000
             }
           },
           {
@@ -1216,11 +1218,11 @@
             "line": 10,
             "name": "I enter a valid national insurance number",
             "match": {
-              "location": "src/test/common/steps/enter-nino-steps.js:12"
+              "location": "src/test/common/steps/enter-nino-steps.js:13"
             },
             "result": {
               "status": "passed",
-              "duration": 227000000
+              "duration": 290000000
             }
           },
           {
@@ -1229,11 +1231,11 @@
             "line": 11,
             "name": "the enter date of birth page is shown",
             "match": {
-              "location": "src/test/common/steps/enter-nino-steps.js:35"
+              "location": "src/test/common/steps/enter-nino-steps.js:36"
             },
             "result": {
               "status": "passed",
-              "duration": 40000000
+              "duration": 36000000
             }
           },
           {
@@ -1264,7 +1266,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 5000000
+              "duration": 1000000
             }
           },
           {
@@ -1273,11 +1275,11 @@
             "line": 7,
             "name": "I am on the enter national insurance number page",
             "match": {
-              "location": "src/test/common/steps/enter-nino-steps.js:8"
+              "location": "src/test/common/steps/enter-nino-steps.js:9"
             },
             "result": {
               "status": "passed",
-              "duration": 412000000
+              "duration": 397000000
             }
           },
           {
@@ -1286,11 +1288,11 @@
             "line": 14,
             "name": "I do not enter a national insurance number",
             "match": {
-              "location": "src/test/common/steps/enter-nino-steps.js:20"
+              "location": "src/test/common/steps/enter-nino-steps.js:21"
             },
             "result": {
               "status": "passed",
-              "duration": 194000000
+              "duration": 164000000
             }
           },
           {
@@ -1299,11 +1301,11 @@
             "line": 15,
             "name": "I am informed that the national insurance number is in the wrong format",
             "match": {
-              "location": "src/test/common/steps/enter-nino-steps.js:24"
+              "location": "src/test/common/steps/enter-nino-steps.js:25"
             },
             "result": {
               "status": "passed",
-              "duration": 126000000
+              "duration": 118000000
             }
           },
           {
@@ -1334,7 +1336,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2000000
+              "duration": 1000000
             }
           },
           {
@@ -1343,11 +1345,11 @@
             "line": 7,
             "name": "I am on the enter national insurance number page",
             "match": {
-              "location": "src/test/common/steps/enter-nino-steps.js:8"
+              "location": "src/test/common/steps/enter-nino-steps.js:9"
             },
             "result": {
               "status": "passed",
-              "duration": 397000000
+              "duration": 442000000
             }
           },
           {
@@ -1356,11 +1358,11 @@
             "line": 18,
             "name": "I enter ab123456Q as my national insurance number",
             "match": {
-              "location": "src/test/common/steps/enter-nino-steps.js:16"
+              "location": "src/test/common/steps/enter-nino-steps.js:17"
             },
             "result": {
               "status": "passed",
-              "duration": 194000000
+              "duration": 178000000
             }
           },
           {
@@ -1369,11 +1371,11 @@
             "line": 19,
             "name": "I am informed that the national insurance number is in the wrong format",
             "match": {
-              "location": "src/test/common/steps/enter-nino-steps.js:24"
+              "location": "src/test/common/steps/enter-nino-steps.js:25"
             },
             "result": {
               "status": "passed",
-              "duration": 121000000
+              "duration": 117000000
             }
           },
           {
@@ -1382,11 +1384,11 @@
             "line": 20,
             "name": "I see the value ab123456Q in the textbox",
             "match": {
-              "location": "src/test/common/steps/enter-nino-steps.js:30"
+              "location": "src/test/common/steps/enter-nino-steps.js:31"
             },
             "result": {
               "status": "passed",
-              "duration": 21000000
+              "duration": 20000000
             }
           },
           {
@@ -1396,8 +1398,7 @@
               "location": "src/test/common/steps/hooks.js:14"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
@@ -1427,11 +1428,11 @@
             "line": 7,
             "name": "I am on the enter national insurance number page",
             "match": {
-              "location": "src/test/common/steps/enter-nino-steps.js:8"
+              "location": "src/test/common/steps/enter-nino-steps.js:9"
             },
             "result": {
               "status": "passed",
-              "duration": 415000000
+              "duration": 400000000
             }
           },
           {
@@ -1440,11 +1441,11 @@
             "line": 18,
             "name": "I enter QQ123456CQQ123456C as my national insurance number",
             "match": {
-              "location": "src/test/common/steps/enter-nino-steps.js:16"
+              "location": "src/test/common/steps/enter-nino-steps.js:17"
             },
             "result": {
               "status": "passed",
-              "duration": 218000000
+              "duration": 199000000
             }
           },
           {
@@ -1453,11 +1454,11 @@
             "line": 19,
             "name": "I am informed that the national insurance number is in the wrong format",
             "match": {
-              "location": "src/test/common/steps/enter-nino-steps.js:24"
+              "location": "src/test/common/steps/enter-nino-steps.js:25"
             },
             "result": {
               "status": "passed",
-              "duration": 121000000
+              "duration": 114000000
             }
           },
           {
@@ -1466,11 +1467,11 @@
             "line": 20,
             "name": "I see the value QQ123456CQQ123456C in the textbox",
             "match": {
-              "location": "src/test/common/steps/enter-nino-steps.js:30"
+              "location": "src/test/common/steps/enter-nino-steps.js:31"
             },
             "result": {
               "status": "passed",
-              "duration": 30000000
+              "duration": 22000000
             }
           },
           {
@@ -1510,11 +1511,11 @@
             "line": 7,
             "name": "I am on the enter national insurance number page",
             "match": {
-              "location": "src/test/common/steps/enter-nino-steps.js:8"
+              "location": "src/test/common/steps/enter-nino-steps.js:9"
             },
             "result": {
               "status": "passed",
-              "duration": 409000000
+              "duration": 371000000
             }
           },
           {
@@ -1523,11 +1524,11 @@
             "line": 18,
             "name": "I enter QQ123456CQtest as my national insurance number",
             "match": {
-              "location": "src/test/common/steps/enter-nino-steps.js:16"
+              "location": "src/test/common/steps/enter-nino-steps.js:17"
             },
             "result": {
               "status": "passed",
-              "duration": 204000000
+              "duration": 195000000
             }
           },
           {
@@ -1536,11 +1537,11 @@
             "line": 19,
             "name": "I am informed that the national insurance number is in the wrong format",
             "match": {
-              "location": "src/test/common/steps/enter-nino-steps.js:24"
+              "location": "src/test/common/steps/enter-nino-steps.js:25"
             },
             "result": {
               "status": "passed",
-              "duration": 124000000
+              "duration": 117000000
             }
           },
           {
@@ -1549,11 +1550,11 @@
             "line": 20,
             "name": "I see the value QQ123456CQtest in the textbox",
             "match": {
-              "location": "src/test/common/steps/enter-nino-steps.js:30"
+              "location": "src/test/common/steps/enter-nino-steps.js:31"
             },
             "result": {
               "status": "passed",
-              "duration": 20000000
+              "duration": 21000000
             }
           },
           {
@@ -1593,11 +1594,11 @@
             "line": 7,
             "name": "I am on the enter national insurance number page",
             "match": {
-              "location": "src/test/common/steps/enter-nino-steps.js:8"
+              "location": "src/test/common/steps/enter-nino-steps.js:9"
             },
             "result": {
               "status": "passed",
-              "duration": 454000000
+              "duration": 431000000
             }
           },
           {
@@ -1606,11 +1607,11 @@
             "line": 18,
             "name": "I enter testQQ123456CQ as my national insurance number",
             "match": {
-              "location": "src/test/common/steps/enter-nino-steps.js:16"
+              "location": "src/test/common/steps/enter-nino-steps.js:17"
             },
             "result": {
               "status": "passed",
-              "duration": 215000000
+              "duration": 195000000
             }
           },
           {
@@ -1619,11 +1620,11 @@
             "line": 19,
             "name": "I am informed that the national insurance number is in the wrong format",
             "match": {
-              "location": "src/test/common/steps/enter-nino-steps.js:24"
+              "location": "src/test/common/steps/enter-nino-steps.js:25"
             },
             "result": {
               "status": "passed",
-              "duration": 119000000
+              "duration": 116000000
             }
           },
           {
@@ -1632,7 +1633,7 @@
             "line": 20,
             "name": "I see the value testQQ123456CQ in the textbox",
             "match": {
-              "location": "src/test/common/steps/enter-nino-steps.js:30"
+              "location": "src/test/common/steps/enter-nino-steps.js:31"
             },
             "result": {
               "status": "passed",
@@ -1677,8 +1678,7 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed",
-              "duration": 2000000
+              "status": "passed"
             }
           },
           {
@@ -1691,7 +1691,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 391000000
+              "duration": 399000000
             }
           },
           {
@@ -1704,7 +1704,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 35000000
+              "duration": 33000000
             }
           },
           {
@@ -1748,7 +1748,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 427000000
+              "duration": 433000000
             }
           },
           {
@@ -1757,11 +1757,11 @@
             "line": 12,
             "name": "I enter a valid national insurance number",
             "match": {
-              "location": "src/test/common/steps/enter-nino-steps.js:12"
+              "location": "src/test/common/steps/enter-nino-steps.js:13"
             },
             "result": {
               "status": "passed",
-              "duration": 234000000
+              "duration": 218000000
             }
           },
           {
@@ -1816,7 +1816,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1000000
+              "duration": 3000000
             }
           },
           {
@@ -1829,7 +1829,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 421000000
+              "duration": 400000000
             }
           },
           {
@@ -1842,7 +1842,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 108000000
+              "duration": 113000000
             }
           },
           {
@@ -1855,7 +1855,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 40000000
+              "duration": 41000000
             }
           },
           {
