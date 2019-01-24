@@ -13,28 +13,6 @@ const config = {
   }
 }
 
-test('successful post clears the session and redirects', async (t) => {
-  const destroy = sinon.spy()
-  const redirect = sinon.spy()
-  const req = {
-    session: {
-      destroy
-    }
-  }
-  const res = { redirect }
-  const next = {}
-
-  post.returns(Promise.resolve())
-
-  try {
-    await postCheck(config)(req, res, next)
-    t.equal(destroy.called, true)
-    t.end()
-  } catch (error) {
-    t.fail(error)
-  }
-})
-
 test('unsuccessful post calls next with error', async (t) => {
   const req = {}
   const res = {}

@@ -4,8 +4,8 @@ const pageContent = {
 }
 
 const getConfirmPage = (req, res) => {
-  res.clearCookie('lang')
   req.session.destroy()
+  res.clearCookie('lang')
   res.render('confirm', pageContent)
 }
 
@@ -14,5 +14,6 @@ const registerConfirmRoute = (app) => {
 }
 
 module.exports = {
-  registerConfirmRoute
+  registerConfirmRoute,
+  getConfirmPage
 }
