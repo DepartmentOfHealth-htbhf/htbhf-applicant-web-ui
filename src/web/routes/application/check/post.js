@@ -13,7 +13,6 @@ const postCheck = (config) => async (req, res, next) => {
       }
     })
 
-    req.session.destroy()
     return res.redirect('confirm')
   } catch (error) {
     console.log(error.error)
