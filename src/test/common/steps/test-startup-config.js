@@ -7,9 +7,10 @@ const DriverManager = require('../driver/driver-manager')
 const BrowserStackDriverManager = require('../../compatibility/driver/browserstack-driver')
 
 const TEST_CONFIG = {
-  'acceptance': { 'url': ACCEPTANCE_BASE_URL, 'driver': new DriverManager() },
-  'compatibility': { 'url': COMPATIBILITY_BASE_URL, 'driver': new BrowserStackDriverManager() },
-  'smoke': { 'url': SMOKE_BASE_URL, 'driver': new DriverManager() }
+  smoke: { 'url': SMOKE_BASE_URL, 'driver': new DriverManager() },
+  acceptance: { 'url': ACCEPTANCE_BASE_URL, 'driver': new DriverManager() },
+  localCompatibility: { 'url': ACCEPTANCE_BASE_URL, 'driver': new DriverManager() },
+  compatibility: { 'url': COMPATIBILITY_BASE_URL, 'driver': new BrowserStackDriverManager() }
 }
 
 module.exports.URL = TEST_CONFIG[process.env.TESTS].url
