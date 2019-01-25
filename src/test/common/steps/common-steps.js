@@ -32,6 +32,15 @@ async function enterDateOfBirth (day, month, year) {
   }
 }
 
+async function selectYesOnPregnancyPage () {
+  try {
+    await pages.areYouPregnant.selectRadioButton('yes')
+    await pages.areYouPregnant.submitForm()
+  } catch (error) {
+    assert.fail(`Unexpected error caught trying to select 'Yes' for 'Are you pregnant?' and submit the page - ${error}`)
+  }
+}
+
 async function assertErrorHeaderTextPresent (page) {
   try {
     await page.waitForPageLoad()
@@ -46,5 +55,6 @@ module.exports = {
   enterDateOfBirth,
   enterNameAndSubmit,
   enterNinoAndSubmit,
+  selectYesOnPregnancyPage,
   assertErrorHeaderTextPresent
 }

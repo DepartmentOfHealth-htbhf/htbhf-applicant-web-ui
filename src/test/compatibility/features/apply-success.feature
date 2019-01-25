@@ -6,4 +6,4 @@ Feature:
   Scenario: Valid application details can be checked
     Given I am on the first page of the application
     When I complete the application with valid details
-    Then the are you pregnant page is shown
+    Then I am shown the check details page
