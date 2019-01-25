@@ -1,6 +1,6 @@
 require('dotenv').config()
 
-const { ACCEPTANCE_BASE_URL } = require('../../acceptance/config/constants')
+const { LOCAL_BASE_URL } = require('../../acceptance/config/constants')
 const { COMPATIBILITY_BASE_URL } = require('../../compatibility/config/constants')
 const { SMOKE_BASE_URL } = require('../../smoke/config/environment')
 const DriverManager = require('../driver/driver-manager')
@@ -8,8 +8,8 @@ const BrowserStackDriverManager = require('../../compatibility/driver/browsersta
 
 const TEST_CONFIG = {
   smoke: { 'url': SMOKE_BASE_URL, 'driver': new DriverManager() },
-  acceptance: { 'url': ACCEPTANCE_BASE_URL, 'driver': new DriverManager() },
-  localCompatibility: { 'url': ACCEPTANCE_BASE_URL, 'driver': new DriverManager() },
+  acceptance: { 'url': LOCAL_BASE_URL, 'driver': new DriverManager() },
+  localCompatibility: { 'url': LOCAL_BASE_URL, 'driver': new DriverManager() },
   compatibility: { 'url': COMPATIBILITY_BASE_URL, 'driver': new BrowserStackDriverManager() }
 }
 
