@@ -1,3 +1,5 @@
+const { validate } = require('./validate')
+
 const pageContent = ({ translate }) => ({
   title: translate('areYouPregnant.title'),
   heading: translate('areYouPregnant.heading'),
@@ -11,7 +13,8 @@ const areYouPregnant = {
   path: '/are-you-pregnant',
   next: '/check',
   template: 'are-you-pregnant',
-  pageContent
+  pageContent,
+  validate
 }
 
 module.exports = {
