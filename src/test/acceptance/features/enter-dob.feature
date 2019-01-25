@@ -22,7 +22,7 @@ Feature:
 
   Scenario Outline: Enter a valid date of birth
     When I enter my date of birth as day: <day>, month: <month> and year: <year>
-    Then the check your details page is shown
+    Then the are you pregnant page is shown
     Examples:
       | day | month | year |
       | 30  | 12    | 1980 |

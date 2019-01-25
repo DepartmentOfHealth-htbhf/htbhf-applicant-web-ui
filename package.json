@@ -1,7 +1,7 @@
 {
   "name": "htbhf-applicant-web-ui",
   "version_notice": "Patch versions are incremented by Travis (in tag_version.sh via .travis.yml) - never manually increment the patch version",
-  "version": "0.1.44",
+  "version": "0.1.47",
   "description": "",
   "main": "index.js",
   "engines": {
@@ -14,11 +14,13 @@
     "test:lint": "standard",
     "test:unit": "nyc tape -r './src/test/unit/setup' 'src/@(web|config)/**/*.test.js'",
     "test:acceptance": "mkdir -p build/reports && cross-env TESTS=acceptance cucumber-js src/test/acceptance/features/ --require 'src/test/common/steps/*.js' --require 'src/test/acceptance/config' -f json:build/reports/acceptance-report.json",
+    "test:acceptance:debug": "mkdir -p build/reports && cross-env TESTS=acceptance node $NODE_DEBUG_OPTION node_modules/cucumber/bin/cucumber-js src/test/acceptance/features/ --require 'src/test/common/steps/*.js' --require 'src/test/acceptance/config' -f json:build/reports/acceptance-report.json",
     "test:acceptance:report": "node src/test/acceptance/acceptance-report.js",
     "test:smoke": "npm-run-all -s test:smoke:test test:smoke:report",
     "test:smoke:test": "mkdir -p build/reports && cross-env TESTS=smoke cucumber-js src/test/smoke/features/ --require 'src/test/common/steps/*.js' --require 'src/test/smoke/config' -f json:build/reports/smoke-report.json",
     "test:smoke:report": "node src/test/smoke/smoke-report.js",
     "test:compatibility": "mkdir -p build/reports && cross-env TESTS=compatibility grunt compatibility",
+    "test:compatibility:debug": "cross-env TESTS=compatibility node $NODE_DEBUG_OPTION node_modules/cucumber/bin/cucumber-js src/test/compatibility/features/ --require 'src/test/common/steps/*.js' --require 'src/test/compatibility/config' -f json:build/reports/compatibility-report.json",
     "test:compatibility:report": "node src/test/compatibility/compatibility-report.js",
     "test:accessibility": "node 'src/test/a11y/test-suite.js'",
     "test:browser": "npm run test:wait && npm-run-all -s test:smoke test:accessibility test:acceptance test:acceptance:report",
