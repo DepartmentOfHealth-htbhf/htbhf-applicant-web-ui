@@ -5,7 +5,7 @@
 {% block formContent %}
     {{ govukRadios({
       id: "are-you-pregnant",
-      name: "are-you-pregnant",
+      name: "areYouPregnant",
       fieldset: {
         legend: {
           text: heading,
@@ -13,14 +13,17 @@
           classes: "govuk-fieldset__legend--xl"
         }
       },
+      errorMessage: errors | getErrorForField('areYouPregnant'),
       items: [
         {
-          value: yes,
-          text: yes
+          value: "yes",
+          text: yes,
+          checked : claim.areYouPregnant === "yes"
         },
         {
-          value: yes,
-          text: no
+          value: "no",
+          text: no,
+          checked : claim.areYouPregnant === "no"
         }
       ]
     }) }}
