@@ -1,7 +1,7 @@
 {
   "name": "htbhf-applicant-web-ui",
   "version_notice": "Patch versions are incremented by Travis (in tag_version.sh via .travis.yml) - never manually increment the patch version",
-  "version": "0.1.50",
+  "version": "0.1.52",
   "description": "",
   "main": "index.js",
   "engines": {
@@ -22,8 +22,11 @@
     "test:compatibility": "mkdir -p build/reports && cross-env TESTS=compatibility grunt compatibility",
     "test:compatibility:debug": "cross-env TESTS=compatibility node $NODE_DEBUG_OPTION node_modules/cucumber/bin/cucumber-js src/test/compatibility/features/ --require 'src/test/common/steps/*.js' --require 'src/test/compatibility/config' -f json:build/reports/compatibility-report.json",
     "test:compatibility:report": "node src/test/compatibility/compatibility-report.js",
+    "test:compatibility:local": "npm-run-all -s test:compatibility:local:test test:compatibility:local:report",
+    "test:compatibility:local:test": "mkdir -p build/reports && cross-env TESTS=localCompatibility cucumber-js src/test/compatibility/features/ --require 'src/test/common/steps/*.js' --require 'src/test/compatibility/config' -f json:build/reports/compatibility-report.json",
+    "test:compatibility:local:report": "node src/test/compatibility/compatibility-report.js",
     "test:accessibility": "node 'src/test/a11y/test-suite.js'",
-    "test:browser": "npm run test:wait && npm-run-all -s test:smoke test:accessibility test:acceptance test:acceptance:report",
+    "test:browser": "npm run test:wait && npm-run-all -s test:smoke test:accessibility test:compatibility:local test:acceptance test:acceptance:report",
     "test:wait": "./npm_scripts/wait_for_app_to_start.sh",
     "coverage": "nyc report --reporter=lcov --reporter=text-lcov > coverage.lcov && codecov",
     "build": "npm run build:sass",

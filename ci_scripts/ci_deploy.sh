@@ -34,6 +34,7 @@ rm -rf DepartmentOfHealth-htbhf-htbhf-deployment-scripts-*
 rm deployment-scripts.zip
 
 export SCRIPT_DIR=${BIN_DIR}/deployment-scripts
+export APP_VERSION=$(sed -nE 's/^[ \\t]*"version": "([0-9]{1,}\.[0-9]{1,}\.[0-9x]{1,})",$/\1/p' package.json;)
 
 # run the deployment script
 /bin/bash ${SCRIPT_DIR}/deploy.sh

@@ -1,9 +1,9 @@
 Feature:
   In order to apply for the HTBHF programme
   As a potential claimant
-  I want to enter my name
+  I want to enter my details and complete the application journey
 
-  Scenario: Valid first name and last name form submission
-    Given I am on the enter name page
-    When I enter a valid set of details
-    Then the check your details page is shown
+  Scenario: Valid application details can be checked
+    Given I am on the first page of the application
+    When I complete the application with valid details
+    Then the are you pregnant page is shown
