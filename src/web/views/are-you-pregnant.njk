@@ -1,0 +1,30 @@
+{% extends "templates/form.njk" %}
+{% from "error-summary/macro.njk" import govukErrorSummary %}
+{% from "fieldset/macro.njk" import govukFieldset %}
+{% from "radios/macro.njk" import govukRadios %}
+
+{% set errorClass = ' govuk-input--error' if errors else '' %}
+
+{% block formContent %}
+    {{ govukRadios({
+      id: "are-you-pregnant",
+      name: "are-you-pregnant",
+      fieldset: {
+        legend: {
+          text: heading,
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--xl"
+        }
+      },
+      items: [
+        {
+          value: yes,
+          text: yes
+        },
+        {
+          value: yes,
+          text: no
+        }
+      ]
+    }) }}
+{% endblock %}
