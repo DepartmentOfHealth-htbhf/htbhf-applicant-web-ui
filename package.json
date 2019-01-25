@@ -14,6 +14,7 @@
     "test:lint": "standard",
     "test:unit": "nyc tape -r './src/test/unit/setup' 'src/@(web|config)/**/*.test.js'",
     "test:acceptance": "mkdir -p build/reports && cross-env TESTS=acceptance cucumber-js src/test/acceptance/features/ --require 'src/test/common/steps/*.js' --require 'src/test/acceptance/config' -f json:build/reports/acceptance-report.json",
+    "test:acceptance:debug": "mkdir -p build/reports && cross-env TESTS=acceptance node $NODE_DEBUG_OPTION node_modules/cucumber/bin/cucumber-js src/test/acceptance/features/ --require 'src/test/common/steps/*.js' --require 'src/test/acceptance/config' -f json:build/reports/acceptance-report.json",
     "test:acceptance:report": "node src/test/acceptance/acceptance-report.js",
     "test:smoke": "npm-run-all -s test:smoke:test test:smoke:report",
     "test:smoke:test": "mkdir -p build/reports && cross-env TESTS=smoke cucumber-js src/test/smoke/features/ --require 'src/test/common/steps/*.js' --require 'src/test/smoke/config' -f json:build/reports/smoke-report.json",

@@ -13,7 +13,7 @@ const pageContent = ({ translate }) => ({
 
 const enterDob = {
   path: '/enter-dob',
-  next: '/check',
+  next: '/are-you-pregnant',
   template: 'enter-dob',
   pageContent,
   validate
