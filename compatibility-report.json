@@ -24,7 +24,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 16000000
+              "duration": 14000000
             }
           },
           {
@@ -37,7 +37,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 497000000
+              "duration": 523000000
             }
           },
           {
@@ -50,16 +50,16 @@
             },
             "result": {
               "status": "passed",
-              "duration": 858000000
+              "duration": 1012000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
             "line": 9,
-            "name": "the are you pregnant page is shown",
+            "name": "I am shown the check details page",
             "match": {
-              "location": "src/test/common/steps/enter-dob-steps.js:15"
+              "location": "src/test/common/steps/are-you-pregnant.js:33"
             },
             "result": {
               "status": "passed",
