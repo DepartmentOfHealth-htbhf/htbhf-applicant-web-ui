@@ -17,7 +17,7 @@ const BROWSER_STACK_URL = 'https://hub-cloud.browserstack.com/wd/hub'
  */
 class BrowserstackDriver extends DriverManager {
   initialise () {
-    setDefaultTimeout(30 * 1000)
+    setDefaultTimeout(60 * 1000)
     this.driver = new webdriver.Builder()
       .withCapabilities({
         'browserName': process.env.BROWSER_STACK_BROWSER,
