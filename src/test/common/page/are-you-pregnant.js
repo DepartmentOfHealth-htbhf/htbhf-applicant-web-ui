@@ -19,7 +19,9 @@ class AreYouPregnant extends DataEntryPage {
 
   async selectRadioButton (option) {
     const radioButton = await this.getRadioButton(option)
-    await radioButton.click()
+    const div = await radioButton.findElement(webdriver.By.xpath('..'))
+    const label = await div.findElement(webdriver.By.className('govuk-radios__label'))
+    await label.click()
   }
 
   async getRadioButton (option) {
