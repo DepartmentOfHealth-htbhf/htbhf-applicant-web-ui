@@ -1,6 +1,6 @@
 'use strict'
 
-const Page = require('./page')
+const DataEntryPage = require('./data-entry-page')
 
 const PAGE_TITLES = {
   en: 'GOV.UK - What is your name?',
@@ -18,7 +18,7 @@ const LAST_NAME_ERROR_SELECTOR = 'span#last-name-error'
 /**
  * Page object for EnterName page where the name is entered.
  */
-class EnterName extends Page {
+class EnterName extends DataEntryPage {
   async getFirstNameField () {
     return this.findById('first-name')
   }
@@ -37,10 +37,6 @@ class EnterName extends Page {
     return lastNameField.getAttribute('value')
   }
 
-  async getSubmitButton () {
-    return this.findByClassName('govuk-button')
-  }
-
   async enterFirstName (name) {
     const nameField = await this.getFirstNameField()
     return nameField.sendKeys(name)
@@ -49,16 +45,6 @@ class EnterName extends Page {
   async enterLastName (name) {
     const nameField = await this.getLastNameField()
     return nameField.sendKeys(name)
-  }
-
-  async submitForm () {
-    const submitButton = await this.getSubmitButton()
-    await submitButton.click()
-  }
-
-  async isConfirmationDisplayed () {
-    const confirm = await this.findByCSS('[value="Confirm submission"]')
-    return confirm.isDisplayed()
   }
 
   async open (baseURL) {
