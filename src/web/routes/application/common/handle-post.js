@@ -2,15 +2,15 @@ const httpStatus = require('http-status-codes')
 const { validationResult } = require('express-validator/check')
 
 const handlePost = (req, res, next) => {
-  const errors = validationResult(req)
-
-  if (!errors.isEmpty()) {
-    res.locals.errors = errors.array()
-    res.locals.claim = req.body
-    return next()
-  }
-
   try {
+    const errors = validationResult(req)
+
+    if (!errors.isEmpty()) {
+      res.locals.errors = errors.array()
+      res.locals.claim = req.body
+      return next()
+    }
+
     req.session.claim = {
       ...req.session.claim,
       ...req.body
