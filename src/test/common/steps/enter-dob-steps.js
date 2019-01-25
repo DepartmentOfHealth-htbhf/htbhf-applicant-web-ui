@@ -12,8 +12,8 @@ When(/^I enter my date of birth as day: (.*), month: (.*) and year: (.*)$/, asyn
   return enterDateOfBirth(day, month, year)
 })
 
-Then(/^the check your details page is shown$/, async function () {
-  await pages.check.waitForPageLoad()
+Then(/^the are you pregnant page is shown$/, async function () {
+  await pages.areYouPregnant.waitForPageLoad()
 })
 
 Then(/^I am informed that a valid date of birth is required$/, async function () {
