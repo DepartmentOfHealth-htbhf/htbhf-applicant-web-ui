@@ -1,23 +1,25 @@
 language: node_js
 node_js:
-  - "10.10"
+- '10.10'
 
 cache: npm
 
 services:
-  - redis-server
+- redis-server
 
 dist: trusty
+
 addons:
   chrome: stable
+
 before_install:
-  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
-  - npm install -g standard tape nyc
+- google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
+- npm install -g standard tape nyc
 
 deploy:
   provider: pages
   skip-cleanup: true
-  github-token: $GH_WRITE_TOKEN
+  github-token: "$GH_WRITE_TOKEN"
   keep-history: true
   on:
     branch: master
@@ -26,21 +28,25 @@ deploy:
 #don't build tags
 branches:
   except:
-    - /^v\d/
+  - /^v\d/
 
 script: npm test && ./ci_scripts/ci_deploy.sh
 
 after_success:
-  - ./ci_scripts/tag_version.sh
-  - test $TRAVIS_BRANCH = "master" && test $TRAVIS_PULL_REQUEST = "false" && ${BIN_DIR}/deployment-scripts/trigger_node_cd_build.sh
-  - test $TRAVIS_BRANCH = "master" && test $TRAVIS_PULL_REQUEST = "false" && npm run coverage
-  - cp src/documentation/gh-pages/index.html build/reports
+- "./ci_scripts/tag_version.sh"
+- test $TRAVIS_BRANCH = "master" && test $TRAVIS_PULL_REQUEST = "false" && ${BIN_DIR}/deployment-scripts/trigger_node_cd_build.sh
+- test $TRAVIS_BRANCH = "master" && test $TRAVIS_PULL_REQUEST = "false" && npm run coverage
+- cp src/documentation/gh-pages/index.html build/reports
 
 env:
   global:
-    - APP_PATH=.
-    - APP_NAME=help-to-buy-healthy-foods
-    - PORT=8080
-    - SESSION_SECRET=notsosecret
-    - SMOKE_TESTS=./ci_scripts/smoke_tests.sh
-    - BIN_DIR=./bin
+  - APP_PATH=.
+  - APP_NAME=help-to-buy-healthy-foods
+  - PORT=8080
+  - SESSION_SECRET=notsosecret
+  - SMOKE_TESTS=./ci_scripts/smoke_tests.sh
+  - BIN_DIR=./bin
+
+notifications:
+  slack:
+    secure: h1U91gLb+0p5j9Mky43WUIvYvhlThTFdkX5o4JqOSNfFrAIlpRRZTf9pdFtdwz3d1lqMF0A8heVAja5o68PYlRzfHws5yVfbKYRkJXDNOxIDG5/TW0EO375dKoGq3tGEXUb4GTkFQcO888lfsVWbWh1N1miPBbrPh7yLszmo+Hq8YawmrvsQPIXDbaNORoccBzyFZFdL/lHoH0rFyOH5VOJKuh5VnWomNzMLNx/Yfbz659591as8syx6LFJ7hWY41Gq+9pYm5dXZmjSjGDxIMFyMOWOshnujB3W8WI8cHdhs5aaYs6fycp8COIhIDOIFd87TvGsi5OrCQx5bdHXjTslJyULiWDsECmydxE4amaHRoWyiM+mkGbCrVeiuE1Cbz9i2/cT5MBYd15/aAgPFqdcMobdzoxEL4LK7/pMVgTA06naP3kq9l6KPuMS4MyKa5U5tDyNd7TpcdJqiDM1pQZcUZjtwEHVQgvhc7E6JPWf2l+wQN+czQOTlsuIReiHy3I8YOaMlhS3Bevq7frfYa7YIqOVuk6nZu52Qe+GqsnZEwCQ2NgWsm7HdCQ04zlzhorj2kza07JxzoJhGXnW9uEsltlxxGGMwWBu3YKYi/73OmToH0E28LK1p6rzjB2kb/36wDSAWtFpTXzOwlL2aga5pYXRmzWan9kyWZhrxDso=
