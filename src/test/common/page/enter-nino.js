@@ -1,6 +1,6 @@
 'use strict'
 
-const Page = require('./page')
+const DataEntryPage = require('./data-entry-page')
 
 const PAGE_TITLES = {
   en: 'GOV.UK - What is your National Insurance number?',
@@ -17,7 +17,7 @@ const NINO_ERROR_ID = 'nino-error'
 /**
  * Page object for EnterNino page where the name is entered.
  */
-class EnterNino extends Page {
+class EnterNino extends DataEntryPage {
   async waitForPageLoad (lang = 'en') {
     return super.waitForPageLoad(PAGE_HEADINGS[lang], PAGE_TITLES[lang])
   }
@@ -39,15 +39,6 @@ class EnterNino extends Page {
   async getNinoValue () {
     const nino = await this.getNinoField()
     return nino.getAttribute('value')
-  }
-
-  async submitForm () {
-    const submitButton = await this.getSubmitButton()
-    await submitButton.click()
-  }
-
-  async getSubmitButton () {
-    return this.findByClassName('govuk-button')
   }
 
   async getNinoError () {

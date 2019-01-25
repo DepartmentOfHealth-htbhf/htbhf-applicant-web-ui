@@ -1,6 +1,6 @@
 'use strict'
 
-const Page = require('./page')
+const DataEntryPage = require('./data-entry-page')
 
 const PAGE_TITLES = {
   en: 'GOV.UK - What is your date of birth?',
@@ -17,7 +17,7 @@ const DATE_OF_BIRTH_ERROR_SELECTOR = 'a[href="#date-of-birth-error"]'
 /**
  * Page object for EnterDOB page where the name is entered.
  */
-class EnterDOB extends Page {
+class EnterDOB extends DataEntryPage {
   async open (baseURL) {
     await super.open(`${baseURL}/enter-dob`)
     return this.waitForPageLoad()
@@ -52,15 +52,6 @@ class EnterDOB extends Page {
   async enterYear (year) {
     const yearField = await this.getYearField()
     return yearField.sendKeys(year)
-  }
-
-  async getSubmitButton () {
-    return this.findByClassName('govuk-button')
-  }
-
-  async submitForm () {
-    const submitButton = await this.getSubmitButton()
-    await submitButton.click()
   }
 
   async getDateOfBirthError () {
