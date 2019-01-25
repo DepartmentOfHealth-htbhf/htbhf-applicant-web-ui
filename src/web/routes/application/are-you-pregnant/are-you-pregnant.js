@@ -3,8 +3,8 @@ const pageContent = ({ translate }) => ({
   heading: translate('areYouPregnant.heading'),
   areYouPregnantLabel: translate('areYouPregnant.areYouPregnantLabel'),
   buttonText: translate('buttons:continue'),
-  yes: translate('common:yes'),
-  no: translate('common:no')
+  yes: translate('yes'),
+  no: translate('no')
 })
 
 const areYouPregnant = {

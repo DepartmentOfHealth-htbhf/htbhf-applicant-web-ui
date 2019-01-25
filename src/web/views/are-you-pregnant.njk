@@ -3,8 +3,6 @@
 {% from "fieldset/macro.njk" import govukFieldset %}
 {% from "radios/macro.njk" import govukRadios %}
 
-{% set errorClass = ' govuk-input--error' if errors else '' %}
-
 {% block formContent %}
     {{ govukRadios({
       id: "are-you-pregnant",
