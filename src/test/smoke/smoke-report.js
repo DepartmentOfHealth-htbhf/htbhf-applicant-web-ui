@@ -5,6 +5,7 @@ const options = {
   jsonFile: 'build/reports/smoke-report.json',
   output: 'build/reports/smoke-report.html',
   reportSuiteAsScenarios: true,
+  brandTitle: 'Smoke Tests',
   launchReport: false
 }
 
