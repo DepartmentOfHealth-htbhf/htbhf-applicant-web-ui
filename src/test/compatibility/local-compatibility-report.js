@@ -2,10 +2,10 @@ const reporter = require('cucumber-html-reporter')
 
 const options = {
   theme: 'bootstrap',
-  jsonFile: 'build/reports/smoke-report.json',
-  output: 'build/reports/smoke-report.html',
+  jsonFile: 'build/reports/compatibility-report.json',
+  output: 'build/reports/compatibility-report.html',
   reportSuiteAsScenarios: true,
-  brandTitle: 'Smoke Test',
+  brandTitle: 'Compatibility Tests',
   launchReport: false
 }
 

@@ -1,11 +1,12 @@
-const reporter = require('cucumber-html-reporter')
+const reporter = require('multiple-cucumber-html-reporter')
 
 const options = {
   theme: 'bootstrap',
   jsonDir: 'build/reports/compatibility',
-  output: 'build/reports/compatibility-report.html',
+  reportPath: 'build/reports/compatibility-report',
   reportSuiteAsScenarios: true,
-  brandTitle: 'Compatibility Tests',
+  pageTitle: 'Compatibility Tests',
+  reportName: 'Compatibility Tests',
   launchReport: false
 }
 

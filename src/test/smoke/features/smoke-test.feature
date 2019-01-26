@@ -1,4 +1,4 @@
-Feature:
+Feature: Smoke test
   In order facilitate the beta HTBHF programme
   As the continuous delivery pipeline
   I want know that a new release has deployed correctly and is functional

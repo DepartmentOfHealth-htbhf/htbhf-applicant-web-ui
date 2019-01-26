@@ -1,4 +1,4 @@
-Feature:
+Feature: Enter National Insurance number
   In order to apply for the HTBHF programme
   As a potential claimant
   I want to enter my national insurance number

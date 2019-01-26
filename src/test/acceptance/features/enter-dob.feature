@@ -1,4 +1,4 @@
-Feature:
+Feature: Date of birth
   In order to apply for the HTBHF programme
   As a potential claimant
   I want to enter my date of birth
