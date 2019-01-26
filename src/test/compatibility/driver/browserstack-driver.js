@@ -47,6 +47,7 @@ class BrowserstackDriver extends DriverManager {
     const name = scenario.pickle.name
     const status = (scenario.result.status === Status.PASSED) ? 'passed' : 'failed'
     const reason = (status === 'failed') ? scenario.result.exception : ''
+    scenario.pickle.sessionID = sessionID
 
     request({
       uri: `https://${BROWSER_STACK_USER}:${BROWSER_STACK_KEY}@api.browserstack.com/automate/sessions/${sessionID}.json`,

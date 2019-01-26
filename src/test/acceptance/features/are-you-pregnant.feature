@@ -1,4 +1,4 @@
-Feature:
+Feature: Are you pregnant?
   In order to apply for the HTBHF programme
   As a potential claimant
   I want to select whether or not I am pregnant

@@ -1,4 +1,4 @@
-Feature:
+Feature: Temporary overview page
   In order to facilitate the beta HTBHF programme
   As a potential claimant
   I want to see the temporary overview page before I start the application process
