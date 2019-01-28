@@ -33,11 +33,11 @@
             "line": 7,
             "name": "I am on the first page of the application",
             "match": {
-              "location": "src/test/common/steps/complete-flow.js:9"
+              "location": "src/test/common/steps/complete-flow.js:15"
             },
             "result": {
               "status": "passed",
-              "duration": 515000000
+              "duration": 459000000
             }
           },
           {
@@ -46,11 +46,11 @@
             "line": 8,
             "name": "I complete the application with valid details",
             "match": {
-              "location": "src/test/common/steps/complete-flow.js:13"
+              "location": "src/test/common/steps/complete-flow.js:19"
             },
             "result": {
               "status": "passed",
-              "duration": 1112000000
+              "duration": 1467000000
             }
           },
           {
@@ -59,11 +59,11 @@
             "line": 9,
             "name": "I am shown the check details page",
             "match": {
-              "location": "src/test/common/steps/are-you-pregnant.js:33"
+              "location": "src/test/common/steps/complete-flow.js:27"
             },
             "result": {
               "status": "passed",
-              "duration": 4000000
+              "duration": 5000000
             }
           },
           {
@@ -73,7 +73,8 @@
               "location": "src/test/common/steps/hooks.js:14"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 3000000
             }
           }
         ]
