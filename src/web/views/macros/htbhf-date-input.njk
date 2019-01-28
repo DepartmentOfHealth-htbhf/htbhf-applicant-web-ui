@@ -6,6 +6,7 @@
 
   params:
   fieldNamePrefix: string
+  claim: object (associates user entered values with date fields)
   errors: array (provided by express-validator)
   legend: object (see govukDateInput macro params)
   hint: object (see govukDateInput macro params)
@@ -19,21 +20,21 @@
     name: 'day',
     label: dayLabel,
     classes: 'govuk-input--width-2' + errorClass,
-    value: claim[params.fieldNamePrefix + '-day']
+    value: params.claim[params.fieldNamePrefix + '-day']
   },
   {
     id: 'month',
     name: 'month',
     label: monthLabel,
     classes: 'govuk-input--width-2' + errorClass,
-    value: claim[params.fieldNamePrefix + '-month']
+    value: params.claim[params.fieldNamePrefix + '-month']
   },
   {
     id: 'year',
     name: 'year',
     label: yearLabel,
     classes: 'govuk-input--width-4' + errorClass,
-    value: claim[params.fieldNamePrefix + '-year']
+    value: params.claim[params.fieldNamePrefix + '-year']
   }
 ] %}
 
