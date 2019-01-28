@@ -30,6 +30,15 @@
     "expectedDeliveryDateText": "When is your baby due to be born?",
     "expectedDeliveryDateHint": "For example, 31 3 2019"
   },
+  "cardAddress": {
+    "title": "What is your address?",
+    "heading": "What is your address?",
+    "buildingAndStreetLabel": "Building and street",
+    "buildingAndStreetLine1of2": "line 1 of 2",
+    "buildingAndStreetLine2of2": "Building and street line 2 of 2",
+    "townOrCityLabel": "Town or city",
+    "postcodeLabel": "Postcode"
+  },
   "yes": "Yes",
   "no": "No"
 }

@@ -1,6 +1,12 @@
-const { Given, When } = require('cucumber')
+const { Given, When, Then } = require('cucumber')
 
-const { selectYesOnPregnancyPage, enterNameAndSubmit, enterNinoAndSubmit, enterDateOfBirth } = require('./common-steps')
+const {
+  selectYesOnPregnancyPage,
+  enterNameAndSubmit,
+  enterNinoAndSubmit,
+  enterDateOfBirth,
+  enterCardAddress
+} = require('./common-steps')
 
 const pages = require('./pages')
 
@@ -15,4 +21,9 @@ When(/^I complete the application with valid details$/, async function () {
   await enterNinoAndSubmit(VALID_NINO)
   await enterDateOfBirth('30', '12', '1980')
   await selectYesOnPregnancyPage()
+  await enterCardAddress('Flat b', '123 Fake street', 'Springfield', 'AA11BB')
+})
+
+Then(/^I am shown the check details page$/, async function () {
+  await pages.check.waitForPageLoad()
 })

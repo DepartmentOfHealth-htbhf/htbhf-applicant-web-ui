@@ -41,6 +41,18 @@ async function selectYesOnPregnancyPage () {
   }
 }
 
+async function enterCardAddress (addressLine1, addressLine2, townOrCity, postcode) {
+  try {
+    await pages.cardAddress.enterAddressLine1(addressLine1)
+    await pages.cardAddress.enterAddressLine2(addressLine2)
+    await pages.cardAddress.enterTownOrCity(townOrCity)
+    await pages.cardAddress.enterPostcode(postcode)
+    await pages.cardAddress.submitForm()
+  } catch (error) {
+    assert.fail(`Unexpected error caught trying to enter card address and submit the page - ${error}`)
+  }
+}
+
 async function assertErrorHeaderTextPresent (page) {
   try {
     await page.waitForPageLoad()
@@ -56,5 +68,6 @@ module.exports = {
   enterNameAndSubmit,
   enterNinoAndSubmit,
   selectYesOnPregnancyPage,
+  enterCardAddress,
   assertErrorHeaderTextPresent
 }
