@@ -5,12 +5,13 @@
 {% set eddHtml %}
 {{ htbhfDateInput({
   fieldNamePrefix: "expectedDeliveryDate",
+  claim: claim,
   errors: errors,
   legend: {
-    text: expectedDateOfDeliveryText
+    text: expectedDeliveryDateText
   },
   hint: {
-    text: expectedDateOfDeliveryHint
+    text: expectedDeliveryDateHint
   }
 }) }}
 {% endset -%}
