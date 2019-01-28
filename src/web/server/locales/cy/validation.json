@@ -6,5 +6,7 @@
   "invalidNino": "Dictum fusce ut placerat orci nulla pellentesque",
   "lastNameTooLong": "Interdum velit laoreet id donec ultrices tincidunt",
   "missingLastName": "Sed nisi lacus sed viverra tellus in",
-  "selectYesOrNo": "Dui id ornare arcu odio"
+  "selectYesOrNo": "Dui id ornare arcu odio",
+  "expectedDeliveryDateInvalidTooFarInPast": "Dictum fusce ut placerat orci nulla pellentesqu",
+  "expectedDeliveryDateInvalidTooFarInFuture": "Interdum velit laoreet id donec ultrices tincidunt"
 }

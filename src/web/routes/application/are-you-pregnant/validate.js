@@ -1,6 +1,6 @@
 const { check } = require('express-validator/check')
 const { toDateString } = require('../common/formatters')
-const { isValidDate } = require('../common/validators')
+const { isValidDate, isDateMoreThanOneMonthAgo, isDateMoreThanEightMonthsInTheFuture } = require('../common/validators')
 
 const addDateToBody = (req, res, next) => {
   if (req.body.areYouPregnant === 'no') {
@@ -25,9 +25,13 @@ const validateExpectedDeliveryDate = (expectedDeliveryDate, { req }) => {
     throw new Error(req.t('validation:expectedDeliveryDateInvalid'))
   }
 
-  // if (isDateMoreThanOneMonthAgo()) {
-  //   throw new Error(req.t('validation:expectedDeliveryDateInvalid'))
-  // }
+  if (isDateMoreThanOneMonthAgo(expectedDeliveryDate)) {
+    throw new Error(req.t('validation:expectedDeliveryDateInvalidTooFarInPast'))
+  }
+
+  if (isDateMoreThanEightMonthsInTheFuture(expectedDeliveryDate)) {
+    throw new Error(req.t('validation:expectedDeliveryDateInvalidTooFarInFuture'))
+  }
 
   return true
 }
