@@ -1,0 +1,50 @@
+{% from "date-input/macro.njk" import govukDateInput %}
+
+{#
+  htbhfDateInput() wraps govukDateInput() providing custom error handling
+  for the three fields (day / month / year)
+
+  params:
+  fieldNamePrefix: string
+  errors: array (provided by express-validator)
+  legend: object (see govukDateInput macro params)
+  hint: object (see govukDateInput macro params)
+#}
+{% macro htbhfDateInput(params) %}
+{% set errorClass = ' govuk-input--error' if params.errors else '' %}
+
+{% set items = [
+  {
+    id: 'day',
+    name: 'day',
+    label: dayLabel,
+    classes: 'govuk-input--width-2' + errorClass,
+    value: claim[params.fieldNamePrefix + '-day']
+  },
+  {
+    id: 'month',
+    name: 'month',
+    label: monthLabel,
+    classes: 'govuk-input--width-2' + errorClass,
+    value: claim[params.fieldNamePrefix + '-month']
+  },
+  {
+    id: 'year',
+    name: 'year',
+    label: yearLabel,
+    classes: 'govuk-input--width-4' + errorClass,
+    value: claim[params.fieldNamePrefix + '-year']
+  }
+] %}
+
+{{ govukDateInput({
+  id: params.fieldNamePrefix | camelToKebabCase,
+  namePrefix: params.fieldNamePrefix,
+  items: items,
+  errorMessage: params.errors | getErrorForField(params.fieldNamePrefix),
+  fieldset: {
+    legend: params.legend
+  },
+  hint: params.hint
+}) }}
+{% endmacro %}

@@ -1,6 +1,19 @@
 {% extends "templates/form.njk" %}
-{% from "fieldset/macro.njk" import govukFieldset %}
 {% from "radios/macro.njk" import govukRadios %}
+{% from "macros/htbhf-date-input.njk" import htbhfDateInput %}
+
+{% set eddHtml %}
+{{ htbhfDateInput({
+  fieldNamePrefix: "expectedDeliveryDate",
+  errors: errors,
+  legend: {
+    text: 'When is your baby due to be born?'
+  },
+  hint: {
+    text: 'For example, 31 3 2019'
+  }
+}) }}
+{% endset -%}
 
 {% block formContent %}
     {{ govukRadios({
@@ -18,7 +31,10 @@
         {
           value: "yes",
           text: yes,
-          checked : claim.areYouPregnant === "yes"
+          checked : claim.areYouPregnant === "yes",
+          conditional: {
+            html: eddHtml
+          }
         },
         {
           value: "no",
