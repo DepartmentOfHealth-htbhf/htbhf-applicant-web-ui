@@ -1,45 +1,15 @@
 {% extends "templates/form.njk" %}
 {% from "fieldset/macro.njk" import govukFieldset %}
-{% from "date-input/macro.njk" import govukDateInput %}
-
-{% set errorClass = ' govuk-input--error' if errors else '' %}
-
-{% set items = [
-  {
-    id: 'day',
-    name: 'day',
-    label: dayLabel,
-    classes: 'govuk-input--width-2' + errorClass,
-    value: claim['dateOfBirth-day']
-  },
-  {
-    id: 'month',
-    name: 'month',
-    label: monthLabel,
-    classes: 'govuk-input--width-2' + errorClass,
-    value: claim['dateOfBirth-month']
-  },
-  {
-    id: 'year',
-    name: 'year',
-    label: yearLabel,
-    classes: 'govuk-input--width-4' + errorClass,
-    value: claim['dateOfBirth-year']
-  }
-] %}
+{% from "macros/htbhf-date-input.njk" import htbhfDateInput %}
 
 {% block formContent %}
-  {{ govukDateInput({
-    id: "date-of-birth",
-    namePrefix: "dateOfBirth",
-    items: items,
-    errorMessage: errors | getErrorForField('dateOfBirth'),
-    fieldset: {
-      legend: {
-        text: heading,
-        isPageHeading: true,
-        classes: "govuk-fieldset__legend--xl"
-      }
+  {{ htbhfDateInput({
+    fieldNamePrefix: "dateOfBirth",
+    errors: errors,
+    legend: {
+      text: heading,
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--xl"
     },
     hint: {
       text: hint

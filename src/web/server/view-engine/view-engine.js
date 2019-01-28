@@ -1,5 +1,5 @@
 const nunjucks = require('nunjucks')
-const { toErrorList, getErrorForField } = require('./filters')
+const { camelToKebabCase, toErrorList, getErrorForField } = require('./filters')
 
 const setViewEngine = (config, app) => {
   const env = nunjucks.configure([
@@ -12,6 +12,7 @@ const setViewEngine = (config, app) => {
     noCache: config.server.CACHE_VIEW_TEMPLATES
   })
 
+  env.addFilter('camelToKebabCase', camelToKebabCase)
   env.addFilter('toErrorList', toErrorList)
   env.addFilter('getErrorForField', getErrorForField)
 
