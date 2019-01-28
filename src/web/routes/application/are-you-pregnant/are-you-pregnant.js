@@ -6,7 +6,9 @@ const pageContent = ({ translate }) => ({
   areYouPregnantLabel: translate('areYouPregnant.areYouPregnantLabel'),
   buttonText: translate('buttons:continue'),
   yes: translate('yes'),
-  no: translate('no')
+  no: translate('no'),
+  expectedDateOfDeliveryText: translate('areYouPregnant.expectedDateOfDeliveryText'),
+  expectedDateOfDeliveryHint: translate('areYouPregnant.expectedDateOfDeliveryHint')
 })
 
 const areYouPregnant = {
