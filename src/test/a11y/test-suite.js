@@ -15,6 +15,13 @@ const ARE_YOU_PREGNANT_URL = `${BASE_URL}/are-you-pregnant`
 const CHECK_URL = `${BASE_URL}/check`
 const CONFIRM_URL = `${BASE_URL}/confirm`
 
+const dateIn3Months = () => {
+  const dueDate = new Date()
+  dueDate.setDate(1)
+  dueDate.setMonth(dueDate.getMonth() + 3)
+  return dueDate
+}
+
 /*
   Runs though the application, evaluating each page and performing post requests to populate the necessary
   data in the database.
@@ -41,7 +48,14 @@ const runTests = async () => {
     }, requestCookie)
 
     results.push(await pa11y(ARE_YOU_PREGNANT_URL))
-    await postFormData(ARE_YOU_PREGNANT_URL, formData, requestCookie)
+    const dueDate = dateIn3Months()
+    await postFormData(ARE_YOU_PREGNANT_URL, {
+      ...formData,
+      'areYouPregnant-1': 'yes',
+      'expectedDeliveryDate-day': dueDate.getDate(),
+      'expectedDeliveryDate-month': dueDate.getMonth() + 1,
+      'expectedDeliveryDate-year': dueDate.getYear()
+    }, requestCookie)
 
     results.push(await pa11y(CHECK_URL))
     await postFormData(CHECK_URL, formData, requestCookie)
