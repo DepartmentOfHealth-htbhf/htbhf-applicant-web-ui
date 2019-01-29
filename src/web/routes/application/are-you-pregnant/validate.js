@@ -1,9 +1,10 @@
 const { check } = require('express-validator/check')
 const { toDateString } = require('../common/formatters')
 const { isValidDate, isDateMoreThanOneMonthAgo, isDateMoreThanEightMonthsInTheFuture } = require('../common/validators')
+const { YES, NO } = require('./constants')
 
 const addDateToBody = (req, res, next) => {
-  if (req.body.areYouPregnant === 'no') {
+  if (req.body.areYouPregnant === NO) {
     return next()
   }
 
@@ -17,7 +18,7 @@ const addDateToBody = (req, res, next) => {
 }
 
 const validateExpectedDeliveryDate = (expectedDeliveryDate, { req }) => {
-  if (req.body.areYouPregnant === 'no') {
+  if (req.body.areYouPregnant === NO) {
     return true
   }
 
@@ -37,7 +38,7 @@ const validateExpectedDeliveryDate = (expectedDeliveryDate, { req }) => {
 }
 
 const validate = [
-  check('areYouPregnant').isIn(['yes', 'no']).withMessage((value, { req }) => req.t('validation:selectYesOrNo', { value })),
+  check('areYouPregnant').isIn([YES, NO]).withMessage((value, { req }) => req.t('validation:selectYesOrNo', { value })),
   addDateToBody,
   check('expectedDeliveryDate').custom(validateExpectedDeliveryDate)
 ]

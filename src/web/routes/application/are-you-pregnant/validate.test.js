@@ -1,12 +1,13 @@
 const test = require('tape')
 const { validateExpectedDeliveryDate } = require('./validate')
 const { toDateString } = require('../common/formatters')
+const { YES, NO } = require('./constants')
 
 test('validateExpectedDeliveryDate()', (t) => {
   const req = {
     t: (string) => string,
     body: {
-      areYouPregnant: 'yes'
+      areYouPregnant: YES
     }
   }
 
@@ -31,7 +32,7 @@ test('validateExpectedDeliveryDateNotPregnant()', (t) => {
   const req = {
     t: (string) => string,
     body: {
-      areYouPregnant: 'no'
+      areYouPregnant: NO
     }
   }
 
