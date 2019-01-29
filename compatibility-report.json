@@ -37,7 +37,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 459000000
+              "duration": 489000000
             }
           },
           {
@@ -50,7 +50,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1467000000
+              "duration": 1549000000
             }
           },
           {
@@ -73,8 +73,7 @@
               "location": "src/test/common/steps/hooks.js:14"
             },
             "result": {
-              "status": "passed",
-              "duration": 3000000
+              "status": "passed"
             }
           }
         ]
