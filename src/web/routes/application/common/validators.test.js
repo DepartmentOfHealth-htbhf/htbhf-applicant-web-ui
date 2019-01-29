@@ -1,5 +1,11 @@
 const test = require('tape')
-const { isValidDate, isDateInPast, isDateMoreThanOneMonthAgo, isDateMoreThanEightMonthsInTheFuture, dateAsString } = require('./validators')
+const { dateAsString } = require('./formatters')
+const {
+  isValidDate,
+  isDateInPast,
+  isDateMoreThanOneMonthAgo,
+  isDateMoreThanEightMonthsInTheFuture
+} = require('./validators')
 
 test('isValidDate', (t) => {
   t.equal(isValidDate('1999-12-12'), true, '"1999-12-12" should be a valid date')
@@ -46,16 +52,5 @@ test('isDateMoreThanEightMonthsInTheFuture', (t) => {
   t.equal(isDateMoreThanEightMonthsInTheFuture(''), true, 'blank string should not be validated')
   t.equal(isDateMoreThanEightMonthsInTheFuture(null), true, 'null string should not be validated')
   t.equal(isDateMoreThanEightMonthsInTheFuture('12-12-1999'), true, 'invalid format string "12-12-1999" should not be validated')
-  t.end()
-})
-
-test('dateAsString', (t) => {
-  const DECEMBER = 11
-  const date = new Date(1999, DECEMBER, 31)
-
-  t.equal(dateAsString({ date: date, monthAdjustment: 8 }), '2000-08-31', '8 months from 1999-12-31 should be 2000-08-31')
-  t.equal(dateAsString({ date: date }), '1999-12-31', '1999-12-31 is not formatted correctly')
-  t.equal(dateAsString({ date: date, monthAdjustment: -2 }), '1999-10-31', '2 months from 1999-12-31 should ne 1999-10-31')
-  t.throws(dateAsString.bind(null, { monthAdjustment: 'foo' }), /Month adjustment must be numeric/, 'not a valid month adjustment value')
   t.end()
 })

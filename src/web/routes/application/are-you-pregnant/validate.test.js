@@ -1,6 +1,6 @@
 const test = require('tape')
 const { validateExpectedDeliveryDate } = require('./validate')
-const { dateAsString } = require('../common/validators')
+const { dateAsString } = require('../common/formatters')
 const { YES, NO } = require('./constants')
 
 test('validateExpectedDeliveryDate()', (t) => {
