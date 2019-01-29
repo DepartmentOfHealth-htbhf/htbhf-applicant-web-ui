@@ -6,20 +6,20 @@ Feature:
   Background:
     Given I am on the are you pregnant page
 
-  Scenario: No option is select
+  Scenario: No option is selected
     Then No option is selected
 
   Scenario: Yes and No are displayed
     Then Yes and No options are displayed
 
-  Scenario Outline: Select that an option
-    When I select the <option> option
+  Scenario: Select the no option
+    When I select the no option
     Then I am shown the card address page
 
-    Examples:
-    | option |
-    | yes    |
-    | no     |
+  Scenario: Select the yes option and enter a valid expected due date
+    When I select the yes option
+    And I enter my expected due date in six months time
+    Then I am shown the card address page
 
   Scenario: Do not select an option
     When I do not select an option

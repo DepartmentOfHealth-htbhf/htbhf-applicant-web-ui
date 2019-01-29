@@ -24,8 +24,43 @@ class AreYouPregnant extends DataEntryPage {
     await label.click()
   }
 
+  async enterExpectedDeliveryDateInSixMonths () {
+    const dateInSixMonths = new Date()
+    dateInSixMonths.setMonth(dateInSixMonths.getMonth() + 6)
+    await this.setExpectedDeliveryDateDay(dateInSixMonths.getDate())
+    await this.setExpectedDeliveryDateMonth(dateInSixMonths.getMonth() + 1)
+    await this.setExpectedDeliveryDateYear(dateInSixMonths.getFullYear())
+  }
+
   async getRadioButton (option) {
     return this.findByCSS(`input[value="${option}"]`)
+  }
+
+  async getExpectedDeliveryDateDayInput () {
+    return this.findByCSS(`input[name="expectedDeliveryDate-day"]`)
+  }
+
+  async setExpectedDeliveryDateDay (day) {
+    const dayField = await this.getExpectedDeliveryDateDayInput()
+    return dayField.sendKeys(day)
+  }
+
+  async getExpectedDeliveryDateMonthInput () {
+    return this.findByCSS(`input[name="expectedDeliveryDate-month"]`)
+  }
+
+  async setExpectedDeliveryDateMonth (month) {
+    const monthField = await this.getExpectedDeliveryDateMonthInput()
+    return monthField.sendKeys(month)
+  }
+
+  async getExpectedDeliveryDateYearInput () {
+    return this.findByCSS(`input[name="expectedDeliveryDate-year"]`)
+  }
+
+  async setExpectedDeliveryDateYear (year) {
+    const yearField = await this.getExpectedDeliveryDateYearInput()
+    return yearField.sendKeys(year)
   }
 
   async getRadioButtons () {
