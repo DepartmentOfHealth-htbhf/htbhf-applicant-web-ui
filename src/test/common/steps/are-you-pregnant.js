@@ -25,8 +25,17 @@ Then(/^Yes and No options are displayed$/, async function () {
   await pages.areYouPregnant.getRadioLabelWithText('no')
 })
 
-When(/^I select the (.*) option$/, async function (option) {
-  await pages.areYouPregnant.selectRadioButton(option)
+When(/^I select the no option$/, async function () {
+  await pages.areYouPregnant.selectRadioButton('no')
+  await pages.areYouPregnant.submitForm()
+})
+
+When(/^I select the yes option$/, async function () {
+  await pages.areYouPregnant.selectRadioButton('yes')
+})
+
+When(/^I enter my expected due date in six months time$/, async function () {
+  await pages.areYouPregnant.enterExpectedDeliveryDateInSixMonths()
   await pages.areYouPregnant.submitForm()
 })
 
