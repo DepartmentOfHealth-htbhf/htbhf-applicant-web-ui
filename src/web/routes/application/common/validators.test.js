@@ -1,5 +1,11 @@
 const test = require('tape')
-const { isValidDate, isDateInPast } = require('./validators')
+const { dateAsString } = require('./formatters')
+const {
+  isValidDate,
+  isDateInPast,
+  isDateMoreThanOneMonthAgo,
+  isDateMoreThanEightMonthsInTheFuture
+} = require('./validators')
 
 test('isValidDate', (t) => {
   t.equal(isValidDate('1999-12-12'), true, '"1999-12-12" should be a valid date')
@@ -22,5 +28,29 @@ test('isDateInPast', (t) => {
   t.equal(isDateInPast('1999-12-12'), true, '"1999-12-12" is a date in the past')
   t.equal(isDateInPast(nextYear), false, `"${nextYear}" is a date in the future`)
   t.equal(isDateInPast(null), true, 'null should not be validated')
+  t.end()
+})
+
+test('isDateMoreThanOneMonthAgo', (t) => {
+  const oneMonthAgo = dateAsString({ monthAdjustment: -1 })
+
+  t.equal(isDateMoreThanOneMonthAgo('1999-12-12'), true, '"1999-12-12" is more than one month ago')
+  t.equal(isDateMoreThanOneMonthAgo('9999-12-12'), false, '"9999-12-12" is not more than one month ago')
+  t.equal(isDateMoreThanOneMonthAgo(oneMonthAgo), false, `"${oneMonthAgo}" is exactly one month ago`)
+  t.equal(isDateMoreThanOneMonthAgo(''), true, 'blank string should not be validated')
+  t.equal(isDateMoreThanOneMonthAgo(null), true, 'null string should not be validated')
+  t.equal(isDateMoreThanOneMonthAgo('12-12-1999'), true, 'invalid format string "12-12-1999" should not be validated')
+  t.end()
+})
+
+test('isDateMoreThanEightMonthsInTheFuture', (t) => {
+  const eightMonthsInFuture = dateAsString({ monthAdjustment: -8 })
+
+  t.equal(isDateMoreThanEightMonthsInTheFuture('1999-12-12'), false, '"1999-12-12" is not more than eight months in the future')
+  t.equal(isDateMoreThanEightMonthsInTheFuture('9999-12-12'), true, '"9999-12-12" is more than eight months in the future')
+  t.equal(isDateMoreThanEightMonthsInTheFuture(eightMonthsInFuture), false, `"${eightMonthsInFuture}" is exactly eight months in the future`)
+  t.equal(isDateMoreThanEightMonthsInTheFuture(''), true, 'blank string should not be validated')
+  t.equal(isDateMoreThanEightMonthsInTheFuture(null), true, 'null string should not be validated')
+  t.equal(isDateMoreThanEightMonthsInTheFuture('12-12-1999'), true, 'invalid format string "12-12-1999" should not be validated')
   t.end()
 })

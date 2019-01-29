@@ -5,6 +5,8 @@ const { expect, assert } = require('chai')
 const { assertErrorHeaderTextPresent } = require('./common-steps')
 
 const pages = require('./pages')
+const YES = 'yes'
+const NO = 'no'
 
 Given(/^I am on the are you pregnant page$/, async function () {
   await pages.areYouPregnant.open(pages.url)
@@ -21,12 +23,21 @@ Then(/^No option is selected$/, async function () {
 })
 
 Then(/^Yes and No options are displayed$/, async function () {
-  await pages.areYouPregnant.getRadioLabelWithText('yes')
-  await pages.areYouPregnant.getRadioLabelWithText('no')
+  await pages.areYouPregnant.getRadioLabelWithText(YES)
+  await pages.areYouPregnant.getRadioLabelWithText(NO)
 })
 
-When(/^I select the (.*) option$/, async function (option) {
-  await pages.areYouPregnant.selectRadioButton(option)
+When(/^I select the no option$/, async function () {
+  await pages.areYouPregnant.selectRadioButton(NO)
+  await pages.areYouPregnant.submitForm()
+})
+
+When(/^I select the yes option$/, async function () {
+  await pages.areYouPregnant.selectRadioButton(YES)
+})
+
+When(/^I enter my expected due date in six months time$/, async function () {
+  await pages.areYouPregnant.enterExpectedDeliveryDateInSixMonths()
   await pages.areYouPregnant.submitForm()
 })
 
