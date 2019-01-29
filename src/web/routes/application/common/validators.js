@@ -7,12 +7,15 @@ const DATE_PATTERN = /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/
 const isValidDate = (dateString) =>
   !isNil(dateString) && validator.matches(dateString, DATE_PATTERN) && validator.isISO8601(dateString, { strict: true })
 
-const dateAsString = (monthAdjustment = 0) => {
-  const today = new Date()
-  today.setMonth(today.getMonth() + monthAdjustment)
-  const dd = today.getDate()
-  const mm = today.getMonth() + 1
-  const yyyy = today.getFullYear()
+const dateAsString = ({ date = new Date(), monthAdjustment = 0 } = {}) => {
+  if (typeof monthAdjustment !== 'number') {
+    throw new Error('Month adjustment must be numeric')
+  }
+  const dateToChange = new Date(date)
+  dateToChange.setMonth(dateToChange.getMonth() + monthAdjustment)
+  const dd = dateToChange.getDate()
+  const mm = dateToChange.getMonth() + 1
+  const yyyy = dateToChange.getFullYear()
   return toDateString(dd, mm, yyyy)
 }
 
@@ -25,14 +28,14 @@ const isDateInPast = (dateString) => {
 
 const isDateMoreThanOneMonthAgo = (dateString) => {
   if (isValidDate(dateString)) {
-    return validator.isBefore(dateString, dateAsString(-1))
+    return validator.isBefore(dateString, dateAsString({ monthAdjustment: -1 }))
   }
   return true
 }
 
 const isDateMoreThanEightMonthsInTheFuture = (dateString) => {
   if (isValidDate(dateString)) {
-    return validator.isAfter(dateString, dateAsString(8))
+    return validator.isAfter(dateString, dateAsString({ monthAdjustment: 8 }))
   }
   return true
 }
@@ -41,5 +44,6 @@ module.exports = {
   isValidDate,
   isDateInPast,
   isDateMoreThanOneMonthAgo,
-  isDateMoreThanEightMonthsInTheFuture
+  isDateMoreThanEightMonthsInTheFuture,
+  dateAsString
 }

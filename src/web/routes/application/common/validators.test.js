@@ -1,6 +1,5 @@
 const test = require('tape')
-const { isValidDate, isDateInPast, isDateMoreThanOneMonthAgo, isDateMoreThanEightMonthsInTheFuture } = require('./validators')
-const { toDateString } = require('./formatters')
+const { isValidDate, isDateInPast, isDateMoreThanOneMonthAgo, isDateMoreThanEightMonthsInTheFuture, dateAsString } = require('./validators')
 
 test('isValidDate', (t) => {
   t.equal(isValidDate('1999-12-12'), true, '"1999-12-12" should be a valid date')
@@ -27,17 +26,11 @@ test('isDateInPast', (t) => {
 })
 
 test('isDateMoreThanOneMonthAgo', (t) => {
-  const oneMonthAgo = new Date()
-  oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1)
-
-  const dd = oneMonthAgo.getDate()
-  const mm = oneMonthAgo.getMonth() + 1
-  const yyyy = oneMonthAgo.getFullYear()
-  const oneMonthAgoString = toDateString(dd, mm, yyyy)
+  const oneMonthAgo = dateAsString({ monthAdjustment: -1 })
 
   t.equal(isDateMoreThanOneMonthAgo('1999-12-12'), true, '"1999-12-12" is more than one month ago')
   t.equal(isDateMoreThanOneMonthAgo('9999-12-12'), false, '"9999-12-12" is not more than one month ago')
-  t.equal(isDateMoreThanOneMonthAgo(oneMonthAgoString), false, `"${oneMonthAgoString}" is exactly one month ago`)
+  t.equal(isDateMoreThanOneMonthAgo(oneMonthAgo), false, `"${oneMonthAgo}" is exactly one month ago`)
   t.equal(isDateMoreThanOneMonthAgo(''), true, 'blank string should not be validated')
   t.equal(isDateMoreThanOneMonthAgo(null), true, 'null string should not be validated')
   t.equal(isDateMoreThanOneMonthAgo('12-12-1999'), true, 'invalid format string "12-12-1999" should not be validated')
@@ -45,19 +38,24 @@ test('isDateMoreThanOneMonthAgo', (t) => {
 })
 
 test('isDateMoreThanEightMonthsInTheFuture', (t) => {
-  const eightMonthsInFuture = new Date()
-  eightMonthsInFuture.setMonth(eightMonthsInFuture.getMonth() + 8)
-
-  const dd = eightMonthsInFuture.getDate()
-  const mm = eightMonthsInFuture.getMonth() + 1
-  const yyyy = eightMonthsInFuture.getFullYear()
-  const eightMonthsInFutureString = toDateString(dd, mm, yyyy)
+  const eightMonthsInFuture = dateAsString({ monthAdjustment: -8 })
 
   t.equal(isDateMoreThanEightMonthsInTheFuture('1999-12-12'), false, '"1999-12-12" is not more than eight months in the future')
   t.equal(isDateMoreThanEightMonthsInTheFuture('9999-12-12'), true, '"9999-12-12" is more than eight months in the future')
-  t.equal(isDateMoreThanEightMonthsInTheFuture(eightMonthsInFutureString), false, `"${eightMonthsInFutureString}" is exactly eight months in the future`)
+  t.equal(isDateMoreThanEightMonthsInTheFuture(eightMonthsInFuture), false, `"${eightMonthsInFuture}" is exactly eight months in the future`)
   t.equal(isDateMoreThanEightMonthsInTheFuture(''), true, 'blank string should not be validated')
   t.equal(isDateMoreThanEightMonthsInTheFuture(null), true, 'null string should not be validated')
   t.equal(isDateMoreThanEightMonthsInTheFuture('12-12-1999'), true, 'invalid format string "12-12-1999" should not be validated')
+  t.end()
+})
+
+test('dateAsString', (t) => {
+  const DECEMBER = 11
+  const date = new Date(1999, DECEMBER, 31)
+
+  t.equal(dateAsString({ date: date, monthAdjustment: 8 }), '2000-08-31', '8 months from 1999-12-31 should be 2000-08-31')
+  t.equal(dateAsString({ date: date }), '1999-12-31', '1999-12-31 is not formatted correctly')
+  t.equal(dateAsString({ date: date, monthAdjustment: -2 }), '1999-10-31', '2 months from 1999-12-31 should ne 1999-10-31')
+  t.throws(dateAsString.bind(null, { monthAdjustment: 'foo' }), /Month adjustment must be numeric/, 'not a valid month adjustment value')
   t.end()
 })
