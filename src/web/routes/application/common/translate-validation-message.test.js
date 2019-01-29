@@ -2,7 +2,7 @@ const test = require('tape')
 const sinon = require('sinon')
 const { translateValidationMessage } = require('./translate-validation-message')
 
-test.only('translateValidationMessage()', (t) => {
+test('translateValidationMessage()', (t) => {
   const message = 'this is a message for an invalid input'
   const value = 'value'
   const translate = sinon.spy()
