@@ -2,6 +2,7 @@ const { check } = require('express-validator/check')
 const { isNil } = require('ramda')
 const { toDateString } = require('../common/formatters')
 const { isValidDate, isDateMoreThanOneMonthAgo, isDateMoreThanEightMonthsInTheFuture } = require('../common/validators')
+const { translateValidationMessage } = require('../common/translate-validation-message')
 const { YES, NO } = require('./constants')
 
 const isNilOrNo = value => isNil(value) || value === NO
@@ -41,7 +42,7 @@ const validateExpectedDeliveryDate = (expectedDeliveryDate, { req }) => {
 }
 
 const validate = [
-  check('areYouPregnant').isIn([YES, NO]).withMessage((value, { req }) => req.t('validation:selectYesOrNo', { value })),
+  check('areYouPregnant').isIn([YES, NO]).withMessage(translateValidationMessage('validation:selectYesOrNo')),
   addExpectedDeliveryDateToBody,
   check('expectedDeliveryDate').custom(validateExpectedDeliveryDate)
 ]

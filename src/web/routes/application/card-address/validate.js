@@ -1,4 +1,5 @@
 const { check } = require('express-validator/check')
+const { translateValidationMessage } = require('../common/translate-validation-message')
 
 /*
  * Regex for matching UK postcodes matching BS7666 format.
@@ -9,12 +10,29 @@ const UK_POSTCODE_PATTERN = /([Gg][Ii][Rr] 0[Aa]{2})|((([A-Za-z][0-9]{1,2})|(([A
 const ADDRESS_LINE_MAX_LENGTH = 500
 
 const validate = [
-  check('addressLine1').not().isEmpty().withMessage((value, { req }) => req.t('validation:missingAddressField', { value })),
-  check('addressLine1').isLength({ max: ADDRESS_LINE_MAX_LENGTH }).withMessage((value, { req }) => req.t('validation:informationTooLong', { value })),
-  check('addressLine2').isLength({ max: ADDRESS_LINE_MAX_LENGTH }).withMessage((value, { req }) => req.t('validation:informationTooLong', { value })),
-  check('townOrCity').isLength({ max: ADDRESS_LINE_MAX_LENGTH }).withMessage((value, { req }) => req.t('validation:informationTooLong', { value })),
-  check('townOrCity').not().isEmpty().withMessage((value, { req }) => req.t('validation:missingAddressField', { value })),
-  check('postcode').matches(UK_POSTCODE_PATTERN).withMessage((value, { req }) => req.t('validation:invalidPostcode', { value }))
+  check('addressLine1')
+    .not().isEmpty()
+    .withMessage(translateValidationMessage('validation:missingAddressField')),
+
+  check('addressLine1')
+    .isLength({ max: ADDRESS_LINE_MAX_LENGTH })
+    .withMessage(translateValidationMessage('validation:informationTooLong')),
+
+  check('addressLine2')
+    .isLength({ max: ADDRESS_LINE_MAX_LENGTH })
+    .withMessage(translateValidationMessage('validation:informationTooLong')),
+
+  check('townOrCity')
+    .isLength({ max: ADDRESS_LINE_MAX_LENGTH })
+    .withMessage(translateValidationMessage('validation:informationTooLong')),
+
+  check('townOrCity')
+    .not().isEmpty()
+    .withMessage(translateValidationMessage('validation:missingAddressField')),
+
+  check('postcode')
+    .matches(UK_POSTCODE_PATTERN)
+    .withMessage(translateValidationMessage('validation:invalidPostcode'))
 ]
 
 module.exports = {
