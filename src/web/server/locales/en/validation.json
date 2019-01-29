@@ -6,5 +6,8 @@
   "invalidNino": "Enter a National Insurance number in the correct format",
   "lastNameTooLong": "Enter a shorter last or family name",
   "missingLastName": "Enter your last or family name",
-  "selectYesOrNo": "Select yes or no"
+  "selectYesOrNo": "Select yes or no",
+  "invalidPostcode": "Enter a correct postcode, like AA1 1AA",
+  "informationTooLong": "The information you entered is too long",
+  "missingAddressField": "Tell us your address"
 }
