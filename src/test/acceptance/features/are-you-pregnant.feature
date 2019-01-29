@@ -14,7 +14,7 @@ Feature:
 
   Scenario Outline: Select that an option
     When I select the <option> option
-    Then I am shown the check details page
+    Then I am shown the card address page
 
     Examples:
     | option |

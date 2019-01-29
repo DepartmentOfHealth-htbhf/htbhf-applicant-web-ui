@@ -1,0 +1,49 @@
+{% extends "templates/form.njk" %}
+{% from "input/macro.njk" import govukInput %}
+{% from "fieldset/macro.njk" import govukFieldset %}
+
+{% block formContent %}
+    {% call govukFieldset({
+      legend: {
+        text: heading,
+        classes: "govuk-fieldset__legend--xl",
+        isPageHeading: true
+      }
+    }) %}
+
+      {{ govukInput({
+        label: {
+          html: buildingAndStreetLabel + '<span class="govuk-visually-hidden">' + buildingAndStreetLine1of2 + '</span>'
+        },
+        id: "address-line-1",
+        name: "addressLine1"
+      }) }}
+
+      {{ govukInput({
+        label: {
+          html: '<span class="govuk-visually-hidden">' + buildingAndStreetLine2of2 + '</span>'
+        },
+        id: "address-line-2",
+        name: "addressLine2"
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: townOrCityLabel
+        },
+        classes: "govuk-!-width-two-thirds",
+        id: "town-or-city",
+        name: "townOrCity"
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: postcodeLabel
+        },
+        classes: "govuk-input--width-10",
+        id: "postcode",
+        name: "postcode"
+      }) }}
+
+    {% endcall %}
+{% endblock %}

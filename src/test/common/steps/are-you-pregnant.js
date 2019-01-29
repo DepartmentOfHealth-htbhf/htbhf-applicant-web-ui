@@ -30,8 +30,8 @@ When(/^I select the (.*) option$/, async function (option) {
   await pages.areYouPregnant.submitForm()
 })
 
-Then(/^I am shown the check details page$/, async function () {
-  await pages.check.waitForPageLoad()
+Then(/^I am shown the card address page$/, async function () {
+  await pages.cardAddress.waitForPageLoad()
 })
 
 When(/^I do not select an option$/, async function () {
