@@ -1,10 +1,13 @@
 const { check } = require('express-validator/check')
+const { isNil } = require('ramda')
 const { toDateString } = require('../common/formatters')
 const { isValidDate, isDateMoreThanOneMonthAgo, isDateMoreThanEightMonthsInTheFuture } = require('../common/validators')
 const { YES, NO } = require('./constants')
 
-const addDateToBody = (req, res, next) => {
-  if (req.body.areYouPregnant === NO) {
+const isNilOrNo = value => isNil(value) || value === NO
+
+const addExpectedDeliveryDateToBody = (req, res, next) => {
+  if (isNilOrNo(req.body.areYouPregnant)) {
     return next()
   }
 
@@ -18,7 +21,7 @@ const addDateToBody = (req, res, next) => {
 }
 
 const validateExpectedDeliveryDate = (expectedDeliveryDate, { req }) => {
-  if (req.body.areYouPregnant === NO) {
+  if (isNilOrNo(req.body.areYouPregnant)) {
     return true
   }
 
@@ -39,11 +42,12 @@ const validateExpectedDeliveryDate = (expectedDeliveryDate, { req }) => {
 
 const validate = [
   check('areYouPregnant').isIn([YES, NO]).withMessage((value, { req }) => req.t('validation:selectYesOrNo', { value })),
-  addDateToBody,
+  addExpectedDeliveryDateToBody,
   check('expectedDeliveryDate').custom(validateExpectedDeliveryDate)
 ]
 
 module.exports = {
+  addExpectedDeliveryDateToBody,
   validate,
   validateExpectedDeliveryDate
 }

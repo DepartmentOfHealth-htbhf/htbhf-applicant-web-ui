@@ -1,5 +1,5 @@
 const test = require('tape')
-const { validateExpectedDeliveryDate } = require('./validate')
+const { addExpectedDeliveryDateToBody, validateExpectedDeliveryDate } = require('./validate')
 const { dateAsString } = require('../common/formatters')
 const { YES, NO } = require('./constants')
 
@@ -33,5 +33,46 @@ test('validateExpectedDeliveryDateNotPregnant()', (t) => {
   }
 
   t.equal(validateExpectedDeliveryDate('', { req }), true, 'should not validate the date if not pregnant')
+  t.end()
+})
+
+test('addExpectedDeliveryDateToBody() should not add key to body if areYouPregnant is undefined', (t) => {
+  const req = { body: {} }
+  const res = {}
+  const next = () => {}
+
+  addExpectedDeliveryDateToBody(req, res, next)
+  t.equal(typeof req.body.expectedDeliveryDate, 'undefined', 'should not add key to body if areYouPregnant is undefined')
+  t.end()
+})
+
+test(`addExpectedDeliveryDateToBody() should not add key to body if areYouPregnant is ${NO}`, (t) => {
+  const req = {
+    body: {
+      areYouPregnant: NO
+    }
+  }
+  const res = {}
+  const next = () => {}
+
+  addExpectedDeliveryDateToBody(req, res, next)
+  t.equal(typeof req.body.expectedDeliveryDate, 'undefined', `should not add key to body if areYouPregnant is ${NO}`)
+  t.end()
+})
+
+test(`addExpectedDeliveryDateToBody() should add key to body if areYouPregnant is ${YES}`, (t) => {
+  const req = {
+    body: {
+      areYouPregnant: YES,
+      'expectedDeliveryDate-day': '02',
+      'expectedDeliveryDate-month': '02',
+      'expectedDeliveryDate-year': '2222'
+    }
+  }
+  const res = {}
+  const next = () => {}
+
+  addExpectedDeliveryDateToBody(req, res, next)
+  t.equal(req.body.expectedDeliveryDate, '2222-02-02', `should add key to body if areYouPregnant is ${YES}`)
   t.end()
 })
