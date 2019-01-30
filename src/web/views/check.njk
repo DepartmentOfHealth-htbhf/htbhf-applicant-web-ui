@@ -47,6 +47,19 @@
           {
             text: [claim['dateOfBirth-day'], claim['dateOfBirth-month'], claim['dateOfBirth-year']] | join(' ')
           }
+        ],
+        [
+          {
+            text: "Card delivery address"
+          },
+          {
+            text: [
+              claim.cardDeliveryAddress.addressLine1,
+              claim.cardDeliveryAddress.addressLine2,
+              claim.cardDeliveryAddress.townOrCity,
+              claim.cardDeliveryAddress.postcode
+            ] | join(' ')
+          }
         ]
       ]
   }) }}
