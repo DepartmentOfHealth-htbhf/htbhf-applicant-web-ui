@@ -2,7 +2,8 @@ const { Given, When, Then } = require('cucumber')
 const { expect } = require('chai')
 
 const pages = require('./pages')
-const { enterCardAddress, assertErrorHeaderTextPresent, LONG_STRING, BLANK_STRING = '' } = require('./common-steps')
+const { enterCardAddress, assertErrorHeaderTextPresent } = require('./common-steps')
+const { LONG_STRING, BLANK_STRING } = require('./constants')
 
 const VALID_ADDRESS_LINE_1 = 'Flat b'
 const VALID_ADDRESS_LINE_2 = '221 Baker street'

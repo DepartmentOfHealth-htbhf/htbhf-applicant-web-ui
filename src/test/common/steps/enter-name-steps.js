@@ -2,7 +2,8 @@ const { Given, When, Then } = require('cucumber')
 const { expect, assert } = require('chai')
 
 const pages = require('./pages')
-const { enterNameAndSubmit, assertErrorHeaderTextPresent, LONG_STRING, BLANK_STRING } = require('./common-steps')
+const { enterNameAndSubmit, assertErrorHeaderTextPresent } = require('./common-steps')
+const { LONG_STRING, BLANK_STRING } = require('./constants')
 
 Given('I am on the enter name page', async function () {
   await pages.enterName.open(pages.url)
