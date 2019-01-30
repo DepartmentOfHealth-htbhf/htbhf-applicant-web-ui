@@ -1,4 +1,5 @@
 const { expect, assert } = require('chai')
+const { When } = require('cucumber')
 
 const pages = require('./pages')
 
@@ -63,6 +64,10 @@ async function assertErrorHeaderTextPresent (page) {
     assert.fail(`Unexpected error caught trying to assert error header text is present - ${error}`)
   }
 }
+
+When(/^I click continue$/, async function () {
+  await pages.genericPage.submitForm()
+})
 
 module.exports = {
   enterDateOfBirth,

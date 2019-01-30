@@ -32,6 +32,12 @@ class AreYouPregnant extends DataEntryPage {
     await this.setExpectedDeliveryDateYear(dateInSixMonths.getFullYear())
   }
 
+  async enterTextInDeliveryDateFields () {
+    await this.setExpectedDeliveryDateDay('foo')
+    await this.setExpectedDeliveryDateMonth(' bar')
+    await this.setExpectedDeliveryDateYear('baz!')
+  }
+
   async getRadioButton (option) {
     return this.findByCSS(`input[value="${option}"]`)
   }
@@ -72,6 +78,11 @@ class AreYouPregnant extends DataEntryPage {
     return error.getText()
   }
 
+  async getExpectedDeliveryDateErrorText () {
+    const error = await this.findById('expected-delivery-date-error')
+    return error.getText()
+  }
+
   async getRadioLabelWithText (option) {
     const radioButtonLabels = await this.driver.findElements(webdriver.By.className('govuk-label govuk-radios__label'))
     radioButtonLabels.forEach(function (label) {
@@ -79,6 +90,10 @@ class AreYouPregnant extends DataEntryPage {
         return label
       }
     })
+  }
+
+  async getExpectedDeliveryDateInstructionalText () {
+    return this.driver.findElement(webdriver.By.id('expected-delivery-date-hint'))
   }
 }
 
