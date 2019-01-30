@@ -3,45 +3,22 @@ const { expect, assert } = require('chai')
 
 const pages = require('./pages')
 const { enterNameAndSubmit, assertErrorHeaderTextPresent } = require('./common-steps')
-
-const LONG_NAME = 'This name is way too long' +
-  'This name is way too long' +
-  'This name is way too long' +
-  'This name is way too long' + // 100
-  'This name is way too long' +
-  'This name is way too long' +
-  'This name is way too long' +
-  'This name is way too long' + // 200
-  'This name is way too long' +
-  'This name is way too long' +
-  'This name is way too long' +
-  'This name is way too long' + // 300
-  'This name is way too long' +
-  'This name is way too long' +
-  'This name is way too long' +
-  'This name is way too long' + // 400
-  'This name is way too long' +
-  'This name is way too long' +
-  'This name is way too long' +
-  'This name is way too long' + // 500
-  'This name is way too long'
-
-const BLANK_NAME = ''
+const { LONG_STRING, BLANK_STRING } = require('./constants')
 
 Given('I am on the enter name page', async function () {
   await pages.enterName.open(pages.url)
 })
 
 When('I enter a first name which is too long', async function () {
-  return enterNameAndSubmit(LONG_NAME, 'Bloggs')
+  return enterNameAndSubmit(LONG_STRING, 'Bloggs')
 })
 
 When('I enter a last name which is too long', async function () {
-  return enterNameAndSubmit('Joe', LONG_NAME)
+  return enterNameAndSubmit('Joe', LONG_STRING)
 })
 
 When('I enter first name only', async function () {
-  return enterNameAndSubmit('Joe', BLANK_NAME)
+  return enterNameAndSubmit('Joe', BLANK_STRING)
 })
 
 When(/^I enter (.*) and (.*) values$/, async function (firstName, lastName) {
@@ -56,12 +33,12 @@ Then('I am informed that the first name is too long', async function () {
 
 Then(/^I see the invalid first name I entered in the textbox$/, async function () {
   const enteredFirstName = await pages.enterName.getFirstNameValue()
-  expect(enteredFirstName).to.be.equal(LONG_NAME)
+  expect(enteredFirstName).to.be.equal(LONG_STRING)
 })
 
 Then(/^I see the last name I entered in the textbox$/, async function () {
   const enteredFirstName = await pages.enterName.getLastNameValue()
-  expect(enteredFirstName).to.be.equal(LONG_NAME)
+  expect(enteredFirstName).to.be.equal(LONG_STRING)
 })
 
 Then('I am informed that the last name is too long', async function () {
