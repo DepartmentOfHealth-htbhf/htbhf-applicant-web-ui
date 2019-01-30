@@ -12,6 +12,11 @@ const PAGE_HEADINGS = {
   cy: 'Urna condimentum mattis?'
 }
 
+const POSTCODE_ERROR_ID = 'postcode-error'
+const ADDRESS_LINE_1_ERROR_ID = 'address-line-1-error'
+const ADDRESS_LINE_2_ERROR_ID = 'address-line-2-error'
+const TOWN_OR_CITY_ERROR_ID = 'town-or-city-error'
+
 /**
  * Page object for CardAddress page where the card card-address is entered.
  */
@@ -59,6 +64,26 @@ class CardAddress extends DataEntryPage {
   async enterPostcode (postcode) {
     const postcodeField = await this.getPostcodeField()
     return postcodeField.sendKeys(postcode)
+  }
+
+  async getPostcodesError () {
+    const postcodeError = await this.findById(POSTCODE_ERROR_ID)
+    return postcodeError.getText()
+  }
+
+  async getAddressLine1Error () {
+    const addressLine1Error = await this.findById(ADDRESS_LINE_1_ERROR_ID)
+    return addressLine1Error.getText()
+  }
+
+  async getAddressLine2Error () {
+    const addressLine2Error = await this.findById(ADDRESS_LINE_2_ERROR_ID)
+    return addressLine2Error.getText()
+  }
+
+  async getTownOrCityError () {
+    const townOrCityError = await this.findById(TOWN_OR_CITY_ERROR_ID)
+    return townOrCityError.getText()
   }
 }
 

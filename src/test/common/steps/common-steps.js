@@ -2,6 +2,10 @@ const { expect, assert } = require('chai')
 
 const pages = require('./pages')
 
+// Create a string 501 characters long
+const LONG_STRING = new Array(502).join('A')
+const BLANK_STRING = ''
+
 async function enterNameAndSubmit (firstName, lastName) {
   try {
     await pages.enterName.enterFirstName(firstName)
@@ -70,5 +74,7 @@ module.exports = {
   enterNinoAndSubmit,
   selectYesOnPregnancyPage,
   enterCardAddress,
-  assertErrorHeaderTextPresent
+  assertErrorHeaderTextPresent,
+  LONG_STRING,
+  BLANK_STRING
 }
