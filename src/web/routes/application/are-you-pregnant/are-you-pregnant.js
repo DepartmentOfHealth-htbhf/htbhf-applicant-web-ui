@@ -1,4 +1,5 @@
 const { validate } = require('./validate')
+const { transformData } = require('./transform-data')
 
 const exampleDate = (fromDate = new Date()) => {
   const future = new Date(fromDate)
@@ -23,7 +24,8 @@ const areYouPregnant = {
   next: '/card-address',
   template: 'are-you-pregnant',
   pageContent,
-  validate
+  validate,
+  transformData
 }
 
 module.exports = {

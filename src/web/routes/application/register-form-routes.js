@@ -4,6 +4,7 @@ const { sanitize } = require('./common/sanitize')
 const { renderView } = require('./common/render-view')
 const { handlePost } = require('./common/handle-post')
 const { getSessionDetails } = require('./common/session-details')
+const { populateSession } = require('./common/populate-session')
 
 const middlewareNoop = (req, res, next) => next()
 
@@ -28,6 +29,7 @@ const createRoute = (csrfProtection, steps, router) => (step) =>
       sanitize,
       handleOptionalMiddleware(step.sanitize),
       handleOptionalMiddleware(step.validate),
+      populateSession(step.transformData),
       getSessionDetails,
       handlePost,
       renderView(step.template, step.pageContent, step.next)

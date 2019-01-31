@@ -1,4 +1,5 @@
 const { validate } = require('./validate')
+const { transformData } = require('./transform-data')
 
 const pageContent = ({ translate }) => ({
   title: translate('enterDob.title'),
@@ -16,7 +17,8 @@ const enterDob = {
   next: '/are-you-pregnant',
   template: 'enter-dob',
   pageContent,
-  validate
+  validate,
+  transformData
 }
 
 module.exports = {

@@ -13,7 +13,7 @@ const handlePost = (req, res, next) => {
 
     req.session.claim = {
       ...req.session.claim,
-      ...req.body
+      ...req.session.persistentAttributes
     }
     return next()
   } catch (error) {

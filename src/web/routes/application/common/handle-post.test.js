@@ -27,7 +27,7 @@ test('handlePost() should add errors and claim to locals if errors exist', (t) =
   t.end()
 })
 
-test('handlePost() adds body to the session to if no errors exist', (t) => {
+test('handlePost() adds persistentAttributes to the session to if no errors exist', (t) => {
   const { handlePost } = proxyquire('./handle-post', {
     'express-validator/check': {
       validationResult: () => ({
@@ -39,26 +39,30 @@ test('handlePost() adds body to the session to if no errors exist', (t) => {
   const req = {
     session: {
       claim: {
-        other: 'claim data'
+        other: 'claim data',
+        shouldBeNull: 'not null'
+      },
+      persistentAttributes: {
+        new: 'claim data',
+        shouldBeNull: null
       }
     },
     body: {
-      new: 'claim data'
+      somethingElse: 'claim data'
     }
   }
 
   const next = sinon.spy()
 
-  const expected = {
-    claim: {
-      other: 'claim data',
-      new: 'claim data'
-    }
+  const expectedClaim = {
+    other: 'claim data',
+    new: 'claim data',
+    shouldBeNull: null
   }
 
   handlePost(req, {}, next)
 
-  t.deepEqual(req.session, expected, 'it should add body to session')
+  t.deepEqual(req.session.claim, expectedClaim, 'it should add persistentAttributes to session.claim')
   t.equal(next.called, true, 'it should call next()')
   t.end()
 })
