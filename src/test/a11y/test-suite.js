@@ -12,6 +12,7 @@ const ENTER_NAME_URL = `${BASE_URL}/enter-name`
 const ENTER_NINO_URL = `${BASE_URL}/enter-nino`
 const ENTER_DOB_URL = `${BASE_URL}/enter-dob`
 const ARE_YOU_PREGNANT_URL = `${BASE_URL}/are-you-pregnant`
+const CARD_ADDRESS_URL = `${BASE_URL}/card-address`
 const CHECK_URL = `${BASE_URL}/check`
 const CONFIRM_URL = `${BASE_URL}/confirm`
 
@@ -55,6 +56,15 @@ const runTests = async () => {
       'expectedDeliveryDate-day': dueDate.getDate(),
       'expectedDeliveryDate-month': dueDate.getMonth() + 1,
       'expectedDeliveryDate-year': dueDate.getYear()
+    }, requestCookie)
+
+    results.push(await pa11y(CARD_ADDRESS_URL))
+    await postFormData(CARD_ADDRESS_URL, {
+      ...formData,
+      'addressLine1': 'Flat B',
+      'addressLine2': 'Baker Street',
+      'townOrCity': 'London',
+      'postcode': 'AA1 1AA'
     }, requestCookie)
 
     results.push(await pa11y(CHECK_URL))
