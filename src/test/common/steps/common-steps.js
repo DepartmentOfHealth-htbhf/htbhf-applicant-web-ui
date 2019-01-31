@@ -1,4 +1,5 @@
 const { expect, assert } = require('chai')
+const { When } = require('cucumber')
 
 const pages = require('./pages')
 
@@ -35,7 +36,7 @@ async function enterDateOfBirth (day, month, year) {
 async function selectYesOnPregnancyPage () {
   try {
     await pages.areYouPregnant.selectRadioButton('yes')
-    await pages.areYouPregnant.enterExpectedDeliveryDateInSixMonths()
+    await pages.areYouPregnant.enterValidExpectedDeliveryDate()
     await pages.areYouPregnant.submitForm()
   } catch (error) {
     assert.fail(`Unexpected error caught trying to select 'Yes' for 'Are you pregnant?' and submit the page - ${error}`)
@@ -63,6 +64,10 @@ async function assertErrorHeaderTextPresent (page) {
     assert.fail(`Unexpected error caught trying to assert error header text is present - ${error}`)
   }
 }
+
+When(/^I click continue$/, async function () {
+  await pages.genericPage.submitForm()
+})
 
 module.exports = {
   enterDateOfBirth,
