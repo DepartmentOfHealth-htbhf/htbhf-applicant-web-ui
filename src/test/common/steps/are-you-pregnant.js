@@ -57,7 +57,7 @@ Then(/^Yes and No options are displayed$/, async function () {
 
 Then(/^expected date of delivery instructional text is displayed$/, async function () {
   const text = await pages.areYouPregnant.getExpectedDeliveryDateInstructionalText()
-  assert(text.getText().toString().trim().length, 'expected delivery date instructional text should not be empty')
+  assert(text.getText().toString().trim().length > 0, 'expected delivery date instructional text should not be empty')
 })
 
 Then(/^no values are present in the expected delivery date fields$/, async function () {

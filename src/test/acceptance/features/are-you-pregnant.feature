@@ -26,7 +26,7 @@ Feature:
     When I select the Yes option
     Then expected date of delivery instructional text is displayed
 
-  Scenario: Select the Yes option and expected date of delivery appears
+  Scenario: Select the Yes option and enter valid expected delivery date
     When I select the Yes option
     And I enter a valid expected delivery date
     And I click continue
