@@ -64,9 +64,11 @@ Then(/^no values are present in the expected delivery date fields$/, async funct
   const day = await pages.areYouPregnant.getExpectedDeliveryDateDayInput()
   const dayValue = await day.getAttribute('value')
   assert(dayValue.length === 0, 'expected delivery date day to be empty')
+
   const month = await pages.areYouPregnant.getExpectedDeliveryDateMonthInput()
   const monthValue = await month.getAttribute('value')
   assert(monthValue.length === 0, 'expected delivery date month to be empty')
+
   const year = await pages.areYouPregnant.getExpectedDeliveryDateYearInput()
   const yearValue = await year.getAttribute('value')
   assert(yearValue.length === 0, 'expected delivery date year to be empty')
