@@ -12,18 +12,16 @@ Given(/^I am on the are you pregnant page$/, async function () {
   await pages.areYouPregnant.open(pages.url)
 })
 
-When(/^I select the no option$/, async function () {
+When(/^I select the No option$/, async function () {
   await pages.areYouPregnant.selectRadioButton(NO)
-  await pages.areYouPregnant.submitForm()
 })
 
-When(/^I select the yes option$/, async function () {
+When(/^I select the Yes option$/, async function () {
   await pages.areYouPregnant.selectRadioButton(YES)
 })
 
 When(/^I enter a valid expected delivery date$/, async function () {
   await pages.areYouPregnant.enterValidExpectedDeliveryDate()
-  await pages.areYouPregnant.submitForm()
 })
 
 When(/^I enter text in the expected delivery date fields$/, async function () {
@@ -31,17 +29,15 @@ When(/^I enter text in the expected delivery date fields$/, async function () {
 })
 
 When(/^I do not select an option$/, async function () {
-  await pages.areYouPregnant.submitForm()
+  // Specifically does nothing
 })
 
 When(/^I enter my expected delivery date too far in the past$/, async function () {
   await pages.areYouPregnant.enterExpectedDeliveryDateTooFarInThePast()
-  await pages.areYouPregnant.submitForm()
 })
 
 When(/^I enter my expected delivery date too far in the future$/, async function () {
   await pages.areYouPregnant.enterExpectedDeliveryDateTooFarInTheFuture()
-  await pages.areYouPregnant.submitForm()
 })
 
 Then(/^No option is selected$/, async function () {
