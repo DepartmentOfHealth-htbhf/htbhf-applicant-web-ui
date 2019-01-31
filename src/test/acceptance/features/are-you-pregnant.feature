@@ -22,12 +22,9 @@ Feature:
 
   Scenario: Select the yes option and expected date of delivery appears
     When I select the yes option
-    Then Expected date of delivery instructional text is displayed
-
-  Scenario: Select the yes option and enter a valid expected due date
-    When I select the yes option
-    And I enter my expected due date in six months time
-    Then I am shown the card address page
+    And expected date of delivery instructional text is displayed
+    Then I enter a valid expected delivery date
+    And I am shown the card address page
 
   Scenario: Select the yes option and do not enter a date
     When I select the yes option
@@ -36,5 +33,15 @@ Feature:
 
   Scenario: Select the yes option and enter text for the delivery date
     When I select the yes option
-    And I enter text in the due date fields
-    Then No values are present in the expected delivery date fields
+    And I enter text in the expected delivery date fields
+    Then no values are present in the expected delivery date fields
+
+  Scenario: Select the yes option and enter a date too far in the past
+    When I select the yes option
+    And I enter my expected delivery date too far in the past
+    Then I am informed that the date is too far in the past
+
+  Scenario: Select the yes option and enter a date too far in the future
+    When I select the yes option
+    And I enter my expected delivery date too far in the future
+    Then I am informed that the date is too far in the future

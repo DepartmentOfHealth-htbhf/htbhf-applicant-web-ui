@@ -24,18 +24,32 @@ class AreYouPregnant extends DataEntryPage {
     await label.click()
   }
 
-  async enterExpectedDeliveryDateInSixMonths () {
-    const dateInSixMonths = new Date()
-    dateInSixMonths.setMonth(dateInSixMonths.getMonth() + 6)
-    await this.setExpectedDeliveryDateDay(dateInSixMonths.getDate())
-    await this.setExpectedDeliveryDateMonth(dateInSixMonths.getMonth() + 1)
-    await this.setExpectedDeliveryDateYear(dateInSixMonths.getFullYear())
+  async setExpectedDeliveryDate (day = 0, month = 0, year = 0) {
+    await this.setExpectedDeliveryDateDay(day)
+    await this.setExpectedDeliveryDateMonth(month)
+    await this.setExpectedDeliveryDateYear(year)
+  }
+
+  async enterExpectedDeliveryDate ({ incrementMonth = 0 } = {}) {
+    const date = new Date()
+    date.setMonth(date.getMonth() + incrementMonth)
+    await this.setExpectedDeliveryDate(date.getDate(), date.getMonth() + 1, date.getFullYear())
+  }
+
+  async enterValidExpectedDeliveryDate () {
+    await this.enterExpectedDeliveryDate({ incrementMonth: 6 })
   }
 
   async enterTextInDeliveryDateFields () {
-    await this.setExpectedDeliveryDateDay('foo')
-    await this.setExpectedDeliveryDateMonth(' bar')
-    await this.setExpectedDeliveryDateYear('baz!')
+    await this.setExpectedDeliveryDate('foo', 'bar', 'baz!')
+  }
+
+  async enterExpectedDeliveryDateTooFarInThePast () {
+    await this.enterExpectedDeliveryDate({ incrementMonth: -2 })
+  }
+
+  async enterExpectedDeliveryDateTooFarInTheFuture () {
+    await this.enterExpectedDeliveryDate({ incrementMonth: 9 })
   }
 
   async getRadioButton (option) {

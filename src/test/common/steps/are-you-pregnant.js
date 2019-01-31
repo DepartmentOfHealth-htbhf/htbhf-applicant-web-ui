@@ -21,16 +21,26 @@ When(/^I select the yes option$/, async function () {
   await pages.areYouPregnant.selectRadioButton(YES)
 })
 
-When(/^I enter my expected due date in six months time$/, async function () {
-  await pages.areYouPregnant.enterExpectedDeliveryDateInSixMonths()
+When(/^I enter a valid expected delivery date$/, async function () {
+  await pages.areYouPregnant.enterValidExpectedDeliveryDate()
   await pages.areYouPregnant.submitForm()
 })
 
-When(/^I enter text in the due date fields$/, async function () {
+When(/^I enter text in the expected delivery date fields$/, async function () {
   await pages.areYouPregnant.enterTextInDeliveryDateFields()
 })
 
 When(/^I do not select an option$/, async function () {
+  await pages.areYouPregnant.submitForm()
+})
+
+When(/^I enter my expected delivery date too far in the past$/, async function () {
+  await pages.areYouPregnant.enterExpectedDeliveryDateTooFarInThePast()
+  await pages.areYouPregnant.submitForm()
+})
+
+When(/^I enter my expected delivery date too far in the future$/, async function () {
+  await pages.areYouPregnant.enterExpectedDeliveryDateTooFarInTheFuture()
   await pages.areYouPregnant.submitForm()
 })
 
@@ -49,12 +59,12 @@ Then(/^Yes and No options are displayed$/, async function () {
   await pages.areYouPregnant.getRadioLabelWithText(NO)
 })
 
-Then(/^Expected date of delivery instructional text is displayed$/, async function () {
+Then(/^expected date of delivery instructional text is displayed$/, async function () {
   const text = await pages.areYouPregnant.getExpectedDeliveryDateInstructionalText()
   assert(text.getText().toString().trim().length, 'expected delivery date instructional text should not be empty')
 })
 
-Then(/^No values are present in the expected delivery date fields$/, async function () {
+Then(/^no values are present in the expected delivery date fields$/, async function () {
   const day = await pages.areYouPregnant.getExpectedDeliveryDateDayInput()
   const dayValue = await day.getAttribute('value')
   assert(dayValue.length === 0, 'expected delivery date day to be empty')
@@ -78,6 +88,16 @@ Then(/^I am informed that I need to select an option$/, async function () {
 Then(/^I am informed that I need to enter an expected delivery date$/, async function () {
   await assertErrorHeaderTextPresent(pages.areYouPregnant)
   await assertExpectedDeliveryDateErrorPresent('Enter your baby\'s due date')
+})
+
+Then(/^I am informed that the date is too far in the past$/, async function () {
+  await assertErrorHeaderTextPresent(pages.areYouPregnant)
+  await assertExpectedDeliveryDateErrorPresent('The due date you entered is more than 1 month ago')
+})
+
+Then(/^I am informed that the date is too far in the future$/, async function () {
+  await assertErrorHeaderTextPresent(pages.areYouPregnant)
+  await assertExpectedDeliveryDateErrorPresent('The date you have entered is more than 8 months in the future')
 })
 
 async function assertAreYouPregnantErrorPresent () {
