@@ -1,5 +1,5 @@
 const test = require('tape')
-const { UK_POSTCODE_PATTERN } = require('./validate')
+const { UK_POSTCODE_PATTERN } = require('../validate')
 
 test('invalid postcode does not match regex', (t) => {
   const invalidPostcodes = [
