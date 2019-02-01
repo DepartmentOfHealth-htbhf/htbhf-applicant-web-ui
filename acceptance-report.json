@@ -2,14 +2,14 @@
   {
     "description": "  In order to apply for the HTBHF programme\n  As a potential claimant\n  I want to select whether or not I am pregnant",
     "keyword": "Feature",
-    "name": "",
+    "name": "Are you pregnant?",
     "line": 1,
-    "id": "",
+    "id": "are-you-pregnant?",
     "tags": [],
     "uri": "src/test/acceptance/features/are-you-pregnant.feature",
     "elements": [
       {
-        "id": ";no-option-is-selected",
+        "id": "are-you-pregnant?;no-option-is-selected",
         "keyword": "Scenario",
         "line": 9,
         "name": "No option is selected",
@@ -24,7 +24,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 16000000
+              "duration": 15000000
             }
           },
           {
@@ -37,7 +37,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 407000000
+              "duration": 409000000
             }
           },
           {
@@ -50,7 +50,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 19000000
+              "duration": 16000000
             }
           },
           {
@@ -66,7 +66,7 @@
         ]
       },
       {
-        "id": ";yes-and-no-are-displayed",
+        "id": "are-you-pregnant?;yes-and-no-are-displayed",
         "keyword": "Scenario",
         "line": 12,
         "name": "Yes and No are displayed",
@@ -81,7 +81,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2000000
+              "duration": 4000000
             }
           },
           {
@@ -94,7 +94,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 410000000
+              "duration": 387000000
             }
           },
           {
@@ -107,7 +107,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 23000000
+              "duration": 26000000
             }
           },
           {
@@ -123,7 +123,7 @@
         ]
       },
       {
-        "id": ";do-not-select-an-option",
+        "id": "are-you-pregnant?;do-not-select-an-option",
         "keyword": "Scenario",
         "line": 15,
         "name": "Do not select an option",
@@ -151,7 +151,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 542000000
+              "duration": 425000000
             }
           },
           {
@@ -176,7 +176,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 103000000
+              "duration": 101000000
             }
           },
           {
@@ -189,7 +189,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 90000000
+              "duration": 82000000
             }
           },
           {
@@ -205,7 +205,7 @@
         ]
       },
       {
-        "id": ";select-the-no-option",
+        "id": "are-you-pregnant?;select-the-no-option",
         "keyword": "Scenario",
         "line": 20,
         "name": "Select the No option",
@@ -233,7 +233,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 374000000
+              "duration": 395000000
             }
           },
           {
@@ -246,7 +246,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 92000000
+              "duration": 90000000
             }
           },
           {
@@ -259,7 +259,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 143000000
+              "duration": 146000000
             }
           },
           {
@@ -272,7 +272,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 46000000
+              "duration": 44000000
             }
           },
           {
@@ -288,7 +288,7 @@
         ]
       },
       {
-        "id": ";select-yes-and-the-expected-date-of-delivery-instructional-text-is-shown",
+        "id": "are-you-pregnant?;select-yes-and-the-expected-date-of-delivery-instructional-text-is-shown",
         "keyword": "Scenario",
         "line": 25,
         "name": "Select Yes and the expected date of delivery instructional text is shown",
@@ -302,7 +302,8 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           },
           {
@@ -315,7 +316,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 342000000
+              "duration": 353000000
             }
           },
           {
@@ -341,7 +342,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 16000000
+              "duration": 13000000
             }
           },
           {
@@ -357,7 +358,7 @@
         ]
       },
       {
-        "id": ";select-the-yes-option-and-enter-valid-expected-delivery-date",
+        "id": "are-you-pregnant?;select-the-yes-option-and-enter-valid-expected-delivery-date",
         "keyword": "Scenario",
         "line": 29,
         "name": "Select the Yes option and enter valid expected delivery date",
@@ -372,7 +373,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 4000000
+              "duration": 1000000
             }
           },
           {
@@ -385,7 +386,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 401000000
+              "duration": 396000000
             }
           },
           {
@@ -398,7 +399,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 93000000
+              "duration": 102000000
             }
           },
           {
@@ -411,7 +412,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 167000000
+              "duration": 170000000
             }
           },
           {
@@ -424,7 +425,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 145000000
+              "duration": 139000000
             }
           },
           {
@@ -437,7 +438,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 45000000
+              "duration": 44000000
             }
           },
           {
@@ -447,14 +448,13 @@
               "location": "src/test/common/steps/hooks.js:14"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
       },
       {
-        "id": ";select-the-yes-option-and-do-not-enter-a-date",
+        "id": "are-you-pregnant?;select-the-yes-option-and-do-not-enter-a-date",
         "keyword": "Scenario",
         "line": 35,
         "name": "Select the Yes option and do not enter a date",
@@ -482,7 +482,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 373000000
+              "duration": 375000000
             }
           },
           {
@@ -495,7 +495,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 89000000
+              "duration": 86000000
             }
           },
           {
@@ -508,7 +508,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 119000000
+              "duration": 130000000
             }
           },
           {
@@ -521,7 +521,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 90000000
+              "duration": 81000000
             }
           },
           {
@@ -538,7 +538,7 @@
         ]
       },
       {
-        "id": ";select-the-yes-option-and-enter-text-for-the-delivery-date",
+        "id": "are-you-pregnant?;select-the-yes-option-and-enter-text-for-the-delivery-date",
         "keyword": "Scenario",
         "line": 40,
         "name": "Select the Yes option and enter text for the delivery date",
@@ -552,7 +552,8 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           },
           {
@@ -565,7 +566,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 554000000
+              "duration": 396000000
             }
           },
           {
@@ -578,7 +579,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 94000000
+              "duration": 87000000
             }
           },
           {
@@ -591,7 +592,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 173000000
+              "duration": 163000000
             }
           },
           {
@@ -604,7 +605,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 61000000
+              "duration": 58000000
             }
           },
           {
@@ -620,7 +621,7 @@
         ]
       },
       {
-        "id": ";select-the-yes-option-and-enter-a-date-too-far-in-the-past",
+        "id": "are-you-pregnant?;select-the-yes-option-and-enter-a-date-too-far-in-the-past",
         "keyword": "Scenario",
         "line": 45,
         "name": "Select the Yes option and enter a date too far in the past",
@@ -635,7 +636,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1000000
+              "duration": 2000000
             }
           },
           {
@@ -648,7 +649,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 387000000
+              "duration": 354000000
             }
           },
           {
@@ -661,7 +662,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 91000000
+              "duration": 89000000
             }
           },
           {
@@ -674,7 +675,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 172000000
+              "duration": 170000000
             }
           },
           {
@@ -687,7 +688,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 118000000
+              "duration": 115000000
             }
           },
           {
@@ -700,7 +701,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 84000000
+              "duration": 80000000
             }
           },
           {
@@ -716,7 +717,7 @@
         ]
       },
       {
-        "id": ";select-the-yes-option-and-enter-a-date-too-far-in-the-future",
+        "id": "are-you-pregnant?;select-the-yes-option-and-enter-a-date-too-far-in-the-future",
         "keyword": "Scenario",
         "line": 51,
         "name": "Select the Yes option and enter a date too far in the future",
@@ -744,7 +745,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 387000000
+              "duration": 358000000
             }
           },
           {
@@ -770,7 +771,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 177000000
+              "duration": 166000000
             }
           },
           {
@@ -783,7 +784,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 106000000
+              "duration": 116000000
             }
           },
           {
@@ -796,7 +797,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 86000000
+              "duration": 80000000
             }
           },
           {
@@ -806,8 +807,7 @@
               "location": "src/test/common/steps/hooks.js:14"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
@@ -852,7 +852,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 410000000
+              "duration": 392000000
             }
           },
           {
@@ -865,7 +865,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 421000000
+              "duration": 402000000
             }
           },
           {
@@ -888,8 +888,7 @@
               "location": "src/test/common/steps/hooks.js:14"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
@@ -923,7 +922,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 434000000
+              "duration": 416000000
             }
           },
           {
@@ -936,7 +935,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 416000000
+              "duration": 413000000
             }
           },
           {
@@ -949,7 +948,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 7000000
+              "duration": 4000000
             }
           },
           {
@@ -993,7 +992,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 404000000
+              "duration": 387000000
             }
           },
           {
@@ -1006,7 +1005,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 410000000
+              "duration": 403000000
             }
           },
           {
@@ -1019,7 +1018,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 6000000
+              "duration": 5000000
             }
           },
           {
@@ -1063,7 +1062,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 436000000
+              "duration": 428000000
             }
           },
           {
@@ -1076,7 +1075,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 411000000
+              "duration": 414000000
             }
           },
           {
@@ -1089,7 +1088,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 6000000
+              "duration": 4000000
             }
           },
           {
@@ -1133,7 +1132,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 429000000
+              "duration": 426000000
             }
           },
           {
@@ -1146,7 +1145,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 414000000
+              "duration": 409000000
             }
           },
           {
@@ -1159,7 +1158,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3000000
+              "duration": 9000000
             }
           },
           {
@@ -1190,7 +1189,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1000000
+              "duration": 9000000
             }
           },
           {
@@ -1203,7 +1202,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 376000000
+              "duration": 428000000
             }
           },
           {
@@ -1216,7 +1215,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 416000000
+              "duration": 415000000
             }
           },
           {
@@ -1239,8 +1238,7 @@
               "location": "src/test/common/steps/hooks.js:14"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
@@ -1260,8 +1258,7 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed",
-              "duration": 3000000
+              "status": "passed"
             }
           },
           {
@@ -1274,7 +1271,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 422000000
+              "duration": 397000000
             }
           },
           {
@@ -1287,7 +1284,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 395000000
+              "duration": 420000000
             }
           },
           {
@@ -1300,7 +1297,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 6000000
+              "duration": 4000000
             }
           },
           {
@@ -1344,7 +1341,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 397000000
+              "duration": 394000000
             }
           },
           {
@@ -1357,7 +1354,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 379000000
+              "duration": 385000000
             }
           },
           {
@@ -1370,7 +1367,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 7000000
+              "duration": 3000000
             }
           },
           {
@@ -1400,7 +1397,8 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           },
           {
@@ -1413,7 +1411,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 435000000
+              "duration": 436000000
             }
           },
           {
@@ -1426,7 +1424,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 378000000
+              "duration": 376000000
             }
           },
           {
@@ -1439,7 +1437,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 115000000
+              "duration": 114000000
             }
           },
           {
@@ -1482,7 +1480,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 375000000
+              "duration": 393000000
             }
           },
           {
@@ -1495,7 +1493,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 360000000
+              "duration": 362000000
             }
           },
           {
@@ -1508,7 +1506,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 108000000
+              "duration": 111000000
             }
           },
           {
@@ -1518,8 +1516,7 @@
               "location": "src/test/common/steps/hooks.js:14"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
@@ -1553,7 +1550,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 427000000
+              "duration": 432000000
             }
           },
           {
@@ -1566,7 +1563,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 395000000
+              "duration": 366000000
             }
           },
           {
@@ -1579,7 +1576,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 111000000
+              "duration": 109000000
             }
           },
           {
@@ -1589,7 +1586,8 @@
               "location": "src/test/common/steps/hooks.js:14"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           }
         ]
@@ -1623,7 +1621,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 393000000
+              "duration": 402000000
             }
           },
           {
@@ -1636,7 +1634,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 395000000
+              "duration": 365000000
             }
           },
           {
@@ -1649,7 +1647,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 110000000
+              "duration": 115000000
             }
           },
           {
@@ -1693,7 +1691,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 425000000
+              "duration": 414000000
             }
           },
           {
@@ -1706,7 +1704,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 359000000
+              "duration": 361000000
             }
           },
           {
@@ -1719,7 +1717,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 113000000
+              "duration": 108000000
             }
           },
           {
@@ -1763,7 +1761,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 374000000
+              "duration": 395000000
             }
           },
           {
@@ -1776,7 +1774,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 370000000
+              "duration": 364000000
             }
           },
           {
@@ -1789,7 +1787,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 110000000
+              "duration": 117000000
             }
           },
           {
@@ -1833,7 +1831,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 431000000
+              "duration": 481000000
             }
           },
           {
@@ -1846,7 +1844,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 327000000
+              "duration": 307000000
             }
           },
           {
@@ -1859,7 +1857,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 180000000
+              "duration": 179000000
             }
           },
           {
@@ -1889,8 +1887,7 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed",
-              "duration": 3000000
+              "status": "passed"
             }
           },
           {
@@ -1903,7 +1900,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 400000000
+              "duration": 380000000
             }
           },
           {
@@ -1916,7 +1913,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 369000000
+              "duration": 366000000
             }
           },
           {
@@ -1929,7 +1926,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 109000000
+              "duration": 111000000
             }
           },
           {
@@ -1959,7 +1956,8 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 2000000
             }
           },
           {
@@ -1972,7 +1970,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 450000000
+              "duration": 457000000
             }
           },
           {
@@ -1985,7 +1983,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 363000000
+              "duration": 399000000
             }
           },
           {
@@ -1998,7 +1996,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 109000000
+              "duration": 118000000
             }
           },
           {
@@ -2042,7 +2040,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 433000000
+              "duration": 424000000
             }
           },
           {
@@ -2055,7 +2053,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1917000000
+              "duration": 2141000000
             }
           },
           {
@@ -2068,7 +2066,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 117000000
+              "duration": 136000000
             }
           },
           {
@@ -2112,7 +2110,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 430000000
+              "duration": 462000000
             }
           },
           {
@@ -2125,7 +2123,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1908000000
+              "duration": 2176000000
             }
           },
           {
@@ -2138,7 +2136,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 115000000
+              "duration": 122000000
             }
           },
           {
@@ -2168,7 +2166,8 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           },
           {
@@ -2181,7 +2180,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 389000000
+              "duration": 429000000
             }
           },
           {
@@ -2194,7 +2193,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1881000000
+              "duration": 2205000000
             }
           },
           {
@@ -2207,7 +2206,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 112000000
+              "duration": 117000000
             }
           },
           {
@@ -2227,14 +2226,14 @@
   {
     "description": "  In order to apply for the HTBHF programme\n  As a potential claimant\n  I want to enter my date of birth",
     "keyword": "Feature",
-    "name": "",
+    "name": "Date of birth",
     "line": 1,
-    "id": "",
+    "id": "date-of-birth",
     "tags": [],
     "uri": "src/test/acceptance/features/enter-dob.feature",
     "elements": [
       {
-        "id": ";enter-a-date-of-birth-in-the-future",
+        "id": "date-of-birth;enter-a-date-of-birth-in-the-future",
         "keyword": "Scenario",
         "line": 9,
         "name": "Enter a date of birth in the future",
@@ -2248,8 +2247,7 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           },
           {
@@ -2262,7 +2260,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 432000000
+              "duration": 433000000
             }
           },
           {
@@ -2275,7 +2273,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 275000000
+              "duration": 334000000
             }
           },
           {
@@ -2288,7 +2286,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 106000000
+              "duration": 138000000
             }
           },
           {
@@ -2304,7 +2302,7 @@
         ]
       },
       {
-        "id": ";enter-an-invalid-date-of-birth",
+        "id": "date-of-birth;enter-an-invalid-date-of-birth",
         "keyword": "Scenario",
         "line": 18,
         "name": "Enter an invalid date of birth",
@@ -2332,7 +2330,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 405000000
+              "duration": 418000000
             }
           },
           {
@@ -2345,7 +2343,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 256000000
+              "duration": 286000000
             }
           },
           {
@@ -2358,7 +2356,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 107000000
+              "duration": 120000000
             }
           },
           {
@@ -2374,7 +2372,7 @@
         ]
       },
       {
-        "id": ";enter-an-invalid-date-of-birth",
+        "id": "date-of-birth;enter-an-invalid-date-of-birth",
         "keyword": "Scenario",
         "line": 19,
         "name": "Enter an invalid date of birth",
@@ -2401,7 +2399,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 434000000
+              "duration": 413000000
             }
           },
           {
@@ -2414,7 +2412,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 277000000
+              "duration": 299000000
             }
           },
           {
@@ -2427,7 +2425,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 110000000
+              "duration": 119000000
             }
           },
           {
@@ -2443,7 +2441,7 @@
         ]
       },
       {
-        "id": ";enter-an-invalid-date-of-birth",
+        "id": "date-of-birth;enter-an-invalid-date-of-birth",
         "keyword": "Scenario",
         "line": 20,
         "name": "Enter an invalid date of birth",
@@ -2457,8 +2455,7 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed",
-              "duration": 2000000
+              "status": "passed"
             }
           },
           {
@@ -2471,7 +2468,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 401000000
+              "duration": 414000000
             }
           },
           {
@@ -2484,7 +2481,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 269000000
+              "duration": 295000000
             }
           },
           {
@@ -2497,7 +2494,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 108000000
+              "duration": 119000000
             }
           },
           {
@@ -2507,16 +2504,87 @@
               "location": "src/test/common/steps/hooks.js:14"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           }
         ]
       },
       {
-        "id": ";enter-an-invalid-date-of-birth",
+        "id": "date-of-birth;enter-an-invalid-date-of-birth",
         "keyword": "Scenario",
         "line": 21,
         "name": "Enter an invalid date of birth",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "match": {
+              "location": "src/test/common/steps/hooks.js:7"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I am on the enter date of birth page",
+            "match": {
+              "location": "src/test/common/steps/enter-dob-steps.js:7"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 421000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 14,
+            "name": "I enter my date of birth as day: 03, month: 37 and year: 1978",
+            "match": {
+              "location": "src/test/common/steps/enter-dob-steps.js:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 296000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 15,
+            "name": "I am informed that a valid date of birth is required",
+            "match": {
+              "location": "src/test/common/steps/enter-dob-steps.js:19"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 117000000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "src/test/common/steps/hooks.js:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "date-of-birth;enter-a-valid-date-of-birth",
+        "keyword": "Scenario",
+        "line": 28,
+        "name": "Enter a valid date of birth",
         "tags": [],
         "type": "scenario",
         "steps": [
@@ -2541,76 +2609,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 382000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 14,
-            "name": "I enter my date of birth as day: 03, month: 37 and year: 1978",
-            "match": {
-              "location": "src/test/common/steps/enter-dob-steps.js:11"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 284000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 15,
-            "name": "I am informed that a valid date of birth is required",
-            "match": {
-              "location": "src/test/common/steps/enter-dob-steps.js:19"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 108000000
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:14"
-            },
-            "result": {
-              "status": "passed"
-            }
-          }
-        ]
-      },
-      {
-        "id": ";enter-a-valid-date-of-birth",
-        "keyword": "Scenario",
-        "line": 28,
-        "name": "Enter a valid date of birth",
-        "tags": [],
-        "type": "scenario",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:7"
-            },
-            "result": {
-              "status": "passed"
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 7,
-            "name": "I am on the enter date of birth page",
-            "match": {
-              "location": "src/test/common/steps/enter-dob-steps.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 410000000
+              "duration": 419000000
             }
           },
           {
@@ -2623,7 +2622,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 305000000
+              "duration": 323000000
             }
           },
           {
@@ -2652,7 +2651,7 @@
         ]
       },
       {
-        "id": ";enter-a-valid-date-of-birth",
+        "id": "date-of-birth;enter-a-valid-date-of-birth",
         "keyword": "Scenario",
         "line": 29,
         "name": "Enter a valid date of birth",
@@ -2667,7 +2666,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1000000
+              "duration": 5000000
             }
           },
           {
@@ -2680,7 +2679,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 423000000
+              "duration": 412000000
             }
           },
           {
@@ -2693,7 +2692,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 312000000
+              "duration": 334000000
             }
           },
           {
@@ -2706,7 +2705,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3000000
+              "duration": 4000000
             }
           },
           {
@@ -2722,7 +2721,7 @@
         ]
       },
       {
-        "id": ";enter-a-valid-date-of-birth",
+        "id": "date-of-birth;enter-a-valid-date-of-birth",
         "keyword": "Scenario",
         "line": 30,
         "name": "Enter a valid date of birth",
@@ -2736,8 +2735,7 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           },
           {
@@ -2750,7 +2748,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 372000000
+              "duration": 417000000
             }
           },
           {
@@ -2776,7 +2774,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3000000
+              "duration": 7000000
             }
           },
           {
@@ -2792,7 +2790,7 @@
         ]
       },
       {
-        "id": ";enter-a-valid-date-of-birth",
+        "id": "date-of-birth;enter-a-valid-date-of-birth",
         "keyword": "Scenario",
         "line": 31,
         "name": "Enter a valid date of birth",
@@ -2806,7 +2804,8 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           },
           {
@@ -2819,7 +2818,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 395000000
+              "duration": 399000000
             }
           },
           {
@@ -2832,7 +2831,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 305000000
+              "duration": 301000000
             }
           },
           {
@@ -2865,14 +2864,14 @@
   {
     "description": "  In order to apply for the HTBHF programme\n  As a potential claimant\n  I want to enter my name",
     "keyword": "Feature",
-    "name": "",
+    "name": "Enter name",
     "line": 1,
-    "id": "",
+    "id": "enter-name",
     "tags": [],
     "uri": "src/test/acceptance/features/enter-name.feature",
     "elements": [
       {
-        "id": ";fill-“first-name”-textbox-with-text-which-exceeds-maximum-length",
+        "id": "enter-name;fill-“first-name”-textbox-with-text-which-exceeds-maximum-length",
         "keyword": "Scenario",
         "line": 9,
         "name": "Fill “First name” textbox with text which exceeds maximum length",
@@ -2886,8 +2885,7 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed",
-              "duration": 2000000
+              "status": "passed"
             }
           },
           {
@@ -2900,7 +2898,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 415000000
+              "duration": 390000000
             }
           },
           {
@@ -2913,7 +2911,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1768000000
+              "duration": 1758000000
             }
           },
           {
@@ -2926,7 +2924,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 110000000
+              "duration": 106000000
             }
           },
           {
@@ -2949,13 +2947,14 @@
               "location": "src/test/common/steps/hooks.js:14"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           }
         ]
       },
       {
-        "id": ";fill-“last-name”-textbox-with-text-which-exceeds-maximum-length",
+        "id": "enter-name;fill-“last-name”-textbox-with-text-which-exceeds-maximum-length",
         "keyword": "Scenario",
         "line": 14,
         "name": "Fill “Last name” textbox with text which exceeds maximum length",
@@ -2970,7 +2969,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1000000
+              "duration": 4000000
             }
           },
           {
@@ -2983,7 +2982,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 385000000
+              "duration": 381000000
             }
           },
           {
@@ -2996,7 +2995,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1751000000
+              "duration": 1761000000
             }
           },
           {
@@ -3009,7 +3008,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 108000000
+              "duration": 111000000
             }
           },
           {
@@ -3022,7 +3021,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 19000000
+              "duration": 20000000
             }
           },
           {
@@ -3038,7 +3037,7 @@
         ]
       },
       {
-        "id": ";fail-to-fill-“last-name”-textbox-shows-error",
+        "id": "enter-name;fail-to-fill-“last-name”-textbox-shows-error",
         "keyword": "Scenario",
         "line": 19,
         "name": "Fail to fill “Last name” textbox shows error",
@@ -3065,7 +3064,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 423000000
+              "duration": 436000000
             }
           },
           {
@@ -3078,7 +3077,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 209000000
+              "duration": 225000000
             }
           },
           {
@@ -3107,79 +3106,9 @@
         ]
       },
       {
-        "id": ";valid-first-name-and-last-name-form-submission",
+        "id": "enter-name;valid-first-name-and-last-name-form-submission",
         "keyword": "Scenario",
         "line": 29,
-        "name": "Valid first name and last name form submission",
-        "tags": [],
-        "type": "scenario",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 4000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 7,
-            "name": "I am on the enter name page",
-            "match": {
-              "location": "src/test/common/steps/enter-name-steps.js:8"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 372000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 24,
-            "name": "I enter <script>window.location.href=“www.google.com”</script> and ‘;exec xp_cmdshell ‘dir’;– values",
-            "match": {
-              "location": "src/test/common/steps/enter-name-steps.js:24"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 387000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 25,
-            "name": "I am shown the enter national insurance page",
-            "match": {
-              "location": "src/test/common/steps/enter-name-steps.js:54"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 36000000
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:14"
-            },
-            "result": {
-              "status": "passed"
-            }
-          }
-        ]
-      },
-      {
-        "id": ";valid-first-name-and-last-name-form-submission",
-        "keyword": "Scenario",
-        "line": 30,
         "name": "Valid first name and last name form submission",
         "tags": [],
         "type": "scenario",
@@ -3205,20 +3134,20 @@
             },
             "result": {
               "status": "passed",
-              "duration": 429000000
+              "duration": 398000000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
             "line": 24,
-            "name": "I enter Henrietta and Fulsome-Blues values",
+            "name": "I enter <script>window.location.href=“www.google.com”</script> and ‘;exec xp_cmdshell ‘dir’;– values",
             "match": {
               "location": "src/test/common/steps/enter-name-steps.js:24"
             },
             "result": {
               "status": "passed",
-              "duration": 280000000
+              "duration": 389000000
             }
           },
           {
@@ -3247,9 +3176,9 @@
         ]
       },
       {
-        "id": ";valid-first-name-and-last-name-form-submission",
+        "id": "enter-name;valid-first-name-and-last-name-form-submission",
         "keyword": "Scenario",
-        "line": 31,
+        "line": 30,
         "name": "Valid first name and last name form submission",
         "tags": [],
         "type": "scenario",
@@ -3261,8 +3190,7 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           },
           {
@@ -3275,20 +3203,20 @@
             },
             "result": {
               "status": "passed",
-              "duration": 388000000
+              "duration": 424000000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
             "line": 24,
-            "name": "I enter Henrietta and Młynarczyk values",
+            "name": "I enter Henrietta and Fulsome-Blues values",
             "match": {
               "location": "src/test/common/steps/enter-name-steps.js:24"
             },
             "result": {
               "status": "passed",
-              "duration": 284000000
+              "duration": 279000000
             }
           },
           {
@@ -3317,9 +3245,9 @@
         ]
       },
       {
-        "id": ";valid-first-name-and-last-name-form-submission",
+        "id": "enter-name;valid-first-name-and-last-name-form-submission",
         "keyword": "Scenario",
-        "line": 32,
+        "line": 31,
         "name": "Valid first name and last name form submission",
         "tags": [],
         "type": "scenario",
@@ -3345,7 +3273,76 @@
             },
             "result": {
               "status": "passed",
-              "duration": 433000000
+              "duration": 380000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 24,
+            "name": "I enter Henrietta and Młynarczyk values",
+            "match": {
+              "location": "src/test/common/steps/enter-name-steps.js:24"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 281000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 25,
+            "name": "I am shown the enter national insurance page",
+            "match": {
+              "location": "src/test/common/steps/enter-name-steps.js:54"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 35000000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "src/test/common/steps/hooks.js:14"
+            },
+            "result": {
+              "status": "passed"
+            }
+          }
+        ]
+      },
+      {
+        "id": "enter-name;valid-first-name-and-last-name-form-submission",
+        "keyword": "Scenario",
+        "line": 32,
+        "name": "Valid first name and last name form submission",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "match": {
+              "location": "src/test/common/steps/hooks.js:7"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I am on the enter name page",
+            "match": {
+              "location": "src/test/common/steps/enter-name-steps.js:8"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 431000000
             }
           },
           {
@@ -3358,7 +3355,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 260000000
+              "duration": 261000000
             }
           },
           {
@@ -3391,14 +3388,14 @@
   {
     "description": "  In order to apply for the HTBHF programme\n  As a potential claimant\n  I want to enter my national insurance number",
     "keyword": "Feature",
-    "name": "",
+    "name": "Enter National Insurance number",
     "line": 1,
-    "id": "",
+    "id": "enter-national-insurance-number",
     "tags": [],
     "uri": "src/test/acceptance/features/enter-nino.feature",
     "elements": [
       {
-        "id": ";enter-in-a-valid-national-insurance-number",
+        "id": "enter-national-insurance-number;enter-in-a-valid-national-insurance-number",
         "keyword": "Scenario",
         "line": 9,
         "name": "Enter in a valid national insurance number",
@@ -3426,7 +3423,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 392000000
+              "duration": 367000000
             }
           },
           {
@@ -3439,7 +3436,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 219000000
+              "duration": 221000000
             }
           },
           {
@@ -3452,7 +3449,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 38000000
+              "duration": 39000000
             }
           },
           {
@@ -3468,7 +3465,7 @@
         ]
       },
       {
-        "id": ";do-not-enter-in-a-\"national-insurance-number\"",
+        "id": "enter-national-insurance-number;do-not-enter-in-a-\"national-insurance-number\"",
         "keyword": "Scenario",
         "line": 13,
         "name": "Do not enter in a \"national insurance number\"",
@@ -3496,7 +3493,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 414000000
+              "duration": 429000000
             }
           },
           {
@@ -3509,7 +3506,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 157000000
+              "duration": 149000000
             }
           },
           {
@@ -3522,7 +3519,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 108000000
+              "duration": 111000000
             }
           },
           {
@@ -3538,175 +3535,9 @@
         ]
       },
       {
-        "id": ";fill-\"national-insurance-number\"-with-invalid-format",
+        "id": "enter-national-insurance-number;fill-\"national-insurance-number\"-with-invalid-format",
         "keyword": "Scenario",
         "line": 24,
-        "name": "Fill \"national insurance number\" with invalid format",
-        "tags": [],
-        "type": "scenario",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 7,
-            "name": "I am on the enter national insurance number page",
-            "match": {
-              "location": "src/test/common/steps/enter-nino-steps.js:9"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 401000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 18,
-            "name": "I enter ab123456Q as my national insurance number",
-            "match": {
-              "location": "src/test/common/steps/enter-nino-steps.js:17"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 173000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 19,
-            "name": "I am informed that the national insurance number is in the wrong format",
-            "match": {
-              "location": "src/test/common/steps/enter-nino-steps.js:25"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 107000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 20,
-            "name": "I see the value ab123456Q in the textbox",
-            "match": {
-              "location": "src/test/common/steps/enter-nino-steps.js:31"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 20000000
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:14"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1000000
-            }
-          }
-        ]
-      },
-      {
-        "id": ";fill-\"national-insurance-number\"-with-invalid-format",
-        "keyword": "Scenario",
-        "line": 25,
-        "name": "Fill \"national insurance number\" with invalid format",
-        "tags": [],
-        "type": "scenario",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:7"
-            },
-            "result": {
-              "status": "passed"
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 7,
-            "name": "I am on the enter national insurance number page",
-            "match": {
-              "location": "src/test/common/steps/enter-nino-steps.js:9"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 424000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 18,
-            "name": "I enter QQ123456CQQ123456C as my national insurance number",
-            "match": {
-              "location": "src/test/common/steps/enter-nino-steps.js:17"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 189000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 19,
-            "name": "I am informed that the national insurance number is in the wrong format",
-            "match": {
-              "location": "src/test/common/steps/enter-nino-steps.js:25"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 108000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 20,
-            "name": "I see the value QQ123456CQQ123456C in the textbox",
-            "match": {
-              "location": "src/test/common/steps/enter-nino-steps.js:31"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 19000000
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:14"
-            },
-            "result": {
-              "status": "passed"
-            }
-          }
-        ]
-      },
-      {
-        "id": ";fill-\"national-insurance-number\"-with-invalid-format",
-        "keyword": "Scenario",
-        "line": 26,
         "name": "Fill \"national insurance number\" with invalid format",
         "tags": [],
         "type": "scenario",
@@ -3739,13 +3570,13 @@
             "arguments": [],
             "keyword": "When ",
             "line": 18,
-            "name": "I enter QQ123456CQtest as my national insurance number",
+            "name": "I enter ab123456Q as my national insurance number",
             "match": {
               "location": "src/test/common/steps/enter-nino-steps.js:17"
             },
             "result": {
               "status": "passed",
-              "duration": 176000000
+              "duration": 174000000
             }
           },
           {
@@ -3758,7 +3589,174 @@
             },
             "result": {
               "status": "passed",
-              "duration": 108000000
+              "duration": 110000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 20,
+            "name": "I see the value ab123456Q in the textbox",
+            "match": {
+              "location": "src/test/common/steps/enter-nino-steps.js:31"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 21000000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "src/test/common/steps/hooks.js:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "enter-national-insurance-number;fill-\"national-insurance-number\"-with-invalid-format",
+        "keyword": "Scenario",
+        "line": 25,
+        "name": "Fill \"national insurance number\" with invalid format",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "match": {
+              "location": "src/test/common/steps/hooks.js:7"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 7000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I am on the enter national insurance number page",
+            "match": {
+              "location": "src/test/common/steps/enter-nino-steps.js:9"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 428000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 18,
+            "name": "I enter QQ123456CQQ123456C as my national insurance number",
+            "match": {
+              "location": "src/test/common/steps/enter-nino-steps.js:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 192000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 19,
+            "name": "I am informed that the national insurance number is in the wrong format",
+            "match": {
+              "location": "src/test/common/steps/enter-nino-steps.js:25"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 109000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 20,
+            "name": "I see the value QQ123456CQQ123456C in the textbox",
+            "match": {
+              "location": "src/test/common/steps/enter-nino-steps.js:31"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 19000000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "src/test/common/steps/hooks.js:14"
+            },
+            "result": {
+              "status": "passed"
+            }
+          }
+        ]
+      },
+      {
+        "id": "enter-national-insurance-number;fill-\"national-insurance-number\"-with-invalid-format",
+        "keyword": "Scenario",
+        "line": 26,
+        "name": "Fill \"national insurance number\" with invalid format",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "match": {
+              "location": "src/test/common/steps/hooks.js:7"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I am on the enter national insurance number page",
+            "match": {
+              "location": "src/test/common/steps/enter-nino-steps.js:9"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 407000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 18,
+            "name": "I enter QQ123456CQtest as my national insurance number",
+            "match": {
+              "location": "src/test/common/steps/enter-nino-steps.js:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 184000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 19,
+            "name": "I am informed that the national insurance number is in the wrong format",
+            "match": {
+              "location": "src/test/common/steps/enter-nino-steps.js:25"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 107000000
             }
           },
           {
@@ -3787,7 +3785,7 @@
         ]
       },
       {
-        "id": ";fill-\"national-insurance-number\"-with-invalid-format",
+        "id": "enter-national-insurance-number;fill-\"national-insurance-number\"-with-invalid-format",
         "keyword": "Scenario",
         "line": 27,
         "name": "Fill \"national insurance number\" with invalid format",
@@ -3802,7 +3800,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2000000
+              "duration": 1000000
             }
           },
           {
@@ -3815,7 +3813,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 432000000
+              "duration": 424000000
             }
           },
           {
@@ -3828,7 +3826,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 180000000
+              "duration": 179000000
             }
           },
           {
@@ -3854,7 +3852,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 19000000
+              "duration": 18000000
             }
           },
           {
@@ -3874,14 +3872,14 @@
   {
     "description": "  In order to apply for the HTBHF programme\n  As a potential claimant\n  I want to view the site in my preferred language",
     "keyword": "Feature",
-    "name": "",
+    "name": "Translations",
     "line": 1,
-    "id": "",
+    "id": "translations",
     "tags": [],
     "uri": "src/test/acceptance/features/internationalisation.feature",
     "elements": [
       {
-        "id": ";",
+        "id": "translations;",
         "keyword": "Scenario",
         "line": 6,
         "name": "",
@@ -3895,8 +3893,7 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           },
           {
@@ -3909,7 +3906,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 370000000
+              "duration": 405000000
             }
           },
           {
@@ -3922,7 +3919,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 27000000
+              "duration": 28000000
             }
           },
           {
@@ -3932,13 +3929,14 @@
               "location": "src/test/common/steps/hooks.js:14"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           }
         ]
       },
       {
-        "id": ";",
+        "id": "translations;",
         "keyword": "Scenario",
         "line": 10,
         "name": "",
@@ -3953,7 +3951,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1000000
+              "duration": 4000000
             }
           },
           {
@@ -3966,7 +3964,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 430000000
+              "duration": 426000000
             }
           },
           {
@@ -3979,7 +3977,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 210000000
+              "duration": 202000000
             }
           },
           {
@@ -3992,7 +3990,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 63000000
+              "duration": 64000000
             }
           },
           {
@@ -4012,14 +4010,14 @@
   {
     "description": "  In order to facilitate the beta HTBHF programme\n  As a potential claimant\n  I want to see the temporary overview page before I start the application process",
     "keyword": "Feature",
-    "name": "",
+    "name": "Temporary overview page",
     "line": 1,
-    "id": "",
+    "id": "temporary-overview-page",
     "tags": [],
     "uri": "src/test/acceptance/features/overview.feature",
     "elements": [
       {
-        "id": ";the-overview-page-is-available-and-starts-the-application-process",
+        "id": "temporary-overview-page;the-overview-page-is-available-and-starts-the-application-process",
         "keyword": "Scenario",
         "line": 6,
         "name": "The overview page is available and starts the application process",
@@ -4047,7 +4045,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 397000000
+              "duration": 393000000
             }
           },
           {
@@ -4073,7 +4071,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 37000000
+              "duration": 35000000
             }
           },
           {

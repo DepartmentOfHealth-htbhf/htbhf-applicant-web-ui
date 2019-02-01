@@ -2,14 +2,14 @@
   {
     "description": "  In order to apply for the HTBHF programme\n  As a potential claimant\n  I want to enter my details and complete the application journey",
     "keyword": "Feature",
-    "name": "",
+    "name": "Complete application journey",
     "line": 1,
-    "id": "",
+    "id": "complete-application-journey",
     "tags": [],
     "uri": "src/test/compatibility/features/apply-success.feature",
     "elements": [
       {
-        "id": ";valid-application-details-can-be-checked",
+        "id": "complete-application-journey;valid-application-details-can-be-checked",
         "keyword": "Scenario",
         "line": 6,
         "name": "Valid application details can be checked",
@@ -24,7 +24,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 16000000
+              "duration": 14000000
             }
           },
           {
@@ -37,7 +37,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 480000000
+              "duration": 478000000
             }
           },
           {
@@ -50,7 +50,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1663000000
+              "duration": 1576000000
             }
           },
           {
