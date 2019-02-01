@@ -90,7 +90,6 @@ test('validateExpectedDeliveryDate() invalid date', (t) => {
     }
   }
 
-  // t.throws(validateExpectedDeliveryDate.bind(null, 'invalid', { req }), /validation:expectedDeliveryDateInvalid/, 'should throw an error for "invalid"'
   t.throws(validateExpectedDeliveryDate.bind(null, {}, { req }), /validation:expectedDeliveryDateInvalid/, 'not in valid date range')
   t.end()
 })
