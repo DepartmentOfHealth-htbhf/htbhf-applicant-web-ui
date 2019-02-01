@@ -1,4 +1,4 @@
-Feature:
+Feature: Translations
   In order to apply for the HTBHF programme
   As a potential claimant
   I want to view the site in my preferred language

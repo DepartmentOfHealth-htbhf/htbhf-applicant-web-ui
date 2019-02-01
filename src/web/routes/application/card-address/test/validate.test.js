@@ -8,7 +8,9 @@ test('invalid postcode does not match regex', (t) => {
     '11AA21',
     '',
     'E!',
-    'EA123'
+    'EA123',
+    'AAAAAAAAAAAAAAAAAAADN55 1PT',
+    'DN55 1PTAAAAAAAAAAAAAAAAAA'
   ]
 
   invalidPostcodes.forEach(function (postcode) {
