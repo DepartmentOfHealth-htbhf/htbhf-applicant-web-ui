@@ -10,27 +10,27 @@ const UK_POSTCODE_PATTERN = /([Gg][Ii][Rr] 0[Aa]{2})|((([A-Za-z][0-9]{1,2})|(([A
 const ADDRESS_LINE_MAX_LENGTH = 500
 
 const validate = [
-  check('cardDeliveryAddress.addressLine1')
+  check('addressLine1')
     .not().isEmpty()
     .withMessage(translateValidationMessage('validation:missingAddressField')),
 
-  check('cardDeliveryAddress.addressLine1')
+  check('addressLine1')
     .isLength({ max: ADDRESS_LINE_MAX_LENGTH })
     .withMessage(translateValidationMessage('validation:informationTooLong')),
 
-  check('cardDeliveryAddress.addressLine2')
+  check('addressLine2')
     .isLength({ max: ADDRESS_LINE_MAX_LENGTH })
     .withMessage(translateValidationMessage('validation:informationTooLong')),
 
-  check('cardDeliveryAddress.townOrCity')
+  check('townOrCity')
     .isLength({ max: ADDRESS_LINE_MAX_LENGTH })
     .withMessage(translateValidationMessage('validation:informationTooLong')),
 
-  check('cardDeliveryAddress.townOrCity')
+  check('townOrCity')
     .not().isEmpty()
     .withMessage(translateValidationMessage('validation:missingAddressField')),
 
-  check('cardDeliveryAddress.postcode')
+  check('postcode')
     .matches(UK_POSTCODE_PATTERN)
     .withMessage(translateValidationMessage('validation:invalidPostcode'))
 ]

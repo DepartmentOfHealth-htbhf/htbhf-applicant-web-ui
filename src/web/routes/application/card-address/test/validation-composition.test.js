@@ -12,12 +12,10 @@ const translate = string => string
 const req = {
   t: translate,
   body: {
-    cardDeliveryAddress: {
-      addressLine1: 'Flat B',
-      addressLine2: '221 Baker Street',
-      townOrCity: 'London',
-      postcode: 'AA1 1AA'
-    }
+    addressLine1: 'Flat B',
+    addressLine2: '221 Baker Street',
+    townOrCity: 'London',
+    postcode: 'AA1 1AA'
   }
 }
 
@@ -30,78 +28,78 @@ test('validation middleware passes with valid card delivery address', async (t) 
 })
 
 test('validation middleware errors for empty address line 1 field', async (t) => {
-  const testReq = assocPath(['body', 'cardDeliveryAddress', 'addressLine1'], null, req)
+  const testReq = assocPath(['body', 'addressLine1'], null, req)
 
   const result = await applyExpressValidation(testReq, validate)
   const error = result.array()[0]
   t.equal(result.array().length, 1, 'should have exactly one error')
-  t.equal(error.param, 'cardDeliveryAddress.addressLine1', 'error should be associated with correct field')
+  t.equal(error.param, 'addressLine1', 'error should be associated with correct field')
   t.equal(error.msg, 'validation:missingAddressField', 'error should have correct message')
   t.end()
 })
 
 test('validation middleware errors for empty town or city field', async (t) => {
-  const testReq = assocPath(['body', 'cardDeliveryAddress', 'townOrCity'], null, req)
+  const testReq = assocPath(['body', 'townOrCity'], null, req)
 
   const result = await applyExpressValidation(testReq, validate)
   const error = result.array()[0]
   t.equal(result.array().length, 1, 'should have exactly one error')
-  t.equal(error.param, 'cardDeliveryAddress.townOrCity', 'error should be associated with correct field')
+  t.equal(error.param, 'townOrCity', 'error should be associated with correct field')
   t.equal(error.msg, 'validation:missingAddressField', 'error should have correct message')
   t.end()
 })
 
 test('validation middleware errors for empty postcode field', async (t) => {
-  const testReq = assocPath(['body', 'cardDeliveryAddress', 'postcode'], null, req)
+  const testReq = assocPath(['body', 'postcode'], null, req)
 
   const result = await applyExpressValidation(testReq, validate)
   const error = result.array()[0]
   t.equal(result.array().length, 1, 'should have exactly one error')
-  t.equal(error.param, 'cardDeliveryAddress.postcode', 'error should be associated with correct field')
+  t.equal(error.param, 'postcode', 'error should be associated with correct field')
   t.equal(error.msg, 'validation:invalidPostcode', 'error should have correct message')
   t.end()
 })
 
 test('validation middleware errors for invalid postcode field', async (t) => {
-  const testReq = assocPath(['body', 'cardDeliveryAddress', 'postcode'], 'A1', req)
+  const testReq = assocPath(['body', 'postcode'], 'A1', req)
 
   const result = await applyExpressValidation(testReq, validate)
   const error = result.array()[0]
   t.equal(result.array().length, 1, 'should have exactly one error')
-  t.equal(error.param, 'cardDeliveryAddress.postcode', 'error should be associated with correct field')
+  t.equal(error.param, 'postcode', 'error should be associated with correct field')
   t.equal(error.msg, 'validation:invalidPostcode', 'error should have correct message')
   t.end()
 })
 
 test('validation middleware errors for address line 1 being too long', async (t) => {
-  const testReq = assocPath(['body', 'cardDeliveryAddress', 'addressLine1'], LONG_STRING, req)
+  const testReq = assocPath(['body', 'addressLine1'], LONG_STRING, req)
 
   const result = await applyExpressValidation(testReq, validate)
   const error = result.array()[0]
   t.equal(result.array().length, 1, 'should have exactly one error')
-  t.equal(error.param, 'cardDeliveryAddress.addressLine1', 'error should be associated with correct field')
+  t.equal(error.param, 'addressLine1', 'error should be associated with correct field')
   t.equal(error.msg, 'validation:informationTooLong', 'error should have correct message')
   t.end()
 })
 
 test('validation middleware errors for address line 2 being too long', async (t) => {
-  const testReq = assocPath(['body', 'cardDeliveryAddress', 'addressLine2'], LONG_STRING, req)
+  const testReq = assocPath(['body', 'addressLine2'], LONG_STRING, req)
 
   const result = await applyExpressValidation(testReq, validate)
   const error = result.array()[0]
   t.equal(result.array().length, 1, 'should have exactly one error')
-  t.equal(error.param, 'cardDeliveryAddress.addressLine2', 'error should be associated with correct field')
+  t.equal(error.param, 'addressLine2', 'error should be associated with correct field')
   t.equal(error.msg, 'validation:informationTooLong', 'error should have correct message')
   t.end()
 })
 
 test('validation middleware errors for town or city field being too long', async (t) => {
-  const testReq = assocPath(['body', 'cardDeliveryAddress', 'townOrCity'], LONG_STRING, req)
+  const testReq = assocPath(['body', 'townOrCity'], LONG_STRING, req)
 
   const result = await applyExpressValidation(testReq, validate)
   const error = result.array()[0]
   t.equal(result.array().length, 1, 'should have exactly one error')
-  t.equal(error.param, 'cardDeliveryAddress.townOrCity', 'error should be associated with correct field')
+  t.equal(error.param, 'townOrCity', 'error should be associated with correct field')
   t.equal(error.msg, 'validation:informationTooLong', 'error should have correct message')
   t.end()
 })
