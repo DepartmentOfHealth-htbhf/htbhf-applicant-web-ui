@@ -48,47 +48,69 @@ When(/^I do not enter in any address fields$/, async function () {
 
 Then(/^I am informed that the postcode is in the wrong format$/, async function () {
   await assertErrorHeaderTextPresent(pages.cardAddress)
-  const errorMessage = await pages.cardAddress.getPostcodesError()
-  expect(errorMessage).to.be.equal('Enter a correct postcode, like AA1 1AA')
+  await assertPostcodeErrorFieldAndLink('Enter a correct postcode, like AA1 1AA')
 })
 
 Then(/^I am informed that I need to enter an address on the 'address line 1' field$/, async function () {
   await assertErrorHeaderTextPresent(pages.cardAddress)
-  const errorMessage = await pages.cardAddress.getAddressLine1Error()
-  expect(errorMessage).to.be.equal('Tell us your address')
+  await assertAddressLine1ErrorFieldAndLink('Tell us your address')
 })
 
 Then(/^I am informed that I need to enter an address on the 'town or city' field$/, async function () {
   await assertErrorHeaderTextPresent(pages.cardAddress)
-  const errorMessage = await pages.cardAddress.getTownOrCityError()
-  expect(errorMessage).to.be.equal('Tell us your address')
+  await assertTownOrCityErrorFieldAndLink('Tell us your address')
 })
 
 Then(/^I am informed that the first line of the address is too long$/, async function () {
   await assertErrorHeaderTextPresent(pages.cardAddress)
-  const errorMessage = await pages.cardAddress.getAddressLine1Error()
-  expect(errorMessage).to.be.equal('The information you entered is too long')
+  await assertAddressLine1ErrorFieldAndLink('The information you entered is too long')
 })
 
 Then(/^I am informed that the second line of the address is too long$/, async function () {
   await assertErrorHeaderTextPresent(pages.cardAddress)
-  const errorMessage = await pages.cardAddress.getAddressLine2Error()
-  expect(errorMessage).to.be.equal('The information you entered is too long')
+  await assertAddressLine2ErrorFieldAndLink('The information you entered is too long')
 })
 
 Then(/^I am informed that the 'town or city' of the address is too long$/, async function () {
   await assertErrorHeaderTextPresent(pages.cardAddress)
-  const errorMessage = await pages.cardAddress.getTownOrCityError()
-  expect(errorMessage).to.be.equal('The information you entered is too long')
+  await assertTownOrCityErrorFieldAndLink('The information you entered is too long')
 })
 
 Then(/^I am informed that I need to enter an address on the 'address line 1', 'address line 2' and 'town or city' fields$/, async function () {
   await assertErrorHeaderTextPresent(pages.cardAddress)
-  const addressLine1Error = await pages.cardAddress.getAddressLine1Error()
-  const townOrCityError = await pages.cardAddress.getTownOrCityError()
-  const postcodeError = await pages.cardAddress.getPostcodesError()
-
-  expect(addressLine1Error).to.be.equal('Tell us your address')
-  expect(townOrCityError).to.be.equal('Tell us your address')
-  expect(postcodeError).to.be.equal('Enter a correct postcode, like AA1 1AA')
+  await assertAddressLine1ErrorFieldAndLink('Tell us your address')
+  await assertTownOrCityErrorFieldAndLink('Tell us your address')
+  await assertPostcodeErrorFieldAndLink('Enter a correct postcode, like AA1 1AA')
 })
+
+const assertAddressLine1ErrorFieldAndLink = async (message) => {
+  const errorFieldText = await pages.cardAddress.getAddressLine1FieldErrorText()
+  const errorLinkText = await pages.cardAddress.getAddressLine1ErrorLinkText()
+
+  expect(errorFieldText).to.be.equal(message)
+  expect(errorLinkText).to.be.equal(message)
+}
+
+const assertAddressLine2ErrorFieldAndLink = async (message) => {
+  const errorFieldText = await pages.cardAddress.getAddressLine2FieldErrorText()
+  const errorLinkText = await pages.cardAddress.getAddressLine2ErrorLinkText()
+
+  expect(errorFieldText).to.be.equal(message)
+  expect(errorLinkText).to.be.equal(message)
+}
+
+const assertTownOrCityErrorFieldAndLink = async (message) => {
+  const errorFieldText = await pages.cardAddress.getTownOrCityFieldErrorText()
+  const errorLinkText = await pages.cardAddress.getTownOrCityErrorLinkText()
+
+  expect(errorFieldText).to.be.equal(message)
+  expect(errorLinkText).to.be.equal(message)
+}
+
+const assertPostcodeErrorFieldAndLink = async (message) => {
+  const errorFieldText = await pages.cardAddress.getPostcodeFieldErrorText()
+  const errorLinkText = await pages.cardAddress.getPostcodeErrorLinkText()
+
+  expect(errorFieldText).to.be.equal(message)
+  expect(errorLinkText).to.be.equal(message)
+}
