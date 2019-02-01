@@ -90,12 +90,12 @@ Then(/^I am informed that I need to enter an expected delivery date$/, async fun
 
 Then(/^I am informed that the date is too far in the past$/, async function () {
   await assertErrorHeaderTextPresent(pages.areYouPregnant)
-  await assertExpectedDeliveryDateErrorPresent('The due date you entered is more than 1 month ago')
+  await assertExpectedDeliveryDateErrorPresent('The due date you entered is more than 1 month ago. Please call our helpline on 0345 607 6823 to talk about your application.')
 })
 
 Then(/^I am informed that the date is too far in the future$/, async function () {
   await assertErrorHeaderTextPresent(pages.areYouPregnant)
-  await assertExpectedDeliveryDateErrorPresent('The date you have entered is more than 8 months in the future')
+  await assertExpectedDeliveryDateErrorPresent('The date you have entered is more than 8 months in the future. You must be at least 10 weeks pregnant to apply for yourself. If you have children under the age of 4, answer ‘no’ to this question to continue with this application on their behalf.')
 })
 
 async function assertAreYouPregnantErrorPresent () {
