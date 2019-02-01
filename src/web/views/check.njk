@@ -3,7 +3,7 @@
 {% from "table/macro.njk" import govukTable %}
 {% from "fieldset/macro.njk" import govukFieldset %}
 
-{% set buttonText = "Accept and send application" %}
+{% set buttonText = buttonText %}
 {% block formContent %}
   {% call govukFieldset({
     legend: {
@@ -19,7 +19,7 @@
       rows: [
         [
           {
-            text: "Name"
+            text: name
           },
           {
             text:  [claim.firstName, claim.lastName] | join(' ')
@@ -27,7 +27,7 @@
         ],
         [
           {
-            text: "National Insurance number"
+            text: nino
           },
           {
             text: claim.nino
@@ -35,7 +35,7 @@
         ],
         [
           {
-            text: "Date of birth"
+            text: dateOfBirth
           },
           {
             text: [claim['dateOfBirth-day'], claim['dateOfBirth-month'], claim['dateOfBirth-year']] | join(' ')
@@ -43,7 +43,7 @@
         ],
         [
           {
-            text: "Are you pregnant?"
+            text: areYouPregnant
           },
           {
             text: claim.areYouPregnant
@@ -52,7 +52,7 @@
 
         [
           {
-            text: "Baby's due date"
+            text: dueDate
           },
           {
             text: [claim['expectedDeliveryDate-day'], claim['expectedDeliveryDate-month'], claim['expectedDeliveryDate-year']] | join(' ')
@@ -61,7 +61,7 @@
 
         [
           {
-            text: "Address"
+            text: address
           },
           {
             text: [
@@ -75,8 +75,8 @@
       ]
   }) }}
 
-  <h2 class="govuk-heading-m">Now send your application</h2>
-  <p class="govuk-body">By submitting this notification you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
+  <h2 class="govuk-heading-m">{{ sendApplicationHeader }}</h2>
+  <p class="govuk-body">{{ sendApplicationText }}</p>
 
 {% endblock %}
 
