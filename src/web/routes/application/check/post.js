@@ -1,7 +1,29 @@
 const httpStatus = require('http-status-codes')
 const request = require('request-promise')
 
+const { toDateString } = require('../common/formatters')
+
 const CLAIMS_ENDPOINT = `/v1/claims`
+
+const createRequestBody = (claim) => {
+  return {
+    firstName: claim.firstName,
+    lastName: claim.lastName,
+    nino: claim.nino,
+    dateOfBirth: claim.dateOfBirth,
+    cardDeliveryAddress: {
+      addressLine1: claim.addressLine1,
+      addressLine2: claim.addressLine2,
+      townOrCity: claim.townOrCity,
+      postcode: claim.postcode
+    },
+    expectedDeliveryDate: toDateString(
+      claim['expectedDeliveryDate-day'],
+      claim['expectedDeliveryDate-month'],
+      claim['expectedDeliveryDate-year']
+    )
+  }
+}
 
 const postCheck = (config) => async (req, res, next) => {
   try {
@@ -9,7 +31,7 @@ const postCheck = (config) => async (req, res, next) => {
       uri: `${config.environment.CLAIMANT_SERVICE_URL}${CLAIMS_ENDPOINT}`,
       json: true,
       body: {
-        claimant: req.session.claim
+        claimant: createRequestBody(req.session.claim)
       }
     })
 
@@ -24,5 +46,6 @@ const postCheck = (config) => async (req, res, next) => {
 }
 
 module.exports = {
-  postCheck
+  postCheck,
+  createRequestBody
 }
