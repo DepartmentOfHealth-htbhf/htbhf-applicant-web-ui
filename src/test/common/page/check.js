@@ -1,7 +1,7 @@
 'use strict'
 
 const Page = require('./page')
-const OVERVIEW_PAGE_TITLE = 'GOV.UK - Check'
+const OVERVIEW_PAGE_TITLE = 'GOV.UK - Check your answers before sending your application'
 
 /**
  * Page object for the confirmation page before submit.
