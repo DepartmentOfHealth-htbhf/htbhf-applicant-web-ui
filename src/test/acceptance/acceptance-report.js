@@ -5,6 +5,7 @@ const options = {
   jsonFile: 'build/reports/acceptance-report.json',
   output: 'build/reports/acceptance-report.html',
   reportSuiteAsScenarios: true,
+  brandTitle: 'Acceptance Tests',
   launchReport: false
 }
 
