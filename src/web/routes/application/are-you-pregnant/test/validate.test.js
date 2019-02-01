@@ -2,6 +2,12 @@ const test = require('tape')
 const { validateExpectedDeliveryDate } = require('../validate')
 const { YES, NO } = require('../constants')
 
+const createDateWithMonthAdjustment = (monthAdjustment) => {
+  const date = new Date()
+  date.setMonth(date.getMonth() + monthAdjustment)
+  return date
+}
+
 test('validateExpectedDeliveryDate() eight months in the future', (t) => {
   const eightMonthsInFuture = createDateWithMonthAdjustment(8)
   const req = {
@@ -105,9 +111,3 @@ test('validateExpectedDeliveryDateNotPregnant()', (t) => {
   t.equal(validateExpectedDeliveryDate({}, { req }), true, 'should not validate the date if not pregnant')
   t.end()
 })
-
-const createDateWithMonthAdjustment = (monthAdjustment) => {
-  const date = new Date()
-  date.setMonth(date.getMonth() + monthAdjustment)
-  return date
-}

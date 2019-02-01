@@ -35,10 +35,6 @@ const validateExpectedDeliveryDate = (_, { req }) => {
 
 const validate = [
   check('areYouPregnant').isIn([YES, NO]).withMessage(translateValidationMessage('validation:selectYesOrNo')),
-  /*
-    First parameter here is used for setting the error in the view only. The value to validate is constructed from
-    multiple fields in the validation method itself.
-  */
   check('expectedDeliveryDate').custom(validateExpectedDeliveryDate)
 ]
 

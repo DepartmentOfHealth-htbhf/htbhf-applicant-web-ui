@@ -50,6 +50,22 @@
         ],
         [
           {
+            text: "Are you pregnant?"
+          },
+          {
+            text: claim.areYouPregnant
+          }
+        ],
+        [
+          {
+            text: "When is your baby due to be born"
+          },
+          {
+            text: [claim['expectedDeliveryDate-day'], claim['expectedDeliveryDate-month'], claim['expectedDeliveryDate-year']] | join(' ')
+          }
+        ],
+        [
+          {
             text: "Card delivery address"
           },
           {
