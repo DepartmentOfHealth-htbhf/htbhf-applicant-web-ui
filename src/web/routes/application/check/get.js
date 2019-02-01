@@ -11,7 +11,7 @@ const pageContent = ({ translate, claim }) => ({
   address: translate('check.address'),
   sendApplicationHeader: translate('check.sendApplicationHeader'),
   sendApplicationText: translate('check.sendApplicationText'),
-  buttonText: translate('check.buttonText'),
+  buttonText: translate('buttons:acceptAndSend'),
   expectedDeliveryDateRow: buildExpectedDeliveryDateRow(translate, claim)
 })
 
