@@ -36,11 +36,11 @@ test('validation middleware errors for are you pregnant field', async (t) => {
   t.end()
 })
 
-test('validation middleware errors for are you pregnant field', async (t) => {
+test.only('validation middleware errors for are you pregnant field', async (t) => {
   const twelveMonthsInFuture = dateAsString({ monthAdjustment: 12 }).split('-')
 
   const testReq = {
-    ...req,
+    t: translate,
     body: {
       areYouPregnant: YES,
       'expectedDeliveryDate-day': twelveMonthsInFuture[2],

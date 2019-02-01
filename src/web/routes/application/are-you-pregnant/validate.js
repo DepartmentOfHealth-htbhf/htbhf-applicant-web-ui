@@ -7,24 +7,16 @@ const { YES, NO } = require('./constants')
 
 const isNilOrNo = value => isNil(value) || value === NO
 
-const addExpectedDeliveryDateToBody = (req, res, next) => {
+const validateExpectedDeliveryDate = (_, { req }) => {
   if (isNilOrNo(req.body.areYouPregnant)) {
-    return next()
+    return true
   }
 
-  req.body.expectedDeliveryDate = toDateString(
+  const expectedDeliveryDate = toDateString(
     req.body['expectedDeliveryDate-day'],
     req.body['expectedDeliveryDate-month'],
     req.body['expectedDeliveryDate-year']
   )
-
-  return next()
-}
-
-const validateExpectedDeliveryDate = (expectedDeliveryDate, { req }) => {
-  if (isNilOrNo(req.body.areYouPregnant)) {
-    return true
-  }
 
   if (!isValidDate(expectedDeliveryDate)) {
     throw new Error(req.t('validation:expectedDeliveryDateInvalid'))
@@ -43,12 +35,14 @@ const validateExpectedDeliveryDate = (expectedDeliveryDate, { req }) => {
 
 const validate = [
   check('areYouPregnant').isIn([YES, NO]).withMessage(translateValidationMessage('validation:selectYesOrNo')),
-  addExpectedDeliveryDateToBody,
+  /*
+    First parameter here is used for setting the error in the view only. The value to validate is constructed from
+    multiple fields in the validation method itself.
+  */
   check('expectedDeliveryDate').custom(validateExpectedDeliveryDate)
 ]
 
 module.exports = {
-  addExpectedDeliveryDateToBody,
   validate,
   validateExpectedDeliveryDate
 }

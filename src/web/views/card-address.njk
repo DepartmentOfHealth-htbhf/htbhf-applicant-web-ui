@@ -19,7 +19,7 @@
       },
       id: "address-line-1",
       name: "addressLine1",
-      errorMessage: errors | getErrorForField('cardDeliveryAddress.addressLine1'),
+      errorMessage: errors | getErrorForField('addressLine1'),
       value: claim.addressLine1
     }) }}
    {{ govukInput({
@@ -28,7 +28,7 @@
       },
       id: "address-line-2",
       name: "addressLine2",
-      errorMessage: errors | getErrorForField('cardDeliveryAddress.addressLine2'),
+      errorMessage: errors | getErrorForField('addressLine2'),
       value: claim.addressLine2
     }) }}
    {{ govukInput({
@@ -38,7 +38,7 @@
       classes: "govuk-!-width-two-thirds",
       id: "town-or-city",
       name: "townOrCity",
-      errorMessage: errors | getErrorForField('cardDeliveryAddress.townOrCity'),
+      errorMessage: errors | getErrorForField('townOrCity'),
       value: claim.townOrCity
     }) }}
    {{ govukInput({
@@ -48,7 +48,7 @@
       classes: "govuk-input--width-10",
       id: "postcode",
       name: "postcode",
-      errorMessage: errors | getErrorForField('cardDeliveryAddress.postcode'),
+      errorMessage: errors | getErrorForField('postcode'),
       value: claim.postcode
     }) }}
 

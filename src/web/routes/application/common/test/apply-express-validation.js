@@ -24,6 +24,7 @@ const callMiddlewareQueue = async (req, res, middlewares) => {
 const applyExpressValidation = async (req, middleware) => {
   try {
     await callMiddlewareQueue(req, {}, middleware)
+    console.log(req)
     return validationResult(req)
   } catch (error) {
     console.log('Error applying express validation:', error)

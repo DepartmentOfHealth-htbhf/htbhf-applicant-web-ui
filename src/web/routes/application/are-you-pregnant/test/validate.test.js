@@ -1,29 +1,97 @@
 const test = require('tape')
-const { addExpectedDeliveryDateToBody, validateExpectedDeliveryDate } = require('../validate')
-const { dateAsString } = require('../../common/formatters')
+const { validateExpectedDeliveryDate } = require('../validate')
 const { YES, NO } = require('../constants')
 
-const res = {}
-const next = () => {}
-
-test('validateExpectedDeliveryDate()', (t) => {
+test('validateExpectedDeliveryDate() eight months in the future', (t) => {
+  const eightMonthsInFuture = createDateWithMonthAdjustment(8)
   const req = {
     t: (string) => string,
     body: {
-      areYouPregnant: YES
+      areYouPregnant: YES,
+      'expectedDeliveryDate-day': eightMonthsInFuture.getDate(),
+      'expectedDeliveryDate-month': eightMonthsInFuture.getMonth() + 1,
+      'expectedDeliveryDate-year': eightMonthsInFuture.getFullYear()
     }
   }
 
-  const eightMonthsInFuture = dateAsString({ monthAdjustment: 8 })
+  t.equal(validateExpectedDeliveryDate({}, { req }), true, 'should return true for exactly eight months in future')
+  t.end()
+})
 
-  const oneMonthInPast = dateAsString({ monthAdjustment: -1 })
+test('validateExpectedDeliveryDate() one month in the past', (t) => {
+  const oneMonthInPast = createDateWithMonthAdjustment(-1)
+  const req = {
+    t: (string) => string,
+    body: {
+      areYouPregnant: YES,
+      'expectedDeliveryDate-day': oneMonthInPast.getDate(),
+      'expectedDeliveryDate-month': oneMonthInPast.getMonth() + 1,
+      'expectedDeliveryDate-year': oneMonthInPast.getFullYear()
+    }
+  }
 
-  t.equal(validateExpectedDeliveryDate(oneMonthInPast, { req }), true, 'should return true for exactly one month in past')
-  t.equal(validateExpectedDeliveryDate(eightMonthsInFuture, { req }), true, 'should return true for exactly eight months in future')
-  t.throws(validateExpectedDeliveryDate.bind(null, '1980-03-31', { req }), /validation:expectedDeliveryDateInvalidTooFarInPast/, 'not in valid date range')
-  t.throws(validateExpectedDeliveryDate.bind(null, '9999-03-31', { req }), /validation:expectedDeliveryDateInvalidTooFarInFuture/, 'not in valid date range')
-  t.throws(validateExpectedDeliveryDate.bind(null, null, { req }), /validation:expectedDeliveryDateInvalid/, 'should throw an error for a null date')
-  t.throws(validateExpectedDeliveryDate.bind(null, 'invalid', { req }), /validation:expectedDeliveryDateInvalid/, 'should throw an error for "invalid"')
+  t.equal(validateExpectedDeliveryDate({}, { req }), true, 'should return true for exactly one month in past')
+  t.end()
+})
+
+test('validateExpectedDeliveryDate() date too far in the past', (t) => {
+  const req = {
+    t: (string) => string,
+    body: {
+      areYouPregnant: YES,
+      'expectedDeliveryDate-day': 31,
+      'expectedDeliveryDate-month': 3,
+      'expectedDeliveryDate-year': 1980
+    }
+  }
+
+  t.throws(validateExpectedDeliveryDate.bind(null, {}, { req }), /validation:expectedDeliveryDateInvalidTooFarInPast/, 'not in valid date range')
+  t.end()
+})
+
+test('validateExpectedDeliveryDate() too far in the future', (t) => {
+  const req = {
+    t: (string) => string,
+    body: {
+      areYouPregnant: YES,
+      'expectedDeliveryDate-day': 31,
+      'expectedDeliveryDate-month': 3,
+      'expectedDeliveryDate-year': 9999
+    }
+  }
+
+  t.throws(validateExpectedDeliveryDate.bind(null, {}, { req }), /validation:expectedDeliveryDateInvalidTooFarInFuture/, 'not in valid date range')
+  t.end()
+})
+
+test('validateExpectedDeliveryDate() null date', (t) => {
+  const req = {
+    t: (string) => string,
+    body: {
+      areYouPregnant: YES,
+      'expectedDeliveryDate-day': null,
+      'expectedDeliveryDate-month': null,
+      'expectedDeliveryDate-year': null
+    }
+  }
+
+  t.throws(validateExpectedDeliveryDate.bind(null, {}, { req }), /validation:expectedDeliveryDateInvalid/, 'not in valid date range')
+  t.end()
+})
+
+test('validateExpectedDeliveryDate() invalid date', (t) => {
+  const req = {
+    t: (string) => string,
+    body: {
+      areYouPregnant: YES,
+      'expectedDeliveryDate-day': 'invalid',
+      'expectedDeliveryDate-month': 'invalid',
+      'expectedDeliveryDate-year': 'invalid'
+    }
+  }
+
+  // t.throws(validateExpectedDeliveryDate.bind(null, 'invalid', { req }), /validation:expectedDeliveryDateInvalid/, 'should throw an error for "invalid"'
+  t.throws(validateExpectedDeliveryDate.bind(null, {}, { req }), /validation:expectedDeliveryDateInvalid/, 'not in valid date range')
   t.end()
 })
 
@@ -35,41 +103,12 @@ test('validateExpectedDeliveryDateNotPregnant()', (t) => {
     }
   }
 
-  t.equal(validateExpectedDeliveryDate('', { req }), true, 'should not validate the date if not pregnant')
+  t.equal(validateExpectedDeliveryDate({}, { req }), true, 'should not validate the date if not pregnant')
   t.end()
 })
 
-test('addExpectedDeliveryDateToBody() should not add key to body if areYouPregnant is undefined', (t) => {
-  const req = { body: {} }
-
-  addExpectedDeliveryDateToBody(req, res, next)
-  t.equal(typeof req.body.expectedDeliveryDate, 'undefined', 'should not add key to body if areYouPregnant is undefined')
-  t.end()
-})
-
-test(`addExpectedDeliveryDateToBody() should not add key to body if areYouPregnant is ${NO}`, (t) => {
-  const req = {
-    body: {
-      areYouPregnant: NO
-    }
-  }
-
-  addExpectedDeliveryDateToBody(req, res, next)
-  t.equal(typeof req.body.expectedDeliveryDate, 'undefined', `should not add key to body if areYouPregnant is ${NO}`)
-  t.end()
-})
-
-test(`addExpectedDeliveryDateToBody() should add key to body if areYouPregnant is ${YES}`, (t) => {
-  const req = {
-    body: {
-      areYouPregnant: YES,
-      'expectedDeliveryDate-day': '02',
-      'expectedDeliveryDate-month': '02',
-      'expectedDeliveryDate-year': '2222'
-    }
-  }
-
-  addExpectedDeliveryDateToBody(req, res, next)
-  t.equal(req.body.expectedDeliveryDate, '2222-02-02', `should add key to body if areYouPregnant is ${YES}`)
-  t.end()
-})
+const createDateWithMonthAdjustment = (monthAdjustment) => {
+  const date = new Date()
+  date.setMonth(date.getMonth() + monthAdjustment)
+  return date
+}
