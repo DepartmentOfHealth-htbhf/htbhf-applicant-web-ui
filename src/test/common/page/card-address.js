@@ -16,10 +16,10 @@ const POSTCODE_ERROR_ID = 'postcode-error'
 const ADDRESS_LINE_1_ERROR_ID = 'address-line-1-error'
 const ADDRESS_LINE_2_ERROR_ID = 'address-line-2-error'
 const TOWN_OR_CITY_ERROR_ID = 'town-or-city-error'
-const ADDRESS_LINE_1_ERROR_LINK_CSS = 'a[href$="address-line1-error"]'
-const ADDRESS_LINE_2_ERROR_LINK_CSS = 'a[href$="address-line2-error"]'
-const TOWN_OR_CITY_ERROR_LINK_CSS = 'a[href$="town-or-city-error"]'
-const POSTCODE_ERROR_LINK_CSS = 'a[href$="postcode-error"]'
+const ADDRESS_LINE_1_ERROR_LINK_CSS = 'a[href="#address-line1-error"]'
+const ADDRESS_LINE_2_ERROR_LINK_CSS = 'a[href="#address-line2-error"]'
+const TOWN_OR_CITY_ERROR_LINK_CSS = 'a[href="#town-or-city-error"]'
+const POSTCODE_ERROR_LINK_CSS = 'a[href="#postcode-error"]'
 
 /**
  * Page object for CardAddress page where the card card-address is entered.

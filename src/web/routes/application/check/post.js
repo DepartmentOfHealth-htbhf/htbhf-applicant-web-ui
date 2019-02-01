@@ -2,8 +2,20 @@ const httpStatus = require('http-status-codes')
 const request = require('request-promise')
 
 const { toDateString } = require('../common/formatters')
+const { YES } = require('../are-you-pregnant/constants')
 
 const CLAIMS_ENDPOINT = `/v1/claims`
+
+const createExpectedDeliveryDate = (claim) => {
+  if (claim.areYouPregnant === YES) {
+    return toDateString(
+      claim['expectedDeliveryDate-day'],
+      claim['expectedDeliveryDate-month'],
+      claim['expectedDeliveryDate-year']
+    )
+  }
+  return null
+}
 
 const createRequestBody = (claim) => {
   return {
@@ -17,11 +29,7 @@ const createRequestBody = (claim) => {
       townOrCity: claim.townOrCity,
       postcode: claim.postcode
     },
-    expectedDeliveryDate: toDateString(
-      claim['expectedDeliveryDate-day'],
-      claim['expectedDeliveryDate-month'],
-      claim['expectedDeliveryDate-year']
-    )
+    expectedDeliveryDate: createExpectedDeliveryDate(claim)
   }
 }
 
