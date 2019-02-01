@@ -49,16 +49,7 @@
             text: claim.areYouPregnant
           }
         ],
-
-        [
-          {
-            text: dueDate
-          },
-          {
-            text: [claim['expectedDeliveryDate-day'], claim['expectedDeliveryDate-month'], claim['expectedDeliveryDate-year']] | join(' ')
-          }
-        ],
-
+        expectedDeliveryDateRow,
         [
           {
             text: address
