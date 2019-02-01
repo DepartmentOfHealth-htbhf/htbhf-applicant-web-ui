@@ -13,7 +13,9 @@ const PAGE_HEADINGS = {
 }
 
 const FIRST_NAME_ERROR_SELECTOR = 'span#first-name-error'
+const FIRST_NAME_ERROR_LINK_CSS = 'a[href="#first-name-error"]'
 const LAST_NAME_ERROR_SELECTOR = 'span#last-name-error'
+const LAST_NAME_ERROR_LINK_CSS = 'a[href="#last-name-error"]'
 
 /**
  * Page object for EnterName page where the name is entered.
@@ -56,14 +58,24 @@ class EnterName extends DataEntryPage {
     return super.waitForPageLoad(PAGE_HEADINGS[lang], PAGE_TITLES[lang])
   }
 
-  async getFirstNameError () {
-    const firstNameError = await this.findByCSS(FIRST_NAME_ERROR_SELECTOR)
-    return firstNameError.getText()
+  async getFirstNameErrorFieldText () {
+    const fieldError = await this.findByCSS(FIRST_NAME_ERROR_SELECTOR)
+    return fieldError.getText()
   }
 
-  async getLastNameError () {
-    const firstNameError = await this.findByCSS(LAST_NAME_ERROR_SELECTOR)
-    return firstNameError.getText()
+  async getFirstNameErrorLinkText () {
+    const errorLink = await this.findByCSS(FIRST_NAME_ERROR_LINK_CSS)
+    return errorLink.getText()
+  }
+
+  async getLastNameErrorFieldText () {
+    const fieldError = await this.findByCSS(LAST_NAME_ERROR_SELECTOR)
+    return fieldError.getText()
+  }
+
+  async getLastNameErrorLinkText () {
+    const errorLink = await this.findByCSS(LAST_NAME_ERROR_LINK_CSS)
+    return errorLink.getText()
   }
 }
 

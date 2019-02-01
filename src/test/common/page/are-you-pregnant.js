@@ -4,6 +4,11 @@ const webdriver = require('selenium-webdriver')
 const DataEntryPage = require('./data-entry-page')
 const PAGE_TITLE = 'GOV.UK - Are you pregnant?'
 
+const ARE_YOU_PREGNANT_ERROR_LINK_CSS = 'a[href="#are-you-pregnant-error"]'
+const ARE_YOU_PREGNANT_FIELD_ERROR_ID = 'areYouPregnant-error'
+const EXPECTED_DELIVERY_DATE_ERROR_LINK_CSS = 'a[href="#expected-delivery-date-error"]'
+const EXPECTED_DELIVERY_DATE_FIELD_ERROR_ID = 'expected-delivery-date-error'
+
 /**
  * Page object for the Are you pregnant? page.
  */
@@ -87,14 +92,24 @@ class AreYouPregnant extends DataEntryPage {
     return this.driver.findElements(webdriver.By.className('govuk-radios__item'))
   }
 
-  async getAreYouPregnantErrorText () {
-    const error = await this.findById('areYouPregnant-error')
+  async getAreYouPregnantFieldErrorText () {
+    const error = await this.findById(ARE_YOU_PREGNANT_FIELD_ERROR_ID)
     return error.getText()
   }
 
-  async getExpectedDeliveryDateErrorText () {
-    const error = await this.findById('expected-delivery-date-error')
+  async getAreYouPregnantErrorLinkText () {
+    const errorLink = await this.findByCSS(ARE_YOU_PREGNANT_ERROR_LINK_CSS)
+    return errorLink.getText()
+  }
+
+  async getExpectedDeliveryDateFieldErrorText () {
+    const error = await this.findById(EXPECTED_DELIVERY_DATE_FIELD_ERROR_ID)
     return error.getText()
+  }
+
+  async getExpectedDeliveryDateErrorLinkText () {
+    const errorLink = await this.findByCSS(EXPECTED_DELIVERY_DATE_ERROR_LINK_CSS)
+    return errorLink.getText()
   }
 
   async getRadioLabelWithText (option) {

@@ -100,8 +100,11 @@ Then(/^I am informed that the date is too far in the future$/, async function ()
 
 async function assertAreYouPregnantErrorPresent () {
   try {
-    const error = await pages.areYouPregnant.getAreYouPregnantErrorText()
+    const error = await pages.areYouPregnant.getAreYouPregnantFieldErrorText()
+    const errorLinkText = await pages.areYouPregnant.getAreYouPregnantErrorLinkText()
+
     expect(error).to.be.equal('Select yes or no')
+    expect(errorLinkText).to.be.equal('Select yes or no')
   } catch (error) {
     assert.fail(`Unexpected error caught trying to assert are you pregnant error message is present - ${error}`)
   }
@@ -109,8 +112,11 @@ async function assertAreYouPregnantErrorPresent () {
 
 async function assertExpectedDeliveryDateErrorPresent (expectedMessage) {
   try {
-    const error = await pages.areYouPregnant.getExpectedDeliveryDateErrorText()
+    const error = await pages.areYouPregnant.getExpectedDeliveryDateFieldErrorText()
+    const errorLinkText = await pages.areYouPregnant.getExpectedDeliveryDateErrorLinkText()
+
     expect(error).to.be.equal(expectedMessage)
+    expect(errorLinkText).to.be.equal(expectedMessage)
   } catch (error) {
     assert.fail(`Unexpected error caught trying to assert expected delivery date error message is present - ${error}`)
   }

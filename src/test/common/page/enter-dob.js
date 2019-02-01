@@ -12,7 +12,8 @@ const PAGE_HEADINGS = {
   cy: 'Tempus egestas sed sed risus pretium?'
 }
 
-const DATE_OF_BIRTH_ERROR_SELECTOR = 'a[href="#date-of-birth-error"]'
+const DATE_OF_BIRTH_ERROR_LINK_CSS = 'a[href="#date-of-birth-error"]'
+const DATE_OF_BIRTH_FIELD_ERROR_ID = 'date-of-birth-error'
 
 /**
  * Page object for EnterDOB page where the name is entered.
@@ -54,8 +55,13 @@ class EnterDOB extends DataEntryPage {
     return yearField.sendKeys(year)
   }
 
-  async getDateOfBirthError () {
-    const errorLink = await this.findByCSS(DATE_OF_BIRTH_ERROR_SELECTOR)
+  async getDateOfBirthFieldErrorText () {
+    const fieldError = await this.findById(DATE_OF_BIRTH_FIELD_ERROR_ID)
+    return fieldError.getText()
+  }
+
+  async getDateOfBirthErrorLinkText () {
+    const errorLink = await this.findByCSS(DATE_OF_BIRTH_ERROR_LINK_CSS)
     return errorLink.getText()
   }
 }
