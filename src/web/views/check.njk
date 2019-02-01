@@ -1,35 +1,28 @@
 {% extends "templates/form.njk" %}
 {% from "input/macro.njk" import govukInput %}
 {% from "table/macro.njk" import govukTable %}
+{% from "fieldset/macro.njk" import govukFieldset %}
 
-{% set buttonText = "Confirm" %}
+{% set buttonText = "Accept and send application" %}
 {% block formContent %}
+  {% call govukFieldset({
+    legend: {
+      text: heading,
+      classes: "govuk-fieldset__legend--xl",
+      isPageHeading: true
+    }
+  }) %}
+
+  {% endcall %}
   {{ govukTable({
-      caption: "Check details",
       firstCellIsHeader: true,
-      head: [
-        {
-          text: "Field"
-        },
-        {
-          text: "Value"
-        }
-      ],
       rows: [
         [
           {
-            text: "First name"
+            text: "Name"
           },
           {
-            text: claim.firstName
-          }
-        ],
-        [
-          {
-            text: "Last name"
-          },
-          {
-            text: claim.lastName
+            text:  [claim.firstName, claim.lastName] | join(' ')
           }
         ],
         [
@@ -56,17 +49,19 @@
             text: claim.areYouPregnant
           }
         ],
+
         [
           {
-            text: "When is your baby due to be born"
+            text: "Baby's due date"
           },
           {
             text: [claim['expectedDeliveryDate-day'], claim['expectedDeliveryDate-month'], claim['expectedDeliveryDate-year']] | join(' ')
           }
         ],
+
         [
           {
-            text: "Card delivery address"
+            text: "Address"
           },
           {
             text: [
@@ -74,11 +69,14 @@
               claim.cardDeliveryAddress.addressLine2,
               claim.cardDeliveryAddress.townOrCity,
               claim.cardDeliveryAddress.postcode
-            ] | join(' ')
+            ] | join('<br/>') | safe
           }
         ]
       ]
   }) }}
+
+  <h2 class="govuk-heading-m">Now send your application</h2>
+  <p class="govuk-body">By submitting this notification you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
 
 {% endblock %}
 

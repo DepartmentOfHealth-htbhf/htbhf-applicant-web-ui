@@ -1,6 +1,6 @@
 const pageContent = {
-  title: 'Check',
-  heading: 'Check'
+  title: 'Check your answers before sending your application',
+  heading: 'Check your answers before sending your application'
 }
 
 const getCheck = (req, res) => {
