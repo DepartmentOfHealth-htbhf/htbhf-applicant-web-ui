@@ -44,14 +44,8 @@ const buildDateOfBirthRow = (translate, claim) => {
 const buildAreYouPregnantRow = (translate, claim) => {
   return buildRowData(
     translate('check.areYouPregnant'),
-    capitaliseString(claim.areYouPregnant)
+    translate(claim.areYouPregnant)
   )
-}
-
-const capitaliseString = (stringToCapitalise) => {
-  if (stringToCapitalise !== undefined && stringToCapitalise !== null) {
-    return stringToCapitalise.charAt(0).toUpperCase() + stringToCapitalise.slice(1)
-  }
 }
 
 const buildExpectedDeliveryDateRow = (translate, claim) => {
@@ -63,7 +57,6 @@ const buildExpectedDeliveryDateRow = (translate, claim) => {
   }
 }
 
-// We need to build up this row here because we cannot dynamically hide a using the govukTable component based on session data.
 const buildAddressRow = (translate, claim) => {
   return buildRowData(
     translate('check.address'),
@@ -79,12 +72,8 @@ const buildAddressRow = (translate, claim) => {
 
 const buildRowData = (heading, content) => {
   return [
-    {
-      text: heading
-    },
-    {
-      text: content
-    }
+    { text: heading },
+    { text: content }
   ]
 }
 
@@ -98,7 +87,6 @@ const getCheck = (req, res) => {
 
 module.exports = {
   getCheck,
-  capitaliseString,
   buildNameRow,
   buildNinoRow,
   buildDateOfBirthRow,

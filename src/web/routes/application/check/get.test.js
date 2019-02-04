@@ -1,7 +1,6 @@
 const { NO } = require('../are-you-pregnant/constants')
 const test = require('tape')
 const {
-  capitaliseString,
   buildNameRow,
   buildNinoRow,
   buildDateOfBirthRow,
@@ -29,15 +28,6 @@ const testClaim = {
   townOrCity: 'London',
   postcode: 'aa1 1ab'
 }
-
-test('capitaliseString', (t) => {
-  t.equal(capitaliseString('yes'), 'Yes', 'should capitalise the given string')
-  t.equal(capitaliseString('no'), 'No', 'should capitalise the given string')
-  t.equal(capitaliseString(''), '', 'should return a blank string')
-  t.equal(capitaliseString(undefined), undefined, 'should return undefined')
-  t.equal(capitaliseString(null), undefined, 'should return undefined')
-  t.end()
-})
 
 test('buildNameRow', (t) => {
   t.deepEqual(buildNameRow(testTranslate, testClaim),
@@ -153,6 +143,10 @@ const testTranslate = (key) => {
       return 'Baby\'s due date'
     case 'check.address':
       return 'Address'
+    case 'yes':
+      return 'Yes'
+    case 'no':
+      return 'No'
     default:
       throw new Error('Unexpected key to translate: ' + key)
   }
