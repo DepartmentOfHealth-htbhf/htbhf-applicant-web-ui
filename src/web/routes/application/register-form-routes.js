@@ -4,6 +4,7 @@ const { sanitize } = require('./common/sanitize')
 const { renderView } = require('./common/render-view')
 const { handlePost } = require('./common/handle-post')
 const { getSessionDetails } = require('./common/session-details')
+const { configurePost } = require('./common/configure-post')
 
 const middlewareNoop = (req, res, next) => next()
 
@@ -25,6 +26,7 @@ const createRoute = (csrfProtection, steps, router) => (step) =>
     )
     .post(
       csrfProtection,
+      configurePost,
       sanitize,
       handleOptionalMiddleware(step.sanitize),
       handleOptionalMiddleware(step.validate),

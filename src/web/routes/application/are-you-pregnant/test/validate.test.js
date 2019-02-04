@@ -2,6 +2,10 @@ const test = require('tape')
 const { validateExpectedDeliveryDate } = require('../validate')
 const { YES, NO } = require('../constants')
 
+const res = {
+  locals: {}
+}
+
 const createDateWithMonthAdjustment = (monthAdjustment) => {
   const date = new Date()
   date.setMonth(date.getMonth() + monthAdjustment)
@@ -10,7 +14,6 @@ const createDateWithMonthAdjustment = (monthAdjustment) => {
 
 test('validateExpectedDeliveryDate() eight months in the future', (t) => {
   const eightMonthsInFuture = createDateWithMonthAdjustment(8)
-  const res = {}
   const req = {
     t: (string) => string,
     body: {
@@ -29,7 +32,6 @@ test('validateExpectedDeliveryDate() eight months in the future', (t) => {
 
 test('validateExpectedDeliveryDate() one month in the past', (t) => {
   const oneMonthInPast = createDateWithMonthAdjustment(-1)
-  const res = {}
   const req = {
     t: (string) => string,
     body: {
@@ -47,7 +49,6 @@ test('validateExpectedDeliveryDate() one month in the past', (t) => {
 })
 
 test('validateExpectedDeliveryDate() date too far in the past', (t) => {
-  const res = {}
   const req = {
     t: (string) => string,
     body: {
@@ -65,7 +66,6 @@ test('validateExpectedDeliveryDate() date too far in the past', (t) => {
 })
 
 test('validateExpectedDeliveryDate() too far in the future', (t) => {
-  const res = {}
   const req = {
     t: (string) => string,
     body: {
@@ -83,7 +83,6 @@ test('validateExpectedDeliveryDate() too far in the future', (t) => {
 })
 
 test('validateExpectedDeliveryDate() null date', (t) => {
-  const res = {}
   const req = {
     t: (string) => string,
     body: {
@@ -101,7 +100,6 @@ test('validateExpectedDeliveryDate() null date', (t) => {
 })
 
 test('validateExpectedDeliveryDate() invalid date', (t) => {
-  const res = {}
   const req = {
     t: (string) => string,
     body: {
@@ -119,7 +117,6 @@ test('validateExpectedDeliveryDate() invalid date', (t) => {
 })
 
 test('validateExpectedDeliveryDateNotPregnant()', (t) => {
-  const res = {}
   const req = {
     t: (string) => string,
     body: {
