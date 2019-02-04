@@ -1,4 +1,5 @@
 const { YES } = require('../are-you-pregnant/constants')
+const { isNil } = require('ramda')
 
 const pageContent = ({ translate, claim }) => ({
   title: translate('check.title'),
@@ -17,36 +18,28 @@ const buildCheckRowData = (translate, claim) => {
     buildAreYouPregnantRow(translate, claim),
     buildExpectedDeliveryDateRow(translate, claim),
     buildAddressRow(translate, claim)
-  ].filter(row => row !== undefined)
+  ].filter(row => !isNil(row))
 }
 
-const buildNameRow = (translate, claim) => {
-  return buildRowData(
-    translate('check.name'),
-    [claim.firstName, claim.lastName].join(' ')
-  )
-}
+const buildNameRow = (translate, claim) => buildRowData(
+  translate('check.name'),
+  [claim.firstName, claim.lastName].join(' ')
+)
 
-const buildNinoRow = (translate, claim) => {
-  return buildRowData(
-    translate('check.nationalInsuranceNumber'),
-    claim.nino
-  )
-}
+const buildNinoRow = (translate, claim) => buildRowData(
+  translate('check.nationalInsuranceNumber'),
+  claim.nino
+)
 
-const buildDateOfBirthRow = (translate, claim) => {
-  return buildRowData(
-    translate('check.dateOfBirth'),
-    [claim['dateOfBirth-day'], claim['dateOfBirth-month'], claim['dateOfBirth-year']].join(' ')
-  )
-}
+const buildDateOfBirthRow = (translate, claim) => buildRowData(
+  translate('check.dateOfBirth'),
+  [claim['dateOfBirth-day'], claim['dateOfBirth-month'], claim['dateOfBirth-year']].join(' ')
+)
 
-const buildAreYouPregnantRow = (translate, claim) => {
-  return buildRowData(
-    translate('check.areYouPregnant'),
-    translate(claim.areYouPregnant)
-  )
-}
+const buildAreYouPregnantRow = (translate, claim) => buildRowData(
+  translate('check.areYouPregnant'),
+  translate(claim.areYouPregnant)
+)
 
 const buildExpectedDeliveryDateRow = (translate, claim) => {
   if (claim.areYouPregnant === YES) {
@@ -57,25 +50,21 @@ const buildExpectedDeliveryDateRow = (translate, claim) => {
   }
 }
 
-const buildAddressRow = (translate, claim) => {
-  return buildRowData(
-    translate('check.address'),
-    [
-      claim.addressLine1,
-      claim.addressLine2,
-      claim.townOrCity,
-      claim.postcode
-    ].filter(item => (item !== undefined && item.length !== 0))
-      .join('<br/>')
-  )
-}
+const buildAddressRow = (translate, claim) => buildRowData(
+  translate('check.address'),
+  [
+    claim.addressLine1,
+    claim.addressLine2,
+    claim.townOrCity,
+    claim.postcode
+  ].filter(item => (item !== undefined && item.length !== 0))
+    .join('<br/>')
+)
 
-const buildRowData = (heading, content) => {
-  return [
-    { text: heading },
-    { text: content }
-  ]
-}
+const buildRowData = (heading, content) => [
+  { text: heading },
+  { text: content }
+]
 
 const getCheck = (req, res) => {
   res.render('check', {
