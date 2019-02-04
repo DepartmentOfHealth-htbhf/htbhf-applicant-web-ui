@@ -1,13 +1,12 @@
 const { YES } = require('../are-you-pregnant/constants')
 const { isNil } = require('ramda')
 
-const pageContent = ({ translate, claim }) => ({
+const pageContent = ({ translate }) => ({
   title: translate('check.title'),
   heading: translate('check.heading'),
   sendApplicationHeader: translate('check.sendApplicationHeader'),
   sendApplicationText: translate('check.sendApplicationText'),
-  buttonText: translate('buttons:acceptAndSend'),
-  checkRowData: buildCheckRowData(translate, claim)
+  buttonText: translate('buttons:acceptAndSend')
 })
 
 const buildCheckRowData = (translate, claim) => {
@@ -57,9 +56,11 @@ const buildAddressRow = (translate, claim) => buildRowData(
     claim.addressLine2,
     claim.townOrCity,
     claim.postcode
-  ].filter(item => (item !== undefined && item.length !== 0))
+  ].filter((line) => !isNilOrEmpty(line))
     .join('<br/>')
 )
+
+const isNilOrEmpty = (string) => (isNil(string) || string.length === 0)
 
 const buildRowData = (heading, content) => [
   { text: heading },
@@ -69,8 +70,9 @@ const buildRowData = (heading, content) => [
 const getCheck = (req, res) => {
   res.render('check', {
     claim: req.session.claim,
-    ...pageContent({ translate: req.t, claim: req.session.claim }),
-    csrfToken: req.csrfToken()
+    ...pageContent({ translate: req.t }),
+    csrfToken: req.csrfToken(),
+    checkRowData: buildCheckRowData(req.t, req.session.claim)
   })
 }
 
@@ -82,5 +84,6 @@ module.exports = {
   buildAreYouPregnantRow,
   buildExpectedDeliveryDateRow,
   buildAddressRow,
-  buildCheckRowData
+  buildCheckRowData,
+  isNilOrEmpty
 }

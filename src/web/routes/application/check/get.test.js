@@ -7,7 +7,8 @@ const {
   buildAreYouPregnantRow,
   buildExpectedDeliveryDateRow,
   buildAddressRow,
-  buildCheckRowData
+  buildCheckRowData,
+  isNilOrEmpty
 } = require('./get')
 
 const testClaim = {
@@ -126,6 +127,14 @@ test('buildCheckRowDataWithNoExpectedDate', (t) => {
       [ { text: 'Are you pregnant?' }, { text: 'No' } ],
       [ { text: 'Address' }, { text: 'Flat b<br/>221 Baker street<br/>London<br/>aa1 1ab' } ]
     ], 'should match entire row data')
+  t.end()
+})
+
+test('isNilOrEmpty', (t) => {
+  t.equal(isNilOrEmpty(''), true, 'should be marked as empty')
+  t.equal(isNilOrEmpty(null), true, 'should be marked as empty')
+  t.equal(isNilOrEmpty(undefined), true, 'should be marked as empty')
+  t.equal(isNilOrEmpty('Something'), false, 'should not be marked as empty')
   t.end()
 })
 
