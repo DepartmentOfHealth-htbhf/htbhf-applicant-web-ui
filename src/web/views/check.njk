@@ -3,6 +3,12 @@
 {% from "table/macro.njk" import govukTable %}
 {% from "fieldset/macro.njk" import govukFieldset %}
 
+{% set safeRows = [] %}
+{% for heading, content in checkRowData %}
+  {% set row = [{ text: heading.text }, { text: content.text | safe } ] %}
+  {{ safeRows.push(row) }}
+{% endfor %}
+
 {% set buttonText = buttonText %}
 {% block formContent %}
   {% call govukFieldset({
@@ -16,59 +22,10 @@
   {% endcall %}
   {{ govukTable({
       firstCellIsHeader: true,
-      rows: [
-        [
-          {
-            text: name
-          },
-          {
-            text:  [claim.firstName, claim.lastName] | join(' ')
-          }
-        ],
-        [
-          {
-            text: nino
-          },
-          {
-            text: claim.nino
-          }
-        ],
-        [
-          {
-            text: dateOfBirth
-          },
-          {
-            text: [claim['dateOfBirth-day'], claim['dateOfBirth-month'], claim['dateOfBirth-year']] | join(' ')
-          }
-        ],
-        [
-          {
-            text: areYouPregnant
-          },
-          {
-            text: claim.areYouPregnant
-          }
-        ],
-        expectedDeliveryDateRow,
-        [
-          {
-            text: address
-          },
-          {
-            text: [
-              claim.addressLine1,
-              claim.addressLine2,
-              claim.townOrCity,
-              claim.postcode
-            ] | join('<br/>') | safe
-          }
-        ]
-      ]
+      rows: safeRows
   }) }}
 
   <h2 class="govuk-heading-m">{{ sendApplicationHeader }}</h2>
   <p class="govuk-body">{{ sendApplicationText }}</p>
 
 {% endblock %}
-
-
