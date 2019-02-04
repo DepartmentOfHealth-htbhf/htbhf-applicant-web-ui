@@ -44,8 +44,14 @@ const buildDateOfBirthRow = (translate, claim) => {
 const buildAreYouPregnantRow = (translate, claim) => {
   return buildRowData(
     translate('check.areYouPregnant'),
-    claim.areYouPregnant
+    capitaliseString(claim.areYouPregnant)
   )
+}
+
+const capitaliseString = (stringToCapitalise) => {
+  if (stringToCapitalise !== undefined && stringToCapitalise !== null) {
+    return stringToCapitalise.charAt(0).toUpperCase() + stringToCapitalise.slice(1)
+  }
 }
 
 const buildExpectedDeliveryDateRow = (translate, claim) => {
@@ -91,5 +97,13 @@ const getCheck = (req, res) => {
 }
 
 module.exports = {
-  getCheck
+  getCheck,
+  capitaliseString,
+  buildNameRow,
+  buildNinoRow,
+  buildDateOfBirthRow,
+  buildAreYouPregnantRow,
+  buildExpectedDeliveryDateRow,
+  buildAddressRow,
+  buildCheckRowData
 }
