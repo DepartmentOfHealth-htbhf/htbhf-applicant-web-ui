@@ -55,11 +55,11 @@ async function enterCardAddress (addressLine1, addressLine2, townOrCity, postcod
   }
 }
 
-async function assertErrorHeaderTextPresent (page) {
+async function assertErrorHeaderTextPresent (page, message = 'There is a problem') {
   try {
     await page.waitForPageLoad()
     const errorHeader = await page.getPageErrorHeaderText()
-    expect(errorHeader).to.equal('There is a problem')
+    expect(errorHeader).to.equal(message)
   } catch (error) {
     assert.fail(`Unexpected error caught trying to assert error header text is present - ${error}`)
   }
