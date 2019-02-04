@@ -7,7 +7,7 @@ const { YES, NO } = require('./constants')
 
 const isNilOrNo = value => isNil(value) || value === NO
 
-const validateExpectedDeliveryDate = (_, { req }) => {
+const validateExpectedDeliveryDate = (res) => (_, { req }) => {
   if (isNilOrNo(req.body.areYouPregnant)) {
     return true
   }
@@ -23,19 +23,27 @@ const validateExpectedDeliveryDate = (_, { req }) => {
   }
 
   if (isDateMoreThanOneMonthAgo(expectedDeliveryDate)) {
-    throw new Error(req.t('validation:expectedDeliveryDateInvalidTooFarInPast'))
+    throw new Error(req.t('validation:expectedDeliveryDateTooFarInPast'))
   }
 
   if (isDateMoreThanEightMonthsInTheFuture(expectedDeliveryDate)) {
-    throw new Error(req.t('validation:expectedDeliveryDateInvalidTooFarInFuture'))
+    throw new Error(req.t('validation:expectedDeliveryDateTooFarInFuture'))
   }
 
   return true
 }
 
+/**
+ * Express validator does not give custom validations a reference to the express
+ * response object. callValidateExpectedDeliveryDate() creates a closure enabling
+ * validateExpectedDeliveryDate() to set properties on res.locals.
+ */
+const callValidateExpectedDeliveryDate = (req, res, next) =>
+  check('expectedDeliveryDate').custom(validateExpectedDeliveryDate(res))(req, res, next)
+
 const validate = [
   check('areYouPregnant').isIn([YES, NO]).withMessage(translateValidationMessage('validation:selectYesOrNo')),
-  check('expectedDeliveryDate').custom(validateExpectedDeliveryDate)
+  callValidateExpectedDeliveryDate
 ]
 
 module.exports = {
