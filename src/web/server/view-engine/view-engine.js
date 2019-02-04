@@ -1,4 +1,6 @@
 const nunjucks = require('nunjucks')
+require('dotenv').config()
+
 const { camelToKebabCase, toErrorList, getErrorForField } = require('./filters')
 
 const setViewEngine = (config, app) => {
@@ -15,6 +17,8 @@ const setViewEngine = (config, app) => {
   env.addFilter('camelToKebabCase', camelToKebabCase)
   env.addFilter('toErrorList', toErrorList)
   env.addFilter('getErrorForField', getErrorForField)
+
+  env.addGlobal('gaTrackingId', process.env.GA_TRACKING_ID)
 
   app.set('view engine', 'njk')
 }

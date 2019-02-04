@@ -7,6 +7,17 @@
 {% block pageTitle %}GOV.UK - {{ title }}{% endblock %}
 
 {% block head %}
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ gaTrackingId }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', '{{ gaTrackingId }}');
+  </script>
+
   <!--[if !IE 8]><!-->
     <link href="/assets/styles/all.css" rel="stylesheet" />
   <!--<![endif]-->
