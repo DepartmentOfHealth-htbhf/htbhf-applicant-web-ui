@@ -27,8 +27,7 @@ When(/^I enter (.*) and (.*) values$/, async function (firstName, lastName) {
 
 Then('I am informed that the first name is too long', async function () {
   await assertErrorHeaderTextPresent(pages.enterName)
-  const errorMessage = await pages.enterName.getFirstNameError()
-  expect(errorMessage).to.be.equal('Enter a shorter first or given name')
+  await assertFirstNameErrorFieldAndLink('Enter a shorter first or given name')
 })
 
 Then(/^I see the invalid first name I entered in the textbox$/, async function () {
@@ -43,22 +42,37 @@ Then(/^I see the last name I entered in the textbox$/, async function () {
 
 Then('I am informed that the last name is too long', async function () {
   await assertErrorHeaderTextPresent(pages.enterName)
-  await assertLastNameErrorPresent('Enter a shorter last or family name')
+  await assertLastNameErrorFieldAndLink('Enter a shorter last or family name')
 })
 
 Then('I am informed that a last name is required', async function () {
   await assertErrorHeaderTextPresent(pages.enterName)
-  await assertLastNameErrorPresent('Enter your last or family name')
+  await assertLastNameErrorFieldAndLink('Enter your last or family name')
 })
 
 Then('I am shown the enter national insurance page', async function () {
   await pages.enterNino.waitForPageLoad()
 })
 
-async function assertLastNameErrorPresent (expectedErrorMessage) {
+async function assertFirstNameErrorFieldAndLink (expectedErrorMessage) {
   try {
-    const errorMessage = await pages.enterName.getLastNameError()
-    expect(errorMessage).to.be.equal(expectedErrorMessage)
+    const errorFieldText = await pages.enterName.getFirstNameErrorFieldText()
+    const errorLinkText = await pages.enterName.getFirstNameErrorLinkText()
+
+    expect(errorFieldText).to.be.equal(expectedErrorMessage)
+    expect(errorLinkText).to.be.equal(expectedErrorMessage)
+  } catch (error) {
+    assert.fail(`Unexpected error caught trying to assert first name error message is present - ${error}`)
+  }
+}
+
+async function assertLastNameErrorFieldAndLink (expectedErrorMessage) {
+  try {
+    const errorFieldText = await pages.enterName.getLastNameErrorFieldText()
+    const errorLinkText = await pages.enterName.getLastNameErrorLinkText()
+
+    expect(errorFieldText).to.be.equal(expectedErrorMessage)
+    expect(errorLinkText).to.be.equal(expectedErrorMessage)
   } catch (error) {
     assert.fail(`Unexpected error caught trying to assert last name error message is present - ${error}`)
   }

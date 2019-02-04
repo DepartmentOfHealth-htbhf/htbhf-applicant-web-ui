@@ -28,8 +28,11 @@ Then(/^I am informed that my date of birth should be in the past$/, async functi
 
 async function assertDateOfBirthErrorPresent (expectedErrorMessage) {
   try {
-    const error = await pages.enterDOB.getDateOfBirthError()
-    expect(error).to.be.equal(expectedErrorMessage)
+    const fieldError = await pages.enterDOB.getDateOfBirthFieldErrorText()
+    const errorLink = await pages.enterDOB.getDateOfBirthErrorLinkText()
+
+    expect(fieldError).to.be.equal(expectedErrorMessage)
+    expect(errorLink).to.be.equal(expectedErrorMessage)
   } catch (error) {
     assert.fail(`Unexpected error caught trying to assert date of birth error message is present - ${error}`)
   }

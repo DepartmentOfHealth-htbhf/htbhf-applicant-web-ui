@@ -89,19 +89,22 @@ Then(/^I am informed that I need to enter an expected delivery date$/, async fun
 })
 
 Then(/^I am informed that the date is too far in the past$/, async function () {
-  await assertErrorHeaderTextPresent(pages.areYouPregnant)
-  await assertExpectedDeliveryDateErrorPresent('The due date you entered is more than 1 month ago. Please call our helpline on 0345 607 6823 to talk about your application.')
+  await assertErrorHeaderTextPresent(pages.areYouPregnant, 'The due date you entered is more than 1 month ago')
+  await assertExpectedDeliveryDateErrorPresent('Please call our helpline on 0345 607 6823 to talk about your application')
 })
 
 Then(/^I am informed that the date is too far in the future$/, async function () {
-  await assertErrorHeaderTextPresent(pages.areYouPregnant)
-  await assertExpectedDeliveryDateErrorPresent('The date you have entered is more than 8 months in the future. You must be at least 10 weeks pregnant to apply for yourself. If you have children under the age of 4, answer ‘no’ to this question to continue with this application on their behalf.')
+  await assertErrorHeaderTextPresent(pages.areYouPregnant, 'You must be at least 10 weeks pregnant to apply for yourself')
+  await assertExpectedDeliveryDateErrorPresent('If you have children under the age of 4, answer ‘no’ to this question to continue with this application on their behalf')
 })
 
 async function assertAreYouPregnantErrorPresent () {
   try {
-    const error = await pages.areYouPregnant.getAreYouPregnantErrorText()
+    const error = await pages.areYouPregnant.getAreYouPregnantFieldErrorText()
+    const errorLinkText = await pages.areYouPregnant.getAreYouPregnantErrorLinkText()
+
     expect(error).to.be.equal('Select yes or no')
+    expect(errorLinkText).to.be.equal('Select yes or no')
   } catch (error) {
     assert.fail(`Unexpected error caught trying to assert are you pregnant error message is present - ${error}`)
   }
@@ -109,8 +112,11 @@ async function assertAreYouPregnantErrorPresent () {
 
 async function assertExpectedDeliveryDateErrorPresent (expectedMessage) {
   try {
-    const error = await pages.areYouPregnant.getExpectedDeliveryDateErrorText()
+    const error = await pages.areYouPregnant.getExpectedDeliveryDateFieldErrorText()
+    const errorLinkText = await pages.areYouPregnant.getExpectedDeliveryDateErrorLinkText()
+
     expect(error).to.be.equal(expectedMessage)
+    expect(errorLinkText).to.be.equal(expectedMessage)
   } catch (error) {
     assert.fail(`Unexpected error caught trying to assert expected delivery date error message is present - ${error}`)
   }

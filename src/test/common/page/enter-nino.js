@@ -12,7 +12,8 @@ const PAGE_HEADINGS = {
   cy: 'Excepteur sint occaecat cupidatat non proident?'
 }
 
-const NINO_ERROR_ID = 'nino-error'
+const NINO_FIELD_ERROR_ID = 'nino-error'
+const NINO_ERROR_LINK_CSS = 'a[href="#nino-error"]'
 
 /**
  * Page object for EnterNino page where the name is entered.
@@ -41,9 +42,14 @@ class EnterNino extends DataEntryPage {
     return nino.getAttribute('value')
   }
 
-  async getNinoError () {
-    const ninoError = await this.findById(NINO_ERROR_ID)
-    return ninoError.getText()
+  async getNinoFieldErrorText () {
+    const fieldError = await this.findById(NINO_FIELD_ERROR_ID)
+    return fieldError.getText()
+  }
+
+  async getNinoLinkErrorText () {
+    const errorLink = await this.findByCSS(NINO_ERROR_LINK_CSS)
+    return errorLink.getText()
   }
 }
 

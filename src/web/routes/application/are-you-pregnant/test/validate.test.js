@@ -2,6 +2,10 @@ const test = require('tape')
 const { validateExpectedDeliveryDate } = require('../validate')
 const { YES, NO } = require('../constants')
 
+const res = {
+  locals: {}
+}
+
 const createDateWithMonthAdjustment = (monthAdjustment) => {
   const date = new Date()
   date.setMonth(date.getMonth() + monthAdjustment)
@@ -20,7 +24,9 @@ test('validateExpectedDeliveryDate() eight months in the future', (t) => {
     }
   }
 
-  t.equal(validateExpectedDeliveryDate({}, { req }), true, 'should return true for exactly eight months in future')
+  const result = validateExpectedDeliveryDate(res)({}, { req })
+
+  t.equal(result, true, 'should return true for exactly eight months in future')
   t.end()
 })
 
@@ -36,7 +42,9 @@ test('validateExpectedDeliveryDate() one month in the past', (t) => {
     }
   }
 
-  t.equal(validateExpectedDeliveryDate({}, { req }), true, 'should return true for exactly one month in past')
+  const result = validateExpectedDeliveryDate(res)({}, { req })
+
+  t.equal(result, true, 'should return true for exactly one month in past')
   t.end()
 })
 
@@ -51,7 +59,9 @@ test('validateExpectedDeliveryDate() date too far in the past', (t) => {
     }
   }
 
-  t.throws(validateExpectedDeliveryDate.bind(null, {}, { req }), /validation:expectedDeliveryDateInvalidTooFarInPast/, 'not in valid date range')
+  const result = validateExpectedDeliveryDate(res).bind(null, {}, { req })
+
+  t.throws(result, /validation:expectedDeliveryDateTooFarInPast/, 'not in valid date range')
   t.end()
 })
 
@@ -66,7 +76,9 @@ test('validateExpectedDeliveryDate() too far in the future', (t) => {
     }
   }
 
-  t.throws(validateExpectedDeliveryDate.bind(null, {}, { req }), /validation:expectedDeliveryDateInvalidTooFarInFuture/, 'not in valid date range')
+  const result = validateExpectedDeliveryDate(res).bind(null, {}, { req })
+
+  t.throws(result, /validation:expectedDeliveryDateTooFarInFuture/, 'not in valid date range')
   t.end()
 })
 
@@ -81,7 +93,9 @@ test('validateExpectedDeliveryDate() null date', (t) => {
     }
   }
 
-  t.throws(validateExpectedDeliveryDate.bind(null, {}, { req }), /validation:expectedDeliveryDateInvalid/, 'not in valid date range')
+  const result = validateExpectedDeliveryDate(res).bind(null, {}, { req })
+
+  t.throws(result, /validation:expectedDeliveryDateInvalid/, 'not in valid date range')
   t.end()
 })
 
@@ -96,7 +110,9 @@ test('validateExpectedDeliveryDate() invalid date', (t) => {
     }
   }
 
-  t.throws(validateExpectedDeliveryDate.bind(null, {}, { req }), /validation:expectedDeliveryDateInvalid/, 'not in valid date range')
+  const result = validateExpectedDeliveryDate(res).bind(null, {}, { req })
+
+  t.throws(result, /validation:expectedDeliveryDateInvalid/, 'not in valid date range')
   t.end()
 })
 
@@ -108,6 +124,8 @@ test('validateExpectedDeliveryDateNotPregnant()', (t) => {
     }
   }
 
-  t.equal(validateExpectedDeliveryDate({}, { req }), true, 'should not validate the date if not pregnant')
+  const result = validateExpectedDeliveryDate(res)({}, { req })
+
+  t.equal(result, true, 'should not validate the date if not pregnant')
   t.end()
 })
