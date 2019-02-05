@@ -5,7 +5,7 @@
 
 {% set safeRows = [] %}
 {% for heading, content in checkRowData %}
-  {% set row = [{ text: heading.text }, { text: content.text | safe } ] %}
+  {% set row = [{ text: heading.text }, { text: content.text | escape | nl2br | safe} ] %}
   {{ safeRows.push(row) }}
 {% endfor %}
 

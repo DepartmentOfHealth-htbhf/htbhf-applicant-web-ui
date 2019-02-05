@@ -87,7 +87,7 @@ test('buildAddressRowWithAddressLine2', (t) => {
   t.deepEqual(buildAddressRow(testTranslate, testClaim),
     [
       { text: 'Address' },
-      { text: 'Flat b<br/>221 Baker street<br/>London<br/>aa1 1ab' }
+      { text: 'Flat b\n221 Baker street\nLondon\naa1 1ab' }
     ], 'should match address data')
   t.end()
 })
@@ -98,7 +98,7 @@ test('buildAddressRowWithoutAddressLine2', (t) => {
   t.deepEqual(buildAddressRow(testTranslate, modifiedClaim),
     [
       { text: 'Address' },
-      { text: 'Flat b<br/>London<br/>aa1 1ab' }
+      { text: 'Flat b\nLondon\naa1 1ab' }
     ], 'should match address data')
   t.end()
 })
@@ -111,7 +111,7 @@ test('buildCheckRowData', (t) => {
       [ { text: 'Date of Birth' }, { text: '30 05 1920' } ],
       [ { text: 'Are you pregnant?' }, { text: 'Yes' } ],
       [ { text: 'Baby\'s due date' }, { text: '01 03 2019' } ],
-      [ { text: 'Address' }, { text: 'Flat b<br/>221 Baker street<br/>London<br/>aa1 1ab' } ]
+      [ { text: 'Address' }, { text: 'Flat b\n221 Baker street\nLondon\naa1 1ab' } ]
     ], 'should match entire row data')
   t.end()
 })
@@ -125,7 +125,7 @@ test('buildCheckRowDataWithNoExpectedDate', (t) => {
       [ { text: 'National Insurance Number' }, { text: 'QQ123456C' } ],
       [ { text: 'Date of Birth' }, { text: '30 05 1920' } ],
       [ { text: 'Are you pregnant?' }, { text: 'No' } ],
-      [ { text: 'Address' }, { text: 'Flat b<br/>221 Baker street<br/>London<br/>aa1 1ab' } ]
+      [ { text: 'Address' }, { text: 'Flat b\n221 Baker street\nLondon\naa1 1ab' } ]
     ], 'should match entire row data')
   t.end()
 })
@@ -139,24 +139,19 @@ test('isNilOrEmpty', (t) => {
 })
 
 const testTranslate = (key) => {
-  switch (key) {
-    case 'check.name':
-      return 'Name'
-    case 'check.nationalInsuranceNumber':
-      return 'National Insurance Number'
-    case 'check.dateOfBirth':
-      return 'Date of Birth'
-    case 'check.areYouPregnant':
-      return 'Are you pregnant?'
-    case 'check.dueDate':
-      return 'Baby\'s due date'
-    case 'check.address':
-      return 'Address'
-    case 'yes':
-      return 'Yes'
-    case 'no':
-      return 'No'
-    default:
-      throw new Error('Unexpected key to translate: ' + key)
+  const testTranslations = {
+    'check.name': 'Name',
+    'check.nationalInsuranceNumber': 'National Insurance Number',
+    'check.dateOfBirth': 'Date of Birth',
+    'check.areYouPregnant': 'Are you pregnant?',
+    'check.dueDate': 'Baby\'s due date',
+    'check.address': 'Address',
+    'yes': 'Yes',
+    'no': 'No'
   }
+  const foundValue = testTranslations[key]
+  if (foundValue === undefined) {
+    throw new Error('Unexpected key to translate: ' + key)
+  }
+  return foundValue
 }

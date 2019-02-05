@@ -57,7 +57,7 @@ const buildAddressRow = (translate, claim) => buildRowData(
     claim.townOrCity,
     claim.postcode
   ].filter((line) => !isNilOrEmpty(line))
-    .join('<br/>')
+    .join('\n')
 )
 
 const isNilOrEmpty = (string) => (isNil(string) || string.length === 0)
