@@ -18,7 +18,7 @@ const setViewEngine = (config, app) => {
   env.addFilter('toErrorList', toErrorList)
   env.addFilter('getErrorForField', getErrorForField)
 
-  env.addGlobal('gaTrackingId', process.env.GA_TRACKING_ID)
+  env.addGlobal('gaTrackingId', config.environment.GA_TRACKING_ID)
 
   app.set('view engine', 'njk')
 }
