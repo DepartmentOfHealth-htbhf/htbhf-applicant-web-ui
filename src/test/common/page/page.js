@@ -43,10 +43,20 @@ class Page {
     }
   }
 
-  async findByClassName (className) {
+  async findByClassName (className, scope = this.driver) {
     try {
       await this.waitForElement(className, CLASSNAME_TYPE)
-      return this.driver.findElement(webdriver.By.className(className))
+      return scope['findElement'](webdriver.By.className(className))
+    } catch (error) {
+      console.log(error)
+      throw new Error(error)
+    }
+  }
+
+  async findAllByClassName (className) {
+    try {
+      await this.waitForElement(className, CLASSNAME_TYPE)
+      return this.driver.findElements(webdriver.By.className(className))
     } catch (error) {
       console.log(error)
       throw new Error(error)

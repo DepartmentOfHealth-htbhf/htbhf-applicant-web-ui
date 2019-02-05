@@ -9,6 +9,11 @@ class DataEntryPage extends Page {
     const submitButton = await this.getSubmitButton()
     await submitButton.click()
   }
+
+  async getSubmitButtonText () {
+    const submitButton = await this.getSubmitButton()
+    return submitButton.getText()
+  }
 }
 
 module.exports = DataEntryPage

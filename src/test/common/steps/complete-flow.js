@@ -9,8 +9,7 @@ const {
 } = require('./common-steps')
 
 const pages = require('./pages')
-
-const VALID_NINO = 'QQ123456C'
+const { VALID_NINO } = require('./constants')
 
 Given('I am on the first page of the application', async function () {
   await pages.enterName.open(pages.url)
