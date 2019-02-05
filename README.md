@@ -40,7 +40,7 @@ The application uses the library [i18next](https://github.com/i18next/i18next) t
 The requests [accept-language](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Language) header is used to determine which language to render the page in.
 Currently English and Welsh are supported (currently using Lorem Ipsum for Welsh until translations are provided).
 
-To add support for a new language, the translation document must be added to [src/web/server/locales/](src/web/server/locales). 
+To add support for a new language, the translation documents (.json files) must be added to [src/web/server/locales/](src/web/server/locales). 
 See [src/web/server/locales/en/common.json](src/web/server/locales/en/common.json) for an example.
 
 If no accept-language header is provided the application will default to English.
