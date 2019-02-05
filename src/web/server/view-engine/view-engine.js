@@ -1,5 +1,4 @@
 const nunjucks = require('nunjucks')
-require('dotenv').config()
 
 const { camelToKebabCase, toErrorList, getErrorForField } = require('./filters')
 

@@ -1,85 +1,31 @@
 {% extends "templates/form.njk" %}
 {% from "input/macro.njk" import govukInput %}
 {% from "table/macro.njk" import govukTable %}
+{% from "fieldset/macro.njk" import govukFieldset %}
 
-{% set buttonText = "Confirm" %}
+{% set safeRows = [] %}
+{% for heading, content in checkRowData %}
+  {% set row = [{ text: heading.text }, { text: content.text | escape | nl2br | safe} ] %}
+  {{ safeRows.push(row) }}
+{% endfor %}
+
+{% set buttonText = buttonText %}
 {% block formContent %}
+  {% call govukFieldset({
+    legend: {
+      text: heading,
+      classes: "govuk-fieldset__legend--xl",
+      isPageHeading: true
+    }
+  }) %}
+
+  {% endcall %}
   {{ govukTable({
-      caption: "Check details",
       firstCellIsHeader: true,
-      head: [
-        {
-          text: "Field"
-        },
-        {
-          text: "Value"
-        }
-      ],
-      rows: [
-        [
-          {
-            text: "First name"
-          },
-          {
-            text: claim.firstName
-          }
-        ],
-        [
-          {
-            text: "Last name"
-          },
-          {
-            text: claim.lastName
-          }
-        ],
-        [
-          {
-            text: "National Insurance number"
-          },
-          {
-            text: claim.nino
-          }
-        ],
-        [
-          {
-            text: "Date of birth"
-          },
-          {
-            text: [claim['dateOfBirth-day'], claim['dateOfBirth-month'], claim['dateOfBirth-year']] | join(' ')
-          }
-        ],
-        [
-          {
-            text: "Are you pregnant?"
-          },
-          {
-            text: claim.areYouPregnant
-          }
-        ],
-        [
-          {
-            text: "When is your baby due to be born"
-          },
-          {
-            text: [claim['expectedDeliveryDate-day'], claim['expectedDeliveryDate-month'], claim['expectedDeliveryDate-year']] | join(' ')
-          }
-        ],
-        [
-          {
-            text: "Card delivery address"
-          },
-          {
-            text: [
-              claim.addressLine1,
-              claim.addressLine2,
-              claim.townOrCity,
-              claim.postcode
-            ] | join(' ')
-          }
-        ]
-      ]
+      rows: safeRows
   }) }}
 
+  <h2 class="govuk-heading-m">{{ sendApplicationHeader }}</h2>
+  <p class="govuk-body">{{ sendApplicationText }}</p>
+
 {% endblock %}
-
-
