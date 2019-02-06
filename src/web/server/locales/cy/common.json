@@ -7,7 +7,8 @@
     "detail": {
       "summaryText": "Lectus quam id leo in",
       "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit <br><a target=\"_blank\" href=\"{{ninoLink}}\">sed do eiusmod tempor incididunt ut labore et dolore</a> magna aliqua."
-    }
+    },
+    "summaryKey": "Aliquet"
   },
   "enterName": {
     "title": "Vulputate dignissim suspendisse?",
@@ -23,7 +24,8 @@
     "dayLabel": "Nisl",
     "monthLabel": "Risus",
     "yearLabel": "Non",
-    "hint": "Eget velit, 31 3 1990"
+    "hint": "Eget velit, 31 3 1990",
+    "summaryKey": "Aliquet"
   },
   "areYouPregnant": {
     "title": "Eget felis eget nunc lobortis mattis?",
@@ -45,8 +47,6 @@
   "check": {
     "title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "heading": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    "nationalInsuranceNumber": "Justo donec enim",
-    "dateOfBirth": "In ante metus",
     "areYouPregnant": "Sed blandit libero?",
     "dueDate": "In nulla posuere",
     "sendApplicationHeader": "Dui faucibus in ornare quam.",

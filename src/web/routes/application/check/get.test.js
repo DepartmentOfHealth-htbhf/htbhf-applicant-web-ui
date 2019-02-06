@@ -1,7 +1,6 @@
 const { NO } = require('../are-you-pregnant/constants')
 const test = require('tape')
 const {
-  buildDateOfBirthRow,
   buildAreYouPregnantRow,
   buildExpectedDeliveryDateRow,
   buildCheckRowData
@@ -25,15 +24,6 @@ const testClaim = {
   townOrCity: 'London',
   postcode: 'aa1 1ab'
 }
-
-test('buildDateOfBirthRow', (t) => {
-  t.deepEqual(buildDateOfBirthRow(testTranslate, testClaim),
-    [
-      { text: 'Date of Birth' },
-      { text: '30 05 1920' }
-    ], 'should matcg date of birth data')
-  t.end()
-})
 
 test('buildAreYouPregnantRow', (t) => {
   t.deepEqual(buildAreYouPregnantRow(testTranslate, testClaim),

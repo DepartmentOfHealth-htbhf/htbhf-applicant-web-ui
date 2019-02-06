@@ -24,7 +24,8 @@
     "dayLabel": "Day",
     "monthLabel": "Month",
     "yearLabel": "Year",
-    "hint": "For example, 31 3 1990"
+    "hint": "For example, 31 3 1990",
+    "summaryKey": "Date of birth"
   },
   "areYouPregnant": {
     "title": "Are you pregnant?",
@@ -46,7 +47,6 @@
   "check": {
     "title": "Check your answers before sending your application",
     "heading": "Check your answers before sending your application",
-    "dateOfBirth": "Date of birth",
     "areYouPregnant": "Are you pregnant?",
     "dueDate": "Baby's due date",
     "sendApplicationHeader": "Now send your application",

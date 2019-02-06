@@ -11,12 +11,22 @@ const pageContent = ({ translate }) => ({
   yearLabel: translate('enterDob.yearLabel')
 })
 
+const contentSummary = (req) => ({
+  key: req.t('enterDob.summaryKey'),
+  value: [
+    req.session.claim['dateOfBirth-day'],
+    req.session.claim['dateOfBirth-month'],
+    req.session.claim['dateOfBirth-year']
+  ].join(' ')
+})
+
 const enterDob = {
   path: '/enter-dob',
   next: '/are-you-pregnant',
   template: 'enter-dob',
   pageContent,
-  validate
+  validate,
+  contentSummary
 }
 
 module.exports = {
