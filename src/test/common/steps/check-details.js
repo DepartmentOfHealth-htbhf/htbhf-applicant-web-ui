@@ -1,23 +1,77 @@
 const { expect } = require('chai')
-const { Then } = require('cucumber')
-const { VALID_NINO } = require('./constants')
+const { When, Then } = require('cucumber')
+const {
+  FIRST_NAME,
+  LAST_NAME,
+  FULL_NAME,
+  VALID_NINO,
+  DAY,
+  MONTH,
+  YEAR,
+  DATE_OF_BIRTH,
+  ADDRESS_LINE_1,
+  ADDRESS_LINE_2,
+  TOWN,
+  POSTCODE,
+  FULL_ADDRESS,
+  FULL_ADDRESS_NO_LINE_2,
+  YES,
+  NO
+} = require('./constants')
 
 const pages = require('./pages')
+const {
+  selectNoOnPregnancyPage,
+  enterNameAndSubmit,
+  enterNinoAndSubmit,
+  enterDateOfBirth,
+  enterCardAddress
+} = require('./common-steps')
 
-Then(/^the check details page contains all data entered$/, async function () {
+When(/^I complete the application with valid details for a woman who is not pregnant$/, async function () {
+  await enterNameAndSubmit(FIRST_NAME, LAST_NAME)
+  await enterNinoAndSubmit(VALID_NINO)
+  await enterDateOfBirth(DAY, MONTH, YEAR)
+  await selectNoOnPregnancyPage()
+  await enterCardAddress(ADDRESS_LINE_1, ADDRESS_LINE_2, TOWN, POSTCODE)
+})
+
+When(/^I complete the application with valid details for an applicant with no second line of address$/, async function () {
+  await enterNameAndSubmit(FIRST_NAME, LAST_NAME)
+  await enterNinoAndSubmit(VALID_NINO)
+  await enterDateOfBirth(DAY, MONTH, YEAR)
+  await selectNoOnPregnancyPage()
+  await enterCardAddress(ADDRESS_LINE_1, '', TOWN, POSTCODE)
+})
+
+Then(/^the check details page contains all data entered for a pregnant woman$/, async function () {
   const tableContents = await pages.check.getCheckDetailsTableContents()
-  const nameValue = getValueForField(tableContents, 'Name')
-  expect(nameValue).to.be.equal('Lisa Simpson')
-  const ninoValue = getValueForField(tableContents, 'National insurance number')
-  expect(ninoValue).to.be.equal(VALID_NINO)
-  const dobValue = getValueForField(tableContents, 'Date of birth')
-  expect(dobValue).to.be.equal('30 12 1980')
-  const areYouPregnantValue = getValueForField(tableContents, 'Are you pregnant?')
-  expect(areYouPregnantValue).to.be.equal('Yes')
-  const dueDateValue = getValueForField(tableContents, 'Baby\'s due date')
-  expect(dueDateValue).to.be.equal(getDateInSixMonths())
-  const addressValue = getValueForField(tableContents, 'Address')
-  expect(addressValue).to.be.equal('Flat b\n123 Fake street\nSpringfield\nAA11BB')
+  assertNameShown(tableContents)
+  assertNinoShown(tableContents)
+  assertDobShown(tableContents)
+  assertAreYouPregnantValueShown(tableContents, YES)
+  assertDueDateShownInSixMonths(tableContents)
+  assertFullAddressShown(tableContents)
+})
+
+Then(/^the check details page contains all data entered for a woman who is not pregnant$/, async function () {
+  const tableContents = await pages.check.getCheckDetailsTableContents()
+  assertNameShown(tableContents)
+  assertNinoShown(tableContents)
+  assertDobShown(tableContents)
+  assertAreYouPregnantValueShown(tableContents, NO)
+  assertNoValueForField(tableContents, 'Baby\'s due date')
+  assertFullAddressShown(tableContents)
+})
+
+Then(/^the check details page contains all data entered for an applicant with no second line of address$/, async function () {
+  const tableContents = await pages.check.getCheckDetailsTableContents()
+  assertNameShown(tableContents)
+  assertNinoShown(tableContents)
+  assertDobShown(tableContents)
+  assertAreYouPregnantValueShown(tableContents, NO)
+  assertNoValueForField(tableContents, 'Baby\'s due date')
+  assertAddressShownWithNoSecondLine(tableContents)
 })
 
 Then(/^all page content is present on the check details page$/, async function () {
@@ -37,6 +91,11 @@ function getValueForField (tableContents, fieldName) {
   return matchingRows[0].value
 }
 
+function assertNoValueForField (tableContents, fieldName) {
+  const matchingRows = tableContents.filter((value) => value.header === fieldName)
+  expect(matchingRows).to.have.lengthOf(0, `must have no rows matching key: ${fieldName}, found: ${matchingRows}`)
+}
+
 function getDateInSixMonths () {
   const currentDate = new Date()
   currentDate.setMonth(currentDate.getMonth() + 6)
@@ -44,4 +103,42 @@ function getDateInSixMonths () {
   const month = currentDate.getMonth() + 1
   const year = currentDate.getFullYear()
   return `${day} ${month} ${year}`
+}
+
+function assertNameShown (tableContents) {
+  const nameValue = getValueForField(tableContents, 'Name')
+  expect(nameValue).to.be.equal(FULL_NAME)
+}
+
+function assertNinoShown (tableContents) {
+  const ninoValue = getValueForField(tableContents, 'National insurance number')
+  expect(ninoValue).to.be.equal(VALID_NINO)
+}
+
+function assertDobShown (tableContents) {
+  const dobValue = getValueForField(tableContents, 'Date of birth')
+  expect(dobValue).to.be.equal(DATE_OF_BIRTH)
+}
+
+function assertAreYouPregnantValueShown (tableContents, expectedValue) {
+  const areYouPregnantValue = getValueForField(tableContents, 'Are you pregnant?')
+  expect(areYouPregnantValue).to.be.equal(expectedValue)
+}
+
+function assertDueDateShownInSixMonths (tableContents) {
+  const dueDateValue = getValueForField(tableContents, 'Baby\'s due date')
+  expect(dueDateValue).to.be.equal(getDateInSixMonths())
+}
+
+function assertFullAddressShown (tableContents) {
+  assertAddressShown(tableContents, FULL_ADDRESS)
+}
+
+function assertAddressShownWithNoSecondLine (tableContents) {
+  assertAddressShown(tableContents, FULL_ADDRESS_NO_LINE_2)
+}
+
+function assertAddressShown (tableContents, expectedAddress) {
+  const addressValue = getValueForField(tableContents, 'Address')
+  expect(addressValue).to.be.equal(expectedAddress)
 }

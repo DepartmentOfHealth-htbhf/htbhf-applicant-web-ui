@@ -5,5 +5,5 @@ Feature: Complete application journey
 
   Scenario: Valid application details can be checked
     Given I am on the first page of the application
-    When I complete the application with valid details
+    When I complete the application with valid details for a pregnant woman
     Then I am shown the check details page
