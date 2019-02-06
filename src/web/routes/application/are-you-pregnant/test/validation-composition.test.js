@@ -3,7 +3,7 @@ const { assocPath } = require('ramda')
 const { applyExpressValidation } = require('../../common/test/apply-express-validation')
 const { dateAsString } = require('../../common/formatters')
 const { validate } = require('../validate')
-const { YES } = require('../constants')
+const { YES } = require('../../constants')
 
 const translate = string => string
 const sixMonthsInFuture = dateAsString({ monthAdjustment: 6 }).split('-')

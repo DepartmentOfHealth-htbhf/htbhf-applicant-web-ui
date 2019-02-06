@@ -1,5 +1,5 @@
 const { validate } = require('./validate')
-const { YES } = require('./constants')
+const { YES } = require('../constants')
 
 const exampleDate = (fromDate = new Date()) => {
   const future = new Date(fromDate)
