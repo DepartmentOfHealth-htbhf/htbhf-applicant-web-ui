@@ -1,5 +1,4 @@
-const { isNil } = require('ramda')
-const { YES } = require('../are-you-pregnant/constants')
+const { flatten } = require('ramda')
 const { steps } = require('../steps')
 
 const pageContent = ({ translate }) => ({
@@ -11,40 +10,22 @@ const pageContent = ({ translate }) => ({
   changeText: translate('check.change')
 })
 
-const buildCheckRowData = (translate, claim) => {
-  return [
-    buildExpectedDeliveryDateRow(translate, claim),
-  ].filter(row => !isNil(row))
-}
-
-const buildExpectedDeliveryDateRow = (translate, claim) => {
-  if (claim.areYouPregnant === YES) {
-    return buildRowData(
-      translate('check.dueDate'),
-      [claim['expectedDeliveryDate-day'], claim['expectedDeliveryDate-month'], claim['expectedDeliveryDate-year']].join(' ')
-    )
-  }
-}
-
-const buildRowData = (heading, content) => [
-  { text: heading },
-  { text: content }
-]
+const combinePathWithRow = (path) => (row) => ({
+  ...row,
+  path
+})
 
 const getRowData = (req) => (step) => {
-  const { contentSummary, path } = step
+  const result = step.contentSummary(req)
 
-  // TO DO: remove this check and validate steps schema
-  const fn = typeof contentSummary === 'function' ? contentSummary : () => {}
+  const applyPathToRow = combinePathWithRow(step.path)
 
-  return {
-    ...fn(req),
-    path
-  }
+  return Array.isArray(result) ? result.map(applyPathToRow) : [applyPathToRow(result)]
 }
 
 const getCheck = (req, res) => {
-  const checkRowData = steps.map(getRowData(req))
+  const stepArrays = steps.map(getRowData(req))
+  const checkRowData = flatten(stepArrays)
 
   res.render('check', {
     claim: req.session.claim,
@@ -56,6 +37,5 @@ const getCheck = (req, res) => {
 
 module.exports = {
   getCheck,
-  buildExpectedDeliveryDateRow,
-  buildCheckRowData
+  getRowData
 }

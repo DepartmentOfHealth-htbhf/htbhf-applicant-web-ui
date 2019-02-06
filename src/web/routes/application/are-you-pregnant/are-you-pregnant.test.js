@@ -17,13 +17,13 @@ test('exampleDate() should correctly roll into the next year', (t) => {
   t.end()
 })
 
-test('Are you pregnant contentSummary() should return content summary in correct format', (t) => {
+test('Are you pregnant contentSummary() should return content summary in correct format when not pregnant', (t) => {
   const req = {
-    t: string => string,
+    t: string => string === 'no' ? 'No' : string,
     session: {
       claim: {
         otherValue: 'something',
-        areYouPregnant: 'yes'
+        areYouPregnant: 'no'
       }
     }
   }
@@ -32,8 +32,36 @@ test('Are you pregnant contentSummary() should return content summary in correct
 
   const expected = {
     key: 'areYouPregnant.summaryKey',
-    value: 'yes'
+    value: 'No'
   }
+
+  t.deepEqual(result, expected, 'should return content summary in correct format')
+  t.end()
+})
+
+test('Are you pregnant contentSummary() should return content summary in correct format when pregnant', (t) => {
+  const req = {
+    t: string => string,
+    session: {
+      claim: {
+        otherValue: 'something',
+        areYouPregnant: 'yes',
+        'expectedDeliveryDate-day': '01',
+        'expectedDeliveryDate-month': '03',
+        'expectedDeliveryDate-year': '2019'
+      }
+    }
+  }
+
+  const result = contentSummary(req)
+
+  const expected = [{
+    key: 'areYouPregnant.summaryKey',
+    value: 'yes'
+  }, {
+    key: 'areYouPregnant.expectedDeliveryDateSummaryKey',
+    value: '01 03 2019'
+  }]
 
   t.deepEqual(result, expected, 'should return content summary in correct format')
   t.end()

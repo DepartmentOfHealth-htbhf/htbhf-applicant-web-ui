@@ -1,4 +1,5 @@
 const { validate } = require('./validate')
+const { YES } = require('./constants')
 
 const exampleDate = (fromDate = new Date()) => {
   const future = new Date(fromDate)
@@ -7,10 +8,24 @@ const exampleDate = (fromDate = new Date()) => {
   return `${future.getDate()} ${future.getMonth() + 1} ${future.getFullYear()}`
 }
 
-const contentSummary = (req) => ({
-  key: req.t('areYouPregnant.summaryKey'),
-  value: req.session.claim.areYouPregnant
-})
+const contentSummary = (req) => {
+  const pregnantSummary = {
+    key: req.t('areYouPregnant.summaryKey'),
+    value: req.t(req.session.claim.areYouPregnant)
+  }
+  const dueDateSummary = {
+    key: req.t('areYouPregnant.expectedDeliveryDateSummaryKey'),
+    value: [
+      req.session.claim['expectedDeliveryDate-day'],
+      req.session.claim['expectedDeliveryDate-month'],
+      req.session.claim['expectedDeliveryDate-year']
+    ].join(' ')
+  }
+  if (req.session.claim.areYouPregnant === YES) {
+    return [pregnantSummary, dueDateSummary]
+  }
+  return pregnantSummary
+}
 
 const pageContent = ({ translate }) => ({
   title: translate('areYouPregnant.title'),
