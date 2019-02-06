@@ -1,7 +1,7 @@
 {
   "name": "htbhf-applicant-web-ui",
   "version_notice": "Patch versions are incremented by Travis (in tag_version.sh via .travis.yml) - never manually increment the patch version",
-  "version": "0.1.81",
+  "version": "0.1.85",
   "description": "",
   "main": "index.js",
   "engines": {
@@ -71,6 +71,7 @@
   "dependencies-comment": "chownr 1.1.1 is imported to fix https://app.snyk.io/vuln/npm:chownr:20180731",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "cfenv": "^1.1.0",
     "chownr": "^1.1.1",
     "compression": "^1.7.3",
     "connect-redis": "^3.4.0",
