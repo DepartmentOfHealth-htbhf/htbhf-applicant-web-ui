@@ -1,6 +1,6 @@
 const Page = require('./page')
 
-class DataEntryPage extends Page {
+class SubmitablePage extends Page {
   async getSubmitButton () {
     return this.findByClassName('govuk-button')
   }
@@ -16,4 +16,4 @@ class DataEntryPage extends Page {
   }
 }
 
-module.exports = DataEntryPage
+module.exports = SubmitablePage

@@ -1,6 +1,6 @@
 'use strict'
 
-const DataEntryPage = require('./data-entry-page')
+const SubmitablePage = require('./submitable-page')
 
 const PAGE_TITLES = {
   en: 'GOV.UK - What is your address?',
@@ -24,7 +24,7 @@ const POSTCODE_ERROR_LINK_CSS = 'a[href="#postcode-error"]'
 /**
  * Page object for CardAddress page where the card card-address is entered.
  */
-class CardAddress extends DataEntryPage {
+class CardAddress extends SubmitablePage {
   async open (baseURL) {
     await super.open(`${baseURL}/card-address`)
     return this.waitForPageLoad()

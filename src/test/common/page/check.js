@@ -1,6 +1,6 @@
 'use strict'
 
-const DataEntryPage = require('./data-entry-page')
+const SubmitablePage = require('./submitable-page')
 const OVERVIEW_PAGE_TITLE = 'GOV.UK - Check your answers before sending your application'
 const GOV_TABLE_ROW_CLASSNAME = 'govuk-table__row'
 const GOV_TABLE_HEADER_CLASSNAME = 'govuk-table__header'
@@ -9,7 +9,7 @@ const GOV_TABLE_CELL_CLASSNAME = 'govuk-table__cell'
 /**
  * Page object for the confirmation page before submit.
  */
-class Check extends DataEntryPage {
+class Check extends SubmitablePage {
   async open (appURL) {
     await super.open(appURL)
     return this.waitForPageLoad()
