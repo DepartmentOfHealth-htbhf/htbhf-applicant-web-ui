@@ -24,7 +24,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 14000000
+              "duration": 15000000
             }
           },
           {
@@ -33,24 +33,24 @@
             "line": 7,
             "name": "I am on the first page of the application",
             "match": {
-              "location": "src/test/common/steps/complete-flow.js:15"
+              "location": "src/test/common/steps/complete-flow.js:14"
             },
             "result": {
               "status": "passed",
-              "duration": 536000000
+              "duration": 533000000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
             "line": 8,
-            "name": "I complete the application with valid details",
+            "name": "I complete the application with valid details for a pregnant woman",
             "match": {
-              "location": "src/test/common/steps/complete-flow.js:19"
+              "location": "src/test/common/steps/complete-flow.js:18"
             },
             "result": {
               "status": "passed",
-              "duration": 1740000000
+              "duration": 1795000000
             }
           },
           {
@@ -59,11 +59,11 @@
             "line": 9,
             "name": "I am shown the check details page",
             "match": {
-              "location": "src/test/common/steps/complete-flow.js:27"
+              "location": "src/test/common/steps/complete-flow.js:26"
             },
             "result": {
               "status": "passed",
-              "duration": 18000000
+              "duration": 5000000
             }
           },
           {
@@ -73,8 +73,7 @@
               "location": "src/test/common/steps/hooks.js:14"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
