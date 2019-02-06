@@ -9,14 +9,21 @@ const pageContent = ({ translate }) => ({
   buttonText: translate('buttons:continue')
 })
 
+const contentSummary = (req) => ({
+  key: req.t('enterName.summaryKey'),
+  value: `${req.session.claim.firstName} ${req.session.claim.lastName}`.trim()
+})
+
 const enterName = {
   path: '/enter-name',
   next: '/enter-nino',
   template: 'enter-name',
   validate,
-  pageContent
+  pageContent,
+  contentSummary
 }
 
 module.exports = {
+  contentSummary,
   enterName
 }

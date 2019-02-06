@@ -1,7 +1,6 @@
 const { NO } = require('../are-you-pregnant/constants')
 const test = require('tape')
 const {
-  buildNameRow,
   buildNinoRow,
   buildDateOfBirthRow,
   buildAreYouPregnantRow,
@@ -29,15 +28,6 @@ const testClaim = {
   townOrCity: 'London',
   postcode: 'aa1 1ab'
 }
-
-test('buildNameRow', (t) => {
-  t.deepEqual(buildNameRow(testTranslate, testClaim),
-    [
-      { text: 'Name' },
-      { text: 'James The third' }
-    ], 'should match name data')
-  t.end()
-})
 
 test('buildNinoRow', (t) => {
   t.deepEqual(buildNinoRow(testTranslate, testClaim),

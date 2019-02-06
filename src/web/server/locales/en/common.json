@@ -14,7 +14,8 @@
     "heading": "What is your name?",
     "formDescription": "Tell us your full legal name as it appears on your passport or other benefit claims.",
     "firstNameLabel": "First or given name",
-    "lastNameLabel": "Last or family name"
+    "lastNameLabel": "Last or family name",
+    "summaryKey": "Name"
   },
   "enterDob": {
     "title": "What is your date of birth?",
@@ -43,14 +44,14 @@
   "check": {
     "title": "Check your answers before sending your application",
     "heading": "Check your answers before sending your application",
-    "name": "Name",
     "nationalInsuranceNumber": "National insurance number",
     "dateOfBirth": "Date of birth",
     "areYouPregnant": "Are you pregnant?",
     "dueDate": "Baby's due date",
     "address": "Address",
     "sendApplicationHeader": "Now send your application",
-    "sendApplicationText": "By submitting this notification you are confirming that, to the best of your knowledge, the details you are providing are correct."
+    "sendApplicationText": "By submitting this notification you are confirming that, to the best of your knowledge, the details you are providing are correct.",
+    "change": "Change"
   },
   "yes": "Yes",
   "no": "No"

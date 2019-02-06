@@ -1,17 +1,18 @@
-const { YES } = require('../are-you-pregnant/constants')
 const { isNil } = require('ramda')
+const { YES } = require('../are-you-pregnant/constants')
+const { steps } = require('../steps')
 
 const pageContent = ({ translate }) => ({
   title: translate('check.title'),
   heading: translate('check.heading'),
   sendApplicationHeader: translate('check.sendApplicationHeader'),
   sendApplicationText: translate('check.sendApplicationText'),
-  buttonText: translate('buttons:acceptAndSend')
+  buttonText: translate('buttons:acceptAndSend'),
+  changeText: translate('check.change')
 })
 
 const buildCheckRowData = (translate, claim) => {
   return [
-    buildNameRow(translate, claim),
     buildNinoRow(translate, claim),
     buildDateOfBirthRow(translate, claim),
     buildAreYouPregnantRow(translate, claim),
@@ -19,11 +20,6 @@ const buildCheckRowData = (translate, claim) => {
     buildAddressRow(translate, claim)
   ].filter(row => !isNil(row))
 }
-
-const buildNameRow = (translate, claim) => buildRowData(
-  translate('check.name'),
-  [claim.firstName, claim.lastName].join(' ')
-)
 
 const buildNinoRow = (translate, claim) => buildRowData(
   translate('check.nationalInsuranceNumber'),
@@ -67,18 +63,31 @@ const buildRowData = (heading, content) => [
   { text: content }
 ]
 
+const getRowData = (req) => (step) => {
+  const { contentSummary, path } = step
+
+  // TO DO: remove this check and validate steps schema
+  const fn = typeof contentSummary === 'function' ? contentSummary : () => {}
+
+  return {
+    ...fn(req),
+    path
+  }
+}
+
 const getCheck = (req, res) => {
+  const checkRowData = steps.map(getRowData(req))
+
   res.render('check', {
     claim: req.session.claim,
     ...pageContent({ translate: req.t }),
     csrfToken: req.csrfToken(),
-    checkRowData: buildCheckRowData(req.t, req.session.claim)
+    checkRowData
   })
 }
 
 module.exports = {
   getCheck,
-  buildNameRow,
   buildNinoRow,
   buildDateOfBirthRow,
   buildAreYouPregnantRow,
