@@ -13,15 +13,9 @@ const pageContent = ({ translate }) => ({
 
 const buildCheckRowData = (translate, claim) => {
   return [
-    buildAreYouPregnantRow(translate, claim),
     buildExpectedDeliveryDateRow(translate, claim),
   ].filter(row => !isNil(row))
 }
-
-const buildAreYouPregnantRow = (translate, claim) => buildRowData(
-  translate('check.areYouPregnant'),
-  translate(claim.areYouPregnant)
-)
 
 const buildExpectedDeliveryDateRow = (translate, claim) => {
   if (claim.areYouPregnant === YES) {
@@ -62,7 +56,6 @@ const getCheck = (req, res) => {
 
 module.exports = {
   getCheck,
-  buildAreYouPregnantRow,
   buildExpectedDeliveryDateRow,
   buildCheckRowData
 }

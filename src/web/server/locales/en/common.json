@@ -31,7 +31,8 @@
     "title": "Are you pregnant?",
     "heading": "Are you pregnant?",
     "expectedDeliveryDateText": "When is your baby due to be born?",
-    "expectedDeliveryDateHint": "For example, {{exampleDate}}"
+    "expectedDeliveryDateHint": "For example, {{exampleDate}}",
+    "summaryKey": "Are you pregnant?"
   },
   "cardAddress": {
     "title": "What is your address?",
@@ -47,7 +48,6 @@
   "check": {
     "title": "Check your answers before sending your application",
     "heading": "Check your answers before sending your application",
-    "areYouPregnant": "Are you pregnant?",
     "dueDate": "Baby's due date",
     "sendApplicationHeader": "Now send your application",
     "sendApplicationText": "By submitting this notification you are confirming that, to the best of your knowledge, the details you are providing are correct.",

@@ -31,7 +31,8 @@
     "title": "Eget felis eget nunc lobortis mattis?",
     "heading": "Eget felis eget nunc lobortis mattis?",
     "expectedDeliveryDateText": "Nisl tincidunt eget nullam non?",
-    "expectedDeliveryDateHint": "Eget velit, {{exampleDate}}"
+    "expectedDeliveryDateHint": "Eget velit, {{exampleDate}}",
+    "summaryKey": "Egestas sed sed risu?"
   },
   "cardAddress": {
     "title": "Urna condimentum mattis?",
@@ -47,7 +48,6 @@
   "check": {
     "title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "heading": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    "areYouPregnant": "Sed blandit libero?",
     "dueDate": "In nulla posuere",
     "sendApplicationHeader": "Dui faucibus in ornare quam.",
     "sendApplicationText": "Risus sed vulputate odio ut enim blandit volutpat maecenas volutpat.",

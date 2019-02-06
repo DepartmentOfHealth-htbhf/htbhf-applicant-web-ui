@@ -7,6 +7,11 @@ const exampleDate = (fromDate = new Date()) => {
   return `${future.getDate()} ${future.getMonth() + 1} ${future.getFullYear()}`
 }
 
+const contentSummary = (req) => ({
+  key: req.t('areYouPregnant.summaryKey'),
+  value: req.session.claim.areYouPregnant
+})
+
 const pageContent = ({ translate }) => ({
   title: translate('areYouPregnant.title'),
   heading: translate('areYouPregnant.heading'),
@@ -23,10 +28,12 @@ const areYouPregnant = {
   next: '/card-address',
   template: 'are-you-pregnant',
   pageContent,
-  validate
+  validate,
+  contentSummary
 }
 
 module.exports = {
   areYouPregnant,
-  exampleDate
+  exampleDate,
+  contentSummary
 }
