@@ -1,11 +1,18 @@
 {% extends "templates/form.njk" %}
 {% from "input/macro.njk" import govukInput %}
-{% from "table/macro.njk" import govukTable %}
+{% from "summary-list/macro.njk" import govukSummaryList %}
 {% from "fieldset/macro.njk" import govukFieldset %}
 
 {% set safeRows = [] %}
 {% for heading, content in checkRowData %}
-  {% set row = [{ text: heading.text }, { text: content.text | escape | nl2br | safe} ] %}
+  {% set row = {
+   key : {
+    text: heading.text
+   },
+   value: {
+    text: content.text | escape | nl2br | safe
+   }
+  } %}
   {{ safeRows.push(row) }}
 {% endfor %}
 
@@ -20,8 +27,7 @@
   }) %}
 
   {% endcall %}
-  {{ govukTable({
-      firstCellIsHeader: true,
+  {{ govukSummaryList({
       rows: safeRows
   }) }}
 
