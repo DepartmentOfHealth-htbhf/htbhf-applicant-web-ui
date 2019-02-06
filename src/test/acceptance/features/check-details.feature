@@ -1,7 +1,7 @@
-Feature: Complete application journey
+Feature: Check details
   In order to apply for the HTBHF programme
   As a potential claimant
-  I want to enter my details and complete the application journey
+  I want to enter my details and check that my details are correct before completing my application
 
   Scenario: Valid application details for a pregnant woman are shown on the check details page
     Given I am on the first page of the application

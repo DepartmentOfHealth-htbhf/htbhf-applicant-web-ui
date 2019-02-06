@@ -1,7 +1,7 @@
 'use strict'
 const webdriver = require('selenium-webdriver')
 
-const SubmitablePage = require('./submitable-page')
+const SubmittablePage = require('./submittable-page')
 const PAGE_TITLE = 'GOV.UK - Are you pregnant?'
 
 const ARE_YOU_PREGNANT_ERROR_LINK_CSS = 'a[href="#are-you-pregnant-error"]'
@@ -12,7 +12,7 @@ const EXPECTED_DELIVERY_DATE_FIELD_ERROR_ID = 'expected-delivery-date-error'
 /**
  * Page object for the Are you pregnant? page.
  */
-class AreYouPregnant extends SubmitablePage {
+class AreYouPregnant extends SubmittablePage {
   async open (baseURL) {
     await super.open(`${baseURL}/are-you-pregnant`)
     return this.waitForPageLoad()
