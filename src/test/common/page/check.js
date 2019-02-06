@@ -2,9 +2,9 @@
 
 const SubmittablePage = require('./submittable-page')
 const OVERVIEW_PAGE_TITLE = 'GOV.UK - Check your answers before sending your application'
-const GOV_TABLE_ROW_CLASSNAME = 'govuk-table__row'
-const GOV_TABLE_HEADER_CLASSNAME = 'govuk-table__header'
-const GOV_TABLE_CELL_CLASSNAME = 'govuk-table__cell'
+const GOV_TABLE_ROW_CLASSNAME = 'govuk-summary-list__row'
+const GOV_TABLE_HEADER_CLASSNAME = 'govuk-summary-list__key'
+const GOV_TABLE_CELL_CLASSNAME = 'govuk-summary-list__value'
 
 /**
  * Page object for the confirmation page before submit.
