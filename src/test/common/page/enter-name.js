@@ -1,6 +1,6 @@
 'use strict'
 
-const DataEntryPage = require('./data-entry-page')
+const SubmittablePage = require('./submittable-page')
 
 const PAGE_TITLES = {
   en: 'GOV.UK - What is your name?',
@@ -20,7 +20,7 @@ const LAST_NAME_ERROR_LINK_CSS = 'a[href="#last-name-error"]'
 /**
  * Page object for EnterName page where the name is entered.
  */
-class EnterName extends DataEntryPage {
+class EnterName extends SubmittablePage {
   async getFirstNameField () {
     return this.findById('first-name')
   }

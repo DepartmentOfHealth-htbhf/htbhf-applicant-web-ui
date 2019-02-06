@@ -1,6 +1,6 @@
 'use strict'
 
-const DataEntryPage = require('./data-entry-page')
+const SubmittablePage = require('./submittable-page')
 
 const PAGE_TITLES = {
   en: 'GOV.UK - What is your date of birth?',
@@ -18,7 +18,7 @@ const DATE_OF_BIRTH_FIELD_ERROR_ID = 'date-of-birth-error'
 /**
  * Page object for EnterDOB page where the name is entered.
  */
-class EnterDOB extends DataEntryPage {
+class EnterDOB extends SubmittablePage {
   async open (baseURL) {
     await super.open(`${baseURL}/enter-dob`)
     return this.waitForPageLoad()

@@ -43,6 +43,15 @@ async function selectYesOnPregnancyPage () {
   }
 }
 
+async function selectNoOnPregnancyPage () {
+  try {
+    await pages.areYouPregnant.selectRadioButton('no')
+    await pages.areYouPregnant.submitForm()
+  } catch (error) {
+    assert.fail(`Unexpected error caught trying to select 'No' for 'Are you pregnant?' and submit the page - ${error}`)
+  }
+}
+
 async function enterCardAddress (addressLine1, addressLine2, townOrCity, postcode) {
   try {
     await pages.cardAddress.enterAddressLine1(addressLine1)
@@ -74,6 +83,7 @@ module.exports = {
   enterNameAndSubmit,
   enterNinoAndSubmit,
   selectYesOnPregnancyPage,
+  selectNoOnPregnancyPage,
   enterCardAddress,
   assertErrorHeaderTextPresent
 }

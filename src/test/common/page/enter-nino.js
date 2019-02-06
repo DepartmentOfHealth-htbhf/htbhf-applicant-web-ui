@@ -1,6 +1,6 @@
 'use strict'
 
-const DataEntryPage = require('./data-entry-page')
+const SubmittablePage = require('./submittable-page')
 
 const PAGE_TITLES = {
   en: 'GOV.UK - What is your National Insurance number?',
@@ -18,7 +18,7 @@ const NINO_ERROR_LINK_CSS = 'a[href="#nino-error"]'
 /**
  * Page object for EnterNino page where the name is entered.
  */
-class EnterNino extends DataEntryPage {
+class EnterNino extends SubmittablePage {
   async waitForPageLoad (lang = 'en') {
     return super.waitForPageLoad(PAGE_HEADINGS[lang], PAGE_TITLES[lang])
   }
