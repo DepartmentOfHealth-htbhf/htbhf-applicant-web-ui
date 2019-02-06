@@ -13,18 +13,12 @@ const pageContent = ({ translate }) => ({
 
 const buildCheckRowData = (translate, claim) => {
   return [
-    buildNinoRow(translate, claim),
     buildDateOfBirthRow(translate, claim),
     buildAreYouPregnantRow(translate, claim),
     buildExpectedDeliveryDateRow(translate, claim),
     buildAddressRow(translate, claim)
   ].filter(row => !isNil(row))
 }
-
-const buildNinoRow = (translate, claim) => buildRowData(
-  translate('check.nationalInsuranceNumber'),
-  claim.nino
-)
 
 const buildDateOfBirthRow = (translate, claim) => buildRowData(
   translate('check.dateOfBirth'),
@@ -88,7 +82,6 @@ const getCheck = (req, res) => {
 
 module.exports = {
   getCheck,
-  buildNinoRow,
   buildDateOfBirthRow,
   buildAreYouPregnantRow,
   buildExpectedDeliveryDateRow,
