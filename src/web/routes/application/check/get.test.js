@@ -4,9 +4,7 @@ const {
   buildDateOfBirthRow,
   buildAreYouPregnantRow,
   buildExpectedDeliveryDateRow,
-  buildAddressRow,
-  buildCheckRowData,
-  isNilOrEmpty
+  buildCheckRowData
 } = require('./get')
 
 const testClaim = {
@@ -63,26 +61,6 @@ test('buildExpectedDeliveryDateRowAreYouPregnantNo', (t) => {
   t.end()
 })
 
-test('buildAddressRowWithAddressLine2', (t) => {
-  t.deepEqual(buildAddressRow(testTranslate, testClaim),
-    [
-      { text: 'Address' },
-      { text: 'Flat b\n221 Baker street\nLondon\naa1 1ab' }
-    ], 'should match address data')
-  t.end()
-})
-
-test('buildAddressRowWithoutAddressLine2', (t) => {
-  const modifiedClaim = Object.assign({}, testClaim)
-  modifiedClaim.addressLine2 = ''
-  t.deepEqual(buildAddressRow(testTranslate, modifiedClaim),
-    [
-      { text: 'Address' },
-      { text: 'Flat b\nLondon\naa1 1ab' }
-    ], 'should match address data')
-  t.end()
-})
-
 test('buildCheckRowData', (t) => {
   t.deepEqual(buildCheckRowData(testTranslate, testClaim),
     [
@@ -107,14 +85,6 @@ test('buildCheckRowDataWithNoExpectedDate', (t) => {
       [ { text: 'Are you pregnant?' }, { text: 'No' } ],
       [ { text: 'Address' }, { text: 'Flat b\n221 Baker street\nLondon\naa1 1ab' } ]
     ], 'should match entire row data')
-  t.end()
-})
-
-test('isNilOrEmpty', (t) => {
-  t.equal(isNilOrEmpty(''), true, 'should be marked as empty')
-  t.equal(isNilOrEmpty(null), true, 'should be marked as empty')
-  t.equal(isNilOrEmpty(undefined), true, 'should be marked as empty')
-  t.equal(isNilOrEmpty('Something'), false, 'should not be marked as empty')
   t.end()
 })
 

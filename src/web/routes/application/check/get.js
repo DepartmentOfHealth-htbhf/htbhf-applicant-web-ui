@@ -16,7 +16,6 @@ const buildCheckRowData = (translate, claim) => {
     buildDateOfBirthRow(translate, claim),
     buildAreYouPregnantRow(translate, claim),
     buildExpectedDeliveryDateRow(translate, claim),
-    buildAddressRow(translate, claim)
   ].filter(row => !isNil(row))
 }
 
@@ -38,19 +37,6 @@ const buildExpectedDeliveryDateRow = (translate, claim) => {
     )
   }
 }
-
-const buildAddressRow = (translate, claim) => buildRowData(
-  translate('check.address'),
-  [
-    claim.addressLine1,
-    claim.addressLine2,
-    claim.townOrCity,
-    claim.postcode
-  ].filter((line) => !isNilOrEmpty(line))
-    .join('\n')
-)
-
-const isNilOrEmpty = (string) => (isNil(string) || string.length === 0)
 
 const buildRowData = (heading, content) => [
   { text: heading },
@@ -85,7 +71,5 @@ module.exports = {
   buildDateOfBirthRow,
   buildAreYouPregnantRow,
   buildExpectedDeliveryDateRow,
-  buildAddressRow,
-  buildCheckRowData,
-  isNilOrEmpty
+  buildCheckRowData
 }

@@ -40,7 +40,8 @@
     "buildingAndStreetLine2of2": "Building and street line 2 of 2",
     "townOrCityLabel": "Town or city",
     "postcodeLabel": "Postcode",
-    "formDescription": "This is the address you would like your prepaid card to be sent to. It does not have to be your home address."
+    "formDescription": "This is the address you would like your prepaid card to be sent to. It does not have to be your home address.",
+    "summaryKey": "Address"
   },
   "check": {
     "title": "Check your answers before sending your application",
@@ -48,7 +49,6 @@
     "dateOfBirth": "Date of birth",
     "areYouPregnant": "Are you pregnant?",
     "dueDate": "Baby's due date",
-    "address": "Address",
     "sendApplicationHeader": "Now send your application",
     "sendApplicationText": "By submitting this notification you are confirming that, to the best of your knowledge, the details you are providing are correct.",
     "change": "Change"
