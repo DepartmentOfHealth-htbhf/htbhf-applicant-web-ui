@@ -3,7 +3,7 @@ Feature: Complete application journey
   As a potential claimant
   I want to enter my details and complete the application journey
 
-  Scenario: Valid application details for pregnant woman are shown on the check details page
+  Scenario: Valid application details for a pregnant woman are shown on the check details page
     Given I am on the first page of the application
     When I complete the application with valid details for a pregnant woman
     Then I am shown the check details page
