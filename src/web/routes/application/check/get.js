@@ -1,5 +1,6 @@
 const { YES } = require('../are-you-pregnant/constants')
 const { isNil } = require('ramda')
+const { formatDateForDisplay } = require('../common/formatters')
 
 const pageContent = ({ translate }) => ({
   title: translate('check.title'),
@@ -30,10 +31,14 @@ const buildNinoRow = (translate, claim) => buildRowData(
   claim.nino
 )
 
-const buildDateOfBirthRow = (translate, claim) => buildRowData(
-  translate('check.dateOfBirth'),
-  [claim['dateOfBirth-day'], claim['dateOfBirth-month'], claim['dateOfBirth-year']].join(' ')
-)
+const buildDateOfBirthRow = (translate, claim) => {
+  const formattedDate = formatDateForDisplay(
+    claim['dateOfBirth-day'],
+    claim['dateOfBirth-month'],
+    claim['dateOfBirth-year']
+  )
+  return buildRowData(translate('check.dateOfBirth'), formattedDate)
+}
 
 const buildAreYouPregnantRow = (translate, claim) => buildRowData(
   translate('check.areYouPregnant'),
@@ -42,10 +47,12 @@ const buildAreYouPregnantRow = (translate, claim) => buildRowData(
 
 const buildExpectedDeliveryDateRow = (translate, claim) => {
   if (claim.areYouPregnant === YES) {
-    return buildRowData(
-      translate('check.dueDate'),
-      [claim['expectedDeliveryDate-day'], claim['expectedDeliveryDate-month'], claim['expectedDeliveryDate-year']].join(' ')
+    const formattedDate = formatDateForDisplay(
+      claim['expectedDeliveryDate-day'],
+      claim['expectedDeliveryDate-month'],
+      claim['expectedDeliveryDate-year']
     )
+    return buildRowData(translate('check.dueDate'), formattedDate)
   }
 }
 

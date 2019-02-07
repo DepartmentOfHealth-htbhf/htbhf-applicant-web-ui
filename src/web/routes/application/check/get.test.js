@@ -52,8 +52,8 @@ test('buildDateOfBirthRow', (t) => {
   t.deepEqual(buildDateOfBirthRow(testTranslate, testClaim),
     [
       { text: 'Date of Birth' },
-      { text: '30 05 1920' }
-    ], 'should matcg date of birth data')
+      { text: '30 May 1920' }
+    ], 'should match date of birth data')
   t.end()
 })
 
@@ -70,7 +70,7 @@ test('buildExpectedDeliveryDateRowAreYouPregnantYes', (t) => {
   t.deepEqual(buildExpectedDeliveryDateRow(testTranslate, testClaim),
     [
       { text: 'Baby\'s due date' },
-      { text: '01 03 2019' }
+      { text: '1 March 2019' }
     ], 'should match expected delivery date')
   t.end()
 })
@@ -108,9 +108,9 @@ test('buildCheckRowData', (t) => {
     [
       [ { text: 'Name' }, { text: 'James The third' } ],
       [ { text: 'National Insurance Number' }, { text: 'QQ123456C' } ],
-      [ { text: 'Date of Birth' }, { text: '30 05 1920' } ],
+      [ { text: 'Date of Birth' }, { text: '30 May 1920' } ],
       [ { text: 'Are you pregnant?' }, { text: 'Yes' } ],
-      [ { text: 'Baby\'s due date' }, { text: '01 03 2019' } ],
+      [ { text: 'Baby\'s due date' }, { text: '1 March 2019' } ],
       [ { text: 'Address' }, { text: 'Flat b\n221 Baker street\nLondon\naa1 1ab' } ]
     ], 'should match entire row data')
   t.end()
@@ -123,7 +123,7 @@ test('buildCheckRowDataWithNoExpectedDate', (t) => {
     [
       [ { text: 'Name' }, { text: 'James The third' } ],
       [ { text: 'National Insurance Number' }, { text: 'QQ123456C' } ],
-      [ { text: 'Date of Birth' }, { text: '30 05 1920' } ],
+      [ { text: 'Date of Birth' }, { text: '30 May 1920' } ],
       [ { text: 'Are you pregnant?' }, { text: 'No' } ],
       [ { text: 'Address' }, { text: 'Flat b\n221 Baker street\nLondon\naa1 1ab' } ]
     ], 'should match entire row data')
