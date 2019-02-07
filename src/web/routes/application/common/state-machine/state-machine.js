@@ -1,7 +1,11 @@
 const { CHECK_URL } = require('../../constants')
+
 const states = {
   IN_PROGRESS: 'IN_PROGRESS',
   IN_REVIEW: 'IN_REVIEW'
+}
+const actions = {
+  GET_NEXT_PAGE: 'getNextPage'
 }
 
 const stateMachine = {
@@ -17,14 +21,19 @@ const stateMachine = {
     return stateMachine[state]
   },
 
-  dispatch: (req, res, ...args) => {
+  setState: (state, req) => {
+    req.session.state = state
+  },
+
+  dispatch: (action, req, ...args) => {
     const state = stateMachine.getState(req)
 
-    return res.redirect(state.getNextPage(...args))
+    return state[action](...args)
   }
 }
 
 module.exports = {
   states,
-  stateMachine
+  stateMachine,
+  actions
 }

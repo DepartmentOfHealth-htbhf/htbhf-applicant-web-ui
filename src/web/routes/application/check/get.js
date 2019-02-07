@@ -1,5 +1,6 @@
 const { flatten } = require('ramda')
 const { steps } = require('../steps')
+const { stateMachine, states } = require('../common/state-machine')
 
 const pageContent = ({ translate }) => ({
   title: translate('check.title'),
@@ -26,6 +27,8 @@ const getRowData = (req) => (step) => {
 const getCheck = (req, res) => {
   const stepArrays = steps.map(getRowData(req))
   const checkRowData = flatten(stepArrays)
+
+  stateMachine.setState(states.IN_REVIEW, req)
 
   res.render('check', {
     claim: req.session.claim,
