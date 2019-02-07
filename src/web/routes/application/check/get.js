@@ -1,96 +1,41 @@
-const { YES } = require('../are-you-pregnant/constants')
-const { isNil } = require('ramda')
-const { formatDateForDisplay } = require('../common/formatters')
+const { flatten } = require('ramda')
+const { steps } = require('../steps')
 
 const pageContent = ({ translate }) => ({
   title: translate('check.title'),
   heading: translate('check.heading'),
   sendApplicationHeader: translate('check.sendApplicationHeader'),
   sendApplicationText: translate('check.sendApplicationText'),
-  buttonText: translate('buttons:acceptAndSend')
+  buttonText: translate('buttons:acceptAndSend'),
+  changeText: translate('check.change')
 })
 
-const buildCheckRowData = (translate, claim) => {
-  return [
-    buildNameRow(translate, claim),
-    buildNinoRow(translate, claim),
-    buildDateOfBirthRow(translate, claim),
-    buildAreYouPregnantRow(translate, claim),
-    buildExpectedDeliveryDateRow(translate, claim),
-    buildAddressRow(translate, claim)
-  ].filter(row => !isNil(row))
+const combinePathWithRow = (path) => (row) => ({
+  ...row,
+  path
+})
+
+const getRowData = (req) => (step) => {
+  const result = step.contentSummary(req)
+
+  const applyPathToRow = combinePathWithRow(step.path)
+
+  return Array.isArray(result) ? result.map(applyPathToRow) : [applyPathToRow(result)]
 }
-
-const buildNameRow = (translate, claim) => buildRowData(
-  translate('check.name'),
-  [claim.firstName, claim.lastName].join(' ')
-)
-
-const buildNinoRow = (translate, claim) => buildRowData(
-  translate('check.nationalInsuranceNumber'),
-  claim.nino
-)
-
-const buildDateOfBirthRow = (translate, claim) => {
-  const formattedDate = formatDateForDisplay(
-    claim['dateOfBirth-day'],
-    claim['dateOfBirth-month'],
-    claim['dateOfBirth-year']
-  )
-  return buildRowData(translate('check.dateOfBirth'), formattedDate)
-}
-
-const buildAreYouPregnantRow = (translate, claim) => buildRowData(
-  translate('check.areYouPregnant'),
-  translate(claim.areYouPregnant)
-)
-
-const buildExpectedDeliveryDateRow = (translate, claim) => {
-  if (claim.areYouPregnant === YES) {
-    const formattedDate = formatDateForDisplay(
-      claim['expectedDeliveryDate-day'],
-      claim['expectedDeliveryDate-month'],
-      claim['expectedDeliveryDate-year']
-    )
-    return buildRowData(translate('check.dueDate'), formattedDate)
-  }
-}
-
-const buildAddressRow = (translate, claim) => buildRowData(
-  translate('check.address'),
-  [
-    claim.addressLine1,
-    claim.addressLine2,
-    claim.townOrCity,
-    claim.postcode
-  ].filter((line) => !isNilOrEmpty(line))
-    .join('\n')
-)
-
-const isNilOrEmpty = (string) => (isNil(string) || string.length === 0)
-
-const buildRowData = (heading, content) => [
-  { text: heading },
-  { text: content }
-]
 
 const getCheck = (req, res) => {
+  const stepArrays = steps.map(getRowData(req))
+  const checkRowData = flatten(stepArrays)
+
   res.render('check', {
     claim: req.session.claim,
     ...pageContent({ translate: req.t }),
     csrfToken: req.csrfToken(),
-    checkRowData: buildCheckRowData(req.t, req.session.claim)
+    checkRowData
   })
 }
 
 module.exports = {
   getCheck,
-  buildNameRow,
-  buildNinoRow,
-  buildDateOfBirthRow,
-  buildAreYouPregnantRow,
-  buildExpectedDeliveryDateRow,
-  buildAddressRow,
-  buildCheckRowData,
-  isNilOrEmpty
+  getRowData
 }

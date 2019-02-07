@@ -13,13 +13,19 @@ const pageContent = ({ translate }) => ({
   buttonText: translate('buttons:continue')
 })
 
+const contentSummary = (req) => ({
+  key: req.t('enterNino.summaryKey'),
+  value: req.session.claim.nino
+})
+
 const enterNino = {
   path: '/enter-nino',
   next: '/enter-dob',
   template: 'enter-nino',
   sanitize,
   validate,
-  pageContent
+  pageContent,
+  contentSummary
 }
 
 module.exports = {

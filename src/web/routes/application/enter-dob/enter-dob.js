@@ -1,4 +1,5 @@
 const { validate } = require('./validate')
+const { formatDateForDisplay } = require('../common/formatters')
 
 const pageContent = ({ translate }) => ({
   title: translate('enterDob.title'),
@@ -11,12 +12,22 @@ const pageContent = ({ translate }) => ({
   yearLabel: translate('enterDob.yearLabel')
 })
 
+const contentSummary = (req) => ({
+  key: req.t('enterDob.summaryKey'),
+  value: formatDateForDisplay(
+    req.session.claim['dateOfBirth-day'],
+    req.session.claim['dateOfBirth-month'],
+    req.session.claim['dateOfBirth-year']
+  )
+})
+
 const enterDob = {
   path: '/enter-dob',
   next: '/are-you-pregnant',
   template: 'enter-dob',
   pageContent,
-  validate
+  validate,
+  contentSummary
 }
 
 module.exports = {

@@ -5,8 +5,8 @@ const { areYouPregnant } = require('./are-you-pregnant')
 const { cardAddress } = require('./card-address')
 
 const steps = [
-  enterNino,
   enterName,
+  enterNino,
   enterDob,
   areYouPregnant,
   cardAddress

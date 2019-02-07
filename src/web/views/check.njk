@@ -4,13 +4,20 @@
 {% from "fieldset/macro.njk" import govukFieldset %}
 
 {% set safeRows = [] %}
-{% for heading, content in checkRowData %}
+{% for rowData in checkRowData %}
   {% set row = {
    key : {
-    text: heading.text
+    text: rowData.key
    },
    value: {
-    text: content.text | escape | nl2br | safe
+    text: rowData.value | escape | nl2br | safe
+   },
+   actions: {
+    items: [ {
+        href: rowData.path,
+        text: changeText,
+        visuallyHiddenText: rowData.key
+    } ]
    }
   } %}
   {{ safeRows.push(row) }}
