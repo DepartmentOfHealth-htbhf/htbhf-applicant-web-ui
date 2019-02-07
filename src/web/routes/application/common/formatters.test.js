@@ -1,5 +1,5 @@
 const test = require('tape')
-const { toDateString, dateAsString, buildFormattedDateForDisplay, buildFormattedDateForDisplayFromDate } = require('./formatters')
+const { toDateString, dateAsString, formatDateForDisplay, formatDateForDisplayFromDate } = require('./formatters')
 
 test('toDateString() should concatenate digits with hyphens', (t) => {
   const result = toDateString('31', '13', '1980')
@@ -36,16 +36,16 @@ test('dateAsString', (t) => {
   t.end()
 })
 
-test('buildFormattedDateForDisplay', (t) => {
-  t.equal(buildFormattedDateForDisplay('30', '1', '1990'), '30 January 1990', 'should format date correctly')
-  t.equal(buildFormattedDateForDisplay('02', '12', '2000'), '2 December 2000', 'should format date correctly')
-  t.equal(buildFormattedDateForDisplay(5, 5, 2010), '5 May 2010', 'should format date correctly')
+test('formatDateForDisplay', (t) => {
+  t.equal(formatDateForDisplay('30', '1', '1990'), '30 January 1990', 'should format date correctly')
+  t.equal(formatDateForDisplay('02', '12', '2000'), '2 December 2000', 'should format date correctly')
+  t.equal(formatDateForDisplay(5, 5, 2010), '5 May 2010', 'should format date correctly')
   t.end()
 })
 
-test('buildFormattedDateForDisplayFromDate', (t) => {
-  t.equal(buildFormattedDateForDisplayFromDate(new Date(1990, 0, 30)), '30 January 1990', 'should format date correctly')
-  t.throws(buildFormattedDateForDisplayFromDate.bind(null, { date: undefined }), /A date must be provided/, 'no date provided')
-  t.throws(buildFormattedDateForDisplayFromDate.bind(null, { date: [] }), /A date must be provided/, 'no date provided')
+test('formatDateForDisplayFromDate', (t) => {
+  t.equal(formatDateForDisplayFromDate(new Date(1990, 0, 30)), '30 January 1990', 'should format date correctly')
+  t.throws(formatDateForDisplayFromDate.bind(null, { date: undefined }), /A date must be provided/, 'no date provided')
+  t.throws(formatDateForDisplayFromDate.bind(null, { date: [] }), /A date must be provided/, 'no date provided')
   t.end()
 })

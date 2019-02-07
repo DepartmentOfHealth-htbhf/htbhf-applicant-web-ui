@@ -25,11 +25,11 @@ const dateAsString = ({ date = new Date(), monthAdjustment = 0 } = {}) => {
 
 // TODO - When we are no longer able to go directly to a page within the flow (which makes ATs simpler)
 // we should reinforce the fact that day, month and year should be mandatory.
-const buildFormattedDateForDisplay = (day, month, year) => {
+const formatDateForDisplay = (day, month, year) => {
   return moment({ years: year, months: month - 1, date: day }).format(DATE_FORMAT)
 }
 
-const buildFormattedDateForDisplayFromDate = (date) => {
+const formatDateForDisplayFromDate = (date) => {
   if (date === undefined || !(date instanceof Date)) {
     throw new Error('A date must be provided')
   }
@@ -39,6 +39,6 @@ const buildFormattedDateForDisplayFromDate = (date) => {
 module.exports = {
   toDateString,
   dateAsString,
-  buildFormattedDateForDisplay,
-  buildFormattedDateForDisplayFromDate
+  formatDateForDisplay,
+  formatDateForDisplayFromDate
 }

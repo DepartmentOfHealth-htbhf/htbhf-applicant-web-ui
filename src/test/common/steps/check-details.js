@@ -27,7 +27,7 @@ const {
   enterDateOfBirth,
   enterCardAddress
 } = require('./common-steps')
-const { buildFormattedDateForDisplayFromDate } = require('../../../web/routes/application/common/formatters')
+const { formatDateForDisplayFromDate } = require('../../../web/routes/application/common/formatters')
 
 When(/^I complete the application with valid details for a woman who is not pregnant$/, async function () {
   await enterNameAndSubmit(FIRST_NAME, LAST_NAME)
@@ -101,7 +101,7 @@ function getDateInSixMonths () {
   const date = new Date()
   date.setMonth(date.getMonth() + 6)
 
-  return buildFormattedDateForDisplayFromDate(date)
+  return formatDateForDisplayFromDate(date)
 }
 
 function assertNameShown (tableContents) {

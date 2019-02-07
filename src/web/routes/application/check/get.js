@@ -1,6 +1,6 @@
 const { YES } = require('../are-you-pregnant/constants')
 const { isNil } = require('ramda')
-const { buildFormattedDateForDisplay } = require('../common/formatters')
+const { formatDateForDisplay } = require('../common/formatters')
 
 const pageContent = ({ translate }) => ({
   title: translate('check.title'),
@@ -32,7 +32,7 @@ const buildNinoRow = (translate, claim) => buildRowData(
 )
 
 const buildDateOfBirthRow = (translate, claim) => {
-  const formattedDate = buildFormattedDateForDisplay(
+  const formattedDate = formatDateForDisplay(
     claim['dateOfBirth-day'],
     claim['dateOfBirth-month'],
     claim['dateOfBirth-year']
@@ -47,7 +47,7 @@ const buildAreYouPregnantRow = (translate, claim) => buildRowData(
 
 const buildExpectedDeliveryDateRow = (translate, claim) => {
   if (claim.areYouPregnant === YES) {
-    const formattedDate = buildFormattedDateForDisplay(
+    const formattedDate = formatDateForDisplay(
       claim['expectedDeliveryDate-day'],
       claim['expectedDeliveryDate-month'],
       claim['expectedDeliveryDate-year']
