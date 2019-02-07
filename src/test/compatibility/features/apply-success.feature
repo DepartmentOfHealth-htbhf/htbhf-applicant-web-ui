@@ -7,3 +7,4 @@ Feature: Complete application journey
     Given I am on the first page of the application
     When I complete the application with valid details for a pregnant woman
     Then I am shown the check details page
+    And all page content is present on the check details page
