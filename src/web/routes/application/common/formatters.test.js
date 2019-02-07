@@ -1,5 +1,5 @@
 const test = require('tape')
-const { toDateString, dateAsString } = require('./formatters')
+const { toDateString, dateAsString, buildFormattedDateForDisplay, buildFormattedDateForDisplayFromDate } = require('./formatters')
 
 test('toDateString() should concatenate digits with hyphens', (t) => {
   const result = toDateString('31', '13', '1980')
@@ -33,5 +33,19 @@ test('dateAsString', (t) => {
   t.equal(dateAsString({ date: date }), '1999-12-31', '1999-12-31 is not formatted correctly')
   t.equal(dateAsString({ date: date, monthAdjustment: -2 }), '1999-10-31', '2 months from 1999-12-31 should ne 1999-10-31')
   t.throws(dateAsString.bind(null, { monthAdjustment: 'foo' }), /Month adjustment must be numeric/, 'not a valid month adjustment value')
+  t.end()
+})
+
+test('buildFormattedDateForDisplay', (t) => {
+  t.equal(buildFormattedDateForDisplay('30', '1', '1990'), '30 January 1990', 'should format date correctly')
+  t.equal(buildFormattedDateForDisplay('02', '12', '2000'), '2 December 2000', 'should format date correctly')
+  t.equal(buildFormattedDateForDisplay(5, 5, 2010), '5 May 2010', 'should format date correctly')
+  t.end()
+})
+
+test('buildFormattedDateForDisplayFromDate', (t) => {
+  t.equal(buildFormattedDateForDisplayFromDate(new Date(1990, 0, 30)), '30 January 1990', 'should format date correctly')
+  t.throws(buildFormattedDateForDisplayFromDate.bind(null, { date: undefined }), /A date must be provided/, 'no date provided')
+  t.throws(buildFormattedDateForDisplayFromDate.bind(null, { date: [] }), /A date must be provided/, 'no date provided')
   t.end()
 })
