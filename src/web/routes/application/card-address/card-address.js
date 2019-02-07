@@ -16,11 +16,11 @@ const pageContent = ({ translate }) => ({
 })
 
 const newLineChar = '\n'
-const addressToString = compose(join(newLineChar), filter(notIsNilOrEmpty))
+const toMultiLineString = compose(join(newLineChar), filter(notIsNilOrEmpty))
 
 const contentSummary = (req) => ({
   key: req.t('cardAddress.summaryKey'),
-  value: addressToString([
+  value: toMultiLineString([
     req.session.claim.addressLine1,
     req.session.claim.addressLine2,
     req.session.claim.townOrCity,

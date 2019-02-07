@@ -1,4 +1,5 @@
 const { validate } = require('./validate')
+const { formatDateForDisplay } = require('../common/formatters')
 
 const pageContent = ({ translate }) => ({
   title: translate('enterDob.title'),
@@ -13,11 +14,11 @@ const pageContent = ({ translate }) => ({
 
 const contentSummary = (req) => ({
   key: req.t('enterDob.summaryKey'),
-  value: [
+  value: formatDateForDisplay(
     req.session.claim['dateOfBirth-day'],
     req.session.claim['dateOfBirth-month'],
     req.session.claim['dateOfBirth-year']
-  ].join(' ')
+  )
 })
 
 const enterDob = {
