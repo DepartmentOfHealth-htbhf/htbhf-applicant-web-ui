@@ -24,7 +24,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 14000000
+              "duration": 16000000
             }
           },
           {
@@ -33,11 +33,11 @@
             "line": 7,
             "name": "I am on the first page of the application",
             "match": {
-              "location": "src/test/common/steps/complete-flow.js:14"
+              "location": "src/test/common/steps/complete-flow.js:22"
             },
             "result": {
               "status": "passed",
-              "duration": 530000000
+              "duration": 493000000
             }
           },
           {
@@ -46,11 +46,11 @@
             "line": 8,
             "name": "I complete the application with valid details for a pregnant woman",
             "match": {
-              "location": "src/test/common/steps/complete-flow.js:18"
+              "location": "src/test/common/steps/complete-flow.js:32"
             },
             "result": {
               "status": "passed",
-              "duration": 1844000000
+              "duration": 1662000000
             }
           },
           {
@@ -59,7 +59,7 @@
             "line": 9,
             "name": "I am shown the check details page",
             "match": {
-              "location": "src/test/common/steps/complete-flow.js:26"
+              "location": "src/test/common/steps/complete-flow.js:36"
             },
             "result": {
               "status": "passed",
@@ -72,11 +72,11 @@
             "line": 10,
             "name": "all page content is present on the check details page",
             "match": {
-              "location": "src/test/common/steps/check-details.js:78"
+              "location": "src/test/common/steps/check-details.js:82"
             },
             "result": {
               "status": "passed",
-              "duration": 147000000
+              "duration": 1127000000
             }
           },
           {
