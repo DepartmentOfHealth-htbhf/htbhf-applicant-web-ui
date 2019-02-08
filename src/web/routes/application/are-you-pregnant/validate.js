@@ -3,7 +3,7 @@ const { isNil } = require('ramda')
 const { toDateString } = require('../common/formatters')
 const { isValidDate, isDateMoreThanOneMonthAgo, isDateMoreThanEightMonthsInTheFuture } = require('../common/validators')
 const { translateValidationMessage } = require('../common/translate-validation-message')
-const { YES, NO } = require('./constants')
+const { YES, NO } = require('../common/constants')
 
 const isNilOrNo = value => isNil(value) || value === NO
 

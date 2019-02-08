@@ -1,11 +1,13 @@
-language: node_js
-node_js:
-- '10.15'
-
-cache: npm
+matrix:
+  include:
+    - langauge: java
+    - language: node_js
+      node_js:
+        - '10.15'
+      cache: npm
 
 services:
-- redis-server
+  - redis-server
 
 dist: trusty
 
@@ -13,8 +15,8 @@ addons:
   chrome: stable
 
 before_install:
-- google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
-- npm install -g standard tape nyc
+  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
+  - npm install -g standard tape nyc
 
 deploy:
   provider: pages
@@ -28,24 +30,24 @@ deploy:
 #don't build tags
 branches:
   except:
-  - /^v\d/
+    - /^v\d/
 
 script: npm test && ./ci_scripts/ci_deploy.sh
 
 after_success:
-- "./ci_scripts/tag_version.sh"
-- test $TRAVIS_BRANCH = "master" && test $TRAVIS_PULL_REQUEST = "false" && ${BIN_DIR}/deployment-scripts/trigger_node_cd_build.sh
-- test $TRAVIS_BRANCH = "master" && test $TRAVIS_PULL_REQUEST = "false" && npm run coverage
-- cp src/documentation/gh-pages/index.html build/reports
+  - "./ci_scripts/tag_version.sh"
+  - test $TRAVIS_BRANCH = "master" && test $TRAVIS_PULL_REQUEST = "false" && ${BIN_DIR}/deployment-scripts/trigger_node_cd_build.sh
+  - test $TRAVIS_BRANCH = "master" && test $TRAVIS_PULL_REQUEST = "false" && npm run coverage
+  - cp src/documentation/gh-pages/index.html build/reports
 
 env:
   global:
-  - APP_PATH=.
-  - APP_NAME=help-to-buy-healthy-foods
-  - PORT=8080
-  - SESSION_SECRET=notsosecret
-  - SMOKE_TESTS=./ci_scripts/smoke_tests.sh
-  - BIN_DIR=./bin
+    - APP_PATH=.
+    - APP_NAME=help-to-buy-healthy-foods
+    - PORT=8080
+    - SESSION_SECRET=notsosecret
+    - SMOKE_TESTS=./ci_scripts/smoke_tests.sh
+    - BIN_DIR=./bin
 
 notifications:
   slack:

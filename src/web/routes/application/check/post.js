@@ -2,7 +2,7 @@ const httpStatus = require('http-status-codes')
 const request = require('request-promise')
 
 const { toDateString } = require('../common/formatters')
-const { YES } = require('../are-you-pregnant/constants')
+const { YES } = require('../common/constants')
 
 const CLAIMS_ENDPOINT = `/v1/claims`
 

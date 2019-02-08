@@ -27,6 +27,7 @@ const {
   enterDateOfBirth,
   enterCardAddress
 } = require('./common-steps')
+const { formatDateForDisplayFromDate } = require('../../../web/routes/application/common/formatters')
 
 When(/^I complete the application with valid details for a woman who is not pregnant$/, async function () {
   await enterNameAndSubmit(FIRST_NAME, LAST_NAME)
@@ -97,21 +98,19 @@ function assertNoValueForField (tableContents, fieldName) {
 }
 
 function getDateInSixMonths () {
-  const currentDate = new Date()
-  currentDate.setMonth(currentDate.getMonth() + 6)
-  const day = currentDate.getDate()
-  const month = currentDate.getMonth() + 1
-  const year = currentDate.getFullYear()
-  return `${day} ${month} ${year}`
+  const date = new Date()
+  date.setMonth(date.getMonth() + 6)
+
+  return formatDateForDisplayFromDate(date)
 }
 
 function assertNameShown (tableContents) {
-  const nameValue = getValueForField(tableContents, 'Name')
+  const nameValue = getValueForField(tableContents, 'Your name')
   expect(nameValue).to.be.equal(FULL_NAME)
 }
 
 function assertNinoShown (tableContents) {
-  const ninoValue = getValueForField(tableContents, 'National insurance number')
+  const ninoValue = getValueForField(tableContents, 'National Insurance number')
   expect(ninoValue).to.be.equal(VALID_NINO)
 }
 

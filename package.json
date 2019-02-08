@@ -1,7 +1,7 @@
 {
   "name": "htbhf-applicant-web-ui",
   "version_notice": "Patch versions are incremented by Travis (in tag_version.sh via .travis.yml) - never manually increment the patch version",
-  "version": "0.1.88",
+  "version": "0.1.93",
   "description": "",
   "main": "index.js",
   "engines": {
@@ -87,6 +87,7 @@
     "i18next": "^13.1.4",
     "i18next-express-middleware": "^1.7.1",
     "i18next-node-fs-backend": "^2.1.1",
+    "moment": "^2.24.0",
     "node-sass": "^4.11.0",
     "nunjucks": "^3.1.6",
     "ramda": "^0.26.1",
