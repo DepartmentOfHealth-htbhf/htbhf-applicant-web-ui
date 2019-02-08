@@ -8,7 +8,7 @@ const redirectPath = 'redirect'
 
 test('renderView() should redirect on POST request when no response errors', async (t) => {
   const redirect = sinon.spy()
-  const req = { method: 'POST' }
+  const req = { method: 'POST', session: {} }
 
   const res = {
     redirect,
@@ -28,7 +28,8 @@ test('renderView() should call res.render() on POST request when response errors
   const req = {
     method: 'POST',
     csrfToken: () => {},
-    t: () => {}
+    t: () => {},
+    session: {}
   }
 
   const res = {
@@ -54,7 +55,8 @@ test('renderView() should call res.render() on GET request', async (t) => {
   const req = {
     method: 'GET',
     csrfToken,
-    t: () => {}
+    t: () => {},
+    session: {}
   }
 
   const res = {

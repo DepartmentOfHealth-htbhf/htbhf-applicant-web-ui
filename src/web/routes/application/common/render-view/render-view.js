@@ -1,6 +1,9 @@
+const { stateMachine, actions } = require('../state-machine')
+
 const renderView = (template, getPageContent, redirect) => (req, res) => {
   if (req.method === 'POST' && !res.locals.errors) {
-    return res.redirect(redirect)
+    const nextPage = stateMachine.dispatch(actions.GET_NEXT_PAGE, req, redirect)
+    return res.redirect(nextPage)
   }
 
   res.render(template, {
