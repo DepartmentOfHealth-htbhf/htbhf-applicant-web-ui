@@ -1,11 +1,12 @@
 language: node_js
+
 node_js:
 - '10.15'
 
 cache:
+  npm: true
   directories:
     - bin/
-  - npm
 
 services:
 - redis-server
@@ -49,6 +50,7 @@ env:
   - SESSION_SECRET=notsosecret
   - SMOKE_TESTS=./ci_scripts/smoke_tests.sh
   - BIN_DIR=./bin
+  - WIREMOCK_PORT=8090
 
 notifications:
   slack:
