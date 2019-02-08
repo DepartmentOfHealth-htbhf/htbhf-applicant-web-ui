@@ -1,4 +1,4 @@
-const { stateMachine, actions } = require('../state-machine/state-machine')
+const { stateMachine, actions } = require('../state-machine')
 
 const renderView = (template, getPageContent, redirect) => (req, res) => {
   if (req.method === 'POST' && !res.locals.errors) {
