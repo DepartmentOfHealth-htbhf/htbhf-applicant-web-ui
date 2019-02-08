@@ -16,8 +16,8 @@ After(function (scenario) {
   pages.driverManager.quit(scenario)
 })
 
-BeforeAll(function () {
-  startWiremock()
+BeforeAll(async function () {
+  await startWiremock()
 })
 
 AfterAll(function () {

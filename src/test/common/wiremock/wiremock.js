@@ -9,9 +9,13 @@ const WIREMOCK_URL = 'http://repo1.maven.org/maven2/com/github/tomakehurst/wirem
 const WIREMOCK_LOCATION = `${process.env.BIN_DIR}/wiremock.jar`
 const WIREMOCK_PORT = process.env.WIREMOCK_PORT || 8090
 
-const getWiremock = () => {
+const getWiremock = async () => {
   if (!fs.existsSync(WIREMOCK_LOCATION)) {
-    download(WIREMOCK_URL).then(data => {
+    await download(WIREMOCK_URL).then(data => {
+      if (!fs.existsSync(process.env.BIN_DIR)) {
+        fs.mkdirSync(process.env.BIN_DIR)
+      }
+
       fs.writeFileSync(WIREMOCK_LOCATION, data)
     })
   }
@@ -19,7 +23,7 @@ const getWiremock = () => {
 
 const isWiremockRunning = (operation) => {
   request.get(`http://localhost:${WIREMOCK_PORT}/__admin`, function (err, response) {
-    if (operation.retry(err)) {
+    if (operation.retry(err) || !response) {
       return
     }
 
@@ -33,7 +37,7 @@ const waitForWiremockToStart = () => {
   const operation = retry.operation({
     retries: 10,
     factor: 1,
-    minTimeout: 100
+    minTimeout: 500
   })
 
   operation.attempt(function (currentAttempt) {
@@ -41,8 +45,8 @@ const waitForWiremockToStart = () => {
   })
 }
 
-const startWiremock = () => {
-  getWiremock()
+const startWiremock = async () => {
+  await getWiremock()
   exec(`java -jar ${WIREMOCK_LOCATION} --port ${WIREMOCK_PORT}`)
   waitForWiremockToStart()
   console.log('Started wiremock')
