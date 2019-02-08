@@ -148,7 +148,11 @@ function assertAddressShown (tableContents, expectedAddress) {
   expect(addressValue).to.be.equal(expectedAddress)
 }
 
+function hasChangeLinkAndHeaderText (row) {
+  return row.action.text === 'Change' && row.header.trim().length > 0
+}
+
 function assertHeaderAndChangeLinkShownForEachRow (tableContents) {
-  const matchingRows = tableContents.filter((value) => value.action.text === 'Change' && value.header.trim().length > 0)
+  const matchingRows = tableContents.filter(hasChangeLinkAndHeaderText)
   expect(matchingRows.length).to.be.equal(tableContents.length)
 }
