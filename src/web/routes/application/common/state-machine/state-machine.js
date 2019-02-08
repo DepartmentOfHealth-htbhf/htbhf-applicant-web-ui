@@ -1,4 +1,4 @@
-const { CHECK_URL } = require('../../constants')
+const { CHECK_URL } = require('../constants')
 
 const states = {
   IN_PROGRESS: 'IN_PROGRESS',
