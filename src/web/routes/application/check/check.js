@@ -1,6 +1,6 @@
 const { getCheck } = require('./get')
 const { postCheck } = require('./post')
-const { CHECK_URL } = require('../constants')
+const { CHECK_URL } = require('../common/constants')
 
 const registerCheckRoutes = (csrfProtection, config, app) => {
   app

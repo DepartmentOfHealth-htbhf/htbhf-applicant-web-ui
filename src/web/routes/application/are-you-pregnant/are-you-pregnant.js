@@ -1,5 +1,5 @@
 const { validate } = require('./validate')
-const { YES } = require('../constants')
+const { YES } = require('../common/constants')
 const { formatDateForDisplay } = require('../common/formatters')
 
 const exampleDate = (fromDate = new Date()) => {
