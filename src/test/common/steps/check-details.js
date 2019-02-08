@@ -45,6 +45,10 @@ When(/^I complete the application with valid details for an applicant with no se
   await enterCardAddress(ADDRESS_LINE_1, '', TOWN, POSTCODE)
 })
 
+When(/^I choose to change my answer to are you pregnant$/, async function () {
+  await pages.check.clickChangeLinkFor('Are you pregnant?')
+})
+
 Then(/^the check details page contains all data entered for a pregnant woman$/, async function () {
   const tableContents = await pages.check.getCheckDetailsTableContents()
   assertNameShown(tableContents)
@@ -84,6 +88,8 @@ Then(/^all page content is present on the check details page$/, async function (
   expect(sendApplicationHelperText.toString().trim()).to.have.lengthOf.at.least(1, 'expected send application helper text to not be empty')
   const submitButtonText = await pages.check.getSubmitButtonText()
   expect(submitButtonText.toString().trim()).to.have.lengthOf.at.least(1, 'expected submit button text to not be empty')
+  const tableContents = await pages.check.getCheckDetailsTableContents()
+  assertHeaderAndChangeLinkShownForEachRow(tableContents)
 })
 
 function getValueForField (tableContents, fieldName) {
@@ -140,4 +146,13 @@ function assertAddressShownWithNoSecondLine (tableContents) {
 function assertAddressShown (tableContents, expectedAddress) {
   const addressValue = getValueForField(tableContents, 'Address')
   expect(addressValue).to.be.equal(expectedAddress)
+}
+
+function hasChangeLinkAndHeaderText (row) {
+  return row.action.text === 'Change' && row.header.trim().length > 0
+}
+
+function assertHeaderAndChangeLinkShownForEachRow (tableContents) {
+  const matchingRows = tableContents.filter(hasChangeLinkAndHeaderText)
+  expect(matchingRows.length).to.be.equal(tableContents.length)
 }
