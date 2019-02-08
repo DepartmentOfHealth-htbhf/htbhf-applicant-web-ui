@@ -1,5 +1,6 @@
-const { Before, After } = require('cucumber')
+const { Before, After, BeforeAll, AfterAll } = require('cucumber')
 const pages = require('./pages')
+const { startWiremock, stopWiremock } = require('../wiremock/wiremock')
 
 /**
  * Function to (re)initialise the Selenium driver and the page objects before each Scenario.
@@ -13,4 +14,12 @@ Before(async function () {
  */
 After(function (scenario) {
   pages.driverManager.quit(scenario)
+})
+
+BeforeAll(function () {
+  startWiremock()
+})
+
+AfterAll(function () {
+  stopWiremock()
 })
