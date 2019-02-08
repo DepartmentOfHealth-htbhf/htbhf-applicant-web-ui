@@ -73,6 +73,15 @@ class Page {
     }
   }
 
+  async findByXPath (xpath) {
+    try {
+      return await this.driver.findElement(webdriver.By.xpath(xpath))
+    } catch (error) {
+      console.log(error)
+      throw new Error(error)
+    }
+  }
+
   async findH1 () {
     return this.findByCSS('h1')
   }

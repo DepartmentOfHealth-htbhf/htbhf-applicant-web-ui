@@ -2,9 +2,12 @@
 
 const SubmittablePage = require('./submittable-page')
 const OVERVIEW_PAGE_TITLE = 'GOV.UK - Check your answers before sending your application'
-const GOV_TABLE_ROW_CLASSNAME = 'govuk-summary-list__row'
-const GOV_TABLE_HEADER_CLASSNAME = 'govuk-summary-list__key'
-const GOV_TABLE_CELL_CLASSNAME = 'govuk-summary-list__value'
+const GOV_LIST_ROW_CLASSNAME = 'govuk-summary-list__row'
+const GOV_LIST_HEADER_CLASSNAME = 'govuk-summary-list__key'
+const GOV_LIST_VALUE_CLASSNAME = 'govuk-summary-list__value'
+const GOV_LIST_ACTION_CLASSNAME = 'govuk-summary-list__actions'
+const GOV_LINK_CLASSNAME = 'govuk-link'
+const GOV_HIDDEN_CLASSNAME = 'govuk-visually-hidden'
 
 /**
  * Page object for the confirmation page before submit.
@@ -20,7 +23,7 @@ class Check extends SubmittablePage {
   }
 
   async getCheckDetailsTableContents () {
-    const tableRows = await this.findAllByClassName(GOV_TABLE_ROW_CLASSNAME)
+    const tableRows = await this.findAllByClassName(GOV_LIST_ROW_CLASSNAME)
 
     const values = await Promise.all(tableRows)
     return this.getCheckTableContents(values)
@@ -33,12 +36,22 @@ class Check extends SubmittablePage {
 
   async getDataForRow (tableRow) {
     try {
-      const header = await this.findByClassName(GOV_TABLE_HEADER_CLASSNAME, tableRow)
+      const header = await this.findByClassName(GOV_LIST_HEADER_CLASSNAME, tableRow)
       const headerText = await header.getText()
-      const cell = await this.findByClassName(GOV_TABLE_CELL_CLASSNAME, tableRow)
-      const cellText = await cell.getText()
+      const value = await this.findByClassName(GOV_LIST_VALUE_CLASSNAME, tableRow)
+      const valueText = await value.getText()
+      const change = await this.findByClassName(GOV_LIST_ACTION_CLASSNAME, tableRow)
+      const changeLink = await this.findByClassName(GOV_LINK_CLASSNAME, change)
+      const changeUrl = await changeLink.getAttribute('href')
+      const changeText = await changeLink.getText()
+      const hiddenSpan = await this.findByClassName(GOV_HIDDEN_CLASSNAME, changeLink)
+      const hiddenText = await hiddenSpan.getText()
 
-      return { header: headerText, value: cellText }
+      return {
+        header: headerText,
+        value: valueText,
+        action: { url: changeUrl, text: changeText.replace(hiddenText, '').trim(), hiddenText: hiddenText }
+      }
     } catch (error) {
       console.log(error)
       throw new Error(error)
@@ -53,6 +66,11 @@ class Check extends SubmittablePage {
       console.log(error)
       throw new Error(error)
     }
+  }
+
+  async clickChangeLinkFor (headerText) {
+    const link = await this.findByXPath(`//a[contains(@class, 'govuk-link') and contains(.//span, '${headerText}')]`)
+    await link.click()
   }
 }
 
