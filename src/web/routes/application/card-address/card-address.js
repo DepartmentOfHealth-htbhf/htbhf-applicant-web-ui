@@ -1,7 +1,7 @@
 const { join, filter, compose } = require('ramda')
 const { validate } = require('./validate')
 const { sanitize } = require('./sanitize')
-const { CHECK_URL } = require('../constants')
+const { CHECK_URL } = require('../common/constants')
 const { notIsNilOrEmpty } = require('../common/predicates')
 
 const pageContent = ({ translate }) => ({

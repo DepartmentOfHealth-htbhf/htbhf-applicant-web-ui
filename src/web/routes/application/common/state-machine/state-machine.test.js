@@ -1,6 +1,6 @@
 const test = require('tape')
 const { stateMachine, states, actions } = require('./state-machine')
-const { CHECK_URL } = require('../../constants')
+const { CHECK_URL } = require('../../common/constants')
 
 test('dispatch() should redirect to given page when no state defined in session', async (t) => {
   const req = { method: 'POST', session: {} }
