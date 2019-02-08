@@ -17,7 +17,7 @@ test('Enter dob contentSummary() should return content summary in correct format
 
   const expected = {
     key: 'enterDob.summaryKey',
-    value: '30 05 1920'
+    value: '30 May 1920'
   }
 
   t.deepEqual(result, expected, 'should return content summary in correct format')

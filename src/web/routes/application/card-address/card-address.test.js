@@ -26,7 +26,7 @@ test('Card address contentSummary() should return content summary in correct for
 })
 
 test('Card address contentSummary() should return content summary in correct format without address line 2', (t) => {
-  const testReq = assocPath(['session', 'claim', 'addressLine2'], '', req)
+  const testReq = assocPath(['session', 'claim', 'addressLine2'], undefined, req)
   const result = contentSummary(testReq)
   const expected = {
     key: 'cardAddress.summaryKey',
@@ -34,5 +34,17 @@ test('Card address contentSummary() should return content summary in correct for
   }
 
   t.deepEqual(result, expected, 'should return content summary in correct format without address line 2')
+  t.end()
+})
+
+test('Card address contentSummary() should return content summary in correct format with address line 2 undefined', (t) => {
+  const testReq = assocPath(['session', 'claim', 'addressLine2'], '', req)
+  const result = contentSummary(testReq)
+  const expected = {
+    key: 'cardAddress.summaryKey',
+    value: 'Flat b\nLondon\naa1 1ab'
+  }
+
+  t.deepEqual(result, expected, 'should return content summary in correct format with address line 2 undefined')
   t.end()
 })

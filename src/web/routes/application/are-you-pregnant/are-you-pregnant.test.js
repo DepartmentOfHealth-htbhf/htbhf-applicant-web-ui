@@ -60,7 +60,7 @@ test('Are you pregnant contentSummary() should return content summary in correct
     value: 'yes'
   }, {
     key: 'areYouPregnant.expectedDeliveryDateSummaryKey',
-    value: '01 03 2019'
+    value: '1 March 2019'
   }]
 
   t.deepEqual(result, expected, 'should return content summary in correct format')

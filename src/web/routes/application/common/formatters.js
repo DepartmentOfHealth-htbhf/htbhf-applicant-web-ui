@@ -1,4 +1,6 @@
 const { isNil } = require('ramda')
+const moment = require('moment')
+const DATE_FORMAT = 'D MMMM YYYY'
 
 const nilToString = (value) => isNil(value) ? '' : value.toString()
 
@@ -21,7 +23,22 @@ const dateAsString = ({ date = new Date(), monthAdjustment = 0 } = {}) => {
   return toDateString(dd, mm, yyyy)
 }
 
+// TODO - When we are no longer able to go directly to a page within the flow (which makes ATs simpler)
+// we should reinforce the fact that day, month and year should be mandatory.
+const formatDateForDisplay = (day, month, year) => {
+  return moment({ years: year, months: month - 1, date: day }).format(DATE_FORMAT)
+}
+
+const formatDateForDisplayFromDate = (date) => {
+  if (date === undefined || !(date instanceof Date)) {
+    throw new Error('A date must be provided')
+  }
+  return moment(date).format(DATE_FORMAT)
+}
+
 module.exports = {
   toDateString,
-  dateAsString
+  dateAsString,
+  formatDateForDisplay,
+  formatDateForDisplayFromDate
 }

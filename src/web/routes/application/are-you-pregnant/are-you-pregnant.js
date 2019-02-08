@@ -1,5 +1,6 @@
 const { validate } = require('./validate')
 const { YES } = require('../constants')
+const { formatDateForDisplay } = require('../common/formatters')
 
 const exampleDate = (fromDate = new Date()) => {
   const future = new Date(fromDate)
@@ -15,11 +16,11 @@ const contentSummary = (req) => {
   }
   const dueDateSummary = {
     key: req.t('areYouPregnant.expectedDeliveryDateSummaryKey'),
-    value: [
+    value: formatDateForDisplay(
       req.session.claim['expectedDeliveryDate-day'],
       req.session.claim['expectedDeliveryDate-month'],
       req.session.claim['expectedDeliveryDate-year']
-    ].join(' ')
+    )
   }
   if (req.session.claim.areYouPregnant === YES) {
     return [pregnantSummary, dueDateSummary]
