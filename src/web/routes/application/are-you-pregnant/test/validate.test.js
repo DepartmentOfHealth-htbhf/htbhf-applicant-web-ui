@@ -1,6 +1,6 @@
 const test = require('tape')
 const { validateExpectedDeliveryDate } = require('../validate')
-const { YES, NO } = require('../../constants')
+const { YES, NO } = require('../../common/constants')
 
 const res = {
   locals: {}

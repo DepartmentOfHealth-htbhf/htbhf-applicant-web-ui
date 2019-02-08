@@ -111,12 +111,12 @@ function getDateInSixMonths () {
 }
 
 function assertNameShown (tableContents) {
-  const nameValue = getValueForField(tableContents, 'Name')
+  const nameValue = getValueForField(tableContents, 'Your name')
   expect(nameValue).to.be.equal(FULL_NAME)
 }
 
 function assertNinoShown (tableContents) {
-  const ninoValue = getValueForField(tableContents, 'National insurance number')
+  const ninoValue = getValueForField(tableContents, 'National Insurance number')
   expect(ninoValue).to.be.equal(VALID_NINO)
 }
 

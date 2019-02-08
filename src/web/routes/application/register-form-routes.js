@@ -1,10 +1,12 @@
 const express = require('express')
 
-const { sanitize } = require('./common/sanitize')
-const { renderView } = require('./common/render-view')
-const { handlePost } = require('./common/handle-post')
-const { getSessionDetails } = require('./common/session-details')
-const { configurePost } = require('./common/configure-post')
+const {
+  configurePost,
+  getSessionDetails,
+  handlePost,
+  renderView,
+  sanitize
+} = require('./middleware')
 
 const middlewareNoop = (req, res, next) => next()
 
