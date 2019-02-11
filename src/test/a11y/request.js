@@ -48,4 +48,37 @@ const postFormData = (url, form, cookie) =>
     })
   })
 
-module.exports = { getSIDCookieAndCSRFToken, postFormData }
+const postJsonData = (url, body) =>
+  new Promise((resolve, reject) => {
+    request.post({
+      url,
+      body,
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }, (error) => {
+      if (error) {
+        return reject(error)
+      }
+
+      resolve()
+    })
+  })
+
+const performDelete = (url) =>
+  new Promise((resolve, reject) => {
+    request.delete({ url }, (error) => {
+      if (error) {
+        return reject(error)
+      }
+
+      resolve()
+    })
+  })
+
+module.exports = {
+  getSIDCookieAndCSRFToken,
+  postFormData,
+  postJsonData,
+  performDelete
+}

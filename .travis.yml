@@ -51,6 +51,7 @@ env:
   - SMOKE_TESTS=./ci_scripts/smoke_tests.sh
   - BIN_DIR=./bin
   - WIREMOCK_PORT=8090
+  - WIREMOCK_URL=http://localhost:8090
 
 notifications:
   slack:
