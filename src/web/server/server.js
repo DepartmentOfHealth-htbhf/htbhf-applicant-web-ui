@@ -2,8 +2,8 @@ const compression = require('compression')
 const express = require('express')
 const bodyParser = require('body-parser')
 const path = require('path')
-const helmet = require('helmet')
 
+const { configureSecurity } = require('./configure-security')
 const { registerRoutes } = require('../routes')
 const { initialiseSession } = require('./session')
 const { registerErrorHandlers } = require('./error-handlers')
@@ -27,10 +27,10 @@ const listen = (config, app) =>
   )
 
 const start = (config, app) => () => {
-  app.use(helmet())
   app.use(compression())
   app.use(bodyParser.urlencoded({ extended: false }))
 
+  configureSecurity(app)
   setViewEngine(config, app)
   internationalisation(config, app)
   registerRoutes(config, app)
