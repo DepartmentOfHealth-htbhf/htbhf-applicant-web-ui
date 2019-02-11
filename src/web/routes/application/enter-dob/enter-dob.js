@@ -12,12 +12,12 @@ const pageContent = ({ translate }) => ({
   yearLabel: translate('enterDob.yearLabel')
 })
 
-const contentSummary = (req) => ({
+const contentSummary = (req, { claim }) => ({
   key: req.t('enterDob.summaryKey'),
   value: formatDateForDisplay(
-    req.session.claim['dateOfBirth-day'],
-    req.session.claim['dateOfBirth-month'],
-    req.session.claim['dateOfBirth-year']
+    claim['dateOfBirth-day'],
+    claim['dateOfBirth-month'],
+    claim['dateOfBirth-year']
   )
 })
 

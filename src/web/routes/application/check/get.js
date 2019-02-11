@@ -1,6 +1,7 @@
 const { flatten } = require('ramda')
 const { steps } = require('../steps')
 const { stateMachine, states } = require('../common/state-machine')
+const { createClaimService } = require('../services')
 
 const pageContent = ({ translate }) => ({
   title: translate('check.title'),
@@ -17,8 +18,9 @@ const combinePathWithRow = (path) => (row) => ({
 })
 
 const getRowData = (req) => (step) => {
-  const result = step.contentSummary(req)
-
+  const claimService = createClaimService(req)
+  const claim = claimService.get()
+  const result = step.contentSummary(req, { claim })
   const applyPathToRow = combinePathWithRow(step.path)
 
   return Array.isArray(result) ? result.map(applyPathToRow) : [applyPathToRow(result)]

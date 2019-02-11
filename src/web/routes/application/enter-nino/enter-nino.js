@@ -13,9 +13,9 @@ const pageContent = ({ translate }) => ({
   buttonText: translate('buttons:continue')
 })
 
-const contentSummary = (req) => ({
+const contentSummary = (req, { claim }) => ({
   key: req.t('enterNino.summaryKey'),
-  value: req.session.claim.nino
+  value: claim.nino
 })
 
 const enterNino = {

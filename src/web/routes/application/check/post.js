@@ -3,6 +3,7 @@ const request = require('request-promise')
 
 const { toDateString } = require('../common/formatters')
 const { YES } = require('../common/constants')
+const { createClaimService } = require('../services')
 
 const CLAIMS_ENDPOINT = `/v1/claims`
 
@@ -35,11 +36,14 @@ const createRequestBody = (claim) => {
 
 const postCheck = (config) => async (req, res, next) => {
   try {
+    const claimService = createClaimService(req)
+    const claim = claimService.get()
+
     await request.post({
       uri: `${config.environment.CLAIMANT_SERVICE_URL}${CLAIMS_ENDPOINT}`,
       json: true,
       body: {
-        claimant: createRequestBody(req.session.claim)
+        claimant: createRequestBody(claim)
       }
     })
 

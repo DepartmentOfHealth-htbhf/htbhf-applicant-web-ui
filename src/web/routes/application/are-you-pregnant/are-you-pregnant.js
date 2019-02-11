@@ -9,20 +9,20 @@ const exampleDate = (fromDate = new Date()) => {
   return `${future.getDate()} ${future.getMonth() + 1} ${future.getFullYear()}`
 }
 
-const contentSummary = (req) => {
+const contentSummary = (req, { claim }) => {
   const pregnantSummary = {
     key: req.t('areYouPregnant.summaryKey'),
-    value: req.t(req.session.claim.areYouPregnant)
+    value: req.t(claim.areYouPregnant)
   }
   const dueDateSummary = {
     key: req.t('areYouPregnant.expectedDeliveryDateSummaryKey'),
     value: formatDateForDisplay(
-      req.session.claim['expectedDeliveryDate-day'],
-      req.session.claim['expectedDeliveryDate-month'],
-      req.session.claim['expectedDeliveryDate-year']
+      claim['expectedDeliveryDate-day'],
+      claim['expectedDeliveryDate-month'],
+      claim['expectedDeliveryDate-year']
     )
   }
-  if (req.session.claim.areYouPregnant === YES) {
+  if (claim.areYouPregnant === YES) {
     return [pregnantSummary, dueDateSummary]
   }
   return pregnantSummary

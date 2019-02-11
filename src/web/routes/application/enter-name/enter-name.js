@@ -9,9 +9,9 @@ const pageContent = ({ translate }) => ({
   buttonText: translate('buttons:continue')
 })
 
-const contentSummary = (req) => ({
+const contentSummary = (req, { claim }) => ({
   key: req.t('enterName.summaryKey'),
-  value: `${req.session.claim.firstName} ${req.session.claim.lastName}`.trim()
+  value: `${claim.firstName} ${claim.lastName}`.trim()
 })
 
 const enterName = {
