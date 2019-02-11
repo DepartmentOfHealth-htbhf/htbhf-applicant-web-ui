@@ -1,5 +1,5 @@
 const test = require('tape')
-const { trimValues, escapeValues } = require('./sanitize')
+const { trimValues, sanitiseBody } = require('./sanitize')
 
 test('trimValues', (t) => {
   const body = {
@@ -14,14 +14,14 @@ test('trimValues', (t) => {
   t.end()
 })
 
-test('escapeValues', (t) => {
+test('sanitiseBody', (t) => {
   const body = {
     firstName: '<script>window.alert(\'Boo\')</script>'
   }
   const expected = {
     firstName: '&lt;script&gt;window.alert(&#39;Boo&#39;)&lt;/script&gt;'
   }
-  const result = escapeValues(body)
+  const result = sanitiseBody(body)
   t.deepEqual(result, expected, 'characters should be escaped')
   t.end()
 })
@@ -33,7 +33,7 @@ test('does not escape spaces', (t) => {
   const expected = {
     addressLine1: 'Flat B'
   }
-  const result = escapeValues(body)
+  const result = sanitiseBody(body)
   t.deepEqual(result, expected, 'spaces should not be escaped')
   t.end()
 })
