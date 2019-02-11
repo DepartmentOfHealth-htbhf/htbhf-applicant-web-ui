@@ -1,14 +1,14 @@
 const test = require('tape')
-const { trimValues, sanitiseBody } = require('./sanitize')
+const { sanitiseBody } = require('./sanitize')
 
-test('trimValues', (t) => {
+test('sanitiseBody with extra whitespace', (t) => {
   const body = {
     lastName: '    whitespace     '
   }
   const expected = {
     lastName: 'whitespace'
   }
-  const result = trimValues(body)
+  const result = sanitiseBody(body)
 
   t.deepEqual(result, expected, 'it should remove trailing white space')
   t.end()
