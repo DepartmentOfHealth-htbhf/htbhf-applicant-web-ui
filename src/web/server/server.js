@@ -3,6 +3,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const path = require('path')
 
+const { configureSecurity } = require('./configure-security')
 const { registerRoutes } = require('../routes')
 const { initialiseSession } = require('./session')
 const { registerErrorHandlers } = require('./error-handlers')
@@ -29,6 +30,7 @@ const start = (config, app) => () => {
   app.use(compression())
   app.use(bodyParser.urlencoded({ extended: false }))
 
+  configureSecurity(app)
   setViewEngine(config, app)
   internationalisation(config, app)
   registerRoutes(config, app)
