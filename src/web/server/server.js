@@ -2,6 +2,7 @@ const compression = require('compression')
 const express = require('express')
 const bodyParser = require('body-parser')
 const path = require('path')
+const helmet = require('helmet')
 
 const { registerRoutes } = require('../routes')
 const { initialiseSession } = require('./session')
@@ -26,6 +27,7 @@ const listen = (config, app) =>
   )
 
 const start = (config, app) => () => {
+  app.use(helmet())
   app.use(compression())
   app.use(bodyParser.urlencoded({ extended: false }))
 
