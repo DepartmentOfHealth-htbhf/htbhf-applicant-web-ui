@@ -1,8 +1,10 @@
 const httpStatus = require('http-status-codes')
 const { validationResult } = require('express-validator/check')
+const { createClaimService } = require('../services')
 
 const handlePost = (req, res, next) => {
   try {
+    const claimService = createClaimService(req)
     const errors = validationResult(req)
 
     if (!errors.isEmpty()) {
@@ -11,10 +13,8 @@ const handlePost = (req, res, next) => {
       return next()
     }
 
-    req.session.claim = {
-      ...req.session.claim,
-      ...req.body
-    }
+    claimService.setKeys(req.body)
+
     return next()
   } catch (error) {
     const err = new Error('Error posting', req.path, error)

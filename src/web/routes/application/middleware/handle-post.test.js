@@ -27,11 +27,18 @@ test('handlePost() should add errors and claim to locals if errors exist', (t) =
   t.end()
 })
 
-test('handlePost() adds body to the session to if no errors exist', (t) => {
+test.only('handlePost() adds body to the session if no errors exist', (t) => {
+  const setKeys = sinon.spy()
+
   const { handlePost } = proxyquire('./handle-post', {
     'express-validator/check': {
       validationResult: () => ({
         isEmpty: () => true
+      })
+    },
+    '../services': {
+      createClaimService: () => ({
+        setKeys
       })
     }
   })
@@ -49,16 +56,9 @@ test('handlePost() adds body to the session to if no errors exist', (t) => {
 
   const next = sinon.spy()
 
-  const expected = {
-    claim: {
-      other: 'claim data',
-      new: 'claim data'
-    }
-  }
-
   handlePost(req, {}, next)
 
-  t.deepEqual(req.session, expected, 'it should add body to session')
+  t.equal(setKeys.calledWith(req.body), true, 'it should add body to session')
   t.equal(next.called, true, 'it should call next()')
   t.end()
 })
