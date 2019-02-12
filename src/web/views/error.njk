@@ -1,8 +1,6 @@
 {% extends "templates/page.njk" %}
 
-{% set title = 'Error ' + statusCode %}
-
 {% block pageContent %}
-  <h2 class="govuk-heading-l">There was an error: {{ statusCode }}</h2>
-  <p class="govuk-body">{{ error }}</p>
+  <h1 class="govuk-heading-xl">{{ heading }}</h1>
+  <p class="govuk-body">{{ content }}</p>
 {% endblock %}

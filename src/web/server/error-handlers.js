@@ -5,9 +5,15 @@ const logErrors = (err, req, res, next) => {
   next(err)
 }
 
+// eslint-disable-next-line handle-callback-err
 const errorHandler = (err, req, res, next) => {
   res.status(httpStatus.INTERNAL_SERVER_ERROR)
-  res.render('error', { error: err, statusCode: res.statusCode })
+
+  res.render('error', {
+    title: req.t('errors:problemWithTheServiceTitle'),
+    heading: req.t('errors:problemWithTheServiceTitle'),
+    content: req.t('errors:problemWithTheServiceContent')
+  })
 }
 
 const registerErrorHandlers = (app) => {
