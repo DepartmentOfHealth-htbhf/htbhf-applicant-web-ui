@@ -22,10 +22,13 @@ const configureStaticPaths = (app) => {
   app.use('/assets', express.static(path.resolve('src/web/assets'))) /* 3 */
 }
 
-const listen = (config, app) => logger.log({
-  level: 'info',
-  message: `App listening on port ${config.server.PORT}`
-})
+const listen = (config, app) =>
+  app.listen(config.server.PORT, () =>
+    logger.log({
+      level: 'info',
+      message: `App listening on port ${config.server.PORT}`
+    })
+  )
 
 const start = (config, app) => () => {
   app.use(compression())
