@@ -37,7 +37,7 @@ When(/^I complete the application with valid details for a woman who is not preg
   await enterCardAddress(ADDRESS_LINE_1, ADDRESS_LINE_2, TOWN, POSTCODE)
 })
 
-When(/^I complete the application with valid details for a woman who is not pregnant with malicious input$/, async function () {
+When(/^I complete the application with valid details that contains malicious input$/, async function () {
   await enterNameAndSubmit('<script>window.alert(\'Boo\')</script>', LAST_NAME)
   await enterNinoAndSubmit(VALID_NINO)
   await enterDateOfBirth(DAY, MONTH, YEAR)

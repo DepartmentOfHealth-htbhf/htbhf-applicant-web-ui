@@ -30,7 +30,7 @@ Feature: Check details
     Then I am shown the check details page
     And the check details page contains all data entered for a woman who is not pregnant
 
-  Scenario: An application for a woman who is not pregnant contains malicious input
+  Scenario: An application that contains malicious input is sanitised
     Given I am on the first page of the application
-    When I complete the application with valid details for a woman who is not pregnant with malicious input
+    When I complete the application with valid details that contains malicious input
     Then I am shown the check details page
