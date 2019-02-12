@@ -16,7 +16,8 @@ const configureSecurity = (app) => {
     directives: {
       defaultSrc: ["'self'"],
       styleSrc: ["'self'"],
-      scriptSrc: ["'self'", "'unsafe-inline'", 'https://www.googletagmanager.com']
+      scriptSrc: ["'self'", "'unsafe-inline'", 'https://www.googletagmanager.com', 'https://www.google-analytics.com'],
+      imgSrc: ["'self'", 'https://www.google-analytics.com']
     }
   }))
 }
