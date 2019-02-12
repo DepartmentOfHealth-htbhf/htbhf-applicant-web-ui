@@ -15,7 +15,7 @@ const ARE_YOU_PREGNANT_URL = `${BASE_URL}/are-you-pregnant`
 const CARD_ADDRESS_URL = `${BASE_URL}/card-address`
 const CHECK_URL = `${BASE_URL}/check`
 const CONFIRM_URL = `${BASE_URL}/confirm`
-const WIREMOCK_MAPPING_URL = `${process.env.WIREMOCK_URL}/__admin/mappings` || 'http://localhost:8090/__admin/mappings'
+const WIREMOCK_MAPPING_URL = process.env.WIREMOCK_URL ? `${process.env.WIREMOCK_URL}/__admin/mappings` : 'http://localhost:8090/__admin/mappings'
 
 const SUCCESSFUL_CLAIMS_MAPPING = `{
     "request": {
