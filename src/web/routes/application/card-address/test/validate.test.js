@@ -1,4 +1,5 @@
 const test = require('tape')
+const safeRegex = require('safe-regex')
 const { UK_POSTCODE_PATTERN } = require('../validate')
 
 test('invalid postcode does not match regex', (t) => {
@@ -37,5 +38,10 @@ test('valid postcode matches regex', (t) => {
     t.deepEqual(match[0], postcode)
   })
 
+  t.end()
+})
+
+test('postcode regex is secure', (t) => {
+  t.equal(safeRegex(UK_POSTCODE_PATTERN), true)
   t.end()
 })

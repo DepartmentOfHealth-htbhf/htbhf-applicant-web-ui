@@ -1,4 +1,5 @@
 const test = require('tape')
+const safeRegex = require('safe-regex')
 const { NINO_PATTERN } = require('./validate')
 
 test('invalid national insurance number does not match regex', (t) => {
@@ -29,5 +30,10 @@ test('valid national insurance number matches regex', (t) => {
   const matches = validNino.match(NINO_PATTERN)
 
   t.deepEqual(matches[0], validNino)
+  t.end()
+})
+
+test('nino regex is secure', (t) => {
+  t.equal(safeRegex(NINO_PATTERN), true)
   t.end()
 })
