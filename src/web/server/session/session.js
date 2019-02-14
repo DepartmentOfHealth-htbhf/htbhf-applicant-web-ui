@@ -3,13 +3,20 @@ const RedisStore = require('connect-redis')(session)
 const redis = require('redis')
 const httpStatus = require('http-status-codes')
 const { path } = require('ramda')
+const { logger } = require('../logger')
 
 const onClientError = (error) => {
-  console.log('Error with redis session:', error)
+  logger().log({
+    level: 'error',
+    message: `Error with redis session: ${error}`
+  })
 }
 
 const onClientConnection = (callback) => () => {
-  console.log('Redis client connected')
+  logger().log({
+    level: 'info',
+    message: 'Redis client connected'
+  })
   callback()
 }
 
@@ -41,7 +48,11 @@ const getSessionConfig = (store, config) => {
   if (path(['environment', 'USE_UNSECURE_COOKIE'], config) === true) {
     sessionConfig.cookie.secure = false
   }
-  console.log('sessionConfig.cookie.secure:', sessionConfig.cookie.secure)
+
+  logger().log({
+    level: 'info',
+    message: `Using secure cookie: ${sessionConfig.cookie.secure}`
+  })
 
   return sessionConfig
 }
