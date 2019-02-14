@@ -3,7 +3,7 @@ const RedisStore = require('connect-redis')(session)
 const redis = require('redis')
 const httpStatus = require('http-status-codes')
 const { path } = require('ramda')
-const { logger } = require('../logger')
+const { logger } = require('../../logger')
 
 const onClientError = (error) => {
   logger().log({
