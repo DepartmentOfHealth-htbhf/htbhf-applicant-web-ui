@@ -1,8 +1,16 @@
-{% extends "templates/page.njk" %}a default status code if none set on error
+{% extends "templates/page.njk" %}
 {% from "input/macro.njk" import govukInput %}
 {% from "button/macro.njk" import govukButton %}
+{% from "panel/macro.njk" import govukPanel %}
 
 {% block pageContent %}
-  <p class="govuk-body">Complete</p>
+
+  {{ govukPanel({
+    titleText: title,
+    html: subTitle | nl2br | safe,
+    classes: "govuk-!-margin-bottom-5"
+  }) }}
+
+  {% include "locales/" + language + "/confirm.html" %}
 
 {% endblock %}
