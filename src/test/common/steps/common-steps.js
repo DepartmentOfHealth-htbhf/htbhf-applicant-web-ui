@@ -103,7 +103,7 @@ When(/^I submit my application$/, async function () {
 })
 
 When(/^I complete the application with valid details$/, async function () {
-  completeTheApplicationAsAWomanWhoIsNotPregnant()
+  await completeTheApplicationAsAWomanWhoIsNotPregnant()
 })
 
 module.exports = {
