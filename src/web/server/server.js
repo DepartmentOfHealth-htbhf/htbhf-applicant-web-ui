@@ -10,6 +10,7 @@ const { initialiseSession } = require('./session')
 const { registerErrorHandlers } = require('./error-handlers')
 const { setViewEngine } = require('./view-engine')
 const { internationalisation } = require('./internationalisation')
+const { requestID } = require('./headers')
 
 const configureStaticPaths = (app) => {
   /**
@@ -37,6 +38,7 @@ const start = (config, app) => () => {
    */
   internationalisation(config, app)
 
+  app.use(requestID)
   app.use(compression())
   app.use(bodyParser.urlencoded({ extended: false }))
 
