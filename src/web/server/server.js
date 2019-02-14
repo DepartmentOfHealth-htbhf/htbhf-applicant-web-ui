@@ -31,12 +31,17 @@ const listen = (config, app) =>
   )
 
 const start = (config, app) => () => {
+  /**
+   * Apply internationalisation as first middleware in queue to ensure
+   * translation function is available in error handlers
+   */
+  internationalisation(config, app)
+
   app.use(compression())
   app.use(bodyParser.urlencoded({ extended: false }))
 
   configureSecurity(app)
   setViewEngine(config, app)
-  internationalisation(config, app)
   registerRoutes(config, app)
   registerErrorHandlers(app)
   listen(config, app)
