@@ -1,5 +1,5 @@
 const { createLogger, format, transports } = require('winston')
-const config = require('../../../config')
+const config = require('../../config')
 const { formatLog } = require('./format')
 
 const { combine, timestamp } = format

@@ -1,5 +1,5 @@
 const { CHECK_URL } = require('../constants')
-const { logger } = require('../../../../server/logger')
+const { logger } = require('../../../../logger')
 
 const states = {
   IN_PROGRESS: 'IN_PROGRESS',
