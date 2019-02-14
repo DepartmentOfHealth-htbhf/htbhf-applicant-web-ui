@@ -87,7 +87,7 @@ Then(/^I am shown the check details page$/, async function () {
   await pages.check.waitForPageLoad()
 })
 
-Then(/^I am shown a valid check details page with all my details$/, async function () {
+Then(/^I am shown the check details page with correct page content$/, async function () {
   await pages.check.waitForPageLoad()
   await allPageContentIsCorrectOnCheckPage()
 })
