@@ -24,7 +24,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 14000000
+              "duration": 16000000
             }
           },
           {
@@ -33,11 +33,11 @@
             "line": 7,
             "name": "I am on the first page of the application",
             "match": {
-              "location": "src/test/common/steps/complete-flow.js:22"
+              "location": "src/test/common/steps/complete-flow.js:11"
             },
             "result": {
               "status": "passed",
-              "duration": 504000000
+              "duration": 516000000
             }
           },
           {
@@ -46,37 +46,50 @@
             "line": 8,
             "name": "I complete the application with valid details for a pregnant woman",
             "match": {
-              "location": "src/test/common/steps/complete-flow.js:32"
+              "location": "src/test/common/steps/complete-flow.js:21"
             },
             "result": {
               "status": "passed",
-              "duration": 1697000000
+              "duration": 1705000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
             "line": 9,
-            "name": "I am shown the check details page",
+            "name": "I am shown the check details page with correct page content",
             "match": {
-              "location": "src/test/common/steps/complete-flow.js:36"
+              "location": "src/test/common/steps/check-details.js:90"
             },
             "result": {
               "status": "passed",
-              "duration": 4000000
+              "duration": 1204000000
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
             "line": 10,
-            "name": "all page content is present on the check details page",
+            "name": "I submit my application",
             "match": {
-              "location": "src/test/common/steps/check-details.js:90"
+              "location": "src/test/common/steps/common-steps.js:100"
             },
             "result": {
               "status": "passed",
-              "duration": 1212000000
+              "duration": 249000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 11,
+            "name": "I am shown a successful confirmation page",
+            "match": {
+              "location": "src/test/common/steps/confirm-details.js:16"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 227000000
             }
           },
           {
