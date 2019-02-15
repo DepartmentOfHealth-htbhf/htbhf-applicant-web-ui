@@ -1,7 +1,7 @@
 'use strict'
 
 const SubmittablePage = require('./submittable-page')
-const OVERVIEW_PAGE_TITLE = 'GOV.UK - Check your answers before sending your application'
+const CHECK_PAGE_TITLE = 'GOV.UK - Check your answers before sending your application'
 const GOV_LIST_ROW_CLASSNAME = 'govuk-summary-list__row'
 const GOV_LIST_HEADER_CLASSNAME = 'govuk-summary-list__key'
 const GOV_LIST_VALUE_CLASSNAME = 'govuk-summary-list__value'
@@ -10,7 +10,7 @@ const GOV_LINK_CLASSNAME = 'govuk-link'
 const GOV_HIDDEN_CLASSNAME = 'govuk-visually-hidden'
 
 /**
- * Page object for the confirmation page before submit.
+ * Page object for the page where the customer can check their details before submitting.
  */
 class Check extends SubmittablePage {
   async open (appURL) {
@@ -19,7 +19,7 @@ class Check extends SubmittablePage {
   }
 
   async waitForPageLoad () {
-    return this.waitForPageWithTitle(OVERVIEW_PAGE_TITLE)
+    return this.waitForPageWithTitle(CHECK_PAGE_TITLE)
   }
 
   async getCheckDetailsTableContents () {
