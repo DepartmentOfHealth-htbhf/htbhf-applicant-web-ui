@@ -2,6 +2,9 @@ const { expect, assert } = require('chai')
 const { When } = require('cucumber')
 
 const pages = require('./pages')
+const { setupSuccessfulWiremockClaimMapping } = require('../wiremock')
+
+const { VALID_NINO, FIRST_NAME, LAST_NAME, DAY, MONTH, YEAR, ADDRESS_LINE_1, ADDRESS_LINE_2, TOWN, POSTCODE } = require('./constants')
 
 async function enterNameAndSubmit (firstName, lastName) {
   try {
@@ -74,16 +77,42 @@ async function assertErrorHeaderTextPresent (page, message = 'There is a problem
   }
 }
 
+async function completeTheApplicationAsAPregnantWoman () {
+  await enterNameAndSubmit(FIRST_NAME, LAST_NAME)
+  await enterNinoAndSubmit(VALID_NINO)
+  await enterDateOfBirth(DAY, MONTH, YEAR)
+  await selectYesOnPregnancyPage()
+  await enterCardAddress(ADDRESS_LINE_1, ADDRESS_LINE_2, TOWN, POSTCODE)
+}
+
+async function completeTheApplicationAsAWomanWhoIsNotPregnant () {
+  await enterNameAndSubmit(FIRST_NAME, LAST_NAME)
+  await enterNinoAndSubmit(VALID_NINO)
+  await enterDateOfBirth(DAY, MONTH, YEAR)
+  await selectNoOnPregnancyPage()
+  await enterCardAddress(ADDRESS_LINE_1, ADDRESS_LINE_2, TOWN, POSTCODE)
+}
+
 When(/^I click continue$/, async function () {
   await pages.genericPage.submitForm()
+})
+
+When(/^I submit my application$/, async function () {
+  await setupSuccessfulWiremockClaimMapping()
+  await pages.genericPage.submitForm()
+})
+
+When(/^I complete the application with valid details$/, async function () {
+  await completeTheApplicationAsAWomanWhoIsNotPregnant()
 })
 
 module.exports = {
   enterDateOfBirth,
   enterNameAndSubmit,
   enterNinoAndSubmit,
-  selectYesOnPregnancyPage,
   selectNoOnPregnancyPage,
   enterCardAddress,
-  assertErrorHeaderTextPresent
+  assertErrorHeaderTextPresent,
+  completeTheApplicationAsAPregnantWoman,
+  completeTheApplicationAsAWomanWhoIsNotPregnant
 }

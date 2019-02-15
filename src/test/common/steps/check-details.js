@@ -29,14 +29,6 @@ const {
 } = require('./common-steps')
 const { formatDateForDisplayFromDate } = require('../../../web/routes/application/common/formatters')
 
-When(/^I complete the application with valid details for a woman who is not pregnant$/, async function () {
-  await enterNameAndSubmit(FIRST_NAME, LAST_NAME)
-  await enterNinoAndSubmit(VALID_NINO)
-  await enterDateOfBirth(DAY, MONTH, YEAR)
-  await selectNoOnPregnancyPage()
-  await enterCardAddress(ADDRESS_LINE_1, ADDRESS_LINE_2, TOWN, POSTCODE)
-})
-
 When(/^I complete the application with valid details that contains malicious input$/, async function () {
   await enterNameAndSubmit('<script>window.alert(\'Boo\')</script>', LAST_NAME)
   await enterNinoAndSubmit(VALID_NINO)
@@ -88,6 +80,19 @@ Then(/^the check details page contains all data entered for an applicant with no
 })
 
 Then(/^all page content is present on the check details page$/, async function () {
+  await allPageContentIsCorrectOnCheckPage()
+})
+
+Then(/^I am shown the check details page$/, async function () {
+  await pages.check.waitForPageLoad()
+})
+
+Then(/^I am shown the check details page with correct page content$/, async function () {
+  await pages.check.waitForPageLoad()
+  await allPageContentIsCorrectOnCheckPage()
+})
+
+async function allPageContentIsCorrectOnCheckPage () {
   const h1Text = await pages.check.getH1Text()
   expect(h1Text.toString().trim()).to.have.lengthOf.at.least(1, 'expected check page H1 text to not be empty')
   const h2Text = await pages.check.getH2Text()
@@ -98,7 +103,7 @@ Then(/^all page content is present on the check details page$/, async function (
   expect(submitButtonText.toString().trim()).to.have.lengthOf.at.least(1, 'expected submit button text to not be empty')
   const tableContents = await pages.check.getCheckDetailsTableContents()
   assertHeaderAndChangeLinkShownForEachRow(tableContents)
-})
+}
 
 function getValueForField (tableContents, fieldName) {
   const matchingRows = tableContents.filter((value) => value.header === fieldName)

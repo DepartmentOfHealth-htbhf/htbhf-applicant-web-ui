@@ -1,7 +1,8 @@
 /* no-process-exit */
 'use strict'
 require('dotenv')
-const { getSIDCookieAndCSRFToken, postFormData, postJsonData, performDelete } = require('./request')
+const { getSIDCookieAndCSRFToken, postFormData } = require('../common/request')
+const { setupSuccessfulWiremockClaimMapping, deleteAllWiremockMappings } = require('../common/wiremock')
 const pa11yWithSettings = require('./pally')
 const handleTestResults = require('./results')
 const IGNORE_RULES = require('./ignore-rules')
@@ -15,17 +16,6 @@ const ARE_YOU_PREGNANT_URL = `${BASE_URL}/are-you-pregnant`
 const CARD_ADDRESS_URL = `${BASE_URL}/card-address`
 const CHECK_URL = `${BASE_URL}/check`
 const CONFIRM_URL = `${BASE_URL}/confirm`
-const WIREMOCK_MAPPING_URL = process.env.WIREMOCK_URL ? `${process.env.WIREMOCK_URL}/__admin/mappings` : 'http://localhost:8090/__admin/mappings'
-
-const SUCCESSFUL_CLAIMS_MAPPING = `{
-    "request": {
-      "method": "POST",
-      "url": "/v1/claims"
-    },
-    "response": {
-      "status": 201
-    }
-  }`
 
 const dateIn3Months = () => {
   const dueDate = new Date()
@@ -40,7 +30,7 @@ const dateIn3Months = () => {
  */
 const runTests = async () => {
   try {
-    postJsonData(WIREMOCK_MAPPING_URL, SUCCESSFUL_CLAIMS_MAPPING)
+    await setupSuccessfulWiremockClaimMapping()
     let results = []
     const { requestCookie, csrfToken } = await getSIDCookieAndCSRFToken(ENTER_NAME_URL)
     const pa11y = pa11yWithSettings(IGNORE_RULES, { Cookie: requestCookie })
@@ -89,7 +79,7 @@ const runTests = async () => {
     console.log(error)
     process.exit(1)
   } finally {
-    performDelete(WIREMOCK_MAPPING_URL)
+    await deleteAllWiremockMappings()
   }
 }
 

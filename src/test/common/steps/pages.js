@@ -5,6 +5,7 @@ const EnterDOB = require('../page/enter-dob')
 const AreYouPregnant = require('../page/are-you-pregnant')
 const CardAddress = require('../page/card-address')
 const Check = require('../page/check')
+const Confirm = require('../page/confirm')
 const SubmittablePage = require('../page/submittable-page')
 const { URL, DRIVER_MANAGER } = require('./test-startup-config')
 
@@ -22,6 +23,7 @@ class Pages {
     this.areYouPregnant = null
     this.cardAddress = null
     this.check = null
+    this.confirm = null
     this.genericPage = null
     this.url = URL
   }
@@ -38,6 +40,7 @@ class Pages {
     this.areYouPregnant = new AreYouPregnant(this.driver)
     this.cardAddress = new CardAddress(this.driver)
     this.check = new Check(this.driver)
+    this.confirm = new Confirm(this.driver)
     this.genericPage = new SubmittablePage(this.driver)
   }
 }
