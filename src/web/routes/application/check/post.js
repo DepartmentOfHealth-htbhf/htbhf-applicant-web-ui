@@ -3,6 +3,7 @@ const request = require('request-promise')
 
 const { toDateString } = require('../common/formatters')
 const { YES } = require('../common/constants')
+const { logger } = require('../../../logger')
 
 const CLAIMS_ENDPOINT = `/v1/claims`
 
@@ -47,6 +48,7 @@ const postCheck = (config) => async (req, res, next) => {
       }
     })
 
+    logger.info('Sent claim', { req })
     return res.redirect('confirm')
   } catch (error) {
     const err = new Error('Error posting the request')
