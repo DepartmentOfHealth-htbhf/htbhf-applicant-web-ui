@@ -45,7 +45,6 @@ const postCheck = (config) => async (req, res, next) => {
 
     return res.redirect('confirm')
   } catch (error) {
-    console.log(error.error)
     const err = new Error('Error posting the request')
     err.statusCode = httpStatus.INTERNAL_SERVER_ERROR
     err.error = error.error
