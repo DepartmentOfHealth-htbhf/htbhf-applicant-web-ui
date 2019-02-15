@@ -2,11 +2,11 @@ const { Then } = require('cucumber')
 const { expect } = require('chai')
 
 const pages = require('./pages')
-const { deleteAllWiremockMappings } = require('../wiremock')
+const { deleteWiremockMappings } = require('./common-steps')
 
 Then(/^all page content is present on the confirm details page$/, async function () {
   await checkAllPageContentIsPresentAndCorrect()
-  await deleteAllWiremockMappings()
+  await deleteWiremockMappings()
 })
 
 Then(/^I am shown the confirm details page$/, async function () {
@@ -16,7 +16,7 @@ Then(/^I am shown the confirm details page$/, async function () {
 Then(/^I am shown a successful confirmation page$/, async function () {
   await pages.confirm.waitForPageLoad()
   await checkAllPageContentIsPresentAndCorrect()
-  await deleteAllWiremockMappings()
+  await deleteWiremockMappings()
 })
 
 async function checkAllPageContentIsPresentAndCorrect () {

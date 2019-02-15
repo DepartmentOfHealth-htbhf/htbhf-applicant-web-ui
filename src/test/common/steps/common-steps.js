@@ -2,7 +2,9 @@ const { expect, assert } = require('chai')
 const { When } = require('cucumber')
 
 const pages = require('./pages')
-const { setupSuccessfulWiremockClaimMapping } = require('../wiremock')
+const { setupSuccessfulWiremockClaimMapping, deleteAllWiremockMappings } = require('../wiremock')
+const TESTS = process.env.TESTS
+const COMPATIBILITY_TESTS = 'compatibility'
 
 const { VALID_NINO, FIRST_NAME, LAST_NAME, DAY, MONTH, YEAR, ADDRESS_LINE_1, ADDRESS_LINE_2, TOWN, POSTCODE } = require('./constants')
 
@@ -93,12 +95,24 @@ async function completeTheApplicationAsAWomanWhoIsNotPregnant () {
   await enterCardAddress(ADDRESS_LINE_1, ADDRESS_LINE_2, TOWN, POSTCODE)
 }
 
+async function setupWiremockMappings () {
+  if (TESTS !== COMPATIBILITY_TESTS) {
+    await setupSuccessfulWiremockClaimMapping()
+  }
+}
+
+async function deleteWiremockMappings () {
+  if (TESTS !== COMPATIBILITY_TESTS) {
+    await deleteAllWiremockMappings()
+  }
+}
+
 When(/^I click continue$/, async function () {
   await pages.genericPage.submitForm()
 })
 
 When(/^I submit my application$/, async function () {
-  await setupSuccessfulWiremockClaimMapping()
+  await setupWiremockMappings()
   await pages.genericPage.submitForm()
 })
 
@@ -114,5 +128,7 @@ module.exports = {
   enterCardAddress,
   assertErrorHeaderTextPresent,
   completeTheApplicationAsAPregnantWoman,
-  completeTheApplicationAsAWomanWhoIsNotPregnant
+  completeTheApplicationAsAWomanWhoIsNotPregnant,
+  setupWiremockMappings,
+  deleteWiremockMappings
 }
