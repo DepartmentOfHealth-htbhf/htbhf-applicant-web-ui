@@ -3,7 +3,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const path = require('path')
 
-const { logger } = require('./logger')
+const { logger } = require('../logger')
 const { configureSecurity } = require('./configure-security')
 const { registerRoutes } = require('../routes')
 const { initialiseSession } = require('./session')

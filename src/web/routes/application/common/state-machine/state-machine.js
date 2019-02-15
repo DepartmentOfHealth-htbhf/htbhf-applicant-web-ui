@@ -1,4 +1,5 @@
 const { CHECK_URL } = require('../constants')
+const { logger } = require('../../../../logger')
 
 const states = {
   IN_PROGRESS: 'IN_PROGRESS',
@@ -22,6 +23,10 @@ const stateMachine = {
   },
 
   setState: (state, req) => {
+    logger(req).log({
+      level: 'info',
+      message: `State set to ${state}`
+    })
     req.session.state = state
   },
 

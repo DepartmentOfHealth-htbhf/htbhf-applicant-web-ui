@@ -1,7 +1,7 @@
 {
   "name": "htbhf-applicant-web-ui",
   "version_notice": "Patch versions are incremented by Travis (in tag_version.sh via .travis.yml) - never manually increment the patch version",
-  "version": "0.1.105",
+  "version": "0.1.106",
   "description": "",
   "main": "index.js",
   "engines": {
@@ -10,7 +10,7 @@
   "scripts": {
     "start": "node src/web",
     "start:dev": "npm run build && nodemon $NODE_DEBUG_OPTION src/web -e js,json,html,njk",
-    "test": "cross-env CLAIMANT_SERVICE_URL=http://localhost:8090 npm-run-all build test:lint test:unit:coverage -p -r start test:browser",
+    "test": "cross-env LOG_LEVEL=warn CLAIMANT_SERVICE_URL=http://localhost:8090 npm-run-all build test:lint test:unit:coverage -p -r start test:browser",
     "test:lint": "standard",
     "test:unit": "tape -r './src/test/unit/setup' 'src/@(web|config)/**/*.test.js'",
     "test:unit:coverage": "nyc npm run test:unit",
