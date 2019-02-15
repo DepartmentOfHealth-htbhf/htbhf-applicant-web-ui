@@ -6,13 +6,13 @@ const { combine, timestamp } = format
 
 const TIMESTAMP_FORMAT = 'HH:mm:ss.SSS'
 
-const logger = (req) => createLogger({
+const logger = createLogger({
   level: config.environment.LOG_LEVEL,
   format: combine(
     timestamp({
       format: TIMESTAMP_FORMAT
     }),
-    formatLog(req)
+    formatLog
   ),
   transports: [
     new transports.Console()
