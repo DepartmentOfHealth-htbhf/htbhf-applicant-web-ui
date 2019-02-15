@@ -26,6 +26,4 @@ async function checkAllPageContentIsPresentAndCorrect () {
   expect(panelTitle.toString().trim()).to.be.equal('Application complete', 'expected confirmation header to be correct')
   const panelBody = await pages.confirm.getPanelBodyText()
   expect(panelBody.toString().trim()).to.be.equal('You are entitled to\n£3.10 per week', 'expected confirmation body to be correct')
-  const warningText = await pages.confirm.getWarningText()
-  expect(warningText.toString().trim()).to.have.lengthOf.at.least(1, 'expected warning text to be non-empty')
 }
