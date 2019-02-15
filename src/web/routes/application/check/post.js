@@ -38,6 +38,10 @@ const postCheck = (config) => async (req, res, next) => {
     await request.post({
       uri: `${config.environment.CLAIMANT_SERVICE_URL}${CLAIMS_ENDPOINT}`,
       json: true,
+      headers: {
+        'X-Request-ID': req.headers['X-Request-ID'],
+        'X-Session-ID': req.sessionID
+      },
       body: {
         claimant: createRequestBody(req.session.claim)
       }
