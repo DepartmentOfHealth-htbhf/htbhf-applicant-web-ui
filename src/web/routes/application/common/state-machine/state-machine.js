@@ -23,7 +23,7 @@ const stateMachine = {
   },
 
   setState: (state, req) => {
-    logger(req).info(`State set to ${state}`)
+    logger.info(`State set to ${state}`, { req })
     req.session.state = state
   },
 

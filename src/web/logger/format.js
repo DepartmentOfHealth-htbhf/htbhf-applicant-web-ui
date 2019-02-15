@@ -1,5 +1,5 @@
 const { format } = require('winston')
-const { pathOr, partial } = require('ramda')
+const { pathOr } = require('ramda')
 const { printf } = format
 
 const SESSION_ID_PATH = ['sessionID']
@@ -9,10 +9,10 @@ const pathOrEmpty = pathOr('')
 const sessionIDPath = pathOrEmpty(SESSION_ID_PATH)
 const requestIdPath = pathOrEmpty(REQUEST_ID_PATH)
 
-const logFormatter = (req, { level, message, timestamp }) =>
+const logFormatter = ({ level, message, timestamp, req }) =>
   `${timestamp} ${level.toUpperCase()} [${sessionIDPath(req)}][${requestIdPath(req)}] ${message}`
 
-const formatLog = (req) => printf(partial(logFormatter, [req]))
+const formatLog = printf(logFormatter)
 
 module.exports = {
   logFormatter,

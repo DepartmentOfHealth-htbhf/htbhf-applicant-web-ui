@@ -2,7 +2,7 @@ const httpStatus = require('http-status-codes')
 const { logger } = require('../logger')
 
 const logErrors = (err, req, res, next) => {
-  logger(req).error(err.stack)
+  logger.error(err.stack, { req })
   next(err)
 }
 

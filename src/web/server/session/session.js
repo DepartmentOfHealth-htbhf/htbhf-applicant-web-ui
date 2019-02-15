@@ -6,11 +6,11 @@ const { path } = require('ramda')
 const { logger } = require('../../logger')
 
 const onClientError = (error) => {
-  logger().error(`Error with redis session: ${error}`)
+  logger.error(`Error with redis session: ${error}`)
 }
 
 const onClientConnection = (callback) => () => {
-  logger().info('Redis client connected')
+  logger.info('Redis client connected')
   callback()
 }
 
@@ -43,7 +43,7 @@ const getSessionConfig = (store, config) => {
     sessionConfig.cookie.secure = false
   }
 
-  logger().info(`Using secure cookie: ${sessionConfig.cookie.secure}`)
+  logger.info(`Using secure cookie: ${sessionConfig.cookie.secure}`)
 
   return sessionConfig
 }
