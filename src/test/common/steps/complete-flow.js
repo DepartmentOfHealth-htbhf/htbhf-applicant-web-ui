@@ -4,7 +4,7 @@ const {
   completeTheApplicationAsAPregnantWoman,
   completeTheApplicationAsAWomanWhoIsNotPregnant
 } = require('./common-steps')
-const { setupSuccessfulWiremockClaimMapping } = require('../wiremock')
+const { setupWiremockMappings } = require('./common-steps')
 
 const pages = require('./pages')
 
@@ -30,6 +30,6 @@ Given(/^I submit an application with valid details$/, async function () {
   await pages.enterName.open(pages.url)
   await completeTheApplicationAsAWomanWhoIsNotPregnant()
   await pages.check.waitForPageLoad()
-  await setupSuccessfulWiremockClaimMapping()
+  await setupWiremockMappings()
   await pages.genericPage.submitForm()
 })
