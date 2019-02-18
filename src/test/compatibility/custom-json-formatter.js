@@ -12,10 +12,7 @@ function getBrowserVersion () {
   if (notIsNilOrEmpty(browserVersion)) {
     return browserVersion
   }
-  if (isMobileDevice()) {
-    return ''
-  }
-  return 'latest'
+  return isMobileDevice() ? '' : 'latest'
 }
 
 class CustomJsonFormatter extends JsonFormatter {
@@ -72,3 +69,8 @@ class CustomJsonFormatter extends JsonFormatter {
 }
 
 module.exports = CustomJsonFormatter
+
+module.exports = {
+  CustomJsonFormatter,
+  getBrowserVersion
+}
