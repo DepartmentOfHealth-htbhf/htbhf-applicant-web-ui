@@ -28,7 +28,7 @@ When(/^I complete the application with valid details for a woman who is not preg
 
 Given(/^I submit an application with valid details$/, async function () {
   await pages.enterName.open(pages.url)
-  await completeTheApplicationAsAWomanWhoIsNotPregnant()
+  await completeTheApplicationAsAPregnantWoman()
   await pages.check.waitForPageLoad()
   await setupWiremockMappings()
   await pages.genericPage.submitForm()
