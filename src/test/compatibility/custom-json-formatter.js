@@ -1,6 +1,22 @@
 const { JsonFormatter } = require('cucumber')
+const { notIsNilOrEmpty } = require('../../web/routes/application/common/predicates')
 
 require('dotenv').config()
+
+function isMobileDevice () {
+  return !!process.env.BROWSER_STACK_DEVICE
+}
+
+function getBrowserVersion () {
+  const browserVersion = process.env.BROWSER_STACK_BROWSER_VERSION
+  if (notIsNilOrEmpty(browserVersion)) {
+    return browserVersion
+  }
+  if (isMobileDevice()) {
+    return ''
+  }
+  return 'latest'
+}
 
 class CustomJsonFormatter extends JsonFormatter {
   getFeatureData (feature, uri) {
@@ -8,7 +24,7 @@ class CustomJsonFormatter extends JsonFormatter {
     const metadata = {
       'browser': {
         'name': this.fixBrowserName(),
-        'version': process.env.BROWSER_STACK_BROWSER_VERSION
+        'version': getBrowserVersion()
       },
       'device': process.env.BROWSER_STACK_DEVICE || process.env.BROWSER_STACK_OS,
       'platform': {
@@ -25,7 +41,11 @@ class CustomJsonFormatter extends JsonFormatter {
     pickle,
     scenarioLineToDescriptionMap
   }) {
-    const scenarioData = super.getScenarioData({ featureId: featureId, pickle: pickle, scenarioLineToDescriptionMap: scenarioLineToDescriptionMap })
+    const scenarioData = super.getScenarioData({
+      featureId: featureId,
+      pickle: pickle,
+      scenarioLineToDescriptionMap: scenarioLineToDescriptionMap
+    })
     scenarioData.sessionId = pickle.sessionID
     scenarioData.name = `${scenarioData.name} (BrowserStack session id: ${pickle.sessionID})`
     return scenarioData
@@ -50,4 +70,5 @@ class CustomJsonFormatter extends JsonFormatter {
     return fixed
   }
 }
+
 module.exports = CustomJsonFormatter
