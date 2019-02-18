@@ -28,7 +28,8 @@ class BrowserstackDriver extends DriverManager {
         'realMobile': 'true',
         'device': process.env.BROWSER_STACK_DEVICE,
         'browserstack.user': BROWSER_STACK_USER,
-        'browserstack.key': BROWSER_STACK_KEY
+        'browserstack.key': BROWSER_STACK_KEY,
+        'browserstack.use_w3c': 'true'
       })
       .usingServer(BROWSER_STACK_URL)
       .build()
