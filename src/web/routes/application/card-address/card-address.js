@@ -2,7 +2,7 @@ const { join, filter, compose } = require('ramda')
 const { validate } = require('./validate')
 const { sanitize } = require('./sanitize')
 const { CHECK_URL } = require('../common/constants')
-const { notIsNilOrEmpty } = require('../common/predicates')
+const { notIsNilOrEmpty } = require('../../../../common/predicates')
 
 const pageContent = ({ translate }) => ({
   title: translate('cardAddress.title'),

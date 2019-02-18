@@ -1,5 +1,5 @@
 const { JsonFormatter } = require('cucumber')
-const { notIsNilOrEmpty } = require('../../web/routes/application/common/predicates')
+const { notIsNilOrEmpty } = require('../../common/predicates')
 
 require('dotenv').config()
 
