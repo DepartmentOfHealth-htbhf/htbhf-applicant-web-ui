@@ -54,6 +54,7 @@ const postCheck = (config) => async (req, res, next) => {
     const err = new Error('Error posting the request')
     err.statusCode = httpStatus.INTERNAL_SERVER_ERROR
     err.error = error.error
+    err.stack += '\nCaused by: ' + error.stack
     return next(err)
   }
 }
