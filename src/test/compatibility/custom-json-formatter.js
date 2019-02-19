@@ -1,19 +1,5 @@
 const { JsonFormatter } = require('cucumber')
-const { notIsNilOrEmpty } = require('../../common/predicates')
-
-require('dotenv').config()
-
-function isMobileDevice () {
-  return !!process.env.BROWSER_STACK_DEVICE
-}
-
-function getBrowserVersion () {
-  const browserVersion = process.env.BROWSER_STACK_BROWSER_VERSION
-  if (notIsNilOrEmpty(browserVersion)) {
-    return browserVersion
-  }
-  return isMobileDevice() ? '' : 'latest'
-}
+const { getBrowserVersion } = require('./config/environment')
 
 class CustomJsonFormatter extends JsonFormatter {
   getFeatureData (feature, uri) {
@@ -69,8 +55,3 @@ class CustomJsonFormatter extends JsonFormatter {
 }
 
 module.exports = CustomJsonFormatter
-
-module.exports = {
-  CustomJsonFormatter,
-  getBrowserVersion
-}

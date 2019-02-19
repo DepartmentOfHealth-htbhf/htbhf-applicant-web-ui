@@ -1,6 +1,6 @@
 require('dotenv').config()
 
-const { getBrowserVersion } = require('./custom-json-formatter')
+const { getBrowserVersion } = require('./environment')
 
 const test = require('tape')
 const after = require('tape')
