@@ -19,16 +19,8 @@ class CustomJsonFormatter extends JsonFormatter {
     return featureData
   }
 
-  getScenarioData ({
-    featureId,
-    pickle,
-    scenarioLineToDescriptionMap
-  }) {
-    const scenarioData = super.getScenarioData({
-      featureId: featureId,
-      pickle: pickle,
-      scenarioLineToDescriptionMap: scenarioLineToDescriptionMap
-    })
+  getScenarioData ({ featureId, pickle, scenarioLineToDescriptionMap }) {
+    const scenarioData = super.getScenarioData({ featureId, pickle, scenarioLineToDescriptionMap })
     scenarioData.sessionId = pickle.sessionID
     scenarioData.name = `${scenarioData.name} (BrowserStack session id: ${pickle.sessionID})`
     return scenarioData

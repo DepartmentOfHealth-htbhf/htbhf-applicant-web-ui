@@ -46,7 +46,7 @@ test('getBrowserVersion neither set', (t) => {
   t.end()
 })
 
-after('teardown', function (t) {
+after('teardown', (t) => {
   resetEnvironment()
   t.end()
 })
