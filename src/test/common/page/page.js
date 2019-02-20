@@ -102,7 +102,7 @@ class Page {
 
   async waitForPageLoad (pageHeading, pageTitle) {
     const h1Text = await this.getH1Text()
-    expect(h1Text).to.be.equal(pageHeading)
+    expect(h1Text.trim()).to.be.equal(pageHeading)
     return this.waitForPageWithTitle(pageTitle)
   }
 
