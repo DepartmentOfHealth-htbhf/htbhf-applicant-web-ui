@@ -1,3 +1,4 @@
+const httpStatus = require('http-status-codes')
 const { validationResult } = require('express-validator/check')
 const { wrapError } = require('../common/formatters')
 
@@ -19,7 +20,8 @@ const handlePost = (req, res, next) => {
   } catch (error) {
     next(wrapError({
       cause: error,
-      message: `Error posting ${req.path}`
+      message: `Error posting ${req.path}`,
+      statusCode: httpStatus.INTERNAL_SERVER_ERROR
     }))
   }
 }
