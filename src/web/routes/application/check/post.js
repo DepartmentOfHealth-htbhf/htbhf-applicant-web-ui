@@ -1,3 +1,4 @@
+const httpStatus = require('http-status-codes')
 const request = require('request-promise')
 
 const { toDateString, wrapError } = require('../common/formatters')
@@ -52,7 +53,8 @@ const postCheck = (config) => async (req, res, next) => {
   } catch (error) {
     next(wrapError({
       cause: error,
-      message: 'Error posting to claimant service'
+      message: 'Error posting to claimant service',
+      statusCode: httpStatus.INTERNAL_SERVER_ERROR
     }))
   }
 }
