@@ -1,5 +1,5 @@
 const test = require('tape')
-const { toDateString, dateAsString, formatDateForDisplay, formatDateForDisplayFromDate } = require('./formatters')
+const { toDateString, dateAsString, formatDateForDisplay, formatDateForDisplayFromDate } = require('./dates')
 
 test('toDateString() should concatenate digits with hyphens', (t) => {
   const result = toDateString('31', '13', '1980')
