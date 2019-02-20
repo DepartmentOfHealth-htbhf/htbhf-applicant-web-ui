@@ -1,7 +1,6 @@
-const httpStatus = require('http-status-codes')
 const request = require('request-promise')
 
-const { toDateString } = require('../common/formatters')
+const { toDateString, mergeErrorProps } = require('../common/formatters')
 const { YES } = require('../common/constants')
 const { logger } = require('../../../logger')
 
@@ -51,11 +50,10 @@ const postCheck = (config) => async (req, res, next) => {
     logger.info('Sent claim', { req })
     return res.redirect('confirm')
   } catch (error) {
-    const err = new Error('Error posting the request')
-    err.statusCode = httpStatus.INTERNAL_SERVER_ERROR
-    err.error = error.error
-    err.stack += '\nCaused by: ' + error.stack
-    return next(err)
+    next(mergeErrorProps({
+      cause: error,
+      message: 'Error posting to claimant service'
+    }))
   }
 }
 
