@@ -11,7 +11,7 @@ const options = {
   brandTitle: 'Acceptance Tests',
   launchReport: false,
   metadata: {
-    'Report Run Time': moment(new Date()).format(DATE_FORMAT)
+    'Tests completed at': moment(new Date()).format(DATE_FORMAT)
   }
 }
 

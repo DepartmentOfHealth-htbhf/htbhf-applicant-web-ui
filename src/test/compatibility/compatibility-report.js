@@ -1,5 +1,6 @@
 const moment = require('moment')
 const reporter = require('multiple-cucumber-html-reporter')
+const { version } = require('../../../package.json')
 
 const DATE_FORMAT = 'dddd Do MMMM YYYY HH:mm'
 
@@ -14,7 +15,8 @@ const options = {
   customData: {
     'title': 'Report info',
     'data': [
-      { 'label': 'Report Run Time', 'value': moment(new Date()).format(DATE_FORMAT) }
+      { 'label': 'Tests completed at', 'value': moment(new Date()).format(DATE_FORMAT) },
+      { 'label': 'htbhf-applicant-web-ui version', 'value': version }
     ]
   }
 }
