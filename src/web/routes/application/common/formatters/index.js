@@ -1,3 +1,4 @@
 module.exports = {
-  ...require('./dates')
+  ...require('./dates'),
+  ...require('./errors')
 }
