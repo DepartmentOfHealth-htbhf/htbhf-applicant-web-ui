@@ -2,9 +2,9 @@ const mergeErrorMessage = (message, cause) => cause ? `${message}. ${cause.toStr
 
 const mergeErrorStack = (error, cause) => cause ? `${error.stack}\nCaused by: ${cause.stack}` : error.stack
 
-const mergeErrorProps = ({ cause, message } = {}) => {
+const wrapError = ({ cause, message }) => {
   const error = new Error()
-  Error.captureStackTrace(error, mergeErrorProps)
+  Error.captureStackTrace(error, wrapError)
 
   return Object.assign(new Error(), {
     message: mergeErrorMessage(message, cause),
@@ -15,5 +15,5 @@ const mergeErrorProps = ({ cause, message } = {}) => {
 module.exports = {
   mergeErrorMessage,
   mergeErrorStack,
-  mergeErrorProps
+  wrapError
 }

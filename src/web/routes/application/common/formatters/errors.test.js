@@ -1,5 +1,5 @@
 const test = require('tape')
-const { mergeErrorMessage, mergeErrorStack, mergeErrorProps } = require('./errors')
+const { mergeErrorMessage, mergeErrorStack, wrapError } = require('./errors')
 
 const error = {
   stack: 'mock error stack'
@@ -44,8 +44,8 @@ test('mergeErrorStack() formats the merged stack correctly when no cause is spec
   t.end()
 })
 
-test('mergeErrorProps() returns an error with the correct props', (t) => {
-  const result = mergeErrorProps({ cause, message })
+test('wrapError() returns an error with the correct props', (t) => {
+  const result = wrapError({ cause, message })
   const expectedMessage = 'Massive error!!!. mocking Error.prototype.toString()'
   const expectedCauseString = '\nCaused by: mock cause error stack'
 
@@ -55,8 +55,8 @@ test('mergeErrorProps() returns an error with the correct props', (t) => {
   t.end()
 })
 
-test('mergeErrorProps() returns an error with the correct props when cause is not specified', (t) => {
-  const result = mergeErrorProps({ message })
+test('wrapError() returns an error with the correct props when cause is not specified', (t) => {
+  const result = wrapError({ message })
   const expectedMessage = 'Massive error!!!'
   const expectedCauseString = '\nCaused by: mock cause error stack'
 
