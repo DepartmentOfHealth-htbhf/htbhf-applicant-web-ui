@@ -1,5 +1,5 @@
 const { validationResult } = require('express-validator/check')
-const { mergeErrorProps } = require('../common/formatters')
+const { wrapError } = require('../common/formatters')
 
 const handlePost = (req, res, next) => {
   try {
@@ -17,7 +17,7 @@ const handlePost = (req, res, next) => {
     }
     return next()
   } catch (error) {
-    next(mergeErrorProps({
+    next(wrapError({
       cause: error,
       message: `Error posting ${req.path}`
     }))
