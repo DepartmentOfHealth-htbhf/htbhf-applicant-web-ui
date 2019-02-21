@@ -1,5 +1,5 @@
 {% extends "templates/page.njk" %}
 
 {% block pageContent %}
-<h1 class="govuk-heading-xl">{{ heading }}</h1>
+{% include "locales/" + language + "/cookies.html" %}
 {% endblock %}
