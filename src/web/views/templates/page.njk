@@ -3,9 +3,11 @@
 {% from "button/macro.njk" import govukButton %}
 {% from "phase-banner/macro.njk" import govukPhaseBanner %}
 {% from "header/macro.njk" import govukHeader %}
+{% from "footer/macro.njk" import govukFooter %}
 
 {% block pageTitle %}GOV.UK - {{ title }}{% endblock %}
 
+{# Setup page for translation #}
 {% block head %}
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -57,6 +59,19 @@
       {% block pageContent %}{% endblock %}
     </div>
   </div>
+{% endblock %}
+
+{% block footer %}
+  {{ govukFooter({
+    meta: {
+      items: [
+        {
+          href: "/cookies",
+          text: "Cookies"
+        }
+      ]
+    }
+  }) }}
 {% endblock %}
 
 {% block bodyEnd %}
