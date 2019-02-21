@@ -2,6 +2,8 @@ const i18next = require('i18next')
 const middleware = require('i18next-express-middleware')
 const Backend = require('i18next-node-fs-backend')
 const path = require('path')
+const R = require('ramda')
+
 const moment = require('moment')
 const { COOKIE_EXPIRES_MILLISECONDS } = require('./session/cookie-settings')
 
@@ -10,9 +12,15 @@ const detection = (config) => ({
   lookupQuerystring: 'lang',
   lookupCookie: 'lang',
   cookieSecure: !config.environment.USE_UNSECURE_COOKIE,
-  caches: ['cookie'],
-  cookieExpirationDate: moment().add(COOKIE_EXPIRES_MILLISECONDS, 'milliseconds').toDate()
+  caches: ['cookie']
 })
+
+const refreshCookieExpirationDate = (req, res, next) => {
+  if (R.path(['i18n', 'options', 'detection'], req)) {
+    req.i18n.options.detection.cookieExpirationDate = moment().add(COOKIE_EXPIRES_MILLISECONDS, 'milliseconds').toDate()
+  }
+  next()
+}
 
 const internationalisation = (config, app) => {
   i18next
@@ -29,6 +37,7 @@ const internationalisation = (config, app) => {
     })
 
   app.use(middleware.handle(i18next))
+  app.use(refreshCookieExpirationDate)
 }
 
 module.exports = {

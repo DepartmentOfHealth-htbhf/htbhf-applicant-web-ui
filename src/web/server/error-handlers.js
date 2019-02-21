@@ -1,14 +1,16 @@
 const httpStatus = require('http-status-codes')
 const { logger } = require('../logger')
 
+const toErrorLogMessage = (error) => `${error.toString()}\n${error.stack}`
+
 const logErrors = (err, req, res, next) => {
-  logger.error(err.stack, { req })
+  logger.error(toErrorLogMessage(err), { req })
   next(err)
 }
 
-// eslint-disable-next-line handle-callback-err
 const errorHandler = (err, req, res, next) => {
-  res.status(httpStatus.INTERNAL_SERVER_ERROR)
+  const statusCode = err.statusCode || httpStatus.INTERNAL_SERVER_ERROR
+  res.status(statusCode)
 
   res.render('error', {
     title: req.t('errors:problemWithTheServiceTitle'),
