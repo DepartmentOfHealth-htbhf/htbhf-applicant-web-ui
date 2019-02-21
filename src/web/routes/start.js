@@ -1,6 +1,7 @@
 const pageContent = {
   title: 'Overview',
-  heading: 'Overview'
+  heading: 'Overview',
+  cookieLinkName: 'Cookies'
 }
 
 const getStartPage = (req, res) => {
