@@ -63,7 +63,7 @@ test('wrapError() returns an error with the correct props when cause is not spec
 
   t.equal(result instanceof Error, true, 'should be an instance of Error')
   t.equal(result.message, expectedMessage, 'should have a correctly formatted message property')
-  t.equal(result.stack.includes(expectedCauseString), false, 'should have a correctly formatted stack property')
+  t.equal(result.stack.includes(expectedCauseString), false, 'should not include reference to cause in stack trace')
   t.equal(result.statusCode, 500, 'should add the statusCode to the error')
   t.end()
 })
