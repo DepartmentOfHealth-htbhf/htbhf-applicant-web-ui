@@ -4,6 +4,7 @@ const redis = require('redis')
 const httpStatus = require('http-status-codes')
 const { path } = require('ramda')
 const { logger } = require('../../logger')
+const { COOKIE_EXPIRES_MILLISECONDS } = require('./cookie-settings')
 
 const onClientError = (error) => {
   logger.error(`Error with redis session: ${error}`)
@@ -35,7 +36,8 @@ const getSessionConfig = (store, config) => {
     resave: false,
     name: config.server.SESSION_ID_NAME,
     cookie: {
-      secure: true
+      secure: true,
+      maxAge: COOKIE_EXPIRES_MILLISECONDS
     }
   }
 
