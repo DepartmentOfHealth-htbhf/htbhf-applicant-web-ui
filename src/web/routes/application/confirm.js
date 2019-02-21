@@ -9,7 +9,10 @@ const pageContent = ({ language, translate }) => ({
 const getConfirmPage = (req, res) => {
   req.session.destroy()
   res.clearCookie('lang')
-  res.render('confirm', pageContent({ language: getLanguageBase(req.language), translate: req.t }))
+  res.render('confirm', {
+    ...pageContent({ language: getLanguageBase(req.language), translate: req.t }),
+    cookieLinkName: req.t('cookieLinkName')
+  })
 }
 
 const registerConfirmRoute = (app) => {
