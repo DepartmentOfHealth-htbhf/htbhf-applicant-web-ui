@@ -44,7 +44,8 @@ test('getSessionConfig', (t) => {
       SESSION_ID_NAME: 'session.sid'
     },
     environment: {
-      USE_UNSECURE_COOKIE: true
+      USE_UNSECURE_COOKIE: true,
+      maxAge: 30 * 60 * 1000
     }
   }
 
@@ -62,14 +63,16 @@ test('getSessionConfig', (t) => {
     resave: false,
     name: 'session.sid',
     cookie: {
-      secure: false
+      secure: false,
+      maxAge: 30 * 60 * 1000
     }
   }
 
   const expectedProduction = {
     ...expectedLocal,
     cookie: {
-      secure: true
+      secure: true,
+      maxAge: 30 * 60 * 1000
     }
   }
 
