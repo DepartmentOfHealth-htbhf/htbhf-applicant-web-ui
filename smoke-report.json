@@ -37,7 +37,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1752000000
+              "duration": 1706000000
             }
           },
           {
@@ -50,7 +50,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 454000000
+              "duration": 442000000
             }
           },
           {
@@ -59,11 +59,11 @@
             "line": 9,
             "name": "the enter name page is shown",
             "match": {
-              "location": "src/test/common/steps/overview-steps.js:17"
+              "location": "src/test/common/steps/overview-steps.js:21"
             },
             "result": {
               "status": "passed",
-              "duration": 35000000
+              "duration": 38000000
             }
           },
           {
@@ -73,8 +73,7 @@
               "location": "src/test/common/steps/hooks.js:14"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
