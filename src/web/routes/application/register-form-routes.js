@@ -24,7 +24,7 @@ const createRoute = (csrfProtection, steps, router) => (step) =>
     .get(
       csrfProtection,
       getSessionDetails,
-      renderView(step.template, step.pageContent, step.next)
+      renderView(step.template, step.pageContent, step.next, step.previous)
     )
     .post(
       csrfProtection,
@@ -34,7 +34,7 @@ const createRoute = (csrfProtection, steps, router) => (step) =>
       handleOptionalMiddleware(step.validate),
       getSessionDetails,
       handlePost,
-      renderView(step.template, step.pageContent, step.next)
+      renderView(step.template, step.pageContent, step.next, step.previous)
     )
 
 const registerFormRoutes = (csrfProtection, steps, app) => {

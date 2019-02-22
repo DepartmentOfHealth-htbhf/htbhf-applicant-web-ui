@@ -8,7 +8,8 @@ const pageContent = ({ translate }) => ({
   sendApplicationHeader: translate('check.sendApplicationHeader'),
   sendApplicationText: translate('check.sendApplicationText'),
   buttonText: translate('buttons:acceptAndSend'),
-  changeText: translate('check.change')
+  changeText: translate('check.change'),
+  previous: '/are-you-pregnant'
 })
 
 const combinePathWithRow = (path) => (row) => ({

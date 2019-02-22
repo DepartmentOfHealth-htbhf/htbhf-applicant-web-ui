@@ -31,6 +31,7 @@ const contentSummary = (req) => ({
 
 const cardAddress = {
   path: '/card-address',
+  previous: '/are-you-pregnant',
   next: CHECK_URL,
   template: 'card-address',
   pageContent,
