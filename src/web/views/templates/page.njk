@@ -4,6 +4,7 @@
 {% from "phase-banner/macro.njk" import govukPhaseBanner %}
 {% from "header/macro.njk" import govukHeader %}
 {% from "footer/macro.njk" import govukFooter %}
+{% from "back-link/macro.njk" import govukBackLink %}
 
 {% block pageTitle %}GOV.UK - {{ title }}{% endblock %}
 
@@ -51,6 +52,10 @@
       },
       html: 'This is a new service.'
     }) }}
+    {{ govukBackLink({
+      text: "Back",
+      href: "/"
+    }) }}
 {% endblock %}
 
 {% block content %}
@@ -67,7 +72,7 @@
       items: [
         {
           href: "/cookies",
-          text: "Cookies"
+          text: cookieLinkName
         }
       ]
     }

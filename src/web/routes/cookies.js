@@ -1,13 +1,12 @@
 const { getLanguageBase } = require('./application/common/language')
 
-const pageContent = ({ language }) => ({
-  // TODO setup cookies page to handle translations HTBHF-586
-  heading: 'Cookies',
+const pageContent = ({ language, translate }) => ({
+  title: translate('cookies.title'),
   language: language
 })
 
 const getCookiesPage = (req, res) => {
-  res.render('cookies', pageContent({ language: getLanguageBase(req.language) }))
+  res.render('cookies', pageContent({ language: getLanguageBase(req.language), translate: req.t }))
 }
 
 const registerCookiesRoute = (app) => {
