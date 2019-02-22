@@ -37,6 +37,7 @@ test('ensureSession should not throw an error if session does not exist', (t) =>
 
 test('getSessionConfig', (t) => {
   const store = 'store'
+  const cookieMaxAge = 30 * 60 * 1000
 
   const configDevelopment = {
     server: {
@@ -44,7 +45,8 @@ test('getSessionConfig', (t) => {
       SESSION_ID_NAME: 'session.sid'
     },
     environment: {
-      USE_UNSECURE_COOKIE: true
+      USE_UNSECURE_COOKIE: true,
+      maxAge: cookieMaxAge
     }
   }
 
@@ -62,14 +64,16 @@ test('getSessionConfig', (t) => {
     resave: false,
     name: 'session.sid',
     cookie: {
-      secure: false
+      secure: false,
+      maxAge: cookieMaxAge
     }
   }
 
   const expectedProduction = {
     ...expectedLocal,
     cookie: {
-      secure: true
+      secure: true,
+      maxAge: cookieMaxAge
     }
   }
 
