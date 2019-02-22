@@ -5,7 +5,8 @@ const {
   getSessionDetails,
   handlePost,
   renderView,
-  sanitize
+  sanitize,
+  configureGet
 } = require('./middleware')
 
 const middlewareNoop = (req, res, next) => next()
@@ -23,6 +24,7 @@ const createRoute = (csrfProtection, steps, router) => (step) =>
     .route(step.path)
     .get(
       csrfProtection,
+      configureGet(steps, step),
       getSessionDetails,
       renderView(step.template, step.pageContent, step.next)
     )
