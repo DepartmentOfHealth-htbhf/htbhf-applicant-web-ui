@@ -18,13 +18,28 @@ const handleOptionalMiddleware = (operation, fallback = middlewareNoop) => {
   return operation
 }
 
-const createRoute = (csrfProtection, steps, router) => (step) =>
+const getPreviousPage = (steps, step) => {
+  const index = steps.indexOf(step)
+
+  if (index === -1) {
+    throw new Error(`Unable to find ${step} in the list of steps`)
+  }
+
+  // first page doesn't have a back link
+  if (index > 0) {
+    const previousStep = steps[index - 1]
+    return previousStep.path
+  }
+}
+
+const createRoute = (csrfProtection, steps, router) => (step) => {
+  const previous = getPreviousPage(steps, step)
   router
     .route(step.path)
     .get(
       csrfProtection,
       getSessionDetails,
-      renderView(step.template, step.pageContent, step.next)
+      renderView(step.template, step.pageContent, step.next, previous)
     )
     .post(
       csrfProtection,
@@ -34,8 +49,9 @@ const createRoute = (csrfProtection, steps, router) => (step) =>
       handleOptionalMiddleware(step.validate),
       getSessionDetails,
       handlePost,
-      renderView(step.template, step.pageContent, step.next)
+      renderView(step.template, step.pageContent, step.next, previous)
     )
+}
 
 const registerFormRoutes = (csrfProtection, steps, app) => {
   const wizard = express.Router()
@@ -45,5 +61,6 @@ const registerFormRoutes = (csrfProtection, steps, app) => {
 
 module.exports = {
   registerFormRoutes,
-  handleOptionalMiddleware
+  handleOptionalMiddleware,
+  getPreviousPage
 }
