@@ -4,6 +4,7 @@
 const webdriver = require('selenium-webdriver')
 const { expect } = require('chai')
 
+const COOKIES_LINK_CSS = 'a[href="/cookies"]'
 const ERROR_HEADER_SELECTOR = 'h2#error-summary-title'
 const DEFAULT_WAIT_MILLIS = 5000
 const CSS_TYPE = 'CSS'
@@ -126,6 +127,11 @@ class Page {
   async getLangAttribute () {
     const html = await this.findByClassName('govuk-template')
     return html.getAttribute('lang')
+  }
+
+  async clickCookieLink () {
+    const cookieLink = await this.findByCSS(COOKIES_LINK_CSS)
+    await cookieLink.click()
   }
 }
 
