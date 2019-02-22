@@ -11,7 +11,7 @@ const getConfirmPage = (req, res) => {
   res.clearCookie('lang')
   res.render('confirm', {
     ...pageContent({ language: getLanguageBase(req.language), translate: req.t }),
-    cookieLinkName: req.t('cookieLinkName')
+    cookieLinkName: req.t('cookies.linkName')
   })
 }
 
