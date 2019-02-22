@@ -7,3 +7,9 @@ Feature: Temporary overview page
     Given I navigate to the HTBHF overview page
     When I select to start the process
     Then the enter name page is shown
+
+  Scenario: The cookie page is accessible
+    Given I navigate to the HTBHF overview page
+    When I click the Cookies link
+    Then the cookies page is shown
+    And all page content is present on the cookies page
