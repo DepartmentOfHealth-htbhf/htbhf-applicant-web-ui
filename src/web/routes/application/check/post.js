@@ -4,6 +4,7 @@ const request = require('request-promise')
 const { toDateString, wrapError } = require('../common/formatters')
 const { YES } = require('../common/constants')
 const { logger } = require('../../../logger')
+const { REQUEST_ID_HEADER } = require('../../../server/headers')
 
 const CLAIMS_ENDPOINT = `/v1/claims`
 
@@ -40,7 +41,7 @@ const postCheck = (config) => async (req, res, next) => {
       uri: `${config.environment.CLAIMANT_SERVICE_URL}${CLAIMS_ENDPOINT}`,
       json: true,
       headers: {
-        'X-Request-ID': req.headers['X-Request-ID'],
+        'X-Request-ID': req.headers[REQUEST_ID_HEADER],
         'X-Session-ID': req.sessionID
       },
       body: {

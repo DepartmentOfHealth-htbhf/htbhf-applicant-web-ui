@@ -17,7 +17,7 @@ test('logFormatter() formats log correctly if IDs are not available', (t) => {
 test('logFormatter() formats log correctly if IDs are available', (t) => {
   const req = {
     headers: {
-      'X-Request-ID': '1234'
+      'x-request-id': '1234'
     },
     sessionID: '5678'
   }

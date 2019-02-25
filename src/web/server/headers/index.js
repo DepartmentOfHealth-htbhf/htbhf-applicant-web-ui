@@ -1,6 +1,7 @@
 const uuid = require('uuidv4')
-const { requestID } = require('./request-id')
+const { REQUEST_ID_HEADER, requestID } = require('./request-id')
 
 module.exports = {
+  REQUEST_ID_HEADER: REQUEST_ID_HEADER,
   requestID: requestID(uuid)
 }
