@@ -38,3 +38,15 @@ Feature: Application process navigation is controlled
       | enter date of birth      |
       | are you pregnant         |
       | card address             |
+
+  Scenario Outline: Navigation to previous steps in an unsubmitted application flow is allowed
+    Given I have entered my details up to the check details page
+    When I navigate to the <page> page
+    Then I am shown the <page> page
+    Examples:
+      | page                     |
+      | enter name               |
+      | enter national insurance |
+      | enter date of birth      |
+      | are you pregnant         |
+      | card address             |

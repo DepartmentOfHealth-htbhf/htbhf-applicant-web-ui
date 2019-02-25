@@ -1,7 +1,7 @@
 const { Given, When } = require('cucumber')
 
 const pages = require('./pages')
-const { openOverviewPage, enterNameAndSubmit, enterNinoAndSubmit, enterDateOfBirth, selectNoOnPregnancyPage } = require('./common-steps')
+const { openOverviewPage, enterNameAndSubmit, enterNinoAndSubmit, enterDateOfBirth, selectNoOnPregnancyPage, completeTheApplicationAsAWomanWhoIsNotPregnant } = require('./common-steps')
 const { VALID_NINO, FIRST_NAME, LAST_NAME, DAY, MONTH, YEAR } = require('./constants')
 
 const ENTER_NAME_PAGE = 'enter name'
@@ -78,6 +78,9 @@ async function enterDetailsUpToPage (page) {
       await enterNinoAndSubmit(VALID_NINO)
       await enterDateOfBirth(DAY, MONTH, YEAR)
       await selectNoOnPregnancyPage()
+      break
+    case CHECK_PAGE:
+      await completeTheApplicationAsAWomanWhoIsNotPregnant()
       break
     default:
       throw new Error('Invalid page name provided for navigation: ' + page)
