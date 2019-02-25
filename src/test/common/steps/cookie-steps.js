@@ -1,9 +1,17 @@
-const { Then } = require('cucumber')
-const { expect } = require('chai')
+const { When, Then } = require('cucumber')
+const { assert, expect } = require('chai')
 
 const pages = require('./pages')
 
 const GOV_UK_TABE_CLASSNAME = 'govuk-table'
+
+When(/^I go directly to the cookies page$/, async function () {
+  await pages.cookies.open(pages.url)
+})
+
+When(/^I click on the cookies link$/, async function () {
+  await pages.enterName.clickCookieLink()
+})
 
 Then(/^the cookies page is shown$/, async function () {
   await pages.cookies.waitForPageLoad()
@@ -11,6 +19,23 @@ Then(/^the cookies page is shown$/, async function () {
 
 Then(/^all page content is present on the cookies page$/, async function () {
   await checkAllCookiePageContentIsPresentAndCorrect()
+})
+
+Then(/^no back link is shown$/, async function () {
+  try {
+    console.log('Timeout error for getting back link expected')
+    await pages.cookies.getBackLink()
+    assert.fail('Backlink found on page but was not expected')
+  } catch (error) {
+    // no nothing, we expect there not to be a back link.
+    return true
+  }
+})
+
+Then(/^the back link on the cookies page links to the enter name page$/, async function () {
+  const backLink = await pages.cookies.getBackLink()
+  const href = await backLink.getAttribute('href')
+  expect(href).to.equal(`${pages.url}/enter-name`)
 })
 
 async function checkAllCookiePageContentIsPresentAndCorrect () {
