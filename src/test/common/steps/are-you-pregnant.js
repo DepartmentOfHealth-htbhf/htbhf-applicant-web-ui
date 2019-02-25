@@ -74,7 +74,7 @@ Then(/^no values are present in the expected delivery date fields$/, async funct
   assert(yearValue.length === 0, 'expected delivery date year to be empty')
 })
 
-Then(/^the are you pregnant page is shown$/, async function () {
+Then(/^I am shown the are you pregnant page$/, async function () {
   await pages.areYouPregnant.waitForPageLoad()
 })
 

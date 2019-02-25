@@ -14,8 +14,12 @@ const GOV_HIDDEN_CLASSNAME = 'govuk-visually-hidden'
  */
 class Check extends SubmittablePage {
   async open (appURL) {
-    await super.open(appURL)
+    await this.openCheckDetailsUrl(appURL)
     return this.waitForPageLoad()
+  }
+
+  async openCheckDetailsUrl (baseURL) {
+    await super.open(`${baseURL}/check`)
   }
 
   async waitForPageLoad () {

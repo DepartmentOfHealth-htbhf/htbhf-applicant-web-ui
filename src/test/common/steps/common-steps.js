@@ -108,10 +108,14 @@ async function deleteWiremockMappings () {
 }
 
 async function openOverviewPage () {
-  await pages.overview.open(pages.url)
+  try {
+    await pages.overview.open(pages.url)
 
-  const h1ElementText = await pages.overview.getH1Text()
-  expect(h1ElementText).to.be.equal('Overview')
+    const h1ElementText = await pages.overview.getH1Text()
+    expect(h1ElementText).to.be.equal('Overview')
+  } catch (error) {
+    assert.fail(`Unexpected error caught trying to assert overview page has loaded - ${error}`)
+  }
 }
 
 When(/^I click continue$/, async function () {

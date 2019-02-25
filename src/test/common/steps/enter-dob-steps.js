@@ -12,7 +12,7 @@ When(/^I enter my date of birth as day: (.*), month: (.*) and year: (.*)$/, asyn
   return enterDateOfBirth(day, month, year)
 })
 
-Then(/^the enter date of birth page is shown$/, async function () {
+Then(/^I am shown the enter date of birth page$/, async function () {
   await pages.enterDOB.waitForPageLoad()
 })
 
