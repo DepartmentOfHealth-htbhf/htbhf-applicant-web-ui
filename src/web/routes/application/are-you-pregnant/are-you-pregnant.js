@@ -41,7 +41,6 @@ const pageContent = ({ translate }) => ({
 
 const areYouPregnant = {
   path: '/are-you-pregnant',
-  previous: '/enter-dob',
   next: '/card-address',
   template: 'are-you-pregnant',
   pageContent,

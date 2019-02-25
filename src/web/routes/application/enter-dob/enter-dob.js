@@ -23,7 +23,6 @@ const contentSummary = (req) => ({
 
 const enterDob = {
   path: '/enter-dob',
-  previous: '/enter-nino',
   next: '/are-you-pregnant',
   template: 'enter-dob',
   pageContent,
