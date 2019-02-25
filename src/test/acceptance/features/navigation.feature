@@ -1,5 +1,5 @@
 Feature: Application process navigation is controlled
-  In order to facilitate the beta HTBHF programme
+  In order to help me complete the application correctly
   As a potential claimant
   I want to make sure that only the correct application flow can be used
 
