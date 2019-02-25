@@ -24,7 +24,8 @@
       id: "nino",
       name: "nino",
       value: claim.nino,
-      errorMessage: errors | getErrorForField('nino')
+      errorMessage: errors | getErrorForField('nino'),
+      autocomplete: "off"
     }) }}
 
   {% endcall %}
