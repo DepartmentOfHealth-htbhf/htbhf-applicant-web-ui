@@ -1,6 +1,14 @@
-const { flatten } = require('ramda')
+const { flatten, path } = require('ramda')
 const { steps } = require('../steps')
 const { stateMachine, states } = require('../common/state-machine')
+
+const getLastStepPath = (steps) => {
+  if (steps) {
+    return path(['path'], steps[steps.length - 1])
+  } else {
+    throw new Error(`steps should be a non empty array, instead got ${steps}`)
+  }
+}
 
 const pageContent = ({ translate }) => ({
   title: translate('check.title'),
@@ -9,7 +17,7 @@ const pageContent = ({ translate }) => ({
   sendApplicationText: translate('check.sendApplicationText'),
   buttonText: translate('buttons:acceptAndSend'),
   changeText: translate('check.change'),
-  previous: '/are-you-pregnant'
+  previous: getLastStepPath(steps)
 })
 
 const combinePathWithRow = (path) => (row) => ({
@@ -35,12 +43,12 @@ const getCheck = (req, res) => {
     claim: req.session.claim,
     ...pageContent({ translate: req.t }),
     csrfToken: req.csrfToken(),
-    checkRowData,
-    cookieLinkName: req.t('cookies.linkName')
+    checkRowData
   })
 }
 
 module.exports = {
   getCheck,
-  getRowData
+  getRowData,
+  getLastStepPath
 }

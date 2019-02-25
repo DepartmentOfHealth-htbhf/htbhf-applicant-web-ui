@@ -1,4 +1,4 @@
-const { isNilOrEmpty } = require('../../../../common/predicates')
+const { isNilOrEmpty } = require('../../common/predicates')
 
 const getLanguageBase = (language) => {
   if (isNilOrEmpty(language)) {
