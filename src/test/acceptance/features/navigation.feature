@@ -14,3 +14,15 @@ Feature: Application process navigation is controlled
       | Enter DOB        |
       | Are You Pregnant |
       | Card Address     |
+
+  Scenario Outline: Navigation after completing application returns to confirm page
+    Given I have completed my application
+    When I navigate to the <page> page
+    Then I am shown a successful confirmation page
+    Examples:
+      | page             |
+      | Enter Name       |
+      | Enter Nino       |
+      | Enter DOB        |
+      | Are You Pregnant |
+      | Card Address     |
