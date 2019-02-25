@@ -1,16 +1,17 @@
 const { When, Then } = require('cucumber')
 const { assert, expect } = require('chai')
+const ENTER_NAME_PATH = require('../page/enter-name').PATH
 
 const pages = require('./pages')
 
-const GOV_UK_TABE_CLASSNAME = 'govuk-table'
+const GOV_UK_TABLE_CLASSNAME = 'govuk-table'
 
 When(/^I go directly to the cookies page$/, async function () {
   await pages.cookies.open(pages.url)
 })
 
 When(/^I click on the cookies link$/, async function () {
-  await pages.enterName.clickCookieLink()
+  await pages.genericPage.clickCookieLink()
 })
 
 Then(/^the cookies page is shown$/, async function () {
@@ -27,7 +28,7 @@ Then(/^no back link is shown$/, async function () {
     await pages.cookies.getBackLink()
     assert.fail('Backlink found on page but was not expected')
   } catch (error) {
-    // no nothing, we expect there not to be a back link.
+    // we expect there not to be a back link.
     return true
   }
 })
@@ -35,7 +36,7 @@ Then(/^no back link is shown$/, async function () {
 Then(/^the back link on the cookies page links to the enter name page$/, async function () {
   const backLink = await pages.cookies.getBackLink()
   const href = await backLink.getAttribute('href')
-  expect(href).to.equal(`${pages.url}/enter-name`)
+  expect(href).to.equal(`${pages.url}${ENTER_NAME_PATH}`)
 })
 
 async function checkAllCookiePageContentIsPresentAndCorrect () {
@@ -45,5 +46,5 @@ async function checkAllCookiePageContentIsPresentAndCorrect () {
   expect(h2Text.toString().trim()).to.be.equal('Google Analytics cookie', 'expected cookies page H2 text to be correct')
 
   // Make sure that there is a table on the page (this is the specific cookie details)
-  await pages.cookies.findByClassName(GOV_UK_TABE_CLASSNAME)
+  await pages.cookies.findByClassName(GOV_UK_TABLE_CLASSNAME)
 }

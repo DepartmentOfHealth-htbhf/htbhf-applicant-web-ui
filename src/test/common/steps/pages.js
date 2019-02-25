@@ -1,4 +1,4 @@
-const EnterName = require('../page/enter-name')
+const { EnterName } = require('../page/enter-name')
 const EnterNino = require('../page/enter-nino')
 const Overview = require('../page/overview')
 const EnterDOB = require('../page/enter-dob')

@@ -136,12 +136,7 @@ class Page {
   }
 
   async getBackLink () {
-    try {
-      return this.findByClassName(BACK_LINK_CLASSNAME)
-    } catch (error) {
-      // throw error back up to test, needed for absence of link test.
-      throw error
-    }
+    return this.findByClassName(BACK_LINK_CLASSNAME)
   }
 }
 

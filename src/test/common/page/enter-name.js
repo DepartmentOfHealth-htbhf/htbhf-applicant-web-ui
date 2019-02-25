@@ -2,6 +2,8 @@
 
 const SubmittablePage = require('./submittable-page')
 
+const PATH = '/enter-name'
+
 const PAGE_TITLES = {
   en: 'GOV.UK - What is your name?',
   cy: 'GOV.UK - Vulputate dignissim suspendisse?'
@@ -50,7 +52,7 @@ class EnterName extends SubmittablePage {
   }
 
   async open (baseURL) {
-    await super.open(`${baseURL}/enter-name`)
+    await super.open(`${baseURL}${PATH}`)
     return this.waitForPageLoad()
   }
 
@@ -79,4 +81,7 @@ class EnterName extends SubmittablePage {
   }
 }
 
-module.exports = EnterName
+module.exports = {
+  EnterName,
+  PATH
+}

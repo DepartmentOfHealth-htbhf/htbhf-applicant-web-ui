@@ -3,12 +3,12 @@ Feature: Cookies details page
   As a potential claimant
   I want to view the cookies used by the site
 
-  Scenario: The cookie back link is not shown if we navigate directly to it
+  Scenario: The back link on the Cookies page is not shown if we navigate to it directly
     When I go directly to the cookies page
     Then the cookies page is shown
     And no back link is shown
 
-  Scenario: The cookie back link is shown and links to the last page in the application
+  Scenario: The back link on the Cookies page is shown when the page is accessed via a link on an application page
     Given I am on the enter name page
     When I click on the cookies link
     Then the cookies page is shown
