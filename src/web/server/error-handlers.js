@@ -15,8 +15,7 @@ const errorHandler = (err, req, res, next) => {
   res.render('error', {
     title: req.t('errors:problemWithTheServiceTitle'),
     heading: req.t('errors:problemWithTheServiceTitle'),
-    content: req.t('errors:problemWithTheServiceContent'),
-    cookieLinkName: req.t('cookies.linkName')
+    content: req.t('errors:problemWithTheServiceContent')
   })
 }
 

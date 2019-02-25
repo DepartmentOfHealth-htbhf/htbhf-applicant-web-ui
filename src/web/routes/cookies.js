@@ -1,12 +1,9 @@
-const { getLanguageBase } = require('./application/common/language')
-
-const pageContent = ({ language, translate }) => ({
-  title: translate('cookies.title'),
-  language: language
+const pageContent = ({ translate }) => ({
+  title: translate('cookies.title')
 })
 
 const getCookiesPage = (req, res) => {
-  res.render('cookies', pageContent({ language: getLanguageBase(req.language), translate: req.t }))
+  res.render('cookies', pageContent({ translate: req.t }))
 }
 
 const registerCookiesRoute = (app) => {
