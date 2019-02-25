@@ -12,6 +12,7 @@ const setCommonTemplateValues = (req, res, next) => {
   res.locals.htmlLang = req.language
   res.locals.language = getLanguageBase(req.language)
   res.locals.cookieLinkName = req.t('cookies.linkName')
+  res.locals.back = req.t('back')
   next()
 }
 
