@@ -50,8 +50,8 @@ Then('I am informed that a last name is required', async function () {
   await assertLastNameErrorFieldAndLink('Enter your last or family name')
 })
 
-Then('I am shown the enter national insurance page', async function () {
-  await pages.enterNino.waitForPageLoad()
+Then(/^I am shown the enter name page$/, async function () {
+  await pages.enterName.waitForPageLoad()
 })
 
 async function assertFirstNameErrorFieldAndLink (expectedErrorMessage) {

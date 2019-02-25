@@ -24,8 +24,12 @@ class EnterNino extends SubmittablePage {
   }
 
   async open (baseURL, lang) {
-    await super.open(`${baseURL}/enter-nino`, lang)
+    await this.openEnterNinoUrl(baseURL, lang)
     return this.waitForPageLoad(lang)
+  }
+
+  async openEnterNinoUrl (baseURL, lang) {
+    await super.open(`${baseURL}/enter-nino`, lang)
   }
 
   async enterNino (nino) {

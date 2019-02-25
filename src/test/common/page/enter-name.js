@@ -50,8 +50,12 @@ class EnterName extends SubmittablePage {
   }
 
   async open (baseURL) {
-    await super.open(`${baseURL}/enter-name`)
+    await this.openEnterNameUrl(baseURL)
     return this.waitForPageLoad()
+  }
+
+  async openEnterNameUrl (baseURL) {
+    await super.open(`${baseURL}/enter-name`)
   }
 
   async waitForPageLoad (lang = 'en') {
