@@ -8,9 +8,7 @@ const renderView = (template, getPageContent, redirect) => (req, res) => {
 
   res.render(template, {
     ...getPageContent({ translate: req.t }),
-    csrfToken: req.csrfToken(),
-    htmlLang: req.language,
-    cookieLinkName: req.t('cookies.linkName')
+    csrfToken: req.csrfToken()
   })
 }
 

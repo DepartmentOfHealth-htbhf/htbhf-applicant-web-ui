@@ -43,8 +43,7 @@ const getCheck = (req, res) => {
     claim: req.session.claim,
     ...pageContent({ translate: req.t }),
     csrfToken: req.csrfToken(),
-    checkRowData,
-    cookieLinkName: req.t('cookies.linkName')
+    checkRowData
   })
 }
 

@@ -1,17 +1,13 @@
-const { getLanguageBase } = require('./common/language')
-
-const pageContent = ({ language, translate }) => ({
+const pageContent = ({ translate }) => ({
   title: translate('confirm.title'),
-  subTitle: translate('confirm.subTitle'),
-  language: language
+  subTitle: translate('confirm.subTitle')
 })
 
 const getConfirmPage = (req, res) => {
   req.session.destroy()
   res.clearCookie('lang')
   res.render('confirm', {
-    ...pageContent({ language: getLanguageBase(req.language), translate: req.t }),
-    cookieLinkName: req.t('cookies.linkName')
+    ...pageContent({ translate: req.t })
   })
 }
 
