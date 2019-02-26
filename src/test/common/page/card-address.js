@@ -26,12 +26,16 @@ const POSTCODE_ERROR_LINK_CSS = 'a[href="#postcode-error"]'
  */
 class CardAddress extends SubmittablePage {
   async open (baseURL) {
-    await this.openCardAddressUrl(baseURL)
+    await this.openDirect(baseURL)
     return this.waitForPageLoad()
   }
 
-  async openCardAddressUrl (baseURL) {
-    await super.open(`${baseURL}/card-address`)
+  async openDirect (baseURL, lang = 'en') {
+    await super.open(`${baseURL}/card-address`, lang)
+  }
+
+  getPageName () {
+    return 'are you pregnant'
   }
 
   async waitForPageLoad (lang = 'en') {

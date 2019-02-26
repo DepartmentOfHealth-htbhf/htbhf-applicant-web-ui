@@ -34,6 +34,14 @@ class Page {
     }
   }
 
+  async openDirect (url, lang) {
+    throw new Error('openDirect needs to be implemented by all Page objects')
+  }
+
+  getPageName () {
+    throw new Error('getPageName needs to be implemented by all Page objects')
+  }
+
   async findById (id) {
     try {
       await this.waitForElement(id, ID_TYPE)

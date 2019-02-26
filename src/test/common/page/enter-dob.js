@@ -20,12 +20,16 @@ const DATE_OF_BIRTH_FIELD_ERROR_ID = 'date-of-birth-error'
  */
 class EnterDOB extends SubmittablePage {
   async open (baseURL) {
-    await this.openEnterDobUrl(baseURL)
+    await this.openDirect(baseURL)
     return this.waitForPageLoad()
   }
 
-  async openEnterDobUrl (baseURL) {
-    await super.open(`${baseURL}/enter-dob`)
+  async openDirect (baseURL, lang = 'en') {
+    await super.open(`${baseURL}/enter-dob`, lang)
+  }
+
+  getPageName () {
+    return 'enter date of birth'
   }
 
   async waitForPageLoad (lang = 'en') {

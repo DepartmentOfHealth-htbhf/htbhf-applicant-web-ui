@@ -14,12 +14,16 @@ const EXPECTED_DELIVERY_DATE_FIELD_ERROR_ID = 'expected-delivery-date-error'
  */
 class AreYouPregnant extends SubmittablePage {
   async open (baseURL) {
-    await this.openAreYouPregnantUrl(baseURL)
+    await this.openDirect(baseURL)
     return this.waitForPageLoad()
   }
 
-  async openAreYouPregnantUrl (baseURL) {
-    await super.open(`${baseURL}/are-you-pregnant`)
+  async openDirect (baseURL, lang = 'en') {
+    await super.open(`${baseURL}/are-you-pregnant`, lang)
+  }
+
+  getPageName () {
+    return 'are you pregnant'
   }
 
   async waitForPageLoad () {

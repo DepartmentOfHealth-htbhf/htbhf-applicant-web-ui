@@ -107,17 +107,6 @@ async function deleteWiremockMappings () {
   }
 }
 
-async function openOverviewPage () {
-  try {
-    await pages.overview.open(pages.url)
-
-    const h1ElementText = await pages.overview.getH1Text()
-    expect(h1ElementText).to.be.equal('Overview')
-  } catch (error) {
-    assert.fail(`Unexpected error caught trying to assert overview page has loaded - ${error}`)
-  }
-}
-
 When(/^I click continue$/, async function () {
   await pages.genericPage.submitForm()
 })
@@ -141,6 +130,5 @@ module.exports = {
   completeTheApplicationAsAPregnantWoman,
   completeTheApplicationAsAWomanWhoIsNotPregnant,
   setupWiremockMappings,
-  deleteWiremockMappings,
-  openOverviewPage
+  deleteWiremockMappings
 }

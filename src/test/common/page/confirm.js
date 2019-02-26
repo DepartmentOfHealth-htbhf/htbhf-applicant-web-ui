@@ -9,9 +9,17 @@ const PANEL_BODY_CLASS = 'govuk-panel__body'
  * Page object for the confirmation page after submitting the claim.
  */
 class Confirm extends SubmittablePage {
-  async open (appURL) {
-    await super.open(appURL)
+  async open (baseURL) {
+    await this.openDirect(baseURL)
     return this.waitForPageLoad()
+  }
+
+  async openDirect (baseURL, lang = 'en') {
+    await super.open(`${baseURL}/confirm`, lang)
+  }
+
+  getPageName () {
+    return 'confirmation'
   }
 
   async waitForPageLoad () {

@@ -15,6 +15,7 @@ Feature: Application process navigation is controlled
       | enter date of birth      |
       | are you pregnant         |
       | card address             |
+      | confirmation             |
 
   Scenario Outline: Navigation after completing application returns to confirm page
     Given I have completed my application
@@ -39,6 +40,7 @@ Feature: Application process navigation is controlled
       | enter date of birth      |
       | are you pregnant         |
       | card address             |
+      | confirmation             |
 
   Scenario Outline: Navigation to previous steps in an unsubmitted application flow is allowed
     Given I have entered my details up to the check details page

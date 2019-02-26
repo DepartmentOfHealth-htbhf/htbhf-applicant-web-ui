@@ -24,12 +24,16 @@ class EnterNino extends SubmittablePage {
   }
 
   async open (baseURL, lang) {
-    await this.openEnterNinoUrl(baseURL, lang)
+    await this.openDirect(baseURL, lang)
     return this.waitForPageLoad(lang)
   }
 
-  async openEnterNinoUrl (baseURL, lang) {
+  async openDirect (baseURL, lang = 'en') {
     await super.open(`${baseURL}/enter-nino`, lang)
+  }
+
+  getPageName () {
+    return 'enter national insurance'
   }
 
   async enterNino (nino) {

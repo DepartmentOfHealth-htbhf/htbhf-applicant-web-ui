@@ -12,6 +12,14 @@ class Overview extends Page {
     return this.waitForPageLoad()
   }
 
+  async openDirect (baseURL, lang = 'en') {
+    await super.open(baseURL, lang)
+  }
+
+  getPageName () {
+    return 'HTBHF overview'
+  }
+
   async waitForPageLoad () {
     return this.waitForPageWithTitle(OVERVIEW_PAGE_TITLE)
   }
