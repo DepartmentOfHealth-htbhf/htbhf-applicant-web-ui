@@ -20,7 +20,8 @@
       id: "address-line-1",
       name: "addressLine1",
       errorMessage: errors | getErrorForField('addressLine1'),
-      value: claim.addressLine1
+      value: claim.addressLine1,
+      autocomplete: "off"
     }) }}
    {{ govukInput({
       label: {
@@ -29,7 +30,8 @@
       id: "address-line-2",
       name: "addressLine2",
       errorMessage: errors | getErrorForField('addressLine2'),
-      value: claim.addressLine2
+      value: claim.addressLine2,
+      autocomplete: "off"
     }) }}
    {{ govukInput({
       label: {
@@ -39,7 +41,8 @@
       id: "town-or-city",
       name: "townOrCity",
       errorMessage: errors | getErrorForField('townOrCity'),
-      value: claim.townOrCity
+      value: claim.townOrCity,
+      autocomplete: "off"
     }) }}
    {{ govukInput({
       label: {
@@ -49,7 +52,8 @@
       id: "postcode",
       name: "postcode",
       errorMessage: errors | getErrorForField('postcode'),
-      value: claim.postcode
+      value: claim.postcode,
+      autocomplete: "off"
     }) }}
 
     {% endcall %}
