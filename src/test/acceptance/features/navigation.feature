@@ -1,3 +1,4 @@
+@ignore
 Feature: Application process navigation is controlled
   In order to help me complete the application correctly
   As a potential claimant
