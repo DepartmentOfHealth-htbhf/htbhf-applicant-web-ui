@@ -25,7 +25,16 @@ class Page {
     this.driver = driver
   }
 
-  async open (url, lang) {
+  async open (baseURL, lang = 'en') {
+    await this.openDirect(baseURL, lang)
+    return this.waitForPageLoad(lang)
+  }
+
+  async openDirect (baseURL, lang = 'en') {
+    await this.openPage(`${baseURL}${this.getPath()}`, lang)
+  }
+
+  async openPage (url, lang) {
     const queryParam = lang ? `?lang=${lang}` : ''
     try {
       return this.driver.get(`${url}${queryParam}`)
@@ -34,7 +43,7 @@ class Page {
     }
   }
 
-  async openDirect (url, lang) {
+  getPath () {
     throw new Error('openDirect needs to be implemented by all Page objects')
   }
 

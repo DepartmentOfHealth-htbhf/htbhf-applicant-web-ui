@@ -23,13 +23,8 @@ class EnterNino extends SubmittablePage {
     return super.waitForPageLoad(PAGE_HEADINGS[lang], PAGE_TITLES[lang])
   }
 
-  async open (baseURL, lang) {
-    await this.openDirect(baseURL, lang)
-    return this.waitForPageLoad(lang)
-  }
-
-  async openDirect (baseURL, lang = 'en') {
-    await super.open(`${baseURL}/enter-nino`, lang)
+  getPath () {
+    return '/enter-nino'
   }
 
   getPageName () {

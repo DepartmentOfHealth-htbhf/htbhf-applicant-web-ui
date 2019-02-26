@@ -49,13 +49,8 @@ class EnterName extends SubmittablePage {
     return nameField.sendKeys(name)
   }
 
-  async open (baseURL) {
-    await this.openDirect(baseURL)
-    return this.waitForPageLoad()
-  }
-
-  async openDirect (baseURL, lang = 'en') {
-    await super.open(`${baseURL}/enter-name`, lang)
+  getPath () {
+    return '/enter-name'
   }
 
   getPageName () {

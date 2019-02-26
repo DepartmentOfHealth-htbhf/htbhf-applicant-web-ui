@@ -1,7 +1,7 @@
 const { Given, When } = require('cucumber')
 
 const pages = require('./pages')
-const { enterNameAndSubmit, enterNinoAndSubmit, enterDateOfBirth, selectNoOnPregnancyPage, completeTheApplicationAsAWomanWhoIsNotPregnant } = require('./common-steps')
+const { enterNameAndSubmit, enterNinoAndSubmit, enterDateOfBirth, selectNoOnPregnancyPage } = require('./common-steps')
 const { VALID_NINO, FIRST_NAME, LAST_NAME, DAY, MONTH, YEAR } = require('./constants')
 
 const ENTER_NAME_PAGE = 'enter name'
@@ -10,6 +10,33 @@ const ENTER_DOB_PAGE = 'enter date of birth'
 const ARE_YOU_PREGNANT_PAGE = 'are you pregnant'
 const CARD_ADDRESS_PAGE = 'card address'
 const CHECK_PAGE = 'check details'
+
+const pageActions = [
+  {
+    page: ENTER_NAME_PAGE,
+    action: () => {}
+  },
+  {
+    page: ENTER_NINO_PAGE,
+    action: async () => enterNameAndSubmit(FIRST_NAME, LAST_NAME)
+  },
+  {
+    page: ENTER_DOB_PAGE,
+    action: async () => enterNinoAndSubmit(VALID_NINO)
+  },
+  {
+    page: ARE_YOU_PREGNANT_PAGE,
+    action: async () => enterDateOfBirth(DAY, MONTH, YEAR)
+  },
+  {
+    page: CARD_ADDRESS_PAGE,
+    action: async () => selectNoOnPregnancyPage()
+  },
+  {
+    page: CHECK_PAGE,
+    action: async () => pages.check.submitForm()
+  }
+]
 
 Given(/^I have entered my details up to the (.*) page$/, async function (page) {
   await enterDetailsUpToPage(page)
@@ -31,36 +58,23 @@ async function navigateToPage (page) {
   }
 }
 
+const getPageIndex = (pageName) => pageActions.findIndex(pageAction => pageAction.page === pageName)
+
+const runPageActions = async (index) => {
+  for (const pageAction of pageActions.slice(0, index)) {
+    await pageAction.action()
+  }
+}
+
 async function enterDetailsUpToPage (page) {
   await pages.overview.open(pages.url)
   await pages.overview.clickStartButton()
   await pages.enterName.waitForPageLoad()
-  switch (page) {
-    case ENTER_NAME_PAGE:
-      // This intentionally does nothing as its the first page
-      break
-    case ENTER_NINO_PAGE:
-      await enterNameAndSubmit(FIRST_NAME, LAST_NAME)
-      break
-    case ENTER_DOB_PAGE:
-      await enterNameAndSubmit(FIRST_NAME, LAST_NAME)
-      await enterNinoAndSubmit(VALID_NINO)
-      break
-    case ARE_YOU_PREGNANT_PAGE:
-      await enterNameAndSubmit(FIRST_NAME, LAST_NAME)
-      await enterNinoAndSubmit(VALID_NINO)
-      await enterDateOfBirth(DAY, MONTH, YEAR)
-      break
-    case CARD_ADDRESS_PAGE:
-      await enterNameAndSubmit(FIRST_NAME, LAST_NAME)
-      await enterNinoAndSubmit(VALID_NINO)
-      await enterDateOfBirth(DAY, MONTH, YEAR)
-      await selectNoOnPregnancyPage()
-      break
-    case CHECK_PAGE:
-      await completeTheApplicationAsAWomanWhoIsNotPregnant()
-      break
-    default:
-      throw new Error('Invalid page name provided for navigation: ' + page)
+
+  const pageIndex = getPageIndex(page)
+  if (pageIndex !== -1) {
+    await runPageActions(pageIndex)
+  } else {
+    throw new Error(`Unable to find page ${page}`)
   }
 }

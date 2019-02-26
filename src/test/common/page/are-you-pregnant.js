@@ -13,13 +13,8 @@ const EXPECTED_DELIVERY_DATE_FIELD_ERROR_ID = 'expected-delivery-date-error'
  * Page object for the Are you pregnant? page.
  */
 class AreYouPregnant extends SubmittablePage {
-  async open (baseURL) {
-    await this.openDirect(baseURL)
-    return this.waitForPageLoad()
-  }
-
-  async openDirect (baseURL, lang = 'en') {
-    await super.open(`${baseURL}/are-you-pregnant`, lang)
+  getPath () {
+    return '/are-you-pregnant'
   }
 
   getPageName () {

@@ -13,13 +13,8 @@ const GOV_HIDDEN_CLASSNAME = 'govuk-visually-hidden'
  * Page object for the page where the customer can check their details before submitting.
  */
 class Check extends SubmittablePage {
-  async open (baseURL) {
-    await this.openDirect(baseURL)
-    return this.waitForPageLoad()
-  }
-
-  async openDirect (baseURL, lang = 'en') {
-    await super.open(`${baseURL}/check`, lang)
+  getPath () {
+    return '/check'
   }
 
   getPageName () {

@@ -7,13 +7,8 @@ const COOKIES_PAGE_TITLE = 'GOV.UK - Cookies'
  * Page object for the cookies page which is linked in the footer.
  */
 class Cookies extends Page {
-  async open (baseURL) {
-    await this.openDirect(baseURL)
-    return this.waitForPageLoad()
-  }
-
-  async openDirect (baseURL, lang = 'en') {
-    await super.open(`${baseURL}/cookies`, lang)
+  getPath () {
+    return '/cookies'
   }
 
   getPageName () {
