@@ -52,10 +52,12 @@
       },
       html: 'This is a new service.'
     }) }}
-    {{ govukBackLink({
-      text: "Back",
-      href: "/"
-    }) }}
+    {% if previous %}
+      {{ govukBackLink({
+        text: back,
+        href: previous
+      }) }}
+    {% endif %}
 {% endblock %}
 
 {% block content %}

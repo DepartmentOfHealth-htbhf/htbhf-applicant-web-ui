@@ -21,7 +21,8 @@
       id: 'first-name',
       name: 'firstName',
       value: claim.firstName,
-      errorMessage: errors | getErrorForField('firstName')
+      errorMessage: errors | getErrorForField('firstName'),
+      autocomplete: "off"
     }) }}
 
     {{ govukInput({
@@ -31,7 +32,8 @@
       id: 'last-name',
       name: 'lastName',
       value: claim.lastName,
-      errorMessage: errors | getErrorForField('lastName')
+      errorMessage: errors | getErrorForField('lastName'),
+      autocomplete: "off"
     }) }}
 
   {% endcall %}
