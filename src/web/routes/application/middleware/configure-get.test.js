@@ -1,5 +1,5 @@
 const test = require('tape')
-const { getPreviousPage } = require('./configure-get')
+const { getPreviousPage } = require('./set-previous-page')
 
 const steps = [
   {

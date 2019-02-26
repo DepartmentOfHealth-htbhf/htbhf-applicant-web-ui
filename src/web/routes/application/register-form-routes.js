@@ -6,7 +6,7 @@ const {
   handlePost,
   renderView,
   sanitize,
-  configureGet
+  setPreviousPage
 } = require('./middleware')
 
 const middlewareNoop = (req, res, next) => next()
@@ -24,13 +24,14 @@ const createRoute = (csrfProtection, steps, router) => (step) =>
     .route(step.path)
     .get(
       csrfProtection,
-      configureGet(steps, step),
+      setPreviousPage(steps, step),
       getSessionDetails,
       renderView(step.template, step.pageContent, step.next)
     )
     .post(
       csrfProtection,
       configurePost,
+      setPreviousPage(steps, step),
       sanitize,
       handleOptionalMiddleware(step.sanitize),
       handleOptionalMiddleware(step.validate),

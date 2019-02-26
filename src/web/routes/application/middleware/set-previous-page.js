@@ -12,7 +12,7 @@ const getPreviousPage = (steps, step) => {
   }
 }
 
-const configureGet = (steps, step) => (req, res, next) => {
+const setPreviousPage = (steps, step) => (req, res, next) => {
   res.locals.previous = getPreviousPage(steps, step)
 
   next()
@@ -20,5 +20,5 @@ const configureGet = (steps, step) => (req, res, next) => {
 
 module.exports = {
   getPreviousPage,
-  configureGet
+  setPreviousPage
 }

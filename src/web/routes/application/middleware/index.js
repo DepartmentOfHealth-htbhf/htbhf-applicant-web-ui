@@ -4,5 +4,5 @@ module.exports = {
   ...require('./render-view'),
   ...require('./sanitize'),
   ...require('./session-details'),
-  ...require('./configure-get')
+  ...require('./set-previous-page')
 }
