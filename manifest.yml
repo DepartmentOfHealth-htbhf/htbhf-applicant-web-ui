@@ -1,7 +1,7 @@
 ---
 applications:
 - name: help-to-buy-healthy-foods((app-suffix))
-  memory: 256M
+  memory: 512M
   command: node src/web
   env:
     SESSION_SECRET: '((session_secret))'
