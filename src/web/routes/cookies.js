@@ -3,7 +3,10 @@ const pageContent = ({ translate }) => ({
 })
 
 const getCookiesPage = (req, res) => {
-  res.render('cookies', pageContent({ translate: req.t }))
+  res.render('cookies', {
+    ...pageContent({ translate: req.t }),
+    previous: req.header('referer')
+  })
 }
 
 const registerCookiesRoute = (app) => {
