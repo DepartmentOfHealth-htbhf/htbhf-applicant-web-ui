@@ -1,8 +1,8 @@
 const { Given, When } = require('cucumber')
 
 const pages = require('./pages')
-const { enterNameAndSubmit, enterNinoAndSubmit, enterDateOfBirth, selectNoOnPregnancyPage } = require('./common-steps')
-const { VALID_NINO, FIRST_NAME, LAST_NAME, DAY, MONTH, YEAR } = require('./constants')
+const { enterNameAndSubmit, enterNinoAndSubmit, enterDateOfBirth, selectNoOnPregnancyPage, enterCardAddress } = require('./common-steps')
+const { VALID_NINO, FIRST_NAME, LAST_NAME, DAY, MONTH, YEAR, ADDRESS_LINE_1, ADDRESS_LINE_2, TOWN, POSTCODE } = require('./constants')
 
 const ENTER_NAME_PAGE = 'enter name'
 const ENTER_NINO_PAGE = 'enter national insurance'
@@ -14,27 +14,42 @@ const CHECK_PAGE = 'check details'
 const pageActions = [
   {
     page: ENTER_NAME_PAGE,
-    action: () => {}
+    action: async () => {}
   },
   {
     page: ENTER_NINO_PAGE,
-    action: async () => enterNameAndSubmit(FIRST_NAME, LAST_NAME)
+    action: async () => {
+      await enterNameAndSubmit(FIRST_NAME, LAST_NAME)
+      await pages.enterNino.waitForPageLoad()
+    }
   },
   {
     page: ENTER_DOB_PAGE,
-    action: async () => enterNinoAndSubmit(VALID_NINO)
+    action: async () => {
+      await enterNinoAndSubmit(VALID_NINO)
+      await pages.enterDOB.waitForPageLoad()
+    }
   },
   {
     page: ARE_YOU_PREGNANT_PAGE,
-    action: async () => enterDateOfBirth(DAY, MONTH, YEAR)
+    action: async () => {
+      await enterDateOfBirth(DAY, MONTH, YEAR)
+      await pages.areYouPregnant.waitForPageLoad()
+    }
   },
   {
     page: CARD_ADDRESS_PAGE,
-    action: async () => selectNoOnPregnancyPage()
+    action: async () => {
+      await selectNoOnPregnancyPage()
+      await pages.cardAddress.waitForPageLoad()
+    }
   },
   {
     page: CHECK_PAGE,
-    action: async () => pages.check.submitForm()
+    action: async () => {
+      await enterCardAddress(ADDRESS_LINE_1, ADDRESS_LINE_2, TOWN, POSTCODE)
+      await pages.check.waitForPageLoad()
+    }
   }
 ]
 
