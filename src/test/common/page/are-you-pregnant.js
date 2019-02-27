@@ -22,7 +22,7 @@ class AreYouPregnant extends SubmittablePage {
   }
 
   async waitForPageLoad () {
-    return this.waitForPageWithTitle(PAGE_TITLE)
+    return super.waitForPageWithTitle(PAGE_TITLE)
   }
 
   async selectRadioButton (option) {

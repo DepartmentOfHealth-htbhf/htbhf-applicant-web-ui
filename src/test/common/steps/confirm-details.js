@@ -11,6 +11,7 @@ Then(/^all page content is present on the confirm details page$/, async function
 
 Then(/^I am shown the confirm details page$/, async function () {
   await pages.confirm.waitForPageLoad()
+  await deleteWiremockMappings()
 })
 
 Then(/^I am shown a successful confirmation page$/, async function () {

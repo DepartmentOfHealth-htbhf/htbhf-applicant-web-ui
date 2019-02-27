@@ -22,7 +22,7 @@ class Check extends SubmittablePage {
   }
 
   async waitForPageLoad () {
-    return this.waitForPageWithTitle(CHECK_PAGE_TITLE)
+    return super.waitForPageWithTitle(CHECK_PAGE_TITLE)
   }
 
   async getCheckDetailsTableContents () {

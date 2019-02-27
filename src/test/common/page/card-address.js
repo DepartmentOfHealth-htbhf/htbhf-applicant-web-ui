@@ -7,11 +7,6 @@ const PAGE_TITLES = {
   cy: 'GOV.UK - Urna condimentum mattis?'
 }
 
-const PAGE_HEADINGS = {
-  en: 'What is your address?',
-  cy: 'Urna condimentum mattis?'
-}
-
 const POSTCODE_ERROR_ID = 'postcode-error'
 const ADDRESS_LINE_1_ERROR_ID = 'address-line-1-error'
 const ADDRESS_LINE_2_ERROR_ID = 'address-line-2-error'
@@ -34,7 +29,7 @@ class CardAddress extends SubmittablePage {
   }
 
   async waitForPageLoad (lang = 'en') {
-    return super.waitForPageLoad(PAGE_HEADINGS[lang], PAGE_TITLES[lang])
+    return super.waitForPageWithTitle(PAGE_TITLES[lang])
   }
 
   async getAddressLine1Field () {

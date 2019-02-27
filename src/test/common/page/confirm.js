@@ -18,7 +18,7 @@ class Confirm extends SubmittablePage {
   }
 
   async waitForPageLoad () {
-    return this.waitForPageWithTitle(CONFIRM_PAGE_TITLE)
+    return super.waitForPageWithTitle(CONFIRM_PAGE_TITLE)
   }
 
   async getPanelTitleText () {

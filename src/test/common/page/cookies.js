@@ -16,7 +16,7 @@ class Cookies extends Page {
   }
 
   async waitForPageLoad () {
-    return this.waitForPageWithTitle(COOKIES_PAGE_TITLE)
+    return super.waitForPageWithTitle(COOKIES_PAGE_TITLE)
   }
 }
 

@@ -16,7 +16,7 @@ class Overview extends Page {
   }
 
   async waitForPageLoad () {
-    return this.waitForPageWithTitle(OVERVIEW_PAGE_TITLE)
+    return super.waitForPageWithTitle(OVERVIEW_PAGE_TITLE)
   }
 
   async getStartButton () {

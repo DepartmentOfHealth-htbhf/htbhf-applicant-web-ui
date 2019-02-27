@@ -61,7 +61,7 @@ async function navigateToPage (page) {
 const getPageIndex = (pageName) => pageActions.findIndex(pageAction => pageAction.page === pageName)
 
 const runPageActions = async (index) => {
-  for (const pageAction of pageActions.slice(0, index)) {
+  for (const pageAction of pageActions.slice(0, index + 1)) {
     await pageAction.action()
   }
 }
