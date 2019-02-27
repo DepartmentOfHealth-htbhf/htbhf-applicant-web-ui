@@ -38,19 +38,7 @@ const pageActions = [
   }
 ]
 
-Given(/^I have entered my details up to the (.*) page$/, async function (page) {
-  await enterDetailsUpToPage(page)
-})
-
-When(/^I click the Cookies link$/, async function () {
-  await pages.overview.clickCookieLink()
-})
-
-When(/^I navigate to the (.*) page$/, async function (page) {
-  await navigateToPage(page)
-})
-
-async function navigateToPage (page) {
+const navigateToPage = async (page) => {
   try {
     await pages.openPageDirect(page)
   } catch (error) {
@@ -60,21 +48,36 @@ async function navigateToPage (page) {
 
 const getPageIndex = (pageName) => pageActions.findIndex(pageAction => pageAction.page === pageName)
 
-const runPageActions = async (index) => {
-  for (const pageAction of pageActions.slice(0, index + 1)) {
-    await pageAction.action()
+const getActionsForPage = (index, actions) => actions.slice(0, index + 1).map(page => page.action)
+
+const runPageActions = async (actions) => {
+  for (const action of actions) {
+    await action()
   }
 }
 
-async function enterDetailsUpToPage (page) {
+const enterDetailsUpToPage = async (page, actions) => {
   await pages.overview.open(pages.url)
   await pages.overview.clickStartButton()
   await pages.enterName.waitForPageLoad()
 
   const pageIndex = getPageIndex(page)
-  if (pageIndex !== -1) {
-    await runPageActions(pageIndex)
-  } else {
+  if (pageIndex === -1) {
     throw new Error(`Unable to find page ${page}`)
   }
+
+  const actionsForPage = getActionsForPage(pageIndex, actions)
+  await runPageActions(actionsForPage)
 }
+
+Given(/^I have entered my details up to the (.*) page$/, async function (page) {
+  await enterDetailsUpToPage(page, pageActions)
+})
+
+When(/^I click the Cookies link$/, async function () {
+  await pages.overview.clickCookieLink()
+})
+
+When(/^I navigate to the (.*) page$/, async function (page) {
+  await navigateToPage(page)
+})
