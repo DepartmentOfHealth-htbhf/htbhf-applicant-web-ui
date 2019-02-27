@@ -4,7 +4,7 @@ Feature: Card address
   I want to enter the address to send the card to
 
   Background:
-    Given I am on the card address page
+    Given I have entered my details up to the card address page
 
   Scenario Outline: Enter a valid address with all fields entered
     When I enter an address with postcode <postcode>

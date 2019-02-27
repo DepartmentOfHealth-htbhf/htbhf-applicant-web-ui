@@ -4,7 +4,7 @@ Feature: Are you pregnant?
   I want to select whether or not I am pregnant
 
   Background:
-    Given I am on the are you pregnant page
+    Given I have entered my details up to the are you pregnant page
 
   Scenario: No option is selected
     Then No option is selected

@@ -1,14 +1,10 @@
-const { Given, When, Then } = require('cucumber')
+const { When, Then } = require('cucumber')
 const { expect } = require('chai')
 
 const pages = require('./pages')
 const { enterNinoAndSubmit, assertErrorHeaderTextPresent } = require('./common-steps')
 
 const VALID_NINO = 'QQ123456C'
-
-Given(/^I am on the enter national insurance number page$/, async function () {
-  await pages.enterNino.open(pages.url)
-})
 
 When(/^I enter a valid national insurance number$/, async function () {
   return enterNinoAndSubmit(VALID_NINO)

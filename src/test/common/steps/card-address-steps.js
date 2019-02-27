@@ -1,4 +1,4 @@
-const { Given, When, Then } = require('cucumber')
+const { When, Then } = require('cucumber')
 const { expect } = require('chai')
 
 const pages = require('./pages')
@@ -9,10 +9,6 @@ const VALID_ADDRESS_LINE_1 = 'Flat b'
 const VALID_ADDRESS_LINE_2 = '221 Baker street'
 const VALID_TOWN_OR_CITY = 'London'
 const VALID_POSTCODE = 'AA1 1AA'
-
-Given(/^I am on the card address page$/, async function () {
-  await pages.cardAddress.open(pages.url)
-})
 
 When(/^I enter an address with postcode (.*)$/, async function (postcode) {
   await enterCardAddress(VALID_ADDRESS_LINE_1, VALID_ADDRESS_LINE_2, VALID_TOWN_OR_CITY, postcode)

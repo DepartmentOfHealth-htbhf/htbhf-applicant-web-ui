@@ -4,7 +4,7 @@ Feature: Date of birth
   I want to enter my date of birth
 
   Background:
-    Given I am on the enter date of birth page
+    Given I have entered my details up to the enter date of birth page
 
   Scenario: Enter a date of birth in the future
     When I enter my date of birth as day: 03, month: 09 and year: 9999

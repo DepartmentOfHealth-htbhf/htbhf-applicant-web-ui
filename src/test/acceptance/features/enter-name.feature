@@ -4,7 +4,7 @@ Feature: Enter name
   I want to enter my name
 
   Background:
-    Given I am on the enter name page
+    Given I have entered my details up to the enter name page
 
   Scenario: Fill “First name” textbox with text which exceeds maximum length
     When I enter a first name which is too long

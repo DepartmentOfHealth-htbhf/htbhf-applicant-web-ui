@@ -1,12 +1,8 @@
-const { Given, When, Then } = require('cucumber')
+const { When, Then } = require('cucumber')
 const { expect, assert } = require('chai')
 
 const pages = require('./pages')
 const { enterDateOfBirth, assertErrorHeaderTextPresent } = require('./common-steps')
-
-Given(/^I am on the enter date of birth page$/, async function () {
-  await pages.enterDOB.open(pages.url)
-})
 
 When(/^I enter my date of birth as day: (.*), month: (.*) and year: (.*)$/, async function (day, month, year) {
   return enterDateOfBirth(day, month, year)
