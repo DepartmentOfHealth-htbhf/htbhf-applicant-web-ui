@@ -44,7 +44,7 @@ class Page {
   }
 
   getPath () {
-    throw new Error('openDirect needs to be implemented by all Page objects')
+    throw new Error('getPath needs to be implemented by all Page objects')
   }
 
   getPageName () {
