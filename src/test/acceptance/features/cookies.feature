@@ -1,10 +1,16 @@
-Feature: Cookies details page
-  In order to apply for the HTBHF programme
+Feature: Cookies page
+  In order to facilitate the beta HTBHF programme
   As a potential claimant
-  I want to view the cookies used by the site
+  I want to see the details of how cookies are use during the application process
+
+  Scenario: The cookie page is accessible
+    Given I navigate to the HTBHF overview page
+    When I click the Cookies link
+    Then the cookies page is shown
+    And all page content is present on the cookies page
 
   Scenario: The back link on the Cookies page is not shown if we navigate to it directly
-    When I go directly to the cookies page
+    When I navigate to the cookies page
     Then the cookies page is shown
     And no back link is shown
 

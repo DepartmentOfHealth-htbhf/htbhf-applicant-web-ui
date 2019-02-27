@@ -7,11 +7,6 @@ const PAGE_TITLES = {
   cy: 'GOV.UK - Excepteur sint occaecat cupidatat non proident?'
 }
 
-const PAGE_HEADINGS = {
-  en: 'What is your National Insurance number?',
-  cy: 'Excepteur sint occaecat cupidatat non proident?'
-}
-
 const NINO_FIELD_ERROR_ID = 'nino-error'
 const NINO_ERROR_LINK_CSS = 'a[href="#nino-error"]'
 
@@ -20,12 +15,15 @@ const NINO_ERROR_LINK_CSS = 'a[href="#nino-error"]'
  */
 class EnterNino extends SubmittablePage {
   async waitForPageLoad (lang = 'en') {
-    return super.waitForPageLoad(PAGE_HEADINGS[lang], PAGE_TITLES[lang])
+    return super.waitForPageWithTitle(PAGE_TITLES[lang])
   }
 
-  async open (baseURL, lang) {
-    await super.open(`${baseURL}/enter-nino`, lang)
-    return this.waitForPageLoad(lang)
+  getPath () {
+    return '/enter-nino'
+  }
+
+  getPageName () {
+    return 'enter national insurance'
   }
 
   async enterNino (nino) {

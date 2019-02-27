@@ -13,13 +13,16 @@ const EXPECTED_DELIVERY_DATE_FIELD_ERROR_ID = 'expected-delivery-date-error'
  * Page object for the Are you pregnant? page.
  */
 class AreYouPregnant extends SubmittablePage {
-  async open (baseURL) {
-    await super.open(`${baseURL}/are-you-pregnant`)
-    return this.waitForPageLoad()
+  getPath () {
+    return '/are-you-pregnant'
+  }
+
+  getPageName () {
+    return 'are you pregnant'
   }
 
   async waitForPageLoad () {
-    return this.waitForPageWithTitle(PAGE_TITLE)
+    return super.waitForPageWithTitle(PAGE_TITLE)
   }
 
   async selectRadioButton (option) {

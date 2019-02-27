@@ -1,12 +1,12 @@
 const express = require('express')
 
 const {
+  configureGet,
   configurePost,
   getSessionDetails,
   handlePost,
   renderView,
-  sanitize,
-  setPreviousPage
+  sanitize
 } = require('./middleware')
 
 const middlewareNoop = (req, res, next) => next()
@@ -24,14 +24,13 @@ const createRoute = (csrfProtection, steps, router) => (step) =>
     .route(step.path)
     .get(
       csrfProtection,
-      setPreviousPage(steps, step),
+      configureGet(steps, step),
       getSessionDetails,
       renderView(step.template, step.pageContent, step.next)
     )
     .post(
       csrfProtection,
-      configurePost,
-      setPreviousPage(steps, step),
+      configurePost(steps, step),
       sanitize,
       handleOptionalMiddleware(step.sanitize),
       handleOptionalMiddleware(step.validate),

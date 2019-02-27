@@ -1,8 +1,8 @@
 module.exports = {
+  ...require('./configure-get'),
   ...require('./configure-post'),
   ...require('./handle-post'),
   ...require('./render-view'),
   ...require('./sanitize'),
-  ...require('./session-details'),
-  ...require('./set-previous-page')
+  ...require('./session-details')
 }

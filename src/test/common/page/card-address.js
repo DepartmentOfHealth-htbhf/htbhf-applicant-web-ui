@@ -7,11 +7,6 @@ const PAGE_TITLES = {
   cy: 'GOV.UK - Urna condimentum mattis?'
 }
 
-const PAGE_HEADINGS = {
-  en: 'What is your address?',
-  cy: 'Urna condimentum mattis?'
-}
-
 const POSTCODE_ERROR_ID = 'postcode-error'
 const ADDRESS_LINE_1_ERROR_ID = 'address-line-1-error'
 const ADDRESS_LINE_2_ERROR_ID = 'address-line-2-error'
@@ -25,13 +20,16 @@ const POSTCODE_ERROR_LINK_CSS = 'a[href="#postcode-error"]'
  * Page object for CardAddress page where the card card-address is entered.
  */
 class CardAddress extends SubmittablePage {
-  async open (baseURL) {
-    await super.open(`${baseURL}/card-address`)
-    return this.waitForPageLoad()
+  getPath () {
+    return '/card-address'
+  }
+
+  getPageName () {
+    return 'card address'
   }
 
   async waitForPageLoad (lang = 'en') {
-    return super.waitForPageLoad(PAGE_HEADINGS[lang], PAGE_TITLES[lang])
+    return super.waitForPageWithTitle(PAGE_TITLES[lang])
   }
 
   async getAddressLine1Field () {

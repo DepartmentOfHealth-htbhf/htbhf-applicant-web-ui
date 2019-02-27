@@ -46,6 +46,10 @@ When(/^I do not enter in any address fields$/, async function () {
   await enterCardAddress(BLANK_STRING, BLANK_STRING, BLANK_STRING, BLANK_STRING)
 })
 
+Then(/^I am shown the card address page$/, async function () {
+  await pages.cardAddress.waitForPageLoad()
+})
+
 Then(/^I am informed that the postcode is in the wrong format$/, async function () {
   await assertErrorHeaderTextPresent(pages.cardAddress)
   await assertPostcodeErrorFieldAndLink('Enter a correct postcode, like AA1 1AA')

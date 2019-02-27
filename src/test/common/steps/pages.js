@@ -1,4 +1,4 @@
-const { EnterName } = require('../page/enter-name')
+const EnterName = require('../page/enter-name')
 const EnterNino = require('../page/enter-nino')
 const Overview = require('../page/overview')
 const EnterDOB = require('../page/enter-dob')
@@ -9,6 +9,15 @@ const Confirm = require('../page/confirm')
 const Cookies = require('../page/cookies')
 const SubmittablePage = require('../page/submittable-page')
 const { URL, DRIVER_MANAGER } = require('./test-startup-config')
+
+/**
+ * Function used to build up the mapping of page name to function
+ * to call to load the page for each Page object
+ */
+const addPageToMap = (accumulator, value) => ({
+  ...accumulator,
+  [value.getPageName()]: (baseUrl) => value.openDirect(baseUrl)
+})
 
 /**
  * Contains global references to the driver and all the page objects.
@@ -28,6 +37,7 @@ class Pages {
     this.genericPage = null
     this.cookies = null
     this.url = URL
+    this.allPages = null
   }
 
   /**
@@ -45,6 +55,14 @@ class Pages {
     this.confirm = new Confirm(this.driver)
     this.cookies = new Cookies(this.driver)
     this.genericPage = new SubmittablePage(this.driver)
+    // NOTE: This map should contain all page objects, and not the Generic Page as this doesn't itself represent a page
+    this.allPages = [this.overview, this.enterName, this.enterNino, this.enterDOB, this.areYouPregnant, this.cardAddress,
+      this.check, this.confirm, this.cookies]
+    this.pageMap = this.allPages.reduce(addPageToMap, {})
+  }
+
+  async openPageDirect (pageName) {
+    await this.pageMap[pageName](this.url)
   }
 }
 

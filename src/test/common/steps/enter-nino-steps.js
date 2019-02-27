@@ -6,7 +6,7 @@ const { enterNinoAndSubmit, assertErrorHeaderTextPresent } = require('./common-s
 
 const VALID_NINO = 'QQ123456C'
 
-Given('I am on the enter national insurance number page', async function () {
+Given(/^I am on the enter national insurance number page$/, async function () {
   await pages.enterNino.open(pages.url)
 })
 
@@ -36,6 +36,6 @@ Then(/^I see the value (.*) in the textbox$/, async function (nino) {
   expect(enteredNino).to.be.equal(nino)
 })
 
-Then(/^the enter date of birth page is shown$/, async function () {
-  await pages.enterDOB.waitForPageLoad()
+Then(/^I am shown the enter national insurance page$/, async function () {
+  await pages.enterNino.waitForPageLoad()
 })

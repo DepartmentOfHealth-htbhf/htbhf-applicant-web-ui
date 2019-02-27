@@ -1,14 +1,9 @@
 const { When, Then } = require('cucumber')
 const { assert, expect } = require('chai')
-const ENTER_NAME_PATH = require('../page/enter-name').PATH
 
 const pages = require('./pages')
 
 const GOV_UK_TABLE_CLASSNAME = 'govuk-table'
-
-When(/^I go directly to the cookies page$/, async function () {
-  await pages.cookies.open(pages.url)
-})
 
 When(/^I click on the cookies link$/, async function () {
   await pages.genericPage.clickCookieLink()
@@ -36,7 +31,10 @@ Then(/^no back link is shown$/, async function () {
 Then(/^the back link on the cookies page links to the enter name page$/, async function () {
   const backLink = await pages.cookies.getBackLink()
   const href = await backLink.getAttribute('href')
-  expect(href).to.equal(`${pages.url}${ENTER_NAME_PATH}`)
+
+  // using startsWith() instead of equals() so query parameters do not fail the test
+  const enterNameUrl = `${pages.url}${pages.enterName.getPath()}`
+  expect(href.startsWith(enterNameUrl)).to.equal(true)
 })
 
 async function checkAllCookiePageContentIsPresentAndCorrect () {
