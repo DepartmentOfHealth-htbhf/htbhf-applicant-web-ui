@@ -7,11 +7,6 @@ const PAGE_TITLES = {
   cy: 'GOV.UK - Vulputate dignissim suspendisse?'
 }
 
-const PAGE_HEADINGS = {
-  en: 'What is your name?',
-  cy: 'Vulputate dignissim suspendisse?'
-}
-
 const FIRST_NAME_ERROR_SELECTOR = 'span#first-name-error'
 const FIRST_NAME_ERROR_LINK_CSS = 'a[href="#first-name-error"]'
 const LAST_NAME_ERROR_SELECTOR = 'span#last-name-error'
@@ -49,13 +44,16 @@ class EnterName extends SubmittablePage {
     return nameField.sendKeys(name)
   }
 
-  async open (baseURL) {
-    await super.open(`${baseURL}/enter-name`)
-    return this.waitForPageLoad()
+  getPath () {
+    return '/enter-name'
+  }
+
+  getPageName () {
+    return 'enter name'
   }
 
   async waitForPageLoad (lang = 'en') {
-    return super.waitForPageLoad(PAGE_HEADINGS[lang], PAGE_TITLES[lang])
+    return super.waitForPageWithTitle(PAGE_TITLES[lang])
   }
 
   async getFirstNameErrorFieldText () {

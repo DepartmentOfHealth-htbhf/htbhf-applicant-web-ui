@@ -1,23 +1,11 @@
-const { Given, When, Then } = require('cucumber')
-const { expect } = require('chai')
+const { Given, When } = require('cucumber')
 
 const pages = require('./pages')
 
-Given(/^I navigate to the HTBHF overview page$/, async function () {
-  await pages.overview.open(pages.url)
-
-  const h1ElementText = await pages.overview.getH1Text()
-  expect(h1ElementText).to.be.equal('Overview')
+Given(/^I am starting a new application$/, async function () {
+  await pages.overview.openDirect(pages.url)
 })
 
 When(/^I select to start the process$/, async function () {
   await pages.overview.clickStartButton()
-})
-
-When(/^I click the Cookies link$/, async function () {
-  await pages.overview.clickCookieLink()
-})
-
-Then(/^the enter name page is shown$/, async function () {
-  await pages.enterName.waitForPageLoad()
 })

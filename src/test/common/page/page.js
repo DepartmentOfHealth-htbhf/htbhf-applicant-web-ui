@@ -2,7 +2,6 @@
 'use strict'
 
 const webdriver = require('selenium-webdriver')
-const { expect } = require('chai')
 
 const COOKIES_LINK_CSS = 'a[href="/cookies"]'
 const ERROR_HEADER_SELECTOR = 'h2#error-summary-title'
@@ -25,13 +24,30 @@ class Page {
     this.driver = driver
   }
 
-  async open (url, lang) {
+  async open (baseURL, lang = 'en') {
+    await this.openDirect(baseURL, lang)
+    return this.waitForPageLoad(lang)
+  }
+
+  async openDirect (baseURL, lang = 'en') {
+    await this.openPage(`${baseURL}${this.getPath()}`, lang)
+  }
+
+  async openPage (url, lang) {
     const queryParam = lang ? `?lang=${lang}` : ''
     try {
       return this.driver.get(`${url}${queryParam}`)
     } catch (error) {
       console.error('Unable to open page at', url, error)
     }
+  }
+
+  getPath () {
+    throw new Error('getPath needs to be implemented by all Page objects')
+  }
+
+  getPageName () {
+    throw new Error('getPageName needs to be implemented by all Page objects')
   }
 
   async findById (id) {
@@ -99,12 +115,6 @@ class Page {
   async getH2Text () {
     const h2Element = await this.findH2()
     return h2Element.getText()
-  }
-
-  async waitForPageLoad (pageHeading, pageTitle) {
-    const h1Text = await this.getH1Text()
-    expect(h1Text.trim()).to.be.equal(pageHeading)
-    return this.waitForPageWithTitle(pageTitle)
   }
 
   async waitForPageWithTitle (title) {

@@ -18,6 +18,12 @@ Given('I am on the check details page having entered valid details for a pregnan
   await pages.check.waitForPageLoad()
 })
 
+Given(/^I have completed my application$/, async function () {
+  await pages.enterName.open(pages.url)
+  await submitValidApplication()
+  await pages.confirm.waitForPageLoad()
+})
+
 When(/^I complete the application with valid details for a pregnant woman$/, async function () {
   await completeTheApplicationAsAPregnantWoman()
 })
@@ -27,9 +33,13 @@ When(/^I complete the application with valid details for a woman who is not preg
 })
 
 Given(/^I submit an application with valid details$/, async function () {
+  await submitValidApplication()
+})
+
+async function submitValidApplication () {
   await pages.enterName.open(pages.url)
   await completeTheApplicationAsAPregnantWoman()
   await pages.check.waitForPageLoad()
   await setupWiremockMappings()
   await pages.genericPage.submitForm()
-})
+}

@@ -74,8 +74,8 @@ Then(/^no values are present in the expected delivery date fields$/, async funct
   assert(yearValue.length === 0, 'expected delivery date year to be empty')
 })
 
-Then(/^I am shown the card address page$/, async function () {
-  await pages.cardAddress.waitForPageLoad()
+Then(/^I am shown the are you pregnant page$/, async function () {
+  await pages.areYouPregnant.waitForPageLoad()
 })
 
 Then(/^I am informed that I need to select an option$/, async function () {
