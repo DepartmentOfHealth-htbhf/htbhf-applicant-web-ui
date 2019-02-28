@@ -24,20 +24,20 @@
             },
             "result": {
               "status": "passed",
-              "duration": 16000000
+              "duration": 34000000
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
             "line": 7,
-            "name": "I am on the are you pregnant page",
+            "name": "I have entered my details up to the are you pregnant page",
             "match": {
-              "location": "src/test/common/steps/are-you-pregnant.js:11"
+              "location": "src/test/common/steps/navigation.js:87"
             },
             "result": {
               "status": "passed",
-              "duration": 497000000
+              "duration": 1396000000
             }
           },
           {
@@ -46,11 +46,11 @@
             "line": 10,
             "name": "No option is selected",
             "match": {
-              "location": "src/test/common/steps/are-you-pregnant.js:43"
+              "location": "src/test/common/steps/are-you-pregnant.js:39"
             },
             "result": {
               "status": "passed",
-              "duration": 17000000
+              "duration": 16000000
             }
           },
           {
@@ -82,20 +82,20 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2000000
+              "duration": 1000000
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
             "line": 7,
-            "name": "I am on the are you pregnant page",
+            "name": "I have entered my details up to the are you pregnant page",
             "match": {
-              "location": "src/test/common/steps/are-you-pregnant.js:11"
+              "location": "src/test/common/steps/navigation.js:87"
             },
             "result": {
               "status": "passed",
-              "duration": 424000000
+              "duration": 1275000000
             }
           },
           {
@@ -104,11 +104,11 @@
             "line": 13,
             "name": "Yes and No options are displayed",
             "match": {
-              "location": "src/test/common/steps/are-you-pregnant.js:53"
+              "location": "src/test/common/steps/are-you-pregnant.js:49"
             },
             "result": {
               "status": "passed",
-              "duration": 28000000
+              "duration": 26000000
             }
           },
           {
@@ -139,20 +139,20 @@
             },
             "result": {
               "status": "passed",
-              "duration": 4000000
+              "duration": 1000000
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
             "line": 7,
-            "name": "I am on the are you pregnant page",
+            "name": "I have entered my details up to the are you pregnant page",
             "match": {
-              "location": "src/test/common/steps/are-you-pregnant.js:11"
+              "location": "src/test/common/steps/navigation.js:87"
             },
             "result": {
               "status": "passed",
-              "duration": 459000000
+              "duration": 1390000000
             }
           },
           {
@@ -161,7 +161,7 @@
             "line": 16,
             "name": "I do not select an option",
             "match": {
-              "location": "src/test/common/steps/are-you-pregnant.js:31"
+              "location": "src/test/common/steps/are-you-pregnant.js:27"
             },
             "result": {
               "status": "passed"
@@ -177,7 +177,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 124000000
+              "duration": 94000000
             }
           },
           {
@@ -186,11 +186,11 @@
             "line": 18,
             "name": "I am informed that I need to select an option",
             "match": {
-              "location": "src/test/common/steps/are-you-pregnant.js:81"
+              "location": "src/test/common/steps/are-you-pregnant.js:77"
             },
             "result": {
               "status": "passed",
-              "duration": 129000000
+              "duration": 116000000
             }
           },
           {
@@ -228,13 +228,13 @@
             "arguments": [],
             "keyword": "Given ",
             "line": 7,
-            "name": "I am on the are you pregnant page",
+            "name": "I have entered my details up to the are you pregnant page",
             "match": {
-              "location": "src/test/common/steps/are-you-pregnant.js:11"
+              "location": "src/test/common/steps/navigation.js:87"
             },
             "result": {
               "status": "passed",
-              "duration": 429000000
+              "duration": 1300000000
             }
           },
           {
@@ -243,11 +243,11 @@
             "line": 21,
             "name": "I select the No option",
             "match": {
-              "location": "src/test/common/steps/are-you-pregnant.js:15"
+              "location": "src/test/common/steps/are-you-pregnant.js:11"
             },
             "result": {
               "status": "passed",
-              "duration": 92000000
+              "duration": 88000000
             }
           },
           {
@@ -260,7 +260,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 154000000
+              "duration": 135000000
             }
           },
           {
@@ -269,7 +269,7 @@
             "line": 23,
             "name": "I am shown the card address page",
             "match": {
-              "location": "src/test/common/steps/card-address-steps.js:49"
+              "location": "src/test/common/steps/card-address-steps.js:45"
             },
             "result": {
               "status": "passed",
@@ -283,8 +283,7 @@
               "location": "src/test/common/steps/hooks.js:14"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
@@ -312,13 +311,13 @@
             "arguments": [],
             "keyword": "Given ",
             "line": 7,
-            "name": "I am on the are you pregnant page",
+            "name": "I have entered my details up to the are you pregnant page",
             "match": {
-              "location": "src/test/common/steps/are-you-pregnant.js:11"
+              "location": "src/test/common/steps/navigation.js:87"
             },
             "result": {
               "status": "passed",
-              "duration": 437000000
+              "duration": 1315000000
             }
           },
           {
@@ -327,11 +326,11 @@
             "line": 26,
             "name": "I select the Yes option",
             "match": {
-              "location": "src/test/common/steps/are-you-pregnant.js:19"
+              "location": "src/test/common/steps/are-you-pregnant.js:15"
             },
             "result": {
               "status": "passed",
-              "duration": 95000000
+              "duration": 86000000
             }
           },
           {
@@ -340,11 +339,11 @@
             "line": 27,
             "name": "expected date of delivery instructional text is displayed",
             "match": {
-              "location": "src/test/common/steps/are-you-pregnant.js:58"
+              "location": "src/test/common/steps/are-you-pregnant.js:54"
             },
             "result": {
               "status": "passed",
-              "duration": 17000000
+              "duration": 15000000
             }
           },
           {
@@ -375,20 +374,20 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3000000
+              "duration": 1000000
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
             "line": 7,
-            "name": "I am on the are you pregnant page",
+            "name": "I have entered my details up to the are you pregnant page",
             "match": {
-              "location": "src/test/common/steps/are-you-pregnant.js:11"
+              "location": "src/test/common/steps/navigation.js:87"
             },
             "result": {
               "status": "passed",
-              "duration": 458000000
+              "duration": 1343000000
             }
           },
           {
@@ -397,11 +396,11 @@
             "line": 30,
             "name": "I select the Yes option",
             "match": {
-              "location": "src/test/common/steps/are-you-pregnant.js:19"
+              "location": "src/test/common/steps/are-you-pregnant.js:15"
             },
             "result": {
               "status": "passed",
-              "duration": 102000000
+              "duration": 89000000
             }
           },
           {
@@ -410,11 +409,11 @@
             "line": 31,
             "name": "I enter a valid expected delivery date",
             "match": {
-              "location": "src/test/common/steps/are-you-pregnant.js:23"
+              "location": "src/test/common/steps/are-you-pregnant.js:19"
             },
             "result": {
               "status": "passed",
-              "duration": 184000000
+              "duration": 170000000
             }
           },
           {
@@ -427,7 +426,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 177000000
+              "duration": 159000000
             }
           },
           {
@@ -436,11 +435,11 @@
             "line": 33,
             "name": "I am shown the card address page",
             "match": {
-              "location": "src/test/common/steps/card-address-steps.js:49"
+              "location": "src/test/common/steps/card-address-steps.js:45"
             },
             "result": {
               "status": "passed",
-              "duration": 4000000
+              "duration": 5000000
             }
           },
           {
@@ -450,7 +449,8 @@
               "location": "src/test/common/steps/hooks.js:14"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           }
         ]
@@ -478,13 +478,13 @@
             "arguments": [],
             "keyword": "Given ",
             "line": 7,
-            "name": "I am on the are you pregnant page",
+            "name": "I have entered my details up to the are you pregnant page",
             "match": {
-              "location": "src/test/common/steps/are-you-pregnant.js:11"
+              "location": "src/test/common/steps/navigation.js:87"
             },
             "result": {
               "status": "passed",
-              "duration": 408000000
+              "duration": 1345000000
             }
           },
           {
@@ -493,11 +493,11 @@
             "line": 36,
             "name": "I select the Yes option",
             "match": {
-              "location": "src/test/common/steps/are-you-pregnant.js:19"
+              "location": "src/test/common/steps/are-you-pregnant.js:15"
             },
             "result": {
               "status": "passed",
-              "duration": 99000000
+              "duration": 85000000
             }
           },
           {
@@ -510,7 +510,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 140000000
+              "duration": 112000000
             }
           },
           {
@@ -519,11 +519,11 @@
             "line": 38,
             "name": "I am informed that I need to enter an expected delivery date",
             "match": {
-              "location": "src/test/common/steps/are-you-pregnant.js:86"
+              "location": "src/test/common/steps/are-you-pregnant.js:82"
             },
             "result": {
               "status": "passed",
-              "duration": 128000000
+              "duration": 112000000
             }
           },
           {
@@ -533,8 +533,7 @@
               "location": "src/test/common/steps/hooks.js:14"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
@@ -562,13 +561,13 @@
             "arguments": [],
             "keyword": "Given ",
             "line": 7,
-            "name": "I am on the are you pregnant page",
+            "name": "I have entered my details up to the are you pregnant page",
             "match": {
-              "location": "src/test/common/steps/are-you-pregnant.js:11"
+              "location": "src/test/common/steps/navigation.js:87"
             },
             "result": {
               "status": "passed",
-              "duration": 399000000
+              "duration": 1288000000
             }
           },
           {
@@ -577,11 +576,11 @@
             "line": 41,
             "name": "I select the Yes option",
             "match": {
-              "location": "src/test/common/steps/are-you-pregnant.js:19"
+              "location": "src/test/common/steps/are-you-pregnant.js:15"
             },
             "result": {
               "status": "passed",
-              "duration": 97000000
+              "duration": 86000000
             }
           },
           {
@@ -590,11 +589,11 @@
             "line": 42,
             "name": "I enter text in the expected delivery date fields",
             "match": {
-              "location": "src/test/common/steps/are-you-pregnant.js:27"
+              "location": "src/test/common/steps/are-you-pregnant.js:23"
             },
             "result": {
               "status": "passed",
-              "duration": 185000000
+              "duration": 170000000
             }
           },
           {
@@ -603,11 +602,11 @@
             "line": 43,
             "name": "no values are present in the expected delivery date fields",
             "match": {
-              "location": "src/test/common/steps/are-you-pregnant.js:63"
+              "location": "src/test/common/steps/are-you-pregnant.js:59"
             },
             "result": {
               "status": "passed",
-              "duration": 63000000
+              "duration": 62000000
             }
           },
           {
@@ -645,13 +644,13 @@
             "arguments": [],
             "keyword": "Given ",
             "line": 7,
-            "name": "I am on the are you pregnant page",
+            "name": "I have entered my details up to the are you pregnant page",
             "match": {
-              "location": "src/test/common/steps/are-you-pregnant.js:11"
+              "location": "src/test/common/steps/navigation.js:87"
             },
             "result": {
               "status": "passed",
-              "duration": 411000000
+              "duration": 1262000000
             }
           },
           {
@@ -660,11 +659,11 @@
             "line": 46,
             "name": "I select the Yes option",
             "match": {
-              "location": "src/test/common/steps/are-you-pregnant.js:19"
+              "location": "src/test/common/steps/are-you-pregnant.js:15"
             },
             "result": {
               "status": "passed",
-              "duration": 99000000
+              "duration": 88000000
             }
           },
           {
@@ -673,11 +672,11 @@
             "line": 47,
             "name": "I enter my expected delivery date too far in the past",
             "match": {
-              "location": "src/test/common/steps/are-you-pregnant.js:35"
+              "location": "src/test/common/steps/are-you-pregnant.js:31"
             },
             "result": {
               "status": "passed",
-              "duration": 183000000
+              "duration": 169000000
             }
           },
           {
@@ -690,7 +689,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 133000000
+              "duration": 105000000
             }
           },
           {
@@ -699,11 +698,11 @@
             "line": 49,
             "name": "I am informed that the date is too far in the past",
             "match": {
-              "location": "src/test/common/steps/are-you-pregnant.js:91"
+              "location": "src/test/common/steps/are-you-pregnant.js:87"
             },
             "result": {
               "status": "passed",
-              "duration": 124000000
+              "duration": 113000000
             }
           },
           {
@@ -741,13 +740,13 @@
             "arguments": [],
             "keyword": "Given ",
             "line": 7,
-            "name": "I am on the are you pregnant page",
+            "name": "I have entered my details up to the are you pregnant page",
             "match": {
-              "location": "src/test/common/steps/are-you-pregnant.js:11"
+              "location": "src/test/common/steps/navigation.js:87"
             },
             "result": {
               "status": "passed",
-              "duration": 424000000
+              "duration": 1276000000
             }
           },
           {
@@ -756,11 +755,11 @@
             "line": 52,
             "name": "I select the Yes option",
             "match": {
-              "location": "src/test/common/steps/are-you-pregnant.js:19"
+              "location": "src/test/common/steps/are-you-pregnant.js:15"
             },
             "result": {
               "status": "passed",
-              "duration": 95000000
+              "duration": 97000000
             }
           },
           {
@@ -769,11 +768,11 @@
             "line": 53,
             "name": "I enter my expected delivery date too far in the future",
             "match": {
-              "location": "src/test/common/steps/are-you-pregnant.js:39"
+              "location": "src/test/common/steps/are-you-pregnant.js:35"
             },
             "result": {
               "status": "passed",
-              "duration": 179000000
+              "duration": 171000000
             }
           },
           {
@@ -786,7 +785,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 139000000
+              "duration": 112000000
             }
           },
           {
@@ -795,11 +794,11 @@
             "line": 55,
             "name": "I am informed that the date is too far in the future",
             "match": {
-              "location": "src/test/common/steps/are-you-pregnant.js:96"
+              "location": "src/test/common/steps/are-you-pregnant.js:92"
             },
             "result": {
               "status": "passed",
-              "duration": 133000000
+              "duration": 121000000
             }
           },
           {
@@ -840,21 +839,20 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed",
-              "duration": 3000000
+              "status": "passed"
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
             "line": 7,
-            "name": "I am on the card address page",
+            "name": "I have entered my details up to the card address page",
             "match": {
-              "location": "src/test/common/steps/card-address-steps.js:13"
+              "location": "src/test/common/steps/navigation.js:87"
             },
             "result": {
               "status": "passed",
-              "duration": 424000000
+              "duration": 1549000000
             }
           },
           {
@@ -863,11 +861,11 @@
             "line": 10,
             "name": "I enter an address with postcode EC11BB",
             "match": {
-              "location": "src/test/common/steps/card-address-steps.js:17"
+              "location": "src/test/common/steps/card-address-steps.js:13"
             },
             "result": {
               "status": "passed",
-              "duration": 467000000
+              "duration": 416000000
             }
           },
           {
@@ -876,11 +874,11 @@
             "line": 11,
             "name": "I am shown the check details page",
             "match": {
-              "location": "src/test/common/steps/check-details.js:86"
+              "location": "src/test/common/steps/check-details.js:81"
             },
             "result": {
               "status": "passed",
-              "duration": 5000000
+              "duration": 3000000
             }
           },
           {
@@ -890,8 +888,7 @@
               "location": "src/test/common/steps/hooks.js:14"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
@@ -912,20 +909,20 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2000000
+              "duration": 1000000
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
             "line": 7,
-            "name": "I am on the card address page",
+            "name": "I have entered my details up to the card address page",
             "match": {
-              "location": "src/test/common/steps/card-address-steps.js:13"
+              "location": "src/test/common/steps/navigation.js:87"
             },
             "result": {
               "status": "passed",
-              "duration": 397000000
+              "duration": 1505000000
             }
           },
           {
@@ -934,11 +931,11 @@
             "line": 10,
             "name": "I enter an address with postcode W1A0AX",
             "match": {
-              "location": "src/test/common/steps/card-address-steps.js:17"
+              "location": "src/test/common/steps/card-address-steps.js:13"
             },
             "result": {
               "status": "passed",
-              "duration": 464000000
+              "duration": 393000000
             }
           },
           {
@@ -947,11 +944,11 @@
             "line": 11,
             "name": "I am shown the check details page",
             "match": {
-              "location": "src/test/common/steps/check-details.js:86"
+              "location": "src/test/common/steps/check-details.js:81"
             },
             "result": {
               "status": "passed",
-              "duration": 4000000
+              "duration": 5000000
             }
           },
           {
@@ -989,13 +986,13 @@
             "arguments": [],
             "keyword": "Given ",
             "line": 7,
-            "name": "I am on the card address page",
+            "name": "I have entered my details up to the card address page",
             "match": {
-              "location": "src/test/common/steps/card-address-steps.js:13"
+              "location": "src/test/common/steps/navigation.js:87"
             },
             "result": {
               "status": "passed",
-              "duration": 408000000
+              "duration": 1491000000
             }
           },
           {
@@ -1004,11 +1001,11 @@
             "line": 10,
             "name": "I enter an address with postcode M11AE",
             "match": {
-              "location": "src/test/common/steps/card-address-steps.js:17"
+              "location": "src/test/common/steps/card-address-steps.js:13"
             },
             "result": {
               "status": "passed",
-              "duration": 447000000
+              "duration": 405000000
             }
           },
           {
@@ -1017,11 +1014,11 @@
             "line": 11,
             "name": "I am shown the check details page",
             "match": {
-              "location": "src/test/common/steps/check-details.js:86"
+              "location": "src/test/common/steps/check-details.js:81"
             },
             "result": {
               "status": "passed",
-              "duration": 6000000
+              "duration": 3000000
             }
           },
           {
@@ -1052,20 +1049,20 @@
             },
             "result": {
               "status": "passed",
-              "duration": 5000000
+              "duration": 1000000
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
             "line": 7,
-            "name": "I am on the card address page",
+            "name": "I have entered my details up to the card address page",
             "match": {
-              "location": "src/test/common/steps/card-address-steps.js:13"
+              "location": "src/test/common/steps/navigation.js:87"
             },
             "result": {
               "status": "passed",
-              "duration": 395000000
+              "duration": 1532000000
             }
           },
           {
@@ -1074,11 +1071,11 @@
             "line": 10,
             "name": "I enter an address with postcode B338TH",
             "match": {
-              "location": "src/test/common/steps/card-address-steps.js:17"
+              "location": "src/test/common/steps/card-address-steps.js:13"
             },
             "result": {
               "status": "passed",
-              "duration": 461000000
+              "duration": 415000000
             }
           },
           {
@@ -1087,11 +1084,11 @@
             "line": 11,
             "name": "I am shown the check details page",
             "match": {
-              "location": "src/test/common/steps/check-details.js:86"
+              "location": "src/test/common/steps/check-details.js:81"
             },
             "result": {
               "status": "passed",
-              "duration": 11000000
+              "duration": 4000000
             }
           },
           {
@@ -1129,13 +1126,13 @@
             "arguments": [],
             "keyword": "Given ",
             "line": 7,
-            "name": "I am on the card address page",
+            "name": "I have entered my details up to the card address page",
             "match": {
-              "location": "src/test/common/steps/card-address-steps.js:13"
+              "location": "src/test/common/steps/navigation.js:87"
             },
             "result": {
               "status": "passed",
-              "duration": 409000000
+              "duration": 1586000000
             }
           },
           {
@@ -1144,11 +1141,11 @@
             "line": 10,
             "name": "I enter an address with postcode CR26XH",
             "match": {
-              "location": "src/test/common/steps/card-address-steps.js:17"
+              "location": "src/test/common/steps/card-address-steps.js:13"
             },
             "result": {
               "status": "passed",
-              "duration": 454000000
+              "duration": 410000000
             }
           },
           {
@@ -1157,11 +1154,11 @@
             "line": 11,
             "name": "I am shown the check details page",
             "match": {
-              "location": "src/test/common/steps/check-details.js:86"
+              "location": "src/test/common/steps/check-details.js:81"
             },
             "result": {
               "status": "passed",
-              "duration": 4000000
+              "duration": 6000000
             }
           },
           {
@@ -1171,8 +1168,7 @@
               "location": "src/test/common/steps/hooks.js:14"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
@@ -1193,20 +1189,20 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3000000
+              "duration": 1000000
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
             "line": 7,
-            "name": "I am on the card address page",
+            "name": "I have entered my details up to the card address page",
             "match": {
-              "location": "src/test/common/steps/card-address-steps.js:13"
+              "location": "src/test/common/steps/navigation.js:87"
             },
             "result": {
               "status": "passed",
-              "duration": 560000000
+              "duration": 1525000000
             }
           },
           {
@@ -1215,11 +1211,11 @@
             "line": 10,
             "name": "I enter an address with postcode DN551PT",
             "match": {
-              "location": "src/test/common/steps/card-address-steps.js:17"
+              "location": "src/test/common/steps/card-address-steps.js:13"
             },
             "result": {
               "status": "passed",
-              "duration": 936000000
+              "duration": 421000000
             }
           },
           {
@@ -1228,11 +1224,11 @@
             "line": 11,
             "name": "I am shown the check details page",
             "match": {
-              "location": "src/test/common/steps/check-details.js:86"
+              "location": "src/test/common/steps/check-details.js:81"
             },
             "result": {
               "status": "passed",
-              "duration": 15000000
+              "duration": 4000000
             }
           },
           {
@@ -1242,8 +1238,7 @@
               "location": "src/test/common/steps/hooks.js:14"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
@@ -1263,21 +1258,20 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed",
-              "duration": 13000000
+              "status": "passed"
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
             "line": 7,
-            "name": "I am on the card address page",
+            "name": "I have entered my details up to the card address page",
             "match": {
-              "location": "src/test/common/steps/card-address-steps.js:13"
+              "location": "src/test/common/steps/navigation.js:87"
             },
             "result": {
               "status": "passed",
-              "duration": 574000000
+              "duration": 1528000000
             }
           },
           {
@@ -1286,11 +1280,11 @@
             "line": 10,
             "name": "I enter an address with postcode DN55 1PT",
             "match": {
-              "location": "src/test/common/steps/card-address-steps.js:17"
+              "location": "src/test/common/steps/card-address-steps.js:13"
             },
             "result": {
               "status": "passed",
-              "duration": 685000000
+              "duration": 409000000
             }
           },
           {
@@ -1299,11 +1293,11 @@
             "line": 11,
             "name": "I am shown the check details page",
             "match": {
-              "location": "src/test/common/steps/check-details.js:86"
+              "location": "src/test/common/steps/check-details.js:81"
             },
             "result": {
               "status": "passed",
-              "duration": 12000000
+              "duration": 6000000
             }
           },
           {
@@ -1313,8 +1307,7 @@
               "location": "src/test/common/steps/hooks.js:14"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
@@ -1334,21 +1327,20 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
             "line": 7,
-            "name": "I am on the card address page",
+            "name": "I have entered my details up to the card address page",
             "match": {
-              "location": "src/test/common/steps/card-address-steps.js:13"
+              "location": "src/test/common/steps/navigation.js:87"
             },
             "result": {
               "status": "passed",
-              "duration": 581000000
+              "duration": 1481000000
             }
           },
           {
@@ -1357,11 +1349,11 @@
             "line": 24,
             "name": "I do not enter the second line of an address",
             "match": {
-              "location": "src/test/common/steps/card-address-steps.js:41"
+              "location": "src/test/common/steps/card-address-steps.js:37"
             },
             "result": {
               "status": "passed",
-              "duration": 639000000
+              "duration": 379000000
             }
           },
           {
@@ -1370,11 +1362,11 @@
             "line": 25,
             "name": "I am shown the check details page",
             "match": {
-              "location": "src/test/common/steps/check-details.js:86"
+              "location": "src/test/common/steps/check-details.js:81"
             },
             "result": {
               "status": "passed",
-              "duration": 9000000
+              "duration": 5000000
             }
           },
           {
@@ -1384,8 +1376,7 @@
               "location": "src/test/common/steps/hooks.js:14"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
@@ -1405,21 +1396,20 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
             "line": 7,
-            "name": "I am on the card address page",
+            "name": "I have entered my details up to the card address page",
             "match": {
-              "location": "src/test/common/steps/card-address-steps.js:13"
+              "location": "src/test/common/steps/navigation.js:87"
             },
             "result": {
               "status": "passed",
-              "duration": 442000000
+              "duration": 1545000000
             }
           },
           {
@@ -1428,11 +1418,11 @@
             "line": 28,
             "name": "I enter an address with postcode AA1122BB",
             "match": {
-              "location": "src/test/common/steps/card-address-steps.js:17"
+              "location": "src/test/common/steps/card-address-steps.js:13"
             },
             "result": {
               "status": "passed",
-              "duration": 418000000
+              "duration": 365000000
             }
           },
           {
@@ -1441,11 +1431,11 @@
             "line": 29,
             "name": "I am informed that the postcode is in the wrong format",
             "match": {
-              "location": "src/test/common/steps/card-address-steps.js:53"
+              "location": "src/test/common/steps/card-address-steps.js:49"
             },
             "result": {
               "status": "passed",
-              "duration": 130000000
+              "duration": 117000000
             }
           },
           {
@@ -1483,13 +1473,13 @@
             "arguments": [],
             "keyword": "Given ",
             "line": 7,
-            "name": "I am on the card address page",
+            "name": "I have entered my details up to the card address page",
             "match": {
-              "location": "src/test/common/steps/card-address-steps.js:13"
+              "location": "src/test/common/steps/navigation.js:87"
             },
             "result": {
               "status": "passed",
-              "duration": 464000000
+              "duration": 1511000000
             }
           },
           {
@@ -1498,11 +1488,11 @@
             "line": 28,
             "name": "I enter an address with postcode A",
             "match": {
-              "location": "src/test/common/steps/card-address-steps.js:17"
+              "location": "src/test/common/steps/card-address-steps.js:13"
             },
             "result": {
               "status": "passed",
-              "duration": 401000000
+              "duration": 340000000
             }
           },
           {
@@ -1511,11 +1501,11 @@
             "line": 29,
             "name": "I am informed that the postcode is in the wrong format",
             "match": {
-              "location": "src/test/common/steps/card-address-steps.js:53"
+              "location": "src/test/common/steps/card-address-steps.js:49"
             },
             "result": {
               "status": "passed",
-              "duration": 124000000
+              "duration": 114000000
             }
           },
           {
@@ -1546,20 +1536,20 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1000000
+              "duration": 4000000
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
             "line": 7,
-            "name": "I am on the card address page",
+            "name": "I have entered my details up to the card address page",
             "match": {
-              "location": "src/test/common/steps/card-address-steps.js:13"
+              "location": "src/test/common/steps/navigation.js:87"
             },
             "result": {
               "status": "passed",
-              "duration": 427000000
+              "duration": 1532000000
             }
           },
           {
@@ -1568,11 +1558,11 @@
             "line": 28,
             "name": "I enter an address with postcode 11AA21",
             "match": {
-              "location": "src/test/common/steps/card-address-steps.js:17"
+              "location": "src/test/common/steps/card-address-steps.js:13"
             },
             "result": {
               "status": "passed",
-              "duration": 413000000
+              "duration": 362000000
             }
           },
           {
@@ -1581,11 +1571,11 @@
             "line": 29,
             "name": "I am informed that the postcode is in the wrong format",
             "match": {
-              "location": "src/test/common/steps/card-address-steps.js:53"
+              "location": "src/test/common/steps/card-address-steps.js:49"
             },
             "result": {
               "status": "passed",
-              "duration": 129000000
+              "duration": 115000000
             }
           },
           {
@@ -1623,13 +1613,13 @@
             "arguments": [],
             "keyword": "Given ",
             "line": 7,
-            "name": "I am on the card address page",
+            "name": "I have entered my details up to the card address page",
             "match": {
-              "location": "src/test/common/steps/card-address-steps.js:13"
+              "location": "src/test/common/steps/navigation.js:87"
             },
             "result": {
               "status": "passed",
-              "duration": 403000000
+              "duration": 1494000000
             }
           },
           {
@@ -1638,11 +1628,11 @@
             "line": 28,
             "name": "I enter an address with postcode ''",
             "match": {
-              "location": "src/test/common/steps/card-address-steps.js:17"
+              "location": "src/test/common/steps/card-address-steps.js:13"
             },
             "result": {
               "status": "passed",
-              "duration": 403000000
+              "duration": 360000000
             }
           },
           {
@@ -1651,11 +1641,11 @@
             "line": 29,
             "name": "I am informed that the postcode is in the wrong format",
             "match": {
-              "location": "src/test/common/steps/card-address-steps.js:53"
+              "location": "src/test/common/steps/card-address-steps.js:49"
             },
             "result": {
               "status": "passed",
-              "duration": 124000000
+              "duration": 119000000
             }
           },
           {
@@ -1686,20 +1676,20 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1000000
+              "duration": 11000000
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
             "line": 7,
-            "name": "I am on the card address page",
+            "name": "I have entered my details up to the card address page",
             "match": {
-              "location": "src/test/common/steps/card-address-steps.js:13"
+              "location": "src/test/common/steps/navigation.js:87"
             },
             "result": {
               "status": "passed",
-              "duration": 437000000
+              "duration": 1512000000
             }
           },
           {
@@ -1708,11 +1698,11 @@
             "line": 28,
             "name": "I enter an address with postcode E!",
             "match": {
-              "location": "src/test/common/steps/card-address-steps.js:17"
+              "location": "src/test/common/steps/card-address-steps.js:13"
             },
             "result": {
               "status": "passed",
-              "duration": 409000000
+              "duration": 355000000
             }
           },
           {
@@ -1721,11 +1711,11 @@
             "line": 29,
             "name": "I am informed that the postcode is in the wrong format",
             "match": {
-              "location": "src/test/common/steps/card-address-steps.js:53"
+              "location": "src/test/common/steps/card-address-steps.js:49"
             },
             "result": {
               "status": "passed",
-              "duration": 129000000
+              "duration": 115000000
             }
           },
           {
@@ -1735,8 +1725,7 @@
               "location": "src/test/common/steps/hooks.js:14"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
@@ -1756,21 +1745,20 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
             "line": 7,
-            "name": "I am on the card address page",
+            "name": "I have entered my details up to the card address page",
             "match": {
-              "location": "src/test/common/steps/card-address-steps.js:13"
+              "location": "src/test/common/steps/navigation.js:87"
             },
             "result": {
               "status": "passed",
-              "duration": 406000000
+              "duration": 1474000000
             }
           },
           {
@@ -1779,11 +1767,11 @@
             "line": 28,
             "name": "I enter an address with postcode EA123",
             "match": {
-              "location": "src/test/common/steps/card-address-steps.js:17"
+              "location": "src/test/common/steps/card-address-steps.js:13"
             },
             "result": {
               "status": "passed",
-              "duration": 420000000
+              "duration": 359000000
             }
           },
           {
@@ -1792,11 +1780,11 @@
             "line": 29,
             "name": "I am informed that the postcode is in the wrong format",
             "match": {
-              "location": "src/test/common/steps/card-address-steps.js:53"
+              "location": "src/test/common/steps/card-address-steps.js:49"
             },
             "result": {
               "status": "passed",
-              "duration": 125000000
+              "duration": 123000000
             }
           },
           {
@@ -1827,20 +1815,20 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1000000
+              "duration": 2000000
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
             "line": 7,
-            "name": "I am on the card address page",
+            "name": "I have entered my details up to the card address page",
             "match": {
-              "location": "src/test/common/steps/card-address-steps.js:13"
+              "location": "src/test/common/steps/navigation.js:87"
             },
             "result": {
               "status": "passed",
-              "duration": 410000000
+              "duration": 1552000000
             }
           },
           {
@@ -1849,11 +1837,11 @@
             "line": 41,
             "name": "I do not enter in any address fields",
             "match": {
-              "location": "src/test/common/steps/card-address-steps.js:45"
+              "location": "src/test/common/steps/card-address-steps.js:41"
             },
             "result": {
               "status": "passed",
-              "duration": 333000000
+              "duration": 289000000
             }
           },
           {
@@ -1862,11 +1850,11 @@
             "line": 42,
             "name": "I am informed that I need to enter an address on the 'address line 1', 'address line 2' and 'town or city' fields",
             "match": {
-              "location": "src/test/common/steps/card-address-steps.js:83"
+              "location": "src/test/common/steps/card-address-steps.js:79"
             },
             "result": {
               "status": "passed",
-              "duration": 286000000
+              "duration": 249000000
             }
           },
           {
@@ -1876,7 +1864,8 @@
               "location": "src/test/common/steps/hooks.js:14"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           }
         ]
@@ -1904,13 +1893,13 @@
             "arguments": [],
             "keyword": "Given ",
             "line": 7,
-            "name": "I am on the card address page",
+            "name": "I have entered my details up to the card address page",
             "match": {
-              "location": "src/test/common/steps/card-address-steps.js:13"
+              "location": "src/test/common/steps/navigation.js:87"
             },
             "result": {
               "status": "passed",
-              "duration": 397000000
+              "duration": 1478000000
             }
           },
           {
@@ -1919,11 +1908,11 @@
             "line": 45,
             "name": "I do not enter the first line of an address",
             "match": {
-              "location": "src/test/common/steps/card-address-steps.js:21"
+              "location": "src/test/common/steps/card-address-steps.js:17"
             },
             "result": {
               "status": "passed",
-              "duration": 404000000
+              "duration": 370000000
             }
           },
           {
@@ -1932,11 +1921,11 @@
             "line": 46,
             "name": "I am informed that I need to enter an address on the 'address line 1' field",
             "match": {
-              "location": "src/test/common/steps/card-address-steps.js:58"
+              "location": "src/test/common/steps/card-address-steps.js:54"
             },
             "result": {
               "status": "passed",
-              "duration": 124000000
+              "duration": 118000000
             }
           },
           {
@@ -1966,21 +1955,20 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
             "line": 7,
-            "name": "I am on the card address page",
+            "name": "I have entered my details up to the card address page",
             "match": {
-              "location": "src/test/common/steps/card-address-steps.js:13"
+              "location": "src/test/common/steps/navigation.js:87"
             },
             "result": {
               "status": "passed",
-              "duration": 380000000
+              "duration": 1547000000
             }
           },
           {
@@ -1989,11 +1977,11 @@
             "line": 49,
             "name": "I do not enter the 'town or city' of an address",
             "match": {
-              "location": "src/test/common/steps/card-address-steps.js:25"
+              "location": "src/test/common/steps/card-address-steps.js:21"
             },
             "result": {
               "status": "passed",
-              "duration": 415000000
+              "duration": 342000000
             }
           },
           {
@@ -2002,11 +1990,11 @@
             "line": 50,
             "name": "I am informed that I need to enter an address on the 'town or city' field",
             "match": {
-              "location": "src/test/common/steps/card-address-steps.js:63"
+              "location": "src/test/common/steps/card-address-steps.js:59"
             },
             "result": {
               "status": "passed",
-              "duration": 133000000
+              "duration": 116000000
             }
           },
           {
@@ -2036,21 +2024,20 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
             "line": 7,
-            "name": "I am on the card address page",
+            "name": "I have entered my details up to the card address page",
             "match": {
-              "location": "src/test/common/steps/card-address-steps.js:13"
+              "location": "src/test/common/steps/navigation.js:87"
             },
             "result": {
               "status": "passed",
-              "duration": 425000000
+              "duration": 1533000000
             }
           },
           {
@@ -2059,11 +2046,11 @@
             "line": 53,
             "name": "I enter in an address where the first line is too long",
             "match": {
-              "location": "src/test/common/steps/card-address-steps.js:29"
+              "location": "src/test/common/steps/card-address-steps.js:25"
             },
             "result": {
               "status": "passed",
-              "duration": 2119000000
+              "duration": 1918000000
             }
           },
           {
@@ -2072,11 +2059,11 @@
             "line": 54,
             "name": "I am informed that the first line of the address is too long",
             "match": {
-              "location": "src/test/common/steps/card-address-steps.js:68"
+              "location": "src/test/common/steps/card-address-steps.js:64"
             },
             "result": {
               "status": "passed",
-              "duration": 129000000
+              "duration": 124000000
             }
           },
           {
@@ -2107,20 +2094,20 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2000000
+              "duration": 1000000
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
             "line": 7,
-            "name": "I am on the card address page",
+            "name": "I have entered my details up to the card address page",
             "match": {
-              "location": "src/test/common/steps/card-address-steps.js:13"
+              "location": "src/test/common/steps/navigation.js:87"
             },
             "result": {
               "status": "passed",
-              "duration": 425000000
+              "duration": 1535000000
             }
           },
           {
@@ -2129,11 +2116,11 @@
             "line": 57,
             "name": "I enter in an address where the second line is too long",
             "match": {
-              "location": "src/test/common/steps/card-address-steps.js:33"
+              "location": "src/test/common/steps/card-address-steps.js:29"
             },
             "result": {
               "status": "passed",
-              "duration": 2094000000
+              "duration": 1906000000
             }
           },
           {
@@ -2142,11 +2129,11 @@
             "line": 58,
             "name": "I am informed that the second line of the address is too long",
             "match": {
-              "location": "src/test/common/steps/card-address-steps.js:73"
+              "location": "src/test/common/steps/card-address-steps.js:69"
             },
             "result": {
               "status": "passed",
-              "duration": 126000000
+              "duration": 118000000
             }
           },
           {
@@ -2177,20 +2164,20 @@
             },
             "result": {
               "status": "passed",
-              "duration": 5000000
+              "duration": 7000000
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
             "line": 7,
-            "name": "I am on the card address page",
+            "name": "I have entered my details up to the card address page",
             "match": {
-              "location": "src/test/common/steps/card-address-steps.js:13"
+              "location": "src/test/common/steps/navigation.js:87"
             },
             "result": {
               "status": "passed",
-              "duration": 406000000
+              "duration": 1505000000
             }
           },
           {
@@ -2199,11 +2186,11 @@
             "line": 61,
             "name": "I enter in an address where the 'town or city' is too long",
             "match": {
-              "location": "src/test/common/steps/card-address-steps.js:37"
+              "location": "src/test/common/steps/card-address-steps.js:33"
             },
             "result": {
               "status": "passed",
-              "duration": 2100000000
+              "duration": 1943000000
             }
           },
           {
@@ -2212,11 +2199,11 @@
             "line": 62,
             "name": "I am informed that the 'town or city' of the address is too long",
             "match": {
-              "location": "src/test/common/steps/card-address-steps.js:78"
+              "location": "src/test/common/steps/card-address-steps.js:74"
             },
             "result": {
               "status": "passed",
-              "duration": 122000000
+              "duration": 114000000
             }
           },
           {
@@ -2271,7 +2258,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 426000000
+              "duration": 384000000
             }
           },
           {
@@ -2284,7 +2271,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1721000000
+              "duration": 1628000000
             }
           },
           {
@@ -2293,11 +2280,11 @@
             "line": 9,
             "name": "I am shown the check details page",
             "match": {
-              "location": "src/test/common/steps/check-details.js:86"
+              "location": "src/test/common/steps/check-details.js:81"
             },
             "result": {
               "status": "passed",
-              "duration": 5000000
+              "duration": 4000000
             }
           },
           {
@@ -2306,11 +2293,11 @@
             "line": 10,
             "name": "the check details page contains all data entered for a pregnant woman",
             "match": {
-              "location": "src/test/common/steps/check-details.js:52"
+              "location": "src/test/common/steps/check-details.js:47"
             },
             "result": {
               "status": "passed",
-              "duration": 1056000000
+              "duration": 970000000
             }
           },
           {
@@ -2319,11 +2306,11 @@
             "line": 11,
             "name": "all page content is present on the check details page",
             "match": {
-              "location": "src/test/common/steps/check-details.js:82"
+              "location": "src/test/common/steps/check-details.js:77"
             },
             "result": {
               "status": "passed",
-              "duration": 886000000
+              "duration": 822000000
             }
           },
           {
@@ -2367,7 +2354,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 432000000
+              "duration": 403000000
             }
           },
           {
@@ -2380,7 +2367,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1488000000
+              "duration": 1400000000
             }
           },
           {
@@ -2389,11 +2376,11 @@
             "line": 16,
             "name": "I am shown the check details page",
             "match": {
-              "location": "src/test/common/steps/check-details.js:86"
+              "location": "src/test/common/steps/check-details.js:81"
             },
             "result": {
               "status": "passed",
-              "duration": 8000000
+              "duration": 3000000
             }
           },
           {
@@ -2402,11 +2389,11 @@
             "line": 17,
             "name": "the check details page contains all data entered for a woman who is not pregnant",
             "match": {
-              "location": "src/test/common/steps/check-details.js:62"
+              "location": "src/test/common/steps/check-details.js:57"
             },
             "result": {
               "status": "passed",
-              "duration": 870000000
+              "duration": 814000000
             }
           },
           {
@@ -2450,7 +2437,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 443000000
+              "duration": 359000000
             }
           },
           {
@@ -2459,11 +2446,11 @@
             "line": 21,
             "name": "I complete the application with valid details for an applicant with no second line of address",
             "match": {
-              "location": "src/test/common/steps/check-details.js:40"
+              "location": "src/test/common/steps/check-details.js:35"
             },
             "result": {
               "status": "passed",
-              "duration": 1519000000
+              "duration": 1389000000
             }
           },
           {
@@ -2472,11 +2459,11 @@
             "line": 22,
             "name": "I am shown the check details page",
             "match": {
-              "location": "src/test/common/steps/check-details.js:86"
+              "location": "src/test/common/steps/check-details.js:81"
             },
             "result": {
               "status": "passed",
-              "duration": 6000000
+              "duration": 3000000
             }
           },
           {
@@ -2485,11 +2472,11 @@
             "line": 23,
             "name": "the check details page contains all data entered for an applicant with no second line of address",
             "match": {
-              "location": "src/test/common/steps/check-details.js:72"
+              "location": "src/test/common/steps/check-details.js:67"
             },
             "result": {
               "status": "passed",
-              "duration": 864000000
+              "duration": 800000000
             }
           },
           {
@@ -2499,7 +2486,8 @@
               "location": "src/test/common/steps/hooks.js:14"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           }
         ]
@@ -2520,7 +2508,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2000000
+              "duration": 1000000
             }
           },
           {
@@ -2533,7 +2521,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2150000000
+              "duration": 1986000000
             }
           },
           {
@@ -2542,11 +2530,11 @@
             "line": 27,
             "name": "I choose to change my answer to are you pregnant",
             "match": {
-              "location": "src/test/common/steps/check-details.js:48"
+              "location": "src/test/common/steps/check-details.js:43"
             },
             "result": {
               "status": "passed",
-              "duration": 112000000
+              "duration": 106000000
             }
           },
           {
@@ -2555,11 +2543,11 @@
             "line": 28,
             "name": "I select the No option",
             "match": {
-              "location": "src/test/common/steps/are-you-pregnant.js:15"
+              "location": "src/test/common/steps/are-you-pregnant.js:11"
             },
             "result": {
               "status": "passed",
-              "duration": 93000000
+              "duration": 85000000
             }
           },
           {
@@ -2572,7 +2560,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 143000000
+              "duration": 128000000
             }
           },
           {
@@ -2581,7 +2569,7 @@
             "line": 30,
             "name": "I am shown the check details page",
             "match": {
-              "location": "src/test/common/steps/check-details.js:86"
+              "location": "src/test/common/steps/check-details.js:81"
             },
             "result": {
               "status": "passed",
@@ -2594,11 +2582,11 @@
             "line": 31,
             "name": "the check details page contains all data entered for a woman who is not pregnant",
             "match": {
-              "location": "src/test/common/steps/check-details.js:62"
+              "location": "src/test/common/steps/check-details.js:57"
             },
             "result": {
               "status": "passed",
-              "duration": 879000000
+              "duration": 800000000
             }
           },
           {
@@ -2629,7 +2617,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3000000
+              "duration": 1000000
             }
           },
           {
@@ -2642,7 +2630,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 417000000
+              "duration": 398000000
             }
           },
           {
@@ -2651,11 +2639,11 @@
             "line": 35,
             "name": "I complete the application with valid details that contains malicious input",
             "match": {
-              "location": "src/test/common/steps/check-details.js:32"
+              "location": "src/test/common/steps/check-details.js:27"
             },
             "result": {
               "status": "passed",
-              "duration": 1626000000
+              "duration": 1486000000
             }
           },
           {
@@ -2664,11 +2652,11 @@
             "line": 36,
             "name": "I am shown the check details page",
             "match": {
-              "location": "src/test/common/steps/check-details.js:86"
+              "location": "src/test/common/steps/check-details.js:81"
             },
             "result": {
               "status": "passed",
-              "duration": 4000000
+              "duration": 3000000
             }
           },
           {
@@ -2678,7 +2666,8 @@
               "location": "src/test/common/steps/hooks.js:14"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           }
         ]
@@ -2736,7 +2725,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2027000000
+              "duration": 1829000000
             }
           },
           {
@@ -2749,7 +2738,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 10000000
+              "duration": 12000000
             }
           },
           {
@@ -2762,7 +2751,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 129000000
+              "duration": 121000000
             }
           },
           {
@@ -2804,7 +2793,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1000000
+              "duration": 3000000
             }
           },
           {
@@ -2813,11 +2802,11 @@
             "line": 7,
             "name": "I navigate to the HTBHF overview page",
             "match": {
-              "location": "src/test/common/steps/navigation.js:49"
+              "location": "src/test/common/steps/navigation.js:95"
             },
             "result": {
               "status": "passed",
-              "duration": 429000000
+              "duration": 414000000
             }
           },
           {
@@ -2826,11 +2815,11 @@
             "line": 8,
             "name": "I click the Cookies link",
             "match": {
-              "location": "src/test/common/steps/navigation.js:45"
+              "location": "src/test/common/steps/navigation.js:91"
             },
             "result": {
               "status": "passed",
-              "duration": 135000000
+              "duration": 131000000
             }
           },
           {
@@ -2843,7 +2832,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 15000000
+              "duration": 9000000
             }
           },
           {
@@ -2856,7 +2845,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 107000000
+              "duration": 98000000
             }
           },
           {
@@ -2896,11 +2885,11 @@
             "line": 13,
             "name": "I navigate to the cookies page",
             "match": {
-              "location": "src/test/common/steps/navigation.js:49"
+              "location": "src/test/common/steps/navigation.js:95"
             },
             "result": {
               "status": "passed",
-              "duration": 406000000
+              "duration": 401000000
             }
           },
           {
@@ -2913,7 +2902,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 5000000
+              "duration": 4000000
             }
           },
           {
@@ -2926,7 +2915,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 5003000000
+              "duration": 5005000000
             }
           },
           {
@@ -2964,13 +2953,13 @@
             "arguments": [],
             "keyword": "Given ",
             "line": 18,
-            "name": "I am on the enter name page",
+            "name": "I have entered my details up to the enter name page",
             "match": {
-              "location": "src/test/common/steps/enter-name-steps.js:8"
+              "location": "src/test/common/steps/navigation.js:87"
             },
             "result": {
               "status": "passed",
-              "duration": 415000000
+              "duration": 522000000
             }
           },
           {
@@ -2983,7 +2972,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 129000000
+              "duration": 117000000
             }
           },
           {
@@ -2996,7 +2985,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 7000000
+              "duration": 6000000
             }
           },
           {
@@ -3009,7 +2998,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 31000000
+              "duration": 30000000
             }
           },
           {
@@ -3051,20 +3040,20 @@
             },
             "result": {
               "status": "passed",
-              "duration": 8000000
+              "duration": 2000000
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
             "line": 7,
-            "name": "I am on the enter date of birth page",
+            "name": "I have entered my details up to the enter date of birth page",
             "match": {
-              "location": "src/test/common/steps/enter-dob-steps.js:7"
+              "location": "src/test/common/steps/navigation.js:87"
             },
             "result": {
               "status": "passed",
-              "duration": 433000000
+              "duration": 968000000
             }
           },
           {
@@ -3073,11 +3062,11 @@
             "line": 10,
             "name": "I enter my date of birth as day: 03, month: 09 and year: 9999",
             "match": {
-              "location": "src/test/common/steps/enter-dob-steps.js:11"
+              "location": "src/test/common/steps/enter-dob-steps.js:7"
             },
             "result": {
               "status": "passed",
-              "duration": 300000000
+              "duration": 259000000
             }
           },
           {
@@ -3086,11 +3075,11 @@
             "line": 11,
             "name": "I am informed that my date of birth should be in the past",
             "match": {
-              "location": "src/test/common/steps/enter-dob-steps.js:24"
+              "location": "src/test/common/steps/enter-dob-steps.js:20"
             },
             "result": {
               "status": "passed",
-              "duration": 124000000
+              "duration": 115000000
             }
           },
           {
@@ -3100,7 +3089,8 @@
               "location": "src/test/common/steps/hooks.js:14"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           }
         ]
@@ -3121,20 +3111,20 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1000000
+              "duration": 3000000
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
             "line": 7,
-            "name": "I am on the enter date of birth page",
+            "name": "I have entered my details up to the enter date of birth page",
             "match": {
-              "location": "src/test/common/steps/enter-dob-steps.js:7"
+              "location": "src/test/common/steps/navigation.js:87"
             },
             "result": {
               "status": "passed",
-              "duration": 435000000
+              "duration": 1003000000
             }
           },
           {
@@ -3143,11 +3133,11 @@
             "line": 14,
             "name": "I enter my date of birth as day: , month:  and year: ",
             "match": {
-              "location": "src/test/common/steps/enter-dob-steps.js:11"
+              "location": "src/test/common/steps/enter-dob-steps.js:7"
             },
             "result": {
               "status": "passed",
-              "duration": 287000000
+              "duration": 257000000
             }
           },
           {
@@ -3156,11 +3146,11 @@
             "line": 15,
             "name": "I am informed that a valid date of birth is required",
             "match": {
-              "location": "src/test/common/steps/enter-dob-steps.js:19"
+              "location": "src/test/common/steps/enter-dob-steps.js:15"
             },
             "result": {
               "status": "passed",
-              "duration": 125000000
+              "duration": 122000000
             }
           },
           {
@@ -3198,13 +3188,13 @@
             "arguments": [],
             "keyword": "Given ",
             "line": 7,
-            "name": "I am on the enter date of birth page",
+            "name": "I have entered my details up to the enter date of birth page",
             "match": {
-              "location": "src/test/common/steps/enter-dob-steps.js:7"
+              "location": "src/test/common/steps/navigation.js:87"
             },
             "result": {
               "status": "passed",
-              "duration": 422000000
+              "duration": 1010000000
             }
           },
           {
@@ -3213,11 +3203,11 @@
             "line": 14,
             "name": "I enter my date of birth as day: 30, month: 02 and year: 2000",
             "match": {
-              "location": "src/test/common/steps/enter-dob-steps.js:11"
+              "location": "src/test/common/steps/enter-dob-steps.js:7"
             },
             "result": {
               "status": "passed",
-              "duration": 307000000
+              "duration": 280000000
             }
           },
           {
@@ -3226,11 +3216,11 @@
             "line": 15,
             "name": "I am informed that a valid date of birth is required",
             "match": {
-              "location": "src/test/common/steps/enter-dob-steps.js:19"
+              "location": "src/test/common/steps/enter-dob-steps.js:15"
             },
             "result": {
               "status": "passed",
-              "duration": 121000000
+              "duration": 125000000
             }
           },
           {
@@ -3260,21 +3250,20 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
             "line": 7,
-            "name": "I am on the enter date of birth page",
+            "name": "I have entered my details up to the enter date of birth page",
             "match": {
-              "location": "src/test/common/steps/enter-dob-steps.js:7"
+              "location": "src/test/common/steps/navigation.js:87"
             },
             "result": {
               "status": "passed",
-              "duration": 408000000
+              "duration": 997000000
             }
           },
           {
@@ -3283,11 +3272,11 @@
             "line": 14,
             "name": "I enter my date of birth as day: 40, month: 1 and year: 1985",
             "match": {
-              "location": "src/test/common/steps/enter-dob-steps.js:11"
+              "location": "src/test/common/steps/enter-dob-steps.js:7"
             },
             "result": {
               "status": "passed",
-              "duration": 305000000
+              "duration": 268000000
             }
           },
           {
@@ -3296,11 +3285,11 @@
             "line": 15,
             "name": "I am informed that a valid date of birth is required",
             "match": {
-              "location": "src/test/common/steps/enter-dob-steps.js:19"
+              "location": "src/test/common/steps/enter-dob-steps.js:15"
             },
             "result": {
               "status": "passed",
-              "duration": 120000000
+              "duration": 118000000
             }
           },
           {
@@ -3338,13 +3327,13 @@
             "arguments": [],
             "keyword": "Given ",
             "line": 7,
-            "name": "I am on the enter date of birth page",
+            "name": "I have entered my details up to the enter date of birth page",
             "match": {
-              "location": "src/test/common/steps/enter-dob-steps.js:7"
+              "location": "src/test/common/steps/navigation.js:87"
             },
             "result": {
               "status": "passed",
-              "duration": 429000000
+              "duration": 994000000
             }
           },
           {
@@ -3353,11 +3342,11 @@
             "line": 14,
             "name": "I enter my date of birth as day: 03, month: 37 and year: 1978",
             "match": {
-              "location": "src/test/common/steps/enter-dob-steps.js:11"
+              "location": "src/test/common/steps/enter-dob-steps.js:7"
             },
             "result": {
               "status": "passed",
-              "duration": 309000000
+              "duration": 258000000
             }
           },
           {
@@ -3366,11 +3355,11 @@
             "line": 15,
             "name": "I am informed that a valid date of birth is required",
             "match": {
-              "location": "src/test/common/steps/enter-dob-steps.js:19"
+              "location": "src/test/common/steps/enter-dob-steps.js:15"
             },
             "result": {
               "status": "passed",
-              "duration": 121000000
+              "duration": 113000000
             }
           },
           {
@@ -3401,20 +3390,20 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3000000
+              "duration": 1000000
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
             "line": 7,
-            "name": "I am on the enter date of birth page",
+            "name": "I have entered my details up to the enter date of birth page",
             "match": {
-              "location": "src/test/common/steps/enter-dob-steps.js:7"
+              "location": "src/test/common/steps/navigation.js:87"
             },
             "result": {
               "status": "passed",
-              "duration": 418000000
+              "duration": 1005000000
             }
           },
           {
@@ -3423,11 +3412,11 @@
             "line": 24,
             "name": "I enter my date of birth as day: 30, month: 12 and year: 1980",
             "match": {
-              "location": "src/test/common/steps/enter-dob-steps.js:11"
+              "location": "src/test/common/steps/enter-dob-steps.js:7"
             },
             "result": {
               "status": "passed",
-              "duration": 339000000
+              "duration": 296000000
             }
           },
           {
@@ -3436,11 +3425,11 @@
             "line": 25,
             "name": "I am shown the are you pregnant page",
             "match": {
-              "location": "src/test/common/steps/are-you-pregnant.js:77"
+              "location": "src/test/common/steps/are-you-pregnant.js:73"
             },
             "result": {
               "status": "passed",
-              "duration": 6000000
+              "duration": 4000000
             }
           },
           {
@@ -3478,13 +3467,13 @@
             "arguments": [],
             "keyword": "Given ",
             "line": 7,
-            "name": "I am on the enter date of birth page",
+            "name": "I have entered my details up to the enter date of birth page",
             "match": {
-              "location": "src/test/common/steps/enter-dob-steps.js:7"
+              "location": "src/test/common/steps/navigation.js:87"
             },
             "result": {
               "status": "passed",
-              "duration": 433000000
+              "duration": 985000000
             }
           },
           {
@@ -3493,11 +3482,11 @@
             "line": 24,
             "name": "I enter my date of birth as day: 29, month: 02 and year: 2000",
             "match": {
-              "location": "src/test/common/steps/enter-dob-steps.js:11"
+              "location": "src/test/common/steps/enter-dob-steps.js:7"
             },
             "result": {
               "status": "passed",
-              "duration": 341000000
+              "duration": 306000000
             }
           },
           {
@@ -3506,11 +3495,11 @@
             "line": 25,
             "name": "I am shown the are you pregnant page",
             "match": {
-              "location": "src/test/common/steps/are-you-pregnant.js:77"
+              "location": "src/test/common/steps/are-you-pregnant.js:73"
             },
             "result": {
               "status": "passed",
-              "duration": 8000000
+              "duration": 4000000
             }
           },
           {
@@ -3540,20 +3529,21 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
             "line": 7,
-            "name": "I am on the enter date of birth page",
+            "name": "I have entered my details up to the enter date of birth page",
             "match": {
-              "location": "src/test/common/steps/enter-dob-steps.js:7"
+              "location": "src/test/common/steps/navigation.js:87"
             },
             "result": {
               "status": "passed",
-              "duration": 424000000
+              "duration": 954000000
             }
           },
           {
@@ -3562,11 +3552,11 @@
             "line": 24,
             "name": "I enter my date of birth as day: 1, month: 1 and year: 1985",
             "match": {
-              "location": "src/test/common/steps/enter-dob-steps.js:11"
+              "location": "src/test/common/steps/enter-dob-steps.js:7"
             },
             "result": {
               "status": "passed",
-              "duration": 339000000
+              "duration": 312000000
             }
           },
           {
@@ -3575,11 +3565,11 @@
             "line": 25,
             "name": "I am shown the are you pregnant page",
             "match": {
-              "location": "src/test/common/steps/are-you-pregnant.js:77"
+              "location": "src/test/common/steps/are-you-pregnant.js:73"
             },
             "result": {
               "status": "passed",
-              "duration": 4000000
+              "duration": 3000000
             }
           },
           {
@@ -3609,21 +3599,20 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
             "line": 7,
-            "name": "I am on the enter date of birth page",
+            "name": "I have entered my details up to the enter date of birth page",
             "match": {
-              "location": "src/test/common/steps/enter-dob-steps.js:7"
+              "location": "src/test/common/steps/navigation.js:87"
             },
             "result": {
               "status": "passed",
-              "duration": 413000000
+              "duration": 978000000
             }
           },
           {
@@ -3632,11 +3621,11 @@
             "line": 24,
             "name": "I enter my date of birth as day: 03, month: 09 and year: 1999",
             "match": {
-              "location": "src/test/common/steps/enter-dob-steps.js:11"
+              "location": "src/test/common/steps/enter-dob-steps.js:7"
             },
             "result": {
               "status": "passed",
-              "duration": 347000000
+              "duration": 303000000
             }
           },
           {
@@ -3645,11 +3634,11 @@
             "line": 25,
             "name": "I am shown the are you pregnant page",
             "match": {
-              "location": "src/test/common/steps/are-you-pregnant.js:77"
+              "location": "src/test/common/steps/are-you-pregnant.js:73"
             },
             "result": {
               "status": "passed",
-              "duration": 8000000
+              "duration": 3000000
             }
           },
           {
@@ -3691,20 +3680,20 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1000000
+              "duration": 2000000
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
             "line": 7,
-            "name": "I am on the enter name page",
+            "name": "I have entered my details up to the enter name page",
             "match": {
-              "location": "src/test/common/steps/enter-name-steps.js:8"
+              "location": "src/test/common/steps/navigation.js:87"
             },
             "result": {
               "status": "passed",
-              "duration": 421000000
+              "duration": 521000000
             }
           },
           {
@@ -3713,11 +3702,11 @@
             "line": 10,
             "name": "I enter a first name which is too long",
             "match": {
-              "location": "src/test/common/steps/enter-name-steps.js:12"
+              "location": "src/test/common/steps/enter-name-steps.js:8"
             },
             "result": {
               "status": "passed",
-              "duration": 1909000000
+              "duration": 1775000000
             }
           },
           {
@@ -3726,7 +3715,7 @@
             "line": 11,
             "name": "I am informed that the first name is too long",
             "match": {
-              "location": "src/test/common/steps/enter-name-steps.js:28"
+              "location": "src/test/common/steps/enter-name-steps.js:24"
             },
             "result": {
               "status": "passed",
@@ -3739,7 +3728,7 @@
             "line": 12,
             "name": "I see the invalid first name I entered in the textbox",
             "match": {
-              "location": "src/test/common/steps/enter-name-steps.js:33"
+              "location": "src/test/common/steps/enter-name-steps.js:29"
             },
             "result": {
               "status": "passed",
@@ -3773,21 +3762,20 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
             "line": 7,
-            "name": "I am on the enter name page",
+            "name": "I have entered my details up to the enter name page",
             "match": {
-              "location": "src/test/common/steps/enter-name-steps.js:8"
+              "location": "src/test/common/steps/navigation.js:87"
             },
             "result": {
               "status": "passed",
-              "duration": 426000000
+              "duration": 514000000
             }
           },
           {
@@ -3796,11 +3784,11 @@
             "line": 15,
             "name": "I enter a last name which is too long",
             "match": {
-              "location": "src/test/common/steps/enter-name-steps.js:16"
+              "location": "src/test/common/steps/enter-name-steps.js:12"
             },
             "result": {
               "status": "passed",
-              "duration": 1889000000
+              "duration": 1771000000
             }
           },
           {
@@ -3809,11 +3797,11 @@
             "line": 16,
             "name": "I am informed that the last name is too long",
             "match": {
-              "location": "src/test/common/steps/enter-name-steps.js:43"
+              "location": "src/test/common/steps/enter-name-steps.js:39"
             },
             "result": {
               "status": "passed",
-              "duration": 125000000
+              "duration": 121000000
             }
           },
           {
@@ -3822,11 +3810,11 @@
             "line": 17,
             "name": "I see the last name I entered in the textbox",
             "match": {
-              "location": "src/test/common/steps/enter-name-steps.js:38"
+              "location": "src/test/common/steps/enter-name-steps.js:34"
             },
             "result": {
               "status": "passed",
-              "duration": 21000000
+              "duration": 19000000
             }
           },
           {
@@ -3857,21 +3845,20 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
             "line": 7,
-            "name": "I am on the enter name page",
+            "name": "I have entered my details up to the enter name page",
             "match": {
-              "location": "src/test/common/steps/enter-name-steps.js:8"
+              "location": "src/test/common/steps/navigation.js:87"
             },
             "result": {
               "status": "passed",
-              "duration": 405000000
+              "duration": 631000000
             }
           },
           {
@@ -3880,11 +3867,11 @@
             "line": 20,
             "name": "I enter first name only",
             "match": {
-              "location": "src/test/common/steps/enter-name-steps.js:20"
+              "location": "src/test/common/steps/enter-name-steps.js:16"
             },
             "result": {
               "status": "passed",
-              "duration": 232000000
+              "duration": 212000000
             }
           },
           {
@@ -3893,11 +3880,11 @@
             "line": 21,
             "name": "I am informed that a last name is required",
             "match": {
-              "location": "src/test/common/steps/enter-name-steps.js:48"
+              "location": "src/test/common/steps/enter-name-steps.js:44"
             },
             "result": {
               "status": "passed",
-              "duration": 127000000
+              "duration": 115000000
             }
           },
           {
@@ -3935,13 +3922,13 @@
             "arguments": [],
             "keyword": "Given ",
             "line": 7,
-            "name": "I am on the enter name page",
+            "name": "I have entered my details up to the enter name page",
             "match": {
-              "location": "src/test/common/steps/enter-name-steps.js:8"
+              "location": "src/test/common/steps/navigation.js:87"
             },
             "result": {
               "status": "passed",
-              "duration": 400000000
+              "duration": 505000000
             }
           },
           {
@@ -3950,11 +3937,11 @@
             "line": 24,
             "name": "I enter <script>window.location.href=“www.google.com”</script> and ‘;exec xp_cmdshell ‘dir’;– values",
             "match": {
-              "location": "src/test/common/steps/enter-name-steps.js:24"
+              "location": "src/test/common/steps/enter-name-steps.js:20"
             },
             "result": {
               "status": "passed",
-              "duration": 426000000
+              "duration": 397000000
             }
           },
           {
@@ -3963,11 +3950,11 @@
             "line": 25,
             "name": "I am shown the enter national insurance page",
             "match": {
-              "location": "src/test/common/steps/enter-nino-steps.js:39"
+              "location": "src/test/common/steps/enter-nino-steps.js:33"
             },
             "result": {
               "status": "passed",
-              "duration": 6000000
+              "duration": 4000000
             }
           },
           {
@@ -3997,20 +3984,21 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
             "line": 7,
-            "name": "I am on the enter name page",
+            "name": "I have entered my details up to the enter name page",
             "match": {
-              "location": "src/test/common/steps/enter-name-steps.js:8"
+              "location": "src/test/common/steps/navigation.js:87"
             },
             "result": {
               "status": "passed",
-              "duration": 414000000
+              "duration": 528000000
             }
           },
           {
@@ -4019,11 +4007,11 @@
             "line": 24,
             "name": "I enter Henrietta and Fulsome-Blues values",
             "match": {
-              "location": "src/test/common/steps/enter-name-steps.js:24"
+              "location": "src/test/common/steps/enter-name-steps.js:20"
             },
             "result": {
               "status": "passed",
-              "duration": 311000000
+              "duration": 287000000
             }
           },
           {
@@ -4032,11 +4020,11 @@
             "line": 25,
             "name": "I am shown the enter national insurance page",
             "match": {
-              "location": "src/test/common/steps/enter-nino-steps.js:39"
+              "location": "src/test/common/steps/enter-nino-steps.js:33"
             },
             "result": {
               "status": "passed",
-              "duration": 4000000
+              "duration": 3000000
             }
           },
           {
@@ -4074,13 +4062,13 @@
             "arguments": [],
             "keyword": "Given ",
             "line": 7,
-            "name": "I am on the enter name page",
+            "name": "I have entered my details up to the enter name page",
             "match": {
-              "location": "src/test/common/steps/enter-name-steps.js:8"
+              "location": "src/test/common/steps/navigation.js:87"
             },
             "result": {
               "status": "passed",
-              "duration": 396000000
+              "duration": 513000000
             }
           },
           {
@@ -4089,11 +4077,11 @@
             "line": 24,
             "name": "I enter Henrietta and Młynarczyk values",
             "match": {
-              "location": "src/test/common/steps/enter-name-steps.js:24"
+              "location": "src/test/common/steps/enter-name-steps.js:20"
             },
             "result": {
               "status": "passed",
-              "duration": 307000000
+              "duration": 291000000
             }
           },
           {
@@ -4102,7 +4090,7 @@
             "line": 25,
             "name": "I am shown the enter national insurance page",
             "match": {
-              "location": "src/test/common/steps/enter-nino-steps.js:39"
+              "location": "src/test/common/steps/enter-nino-steps.js:33"
             },
             "result": {
               "status": "passed",
@@ -4136,21 +4124,20 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed",
-              "duration": 4000000
+              "status": "passed"
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
             "line": 7,
-            "name": "I am on the enter name page",
+            "name": "I have entered my details up to the enter name page",
             "match": {
-              "location": "src/test/common/steps/enter-name-steps.js:8"
+              "location": "src/test/common/steps/navigation.js:87"
             },
             "result": {
               "status": "passed",
-              "duration": 403000000
+              "duration": 488000000
             }
           },
           {
@@ -4159,11 +4146,11 @@
             "line": 24,
             "name": "I enter Maria and Nowak values",
             "match": {
-              "location": "src/test/common/steps/enter-name-steps.js:24"
+              "location": "src/test/common/steps/enter-name-steps.js:20"
             },
             "result": {
               "status": "passed",
-              "duration": 289000000
+              "duration": 266000000
             }
           },
           {
@@ -4172,7 +4159,7 @@
             "line": 25,
             "name": "I am shown the enter national insurance page",
             "match": {
-              "location": "src/test/common/steps/enter-nino-steps.js:39"
+              "location": "src/test/common/steps/enter-nino-steps.js:33"
             },
             "result": {
               "status": "passed",
@@ -4217,20 +4204,21 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
             "line": 7,
-            "name": "I am on the enter national insurance number page",
+            "name": "I have entered my details up to the enter national insurance page",
             "match": {
-              "location": "src/test/common/steps/enter-nino-steps.js:9"
+              "location": "src/test/common/steps/navigation.js:87"
             },
             "result": {
               "status": "passed",
-              "duration": 401000000
+              "duration": 772000000
             }
           },
           {
@@ -4239,11 +4227,11 @@
             "line": 10,
             "name": "I enter a valid national insurance number",
             "match": {
-              "location": "src/test/common/steps/enter-nino-steps.js:13"
+              "location": "src/test/common/steps/enter-nino-steps.js:7"
             },
             "result": {
               "status": "passed",
-              "duration": 234000000
+              "duration": 221000000
             }
           },
           {
@@ -4252,11 +4240,11 @@
             "line": 11,
             "name": "I am shown the enter date of birth page",
             "match": {
-              "location": "src/test/common/steps/enter-dob-steps.js:15"
+              "location": "src/test/common/steps/enter-dob-steps.js:11"
             },
             "result": {
               "status": "passed",
-              "duration": 4000000
+              "duration": 3000000
             }
           },
           {
@@ -4266,7 +4254,8 @@
               "location": "src/test/common/steps/hooks.js:14"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           }
         ]
@@ -4287,20 +4276,20 @@
             },
             "result": {
               "status": "passed",
-              "duration": 6000000
+              "duration": 1000000
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
             "line": 7,
-            "name": "I am on the enter national insurance number page",
+            "name": "I have entered my details up to the enter national insurance page",
             "match": {
-              "location": "src/test/common/steps/enter-nino-steps.js:9"
+              "location": "src/test/common/steps/navigation.js:87"
             },
             "result": {
               "status": "passed",
-              "duration": 403000000
+              "duration": 779000000
             }
           },
           {
@@ -4309,11 +4298,11 @@
             "line": 14,
             "name": "I do not enter a national insurance number",
             "match": {
-              "location": "src/test/common/steps/enter-nino-steps.js:21"
+              "location": "src/test/common/steps/enter-nino-steps.js:15"
             },
             "result": {
               "status": "passed",
-              "duration": 174000000
+              "duration": 142000000
             }
           },
           {
@@ -4322,11 +4311,11 @@
             "line": 15,
             "name": "I am informed that the national insurance number is in the wrong format",
             "match": {
-              "location": "src/test/common/steps/enter-nino-steps.js:25"
+              "location": "src/test/common/steps/enter-nino-steps.js:19"
             },
             "result": {
               "status": "passed",
-              "duration": 131000000
+              "duration": 115000000
             }
           },
           {
@@ -4356,21 +4345,20 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
             "line": 7,
-            "name": "I am on the enter national insurance number page",
+            "name": "I have entered my details up to the enter national insurance page",
             "match": {
-              "location": "src/test/common/steps/enter-nino-steps.js:9"
+              "location": "src/test/common/steps/navigation.js:87"
             },
             "result": {
               "status": "passed",
-              "duration": 435000000
+              "duration": 764000000
             }
           },
           {
@@ -4379,11 +4367,11 @@
             "line": 18,
             "name": "I enter ab123456Q as my national insurance number",
             "match": {
-              "location": "src/test/common/steps/enter-nino-steps.js:17"
+              "location": "src/test/common/steps/enter-nino-steps.js:11"
             },
             "result": {
               "status": "passed",
-              "duration": 191000000
+              "duration": 162000000
             }
           },
           {
@@ -4392,11 +4380,11 @@
             "line": 19,
             "name": "I am informed that the national insurance number is in the wrong format",
             "match": {
-              "location": "src/test/common/steps/enter-nino-steps.js:25"
+              "location": "src/test/common/steps/enter-nino-steps.js:19"
             },
             "result": {
               "status": "passed",
-              "duration": 123000000
+              "duration": 117000000
             }
           },
           {
@@ -4405,11 +4393,11 @@
             "line": 20,
             "name": "I see the value ab123456Q in the textbox",
             "match": {
-              "location": "src/test/common/steps/enter-nino-steps.js:34"
+              "location": "src/test/common/steps/enter-nino-steps.js:28"
             },
             "result": {
               "status": "passed",
-              "duration": 21000000
+              "duration": 18000000
             }
           },
           {
@@ -4439,21 +4427,20 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed",
-              "duration": 8000000
+              "status": "passed"
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
             "line": 7,
-            "name": "I am on the enter national insurance number page",
+            "name": "I have entered my details up to the enter national insurance page",
             "match": {
-              "location": "src/test/common/steps/enter-nino-steps.js:9"
+              "location": "src/test/common/steps/navigation.js:87"
             },
             "result": {
               "status": "passed",
-              "duration": 412000000
+              "duration": 788000000
             }
           },
           {
@@ -4462,11 +4449,11 @@
             "line": 18,
             "name": "I enter QQ123456CQQ123456C as my national insurance number",
             "match": {
-              "location": "src/test/common/steps/enter-nino-steps.js:17"
+              "location": "src/test/common/steps/enter-nino-steps.js:11"
             },
             "result": {
               "status": "passed",
-              "duration": 219000000
+              "duration": 195000000
             }
           },
           {
@@ -4475,11 +4462,11 @@
             "line": 19,
             "name": "I am informed that the national insurance number is in the wrong format",
             "match": {
-              "location": "src/test/common/steps/enter-nino-steps.js:25"
+              "location": "src/test/common/steps/enter-nino-steps.js:19"
             },
             "result": {
               "status": "passed",
-              "duration": 123000000
+              "duration": 145000000
             }
           },
           {
@@ -4488,11 +4475,11 @@
             "line": 20,
             "name": "I see the value QQ123456CQQ123456C in the textbox",
             "match": {
-              "location": "src/test/common/steps/enter-nino-steps.js:34"
+              "location": "src/test/common/steps/enter-nino-steps.js:28"
             },
             "result": {
               "status": "passed",
-              "duration": 21000000
+              "duration": 23000000
             }
           },
           {
@@ -4502,8 +4489,7 @@
               "location": "src/test/common/steps/hooks.js:14"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
@@ -4523,21 +4509,20 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
             "line": 7,
-            "name": "I am on the enter national insurance number page",
+            "name": "I have entered my details up to the enter national insurance page",
             "match": {
-              "location": "src/test/common/steps/enter-nino-steps.js:9"
+              "location": "src/test/common/steps/navigation.js:87"
             },
             "result": {
               "status": "passed",
-              "duration": 408000000
+              "duration": 857000000
             }
           },
           {
@@ -4546,11 +4531,11 @@
             "line": 18,
             "name": "I enter QQ123456CQtest as my national insurance number",
             "match": {
-              "location": "src/test/common/steps/enter-nino-steps.js:17"
+              "location": "src/test/common/steps/enter-nino-steps.js:11"
             },
             "result": {
               "status": "passed",
-              "duration": 211000000
+              "duration": 195000000
             }
           },
           {
@@ -4559,11 +4544,11 @@
             "line": 19,
             "name": "I am informed that the national insurance number is in the wrong format",
             "match": {
-              "location": "src/test/common/steps/enter-nino-steps.js:25"
+              "location": "src/test/common/steps/enter-nino-steps.js:19"
             },
             "result": {
               "status": "passed",
-              "duration": 123000000
+              "duration": 124000000
             }
           },
           {
@@ -4572,11 +4557,11 @@
             "line": 20,
             "name": "I see the value QQ123456CQtest in the textbox",
             "match": {
-              "location": "src/test/common/steps/enter-nino-steps.js:34"
+              "location": "src/test/common/steps/enter-nino-steps.js:28"
             },
             "result": {
               "status": "passed",
-              "duration": 33000000
+              "duration": 21000000
             }
           },
           {
@@ -4607,20 +4592,20 @@
             },
             "result": {
               "status": "passed",
-              "duration": 4000000
+              "duration": 1000000
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
             "line": 7,
-            "name": "I am on the enter national insurance number page",
+            "name": "I have entered my details up to the enter national insurance page",
             "match": {
-              "location": "src/test/common/steps/enter-nino-steps.js:9"
+              "location": "src/test/common/steps/navigation.js:87"
             },
             "result": {
               "status": "passed",
-              "duration": 422000000
+              "duration": 849000000
             }
           },
           {
@@ -4629,11 +4614,11 @@
             "line": 18,
             "name": "I enter testQQ123456CQ as my national insurance number",
             "match": {
-              "location": "src/test/common/steps/enter-nino-steps.js:17"
+              "location": "src/test/common/steps/enter-nino-steps.js:11"
             },
             "result": {
               "status": "passed",
-              "duration": 217000000
+              "duration": 192000000
             }
           },
           {
@@ -4642,11 +4627,11 @@
             "line": 19,
             "name": "I am informed that the national insurance number is in the wrong format",
             "match": {
-              "location": "src/test/common/steps/enter-nino-steps.js:25"
+              "location": "src/test/common/steps/enter-nino-steps.js:19"
             },
             "result": {
               "status": "passed",
-              "duration": 122000000
+              "duration": 136000000
             }
           },
           {
@@ -4655,11 +4640,11 @@
             "line": 20,
             "name": "I see the value testQQ123456CQ in the textbox",
             "match": {
-              "location": "src/test/common/steps/enter-nino-steps.js:34"
+              "location": "src/test/common/steps/enter-nino-steps.js:28"
             },
             "result": {
               "status": "passed",
-              "duration": 20000000
+              "duration": 21000000
             }
           },
           {
@@ -4700,21 +4685,20 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
             "line": 7,
-            "name": "I go to the enter national insurance number page with Welsh language selected",
+            "name": "I have entered my details up to the enter national insurance page with Welsh language selected",
             "match": {
-              "location": "src/test/common/steps/internationalisation.js:8"
+              "location": "src/test/common/steps/internationalisation.js:9"
             },
             "result": {
               "status": "passed",
-              "duration": 427000000
+              "duration": 699000000
             }
           },
           {
@@ -4723,11 +4707,11 @@
             "line": 8,
             "name": "the enter national insurance page is in Welsh",
             "match": {
-              "location": "src/test/common/steps/internationalisation.js:12"
+              "location": "src/test/common/steps/internationalisation.js:15"
             },
             "result": {
               "status": "passed",
-              "duration": 31000000
+              "duration": 35000000
             }
           },
           {
@@ -4758,20 +4742,20 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3000000
+              "duration": 1000000
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
             "line": 11,
-            "name": "I am on the enter national insurance number page with Welsh language selected",
+            "name": "I have entered my details up to the enter national insurance page with Welsh language selected",
             "match": {
-              "location": "src/test/common/steps/internationalisation.js:17"
+              "location": "src/test/common/steps/internationalisation.js:9"
             },
             "result": {
               "status": "passed",
-              "duration": 439000000
+              "duration": 721000000
             }
           },
           {
@@ -4780,11 +4764,11 @@
             "line": 12,
             "name": "I enter a valid national insurance number",
             "match": {
-              "location": "src/test/common/steps/enter-nino-steps.js:13"
+              "location": "src/test/common/steps/enter-nino-steps.js:7"
             },
             "result": {
               "status": "passed",
-              "duration": 234000000
+              "duration": 216000000
             }
           },
           {
@@ -4793,11 +4777,11 @@
             "line": 13,
             "name": "I am on the next page which is displayed in Welsh",
             "match": {
-              "location": "src/test/common/steps/internationalisation.js:21"
+              "location": "src/test/common/steps/internationalisation.js:20"
             },
             "result": {
               "status": "passed",
-              "duration": 39000000
+              "duration": 38000000
             }
           },
           {
@@ -4848,11 +4832,11 @@
             "line": 47,
             "name": "I have entered my details up to the check details page",
             "match": {
-              "location": "src/test/common/steps/navigation.js:41"
+              "location": "src/test/common/steps/navigation.js:87"
             },
             "result": {
               "status": "passed",
-              "duration": 1742000000
+              "duration": 2135000000
             }
           },
           {
@@ -4861,11 +4845,11 @@
             "line": 48,
             "name": "I navigate to the enter name page",
             "match": {
-              "location": "src/test/common/steps/navigation.js:49"
+              "location": "src/test/common/steps/navigation.js:95"
             },
             "result": {
               "status": "passed",
-              "duration": 85000000
+              "duration": 77000000
             }
           },
           {
@@ -4874,11 +4858,11 @@
             "line": 49,
             "name": "I am shown the enter name page",
             "match": {
-              "location": "src/test/common/steps/enter-name-steps.js:53"
+              "location": "src/test/common/steps/enter-name-steps.js:49"
             },
             "result": {
               "status": "passed",
-              "duration": 5000000
+              "duration": 11000000
             }
           },
           {
@@ -4918,11 +4902,11 @@
             "line": 47,
             "name": "I have entered my details up to the check details page",
             "match": {
-              "location": "src/test/common/steps/navigation.js:41"
+              "location": "src/test/common/steps/navigation.js:87"
             },
             "result": {
               "status": "passed",
-              "duration": 1879000000
+              "duration": 2101000000
             }
           },
           {
@@ -4931,11 +4915,11 @@
             "line": 48,
             "name": "I navigate to the enter national insurance page",
             "match": {
-              "location": "src/test/common/steps/navigation.js:49"
+              "location": "src/test/common/steps/navigation.js:95"
             },
             "result": {
               "status": "passed",
-              "duration": 89000000
+              "duration": 81000000
             }
           },
           {
@@ -4944,11 +4928,11 @@
             "line": 49,
             "name": "I am shown the enter national insurance page",
             "match": {
-              "location": "src/test/common/steps/enter-nino-steps.js:39"
+              "location": "src/test/common/steps/enter-nino-steps.js:33"
             },
             "result": {
               "status": "passed",
-              "duration": 5000000
+              "duration": 4000000
             }
           },
           {
@@ -4988,11 +4972,11 @@
             "line": 47,
             "name": "I have entered my details up to the check details page",
             "match": {
-              "location": "src/test/common/steps/navigation.js:41"
+              "location": "src/test/common/steps/navigation.js:87"
             },
             "result": {
               "status": "passed",
-              "duration": 1866000000
+              "duration": 2043000000
             }
           },
           {
@@ -5001,11 +4985,11 @@
             "line": 48,
             "name": "I navigate to the enter date of birth page",
             "match": {
-              "location": "src/test/common/steps/navigation.js:49"
+              "location": "src/test/common/steps/navigation.js:95"
             },
             "result": {
               "status": "passed",
-              "duration": 90000000
+              "duration": 79000000
             }
           },
           {
@@ -5014,11 +4998,11 @@
             "line": 49,
             "name": "I am shown the enter date of birth page",
             "match": {
-              "location": "src/test/common/steps/enter-dob-steps.js:15"
+              "location": "src/test/common/steps/enter-dob-steps.js:11"
             },
             "result": {
               "status": "passed",
-              "duration": 9000000
+              "duration": 3000000
             }
           },
           {
@@ -5049,7 +5033,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2000000
+              "duration": 1000000
             }
           },
           {
@@ -5058,11 +5042,11 @@
             "line": 47,
             "name": "I have entered my details up to the check details page",
             "match": {
-              "location": "src/test/common/steps/navigation.js:41"
+              "location": "src/test/common/steps/navigation.js:87"
             },
             "result": {
               "status": "passed",
-              "duration": 1858000000
+              "duration": 1970000000
             }
           },
           {
@@ -5071,11 +5055,11 @@
             "line": 48,
             "name": "I navigate to the are you pregnant page",
             "match": {
-              "location": "src/test/common/steps/navigation.js:49"
+              "location": "src/test/common/steps/navigation.js:95"
             },
             "result": {
               "status": "passed",
-              "duration": 86000000
+              "duration": 78000000
             }
           },
           {
@@ -5084,11 +5068,11 @@
             "line": 49,
             "name": "I am shown the are you pregnant page",
             "match": {
-              "location": "src/test/common/steps/are-you-pregnant.js:77"
+              "location": "src/test/common/steps/are-you-pregnant.js:73"
             },
             "result": {
               "status": "passed",
-              "duration": 4000000
+              "duration": 3000000
             }
           },
           {
@@ -5119,7 +5103,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3000000
+              "duration": 2000000
             }
           },
           {
@@ -5128,11 +5112,11 @@
             "line": 47,
             "name": "I have entered my details up to the check details page",
             "match": {
-              "location": "src/test/common/steps/navigation.js:41"
+              "location": "src/test/common/steps/navigation.js:87"
             },
             "result": {
               "status": "passed",
-              "duration": 1881000000
+              "duration": 1953000000
             }
           },
           {
@@ -5141,11 +5125,11 @@
             "line": 48,
             "name": "I navigate to the card address page",
             "match": {
-              "location": "src/test/common/steps/navigation.js:49"
+              "location": "src/test/common/steps/navigation.js:95"
             },
             "result": {
               "status": "passed",
-              "duration": 91000000
+              "duration": 84000000
             }
           },
           {
@@ -5154,11 +5138,11 @@
             "line": 49,
             "name": "I am shown the card address page",
             "match": {
-              "location": "src/test/common/steps/card-address-steps.js:49"
+              "location": "src/test/common/steps/card-address-steps.js:45"
             },
             "result": {
               "status": "passed",
-              "duration": 7000000
+              "duration": 6000000
             }
           },
           {
@@ -5199,7 +5183,8 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           },
           {
@@ -5208,11 +5193,11 @@
             "line": 7,
             "name": "I navigate to the HTBHF overview page",
             "match": {
-              "location": "src/test/common/steps/navigation.js:49"
+              "location": "src/test/common/steps/navigation.js:95"
             },
             "result": {
               "status": "passed",
-              "duration": 408000000
+              "duration": 403000000
             }
           },
           {
@@ -5225,7 +5210,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 131000000
+              "duration": 102000000
             }
           },
           {
@@ -5234,11 +5219,11 @@
             "line": 9,
             "name": "I am shown the enter name page",
             "match": {
-              "location": "src/test/common/steps/enter-name-steps.js:53"
+              "location": "src/test/common/steps/enter-name-steps.js:49"
             },
             "result": {
               "status": "passed",
-              "duration": 9000000
+              "duration": 6000000
             }
           },
           {
