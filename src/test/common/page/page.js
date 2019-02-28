@@ -3,6 +3,7 @@
 
 const webdriver = require('selenium-webdriver')
 
+const BACK_LINK_CLASSNAME = 'govuk-back-link'
 const COOKIES_LINK_CSS = 'a[href="/cookies"]'
 const ERROR_HEADER_SELECTOR = 'h2#error-summary-title'
 const DEFAULT_WAIT_MILLIS = 5000
@@ -142,6 +143,10 @@ class Page {
   async clickCookieLink () {
     const cookieLink = await this.findByCSS(COOKIES_LINK_CSS)
     await cookieLink.click()
+  }
+
+  async getBackLink () {
+    return this.findByClassName(BACK_LINK_CLASSNAME)
   }
 }
 
