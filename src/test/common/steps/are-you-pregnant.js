@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-expressions */
-const { Given, When, Then } = require('cucumber')
+const { When, Then } = require('cucumber')
 const { expect, assert } = require('chai')
 
 const { assertErrorHeaderTextPresent } = require('./common-steps')
@@ -7,10 +7,6 @@ const { assertErrorHeaderTextPresent } = require('./common-steps')
 const pages = require('./pages')
 const YES = 'yes'
 const NO = 'no'
-
-Given(/^I am on the are you pregnant page$/, async function () {
-  await pages.areYouPregnant.open(pages.url)
-})
 
 When(/^I select the No option$/, async function () {
   await pages.areYouPregnant.selectRadioButton(NO)

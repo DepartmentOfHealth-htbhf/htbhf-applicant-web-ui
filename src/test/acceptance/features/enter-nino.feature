@@ -4,7 +4,7 @@ Feature: Enter National Insurance number
   I want to enter my national insurance number
 
   Background:
-    Given I am on the enter national insurance number page
+    Given I have entered my details up to the enter national insurance page
 
   Scenario: Enter in a valid national insurance number
     When I enter a valid national insurance number

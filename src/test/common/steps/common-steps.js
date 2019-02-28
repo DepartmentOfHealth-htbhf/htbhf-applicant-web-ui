@@ -8,7 +8,7 @@ const COMPATIBILITY_TESTS = 'compatibility'
 
 const { VALID_NINO, FIRST_NAME, LAST_NAME, DAY, MONTH, YEAR, ADDRESS_LINE_1, ADDRESS_LINE_2, TOWN, POSTCODE } = require('./constants')
 
-async function enterNameAndSubmit (firstName, lastName) {
+async function enterNameAndSubmit (firstName = FIRST_NAME, lastName = LAST_NAME) {
   try {
     await pages.enterName.enterFirstName(firstName)
     await pages.enterName.enterLastName(lastName)
@@ -18,7 +18,7 @@ async function enterNameAndSubmit (firstName, lastName) {
   }
 }
 
-async function enterNinoAndSubmit (nino) {
+async function enterNinoAndSubmit (nino = VALID_NINO) {
   try {
     await pages.enterNino.enterNino(nino)
     await pages.enterNino.submitForm()
@@ -27,7 +27,7 @@ async function enterNinoAndSubmit (nino) {
   }
 }
 
-async function enterDateOfBirth (day, month, year) {
+async function enterDateOfBirthAndSubmit (day = DAY, month = MONTH, year = YEAR) {
   try {
     await pages.enterDOB.enterDay(day)
     await pages.enterDOB.enterMonth(month)
@@ -57,7 +57,7 @@ async function selectNoOnPregnancyPage () {
   }
 }
 
-async function enterCardAddress (addressLine1, addressLine2, townOrCity, postcode) {
+async function enterCardAddressAndSubmit (addressLine1 = ADDRESS_LINE_1, addressLine2 = ADDRESS_LINE_2, townOrCity = TOWN, postcode = POSTCODE) {
   try {
     await pages.cardAddress.enterAddressLine1(addressLine1)
     await pages.cardAddress.enterAddressLine2(addressLine2)
@@ -80,19 +80,19 @@ async function assertErrorHeaderTextPresent (page, message = 'There is a problem
 }
 
 async function completeTheApplicationAsAPregnantWoman () {
-  await enterNameAndSubmit(FIRST_NAME, LAST_NAME)
-  await enterNinoAndSubmit(VALID_NINO)
-  await enterDateOfBirth(DAY, MONTH, YEAR)
+  await enterNameAndSubmit()
+  await enterNinoAndSubmit()
+  await enterDateOfBirthAndSubmit()
   await selectYesOnPregnancyPage()
-  await enterCardAddress(ADDRESS_LINE_1, ADDRESS_LINE_2, TOWN, POSTCODE)
+  await enterCardAddressAndSubmit()
 }
 
 async function completeTheApplicationAsAWomanWhoIsNotPregnant () {
-  await enterNameAndSubmit(FIRST_NAME, LAST_NAME)
-  await enterNinoAndSubmit(VALID_NINO)
-  await enterDateOfBirth(DAY, MONTH, YEAR)
+  await enterNameAndSubmit()
+  await enterNinoAndSubmit()
+  await enterDateOfBirthAndSubmit()
   await selectNoOnPregnancyPage()
-  await enterCardAddress(ADDRESS_LINE_1, ADDRESS_LINE_2, TOWN, POSTCODE)
+  await enterCardAddressAndSubmit()
 }
 
 async function setupWiremockMappings () {
@@ -121,11 +121,11 @@ When(/^I complete the application with valid details$/, async function () {
 })
 
 module.exports = {
-  enterDateOfBirth,
+  enterDateOfBirthAndSubmit,
   enterNameAndSubmit,
   enterNinoAndSubmit,
   selectNoOnPregnancyPage,
-  enterCardAddress,
+  enterCardAddressAndSubmit,
   assertErrorHeaderTextPresent,
   completeTheApplicationAsAPregnantWoman,
   completeTheApplicationAsAWomanWhoIsNotPregnant,

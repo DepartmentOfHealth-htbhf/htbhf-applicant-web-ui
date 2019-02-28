@@ -1,8 +1,7 @@
 const { Given, When } = require('cucumber')
 
 const pages = require('./pages')
-const { enterNameAndSubmit, enterNinoAndSubmit, enterDateOfBirth, selectNoOnPregnancyPage } = require('./common-steps')
-const { VALID_NINO, FIRST_NAME, LAST_NAME, DAY, MONTH, YEAR } = require('./constants')
+const { enterNameAndSubmit, enterNinoAndSubmit, enterDateOfBirthAndSubmit, selectNoOnPregnancyPage, enterCardAddressAndSubmit } = require('./common-steps')
 
 const ENTER_NAME_PAGE = 'enter name'
 const ENTER_NINO_PAGE = 'enter national insurance'
@@ -14,43 +13,46 @@ const CHECK_PAGE = 'check details'
 const pageActions = [
   {
     page: ENTER_NAME_PAGE,
-    action: () => {}
+    action: async () => {}
   },
   {
     page: ENTER_NINO_PAGE,
-    action: async () => enterNameAndSubmit(FIRST_NAME, LAST_NAME)
+    action: async () => {
+      await enterNameAndSubmit()
+      await pages.enterNino.waitForPageLoad()
+    }
   },
   {
     page: ENTER_DOB_PAGE,
-    action: async () => enterNinoAndSubmit(VALID_NINO)
+    action: async () => {
+      await enterNinoAndSubmit()
+      await pages.enterDOB.waitForPageLoad()
+    }
   },
   {
     page: ARE_YOU_PREGNANT_PAGE,
-    action: async () => enterDateOfBirth(DAY, MONTH, YEAR)
+    action: async () => {
+      await enterDateOfBirthAndSubmit()
+      await pages.areYouPregnant.waitForPageLoad()
+    }
   },
   {
     page: CARD_ADDRESS_PAGE,
-    action: async () => selectNoOnPregnancyPage()
+    action: async () => {
+      await selectNoOnPregnancyPage()
+      await pages.cardAddress.waitForPageLoad()
+    }
   },
   {
     page: CHECK_PAGE,
-    action: async () => pages.check.submitForm()
+    action: async () => {
+      await enterCardAddressAndSubmit()
+      await pages.check.waitForPageLoad()
+    }
   }
 ]
 
-Given(/^I have entered my details up to the (.*) page$/, async function (page) {
-  await enterDetailsUpToPage(page)
-})
-
-When(/^I click the Cookies link$/, async function () {
-  await pages.overview.clickCookieLink()
-})
-
-When(/^I navigate to the (.*) page$/, async function (page) {
-  await navigateToPage(page)
-})
-
-async function navigateToPage (page) {
+const navigateToPage = async (page) => {
   try {
     await pages.openPageDirect(page)
   } catch (error) {
@@ -60,21 +62,36 @@ async function navigateToPage (page) {
 
 const getPageIndex = (pageName) => pageActions.findIndex(pageAction => pageAction.page === pageName)
 
-const runPageActions = async (index) => {
-  for (const pageAction of pageActions.slice(0, index + 1)) {
-    await pageAction.action()
+const getActionsForPage = (index, actions) => actions.slice(0, index + 1).map(page => page.action)
+
+const runPageActions = async (actions) => {
+  for (const action of actions) {
+    await action()
   }
 }
 
-async function enterDetailsUpToPage (page) {
+const enterDetailsUpToPage = async (page, actions) => {
   await pages.overview.open(pages.url)
   await pages.overview.clickStartButton()
   await pages.enterName.waitForPageLoad()
 
   const pageIndex = getPageIndex(page)
-  if (pageIndex !== -1) {
-    await runPageActions(pageIndex)
-  } else {
+  if (pageIndex === -1) {
     throw new Error(`Unable to find page ${page}`)
   }
+
+  const actionsForPage = getActionsForPage(pageIndex, actions)
+  await runPageActions(actionsForPage)
 }
+
+Given(/^I have entered my details up to the (.*) page$/, async function (page) {
+  await enterDetailsUpToPage(page, pageActions)
+})
+
+When(/^I click the Cookies link$/, async function () {
+  await pages.overview.clickCookieLink()
+})
+
+When(/^I navigate to the (.*) page$/, async function (page) {
+  await navigateToPage(page)
+})

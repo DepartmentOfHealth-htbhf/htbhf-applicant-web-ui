@@ -1,8 +1,8 @@
-const { Given, When, Then } = require('cucumber')
+const { When, Then } = require('cucumber')
 const { expect } = require('chai')
 
 const pages = require('./pages')
-const { enterCardAddress, assertErrorHeaderTextPresent } = require('./common-steps')
+const { enterCardAddressAndSubmit, assertErrorHeaderTextPresent } = require('./common-steps')
 const { LONG_STRING, BLANK_STRING } = require('./constants')
 
 const VALID_ADDRESS_LINE_1 = 'Flat b'
@@ -10,40 +10,36 @@ const VALID_ADDRESS_LINE_2 = '221 Baker street'
 const VALID_TOWN_OR_CITY = 'London'
 const VALID_POSTCODE = 'AA1 1AA'
 
-Given(/^I am on the card address page$/, async function () {
-  await pages.cardAddress.open(pages.url)
-})
-
 When(/^I enter an address with postcode (.*)$/, async function (postcode) {
-  await enterCardAddress(VALID_ADDRESS_LINE_1, VALID_ADDRESS_LINE_2, VALID_TOWN_OR_CITY, postcode)
+  await enterCardAddressAndSubmit(VALID_ADDRESS_LINE_1, VALID_ADDRESS_LINE_2, VALID_TOWN_OR_CITY, postcode)
 })
 
 When(/^I do not enter the first line of an address$/, async function () {
-  await enterCardAddress(BLANK_STRING, VALID_ADDRESS_LINE_2, VALID_TOWN_OR_CITY, VALID_POSTCODE)
+  await enterCardAddressAndSubmit(BLANK_STRING, VALID_ADDRESS_LINE_2, VALID_TOWN_OR_CITY, VALID_POSTCODE)
 })
 
 When(/I do not enter the 'town or city' of an address$/, async function () {
-  await enterCardAddress(VALID_ADDRESS_LINE_1, VALID_ADDRESS_LINE_2, BLANK_STRING, VALID_POSTCODE)
+  await enterCardAddressAndSubmit(VALID_ADDRESS_LINE_1, VALID_ADDRESS_LINE_2, BLANK_STRING, VALID_POSTCODE)
 })
 
 When(/^I enter in an address where the first line is too long$/, async function () {
-  await enterCardAddress(LONG_STRING, VALID_ADDRESS_LINE_2, VALID_TOWN_OR_CITY, VALID_POSTCODE)
+  await enterCardAddressAndSubmit(LONG_STRING, VALID_ADDRESS_LINE_2, VALID_TOWN_OR_CITY, VALID_POSTCODE)
 })
 
 When(/^I enter in an address where the second line is too long$/, async function () {
-  await enterCardAddress(VALID_ADDRESS_LINE_1, LONG_STRING, VALID_TOWN_OR_CITY, VALID_POSTCODE)
+  await enterCardAddressAndSubmit(VALID_ADDRESS_LINE_1, LONG_STRING, VALID_TOWN_OR_CITY, VALID_POSTCODE)
 })
 
 When(/^I enter in an address where the 'town or city' is too long$/, async function () {
-  await enterCardAddress(VALID_ADDRESS_LINE_1, VALID_ADDRESS_LINE_2, LONG_STRING, VALID_POSTCODE)
+  await enterCardAddressAndSubmit(VALID_ADDRESS_LINE_1, VALID_ADDRESS_LINE_2, LONG_STRING, VALID_POSTCODE)
 })
 
 When(/^I do not enter the second line of an address$/, async function () {
-  await enterCardAddress(VALID_ADDRESS_LINE_1, BLANK_STRING, VALID_TOWN_OR_CITY, VALID_POSTCODE)
+  await enterCardAddressAndSubmit(VALID_ADDRESS_LINE_1, BLANK_STRING, VALID_TOWN_OR_CITY, VALID_POSTCODE)
 })
 
 When(/^I do not enter in any address fields$/, async function () {
-  await enterCardAddress(BLANK_STRING, BLANK_STRING, BLANK_STRING, BLANK_STRING)
+  await enterCardAddressAndSubmit(BLANK_STRING, BLANK_STRING, BLANK_STRING, BLANK_STRING)
 })
 
 Then(/^I am shown the card address page$/, async function () {
