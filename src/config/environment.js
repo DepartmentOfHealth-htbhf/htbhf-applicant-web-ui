@@ -1,10 +1,5 @@
 const { path } = require('ramda')
-const { getVariableServiceCredentials } = require('./vcap-services')
-
-const getVCAPServicesVariable = (name, defaultValue = '') =>
-  process.env.VCAP_SERVICES
-    ? getVariableServiceCredentials()[name]
-    : process.env[name] || defaultValue
+const { getVCAPServicesVariable } = require('./vcap-services')
 
 module.exports = {
   USE_UNSECURE_COOKIE: path(['env', 'USE_UNSECURE_COOKIE'], process) === 'true',
