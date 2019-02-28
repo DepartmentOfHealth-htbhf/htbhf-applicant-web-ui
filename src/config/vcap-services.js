@@ -32,7 +32,13 @@ const getRedisCredentials = () => {
   return redisServices[0].credentials
 }
 
+const getVCAPServicesVariable = (name, defaultValue = '') =>
+  process.env.VCAP_SERVICES
+    ? getVariableServiceCredentials()[name]
+    : process.env[name] || defaultValue
+
 module.exports = {
+  getRedisCredentials,
   getVariableServiceCredentials,
-  getRedisCredentials
+  getVCAPServicesVariable
 }
