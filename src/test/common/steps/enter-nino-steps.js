@@ -4,10 +4,8 @@ const { expect } = require('chai')
 const pages = require('./pages')
 const { enterNinoAndSubmit, assertErrorHeaderTextPresent } = require('./common-steps')
 
-const VALID_NINO = 'QQ123456C'
-
 When(/^I enter a valid national insurance number$/, async function () {
-  return enterNinoAndSubmit(VALID_NINO)
+  return enterNinoAndSubmit()
 })
 
 When(/^I enter (.*) as my national insurance number$/, async function (nino) {

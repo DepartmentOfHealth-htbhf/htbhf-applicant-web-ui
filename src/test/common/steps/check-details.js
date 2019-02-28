@@ -1,16 +1,11 @@
 const { expect } = require('chai')
 const { When, Then } = require('cucumber')
 const {
-  FIRST_NAME,
   LAST_NAME,
   FULL_NAME,
   VALID_NINO,
-  DAY,
-  MONTH,
-  YEAR,
   DATE_OF_BIRTH,
   ADDRESS_LINE_1,
-  ADDRESS_LINE_2,
   TOWN,
   POSTCODE,
   FULL_ADDRESS,
@@ -24,25 +19,25 @@ const {
   selectNoOnPregnancyPage,
   enterNameAndSubmit,
   enterNinoAndSubmit,
-  enterDateOfBirth,
-  enterCardAddress
+  enterDateOfBirthAndSubmit,
+  enterCardAddressAndSubmit
 } = require('./common-steps')
 const { formatDateForDisplayFromDate } = require('../../../web/routes/application/common/formatters')
 
 When(/^I complete the application with valid details that contains malicious input$/, async function () {
   await enterNameAndSubmit('<script>window.alert(\'Boo\')</script>', LAST_NAME)
-  await enterNinoAndSubmit(VALID_NINO)
-  await enterDateOfBirth(DAY, MONTH, YEAR)
+  await enterNinoAndSubmit()
+  await enterDateOfBirthAndSubmit()
   await selectNoOnPregnancyPage()
-  await enterCardAddress(ADDRESS_LINE_1, ADDRESS_LINE_2, TOWN, POSTCODE)
+  await enterCardAddressAndSubmit()
 })
 
 When(/^I complete the application with valid details for an applicant with no second line of address$/, async function () {
-  await enterNameAndSubmit(FIRST_NAME, LAST_NAME)
-  await enterNinoAndSubmit(VALID_NINO)
-  await enterDateOfBirth(DAY, MONTH, YEAR)
+  await enterNameAndSubmit()
+  await enterNinoAndSubmit()
+  await enterDateOfBirthAndSubmit()
   await selectNoOnPregnancyPage()
-  await enterCardAddress(ADDRESS_LINE_1, '', TOWN, POSTCODE)
+  await enterCardAddressAndSubmit(ADDRESS_LINE_1, '', TOWN, POSTCODE)
 })
 
 When(/^I choose to change my answer to are you pregnant$/, async function () {
