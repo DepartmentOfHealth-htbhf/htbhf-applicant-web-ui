@@ -35,7 +35,7 @@ const createRoute = (csrfProtection, steps, router) => (step) =>
       handleOptionalMiddleware(step.sanitize),
       handleOptionalMiddleware(step.validate),
       getSessionDetails,
-      handlePost,
+      handlePost(steps),
       renderView(step.template, step.pageContent, step.next)
     )
 
