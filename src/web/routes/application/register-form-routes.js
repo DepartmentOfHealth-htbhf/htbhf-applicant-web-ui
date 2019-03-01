@@ -5,6 +5,7 @@ const {
   configurePost,
   getSessionDetails,
   handlePost,
+  handlePostRedirects,
   renderView,
   sanitize
 } = require('./middleware')
@@ -26,7 +27,7 @@ const createRoute = (csrfProtection, steps, router) => (step) =>
       csrfProtection,
       configureGet(steps, step),
       getSessionDetails,
-      renderView(step.template, step.pageContent, step.next)
+      renderView(step)
     )
     .post(
       csrfProtection,
@@ -36,7 +37,8 @@ const createRoute = (csrfProtection, steps, router) => (step) =>
       handleOptionalMiddleware(step.validate),
       getSessionDetails,
       handlePost(steps),
-      renderView(step.template, step.pageContent, step.next)
+      handlePostRedirects(steps),
+      renderView(step)
     )
 
 const registerFormRoutes = (csrfProtection, steps, app) => {

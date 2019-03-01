@@ -1,37 +1,36 @@
 const moment = require('moment')
-const { getVCAPServicesVariable } = require('../../../../config/vcap-services')
 
 const EXPECTED_DATETIME_FORMAT = 'HH:mm DD/MM/YYYY'
-const TIME_FORMAT = 'hh:mm a'
-const DATE_FORMAT = 'dddd DD MMMM YYYY'
+const DATE_FORMAT = 'hh:mm a, dddd DD MMMM YYYY'
+
+const getServiceAvailableFromMessage = (date, translate) =>
+  date ? `${translate('holding.useServiceFrom')} ${date}` : translate('holding.tryAgainLater')
 
 const pageContent = ({ translate }, date) => ({
   title: translate('holding.title'),
   heading: translate('holding.heading'),
-  serviceAvailableFromMessage: date ? `${translate('holding.useServiceFrom')} ${date}` : undefined
+  serviceAvailableFromMessage: getServiceAvailableFromMessage(date, translate)
 })
 
-const formatDate = (dateStr, { translate }, language = 'en') => {
-  if (!(dateStr && moment(dateStr, EXPECTED_DATETIME_FORMAT, true).isValid())) {
-    return translate('holding.tryAgainLater')
+const formatDate = (date, language = 'en') => {
+  if (!(date && moment(date, EXPECTED_DATETIME_FORMAT, true).isValid())) {
+    return undefined
   }
 
-  const date = moment(dateStr, EXPECTED_DATETIME_FORMAT).locale(language)
-  const formattedTime = date.format(TIME_FORMAT)
-  const formattedDate = date.format(DATE_FORMAT)
-  return `${formattedTime}, ${formattedDate}`
+  return moment(date, EXPECTED_DATETIME_FORMAT).locale(language).format(DATE_FORMAT)
 }
 
-const registerHoldingRoute = (app) => {
-  const serviceAvailableDate = getVCAPServicesVariable('SERVICE_AVAILABLE_DATE')
+const registerHoldingRoute = (config, app) => {
+  const serviceAvailableDate = config.environment.SERVICE_AVAILABLE_DATE
 
   app.all('*', (req, res) => {
-    const formattedDate = formatDate(serviceAvailableDate, { translate: req.t }, req.language)
+    const formattedDate = formatDate(serviceAvailableDate, req.language)
     res.render('holding', pageContent({ translate: req.t }, formattedDate))
   })
 }
 
 module.exports = {
   registerHoldingRoute,
-  formatDate
+  formatDate,
+  getServiceAvailableFromMessage
 }

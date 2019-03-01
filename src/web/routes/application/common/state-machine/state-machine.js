@@ -6,15 +6,28 @@ const states = {
   IN_REVIEW: 'IN_REVIEW'
 }
 const actions = {
-  GET_NEXT_PAGE: 'getNextPage'
+  GET_NEXT_PATH: 'getNextPath'
+}
+
+const getStepByPath = (steps, path) => steps.find(step => step.path === path)
+
+const getNextPath = (steps, path) => {
+  const step = getStepByPath(steps, path)
+  const nextPath = step.next
+
+  if (!nextPath) {
+    throw new Error(`No next step defined for ${path}`)
+  }
+
+  return nextPath
 }
 
 const stateMachine = {
   [states.IN_PROGRESS]: {
-    getNextPage: (nextPage) => nextPage
+    getNextPath
   },
   [states.IN_REVIEW]: {
-    getNextPage: () => CHECK_URL
+    getNextPath: () => CHECK_URL
   },
 
   getState: (req) => {

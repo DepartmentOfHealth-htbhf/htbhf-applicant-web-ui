@@ -125,7 +125,7 @@ test('handlePost() calls next() with error if no next property exists on step', 
   t.end()
 })
 
-test.only('handlePost() calls next() with error if next property is blank', (t) => {
+test('handlePost() calls next() with error if next property is blank', (t) => {
   const { handlePost } = proxyquire('./handle-post', { ...defaultValidator })
 
   const req = {

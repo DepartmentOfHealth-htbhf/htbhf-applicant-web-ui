@@ -148,6 +148,19 @@ class Page {
   async getBackLink () {
     return this.findByClassName(BACK_LINK_CLASSNAME)
   }
+
+  async isElementWithClassPresent (className) {
+    try {
+      await this.waitForElement(className, CLASSNAME_TYPE)
+      return true
+    } catch (error) {
+      return false
+    }
+  }
+
+  async isBackLinkPresent () {
+    return this.isElementWithClassPresent(BACK_LINK_CLASSNAME)
+  }
 }
 
 module.exports = Page
