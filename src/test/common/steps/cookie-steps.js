@@ -1,5 +1,5 @@
 const { When, Then } = require('cucumber')
-const { assert, expect } = require('chai')
+const { expect } = require('chai')
 
 const pages = require('./pages')
 
@@ -18,14 +18,8 @@ Then(/^all page content is present on the cookies page$/, async function () {
 })
 
 Then(/^no back link is shown$/, async function () {
-  try {
-    console.log('Timeout error for getting back link expected')
-    await pages.cookies.getBackLink()
-    assert.fail('Backlink found on page but was not expected')
-  } catch (error) {
-    // we expect there not to be a back link.
-    return true
-  }
+  const backLinkPresent = await pages.cookies.isBackLinkPresent()
+  expect(backLinkPresent).to.equal(false)
 })
 
 Then(/^the back link on the cookies page links to the enter name page$/, async function () {
