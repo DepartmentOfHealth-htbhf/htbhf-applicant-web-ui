@@ -1,19 +1,7 @@
 const httpStatus = require('http-status-codes')
 const { validationResult } = require('express-validator/check')
 const { wrapError } = require('../common/formatters')
-
-const getActiveStep = (steps, path) => steps.find(step => step.path === path)
-
-const getNextPath = (steps, path) => {
-  const activeStep = getActiveStep(steps, path)
-  const nextPath = activeStep.next
-
-  if (!nextPath) {
-    throw new Error(`No next step defined for ${path}`)
-  }
-
-  return nextPath
-}
+const { stateMachine, actions } = require('../common/state-machine')
 
 const handlePost = (steps) => (req, res, next) => {
   try {
@@ -29,7 +17,10 @@ const handlePost = (steps) => (req, res, next) => {
       ...req.session.claim,
       ...req.body
     }
-    req.session.nextAllowedStep = getNextPath(steps, req.path)
+    req.session.nextAllowedStep = stateMachine.dispatch(
+      actions.GET_NEXT_PATH,
+      req, steps, req.path
+    )
 
     return next()
   } catch (error) {
