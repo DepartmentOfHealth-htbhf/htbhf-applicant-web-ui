@@ -2,9 +2,13 @@ const test = require('tape')
 const sinon = require('sinon')
 const { renderView } = require('./render-view')
 
-const template = 'template'
-const getPageContent = () => ({ title: 'What is your name?' })
-const redirectPath = 'redirect'
+const step = {
+  template: 'template',
+  pageContent: () => ({ title: 'What is your name?' }),
+  next: 'redirect'
+}
+
+const steps = [step]
 
 test('renderView() should redirect on POST request when no response errors', async (t) => {
   const redirect = sinon.spy()
@@ -15,7 +19,7 @@ test('renderView() should redirect on POST request when no response errors', asy
     locals: {}
   }
 
-  renderView(template, getPageContent, redirectPath)(req, res)
+  renderView(steps, step)(req, res)
 
   t.equal(redirect.called, true)
   t.end()
@@ -40,7 +44,7 @@ test('renderView() should call res.render() on POST request when response errors
     }
   }
 
-  renderView(template, getPageContent, redirectPath)(req, res)
+  renderView(steps, step)(req, res)
 
   t.equal(redirect.called, false)
   t.equal(render.called, true)
@@ -65,7 +69,7 @@ test('renderView() should call res.render() on GET request', async (t) => {
     locals: {}
   }
 
-  renderView(template, getPageContent, redirectPath)(req, res)
+  renderView(steps, step)(req, res)
 
   t.equal(redirect.called, false)
   t.equal(render.called, true)
