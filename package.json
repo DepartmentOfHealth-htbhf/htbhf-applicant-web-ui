@@ -1,7 +1,7 @@
 {
   "name": "htbhf-applicant-web-ui",
   "version_notice": "Patch versions are incremented by Travis (in tag_version.sh via .travis.yml) - never manually increment the patch version",
-  "version": "0.1.142",
+  "version": "0.1.143",
   "description": "",
   "main": "index.js",
   "engines": {
@@ -34,7 +34,7 @@
     "build": "npm run build:sass",
     "build:sass": "node-sass node_modules/govuk-frontend/all.scss src/web/assets/styles/all.css",
     "postinstall": "npm run build",
-    "test:compatibility": "mkdir -p build/reports/compatibility && cross-env TESTS=compatibility npm-run-all -c -p --max-parallel 1 compat:win compat:osx compat:mobile",
+    "test:compatibility": "mkdir -p build/reports/compatibility && cross-env TESTS=compatibility npm-run-all -c -p --max-parallel 1 compat:win compat:osx compat:mobile compat:tablet",
     "test:compatibility:debug": "node $NODE_DEBUG_OPTION node_modules/cucumber/bin/cucumber-js src/test/compatibility/features/ --require 'src/test/common/steps/*.js' --require 'src/test/compatibility/config/environment.js' --format ./src/test/compatibility/custom-json-formatter.js:build/reports/compatibility-report.json",
     "test:compatibility:report": "node src/test/compatibility/compatibility-report.js",
     "compat:win": "cross-env BROWSER_STACK_OS=Windows BROWSER_STACK_OS_VERSION=10 npm-run-all -c -p --max-parallel 5 compat:win:ie compat:win:edge compat:win:chrome compat:win:firefox",
@@ -46,10 +46,16 @@
     "compat:osx:safari": "cross-env BROWSER_STACK_BROWSER=Safari cucumber-js src/test/compatibility/features/ --require 'src/test/common/steps/*.js' --require 'src/test/compatibility/config/environment.js' --format ./src/test/compatibility/custom-json-formatter.js:build/reports/compatibility/osx-safari-report.json",
     "compat:osx:chrome": "cross-env BROWSER_STACK_BROWSER=Chrome cucumber-js src/test/compatibility/features/ --require 'src/test/common/steps/*.js' --require 'src/test/compatibility/config/environment.js' --format ./src/test/compatibility/custom-json-formatter.js:build/reports/compatibility/osx-chrome-report.json",
     "compat:osx:firefox": "cross-env BROWSER_STACK_BROWSER=Firefox cucumber-js src/test/compatibility/features/ --require 'src/test/common/steps/*.js' --require 'src/test/compatibility/config/environment.js' --format ./src/test/compatibility/custom-json-formatter.js:build/reports/compatibility/osx-firefox-report.json",
-    "compat:mobile": "npm-run-all -c -p --max-parallel 5 compat:ios:iphone compat:android:pixel3 compat:android:galaxys8",
-    "compat:ios:iphone": "cross-env BROWSER_STACK_DEVICE='iPhone XS' BROWSER_STACK_OS_VERSION=12.1 BROWSER_STACK_BROWSER=iPhone cucumber-js src/test/compatibility/features/ --require 'src/test/common/steps/*.js' --require 'src/test/compatibility/config/environment.js' --format ./src/test/compatibility/custom-json-formatter.js:build/reports/compatibility/ios-iPhone-report.json",
+    "compat:mobile": "npm-run-all -c -p --max-parallel 5 compat:ios:iphone_xs compat:ios:iphone8 compat:android:pixel3 compat:android:pixel compat:android:galaxys8",
+    "compat:ios:iphone_xs": "cross-env BROWSER_STACK_DEVICE='iPhone XS' BROWSER_STACK_OS_VERSION=12.1 BROWSER_STACK_BROWSER=iPhone cucumber-js src/test/compatibility/features/ --require 'src/test/common/steps/*.js' --require 'src/test/compatibility/config/environment.js' --format ./src/test/compatibility/custom-json-formatter.js:build/reports/compatibility/ios-iPhone-xs-report.json",
+    "compat:ios:iphone8": "cross-env BROWSER_STACK_DEVICE='iPhone 8' BROWSER_STACK_OS_VERSION=11.0 BROWSER_STACK_BROWSER=iPhone cucumber-js src/test/compatibility/features/ --require 'src/test/common/steps/*.js' --require 'src/test/compatibility/config/environment.js' --format ./src/test/compatibility/custom-json-formatter.js:build/reports/compatibility/ios-iPhone-8-report.json",
     "compat:android:pixel3": "cross-env BROWSER_STACK_DEVICE='Google Pixel 3' BROWSER_STACK_OS_VERSION=9.0 BROWSER_STACK_BROWSER=android cucumber-js src/test/compatibility/features/ --require 'src/test/common/steps/*.js' --require 'src/test/compatibility/config/environment.js' --format ./src/test/compatibility/custom-json-formatter.js:build/reports/compatibility/android-pixel3-report.json",
-    "compat:android:galaxys8": "cross-env BROWSER_STACK_DEVICE='Samsung Galaxy S8' BROWSER_STACK_OS_VERSION=7.0 BROWSER_STACK_BROWSER=android cucumber-js src/test/compatibility/features/ --require 'src/test/common/steps/*.js' --require 'src/test/compatibility/config/environment.js' --format ./src/test/compatibility/custom-json-formatter.js:build/reports/compatibility/android-galaxys8-report.json"
+    "compat:android:pixel": "cross-env BROWSER_STACK_DEVICE='Google Pixel' BROWSER_STACK_OS_VERSION=8.0 BROWSER_STACK_BROWSER=android cucumber-js src/test/compatibility/features/ --require 'src/test/common/steps/*.js' --require 'src/test/compatibility/config/environment.js' --format ./src/test/compatibility/custom-json-formatter.js:build/reports/compatibility/android-pixel-report.json",
+    "compat:android:galaxys8": "cross-env BROWSER_STACK_DEVICE='Samsung Galaxy S8' BROWSER_STACK_OS_VERSION=7.0 BROWSER_STACK_BROWSER=android cucumber-js src/test/compatibility/features/ --require 'src/test/common/steps/*.js' --require 'src/test/compatibility/config/environment.js' --format ./src/test/compatibility/custom-json-formatter.js:build/reports/compatibility/android-galaxys8-report.json",
+    "compat:tablet": "npm-run-all -c -p --max-parallel 5 compat:ios:ipad6 compat:ios:ipad_pro_11 compat:ios:ipad_mini_4",
+    "compat:ios:ipad6": "cross-env BROWSER_STACK_DEVICE='iPad 6th' BROWSER_STACK_OS_VERSION=11.3 BROWSER_STACK_BROWSER=iPad cucumber-js src/test/compatibility/features/ --require 'src/test/common/steps/*.js' --require 'src/test/compatibility/config/environment.js' --format ./src/test/compatibility/custom-json-formatter.js:build/reports/compatibility/ipad-6-report.json",
+    "compat:ios:ipad_pro_11": "cross-env BROWSER_STACK_DEVICE='iPad Pro 11 2018' BROWSER_STACK_OS_VERSION=12.0 BROWSER_STACK_BROWSER=iPad cucumber-js src/test/compatibility/features/ --require 'src/test/common/steps/*.js' --require 'src/test/compatibility/config/environment.js' --format ./src/test/compatibility/custom-json-formatter.js:build/reports/compatibility/ipad-pro-11-report.json",
+    "compat:ios:ipad_mini_4": "cross-env BROWSER_STACK_DEVICE='iPad Mini 4' BROWSER_STACK_OS_VERSION=11.0 BROWSER_STACK_BROWSER=iPad cucumber-js src/test/compatibility/features/ --require 'src/test/common/steps/*.js' --require 'src/test/compatibility/config/environment.js' --format ./src/test/compatibility/custom-json-formatter.js:build/reports/compatibility/ipad-mini-4-report.json"
   },
   "author": "",
   "license": "MIT",
