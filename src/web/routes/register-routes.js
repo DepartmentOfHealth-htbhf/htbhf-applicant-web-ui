@@ -27,7 +27,7 @@ const registerRoutes = (config, app) => {
     registerFormRoutes(csrfProtection, steps, app)
     registerStartRoute(app)
     registerCheckRoutes(csrfProtection, steps, config, app)
-    registerConfirmRoute(app)
+    registerConfirmRoute(steps, app)
     registerCookiesRoute(app)
   }
 }
