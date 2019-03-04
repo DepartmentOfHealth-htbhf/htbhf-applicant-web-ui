@@ -15,6 +15,7 @@ Feature: Application process navigation is controlled
       | enter date of birth      |
       | are you pregnant         |
       | card address             |
+      | check details            |
       | confirmation             |
 
   @ignore
@@ -32,16 +33,26 @@ Feature: Application process navigation is controlled
 
   @ignore
   Scenario Outline: Navigation is not allowed past the current page in the flow
-    Given I have entered my details up to the <page> page
-    When I navigate to the check details page
-    Then I am shown the <page> page
+    Given I have entered my details up to the <application page> page
+    When I navigate to the <navigation page> page
+    Then I am shown the <application page> page
     Examples:
-      | page                     |
-      | enter name               |
-      | enter national insurance |
-      | enter date of birth      |
-      | are you pregnant         |
-      | card address             |
+      | application page         | navigation page |
+      | enter name               | card address    |
+      | enter national insurance | card address    |
+      | enter date of birth      | card address    |
+      | are you pregnant         | card address    |
+      | enter name               | check details   |
+      | enter national insurance | check details   |
+      | enter date of birth      | check details   |
+      | are you pregnant         | check details   |
+      | card address             | check details   |
+      | enter name               | confirmation    |
+      | enter national insurance | confirmation    |
+      | enter date of birth      | confirmation    |
+      | are you pregnant         | confirmation    |
+      | card address             | confirmation    |
+
 
   Scenario Outline: Navigation to previous steps in an unsubmitted application flow is allowed
     Given I have entered my details up to the check details page
