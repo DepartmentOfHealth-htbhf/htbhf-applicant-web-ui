@@ -1,7 +1,7 @@
 const test = require('tape')
 const sinon = require('sinon')
 const { CHECK_URL } = require('../common/constants')
-const { getPathsInSequence, isPathAllowed, handlePathRequest } = require('./handle-path-request')
+const { getPathsInSequence, isPathAllowed, handleRequestForPath } = require('./handle-path-request')
 
 const steps = [{ path: '/first', next: '/second' }, { path: '/second' }]
 const paths = ['/first', '/second', '/third', '/fourth']
@@ -32,7 +32,7 @@ test('isPathAllowed() should return false if path is after allowed in sequence',
   t.end()
 })
 
-test('handlePathRequest() should set next allowed path to first in sequence if none exists on session', (t) => {
+test('handleRequestForPath() should set next allowed path to first in sequence if none exists on session', (t) => {
   const req = {
     session: {}
   }
@@ -40,14 +40,14 @@ test('handlePathRequest() should set next allowed path to first in sequence if n
   const res = {}
   const next = sinon.spy()
 
-  handlePathRequest(steps)(req, res, next)
+  handleRequestForPath(steps)(req, res, next)
 
   t.equal(req.session.nextAllowedStep, '/first', 'it should set next allowed path to first in sequence')
   t.equal(next.called, true, 'it should call next()')
   t.end()
 })
 
-test('handlePathRequest() should redirect to next allowed step if requested path is not allowed', (t) => {
+test('handleRequestForPath() should redirect to next allowed step if requested path is not allowed', (t) => {
   const req = {
     path: '/second',
     session: {
@@ -59,14 +59,14 @@ test('handlePathRequest() should redirect to next allowed step if requested path
   const res = { redirect }
   const next = sinon.spy()
 
-  handlePathRequest(steps)(req, res, next)
+  handleRequestForPath(steps)(req, res, next)
 
   t.equal(redirect.calledWith('/first'), true, 'it should call redirect() with next allowed step')
   t.equal(next.called, false, 'it should not call next()')
   t.end()
 })
 
-test('handlePathRequest() should call next() if requested path is allowed', (t) => {
+test('handleRequestForPath() should call next() if requested path is allowed', (t) => {
   const req = {
     path: '/second',
     session: {
@@ -78,7 +78,7 @@ test('handlePathRequest() should call next() if requested path is allowed', (t) 
   const res = { redirect }
   const next = sinon.spy()
 
-  handlePathRequest(steps)(req, res, next)
+  handleRequestForPath(steps)(req, res, next)
 
   t.equal(redirect.called, false, 'it should not call redirect()')
   t.equal(next.called, true, 'it should call next()')

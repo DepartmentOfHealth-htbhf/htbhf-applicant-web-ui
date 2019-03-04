@@ -18,10 +18,10 @@ const middleware = (pathsInSequence) => (req, res, next) => {
   next()
 }
 
-const handlePathRequest = (steps) => middleware(getPathsInSequence(steps))
+const handleRequestForPath = (steps) => middleware(getPathsInSequence(steps))
 
 module.exports = {
   getPathsInSequence,
   isPathAllowed,
-  handlePathRequest
+  handleRequestForPath
 }
