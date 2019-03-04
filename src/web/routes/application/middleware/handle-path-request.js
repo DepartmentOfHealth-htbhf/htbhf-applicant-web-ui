@@ -1,7 +1,7 @@
 const { equals } = require('ramda')
-const { CHECK_URL } = require('../common/constants')
+const { CHECK_URL, CONFIRM_URL } = require('../common/constants')
 
-const getPathsInSequence = (steps) => [...steps.map(step => step.path), CHECK_URL]
+const getPathsInSequence = (steps) => [...steps.map(step => step.path), CHECK_URL, CONFIRM_URL]
 
 const isPathAllowed = (sequence, allowed, path) =>
   sequence.findIndex(equals(path)) <= sequence.findIndex(equals(allowed))

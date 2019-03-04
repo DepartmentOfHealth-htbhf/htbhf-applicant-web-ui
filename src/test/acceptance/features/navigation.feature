@@ -3,7 +3,6 @@ Feature: Application process navigation is controlled
   As a potential claimant
   I want to make sure that only the correct application flow can be used
 
-  @ignore
   Scenario Outline: Enter name page is always the first page
     Given I am starting a new application
     When I navigate to the <page> page
@@ -31,7 +30,6 @@ Feature: Application process navigation is controlled
       | are you pregnant         |
       | card address             |
 
-  @ignore
   Scenario Outline: Navigation is not allowed past the current page in the flow
     Given I have entered my details up to the <application page> page
     When I navigate to the <navigation page> page

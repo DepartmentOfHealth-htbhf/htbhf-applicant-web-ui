@@ -1,9 +1,10 @@
-const { CHECK_URL } = require('../constants')
+const { CHECK_URL, CONFIRM_URL } = require('../constants')
 const { logger } = require('../../../../logger')
 
 const states = {
   IN_PROGRESS: 'IN_PROGRESS',
-  IN_REVIEW: 'IN_REVIEW'
+  IN_REVIEW: 'IN_REVIEW',
+  COMPLETED: 'COMPLETED'
 }
 const actions = {
   GET_NEXT_PATH: 'getNextPath'
@@ -28,6 +29,9 @@ const stateMachine = {
   },
   [states.IN_REVIEW]: {
     getNextPath: () => CHECK_URL
+  },
+  [states.COMPLETED]: {
+    getNextPath: () => CONFIRM_URL
   },
 
   getState: (req) => {

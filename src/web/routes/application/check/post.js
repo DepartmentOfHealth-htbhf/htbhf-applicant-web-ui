@@ -5,6 +5,7 @@ const { toDateString, wrapError } = require('../common/formatters')
 const { YES } = require('../common/constants')
 const { logger } = require('../../../logger')
 const { REQUEST_ID_HEADER } = require('../../../server/headers')
+const { stateMachine, states, actions } = require('../common/state-machine')
 
 const CLAIMS_ENDPOINT = `/v1/claims`
 
@@ -35,7 +36,7 @@ const createRequestBody = (claim) => {
   }
 }
 
-const postCheck = (config) => async (req, res, next) => {
+const postCheck = (steps, config) => async (req, res, next) => {
   try {
     await request.post({
       uri: `${config.environment.CLAIMANT_SERVICE_URL}${CLAIMS_ENDPOINT}`,
@@ -50,6 +51,9 @@ const postCheck = (config) => async (req, res, next) => {
     })
 
     logger.info('Sent claim', { req })
+
+    stateMachine.setState(states.COMPLETED, req)
+    req.session.nextAllowedStep = stateMachine.dispatch(actions.GET_NEXT_PATH, req, steps, req.path)
     return res.redirect('confirm')
   } catch (error) {
     next(wrapError({

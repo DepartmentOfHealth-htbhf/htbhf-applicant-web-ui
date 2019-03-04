@@ -1,3 +1,6 @@
+const { handleRequestForPath } = require('./middleware')
+const { CONFIRM_URL } = require('./common/constants')
+
 const pageContent = ({ translate }) => ({
   title: translate('confirm.title'),
   subTitle: translate('confirm.subTitle')
@@ -11,8 +14,8 @@ const getConfirmPage = (req, res) => {
   })
 }
 
-const registerConfirmRoute = (app) => {
-  app.get('/confirm', getConfirmPage)
+const registerConfirmRoute = (steps, app) => {
+  app.get(CONFIRM_URL, handleRequestForPath(steps), getConfirmPage)
 }
 
 module.exports = {
