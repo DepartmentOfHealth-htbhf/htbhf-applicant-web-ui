@@ -5,6 +5,7 @@ const {
   configurePost,
   getSessionDetails,
   handlePost,
+  handleRequestForPath,
   handlePostRedirects,
   renderView,
   sanitize
@@ -27,6 +28,7 @@ const createRoute = (csrfProtection, steps, router) => (step) =>
       csrfProtection,
       configureGet(steps, step),
       getSessionDetails,
+      handleRequestForPath(steps),
       renderView(step)
     )
     .post(
@@ -37,6 +39,7 @@ const createRoute = (csrfProtection, steps, router) => (step) =>
       handleOptionalMiddleware(step.validate),
       getSessionDetails,
       handlePost(steps),
+      handleRequestForPath(steps),
       handlePostRedirects(steps),
       renderView(step)
     )

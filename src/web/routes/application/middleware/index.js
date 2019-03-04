@@ -5,5 +5,6 @@ module.exports = {
   ...require('./handle-post-redirects'),
   ...require('./render-view'),
   ...require('./sanitize'),
-  ...require('./session-details')
+  ...require('./session-details'),
+  ...require('./handle-path-request')
 }
