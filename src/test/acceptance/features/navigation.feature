@@ -35,21 +35,10 @@ Feature: Application process navigation is controlled
     When I navigate to the <navigation page> page
     Then I am shown the <application page> page
     Examples:
-      | application page         | navigation page |
-      | enter name               | card address    |
-      | enter national insurance | card address    |
-      | enter date of birth      | card address    |
-      | are you pregnant         | card address    |
-      | enter name               | check details   |
-      | enter national insurance | check details   |
-      | enter date of birth      | check details   |
-      | are you pregnant         | check details   |
-      | card address             | check details   |
-      | enter name               | confirmation    |
-      | enter national insurance | confirmation    |
-      | enter date of birth      | confirmation    |
-      | are you pregnant         | confirmation    |
-      | card address             | confirmation    |
+      | application page    | navigation page |
+      | enter name          | card address    |
+      | enter date of birth | check details   |
+      | are you pregnant    | confirmation    |
 
 
   Scenario Outline: Navigation to previous steps in an unsubmitted application flow is allowed
