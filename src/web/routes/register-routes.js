@@ -5,6 +5,7 @@ const { registerCheckRoutes } = require('./application/check')
 const { registerCookiesRoute } = require('./cookies')
 const { getLanguageBase } = require('./language')
 const { registerHoldingRoute } = require('./application/holding')
+const { registerPageNotFoundRoute } = require('./application/page-not-found')
 
 const { steps } = require('./application/steps')
 const { registerFormRoutes } = require('./application/register-form-routes')
@@ -29,6 +30,7 @@ const registerRoutes = (config, app) => {
     registerCheckRoutes(csrfProtection, steps, config, app)
     registerConfirmRoute(steps, app)
     registerCookiesRoute(app)
+    registerPageNotFoundRoute(app)
   }
 }
 
