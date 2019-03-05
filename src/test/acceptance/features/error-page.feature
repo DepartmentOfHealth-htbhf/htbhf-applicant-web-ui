@@ -1,4 +1,4 @@
-Feature: Sever Error page
+Feature: Server Error page
   In order to facilitate the beta HTBHF programme
   As a potential claimant
   I want to see the Server Error page when an error occurs with the application
