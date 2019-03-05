@@ -24,8 +24,30 @@ const SUCCESSFUL_CLAIMS_MAPPING = JSON.stringify({
   }
 })
 
+const ERROR_CLAIMS_MAPPING = JSON.stringify({
+  'request': {
+    'method': 'POST',
+    'url': '/v1/claims',
+    'headers': {
+      'X-Request-ID': {
+        'matches': ID_HEADERS_MATCH
+      },
+      'X-Session-ID': {
+        'matches': ID_HEADERS_MATCH
+      }
+    }
+  },
+  'response': {
+    'status': 500
+  }
+})
+
 async function setupSuccessfulWiremockClaimMapping () {
   await postJsonData(WIREMOCK_MAPPING_URL, SUCCESSFUL_CLAIMS_MAPPING)
+}
+
+async function setupErrorWiremockClaimMapping () {
+  await postJsonData(WIREMOCK_MAPPING_URL, ERROR_CLAIMS_MAPPING)
 }
 
 async function deleteAllWiremockMappings () {
@@ -34,5 +56,6 @@ async function deleteAllWiremockMappings () {
 
 module.exports = {
   setupSuccessfulWiremockClaimMapping,
-  deleteAllWiremockMappings
+  deleteAllWiremockMappings,
+  setupErrorWiremockClaimMapping
 }
