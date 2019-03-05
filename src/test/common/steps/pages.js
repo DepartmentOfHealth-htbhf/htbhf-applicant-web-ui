@@ -8,6 +8,7 @@ const Check = require('../page/check')
 const Confirm = require('../page/confirm')
 const Cookies = require('../page/cookies')
 const SubmittablePage = require('../page/submittable-page')
+const ServerError = require('../page/server-error')
 const PageNotFound = require('../page/page-not-found')
 const { URL, DRIVER_MANAGER } = require('./test-startup-config')
 
@@ -37,6 +38,7 @@ class Pages {
     this.confirm = null
     this.genericPage = null
     this.cookies = null
+    this.serverError = null
     this.pageNotFound = null
     this.url = URL
     this.allPages = null
@@ -57,6 +59,7 @@ class Pages {
     this.confirm = new Confirm(this.driver)
     this.cookies = new Cookies(this.driver)
     this.genericPage = new SubmittablePage(this.driver)
+    this.serverError = new ServerError(this.driver)
     this.pageNotFound = new PageNotFound(this.driver)
     // NOTE: This map should contain all page objects, and not the Generic Page as this doesn't itself represent a page
     this.allPages = [this.overview, this.enterName, this.enterNino, this.enterDOB, this.areYouPregnant, this.cardAddress,
