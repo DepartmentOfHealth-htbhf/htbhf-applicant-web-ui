@@ -1,8 +1,8 @@
 const pageContent = ({ translate }) => ({
-  title: translate('page-not-found.title'),
-  heading: translate('page-not-found.heading'),
-  'checkTypedAddress': translate('page-not-found.checkTypedAddress'),
-  'checkPastedAddress': translate('page-not-found.checkPastedAddress')
+  title: translate('pageNotFound.title'),
+  heading: translate('pageNotFound.heading'),
+  checkTypedAddress: translate('pageNotFound.checkTypedAddress'),
+  checkPastedAddress: translate('pageNotFound.checkPastedAddress')
 })
 
 const registerPageNotFoundRoute = (app) => {
