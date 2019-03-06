@@ -29,22 +29,20 @@ const getNextPath = (steps, path) => {
 const isPathAllowed = (sequence, allowed, path) =>
   sequence.findIndex(equals(path)) <= sequence.findIndex(equals(allowed))
 
-const getNextAllowedPath = (path) => path
-
 const stateMachine = {
   [states.IN_PROGRESS]: {
-    getNextPath,
-    isPathAllowed,
-    getNextAllowedPath
+    getNextPath: (req, steps) => getNextPath(steps, req.path),
+    isPathAllowed: (req, sequence) => isPathAllowed(sequence, req.session.nextAllowedStep, req.path),
+    getNextAllowedPath: (req) => req.session.nextAllowedStep
   },
   [states.IN_REVIEW]: {
     getNextPath: () => CHECK_URL,
-    isPathAllowed,
-    getNextAllowedPath
+    isPathAllowed: (req, sequence) => isPathAllowed(sequence, req.session.nextAllowedStep, req.path),
+    getNextAllowedPath: (req) => req.session.nextAllowedStep
   },
   [states.COMPLETED]: {
     getNextPath: () => CONFIRM_URL,
-    isPathAllowed: (sequence, allowed, path) => path === CONFIRM_URL,
+    isPathAllowed: (req) => req.path === CONFIRM_URL,
     getNextAllowedPath: () => CONFIRM_URL
   },
 
@@ -61,7 +59,7 @@ const stateMachine = {
   dispatch: (action, req, ...args) => {
     const state = stateMachine.getState(req)
 
-    return state[action](...args)
+    return state[action](req, ...args)
   }
 }
 
