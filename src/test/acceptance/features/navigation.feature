@@ -22,7 +22,6 @@ Feature: Application process navigation is controlled
     When I navigate to the confirmation page
     Then I am shown the confirm details page
 
-  @ignore
   Scenario Outline: Navigation after completing application returns to start of process and clears the session
     Given I have completed my application
     When I navigate to the <page> page

@@ -2,6 +2,7 @@ const test = require('tape')
 const sinon = require('sinon')
 const { CHECK_URL, CONFIRM_URL } = require('../common/constants')
 const { getPathsInSequence, handleRequestForPath } = require('./handle-path-request')
+const { states } = require('../common/state-machine')
 
 const steps = [{ path: '/first', next: '/second' }, { path: '/second' }]
 
@@ -63,5 +64,32 @@ test('handleRequestForPath() should call next() if requested path is allowed', (
 
   t.equal(redirect.called, false, 'it should not call redirect()')
   t.equal(next.called, true, 'it should call next()')
+  t.end()
+})
+
+test(`handleRequestForPath() should destroy the session and redirect when navigating away from ${CONFIRM_URL}`, (t) => {
+  const destroy = sinon.spy()
+  const clearCookie = sinon.spy()
+  const redirect = sinon.spy()
+  const next = sinon.spy()
+
+  const req = {
+    path: '/second',
+    session: {
+      destroy,
+      state: states.COMPLETED
+    }
+  }
+
+  const res = {
+    clearCookie,
+    redirect
+  }
+
+  handleRequestForPath(steps)(req, res, next)
+
+  t.equal(destroy.called, true, 'it should destroy the session')
+  t.equal(clearCookie.calledWith('lang'), true, 'it should clear language preference cookie')
+  t.equal(redirect.calledWith('/first'), true, 'it should call redirect() with correct path')
   t.end()
 })
