@@ -7,8 +7,6 @@ const pageContent = ({ translate }) => ({
 })
 
 const getConfirmPage = (req, res) => {
-  req.session.destroy()
-  res.clearCookie('lang')
   res.render('confirm', {
     ...pageContent({ translate: req.t })
   })

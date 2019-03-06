@@ -1,3 +1,4 @@
+const { equals } = require('ramda')
 const { CHECK_URL, CONFIRM_URL } = require('../constants')
 const { logger } = require('../../../../logger')
 
@@ -7,7 +8,9 @@ const states = {
   COMPLETED: 'COMPLETED'
 }
 const actions = {
-  GET_NEXT_PATH: 'getNextPath'
+  GET_NEXT_PATH: 'getNextPath',
+  IS_PATH_ALLOWED: 'isPathAllowed',
+  GET_NEXT_ALLOWED_PATH: 'getNextAllowedPath'
 }
 
 const getStepByPath = (steps, path) => steps.find(step => step.path === path)
@@ -23,15 +26,26 @@ const getNextPath = (steps, path) => {
   return nextPath
 }
 
+const isPathAllowed = (sequence, allowed, path) =>
+  sequence.findIndex(equals(path)) <= sequence.findIndex(equals(allowed))
+
+const getNextAllowedPath = (path) => path
+
 const stateMachine = {
   [states.IN_PROGRESS]: {
-    getNextPath
+    getNextPath,
+    isPathAllowed,
+    getNextAllowedPath
   },
   [states.IN_REVIEW]: {
-    getNextPath: () => CHECK_URL
+    getNextPath: () => CHECK_URL,
+    isPathAllowed,
+    getNextAllowedPath
   },
   [states.COMPLETED]: {
-    getNextPath: () => CONFIRM_URL
+    getNextPath: () => CONFIRM_URL,
+    isPathAllowed: (sequence, allowed, path) => path === CONFIRM_URL,
+    getNextAllowedPath: () => CONFIRM_URL
   },
 
   getState: (req) => {
@@ -54,5 +68,6 @@ const stateMachine = {
 module.exports = {
   states,
   stateMachine,
-  actions
+  actions,
+  isPathAllowed
 }
