@@ -17,7 +17,6 @@ Feature: Application process navigation is controlled
       | check details            |
       | confirmation             |
 
-  @ignore
   Scenario Outline: Navigation after completing application returns to confirm page
     Given I have completed my application
     When I navigate to the <page> page
