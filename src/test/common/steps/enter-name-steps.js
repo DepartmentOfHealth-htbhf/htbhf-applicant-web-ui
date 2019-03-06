@@ -32,8 +32,17 @@ Then(/^I see the invalid first name I entered in the textbox$/, async function (
 })
 
 Then(/^I see the last name I entered in the textbox$/, async function () {
-  const enteredFirstName = await pages.enterName.getLastNameValue()
-  expect(enteredFirstName).to.be.equal(LONG_STRING)
+  const enteredLastName = await pages.enterName.getLastNameValue()
+  expect(enteredLastName).to.be.equal(LONG_STRING)
+})
+
+Then(/^the enter name details have been cleared$/, async function () {
+  const enteredFirstName = await pages.enterName.getFirstNameValue()
+  // eslint-disable-next-line no-unused-expressions
+  expect(enteredFirstName).to.be.empty
+  const enteredLastName = await pages.enterName.getLastNameValue()
+  // eslint-disable-next-line no-unused-expressions
+  expect(enteredLastName).to.be.empty
 })
 
 Then('I am informed that the last name is too long', async function () {

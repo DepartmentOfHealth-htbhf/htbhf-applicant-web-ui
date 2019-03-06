@@ -17,10 +17,17 @@ Feature: Application process navigation is controlled
       | check details            |
       | confirmation             |
 
-  Scenario Outline: Navigation after completing application returns to confirm page
+  Scenario: Navigation to confirm page after completing application stays on the confirm page
+    Given I have completed my application
+    When I navigate to the confirmation page
+    Then I am shown the confirm details page
+
+  @ignore
+  Scenario Outline: Navigation after completing application returns to start of process and clears the session
     Given I have completed my application
     When I navigate to the <page> page
-    Then I am shown the confirm details page
+    Then I am shown the enter name page
+    And the enter name details have been cleared
     Examples:
       | page                     |
       | enter name               |
