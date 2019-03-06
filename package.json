@@ -32,7 +32,7 @@
     "test:fail_if_test_only_found": "./npm_scripts/fail_if_test_only_found.sh",
     "coverage": "nyc report --reporter=lcov --reporter=text-lcov > coverage.lcov && codecov",
     "build": "npm run build:sass",
-    "build:sass": "node-sass node_modules/govuk-frontend/all.scss src/web/assets/styles/all.css",
+    "build:sass": "node-sass node_modules/govuk-frontend/all.scss src/web/assets/styles/all.css --output-style compressed",
     "postinstall": "npm run build",
     "test:compatibility": "mkdir -p build/reports/compatibility && cross-env TESTS=compatibility npm-run-all -c -p --max-parallel 1 compat:win compat:osx compat:mobile compat:tablet",
     "test:compatibility:debug": "node $NODE_DEBUG_OPTION node_modules/cucumber/bin/cucumber-js src/test/compatibility/features/ --require 'src/test/common/steps/*.js' --require 'src/test/compatibility/config/environment.js' --format ./src/test/compatibility/custom-json-formatter.js:build/reports/compatibility-report.json",
