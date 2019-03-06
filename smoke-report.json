@@ -24,7 +24,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 20000000
+              "duration": 36000000
             }
           },
           {
@@ -37,7 +37,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1608000000
+              "duration": 1618000000
             }
           },
           {
@@ -50,7 +50,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 506000000
+              "duration": 445000000
             }
           },
           {
@@ -59,7 +59,7 @@
             "line": 9,
             "name": "I am shown the enter name page",
             "match": {
-              "location": "src/test/common/steps/enter-name-steps.js:58"
+              "location": "src/test/common/steps/enter-name-steps.js:49"
             },
             "result": {
               "status": "passed",
@@ -73,7 +73,8 @@
               "location": "src/test/common/steps/hooks.js:14"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           }
         ]
