@@ -6,6 +6,12 @@ const { states } = require('../common/state-machine')
 
 const steps = [{ path: '/first', next: '/second' }, { path: '/second' }]
 
+const config = {
+  environment: {
+    OVERVIEW_URL: '/'
+  }
+}
+
 test('getPathsInSequence() returns the correct sequence of paths', (t) => {
   const expected = ['/first', '/second', CHECK_URL, CONFIRM_URL]
   const result = getPathsInSequence(steps)
@@ -22,7 +28,7 @@ test('handleRequestForPath() should set next allowed path to first in sequence i
   const res = {}
   const next = sinon.spy()
 
-  handleRequestForPath(steps)(req, res, next)
+  handleRequestForPath(config, steps)(req, res, next)
 
   t.equal(req.session.nextAllowedStep, '/first', 'it should set next allowed path to first in sequence')
   t.equal(next.called, true, 'it should call next()')
@@ -41,7 +47,7 @@ test('handleRequestForPath() should redirect to next allowed step if requested p
   const res = { redirect }
   const next = sinon.spy()
 
-  handleRequestForPath(steps)(req, res, next)
+  handleRequestForPath(config, steps)(req, res, next)
 
   t.equal(redirect.calledWith('/first'), true, 'it should call redirect() with next allowed step')
   t.equal(next.called, false, 'it should not call next()')
@@ -60,7 +66,7 @@ test('handleRequestForPath() should call next() if requested path is allowed', (
   const res = { redirect }
   const next = sinon.spy()
 
-  handleRequestForPath(steps)(req, res, next)
+  handleRequestForPath(config, steps)(req, res, next)
 
   t.equal(redirect.called, false, 'it should not call redirect()')
   t.equal(next.called, true, 'it should call next()')
@@ -86,10 +92,10 @@ test(`handleRequestForPath() should destroy the session and redirect when naviga
     redirect
   }
 
-  handleRequestForPath(steps)(req, res, next)
+  handleRequestForPath(config, steps)(req, res, next)
 
   t.equal(destroy.called, true, 'it should destroy the session')
   t.equal(clearCookie.calledWith('lang'), true, 'it should clear language preference cookie')
-  t.equal(redirect.calledWith('/first'), true, 'it should call redirect() with correct path')
+  t.equal(redirect.calledWith('/'), true, 'it should call redirect() with correct path')
   t.end()
 })

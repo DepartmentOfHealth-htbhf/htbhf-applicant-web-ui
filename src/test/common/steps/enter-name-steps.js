@@ -36,15 +36,6 @@ Then(/^I see the last name I entered in the textbox$/, async function () {
   expect(enteredLastName).to.be.equal(LONG_STRING)
 })
 
-Then(/^the enter name details have been cleared$/, async function () {
-  const enteredFirstName = await pages.enterName.getFirstNameValue()
-  // eslint-disable-next-line no-unused-expressions
-  expect(enteredFirstName).to.be.empty
-  const enteredLastName = await pages.enterName.getLastNameValue()
-  // eslint-disable-next-line no-unused-expressions
-  expect(enteredLastName).to.be.empty
-})
-
 Then('I am informed that the last name is too long', async function () {
   await assertErrorHeaderTextPresent(pages.enterName)
   await assertLastNameErrorFieldAndLink('Enter a shorter last or family name')

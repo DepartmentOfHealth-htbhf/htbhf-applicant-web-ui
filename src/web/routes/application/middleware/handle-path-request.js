@@ -5,19 +5,17 @@ const { IS_PATH_ALLOWED, GET_NEXT_ALLOWED_PATH } = actions
 
 const getPathsInSequence = (steps) => [...steps.map(step => step.path), CHECK_URL, CONFIRM_URL]
 
-const middleware = (pathsInSequence) => (req, res, next) => {
-  const firstPath = pathsInSequence[0]
-
+const middleware = (config, pathsInSequence) => (req, res, next) => {
   // Destroy the session on navigating away from CONFIRM_URL
   if (req.session.state === states.COMPLETED && req.path !== CONFIRM_URL) {
     req.session.destroy()
     res.clearCookie('lang')
-    return res.redirect(firstPath)
+    return res.redirect(config.environment.OVERVIEW_URL)
   }
 
   // Initialise nextAllowedStep if none exists in session
   if (!req.session.nextAllowedStep) {
-    req.session.nextAllowedStep = firstPath
+    req.session.nextAllowedStep = pathsInSequence[0]
   }
 
   const isPathAllowed = stateMachine.dispatch(IS_PATH_ALLOWED, req, pathsInSequence, req.session.nextAllowedStep, req.path)
@@ -31,7 +29,7 @@ const middleware = (pathsInSequence) => (req, res, next) => {
   next()
 }
 
-const handleRequestForPath = (steps) => middleware(getPathsInSequence(steps))
+const handleRequestForPath = (config, steps) => middleware(config, getPathsInSequence(steps))
 
 module.exports = {
   getPathsInSequence,

@@ -25,10 +25,10 @@ const registerRoutes = (config, app) => {
     registerHoldingRoute(config, app)
   } else {
     const csrfProtection = csrf({})
-    registerFormRoutes(csrfProtection, steps, app)
+    registerFormRoutes(config, csrfProtection, steps, app)
     registerStartRoute(app)
     registerCheckRoutes(csrfProtection, steps, config, app)
-    registerConfirmRoute(steps, app)
+    registerConfirmRoute(config, steps, app)
     registerCookiesRoute(app)
     registerPageNotFoundRoute(app)
   }

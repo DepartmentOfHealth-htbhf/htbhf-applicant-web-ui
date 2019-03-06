@@ -25,8 +25,7 @@ Feature: Application process navigation is controlled
   Scenario Outline: Navigation after completing application returns to start of process and clears the session
     Given I have completed my application
     When I navigate to the <page> page
-    Then I am shown the enter name page
-    And the enter name details have been cleared
+    Then I am shown the overview page
     Examples:
       | page                     |
       | enter name               |
