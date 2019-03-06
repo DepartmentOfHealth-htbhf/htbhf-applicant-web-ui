@@ -8,5 +8,6 @@ module.exports = {
   GA_TRACKING_ID: getVCAPServicesVariable('GA_TRACKING_ID'),
   LOG_LEVEL: getVCAPServicesVariable('UI_LOG_LEVEL', process.env.LOG_LEVEL || 'debug'),
   MAINTENANCE_MODE: toBoolean(getVCAPServicesVariable('MAINTENANCE_MODE', false)),
-  SERVICE_AVAILABLE_DATE: getVCAPServicesVariable('SERVICE_AVAILABLE_DATE')
+  SERVICE_AVAILABLE_DATE: getVCAPServicesVariable('SERVICE_AVAILABLE_DATE'),
+  OVERVIEW_URL: '/'
 }

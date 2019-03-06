@@ -21,14 +21,14 @@ const handleOptionalMiddleware = (operation, fallback = middlewareNoop) => {
   return operation
 }
 
-const createRoute = (csrfProtection, steps, router) => (step) =>
+const createRoute = (config, csrfProtection, steps, router) => (step) =>
   router
     .route(step.path)
     .get(
       csrfProtection,
       configureGet(steps, step),
       getSessionDetails,
-      handleRequestForPath(steps),
+      handleRequestForPath(config, steps),
       renderView(step)
     )
     .post(
@@ -39,14 +39,14 @@ const createRoute = (csrfProtection, steps, router) => (step) =>
       handleOptionalMiddleware(step.validate),
       getSessionDetails,
       handlePost(steps),
-      handleRequestForPath(steps),
+      handleRequestForPath(config, steps),
       handlePostRedirects(steps),
       renderView(step)
     )
 
-const registerFormRoutes = (csrfProtection, steps, app) => {
+const registerFormRoutes = (config, csrfProtection, steps, app) => {
   const wizard = express.Router()
-  steps.forEach(createRoute(csrfProtection, steps, wizard))
+  steps.forEach(createRoute(config, csrfProtection, steps, wizard))
   app.use(wizard)
 }
 
