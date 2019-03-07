@@ -35,6 +35,13 @@ test(`Dispatching ${GET_NEXT_PATH} should return confirm path when state of ${st
   t.end()
 })
 
+test(`Dispatching an invalid action should return null`, async (t) => {
+  const req = { method: 'POST', session: {}, path: '/first' }
+
+  t.equal(stateMachine.dispatch('INVALID_ACTION', req, steps), null)
+  t.end()
+})
+
 test('isPathAllowed() should return true if path is before allowed in sequence', (t) => {
   const result = isPathAllowed(paths, '/third', '/second')
   t.equal(result, true, 'returns true if path is before allowed in sequence')
