@@ -7,7 +7,7 @@ const getPathsInSequence = (steps) => [...steps.map(step => step.path), CHECK_UR
 
 const middleware = (config, pathsInSequence) => (req, res, next) => {
   // Destroy the session on navigating away from CONFIRM_URL
-  if (req.session.state === states.COMPLETED && req.path !== CONFIRM_URL) {
+  if (stateMachine.getState(req) === states.COMPLETED && req.path !== CONFIRM_URL) {
     req.session.destroy()
     res.clearCookie('lang')
     return res.redirect(config.environment.OVERVIEW_URL)
