@@ -47,8 +47,7 @@ const stateMachine = {
   },
 
   getState: (req) => {
-    const state = states.hasOwnProperty(req.session.state) ? states[req.session.state] : states.IN_PROGRESS
-    return stateMachine[state]
+    return states.hasOwnProperty(req.session.state) ? states[req.session.state] : states.IN_PROGRESS
   },
 
   setState: (state, req) => {
@@ -56,10 +55,15 @@ const stateMachine = {
     req.session.state = state
   },
 
-  dispatch: (action, req, ...args) => {
+  dispatch: (actionType, req, ...args) => {
     const state = stateMachine.getState(req)
+    const action = stateMachine[state][actionType]
 
-    return state[action](req, ...args)
+    if (typeof action !== 'undefined') {
+      return action(req, ...args)
+    }
+
+    return null
   }
 }
 
