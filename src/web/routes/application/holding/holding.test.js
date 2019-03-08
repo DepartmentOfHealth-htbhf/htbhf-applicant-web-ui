@@ -54,7 +54,7 @@ test('formatDate returns formatted date in Welsh', (t) => {
 test('getServiceAvailableFromMessage returns message with date when date is given', (t) => {
   const result = getServiceAvailableFromMessage('02:30 pm, Wednesday 03 April 2019', translate)
 
-  t.deepEquals(result, 'You will be able to use the service from 02:30 pm, Wednesday 03 April 2019')
+  t.deepEquals(result, 'You will be able to use the service from 02:30 pm, Wednesday 03 April 2019.')
   t.end()
 })
 

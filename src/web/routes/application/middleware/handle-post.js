@@ -20,7 +20,7 @@ const handlePost = (steps) => (req, res, next) => {
       ...req.body
     }
 
-    req.session.nextAllowedStep = stateMachine.dispatch(GET_NEXT_PATH, req, steps, req.path)
+    req.session.nextAllowedStep = stateMachine.dispatch(GET_NEXT_PATH, req, steps)
 
     return next()
   } catch (error) {

@@ -4,7 +4,7 @@ const EXPECTED_DATETIME_FORMAT = 'HH:mm DD/MM/YYYY'
 const DATE_FORMAT = 'hh:mm a, dddd DD MMMM YYYY'
 
 const getServiceAvailableFromMessage = (date, translate) =>
-  date ? `${translate('holding.useServiceFrom')} ${date}` : translate('holding.tryAgainLater')
+  date ? `${translate('holding.useServiceFrom')} ${date}.` : translate('holding.tryAgainLater')
 
 const pageContent = ({ translate }, date) => ({
   title: translate('holding.title'),

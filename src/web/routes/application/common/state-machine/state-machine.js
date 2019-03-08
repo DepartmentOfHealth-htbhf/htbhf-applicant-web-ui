@@ -29,28 +29,25 @@ const getNextPath = (steps, path) => {
 const isPathAllowed = (sequence, allowed, path) =>
   sequence.findIndex(equals(path)) <= sequence.findIndex(equals(allowed))
 
-const getNextAllowedPath = (path) => path
-
 const stateMachine = {
   [states.IN_PROGRESS]: {
-    getNextPath,
-    isPathAllowed,
-    getNextAllowedPath
+    getNextPath: (req, steps) => getNextPath(steps, req.path),
+    isPathAllowed: (req, sequence) => isPathAllowed(sequence, req.session.nextAllowedStep, req.path),
+    getNextAllowedPath: (req) => req.session.nextAllowedStep
   },
   [states.IN_REVIEW]: {
     getNextPath: () => CHECK_URL,
-    isPathAllowed,
-    getNextAllowedPath
+    isPathAllowed: (req, sequence) => isPathAllowed(sequence, req.session.nextAllowedStep, req.path),
+    getNextAllowedPath: (req) => req.session.nextAllowedStep
   },
   [states.COMPLETED]: {
     getNextPath: () => CONFIRM_URL,
-    isPathAllowed: (sequence, allowed, path) => path === CONFIRM_URL,
+    isPathAllowed: (req) => req.path === CONFIRM_URL,
     getNextAllowedPath: () => CONFIRM_URL
   },
 
   getState: (req) => {
-    const state = states.hasOwnProperty(req.session.state) ? states[req.session.state] : states.IN_PROGRESS
-    return stateMachine[state]
+    return states.hasOwnProperty(req.session.state) ? states[req.session.state] : states.IN_PROGRESS
   },
 
   setState: (state, req) => {
@@ -58,10 +55,15 @@ const stateMachine = {
     req.session.state = state
   },
 
-  dispatch: (action, req, ...args) => {
+  dispatch: (actionType, req, ...args) => {
     const state = stateMachine.getState(req)
+    const action = stateMachine[state][actionType]
 
-    return state[action](...args)
+    if (typeof action !== 'undefined') {
+      return action(req, ...args)
+    }
+
+    return null
   }
 }
 
