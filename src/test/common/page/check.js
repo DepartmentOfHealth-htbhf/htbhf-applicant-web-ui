@@ -27,12 +27,6 @@ class Check extends SubmittablePage {
 
   async getCheckDetailsTableContents () {
     const tableRows = await this.findAllByClassName(GOV_LIST_ROW_CLASSNAME)
-
-    const values = await Promise.all(tableRows)
-    return this.getCheckTableContents(values)
-  }
-
-  async getCheckTableContents (tableRows) {
     const getDataForRows = tableRows.map(async (tableRow) => this.getDataForRow(tableRow))
     return Promise.all(getDataForRows)
   }
