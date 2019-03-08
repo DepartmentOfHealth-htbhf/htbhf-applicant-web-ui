@@ -26,20 +26,31 @@ class Page {
   }
 
   async open (baseURL, lang = 'en') {
-    await this.openDirect(baseURL, lang)
-    return this.waitForPageLoad(lang)
+    try {
+      await this.openDirect(baseURL, lang)
+      return this.waitForPageLoad(lang)
+    } catch (error) {
+      console.error(`Error caught trying to open page at: ${baseURL}`, error)
+      throw new Error(error)
+    }
   }
 
   async openDirect (baseURL, lang = 'en') {
-    await this.openPage(`${baseURL}${this.getPath()}`, lang)
+    try {
+      return this.openPage(`${baseURL}${this.getPath()}`, lang)
+    } catch (error) {
+      console.error(`Unable to open URL direct: ${baseURL}`, error)
+      throw new Error(error)
+    }
   }
 
   async openPage (url, lang) {
-    const queryParam = lang ? `?lang=${lang}` : ''
     try {
+      const queryParam = lang ? `?lang=${lang}` : ''
       return this.driver.get(`${url}${queryParam}`)
     } catch (error) {
-      console.error('Unable to open page at', url, error)
+      console.error('Unable to open page at: ', url, error)
+      throw new Error(error)
     }
   }
 
