@@ -15,7 +15,9 @@ const logger = createLogger({
     formatLog
   ),
   transports: [
-    new transports.Console()
+    new transports.Console({
+      silent: config.environment.LOG_LEVEL === 'silent'
+    })
   ]
 })
 
