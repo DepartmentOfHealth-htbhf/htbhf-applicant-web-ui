@@ -1,3 +1,5 @@
+{% from "table/macro.njk" import govukTable %}
+
 <h1 class="govuk-heading-xl">Cwci</h1>
 
 <p class="govuk-body">In hac habitasse platea dictumst donec in purus et enim sodales pharetra 'cwcis'
@@ -22,32 +24,54 @@
     <li>Quisque vel ex porttitor accumsan massa egestas</li>
 </ul>
 
-<table class="govuk-table">
-    <thead class="govuk-table__head">
-        <tr class="govuk-table__row">
-            <th class="govuk-table__header" scope="col">Nominus</th>
-            <th class="govuk-table__header" scope="col">Bibendum</th>
-            <th class="govuk-table__header" scope="col">Porttitor</th>
-        </tr>
-    </thead>
-    <tbody class="govuk-table__body">
-        <tr class="govuk-table__row">
-            <td class="govuk-table__cell">_ga</td>
-            <td class="govuk-table__cell">Maecenas id molestie orci nec suscipit neque vivamus.</td>
-            <td class="govuk-table__cell">2 annus</td>
-        </tr>
-        <tr class="govuk-table__row">
-            <td class="govuk-table__cell">_gid</td>
-            <td class="govuk-table__cell">Maecenas id molestie orci nec suscipit neque vivamus</td>
-            <td class="govuk-table__cell">24 horrors</td>
-        </tr>
-        <tr class="govuk-table__row">
-            <td class="govuk-table__cell">_gat_UA-133839203_4</td>
-            <td class="govuk-table__cell">Dui elementum fermentum nisi vitae faucibus at duis tristique</td>
-            <td class="govuk-table__cell">1 momento</td>
-    </tr>
-    </tbody>
-</table>
+{{ govukTable({
+  head: [
+    {
+      text: "Nominus"
+    },
+    {
+      text: "Bibendum"
+    },
+    {
+      text: "Porttitor"
+    }
+  ],
+  rows: [
+    [
+      {
+        text: "_ga"
+      },
+      {
+        text: "Maecenas id molestie orci nec suscipit neque vivamus."
+      },
+      {
+          text: "2 annus"
+      }
+    ],
+    [
+      {
+        text: "_gid"
+      },
+      {
+        text: "Maecenas id molestie orci nec suscipit neque vivamus."
+      },
+      {
+        text: "24 horrors"
+      }
+    ],
+    [
+      {
+        text: "_gat_UA-133839203_4"
+      },
+      {
+        text: "Maecenas id molestie orci nec suscipit neque vivamus."
+      },
+      {
+        text: "1 momento"
+      }
+    ]
+  ]
+}) }}
 
 <p class="govuk-body">Tempus egestas sed sed risus pretium quam vulputate dignissim suspendisse.</p>
 
@@ -55,24 +79,40 @@
 
 <p class="govuk-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 
-<table class="govuk-table">
-    <thead class="govuk-table__head">
-        <tr class="govuk-table__row">
-            <th class="govuk-table__header" scope="col">Nominus</th>
-            <th class="govuk-table__header" scope="col">Bibendum</th>
-            <th class="govuk-table__header" scope="col">Porttitor</th>
-        </tr>
-    </thead>
-    <tbody class="govuk-table__body">
-        <tr class="govuk-table__row">
-            <td class="govuk-table__cell">htbhf.sid</td>
-            <td class="govuk-table__cell">Duis ac dui elementum fermentum.</td>
-            <td class="govuk-table__cell">Quisque vel ex 30 porttitor.</td>
-        </tr>
-        <tr class="govuk-table__row">
-            <td class="govuk-table__cell">lang</td>
-            <td class="govuk-table__cell">Morbi porta tellus diam.</td>
-            <td class="govuk-table__cell">Quisque vel ex 30 porttitor.</td>
-        </tr>
-    </tbody>
-</table>
+{{ govukTable({
+  head: [
+    {
+      text: "Nominus"
+    },
+    {
+      text: "Bibendum"
+    },
+    {
+      text: "Porttitor"
+    }
+  ],
+  rows: [
+    [
+      {
+        text: "htbhf.sid"
+      },
+      {
+        text: "Duis ac dui elementum fermentum."
+      },
+      {
+          text: "Quisque vel ex 30 porttitor."
+      }
+    ],
+    [
+      {
+        text: "lang"
+      },
+      {
+        text: "Morbi porta tellus diam."
+      },
+      {
+        text: "Quisque vel ex 30 porttitor."
+      }
+    ]
+  ]
+}) }}

@@ -1,3 +1,5 @@
+{% from "table/macro.njk" import govukTable %}
+
 <h1 class="govuk-heading-xl">Cookies</h1>
 
 <p class="govuk-body">The service currently known as help to buy healthy food will put small files known as 'cookies'
@@ -24,38 +26,54 @@
     <li>what you click on while you are using the service</li>
 </ul>
 
-<table class="govuk-table">
-    <thead class="govuk-table__head">
-        <tr class="govuk-table__row">
-            <th class="govuk-table__header" scope="col">Name</th>
-            <th class="govuk-table__header" scope="col">Purpose</th>
-            <th class="govuk-table__header" scope="col">Expires</th>
-        </tr>
-    </thead>
-    <tbody class="govuk-table__body">
-        <tr class="govuk-table__row">
-            <td class="govuk-table__cell">_ga</td>
-            <td class="govuk-table__cell">Used to identify unique users and inform referring sites, visitor and session
-                counts.
-            </td>
-            <td class="govuk-table__cell">2 years</td>
-        </tr>
-        <tr class="govuk-table__row">
-            <td class="govuk-table__cell">_gid</td>
-            <td class="govuk-table__cell">Used to identify unique users and inform referring sites, visitor and session
-                counts.
-            </td>
-            <td class="govuk-table__cell">24 hours</td>
-        </tr>
-        <tr class="govuk-table__row">
-            <td class="govuk-table__cell">_gat_UA-133839203_4</td>
-            <td class="govuk-table__cell">Used to protect the Google Analytics server by limiting the number of requests
-                being made.
-            </td>
-            <td class="govuk-table__cell">1 minute</td>
-    </tr>
-    </tbody>
-</table>
+{{ govukTable({
+  head: [
+    {
+      text: "Name"
+    },
+    {
+      text: "Purpose"
+    },
+    {
+      text: "Expires"
+    }
+  ],
+  rows: [
+    [
+      {
+        text: "_ga"
+      },
+      {
+        text: "Used to identify unique users and inform referring sites, visitor and session counts."
+      },
+      {
+          text: "2 years"
+      }
+    ],
+    [
+      {
+        text: "_gid"
+      },
+      {
+        text: "Used to identify unique users and inform referring sites, visitor and session counts."
+      },
+      {
+        text: "24 hours"
+      }
+    ],
+    [
+      {
+        text: "_gat_UA-133839203_4"
+      },
+      {
+        text: "Used to protect the Google Analytics server by limiting the number of requests being made."
+      },
+      {
+        text: "1 minute"
+      }
+    ]
+  ]
+}) }}
 
 <p class="govuk-body">Google is not allowed to use or share our analytics data with anyone.</p>
 
@@ -64,24 +82,40 @@
 <p class="govuk-body">We store session cookies on your computer to remember your information and keep it secure while
     you use the service.</p>
 
-<table class="govuk-table">
-    <thead class="govuk-table__head">
-        <tr class="govuk-table__row">
-            <th class="govuk-table__header" scope="col">Name</th>
-            <th class="govuk-table__header" scope="col">Purpose</th>
-            <th class="govuk-table__header" scope="col">Expires</th>
-        </tr>
-    </thead>
-    <tbody class="govuk-table__body">
-        <tr class="govuk-table__row">
-            <td class="govuk-table__cell">htbhf.sid</td>
-            <td class="govuk-table__cell">Used for session management.</td>
-            <td class="govuk-table__cell">30 minutes after you open each service webpage.</td>
-        </tr>
-        <tr class="govuk-table__row">
-            <td class="govuk-table__cell">lang</td>
-            <td class="govuk-table__cell">Remember your choice of language.</td>
-            <td class="govuk-table__cell">30 minutes after you open each service webpage.</td>
-        </tr>
-    </tbody>
-</table>
+{{ govukTable({
+  head: [
+    {
+      text: "Name"
+    },
+    {
+      text: "Purpose"
+    },
+    {
+      text: "Expires"
+    }
+  ],
+  rows: [
+    [
+      {
+        text: "htbhf.sid"
+      },
+      {
+        text: "Used for session management."
+      },
+      {
+          text: "30 minutes after you open each service webpage."
+      }
+    ],
+    [
+      {
+        text: "lang"
+      },
+      {
+        text: "Remember your choice of language."
+      },
+      {
+        text: "30 minutes after you open each service webpage."
+      }
+    ]
+  ]
+}) }}
