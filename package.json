@@ -10,7 +10,7 @@
   "scripts": {
     "start": "node src/web",
     "start:dev": "npm run build && nodemon $NODE_DEBUG_OPTION src/web -e js,json,html,njk",
-    "test": "cross-env LOG_LEVEL=warn CLAIMANT_SERVICE_URL=http://localhost:8090 npm-run-all build test:lint test:unit:coverage test:fail_if_test_only_found -p -r start test:browser",
+    "test": "cross-env LOG_LEVEL=silent CLAIMANT_SERVICE_URL=http://localhost:8090 npm-run-all build test:lint test:unit:coverage test:fail_if_test_only_found -p -r start test:browser",
     "test:lint": "standard",
     "test:unit": "tape -r './src/test/unit/setup' 'src/@(web|config)/**/*.test.js'",
     "test:unit:coverage": "nyc npm run test:unit",
