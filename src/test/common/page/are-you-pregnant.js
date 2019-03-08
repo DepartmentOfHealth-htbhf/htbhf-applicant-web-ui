@@ -115,13 +115,13 @@ class AreYouPregnant extends SubmittablePage {
     return errorLink.getText()
   }
 
-  async getRadioLabelWithText (option) {
-    const radioButtonLabels = await this.driver.findElements(webdriver.By.className('govuk-label govuk-radios__label'))
-    radioButtonLabels.forEach(function (label) {
-      if (label.getText() === option) {
-        return label
-      }
-    })
+  async getAllRadioLabels (option) {
+    try {
+      return this.driver.findElements(webdriver.By.className('govuk-label govuk-radios__label'))
+    } catch (error) {
+      console.log(`Error getting radio button with option ${option}`)
+      throw new Error(error)
+    }
   }
 
   async getExpectedDeliveryDateInstructionalText () {

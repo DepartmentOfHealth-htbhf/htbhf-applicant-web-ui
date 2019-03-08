@@ -1,4 +1,5 @@
 const { Given, When } = require('cucumber')
+const { assert } = require('chai')
 
 const pages = require('./pages')
 const { enterNameAndSubmit, enterNinoAndSubmit, enterDateOfBirthAndSubmit, selectNoOnPregnancyPage, enterCardAddressAndSubmit } = require('./common-steps')
@@ -71,21 +72,31 @@ const runPageActions = async (actions) => {
 }
 
 const enterDetailsUpToPage = async (page, actions) => {
-  await pages.overview.open(pages.url)
-  await pages.overview.clickStartButton()
-  await pages.enterName.waitForPageLoad()
+  try {
+    await pages.overview.open(pages.url)
+    await pages.overview.clickStartButton()
+    await pages.enterName.waitForPageLoad()
 
-  const pageIndex = getPageIndex(page)
-  if (pageIndex === -1) {
-    throw new Error(`Unable to find page ${page}`)
+    const pageIndex = getPageIndex(page)
+    if (pageIndex === -1) {
+      throw new Error(`Unable to find page ${page}`)
+    }
+
+    const actionsForPage = getActionsForPage(pageIndex, actions)
+    await runPageActions(actionsForPage)
+  } catch (error) {
+    assert.fail(`Unexpected error caught trying to enterDetailsUpToPage ${page} - ${error}`)
+    throw new Error(error)
   }
-
-  const actionsForPage = getActionsForPage(pageIndex, actions)
-  await runPageActions(actionsForPage)
 }
 
 Given(/^I have entered my details up to the (.*) page$/, async function (page) {
-  await enterDetailsUpToPage(page, pageActions)
+  try {
+    await enterDetailsUpToPage(page, pageActions)
+  } catch (error) {
+    assert.fail(`Unexpected error caught trying to enter details up to page ${page} - ${error}`)
+    throw new Error(error)
+  }
 })
 
 When(/^I click the Cookies link$/, async function () {
