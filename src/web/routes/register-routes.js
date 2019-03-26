@@ -3,6 +3,7 @@ const { registerStartRoute } = require('./start')
 const { registerConfirmRoute } = require('./application/confirm')
 const { registerCheckRoutes } = require('./application/check')
 const { registerCookiesRoute } = require('./cookies')
+const { registerPrivacyNoticeRoute } = require('./privacy-notice')
 const { getLanguageBase } = require('./language')
 const { registerHoldingRoute } = require('./application/holding')
 const { registerPageNotFoundRoute } = require('./application/page-not-found')
@@ -14,6 +15,7 @@ const setCommonTemplateValues = (req, res, next) => {
   res.locals.htmlLang = req.language
   res.locals.language = getLanguageBase(req.language)
   res.locals.cookieLinkName = req.t('cookies.linkName')
+  res.locals.privacyNoticeLinkName = req.t('privacyNotice.linkName')
   res.locals.back = req.t('back')
   next()
 }
@@ -30,6 +32,7 @@ const registerRoutes = (config, app) => {
     registerCheckRoutes(csrfProtection, steps, config, app)
     registerConfirmRoute(config, steps, app)
     registerCookiesRoute(app)
+    registerPrivacyNoticeRoute(app)
     registerPageNotFoundRoute(app)
   }
 }
