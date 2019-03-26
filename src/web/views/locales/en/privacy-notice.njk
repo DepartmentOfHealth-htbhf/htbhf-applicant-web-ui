@@ -1,0 +1,115 @@
+{% from "table/macro.njk" import govukTable %}
+
+<h1 class="govuk-heading-xl">
+  Privacy notice
+</h1>
+
+
+<p class="govuk-body">The service currently known as help to buy healthy food is run by the Department of Health and Social Care
+  (DHSC).</p>
+<p class="govuk-body">The DHSC is the data controller of your personal information. We need to process your data to run the help to buy
+  healthy food scheme. You can
+  <a href="https://www.gov.uk/government/organisations/department-of-health-and-social-care/about/personal-information-charter" target="_blank">read the DHSC personal information charter (link opens in a new tab)</a>
+  for more information about this.</p>
+<p class="govuk-body">You can <a href="/cookies">read our cookie notice</a> to find out how
+  our service will interact with your device.</p>
+
+
+<h2 class="govuk-heading-m">
+  What personal information do we ask for?
+</h2>
+
+{{ govukTable({
+  head: [
+    {
+      text: "Your information"
+    },
+    {
+      text: "Why do we need it?"
+    }
+  ],
+  rows: [
+    [
+      {
+        text: "Name"
+      },
+      {
+        text: "To check your eligibility and create your prepaid card account"
+      }
+    ],
+    [
+      {
+        text: "National Insurance Number"
+      },
+      {
+        text: "To check your eligibility"
+      }
+    ],
+    [
+      {
+        text: "Date of birth"
+      },
+      {
+        text: "To check your eligibility and to create your prepaid card account"
+      }
+    ],
+    [
+      {
+        text: "Address"
+      },
+      {
+        text: "To check your eligibility and to send you your prepaid card"
+      }
+    ],
+    [
+      {
+        text: "Contact details"
+      },
+      {
+        text: "To create and activate your prepaid card account and send you updates about the service"
+      }
+    ]
+  ]
+}) }}
+
+<h2 class="govuk-heading-m">Where we will store your information</h2>
+<p class="govuk-body">We will store your information on secure servers in the UK and the <a href="https://www.gov.uk/eu-eea" target="_blank">European Economic Area (link opens in a new tab)</a>.</p>
+
+<h2 class="govuk-heading-m">How long we will store your information for</h2>
+<p class="govuk-body">We will keep your information for as long as we need it to deliver your benefit payment, run the service, and meet our legal requirements. We will delete it after this.</p>
+
+<h2 class="govuk-heading-m">Who we will share your personal information with</h2>
+<p class="govuk-body">Your prepaid card will be provided by XXX. We must give them some information about you (everything except your National Insurance Number) so they can send you your card.</p>
+
+<p class="govuk-body">You can read XXX's privacy statement to find out how they will store, process and share your information.</p>
+
+<h2 class="govuk-heading-m">Who will contact you</h2>
+<p class="govuk-body">You will not get any marketing communication from our service or XXX.</p>
+
+<p class="govuk-body">Our service and XXX will contact you by email or text message to notify you about changes to your card.</p>
+
+
+<h2 class="govuk-heading-m">Your rights</h2>
+<p class="govuk-body">The law gives you rights about your personal information. You can email us at XXXXX@XXX to:</p>
+<ul class="govuk-list govuk-list--bullet">
+  <li>request a copy of any personal information that our service holds on you</li>
+  <li>question any information we have about you that you think is wrong or incomplete</li>
+  <li>contact us and ask for your personal information to be corrected</li>
+  <li>ask for our service to delete your information</li>
+</ul>
+
+<p class="govuk-body">If you ask us to delete your information we will no longer be able to keep you in the help to buy healthy food scheme. This means you will stop getting your benefit from us. You can <a href="https://www.healthystart.nhs.uk/healthy-start-vouchers/how-to-apply/" target="_blank">apply for the Healthy Start scheme (link opens in a new tab)</a> instead if you choose.</p>
+
+<h2 class="govuk-heading-m">How to complain</h2>
+<p class="govuk-body">If you are unhappy with how we have used your personal information you can write to:</p>
+<ul class="govuk-list">
+  <li>Data Protection Officer</li>
+  <li>Department of Health and Social Care</li>
+  <li>1st Floor North</li>
+  <li>39 Victoria Street</li>
+  <li>London</li>
+  <li>SW1H 0EU</li>
+</ul>
+
+<p class="govuk-body">You also have the right to <a href="https://ico.org.uk/make-a-complaint/" target="_blank">complain to the Information Commissioner’s Office (link opens in a new tab)</a>.</p>
+
