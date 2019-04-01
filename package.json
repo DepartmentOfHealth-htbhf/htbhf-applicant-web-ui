@@ -82,7 +82,7 @@
   "dependencies-comment": "chownr 1.1.1 is imported to fix https://app.snyk.io/vuln/npm:chownr:20180731",
   "dependencies": {
     "body-parser": "^1.18.3",
-    "cfenv": "^1.1.0",
+    "cfenv": "^1.2.2",
     "chownr": "^1.1.1",
     "compression": "^1.7.3",
     "connect-redis": "^3.4.0",
@@ -97,7 +97,7 @@
     "http-status-codes": "^1.3.0",
     "i18next": "^13.1.4",
     "i18next-express-middleware": "^1.7.1",
-    "i18next-node-fs-backend": "^2.1.1",
+    "i18next-node-fs-backend": "^2.1.2",
     "moment": "^2.24.0",
     "node-sass": "^4.11.0",
     "nunjucks": "^3.1.6",
