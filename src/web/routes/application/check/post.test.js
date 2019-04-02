@@ -20,14 +20,19 @@ const config = {
 }
 
 test('unsuccessful post calls next with error', async (t) => {
-  const req = {}
+  const req = {
+    headers: {},
+    session: {}
+  }
   const res = {}
   const next = sinon.spy()
 
-  post.returns(new Error('error'))
+  const error = new Error('error')
+  error.statusCode = 500
+  post.throws(error)
 
   try {
-    await postCheck(config)(req, res, next)
+    await postCheck({}, config)(req, res, next)
     t.equal(next.calledWith(sinon.match.instanceOf(Error)), true)
     t.end()
   } catch (error) {
