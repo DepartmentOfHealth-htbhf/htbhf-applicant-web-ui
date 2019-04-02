@@ -1,5 +1,6 @@
 const httpStatus = require('http-status-codes')
 const request = require('request-promise')
+const { path } = require('ramda')
 
 const { wrapError } = require('../common/formatters')
 const { logger } = require('../../../logger')
@@ -9,36 +10,52 @@ const { createRequestBody } = require('./create-request-body')
 
 const CLAIMS_ENDPOINT = `/v1/claims`
 
-const postCheck = (steps, config) => async (req, res, next) => {
-  try {
-    await request.post({
-      uri: `${config.environment.CLAIMANT_SERVICE_URL}${CLAIMS_ENDPOINT}`,
-      json: true,
-      headers: {
-        'X-Request-ID': req.headers[REQUEST_ID_HEADER],
-        'X-Session-ID': req.sessionID
-      },
-      body: {
-        claimant: createRequestBody(req.session.claim)
-      }
-    })
-  } catch (error) {
-    if (error.statusCode !== 404) {
-      return next(wrapError({
-        cause: error,
-        message: 'Error posting to claimant service',
-        statusCode: httpStatus.INTERNAL_SERVER_ERROR
-      }))
-    }
+const isStatusCodeInSuccessRange = statusCode => statusCode >= 200 && statusCode <= 299
+
+const isSuccessStatusCode = statusCode => isStatusCodeInSuccessRange(statusCode) || statusCode === 404
+
+const isErrorStatusCode = statusCode => !isSuccessStatusCode(statusCode)
+
+const transformResponse = (body, response) => {
+  if (isErrorStatusCode(response.statusCode)) {
+    throw new Error('Error posting to claimant service')
   }
 
-  logger.info('Sent claim', { req })
-
-  stateMachine.setState(states.COMPLETED, req)
-  req.session.nextAllowedStep = stateMachine.dispatch(actions.GET_NEXT_PATH, req, steps, req.path)
-  return res.redirect('confirm')
+  return response
 }
 
+const postCheck = (steps, config) => (req, res, next) =>
+  request.post({
+    uri: `${config.environment.CLAIMANT_SERVICE_URL}${CLAIMS_ENDPOINT}`,
+    json: true,
+    headers: {
+      'X-Request-ID': req.headers[REQUEST_ID_HEADER],
+      'X-Session-ID': req.sessionID
+    },
+    body: {
+      claimant: createRequestBody(req.session.claim)
+    },
+    simple: false,
+    transform: transformResponse
+  })
+    .then(
+      () => {
+        logger.info('Sent claim', { req })
+
+        stateMachine.setState(states.COMPLETED, req)
+        req.session.nextAllowedStep = stateMachine.dispatch(actions.GET_NEXT_PATH, req, steps, req.path)
+        return res.redirect('confirm')
+      },
+      (error) => {
+        next(wrapError({
+          cause: error,
+          message: 'Error posting to claimant service',
+          statusCode: path(['response', 'statusCode'], error) || httpStatus.INTERNAL_SERVER_ERROR
+        }))
+      }
+    )
+
 module.exports = {
+  transformResponse,
   postCheck
 }
