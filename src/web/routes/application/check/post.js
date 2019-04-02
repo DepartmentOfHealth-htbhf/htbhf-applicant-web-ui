@@ -22,19 +22,21 @@ const postCheck = (steps, config) => async (req, res, next) => {
         claimant: createRequestBody(req.session.claim)
       }
     })
-
-    logger.info('Sent claim', { req })
-
-    stateMachine.setState(states.COMPLETED, req)
-    req.session.nextAllowedStep = stateMachine.dispatch(actions.GET_NEXT_PATH, req, steps, req.path)
-    return res.redirect('confirm')
   } catch (error) {
-    next(wrapError({
-      cause: error,
-      message: 'Error posting to claimant service',
-      statusCode: httpStatus.INTERNAL_SERVER_ERROR
-    }))
+    if (error.statusCode !== 404) {
+      return next(wrapError({
+        cause: error,
+        message: 'Error posting to claimant service',
+        statusCode: httpStatus.INTERNAL_SERVER_ERROR
+      }))
+    }
   }
+
+  logger.info('Sent claim', { req })
+
+  stateMachine.setState(states.COMPLETED, req)
+  req.session.nextAllowedStep = stateMachine.dispatch(actions.GET_NEXT_PATH, req, steps, req.path)
+  return res.redirect('confirm')
 }
 
 module.exports = {
