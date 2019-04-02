@@ -6,23 +6,38 @@ const WIREMOCK_MAPPING_URL = process.env.WIREMOCK_URL
 
 const ID_HEADERS_MATCH = '([A-Za-z0-9_-])+'
 
-const SUCCESSFUL_CLAIMS_MAPPING = JSON.stringify({
-  'request': {
-    'method': 'POST',
-    'url': '/v1/claims',
-    'headers': {
-      'X-Request-ID': {
-        'matches': ID_HEADERS_MATCH
-      },
-      'X-Session-ID': {
-        'matches': ID_HEADERS_MATCH
+const eligibilityStatusToStatusCodeMap = {
+  'ELIGIBLE': 201,
+  'INELIGIBLE': 200,
+  'PENDING': 200,
+  'NOMATCH': 404,
+  'ERROR': 200
+}
+
+const createSuccessfulClaimsMapping = (eligibilityStatus) => {
+  return JSON.stringify({
+    'request': {
+      'method': 'POST',
+      'url': '/v1/claims',
+      'headers': {
+        'X-Request-ID': {
+          'matches': ID_HEADERS_MATCH
+        },
+        'X-Session-ID': {
+          'matches': ID_HEADERS_MATCH
+        }
+      }
+    },
+    'response': {
+      'status': eligibilityStatusToStatusCodeMap[eligibilityStatus],
+      // wiremock requires the body to be a json object wrapped in a string
+      'jsonBody': { eligibilityStatus },
+      'headers': {
+        'Content-Type': 'application/json'
       }
     }
-  },
-  'response': {
-    'status': 201
-  }
-})
+  })
+}
 
 const ERROR_CLAIMS_MAPPING = JSON.stringify({
   'request': {
@@ -43,7 +58,11 @@ const ERROR_CLAIMS_MAPPING = JSON.stringify({
 })
 
 async function setupSuccessfulWiremockClaimMapping () {
-  await postJsonData(WIREMOCK_MAPPING_URL, SUCCESSFUL_CLAIMS_MAPPING)
+  await postJsonData(WIREMOCK_MAPPING_URL, createSuccessfulClaimsMapping('ELIGIBLE'))
+}
+
+async function setupSuccessfulWiremockClaimMappingWithStatus (status) {
+  await postJsonData(WIREMOCK_MAPPING_URL, createSuccessfulClaimsMapping(status))
 }
 
 async function setupErrorWiremockClaimMapping () {
@@ -55,7 +74,8 @@ async function deleteAllWiremockMappings () {
 }
 
 module.exports = {
-  setupSuccessfulWiremockClaimMapping,
+  setupSuccessfulWiremockClaimMappingWithStatus,
   deleteAllWiremockMappings,
-  setupErrorWiremockClaimMapping
+  setupErrorWiremockClaimMapping,
+  setupSuccessfulWiremockClaimMapping
 }

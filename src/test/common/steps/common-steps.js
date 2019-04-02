@@ -2,7 +2,7 @@ const { expect, assert } = require('chai')
 const { When } = require('cucumber')
 
 const pages = require('./pages')
-const { setupSuccessfulWiremockClaimMapping, deleteAllWiremockMappings } = require('../wiremock')
+const { setupSuccessfulWiremockClaimMappingWithStatus, deleteAllWiremockMappings } = require('../wiremock')
 const TESTS = process.env.TESTS
 const COMPATIBILITY_TESTS = 'compatibility'
 
@@ -95,9 +95,9 @@ async function completeTheApplicationAsAWomanWhoIsNotPregnant () {
   await enterCardAddressAndSubmit()
 }
 
-async function setupWiremockMappings () {
+async function setupWiremockMappingsWithStatus (status) {
   if (TESTS !== COMPATIBILITY_TESTS) {
-    await setupSuccessfulWiremockClaimMapping()
+    await setupSuccessfulWiremockClaimMappingWithStatus(status)
   }
 }
 
@@ -112,7 +112,7 @@ When(/^I click continue$/, async function () {
 })
 
 When(/^I submit my application$/, async function () {
-  await setupWiremockMappings()
+  await setupWiremockMappingsWithStatus('ELIGIBLE')
   await pages.genericPage.submitForm()
 })
 
@@ -129,6 +129,6 @@ module.exports = {
   assertErrorHeaderTextPresent,
   completeTheApplicationAsAPregnantWoman,
   completeTheApplicationAsAWomanWhoIsNotPregnant,
-  setupWiremockMappings,
+  setupWiremockMappingsWithStatus,
   deleteWiremockMappings
 }
