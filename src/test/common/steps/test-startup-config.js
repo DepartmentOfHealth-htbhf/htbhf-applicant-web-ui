@@ -10,6 +10,7 @@ const TEST_CONFIG = {
   smoke: { 'url': SMOKE_BASE_URL, 'driver': new DriverManager() },
   acceptance: { 'url': LOCAL_BASE_URL, 'driver': new DriverManager() },
   localCompatibility: { 'url': LOCAL_BASE_URL, 'driver': new DriverManager() },
+  integration: { 'url': LOCAL_BASE_URL, 'driver': new DriverManager() },
   compatibility: { 'url': COMPATIBILITY_BASE_URL, 'driver': new BrowserStackDriverManager() }
 }
 
