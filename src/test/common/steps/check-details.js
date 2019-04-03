@@ -3,7 +3,7 @@ const { When, Then } = require('cucumber')
 const {
   LAST_NAME,
   FULL_NAME,
-  VALID_NINO,
+  VALID_ELIGIBLE_NINO,
   DATE_OF_BIRTH,
   ADDRESS_LINE_1,
   TOWN,
@@ -125,7 +125,7 @@ function assertNameShown (tableContents) {
 
 function assertNinoShown (tableContents) {
   const ninoValue = getValueForField(tableContents, 'National Insurance number')
-  expect(ninoValue).to.be.equal(VALID_NINO)
+  expect(ninoValue).to.be.equal(VALID_ELIGIBLE_NINO)
 }
 
 function assertDobShown (tableContents) {

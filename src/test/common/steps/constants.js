@@ -4,7 +4,13 @@ const BLANK_STRING = ''
 const YES = 'Yes'
 const NO = 'No'
 
-const VALID_NINO = 'QQ123456C'
+function createRandomNumber () {
+  const number = Math.floor((Math.random() * (999999)) + 1)
+  return number.toString().padStart(6, '0')
+}
+
+// use a random nino for each test run to prevent duplication errors during compatibility and accessibility tests.
+const VALID_ELIGIBLE_NINO = 'EE' + createRandomNumber() + 'C'
 const DAY = '30'
 const MONTH = '12'
 const YEAR = '1980'
@@ -24,7 +30,7 @@ module.exports = {
   BLANK_STRING,
   YES,
   NO,
-  VALID_NINO,
+  VALID_ELIGIBLE_NINO,
   DAY,
   MONTH,
   YEAR,
