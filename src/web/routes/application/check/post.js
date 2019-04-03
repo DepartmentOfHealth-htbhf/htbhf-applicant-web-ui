@@ -24,8 +24,10 @@ const transformResponse = (body, response) => {
   return response
 }
 
-const postCheck = (steps, config) => (req, res, next) =>
-  request.post({
+const postCheck = (steps, config) => (req, res, next) => {
+  logger.info('Sending claim', { req })
+
+  return request.post({
     uri: `${config.environment.CLAIMANT_SERVICE_URL}${CLAIMS_ENDPOINT}`,
     json: true,
     headers: {
@@ -40,8 +42,6 @@ const postCheck = (steps, config) => (req, res, next) =>
   })
     .then(
       () => {
-        logger.info('Sent claim', { req })
-
         stateMachine.setState(states.COMPLETED, req)
         req.session.nextAllowedStep = stateMachine.dispatch(actions.GET_NEXT_PATH, req, steps, req.path)
         return res.redirect('confirm')
@@ -54,6 +54,7 @@ const postCheck = (steps, config) => (req, res, next) =>
         }))
       }
     )
+}
 
 module.exports = {
   transformResponse,
