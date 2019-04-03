@@ -1,14 +1,6 @@
 {% extends "templates/page.njk" %}
-{% from "input/macro.njk" import govukInput %}
-{% from "button/macro.njk" import govukButton %}
-{% from "panel/macro.njk" import govukPanel %}
 
 {% block pageContent %}
-
-  {{ govukPanel({
-    titleText: title,
-    html: subTitle | nl2br | safe,
-    classes: "govuk-!-margin-bottom-5"
-  }) }}
-
+  <h1 class="govuk-heading-xl">{{ title }}</h1>
+  <p class="govuk-body">{{ content }}</p>
 {% endblock %}

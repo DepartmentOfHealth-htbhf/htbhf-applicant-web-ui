@@ -1,14 +1,21 @@
 const { handleRequestForPath } = require('./middleware')
 const { CONFIRM_URL } = require('./common/constants')
 
-const pageContent = ({ translate }) => ({
-  title: translate('confirm.title'),
-  subTitle: translate('confirm.subTitle')
-})
-
 const getConfirmPage = (req, res) => {
-  res.render('confirm', {
-    ...pageContent({ translate: req.t })
+  if (req.session.eligibilityStatus === 'ELIGIBLE') {
+    return res.render('confirm', {
+      title: req.t('confirm.title'),
+      subTitle: req.t('confirm.subTitle')
+    })
+  }
+
+  const eligibilityStatus = req.session.eligibilityStatus.toLowerCase()
+  return res.render('unsuccessful-application', {
+    ...{
+      title: req.t('unsuccessfulApplication.title'),
+      heading: req.t('unsuccessfulApplication.title'),
+      content: req.t(`unsuccessfulApplication.content.${eligibilityStatus}`)
+    }
   })
 }
 

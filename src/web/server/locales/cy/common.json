@@ -58,8 +58,15 @@
     "subTitle": "Dui faucibus in ornare\n£3.10 ut labore"
   },
   "unsuccessfulApplication": {
-    "title": "Lorem ipsum dolor",
-    "subTitle": "Risus sed vulputate odio ut enim blandit volutpat maecenas volutpat."
+    "title": "Lorem ipsum dolor sit amet",
+    "heading": "Lorem ipsum dolor sit amet",
+    "content": {
+      "ineligible": "Risus sed vulputate odio",
+      "pending": "Excepteur sint occaecat cupidatat",
+      "nomatch": "Eget, felis eget nunc lobortis mattis",
+      "error": "Excepteur sint occaecat",
+      "duplicate": "Hysbysiad preifatrwydd"
+    }
   },
   "cookies": {
     "title": "Cwcis",

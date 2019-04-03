@@ -44,9 +44,6 @@ const postCheck = (steps, config) => async (req, res, next) => {
 
   stateMachine.setState(states.COMPLETED, req)
   req.session.nextAllowedStep = stateMachine.dispatch(actions.GET_NEXT_PATH, req, steps, req.path)
-  if (req.session.eligibilityStatus !== 'ELIGIBLE') {
-    return res.redirect('unsuccessful-application')
-  }
 
   return res.redirect('confirm')
 }
