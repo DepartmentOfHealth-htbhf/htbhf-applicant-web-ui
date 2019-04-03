@@ -24,7 +24,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 28000000
+              "duration": 16000000
             }
           },
           {
@@ -33,11 +33,11 @@
             "line": 7,
             "name": "I am on the first page of the application",
             "match": {
-              "location": "src/test/common/steps/complete-flow.js:11"
+              "location": "src/test/common/steps/complete-flow.js:13"
             },
             "result": {
               "status": "passed",
-              "duration": 507000000
+              "duration": 520000000
             }
           },
           {
@@ -46,11 +46,11 @@
             "line": 8,
             "name": "I complete the application with valid details for a pregnant woman",
             "match": {
-              "location": "src/test/common/steps/complete-flow.js:27"
+              "location": "src/test/common/steps/complete-flow.js:29"
             },
             "result": {
               "status": "passed",
-              "duration": 1709000000
+              "duration": 1754000000
             }
           },
           {
@@ -63,7 +63,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1216000000
+              "duration": 1215000000
             }
           },
           {
@@ -76,7 +76,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 162000000
+              "duration": 192000000
             }
           },
           {
@@ -89,7 +89,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 124000000
+              "duration": 132000000
             }
           },
           {
@@ -100,7 +100,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1000000
+              "duration": 6000000
             }
           }
         ]
