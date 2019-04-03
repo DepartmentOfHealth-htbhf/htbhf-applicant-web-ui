@@ -38,7 +38,7 @@ Given(/^I submit an application with valid details$/, async function () {
   await submitApplicationWithStatus(ELIGIBLE)
 })
 
-Given(/^I submit an application which returns a (.*) status$/, async function (status) {
+When(/^I submit an application which returns a (.*) eligibility status$/, async function (status) {
   await submitApplicationWithStatus(status)
 })
 

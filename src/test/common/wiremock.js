@@ -1,4 +1,5 @@
 const { postJsonData, performDelete } = require('./request')
+const { ELIGIBLE } = require('./constants')
 
 const WIREMOCK_MAPPING_URL = process.env.WIREMOCK_URL
   ? `${process.env.WIREMOCK_URL}/__admin/mappings`
@@ -7,7 +8,7 @@ const WIREMOCK_MAPPING_URL = process.env.WIREMOCK_URL
 const ID_HEADERS_MATCH = '([A-Za-z0-9_-])+'
 
 const eligibilityStatusToStatusCodeMap = {
-  'ELIGIBLE': 201,
+  ELIGIBLE: 201,
   'INELIGIBLE': 200,
   'PENDING': 200,
   'NOMATCH': 404,
@@ -58,7 +59,7 @@ const ERROR_CLAIMS_MAPPING = JSON.stringify({
 })
 
 async function setupSuccessfulWiremockClaimMapping () {
-  await postJsonData(WIREMOCK_MAPPING_URL, createSuccessfulClaimsMapping('ELIGIBLE'))
+  await postJsonData(WIREMOCK_MAPPING_URL, createSuccessfulClaimsMapping(ELIGIBLE))
 }
 
 async function setupSuccessfulWiremockClaimMappingWithStatus (status) {

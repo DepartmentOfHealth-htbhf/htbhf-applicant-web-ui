@@ -17,7 +17,7 @@ Then(/^I am shown the application unsuccessful page$/, async function () {
   await deleteWiremockMappings()
 })
 
-Then(/^the page content displays that I am not eligible because my status is (.*)$/, async function (status) {
+Then(/^the page content displays that I am not eligible because my eligibility status is (.*)$/, async function (status) {
   await pages.unsuccessfulApplication.waitForPageLoad()
   const bodyText = await pages.unsuccessfulApplication.getBodyText()
   expect(bodyText.toString().trim()).to.be.equal(statusToBodyTextMap[status])
