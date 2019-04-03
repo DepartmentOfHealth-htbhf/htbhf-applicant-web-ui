@@ -11,7 +11,8 @@ const eligibilityStatusToStatusCodeMap = {
   'INELIGIBLE': 200,
   'PENDING': 200,
   'NOMATCH': 404,
-  'ERROR': 200
+  'ERROR': 200,
+  'DUPLICATE': 200
 }
 
 const createSuccessfulClaimsMapping = (eligibilityStatus) => {
@@ -30,7 +31,6 @@ const createSuccessfulClaimsMapping = (eligibilityStatus) => {
     },
     'response': {
       'status': eligibilityStatusToStatusCodeMap[eligibilityStatus],
-      // wiremock requires the body to be a json object wrapped in a string
       'jsonBody': { eligibilityStatus },
       'headers': {
         'Content-Type': 'application/json'

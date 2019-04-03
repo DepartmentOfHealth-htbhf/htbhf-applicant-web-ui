@@ -1,7 +1,7 @@
 'use strict'
 
 const SubmittablePage = require('./submittable-page')
-const CONFIRM_PAGE_TITLE = 'GOV.UK - Application unsuccessful'
+const UNSUCCESSFUL_APPLICATION_PAGE_TITLE = 'GOV.UK - Application unsuccessful'
 const GOV_UK_BODY = 'govuk-body'
 
 /**
@@ -9,7 +9,8 @@ const GOV_UK_BODY = 'govuk-body'
  */
 class UnsuccessfulApplication extends SubmittablePage {
   getPath () {
-    return '/unsuccessful-application'
+    // uses the same url as confirm but has different page content.
+    return '/confirm'
   }
 
   getPageName () {
@@ -17,7 +18,7 @@ class UnsuccessfulApplication extends SubmittablePage {
   }
 
   async waitForPageLoad () {
-    return super.waitForPageWithTitle(CONFIRM_PAGE_TITLE)
+    return super.waitForPageWithTitle(UNSUCCESSFUL_APPLICATION_PAGE_TITLE)
   }
 
   async getBodyText () {
