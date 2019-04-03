@@ -9,6 +9,7 @@ const { stateMachine, states, actions } = require('../common/state-machine')
 const { createRequestBody } = require('./create-request-body')
 
 const CLAIMS_ENDPOINT = `/v1/claims`
+const NO_ELIGIBILITY_STATUS_MESSAGE = 'The claimant service did not return an eligibility status'
 
 const isStatusCodeInSuccessRange = statusCode => statusCode >= 200 && statusCode <= 299
 
@@ -41,7 +42,17 @@ const postCheck = (steps, config) => (req, res, next) => {
     transform: transformResponse
   })
     .then(
-      () => {
+      (response) => {
+        const eligibilityStatus = path(['body', 'eligibilityStatus'], response)
+        if (!eligibilityStatus) {
+          return next(wrapError({
+            cause: new Error(NO_ELIGIBILITY_STATUS_MESSAGE),
+            message: NO_ELIGIBILITY_STATUS_MESSAGE,
+            statusCode: response.statusCode
+          }))
+        }
+
+        req.session.eligibilityStatus = eligibilityStatus
         stateMachine.setState(states.COMPLETED, req)
         req.session.nextAllowedStep = stateMachine.dispatch(actions.GET_NEXT_PATH, req, steps, req.path)
         return res.redirect('confirm')
