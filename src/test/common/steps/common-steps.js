@@ -6,7 +6,7 @@ const { setupSuccessfulWiremockClaimMappingWithStatus, deleteAllWiremockMappings
 const TESTS = process.env.TESTS
 const COMPATIBILITY_TESTS = 'compatibility'
 
-const { VALID_NINO, FIRST_NAME, LAST_NAME, DAY, MONTH, YEAR, ADDRESS_LINE_1, ADDRESS_LINE_2, TOWN, POSTCODE } = require('./constants')
+const { VALID_ELIGIBLE_NINO, FIRST_NAME, LAST_NAME, DAY, MONTH, YEAR, ADDRESS_LINE_1, ADDRESS_LINE_2, TOWN, POSTCODE } = require('./constants')
 
 async function enterNameAndSubmit (firstName = FIRST_NAME, lastName = LAST_NAME) {
   try {
@@ -18,7 +18,7 @@ async function enterNameAndSubmit (firstName = FIRST_NAME, lastName = LAST_NAME)
   }
 }
 
-async function enterNinoAndSubmit (nino = VALID_NINO) {
+async function enterNinoAndSubmit (nino = VALID_ELIGIBLE_NINO) {
   try {
     await pages.enterNino.enterNino(nino)
     await pages.enterNino.submitForm()
