@@ -4,13 +4,13 @@ const BLANK_STRING = ''
 const YES = 'Yes'
 const NO = 'No'
 
-function createRandomNumber () {
+function randomSixDigitInteger () {
   const number = Math.floor((Math.random() * (999999)) + 1)
   return number.toString().padStart(6, '0')
 }
 
 // use a random nino for each test run to prevent duplication errors during compatibility and accessibility tests.
-const VALID_ELIGIBLE_NINO = 'EE' + createRandomNumber() + 'C'
+const VALID_ELIGIBLE_NINO = 'EE' + randomSixDigitInteger() + 'C'
 const DAY = '30'
 const MONTH = '12'
 const YEAR = '1980'
