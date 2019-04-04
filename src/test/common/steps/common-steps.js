@@ -5,6 +5,9 @@ const pages = require('./pages')
 const { setupSuccessfulWiremockClaimMappingWithStatus, deleteAllWiremockMappings } = require('../wiremock')
 const TESTS = process.env.TESTS
 const COMPATIBILITY_TESTS = 'compatibility'
+const INTEGRATION_TESTS = 'integration'
+
+const testsRequireApiMocks = () => TESTS !== COMPATIBILITY_TESTS && TESTS !== INTEGRATION_TESTS
 
 const { VALID_ELIGIBLE_NINO, FIRST_NAME, LAST_NAME, DAY, MONTH, YEAR, ADDRESS_LINE_1, ADDRESS_LINE_2, TOWN, POSTCODE } = require('./constants')
 
@@ -96,13 +99,13 @@ async function completeTheApplicationAsAWomanWhoIsNotPregnant () {
 }
 
 async function setupWiremockMappingsWithStatus (status) {
-  if (TESTS !== COMPATIBILITY_TESTS) {
+  if (testsRequireApiMocks()) {
     await setupSuccessfulWiremockClaimMappingWithStatus(status)
   }
 }
 
 async function deleteWiremockMappings () {
-  if (TESTS !== COMPATIBILITY_TESTS) {
+  if (testsRequireApiMocks()) {
     await deleteAllWiremockMappings()
   }
 }
