@@ -6,13 +6,13 @@ const { wrapError } = require('./common/formatters')
 
 const toPounds = pence => (parseInt(pence, 10) / 100).toFixed(2)
 
-const isNilOrLessThanZero = value => isNil(value) || value <= 0
+const isNilOrLteZero = value => isNil(value) || value <= 0
 
 const getConfirmPage = (req, res, next) => {
   if (req.session.eligibilityStatus === ELIGIBLE) {
     const totalVoucherValueInPence = path(['session', 'voucherEntitlement', 'totalVoucherValueInPence'], req)
 
-    if (isNilOrLessThanZero(totalVoucherValueInPence)) {
+    if (isNilOrLteZero(totalVoucherValueInPence)) {
       const errorMessage = `Invalid voucher value in pence returned from claimant service for ${ELIGIBLE} status: ${totalVoucherValueInPence}`
       return next(wrapError({
         cause: new Error(errorMessage),
@@ -42,7 +42,7 @@ const registerConfirmRoute = (config, steps, app) => {
 
 module.exports = {
   toPounds,
-  isNilOrLessThanZero,
+  isNilOrLteZero,
   registerConfirmRoute,
   getConfirmPage
 }
