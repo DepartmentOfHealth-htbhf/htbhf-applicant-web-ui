@@ -20,11 +20,14 @@ Then(/^I am shown a successful confirmation page$/, async function () {
   await deleteWiremockMappings()
 })
 
+Then(/^my entitlement is 12.40 per week$/, async function () {
+  const totalVoucherValue = await pages.confirm.getPanelBodyText()
+  expect(totalVoucherValue.toString().trim()).to.be.equal('You are entitled to\n£12.40 per week', 'expected total voucher value to be correct')
+})
+
 async function checkAllPageContentIsPresentAndCorrect () {
   const h2Text = await pages.confirm.getH2Text()
   expect(h2Text.toString().trim()).to.be.equal('What happens next', 'expected confirm page H2 text to be correct')
   const panelTitle = await pages.confirm.getPanelTitleText()
   expect(panelTitle.toString().trim()).to.be.equal('Application complete', 'expected confirmation header to be correct')
-  const panelBody = await pages.confirm.getPanelBodyText()
-  expect(panelBody.toString().trim()).to.be.equal('You are entitled to\n£3.10 per week', 'expected confirmation body to be correct')
 }
