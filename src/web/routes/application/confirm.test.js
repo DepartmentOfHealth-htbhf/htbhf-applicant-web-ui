@@ -5,7 +5,7 @@ const { ELIGIBLE } = require('./common/constants')
 
 const wrapError = sinon.spy()
 
-const { toPounds, isNilOrLessThanZero, getConfirmPage } = proxyquire('./confirm', {
+const { toPounds, isNilOrLteZero, getConfirmPage } = proxyquire('./confirm', {
   './common/formatters': { wrapError }
 })
 
@@ -16,9 +16,11 @@ test('toPounds() converts value in pence to pounds', (t) => {
   t.end()
 })
 
-test('isNilOrLessThanZero()', (t) => {
-  t.equal(isNilOrLessThanZero(-3), true, 'returns true for an integer less than zero')
-  t.equal(isNilOrLessThanZero(null), true, 'returns true for null')
+test('isNilOrLteZero()', (t) => {
+  t.equal(isNilOrLteZero(0), true, 'returns true for zero')
+  t.equal(isNilOrLteZero(-3), true, 'returns true for an integer less than zero')
+  t.equal(isNilOrLteZero(null), true, 'returns true for null')
+  t.equal(isNilOrLteZero(3), false, 'returns false for a positive integer')
   t.end()
 })
 
