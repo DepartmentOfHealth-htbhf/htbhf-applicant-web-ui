@@ -55,7 +55,7 @@
   },
   "confirm": {
     "title": "Ullamcorper malesuada",
-    "subTitle": "Dui faucibus in ornare\n£3.10 ut labore"
+    "subTitle": "Dui faucibus in ornare\n£{{totalVoucherValue}} ut labore"
   },
   "unsuccessfulApplication": {
     "title": "Lorem ipsum dolor sit amet",
