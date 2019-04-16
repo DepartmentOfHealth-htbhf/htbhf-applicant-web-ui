@@ -7,15 +7,8 @@ const { logger } = require('../../../logger')
 const { REQUEST_ID_HEADER } = require('../../../server/headers')
 const { stateMachine, states, actions } = require('../common/state-machine')
 const { createRequestBody } = require('./create-request-body')
-
-const CLAIMS_ENDPOINT = `/v1/claims`
-const NO_ELIGIBILITY_STATUS_MESSAGE = 'The claimant service did not return an eligibility status'
-
-const isStatusCodeInSuccessRange = statusCode => statusCode >= 200 && statusCode <= 299
-
-const isSuccessStatusCode = statusCode => isStatusCodeInSuccessRange(statusCode) || statusCode === 404
-
-const isErrorStatusCode = statusCode => !isSuccessStatusCode(statusCode)
+const { isErrorStatusCode } = require('./predicates')
+const { CLAIMS_ENDPOINT, NO_ELIGIBILITY_STATUS_MESSAGE } = require('./constants')
 
 const transformResponse = (body, response) => {
   if (isErrorStatusCode(response.statusCode)) {
