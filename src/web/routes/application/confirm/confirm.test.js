@@ -1,12 +1,12 @@
 const test = require('tape')
 const sinon = require('sinon')
 const proxyquire = require('proxyquire')
-const { ELIGIBLE } = require('./common/constants')
+const { ELIGIBLE } = require('../common/constants')
 
 const wrapError = sinon.spy()
 
 const { toPounds, isNilOrLteZero, getConfirmPage } = proxyquire('./confirm', {
-  './common/formatters': { wrapError }
+  '../common/formatters': { wrapError }
 })
 
 test('toPounds() converts value in pence to pounds', (t) => {
