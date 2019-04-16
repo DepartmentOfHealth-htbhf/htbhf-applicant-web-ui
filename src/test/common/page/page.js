@@ -103,6 +103,16 @@ class Page {
     }
   }
 
+  async findAllByCSS (selector) {
+    try {
+      await this.waitForElement(selector, CSS_TYPE)
+      return this.driver.findElements(webdriver.By.css(selector))
+    } catch (error) {
+      console.log(error)
+      throw new Error(error)
+    }
+  }
+
   async findByXPath (xpath) {
     try {
       return await this.driver.findElement(webdriver.By.xpath(xpath))
