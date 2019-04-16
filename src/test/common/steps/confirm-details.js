@@ -23,6 +23,7 @@ Then(/^I am shown a successful confirmation page$/, async function () {
 Then(/^my entitlement is 12.40 per week$/, async function () {
   const totalVoucherValue = await pages.confirm.getPanelBodyText()
   expect(totalVoucherValue.toString().trim()).to.be.equal('You are entitled to\n£12.40 per week', 'expected total voucher value to be correct')
+  await assertVoucherEntitlementValuesForAttr('total-voucher-value-four-weeks', '49.60')
 })
 
 async function checkAllPageContentIsPresentAndCorrect () {
@@ -30,4 +31,15 @@ async function checkAllPageContentIsPresentAndCorrect () {
   expect(h2Text.toString().trim()).to.be.equal('What happens next', 'expected confirm page H2 text to be correct')
   const panelTitle = await pages.confirm.getPanelTitleText()
   expect(panelTitle.toString().trim()).to.be.equal('Application complete', 'expected confirmation header to be correct')
+}
+
+async function assertVoucherEntitlementValuesForAttr (attr, expectedValue) {
+  try {
+    const message = `expected all references to ${attr.replace('-', ' ')} to be correct`
+    const refs = await pages.confirm.getVoucherEntitlementRefsForDataAttr(attr)
+    const incorrectAmounts = refs.filter(value => value !== expectedValue)
+    expect(incorrectAmounts.length).to.be.equal(0, message)
+  } catch (error) {
+    console.log(error)
+  }
 }

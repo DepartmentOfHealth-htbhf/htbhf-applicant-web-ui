@@ -30,6 +30,12 @@ class Confirm extends SubmittablePage {
     const panelBody = await this.findByClassName(PANEL_BODY_CLASS)
     return panelBody.getText()
   }
+
+  async getVoucherEntitlementRefsForDataAttr (property) {
+    const elements = await this.findAllByCSS(`[data-entitlement="${property}"]`)
+    const references = elements.map(async (element) => element.getText())
+    return Promise.all(references)
+  }
 }
 
 module.exports = Confirm
