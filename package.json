@@ -81,12 +81,9 @@
     "tap-spec": "^5.0.0",
     "tape": "^4.9.2"
   },
-  "dependencies-chownr-comment": "chownr 1.1.1 is a listed dependency to fix https://app.snyk.io/vuln/npm:chownr:20180731",
-  "dependencies-tar-comment": "tar 4.4.8 is a listed dependency to fix https://app.snyk.io/vuln/SNYK-JS-TAR-174125",
   "dependencies": {
     "body-parser": "^1.18.3",
     "cfenv": "^1.2.2",
-    "chownr": "^1.1.1",
     "compression": "^1.7.3",
     "connect-redis": "^3.4.0",
     "csurf": "^1.9.0",
@@ -108,7 +105,6 @@
     "redis": "^2.8.0",
     "request": "^2.88.0",
     "request-promise": "^4.2.2",
-    "tar": "^4.4.8",
     "uuidv4": "^3.0.1",
     "winston": "^3.2.1"
   }
