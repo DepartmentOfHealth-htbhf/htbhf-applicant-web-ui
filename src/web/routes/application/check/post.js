@@ -43,7 +43,9 @@ const postCheck = (steps, config) => (req, res, next) => {
   })
     .then(
       (response) => {
-        const eligibilityStatus = path(['body', 'eligibilityStatus'], response)
+        const responseBody = path(['body'], response)
+        const { eligibilityStatus, voucherEntitlement } = responseBody
+
         if (!eligibilityStatus) {
           return next(wrapError({
             cause: new Error(NO_ELIGIBILITY_STATUS_MESSAGE),
@@ -53,6 +55,8 @@ const postCheck = (steps, config) => (req, res, next) => {
         }
 
         req.session.eligibilityStatus = eligibilityStatus
+        req.session.voucherEntitlement = voucherEntitlement
+
         stateMachine.setState(states.COMPLETED, req)
         req.session.nextAllowedStep = stateMachine.dispatch(actions.GET_NEXT_PATH, req, steps, req.path)
         return res.redirect('confirm')

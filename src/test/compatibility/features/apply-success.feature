@@ -9,3 +9,4 @@ Feature: Complete application journey
     Then I am shown the check details page with correct page content
     And I submit my application
     And I am shown a successful confirmation page
+    And my entitlement is 12.40 per week

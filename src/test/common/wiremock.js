@@ -16,6 +16,15 @@ const eligibilityStatusToStatusCodeMap = {
   'DUPLICATE': 200
 }
 
+const voucherEntitlement = {
+  vouchersForChildrenUnderOne: 2,
+  vouchersForChildrenBetweenOneAndFour: 1,
+  vouchersForPregnancy: 1,
+  totalVoucherEntitlement: 4,
+  voucherValueInPence: 310,
+  totalVoucherValueInPence: 1240
+}
+
 const createSuccessfulClaimsMapping = (eligibilityStatus) => {
   return JSON.stringify({
     'request': {
@@ -32,7 +41,10 @@ const createSuccessfulClaimsMapping = (eligibilityStatus) => {
     },
     'response': {
       'status': eligibilityStatusToStatusCodeMap[eligibilityStatus],
-      'jsonBody': { eligibilityStatus },
+      'jsonBody': {
+        eligibilityStatus,
+        ...(eligibilityStatus === 'ELIGIBLE' && { voucherEntitlement })
+      },
       'headers': {
         'Content-Type': 'application/json'
       }

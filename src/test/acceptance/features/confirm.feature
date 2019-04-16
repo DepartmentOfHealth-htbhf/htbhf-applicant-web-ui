@@ -8,3 +8,4 @@ Feature: Confirm application
     When I submit an application with valid details
     Then I am shown the confirm details page
     And all page content is present on the confirm details page
+    And my entitlement is 12.40 per week
