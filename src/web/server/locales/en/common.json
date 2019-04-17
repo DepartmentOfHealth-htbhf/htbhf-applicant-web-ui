@@ -63,7 +63,7 @@
     "content": {
       "ineligible": "You are not on a qualifying benefit",
       "pending": "Your benefit status is pending",
-      "nomatch": "You have not been found",
+      "no_match": "You have not been found",
       "error": "An error occurred whilst checking your eligibility",
       "duplicate": "A claim already exists with your details"
     }
