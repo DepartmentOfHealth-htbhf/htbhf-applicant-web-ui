@@ -14,8 +14,7 @@ function randomCharFromChars (chars) {
  */
 function randomEligibleTwoChars () {
   const randomChar = randomCharFromChars('ABCDEFGHIJKLMNOPQRSTUVWXYZ')
-  const randomFirstChar = Math.random() < 0.5
-  return randomFirstChar ? `${randomChar}E` : `E${randomChar}`
+  return Math.random() < 0.5 ? `${randomChar}E` : `E${randomChar}`
 }
 
 function randomCharAtoD () {
