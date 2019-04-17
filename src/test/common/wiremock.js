@@ -11,7 +11,7 @@ const eligibilityStatusToStatusCodeMap = {
   ELIGIBLE: 201,
   'INELIGIBLE': 200,
   'PENDING': 200,
-  'NOMATCH': 404,
+  'NO_MATCH': 404,
   'ERROR': 200,
   'DUPLICATE': 200
 }
