@@ -19,9 +19,6 @@ addons:
 before_install:
 - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
 - npm install -g standard tape nyc
-- wget https://chromedriver.storage.googleapis.com/74.0.3729.6/chromedriver_linux64.zip -P /home/travis/build/DepartmentOfHealth-htbhf/htbhf-applicant-web-ui
-- unzip /home/travis/build/DepartmentOfHealth-htbhf/htbhf-applicant-web-ui/chromedriver_linux64.zip
-- npm install chromedriver --chromedriver_filepath=/home/travis/build/DepartmentOfHealth-htbhf/htbhf-applicant-web-ui/chromedriver_linux64.zip
 
 deploy:
   provider: pages
