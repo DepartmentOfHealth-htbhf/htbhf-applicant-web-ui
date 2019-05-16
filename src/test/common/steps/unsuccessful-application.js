@@ -7,7 +7,7 @@ const { deleteWiremockMappings } = require('./common-steps')
 const statusToBodyTextMap = {
   'INELIGIBLE': 'You are not on a qualifying benefit',
   'PENDING': 'Your benefit status is pending',
-  'NOMATCH': 'You have not been found',
+  'NO_MATCH': 'You have not been found',
   'ERROR': 'An error occurred whilst checking your eligibility',
   'DUPLICATE': 'A claim already exists with your details'
 }

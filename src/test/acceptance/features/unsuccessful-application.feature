@@ -13,6 +13,6 @@ Feature: Unsuccessful application
       | status     |
       | INELIGIBLE |
       | PENDING    |
-      | NOMATCH    |
+      | NO_MATCH   |
       | ERROR      |
       | DUPLICATE  |

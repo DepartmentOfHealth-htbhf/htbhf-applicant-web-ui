@@ -1,7 +1,7 @@
 {
   "name": "htbhf-applicant-web-ui",
   "version_notice": "Patch versions are incremented by Travis (in tag_version.sh via .travis.yml) - never manually increment the patch version",
-  "version": "0.1.172",
+  "version": "0.1.176",
   "description": "",
   "main": "index.js",
   "engines": {
@@ -63,7 +63,7 @@
   "license": "MIT",
   "devDependencies": {
     "chai": "^4.2.0",
-    "chromedriver": "^2.45.0",
+    "chromedriver": "^74.0.0",
     "codecov": "^3.1.0",
     "cross-env": "^5.2.0",
     "cucumber": "^5.1.0",
