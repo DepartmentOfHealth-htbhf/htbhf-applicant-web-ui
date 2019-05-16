@@ -18,8 +18,12 @@ function randomEligibleTwoChars () {
   return randomFirstChar ? `${randomChar}E` : `E${randomChar}`
 }
 
-function randomCharAtoD () {
-  return randomCharFromChars('ABCD')
+/**
+ * Generates a random character from A, B or C. D is not included as this is used
+ * by performance tests.
+ */
+function randomCharAtoC () {
+  return randomCharFromChars('ABC')
 }
 
 function randomFourDigitInteger () {
@@ -32,7 +36,7 @@ function randomFourDigitInteger () {
  * when mapping NINO to smart stub application
  */
 function generateEligibleNino () {
-  return `${randomEligibleTwoChars()}12${randomFourDigitInteger()}${randomCharAtoD()}`
+  return `${randomEligibleTwoChars()}12${randomFourDigitInteger()}${randomCharAtoC()}`
 }
 
 // use a random nino for each test run to prevent duplication errors during compatibility and accessibility tests.
