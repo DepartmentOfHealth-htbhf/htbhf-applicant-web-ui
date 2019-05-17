@@ -26,12 +26,6 @@ test('create claim body', (t) => {
     lastName: 'The third',
     nino: 'qq123456c',
     dateOfBirth: '1920-01-01',
-    cardDeliveryAddress: {
-      addressLine1: 'Flat b',
-      addressLine2: '221 Baker street',
-      townOrCity: 'London',
-      postcode: 'aa1 1ab'
-    },
     address: {
       addressLine1: 'Flat b',
       addressLine2: '221 Baker street',
@@ -72,12 +66,6 @@ test('create claim body without expectedDeliveryDate when not pregnant', (t) => 
     lastName: 'The third',
     nino: 'qq123456c',
     dateOfBirth: '1920-01-01',
-    cardDeliveryAddress: {
-      addressLine1: 'Flat b',
-      addressLine2: '221 Baker street',
-      townOrCity: 'London',
-      postcode: 'aa1 1ab'
-    },
     address: {
       addressLine1: 'Flat b',
       addressLine2: '221 Baker street',
