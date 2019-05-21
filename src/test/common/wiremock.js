@@ -21,7 +21,7 @@ const voucherEntitlement = {
   vouchersForChildrenBetweenOneAndFour: 1,
   vouchersForPregnancy: 1,
   totalVoucherEntitlement: 4,
-  voucherValueInPence: 310,
+  singleVoucherValueInPence: 310,
   totalVoucherValueInPence: 1240
 }
 
