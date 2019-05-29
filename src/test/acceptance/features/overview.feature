@@ -9,6 +9,7 @@ Feature: Temporary overview page
     Then I am shown the enter name page
 
   # Test fix for bug HTBHF-854
+  @RequiresWiremock
   Scenario: The overview page allows a claimant to start a new application
     Given I have completed my application
     When I navigate to the HTBHF overview page

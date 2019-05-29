@@ -3,6 +3,7 @@ Feature: Unsuccessful application
   As a potential claimant
   If my claim is unsuccessful I want feedback about why my claim was unsuccessful
 
+  @RequiresWiremock
   Scenario Outline: When a claimant applies for help to buy healthy foods and is unsuccessful they are told why
     Given I am on the first page of the application
     When I submit an application which returns a <status> eligibility status

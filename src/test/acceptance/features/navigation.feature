@@ -17,11 +17,13 @@ Feature: Application process navigation is controlled
       | check details            |
       | confirmation             |
 
+  @RequiresWiremock
   Scenario: Navigation to confirm page after completing application stays on the confirm page
     Given I have completed my application
     When I navigate to the confirmation page
     Then I am shown the confirm details page
 
+  @RequiresWiremock
   Scenario Outline: Navigation after completing application returns to start of process and clears the session
     Given I have completed my application
     When I navigate to the <page> page
