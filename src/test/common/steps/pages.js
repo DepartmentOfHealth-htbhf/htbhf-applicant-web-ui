@@ -6,6 +6,7 @@ const AreYouPregnant = require('../page/are-you-pregnant')
 const CardAddress = require('../page/card-address')
 const Check = require('../page/check')
 const Confirm = require('../page/confirm')
+const ConfirmUpdated = require('../page/confirm-updated')
 const Cookies = require('../page/cookies')
 const SubmittablePage = require('../page/submittable-page')
 const ServerError = require('../page/server-error')
@@ -38,6 +39,7 @@ class Pages {
     this.cardAddress = null
     this.check = null
     this.confirm = null
+    this.confirmUpdated = null
     this.genericPage = null
     this.cookies = null
     this.serverError = null
@@ -61,6 +63,7 @@ class Pages {
     this.cardAddress = new CardAddress(this.driver)
     this.check = new Check(this.driver)
     this.confirm = new Confirm(this.driver)
+    this.confirmUpdated = new ConfirmUpdated(this.driver)
     this.cookies = new Cookies(this.driver)
     this.genericPage = new SubmittablePage(this.driver)
     this.serverError = new ServerError(this.driver)

@@ -4,7 +4,7 @@ const {
   completeTheApplicationAsAPregnantWoman,
   completeTheApplicationAsAWomanWhoIsNotPregnant
 } = require('./common-steps')
-const { setupWiremockMappingsWithStatus } = require('./common-steps')
+const { setupWiremockMappingsWithStatus, setupWiremockUpdatedClaimMapping } = require('./common-steps')
 
 const pages = require('./pages')
 
@@ -38,6 +38,10 @@ Given(/^I submit an application with valid details$/, async function () {
   await submitApplicationWithStatus(ELIGIBLE)
 })
 
+Given(/^I submit an application to update an existing claim$/, async function () {
+  await submitApplicationForUpdatedClaim()
+})
+
 When(/^I submit an application which returns a (.*) eligibility status$/, async function (status) {
   await submitApplicationWithStatus(status)
 })
@@ -47,5 +51,13 @@ async function submitApplicationWithStatus (status) {
   await completeTheApplicationAsAPregnantWoman()
   await pages.check.waitForPageLoad()
   await setupWiremockMappingsWithStatus(status)
+  await pages.genericPage.submitForm()
+}
+
+async function submitApplicationForUpdatedClaim () {
+  await pages.enterName.open(pages.url)
+  await completeTheApplicationAsAPregnantWoman()
+  await pages.check.waitForPageLoad()
+  await setupWiremockUpdatedClaimMapping()
   await pages.genericPage.submitForm()
 }

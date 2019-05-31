@@ -25,6 +25,8 @@ const voucherEntitlement = {
   totalVoucherValueInPence: 1240
 }
 
+const updatedFields = ['expectedDeliveryDate']
+
 const createSuccessfulClaimsMapping = (eligibilityStatus) => {
   return JSON.stringify({
     'request': {
@@ -42,8 +44,39 @@ const createSuccessfulClaimsMapping = (eligibilityStatus) => {
     'response': {
       'status': eligibilityStatusToStatusCodeMap[eligibilityStatus],
       'jsonBody': {
+        'claimStatus': 'NEW',
         eligibilityStatus,
         ...(eligibilityStatus === 'ELIGIBLE' && { voucherEntitlement })
+      },
+      'headers': {
+        'Content-Type': 'application/json'
+      }
+    }
+  })
+}
+
+const createUpdatedClaimsMapping = () => {
+  return JSON.stringify({
+    'request': {
+      'method': 'POST',
+      'url': '/v1/claims',
+      'headers': {
+        'X-Request-ID': {
+          'matches': ID_HEADERS_MATCH
+        },
+        'X-Session-ID': {
+          'matches': ID_HEADERS_MATCH
+        }
+      }
+    },
+    'response': {
+      'status': 200,
+      'jsonBody': {
+        'claimStatus': 'ACTIVE',
+        'eligibilityStatus': 'ELIGIBLE',
+        'claimUpdated': true,
+        'updatedFields': updatedFields,
+        voucherEntitlement
       },
       'headers': {
         'Content-Type': 'application/json'
@@ -74,6 +107,10 @@ async function setupSuccessfulWiremockClaimMapping () {
   await postJsonData(WIREMOCK_MAPPING_URL, createSuccessfulClaimsMapping(ELIGIBLE))
 }
 
+async function setupSuccessfulWiremockUpdatedClaimMapping () {
+  await postJsonData(WIREMOCK_MAPPING_URL, createUpdatedClaimsMapping())
+}
+
 async function setupSuccessfulWiremockClaimMappingWithStatus (status) {
   await postJsonData(WIREMOCK_MAPPING_URL, createSuccessfulClaimsMapping(status))
 }
@@ -88,6 +125,7 @@ async function deleteAllWiremockMappings () {
 
 module.exports = {
   setupSuccessfulWiremockClaimMappingWithStatus,
+  setupSuccessfulWiremockUpdatedClaimMapping,
   deleteAllWiremockMappings,
   setupErrorWiremockClaimMapping,
   setupSuccessfulWiremockClaimMapping
