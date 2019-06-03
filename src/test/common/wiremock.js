@@ -1,5 +1,5 @@
 const { postJsonData, performDelete } = require('./request')
-const { ELIGIBLE } = require('./constants')
+const { ELIGIBLE, CLAIMS_ENDPOINT } = require('./constants')
 
 const WIREMOCK_MAPPING_URL = process.env.WIREMOCK_URL
   ? `${process.env.WIREMOCK_URL}/__admin/mappings`
@@ -31,7 +31,7 @@ const createSuccessfulClaimsMapping = (eligibilityStatus) => {
   return JSON.stringify({
     'request': {
       'method': 'POST',
-      'url': '/v1/claims',
+      'url': CLAIMS_ENDPOINT,
       'headers': {
         'X-Request-ID': {
           'matches': ID_HEADERS_MATCH
@@ -59,7 +59,7 @@ const createUpdatedClaimsMapping = () => {
   return JSON.stringify({
     'request': {
       'method': 'POST',
-      'url': '/v1/claims',
+      'url': CLAIMS_ENDPOINT,
       'headers': {
         'X-Request-ID': {
           'matches': ID_HEADERS_MATCH
@@ -88,7 +88,7 @@ const createUpdatedClaimsMapping = () => {
 const ERROR_CLAIMS_MAPPING = JSON.stringify({
   'request': {
     'method': 'POST',
-    'url': '/v1/claims',
+    'url': CLAIMS_ENDPOINT,
     'headers': {
       'X-Request-ID': {
         'matches': ID_HEADERS_MATCH

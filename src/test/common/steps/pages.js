@@ -72,7 +72,7 @@ class Pages {
     this.unsuccessfulApplication = new UnsuccessfulApplication(this.driver)
     // NOTE: This map should contain all page objects, and not the Generic Page as this doesn't itself represent a page
     this.allPages = [this.overview, this.enterName, this.enterNino, this.enterDOB, this.areYouPregnant, this.cardAddress,
-      this.check, this.confirm, this.cookies, this.privacyNotice]
+      this.check, this.confirm, this.cookies, this.privacyNotice, this.confirmUpdated]
     this.pageMap = this.allPages.reduce(addPageToMap, {})
   }
 

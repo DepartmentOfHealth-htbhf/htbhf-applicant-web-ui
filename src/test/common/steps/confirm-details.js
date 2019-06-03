@@ -42,6 +42,7 @@ async function checkAllPageContentIsPresentAndCorrect () {
   expect(panelTitle.toString().trim()).to.be.equal('Application complete', 'expected confirmation header to be correct')
 }
 
+// TODO DW HTBHF-1453 update once we have content
 async function checkExistingClaimUpdatedTextIsPresent () {
   const h2Text = await pages.confirm.getH2Text()
   expect(h2Text.toString().trim()).to.be.equal('What happens next', 'expected confirm updated page H2 text to be correct')

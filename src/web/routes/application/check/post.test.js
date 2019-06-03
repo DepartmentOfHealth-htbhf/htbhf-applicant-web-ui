@@ -64,7 +64,7 @@ test('unsuccessful post calls next with error', async (t) => {
     })
 })
 
-test(`successful post sets next allowed step to ${CONFIRM_URL} and eligibility status to the status returned`, async (t) => {
+test(`successful post sets next allowed step to ${CONFIRM_URL} and returned fields`, async (t) => {
   const steps = []
   const next = sinon.spy()
   const redirect = sinon.spy()
@@ -81,7 +81,11 @@ test(`successful post sets next allowed step to ${CONFIRM_URL} and eligibility s
 
   post.returns(Promise.resolve({
     body: {
-      eligibilityStatus: ELIGIBLE
+      eligibilityStatus: ELIGIBLE,
+      voucherEntitlement: {
+        totalVoucherValueInPence: 310
+      },
+      claimUpdated: true
     }
   }))
 
@@ -89,6 +93,8 @@ test(`successful post sets next allowed step to ${CONFIRM_URL} and eligibility s
     .then(() => {
       t.equal(req.session.nextAllowedStep, CONFIRM_URL, `it sets next allowed step to ${CONFIRM_URL}`)
       t.equal(req.session.eligibilityStatus, ELIGIBLE, 'it sets the eligibility status to ELIGIBLE')
+      t.deepEqual(req.session.voucherEntitlement, { totalVoucherValueInPence: 310 }, 'it sets the voucher entitlement field')
+      t.equal(req.session.claimUpdated, true, 'it sets the claim updated field')
       t.equal(redirect.called, true, 'it calls redirect()')
       t.end()
     })

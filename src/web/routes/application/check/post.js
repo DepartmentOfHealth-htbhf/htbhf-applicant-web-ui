@@ -37,7 +37,7 @@ const postCheck = (steps, config) => (req, res, next) => {
     .then(
       (response) => {
         const responseBody = path(['body'], response)
-        const { eligibilityStatus, voucherEntitlement } = responseBody
+        const { eligibilityStatus, voucherEntitlement, claimUpdated } = responseBody
 
         if (!eligibilityStatus) {
           return next(wrapError({
@@ -49,6 +49,7 @@ const postCheck = (steps, config) => (req, res, next) => {
 
         req.session.eligibilityStatus = eligibilityStatus
         req.session.voucherEntitlement = voucherEntitlement
+        req.session.claimUpdated = claimUpdated
 
         stateMachine.setState(states.COMPLETED, req)
         req.session.nextAllowedStep = stateMachine.dispatch(actions.GET_NEXT_PATH, req, steps, req.path)
