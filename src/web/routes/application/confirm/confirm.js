@@ -8,6 +8,14 @@ const toPounds = pence => (parseInt(pence, 10) / 100).toFixed(2)
 
 const isNilOrLteZero = value => isNil(value) || value <= 0
 
+const getTitle = req => {
+  if (path(['session', 'claimUpdated'], req) === true) {
+    return req.t('confirm.updatedClaimTitle')
+  }
+
+  return req.t('confirm.newClaimTitle')
+}
+
 const getConfirmPage = (req, res, next) => {
   if (req.session.eligibilityStatus === ELIGIBLE) {
     const totalVoucherValueInPence = path(['session', 'voucherEntitlement', 'totalVoucherValueInPence'], req)
@@ -22,7 +30,7 @@ const getConfirmPage = (req, res, next) => {
     }
 
     return res.render('confirm', {
-      title: req.t('confirm.title'),
+      title: getTitle(req),
       subTitle: req.t('confirm.subTitle', { totalVoucherValue: toPounds(totalVoucherValueInPence) }),
       totalVoucherValueForFourWeeks: toPounds(totalVoucherValueInPence * 4)
     })
@@ -44,5 +52,6 @@ module.exports = {
   toPounds,
   isNilOrLteZero,
   registerConfirmRoute,
-  getConfirmPage
+  getConfirmPage,
+  getTitle
 }

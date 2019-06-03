@@ -2,7 +2,7 @@ const { expect, assert } = require('chai')
 const { When } = require('cucumber')
 
 const pages = require('./pages')
-const { setupSuccessfulWiremockClaimMappingWithStatus, deleteAllWiremockMappings } = require('../wiremock')
+const { setupSuccessfulWiremockClaimMappingWithStatus, deleteAllWiremockMappings, setupSuccessfulWiremockUpdatedClaimMapping } = require('../wiremock')
 const TESTS = process.env.TESTS
 const COMPATIBILITY_TESTS = 'compatibility'
 const INTEGRATION_TESTS = 'integration'
@@ -104,6 +104,12 @@ async function setupWiremockMappingsWithStatus (status) {
   }
 }
 
+async function setupWiremockUpdatedClaimMapping (status) {
+  if (testsRequireApiMocks()) {
+    await setupSuccessfulWiremockUpdatedClaimMapping(status)
+  }
+}
+
 async function deleteWiremockMappings () {
   if (testsRequireApiMocks()) {
     await deleteAllWiremockMappings()
@@ -133,5 +139,6 @@ module.exports = {
   completeTheApplicationAsAPregnantWoman,
   completeTheApplicationAsAWomanWhoIsNotPregnant,
   setupWiremockMappingsWithStatus,
+  setupWiremockUpdatedClaimMapping,
   deleteWiremockMappings
 }

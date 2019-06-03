@@ -1,5 +1,5 @@
 const { postJsonData, performDelete } = require('./request')
-const { ELIGIBLE } = require('./constants')
+const { ELIGIBLE, CLAIMS_ENDPOINT } = require('./constants')
 
 const WIREMOCK_MAPPING_URL = process.env.WIREMOCK_URL
   ? `${process.env.WIREMOCK_URL}/__admin/mappings`
@@ -25,11 +25,13 @@ const voucherEntitlement = {
   totalVoucherValueInPence: 1240
 }
 
+const updatedFields = ['expectedDeliveryDate']
+
 const createSuccessfulClaimsMapping = (eligibilityStatus) => {
   return JSON.stringify({
     'request': {
       'method': 'POST',
-      'url': '/v1/claims',
+      'url': CLAIMS_ENDPOINT,
       'headers': {
         'X-Request-ID': {
           'matches': ID_HEADERS_MATCH
@@ -42,8 +44,39 @@ const createSuccessfulClaimsMapping = (eligibilityStatus) => {
     'response': {
       'status': eligibilityStatusToStatusCodeMap[eligibilityStatus],
       'jsonBody': {
+        'claimStatus': 'NEW',
         eligibilityStatus,
         ...(eligibilityStatus === 'ELIGIBLE' && { voucherEntitlement })
+      },
+      'headers': {
+        'Content-Type': 'application/json'
+      }
+    }
+  })
+}
+
+const createUpdatedClaimsMapping = () => {
+  return JSON.stringify({
+    'request': {
+      'method': 'POST',
+      'url': CLAIMS_ENDPOINT,
+      'headers': {
+        'X-Request-ID': {
+          'matches': ID_HEADERS_MATCH
+        },
+        'X-Session-ID': {
+          'matches': ID_HEADERS_MATCH
+        }
+      }
+    },
+    'response': {
+      'status': 200,
+      'jsonBody': {
+        'claimStatus': 'ACTIVE',
+        'eligibilityStatus': 'ELIGIBLE',
+        'claimUpdated': true,
+        'updatedFields': updatedFields,
+        voucherEntitlement
       },
       'headers': {
         'Content-Type': 'application/json'
@@ -55,7 +88,7 @@ const createSuccessfulClaimsMapping = (eligibilityStatus) => {
 const ERROR_CLAIMS_MAPPING = JSON.stringify({
   'request': {
     'method': 'POST',
-    'url': '/v1/claims',
+    'url': CLAIMS_ENDPOINT,
     'headers': {
       'X-Request-ID': {
         'matches': ID_HEADERS_MATCH
@@ -74,6 +107,10 @@ async function setupSuccessfulWiremockClaimMapping () {
   await postJsonData(WIREMOCK_MAPPING_URL, createSuccessfulClaimsMapping(ELIGIBLE))
 }
 
+async function setupSuccessfulWiremockUpdatedClaimMapping () {
+  await postJsonData(WIREMOCK_MAPPING_URL, createUpdatedClaimsMapping())
+}
+
 async function setupSuccessfulWiremockClaimMappingWithStatus (status) {
   await postJsonData(WIREMOCK_MAPPING_URL, createSuccessfulClaimsMapping(status))
 }
@@ -88,6 +125,7 @@ async function deleteAllWiremockMappings () {
 
 module.exports = {
   setupSuccessfulWiremockClaimMappingWithStatus,
+  setupSuccessfulWiremockUpdatedClaimMapping,
   deleteAllWiremockMappings,
   setupErrorWiremockClaimMapping,
   setupSuccessfulWiremockClaimMapping

@@ -9,6 +9,8 @@ const { toPounds, isNilOrLteZero, getConfirmPage } = proxyquire('./confirm', {
   '../common/formatters': { wrapError }
 })
 
+const { getTitle } = require('./confirm')
+
 test('toPounds() converts value in pence to pounds', (t) => {
   const expected = '3.10'
   const result = toPounds(310)
@@ -91,5 +93,45 @@ test('getConfirmPage() calls next with error when invalid voucher value in pence
 
   t.equal(next.called, true, 'it calls next()')
   t.equal(actualErrorMessage, expectedErrorMessage, 'it throws an error')
+  t.end()
+})
+
+test('getTitle() returns \'Application Complete\' when the claimUpdated field is false', (t) => {
+  const req = {
+    t: (name) => { return name === 'confirm.updatedClaimTitle' ? 'Application Updated' : 'Application Complete' },
+    session: {
+      claimUpdated: false
+    }
+  }
+
+  const result = getTitle(req)
+
+  t.equal(result, 'Application Complete', 'getTitle returns \'Application Complete\'')
+  t.end()
+})
+
+test('getTitle() returns \'Application Complete\' when the claimUpdated field is undefined', (t) => {
+  const req = {
+    t: (name) => { return name === 'confirm.updatedClaimTitle' ? 'Application Updated' : 'Application Complete' },
+    session: {}
+  }
+
+  const result = getTitle(req)
+
+  t.equal(result, 'Application Complete', 'getTitle returns \'Application Complete\'')
+  t.end()
+})
+
+test('getTitle() returns \'Application Updated\' when the claimUpdated field is true', (t) => {
+  const req = {
+    t: (name) => { return name === 'confirm.updatedClaimTitle' ? 'Application Updated' : 'Application Complete' },
+    session: {
+      claimUpdated: true
+    }
+  }
+
+  const result = getTitle(req)
+
+  t.equal(result, 'Application Updated', 'getTitle returns \'Application Updated\'')
   t.end()
 })

@@ -54,7 +54,8 @@
     "change": "Change"
   },
   "confirm": {
-    "title": "Application complete",
+    "newClaimTitle": "Application complete",
+    "updatedClaimTitle": "Application updated",
     "subTitle": "You are entitled to\n£{{totalVoucherValue}} per week"
   },
   "unsuccessfulApplication": {

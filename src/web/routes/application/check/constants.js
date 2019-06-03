@@ -1,4 +1,4 @@
-const CLAIMS_ENDPOINT = `/v1/claims`
+const CLAIMS_ENDPOINT = `/v2/claims`
 const NO_ELIGIBILITY_STATUS_MESSAGE = 'The claimant service did not return an eligibility status'
 
 module.exports = {
