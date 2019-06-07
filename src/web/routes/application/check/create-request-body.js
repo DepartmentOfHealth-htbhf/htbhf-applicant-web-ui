@@ -12,7 +12,7 @@ const createExpectedDeliveryDate = (claim) => {
   return null
 }
 
-const createRequestBody = (claim) => {
+const createClaim = (claim) => {
   return {
     firstName: claim.firstName,
     lastName: claim.lastName,
@@ -28,6 +28,23 @@ const createRequestBody = (claim) => {
   }
 }
 
+function createDeviceFingerprint (headers) {
+  return {
+    'user-agent': headers['user-agent'],
+    'ip-address': headers['x-forwarded-for'],
+    'accept': headers['accept'],
+    'accept-encoding': headers['accept-encoding'],
+    'accept-language': headers['accept-language']
+  }
+}
+
+const createClaimRequestBody = (req) => {
+  return {
+    claimant: createClaim(req.session.claim),
+    deviceFingerprint: createDeviceFingerprint(req.headers)
+  }
+}
+
 module.exports = {
-  createRequestBody
+  createClaimRequestBody
 }

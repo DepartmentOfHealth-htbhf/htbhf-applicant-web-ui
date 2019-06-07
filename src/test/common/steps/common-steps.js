@@ -2,14 +2,14 @@ const { expect, assert } = require('chai')
 const { When } = require('cucumber')
 
 const pages = require('./pages')
-const { setupSuccessfulWiremockClaimMappingWithStatus, deleteAllWiremockMappings, setupSuccessfulWiremockUpdatedClaimMapping } = require('../wiremock')
+const { setupSuccessfulWiremockClaimMappingWithStatus, deleteAllWiremockMappings, setupSuccessfulWiremockUpdatedClaimMapping, getOutboundRequestsToUrl } = require('../wiremock')
 const TESTS = process.env.TESTS
 const COMPATIBILITY_TESTS = 'compatibility'
 const INTEGRATION_TESTS = 'integration'
 
 const testsRequireApiMocks = () => TESTS !== COMPATIBILITY_TESTS && TESTS !== INTEGRATION_TESTS
 
-const { VALID_ELIGIBLE_NINO, FIRST_NAME, LAST_NAME, DAY, MONTH, YEAR, ADDRESS_LINE_1, ADDRESS_LINE_2, TOWN, POSTCODE } = require('./constants')
+const { VALID_ELIGIBLE_NINO, FIRST_NAME, LAST_NAME, DAY, MONTH, YEAR, ADDRESS_LINE_1, ADDRESS_LINE_2, TOWN, POSTCODE, CLAIMS_ENDPOINT } = require('./constants')
 
 async function enterNameAndSubmit (firstName = FIRST_NAME, lastName = LAST_NAME) {
   try {
@@ -116,6 +116,16 @@ async function deleteWiremockMappings () {
   }
 }
 
+async function getRequestsToClaimService () {
+  return getOutboundRequestsToUrl(CLAIMS_ENDPOINT)
+}
+
+async function getBodyOfLastRequestToClaimService () {
+  const requests = await getRequestsToClaimService()
+  expect(requests.length, 'There should be at least one request to the claim service').to.be.above(0)
+  return JSON.parse(requests[requests.length - 1].body)
+}
+
 When(/^I click continue$/, async function () {
   await pages.genericPage.submitForm()
 })
@@ -140,5 +150,6 @@ module.exports = {
   completeTheApplicationAsAWomanWhoIsNotPregnant,
   setupWiremockMappingsWithStatus,
   setupWiremockUpdatedClaimMapping,
-  deleteWiremockMappings
+  deleteWiremockMappings,
+  getBodyOfLastRequestToClaimService
 }

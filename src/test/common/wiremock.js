@@ -1,9 +1,15 @@
 const { postJsonData, performDelete } = require('./request')
 const { ELIGIBLE, CLAIMS_ENDPOINT } = require('./constants')
 
-const WIREMOCK_MAPPING_URL = process.env.WIREMOCK_URL
-  ? `${process.env.WIREMOCK_URL}/__admin/mappings`
-  : 'http://localhost:8090/__admin/mappings'
+const WIREMOCK_BASE_URL = process.env.WIREMOCK_URL
+  ? `${process.env.WIREMOCK_URL}/__admin`
+  : 'http://localhost:8090/__admin'
+
+const WIREMOCK_MAPPING_URL = `${WIREMOCK_BASE_URL}/mappings`
+
+const WIREMOCK_REQUESTS_URL = `${WIREMOCK_BASE_URL}/requests`
+
+const WIREMOCK_FIND_REQUESTS_URL = `${WIREMOCK_REQUESTS_URL}/find`
 
 const ID_HEADERS_MATCH = '([A-Za-z0-9_-])+'
 
@@ -123,10 +129,25 @@ async function deleteAllWiremockMappings () {
   await performDelete(WIREMOCK_MAPPING_URL)
 }
 
+async function resetWiremockRequestJournal () {
+  await performDelete(WIREMOCK_MAPPING_URL)
+}
+
+async function getOutboundRequestsToUrl (url) {
+  const body = JSON.stringify({
+    'method': 'POST',
+    url
+  })
+  const response = await postJsonData(WIREMOCK_FIND_REQUESTS_URL, body)
+  return JSON.parse(response).requests
+}
+
 module.exports = {
   setupSuccessfulWiremockClaimMappingWithStatus,
   setupSuccessfulWiremockUpdatedClaimMapping,
   deleteAllWiremockMappings,
   setupErrorWiremockClaimMapping,
-  setupSuccessfulWiremockClaimMapping
+  setupSuccessfulWiremockClaimMapping,
+  resetWiremockRequestJournal,
+  getOutboundRequestsToUrl
 }

@@ -6,7 +6,7 @@ const { wrapError } = require('../common/formatters')
 const { logger } = require('../../../logger')
 const { REQUEST_ID_HEADER } = require('../../../server/headers')
 const { stateMachine, states, actions } = require('../common/state-machine')
-const { createRequestBody } = require('./create-request-body')
+const { createClaimRequestBody } = require('./create-request-body')
 const { isErrorStatusCode } = require('./predicates')
 const { CLAIMS_ENDPOINT, NO_ELIGIBILITY_STATUS_MESSAGE } = require('./constants')
 
@@ -28,9 +28,7 @@ const postCheck = (steps, config) => (req, res, next) => {
       'X-Request-ID': req.headers[REQUEST_ID_HEADER],
       'X-Session-ID': req.sessionID
     },
-    body: {
-      claimant: createRequestBody(req.session.claim)
-    },
+    body: createClaimRequestBody(req),
     simple: false,
     transform: transformResponse
   })
