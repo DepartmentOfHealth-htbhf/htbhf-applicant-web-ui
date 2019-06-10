@@ -3,12 +3,14 @@ Feature: Confirm application
   As a potential claimant
   I want to be shown the decision after submitting my application details
 
+  @RequiresWiremock
   Scenario: Valid application progresses to the confirmation page
     Given I am on the first page of the application
     When I submit an application with valid details
     Then I am shown the confirm details page
     And all page content is present on the confirm details page
     And my entitlement is 12.40 per week
+    And my claim is sent to the back end
 
   @RequiresWiremock
   Scenario: Valid application to update existing claim progresses to the confirmation page

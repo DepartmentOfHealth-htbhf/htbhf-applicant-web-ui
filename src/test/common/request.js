@@ -56,12 +56,12 @@ const postJsonData = (url, body) =>
       headers: {
         'Content-Type': 'application/json'
       }
-    }, (error) => {
+    }, (error, httpResponse, body) => {
       if (error) {
         return reject(error)
       }
 
-      resolve()
+      resolve(body)
     })
   })
 

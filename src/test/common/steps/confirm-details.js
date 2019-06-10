@@ -2,7 +2,7 @@ const { Then } = require('cucumber')
 const { expect } = require('chai')
 
 const pages = require('./pages')
-const { deleteWiremockMappings } = require('./common-steps')
+const { deleteWiremockMappings, getBodyOfLastRequestToClaimService } = require('./common-steps')
 
 Then(/^all page content is present on the confirm details page$/, async function () {
   await checkAllPageContentIsPresentAndCorrect()
@@ -33,6 +33,12 @@ Then(/^my entitlement is 12.40 per week$/, async function () {
   const totalVoucherValue = await pages.confirm.getPanelBodyText()
   expect(totalVoucherValue.toString().trim()).to.be.equal('You are entitled to\n£12.40 per week', 'expected total voucher value to be correct')
   await assertVoucherEntitlementValuesForAttr('total-voucher-value-four-weeks', '49.60')
+})
+
+Then(/^my claim is sent to the back end$/, async function () {
+  const body = await getBodyOfLastRequestToClaimService()
+  expect(body).to.have.property('claimant')
+  expect(body).to.have.property('deviceFingerprint')
 })
 
 async function checkAllPageContentIsPresentAndCorrect () {
