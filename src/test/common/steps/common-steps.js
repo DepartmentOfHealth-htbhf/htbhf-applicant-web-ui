@@ -84,18 +84,18 @@ async function assertErrorHeaderTextPresent (page, message = 'There is a problem
 }
 
 async function completeTheApplicationAsAPregnantWoman () {
-  await enterNameAndSubmit()
-  await enterNinoAndSubmit()
   await enterDateOfBirthAndSubmit()
   await selectYesOnPregnancyPage()
+  await enterNameAndSubmit()
+  await enterNinoAndSubmit()
   await enterCardAddressAndSubmit()
 }
 
 async function completeTheApplicationAsAWomanWhoIsNotPregnant () {
-  await enterNameAndSubmit()
-  await enterNinoAndSubmit()
   await enterDateOfBirthAndSubmit()
   await selectNoOnPregnancyPage()
+  await enterNameAndSubmit()
+  await enterNinoAndSubmit()
   await enterCardAddressAndSubmit()
 }
 

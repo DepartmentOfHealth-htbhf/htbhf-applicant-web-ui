@@ -25,18 +25,18 @@ const {
 const { formatDateForDisplayFromDate } = require('../../../web/routes/application/common/formatters')
 
 When(/^I complete the application with valid details that contains malicious input$/, async function () {
-  await enterNameAndSubmit('<script>window.alert(\'Boo\')</script>', LAST_NAME)
-  await enterNinoAndSubmit()
   await enterDateOfBirthAndSubmit()
   await selectNoOnPregnancyPage()
+  await enterNameAndSubmit('<script>window.alert(\'Boo\')</script>', LAST_NAME)
+  await enterNinoAndSubmit()
   await enterCardAddressAndSubmit()
 })
 
 When(/^I complete the application with valid details for an applicant with no second line of address$/, async function () {
-  await enterNameAndSubmit()
-  await enterNinoAndSubmit()
   await enterDateOfBirthAndSubmit()
   await selectNoOnPregnancyPage()
+  await enterNameAndSubmit()
+  await enterNinoAndSubmit()
   await enterCardAddressAndSubmit(ADDRESS_LINE_1, '', TOWN, POSTCODE)
 })
 

@@ -6,7 +6,7 @@ Feature: Temporary overview page
   Scenario: The overview page is available and starts the application process
     Given I navigate to the HTBHF overview page
     When I select to start the process
-    Then I am shown the enter name page
+    Then I am shown the first page of the application
 
   # Test fix for bug HTBHF-854
   @RequiresWiremock
@@ -14,4 +14,4 @@ Feature: Temporary overview page
     Given I have completed my application
     When I navigate to the HTBHF overview page
     And I select to start the process
-    Then I am shown the enter name page
+    Then I am shown the first page of the application

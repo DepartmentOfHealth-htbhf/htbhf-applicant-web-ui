@@ -11,17 +11,17 @@ const pages = require('./pages')
 const ELIGIBLE = 'ELIGIBLE'
 
 Given('I am on the first page of the application', async function () {
-  await pages.enterName.open(pages.url)
+  await pages.startApplication()
 })
 
 Given('I am on the check details page having entered valid details for a pregnant woman', async function () {
-  await pages.enterName.open(pages.url)
+  await pages.startApplication()
   await completeTheApplicationAsAPregnantWoman()
   await pages.check.waitForPageLoad()
 })
 
 Given(/^I have completed my application$/, async function () {
-  await pages.enterName.open(pages.url)
+  await pages.startApplication()
   await submitApplicationWithStatus(ELIGIBLE)
   await pages.confirm.waitForPageLoad()
 })
@@ -47,7 +47,7 @@ When(/^I submit an application which returns a (.*) eligibility status$/, async 
 })
 
 async function submitApplicationWithStatus (status) {
-  await pages.enterName.open(pages.url)
+  await pages.startApplication()
   await completeTheApplicationAsAPregnantWoman()
   await pages.check.waitForPageLoad()
   await setupWiremockMappingsWithStatus(status)
@@ -55,7 +55,7 @@ async function submitApplicationWithStatus (status) {
 }
 
 async function submitApplicationForUpdatedClaim () {
-  await pages.enterName.open(pages.url)
+  await pages.startApplication()
   await completeTheApplicationAsAPregnantWoman()
   await pages.check.waitForPageLoad()
   await setupWiremockUpdatedClaimMapping()

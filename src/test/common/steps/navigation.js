@@ -13,22 +13,8 @@ const CHECK_PAGE = 'check details'
 
 const pageActions = [
   {
-    page: ENTER_NAME_PAGE,
-    action: async () => {}
-  },
-  {
-    page: ENTER_NINO_PAGE,
-    action: async () => {
-      await enterNameAndSubmit()
-      await pages.enterNino.waitForPageLoad()
-    }
-  },
-  {
     page: ENTER_DOB_PAGE,
-    action: async () => {
-      await enterNinoAndSubmit()
-      await pages.enterDOB.waitForPageLoad()
-    }
+    action: async () => {}
   },
   {
     page: ARE_YOU_PREGNANT_PAGE,
@@ -38,9 +24,23 @@ const pageActions = [
     }
   },
   {
-    page: CARD_ADDRESS_PAGE,
+    page: ENTER_NAME_PAGE,
     action: async () => {
       await selectNoOnPregnancyPage()
+      await pages.enterName.waitForPageLoad()
+    }
+  },
+  {
+    page: ENTER_NINO_PAGE,
+    action: async () => {
+      await enterNameAndSubmit()
+      await pages.enterNino.waitForPageLoad()
+    }
+  },
+  {
+    page: CARD_ADDRESS_PAGE,
+    action: async () => {
+      await enterNinoAndSubmit()
       await pages.cardAddress.waitForPageLoad()
     }
   },
@@ -75,7 +75,7 @@ const enterDetailsUpToPage = async (page, actions) => {
   try {
     await pages.overview.open(pages.url)
     await pages.overview.clickStartButton()
-    await pages.enterName.waitForPageLoad()
+    await pages.enterDOB.waitForPageLoad()
 
     const pageIndex = getPageIndex(page)
     if (pageIndex === -1) {

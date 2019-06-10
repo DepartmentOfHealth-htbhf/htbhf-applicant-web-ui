@@ -79,6 +79,10 @@ class Pages {
   async openPageDirect (pageName) {
     await this.pageMap[pageName](this.url)
   }
+
+  async startApplication () {
+    this.enterDOB.open(this.url)
+  }
 }
 
 module.exports = new Pages()
