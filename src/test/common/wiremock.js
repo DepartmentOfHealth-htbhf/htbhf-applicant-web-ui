@@ -7,9 +7,7 @@ const WIREMOCK_BASE_URL = process.env.WIREMOCK_URL
 
 const WIREMOCK_MAPPING_URL = `${WIREMOCK_BASE_URL}/mappings`
 
-const WIREMOCK_REQUESTS_URL = `${WIREMOCK_BASE_URL}/requests`
-
-const WIREMOCK_FIND_REQUESTS_URL = `${WIREMOCK_REQUESTS_URL}/find`
+const WIREMOCK_FIND_REQUESTS_URL = `${WIREMOCK_BASE_URL}/requests/find`
 
 const ID_HEADERS_MATCH = '([A-Za-z0-9_-])+'
 
@@ -129,10 +127,6 @@ async function deleteAllWiremockMappings () {
   await performDelete(WIREMOCK_MAPPING_URL)
 }
 
-async function resetWiremockRequestJournal () {
-  await performDelete(WIREMOCK_MAPPING_URL)
-}
-
 async function getOutboundRequestsToUrl (url) {
   const body = JSON.stringify({
     'method': 'POST',
@@ -148,6 +142,5 @@ module.exports = {
   deleteAllWiremockMappings,
   setupErrorWiremockClaimMapping,
   setupSuccessfulWiremockClaimMapping,
-  resetWiremockRequestJournal,
   getOutboundRequestsToUrl
 }

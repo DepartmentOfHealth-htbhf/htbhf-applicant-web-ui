@@ -9,7 +9,7 @@ const post = sinon.stub()
 const { transformResponse, postCheck } = proxyquire('./post', {
   'request-promise': { post },
   './create-request-body': {
-    createClaimRequestBody: () => {}
+    createRequestBody: () => {}
   }
 })
 

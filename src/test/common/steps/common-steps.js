@@ -1,5 +1,6 @@
 const { expect, assert } = require('chai')
 const { When } = require('cucumber')
+const { path } = require('ramda')
 
 const pages = require('./pages')
 const { setupSuccessfulWiremockClaimMappingWithStatus, deleteAllWiremockMappings, setupSuccessfulWiremockUpdatedClaimMapping, getOutboundRequestsToUrl } = require('../wiremock')
@@ -122,8 +123,10 @@ async function getRequestsToClaimService () {
 
 async function getBodyOfLastRequestToClaimService () {
   const requests = await getRequestsToClaimService()
-  expect(requests.length, 'There should be at least one request to the claim service').to.be.above(0)
-  return JSON.parse(requests[requests.length - 1].body)
+  if (requests.length) {
+    return JSON.parse(path(['body'], requests[requests.length - 1]))
+  }
+  return null
 }
 
 When(/^I click continue$/, async function () {

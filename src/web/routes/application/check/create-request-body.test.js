@@ -1,5 +1,5 @@
 const test = require('tape')
-const { createClaimRequestBody } = require('./create-request-body')
+const { createRequestBody } = require('./create-request-body')
 
 const requestHeaders = {
   'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.80 Safari/537.36',
@@ -10,7 +10,7 @@ const requestHeaders = {
   'another-header': 'foo'
 }
 
-const expectedHeaders = {
+const expectedFingerprint = {
   'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.80 Safari/537.36',
   'ip-address': '127.0.0.1',
   'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
@@ -59,10 +59,10 @@ test('create claim body', (t) => {
       },
       expectedDeliveryDate: '2019-03-01'
     },
-    deviceFingerprint: expectedHeaders
+    deviceFingerprint: expectedFingerprint
   }
 
-  const bodyToPost = createClaimRequestBody(request)
+  const bodyToPost = createRequestBody(request)
 
   t.deepEqual(bodyToPost, expectedBody)
   t.end()
@@ -109,10 +109,10 @@ test('create claim body without expectedDeliveryDate when not pregnant', (t) => 
       },
       expectedDeliveryDate: null
     },
-    deviceFingerprint: expectedHeaders
+    deviceFingerprint: expectedFingerprint
   }
 
-  const bodyToPost = createClaimRequestBody(request)
+  const bodyToPost = createRequestBody(request)
 
   t.deepEqual(bodyToPost, expectedBody)
   t.end()
