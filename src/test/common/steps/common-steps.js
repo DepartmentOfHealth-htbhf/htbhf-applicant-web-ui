@@ -73,6 +73,15 @@ async function enterCardAddressAndSubmit (addressLine1 = ADDRESS_LINE_1, address
   }
 }
 
+// TODO DW HTBHF-1545 Update to enter in mobile phone number
+async function enterPhoneNumberAndSubmit () {
+  try {
+    await pages.phoneNumber.submitForm()
+  } catch (error) {
+    assert.fail(`Unexpected error caught trying to enter phone number and submit the page - ${error}`)
+  }
+}
+
 async function assertErrorHeaderTextPresent (page, message = 'There is a problem') {
   try {
     await page.waitForPageLoad()
@@ -89,6 +98,7 @@ async function completeTheApplicationAsAPregnantWoman () {
   await enterNameAndSubmit()
   await enterNinoAndSubmit()
   await enterCardAddressAndSubmit()
+  await enterPhoneNumberAndSubmit()
 }
 
 async function completeTheApplicationAsAWomanWhoIsNotPregnant () {
@@ -97,6 +107,7 @@ async function completeTheApplicationAsAWomanWhoIsNotPregnant () {
   await enterNameAndSubmit()
   await enterNinoAndSubmit()
   await enterCardAddressAndSubmit()
+  await enterPhoneNumberAndSubmit()
 }
 
 async function setupWiremockMappingsWithStatus (status) {
@@ -148,6 +159,7 @@ module.exports = {
   enterNinoAndSubmit,
   selectNoOnPregnancyPage,
   enterCardAddressAndSubmit,
+  enterPhoneNumberAndSubmit,
   assertErrorHeaderTextPresent,
   completeTheApplicationAsAPregnantWoman,
   completeTheApplicationAsAWomanWhoIsNotPregnant,

@@ -11,7 +11,7 @@ const NINO_FIELD_ERROR_ID = 'nino-error'
 const NINO_ERROR_LINK_CSS = 'a[href="#nino-error"]'
 
 /**
- * Page object for EnterNino page where the name is entered.
+ * Page object for EnterNino page where the national insurance number is entered.
  */
 class EnterNino extends SubmittablePage {
   async waitForPageLoad (lang = 'en') {

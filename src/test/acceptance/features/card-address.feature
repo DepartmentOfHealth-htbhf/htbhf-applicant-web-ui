@@ -8,7 +8,7 @@ Feature: Card address
 
   Scenario Outline: Enter a valid address with all fields entered
     When I enter an address with postcode <postcode>
-    Then I am shown the check details page
+    Then I am shown the phone number page
 
     Examples:
       | postcode |
@@ -22,7 +22,7 @@ Feature: Card address
 
   Scenario: Enter a valid address without an optional second address line
     When I do not enter the second line of an address
-    Then I am shown the check details page
+    Then I am shown the phone number page
 
   Scenario Outline: Enter an address with an invalid postcode
     When I enter an address with postcode <postcode>

@@ -20,7 +20,8 @@ const {
   enterNameAndSubmit,
   enterNinoAndSubmit,
   enterDateOfBirthAndSubmit,
-  enterCardAddressAndSubmit
+  enterCardAddressAndSubmit,
+  enterPhoneNumberAndSubmit
 } = require('./common-steps')
 const { formatDateForDisplayFromDate } = require('../../../web/routes/application/common/formatters')
 
@@ -30,6 +31,7 @@ When(/^I complete the application with valid details that contains malicious inp
   await enterNameAndSubmit('<script>window.alert(\'Boo\')</script>', LAST_NAME)
   await enterNinoAndSubmit()
   await enterCardAddressAndSubmit()
+  await enterPhoneNumberAndSubmit()
 })
 
 When(/^I complete the application with valid details for an applicant with no second line of address$/, async function () {
@@ -38,6 +40,7 @@ When(/^I complete the application with valid details for an applicant with no se
   await enterNameAndSubmit()
   await enterNinoAndSubmit()
   await enterCardAddressAndSubmit(ADDRESS_LINE_1, '', TOWN, POSTCODE)
+  await enterPhoneNumberAndSubmit()
 })
 
 When(/^I choose to change my answer to are you pregnant$/, async function () {
@@ -52,6 +55,7 @@ Then(/^the check details page contains all data entered for a pregnant woman$/, 
   assertAreYouPregnantValueShown(tableContents, YES)
   assertDueDateShownInSixMonths(tableContents)
   assertFullAddressShown(tableContents)
+  // TODO DW HTBHF-1545 assert mobile number is shown
 })
 
 Then(/^the check details page contains all data entered for a woman who is not pregnant$/, async function () {
@@ -62,6 +66,7 @@ Then(/^the check details page contains all data entered for a woman who is not p
   assertAreYouPregnantValueShown(tableContents, NO)
   assertNoValueForField(tableContents, 'Baby\'s due date')
   assertFullAddressShown(tableContents)
+  // TODO DW HTBHF-1545 assert mobile number is shown
 })
 
 Then(/^the check details page contains all data entered for an applicant with no second line of address$/, async function () {
@@ -72,6 +77,7 @@ Then(/^the check details page contains all data entered for an applicant with no
   assertAreYouPregnantValueShown(tableContents, NO)
   assertNoValueForField(tableContents, 'Baby\'s due date')
   assertAddressShownWithNoSecondLine(tableContents)
+  // TODO DW HTBHF-1545 assert mobile number is shown
 })
 
 Then(/^all page content is present on the check details page$/, async function () {

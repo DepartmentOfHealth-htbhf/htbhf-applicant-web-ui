@@ -3,13 +3,15 @@ const { enterName } = require('./enter-name')
 const { enterDob } = require('./enter-dob')
 const { areYouPregnant } = require('./are-you-pregnant')
 const { cardAddress } = require('./card-address')
+const { phoneNumber } = require('./phone-number')
 
 const steps = [
   enterDob,
   areYouPregnant,
   enterName,
   enterNino,
-  cardAddress
+  cardAddress,
+  phoneNumber
 ]
 
 module.exports = { steps }

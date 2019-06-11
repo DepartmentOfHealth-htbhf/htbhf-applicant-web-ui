@@ -1,7 +1,6 @@
 const { join, filter, compose } = require('ramda')
 const { validate } = require('./validate')
 const { sanitize } = require('./sanitize')
-const { CHECK_URL } = require('../common/constants')
 const { notIsNilOrEmpty } = require('../../../../common/predicates')
 
 const pageContent = ({ translate }) => ({
@@ -31,7 +30,7 @@ const contentSummary = (req) => ({
 
 const cardAddress = {
   path: '/card-address',
-  next: CHECK_URL,
+  next: '/phone-number',
   template: 'card-address',
   pageContent,
   validate,
