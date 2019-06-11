@@ -1,3 +1,5 @@
+// TODO DW HTBHF-1544 add in phone number validation and sanitization
+
 const pageContent = ({ translate }) => ({
   title: translate('phoneNumber.title'),
   heading: translate('phoneNumber.heading'),
