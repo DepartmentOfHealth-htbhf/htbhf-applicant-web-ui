@@ -46,6 +46,13 @@
     "formDescription": "This is the address you would like your prepaid card to be sent to. It does not have to be your home address.",
     "summaryKey": "Address"
   },
+  "phoneNumber": {
+    "title": "What's your mobile telephone number?",
+    "heading": "What's your mobile telephone number?",
+    "formDescription": "This must be the same number you use for any benefits you claim.",
+    "phoneNumberLabel": "UK mobile number",
+    "summaryKey": "Mobile telephone number"
+  },
   "check": {
     "title": "Check your answers before sending your application",
     "heading": "Check your answers before sending your application",

@@ -1,0 +1,32 @@
+{% extends "templates/form.njk" %}
+{% from "input/macro.njk" import govukInput %}
+{% from "fieldset/macro.njk" import govukFieldset %}
+
+{% block formContent %}
+
+  {% call govukFieldset({
+    legend: {
+      text: heading,
+      classes: "govuk-fieldset__legend--xl",
+      isPageHeading: true
+    }
+  }) %}
+
+    <p class="govuk-body">{{ formDescription }}</p>
+
+    {{ govukInput({
+      label: {
+        text: phoneNumberLabel
+      },
+      id: 'phone-number',
+      name: 'phoneNumber',
+      value: claim.phoneNumber,
+      errorMessage: errors | getErrorForField('phoneNumber'),
+      type: "tel",
+      autocomplete: "tel",
+      classes: "govuk-input--width-20"
+    }) }}
+
+  {% endcall %}
+
+{% endblock %}
