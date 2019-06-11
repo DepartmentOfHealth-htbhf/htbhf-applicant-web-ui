@@ -1,8 +1,6 @@
 /* eslint-disable no-unused-expressions */
 const { When, Then } = require('cucumber')
-const chai = require('chai')
-const { expect, assert } = chai
-chai.use(require('chai-string'))
+const { expect, assert } = require('chai')
 const Promise = require('bluebird')
 
 const { assertErrorHeaderTextPresent } = require('./common-steps')
@@ -117,7 +115,7 @@ async function assertAreYouPregnantErrorPresent () {
     const error = await pages.areYouPregnant.getAreYouPregnantFieldErrorText()
     const errorLinkText = await pages.areYouPregnant.getAreYouPregnantErrorLinkText()
 
-    expect(error).to.endsWith('Select yes or no')
+    expect(error).to.be.equal('Select yes or no')
     expect(errorLinkText).to.be.equal('Select yes or no')
   } catch (error) {
     assert.fail(`Unexpected error caught trying to assert are you pregnant error message is present - ${error}`)
@@ -129,7 +127,7 @@ async function assertExpectedDeliveryDateErrorPresent (expectedMessage) {
     const error = await pages.areYouPregnant.getExpectedDeliveryDateFieldErrorText()
     const errorLinkText = await pages.areYouPregnant.getExpectedDeliveryDateErrorLinkText()
 
-    expect(error).to.endsWith(expectedMessage)
+    expect(error).to.be.equal(expectedMessage)
     expect(errorLinkText).to.be.equal(expectedMessage)
   } catch (error) {
     assert.fail(`Unexpected error caught trying to assert expected delivery date error message is present - ${error}`)

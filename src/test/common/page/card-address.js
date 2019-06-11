@@ -70,22 +70,22 @@ class CardAddress extends SubmittablePage {
 
   async getPostcodeFieldErrorText () {
     const postcodeError = await this.findById(POSTCODE_ERROR_ID)
-    return postcodeError.getText()
+    return this.getVisibleTextFromFieldError(postcodeError)
   }
 
   async getAddressLine1FieldErrorText () {
     const addressLine1Error = await this.findById(ADDRESS_LINE_1_ERROR_ID)
-    return addressLine1Error.getText()
+    return this.getVisibleTextFromFieldError(addressLine1Error)
   }
 
   async getAddressLine2FieldErrorText () {
     const addressLine2Error = await this.findById(ADDRESS_LINE_2_ERROR_ID)
-    return addressLine2Error.getText()
+    return this.getVisibleTextFromFieldError(addressLine2Error)
   }
 
   async getTownOrCityFieldErrorText () {
     const townOrCityError = await this.findById(TOWN_OR_CITY_ERROR_ID)
-    return townOrCityError.getText()
+    return this.getVisibleTextFromFieldError(townOrCityError)
   }
 
   async getAddressLine1ErrorLinkText () {

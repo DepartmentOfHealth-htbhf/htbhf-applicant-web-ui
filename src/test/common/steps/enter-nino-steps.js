@@ -1,7 +1,5 @@
 const { When, Then } = require('cucumber')
-const chai = require('chai')
-const expect = chai.expect
-chai.use(require('chai-string'))
+const { expect } = require('chai')
 
 const pages = require('./pages')
 const { enterNinoAndSubmit, assertErrorHeaderTextPresent } = require('./common-steps')
@@ -23,7 +21,7 @@ Then(/^I am informed that the national insurance number is in the wrong format$/
   const fieldErrorMessage = await pages.enterNino.getNinoFieldErrorText()
   const linkErrorMessage = await pages.enterNino.getNinoLinkErrorText()
 
-  expect(fieldErrorMessage).to.endsWith('Enter a National Insurance number in the correct format')
+  expect(fieldErrorMessage).to.be.equal('Enter a National Insurance number in the correct format')
   expect(linkErrorMessage).to.be.equal('Enter a National Insurance number in the correct format')
 })
 

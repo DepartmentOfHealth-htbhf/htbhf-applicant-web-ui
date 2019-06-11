@@ -1,7 +1,5 @@
 const { When, Then } = require('cucumber')
-const chai = require('chai')
-const { expect, assert } = chai
-chai.use(require('chai-string'))
+const { expect, assert } = require('chai')
 
 const pages = require('./pages')
 const { enterNameAndSubmit, assertErrorHeaderTextPresent } = require('./common-steps')
@@ -57,7 +55,7 @@ async function assertFirstNameErrorFieldAndLink (expectedErrorMessage) {
     const errorFieldText = await pages.enterName.getFirstNameErrorFieldText()
     const errorLinkText = await pages.enterName.getFirstNameErrorLinkText()
 
-    expect(errorFieldText).to.endsWith(expectedErrorMessage)
+    expect(errorFieldText).to.be.equal(expectedErrorMessage)
     expect(errorLinkText).to.be.equal(expectedErrorMessage)
   } catch (error) {
     assert.fail(`Unexpected error caught trying to assert first name error message is present - ${error}`)
@@ -69,7 +67,7 @@ async function assertLastNameErrorFieldAndLink (expectedErrorMessage) {
     const errorFieldText = await pages.enterName.getLastNameErrorFieldText()
     const errorLinkText = await pages.enterName.getLastNameErrorLinkText()
 
-    expect(errorFieldText).to.endsWith(expectedErrorMessage)
+    expect(errorFieldText).to.be.equal(expectedErrorMessage)
     expect(errorLinkText).to.be.equal(expectedErrorMessage)
   } catch (error) {
     assert.fail(`Unexpected error caught trying to assert last name error message is present - ${error}`)
