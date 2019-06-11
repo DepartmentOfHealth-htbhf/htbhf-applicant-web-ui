@@ -1,0 +1,30 @@
+{% extends "templates/form.njk" %}
+{% from "radios/macro.njk" import govukRadios %}
+
+{% block formContent %}
+    {{ govukRadios({
+      classes: "govuk-radios--inline",
+      id: "do-you-live-in-scotland",
+      name: "doYouLiveInScotland",
+      fieldset: {
+        legend: {
+          text: heading,
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--xl"
+        }
+      },
+      errorMessage: errors | getErrorForField('doYouLiveInScotland'),
+      items: [
+        {
+          value: "yes",
+          text: yes,
+          checked : claim.doYouLiveInScotland === "yes"
+        },
+        {
+          value: "no",
+          text: no,
+          checked : claim.doYouLiveInScotland === "no"
+        }
+      ]
+    }) }}
+{% endblock %}
