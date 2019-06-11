@@ -81,7 +81,7 @@ class Pages {
   }
 
   async startApplication () {
-    this.enterDOB.open(this.url)
+    await this.enterDOB.open(this.url)
   }
 }
 
