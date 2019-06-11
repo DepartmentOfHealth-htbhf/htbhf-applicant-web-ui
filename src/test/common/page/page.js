@@ -188,6 +188,16 @@ class Page {
   async isBackLinkPresent () {
     return this.isElementWithClassPresent(BACK_LINK_CLASSNAME)
   }
+
+  /**
+   * Gets the visible text from a field error element. i.e. an element with class 'govuk-error-message'
+   */
+  async getVisibleTextFromFieldError (errorElement) {
+    const fullErrorText = await errorElement.getText()
+    const hiddenError = await errorElement.findElement(webdriver.By.className('govuk-visually-hidden'))
+    const hiddenErrorText = await hiddenError.getText()
+    return fullErrorText.replace(hiddenErrorText, '').trim()
+  }
 }
 
 module.exports = Page
