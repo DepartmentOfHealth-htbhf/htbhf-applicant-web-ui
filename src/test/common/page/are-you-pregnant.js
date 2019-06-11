@@ -2,7 +2,11 @@
 const webdriver = require('selenium-webdriver')
 
 const SubmittablePage = require('./submittable-page')
-const PAGE_TITLE = 'GOV.UK - Are you pregnant?'
+
+const PAGE_TITLES = {
+  en: 'GOV.UK - Are you pregnant?',
+  cy: 'GOV.UK - Eget felis eget nunc lobortis mattis?'
+}
 
 const ARE_YOU_PREGNANT_ERROR_LINK_CSS = 'a[href="#are-you-pregnant-error"]'
 const ARE_YOU_PREGNANT_FIELD_ERROR_ID = 'areYouPregnant-error'
@@ -21,8 +25,8 @@ class AreYouPregnant extends SubmittablePage {
     return 'are you pregnant'
   }
 
-  async waitForPageLoad () {
-    return super.waitForPageWithTitle(PAGE_TITLE)
+  async waitForPageLoad (lang = 'en') {
+    return super.waitForPageWithTitle(PAGE_TITLES[lang])
   }
 
   async selectRadioButton (option) {
