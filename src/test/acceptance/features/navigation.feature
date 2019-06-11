@@ -14,6 +14,7 @@ Feature: Application process navigation is controlled
       | enter date of birth      |
       | are you pregnant         |
       | card address             |
+      | phone number             |
       | check details            |
       | confirmation             |
 
@@ -35,6 +36,7 @@ Feature: Application process navigation is controlled
       | enter date of birth      |
       | are you pregnant         |
       | card address             |
+      | phone number             |
 
   Scenario Outline: Navigation is not allowed past the current page in the flow
     Given I have entered my details up to the <application page> page
@@ -58,3 +60,4 @@ Feature: Application process navigation is controlled
       | enter date of birth      |
       | are you pregnant         |
       | card address             |
+      | phone number             |
