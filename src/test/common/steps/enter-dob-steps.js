@@ -1,5 +1,7 @@
 const { When, Then } = require('cucumber')
-const { expect, assert } = require('chai')
+const chai = require('chai')
+const { expect, assert } = chai
+chai.use(require('chai-string'))
 
 const pages = require('./pages')
 const { enterDateOfBirthAndSubmit, assertErrorHeaderTextPresent } = require('./common-steps')
@@ -27,7 +29,7 @@ async function assertDateOfBirthErrorPresent (expectedErrorMessage) {
     const fieldError = await pages.enterDOB.getDateOfBirthFieldErrorText()
     const errorLink = await pages.enterDOB.getDateOfBirthErrorLinkText()
 
-    expect(fieldError).to.be.equal(expectedErrorMessage)
+    expect(fieldError).to.endsWith(expectedErrorMessage)
     expect(errorLink).to.be.equal(expectedErrorMessage)
   } catch (error) {
     assert.fail(`Unexpected error caught trying to assert date of birth error message is present - ${error}`)

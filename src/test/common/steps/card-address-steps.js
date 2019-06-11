@@ -87,7 +87,7 @@ const assertAddressLine1ErrorFieldAndLink = async (message) => {
   const errorFieldText = await pages.cardAddress.getAddressLine1FieldErrorText()
   const errorLinkText = await pages.cardAddress.getAddressLine1ErrorLinkText()
 
-  expect(errorFieldText).to.be.equal(message)
+  expect(errorFieldText).to.endsWith(message)
   expect(errorLinkText).to.be.equal(message)
 }
 
@@ -95,7 +95,7 @@ const assertAddressLine2ErrorFieldAndLink = async (message) => {
   const errorFieldText = await pages.cardAddress.getAddressLine2FieldErrorText()
   const errorLinkText = await pages.cardAddress.getAddressLine2ErrorLinkText()
 
-  expect(errorFieldText).to.be.equal(message)
+  expect(errorFieldText).to.endsWith(message)
   expect(errorLinkText).to.be.equal(message)
 }
 
@@ -103,7 +103,7 @@ const assertTownOrCityErrorFieldAndLink = async (message) => {
   const errorFieldText = await pages.cardAddress.getTownOrCityFieldErrorText()
   const errorLinkText = await pages.cardAddress.getTownOrCityErrorLinkText()
 
-  expect(errorFieldText).to.be.equal(message)
+  expect(errorFieldText).to.endsWith(message)
   expect(errorLinkText).to.be.equal(message)
 }
 
@@ -111,6 +111,6 @@ const assertPostcodeErrorFieldAndLink = async (message) => {
   const errorFieldText = await pages.cardAddress.getPostcodeFieldErrorText()
   const errorLinkText = await pages.cardAddress.getPostcodeErrorLinkText()
 
-  expect(errorFieldText).to.be.equal(message)
+  expect(errorFieldText).to.endsWith(message)
   expect(errorLinkText).to.be.equal(message)
 }
