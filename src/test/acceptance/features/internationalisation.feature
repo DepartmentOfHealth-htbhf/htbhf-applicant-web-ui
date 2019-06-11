@@ -4,10 +4,10 @@ Feature: Translations
   I want to view the site in my preferred language
 
   Scenario:
-    When I have entered my details up to the enter national insurance page with Welsh language selected
-    Then the enter national insurance page is in Welsh
+    When I have completed the first step of the application with Welsh language selected
+    Then the next page is displayed in Welsh
 
   Scenario:
-    Given I have entered my details up to the enter national insurance page with Welsh language selected
-    When I enter a valid national insurance number
-    Then I am on the next page which is displayed in Welsh
+    Given I have completed the first step of the application with Welsh language selected
+    When I succesfully complete the next step
+    Then the next page continues to be displayed in Welsh

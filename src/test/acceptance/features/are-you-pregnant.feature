@@ -20,7 +20,7 @@ Feature: Are you pregnant?
   Scenario: Select the No option
     When I select the No option
     And I click continue
-    Then I am shown the card address page
+    Then I am shown the enter name page
 
   Scenario: Select Yes and the expected date of delivery instructional text is shown
     When I select the Yes option
@@ -30,7 +30,7 @@ Feature: Are you pregnant?
     When I select the Yes option
     And I enter a valid expected delivery date
     And I click continue
-    Then I am shown the card address page
+    Then I am shown the enter name page
 
   Scenario: Select the Yes option and do not enter a date
     When I select the Yes option

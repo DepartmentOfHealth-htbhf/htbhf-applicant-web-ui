@@ -3,10 +3,10 @@ Feature: Application process navigation is controlled
   As a potential claimant
   I want to make sure that only the correct application flow can be used
 
-  Scenario Outline: Enter name page is always the first page
+  Scenario Outline: Enter date of birth page is always the first page
     Given I am starting a new application
     When I navigate to the <page> page
-    Then I am shown the enter name page
+    Then I am shown the enter date of birth page
     Examples:
       | page                     |
       | enter name               |

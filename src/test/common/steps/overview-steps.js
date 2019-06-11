@@ -13,3 +13,7 @@ When(/^I select to start the process$/, async function () {
 Then(/^I am shown the overview page$/, async function () {
   await pages.overview.waitForPageLoad()
 })
+
+Then(/^I am shown the first page of the application$/, async function () {
+  await pages.enterDOB.waitForPageLoad()
+})
