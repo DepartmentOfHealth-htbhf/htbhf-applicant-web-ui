@@ -58,7 +58,7 @@ class EnterName extends SubmittablePage {
 
   async getFirstNameErrorFieldText () {
     const fieldError = await this.findByCSS(FIRST_NAME_ERROR_SELECTOR)
-    return fieldError.getText()
+    return this.getVisibleTextFromFieldError(fieldError)
   }
 
   async getFirstNameErrorLinkText () {
@@ -68,7 +68,7 @@ class EnterName extends SubmittablePage {
 
   async getLastNameErrorFieldText () {
     const fieldError = await this.findByCSS(LAST_NAME_ERROR_SELECTOR)
-    return fieldError.getText()
+    return this.getVisibleTextFromFieldError(fieldError)
   }
 
   async getLastNameErrorLinkText () {

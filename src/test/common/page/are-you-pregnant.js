@@ -101,7 +101,7 @@ class AreYouPregnant extends SubmittablePage {
 
   async getAreYouPregnantFieldErrorText () {
     const error = await this.findById(ARE_YOU_PREGNANT_FIELD_ERROR_ID)
-    return error.getText()
+    return this.getVisibleTextFromFieldError(error)
   }
 
   async getAreYouPregnantErrorLinkText () {
@@ -111,7 +111,7 @@ class AreYouPregnant extends SubmittablePage {
 
   async getExpectedDeliveryDateFieldErrorText () {
     const error = await this.findById(EXPECTED_DELIVERY_DATE_FIELD_ERROR_ID)
-    return error.getText()
+    return this.getVisibleTextFromFieldError(error)
   }
 
   async getExpectedDeliveryDateErrorLinkText () {
