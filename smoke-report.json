@@ -24,7 +24,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 27000000
+              "duration": 26000000
             }
           },
           {
@@ -37,7 +37,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1723000000
+              "duration": 1746000000
             }
           },
           {
@@ -50,20 +50,20 @@
             },
             "result": {
               "status": "passed",
-              "duration": 376000000
+              "duration": 503000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
             "line": 9,
-            "name": "I am shown the enter name page",
+            "name": "I am shown the first page of the application",
             "match": {
-              "location": "src/test/common/steps/enter-name-steps.js:49"
+              "location": "src/test/common/steps/overview-steps.js:17"
             },
             "result": {
               "status": "passed",
-              "duration": 6000000
+              "duration": 5000000
             }
           },
           {
