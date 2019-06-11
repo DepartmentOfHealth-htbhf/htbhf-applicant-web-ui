@@ -196,7 +196,7 @@ class Page {
     const fullErrorText = await errorElement.getText()
     const hiddenError = await errorElement.findElement(webdriver.By.className('govuk-visually-hidden'))
     const hiddenErrorText = await hiddenError.getText()
-    return fullErrorText.replace(hiddenErrorText, '').replace('\n', '').trim()
+    return fullErrorText.replace(hiddenErrorText, '').trim()
   }
 }
 
