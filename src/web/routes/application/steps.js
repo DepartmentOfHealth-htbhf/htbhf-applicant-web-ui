@@ -6,10 +6,10 @@ const { cardAddress } = require('./card-address')
 const { phoneNumber } = require('./phone-number')
 
 const steps = [
-  enterName,
-  enterNino,
   enterDob,
   areYouPregnant,
+  enterName,
+  enterNino,
   cardAddress,
   phoneNumber
 ]
