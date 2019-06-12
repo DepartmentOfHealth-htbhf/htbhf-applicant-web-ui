@@ -1,17 +1,25 @@
 const { check } = require('express-validator/check')
-const { translateValidationMessage } = require('../common/translate-validation-message')
-
-const validatePhoneNumber = (parsedPhoneNumber) => {
-  return parsedPhoneNumber.isValid()
-}
+const { parsePhoneNumberFromString } = require('libphonenumber-js')
 
 // TODO DW HTBHF-1564 Update validation messages (awaiting them from UX)
-const validate = [
-  check('parsedPhoneNumber').not().isEmpty()
-    .withMessage(translateValidationMessage('validation:missingPhoneNumber')),
+const validatePhoneNumber = (phoneNumber, { req }) => {
+  if (!phoneNumber) {
+    throw new Error(req.t('validation:missingPhoneNumber'))
+  }
 
-  check('parsedPhoneNumber').custom(validatePhoneNumber)
-    .withMessage(translateValidationMessage('validation:phoneNumberInvalid'))
+  const parsedPhoneNumber = parsePhoneNumberFromString(phoneNumber, 'GB')
+
+  if (parsedPhoneNumber) {
+    if (parsedPhoneNumber.isValid() && phoneNumber.match(/^\+?[\d()\- ]+$/)) {
+      return true
+    }
+  }
+
+  throw new Error(req.t('validation:phoneNumberInvalid'))
+}
+
+const validate = [
+  check('phoneNumber').custom(validatePhoneNumber)
 ]
 
 module.exports = {

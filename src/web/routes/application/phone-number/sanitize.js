@@ -1,11 +1,9 @@
 const { parsePhoneNumberFromString } = require('libphonenumber-js')
 
+// validation has already happened so no need for empty/null checks
 function getPhoneNumber (phoneNumber) {
-  if (!phoneNumber) {
-    return undefined
-  }
-
-  return parsePhoneNumberFromString(phoneNumber, 'GB')
+  const parsedNumber = parsePhoneNumberFromString(phoneNumber, 'GB')
+  return parsedNumber.number
 }
 
 const sanitize = (req, res, next) => {

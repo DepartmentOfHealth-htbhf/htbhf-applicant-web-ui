@@ -37,11 +37,7 @@ test('create claim body', (t) => {
     townOrCity: 'London',
     postcode: 'aa1 1ab',
     phoneNumber: '07700 900000',
-    parsedPhoneNumber: {
-      countryCallingCode: '44',
-      nationalNumber: '7700900645',
-      number: '+447700900645'
-    }
+    parsedPhoneNumber: '+447700900645'
   }
 
   const request = {
@@ -94,11 +90,7 @@ test('create claim body without expectedDeliveryDate when not pregnant', (t) => 
     townOrCity: 'London',
     postcode: 'aa1 1ab',
     phoneNumber: '07700 900000',
-    parsedPhoneNumber: {
-      countryCallingCode: '44',
-      nationalNumber: '7700900645',
-      number: '+447700900645'
-    }
+    parsedPhoneNumber: '+447700900645'
   }
 
   const request = {

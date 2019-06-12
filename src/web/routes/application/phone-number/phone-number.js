@@ -18,8 +18,8 @@ const phoneNumber = {
   path: '/phone-number',
   next: '/check',
   template: 'phone-number',
-  sanitize,
   validate,
+  sanitize,
   pageContent,
   contentSummary
 }
