@@ -15,7 +15,7 @@ Feature: Are you pregnant?
   Scenario: Do not select an option
     When I do not select an option
     And I click continue
-    Then I am informed that I need to select an option
+    Then I am informed that I need to select an option for are you pregnant
 
   Scenario: Select the No option
     When I select the No option

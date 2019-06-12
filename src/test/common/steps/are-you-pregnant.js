@@ -4,7 +4,7 @@ const { expect, assert } = require('chai')
 const Promise = require('bluebird')
 const { YES_LABEL, NO_LABEL } = require('./constants')
 
-const { assertErrorHeaderTextPresent } = require('./common-steps')
+const { assertErrorHeaderTextPresent, assertFieldErrorAndLinkTextPresentAndCorrect } = require('./common-steps')
 
 const pages = require('./pages')
 
@@ -87,7 +87,7 @@ Then(/^I am shown the are you pregnant page$/, async function () {
   await pages.areYouPregnant.waitForPageLoad()
 })
 
-Then(/^I am informed that I need to select an option$/, async function () {
+Then(/^I am informed that I need to select an option for are you pregnant$/, async function () {
   await assertErrorHeaderTextPresent(pages.areYouPregnant)
   await assertAreYouPregnantErrorPresent()
 })
@@ -107,26 +107,16 @@ Then(/^I am informed that the date is too far in the future$/, async function ()
   await assertExpectedDeliveryDateErrorPresent('If you have children under the age of 4, answer ‘no’ to this question to continue with this application on their behalf.')
 })
 
-async function assertAreYouPregnantErrorPresent () {
-  try {
-    const error = await pages.areYouPregnant.getAreYouPregnantFieldErrorText()
-    const errorLinkText = await pages.areYouPregnant.getAreYouPregnantErrorLinkText()
-
-    expect(error).to.be.equal('Select yes or no')
-    expect(errorLinkText).to.be.equal('Select yes or no')
-  } catch (error) {
-    assert.fail(`Unexpected error caught trying to assert are you pregnant error message is present - ${error}`)
-  }
+async function assertAreYouPregnantErrorPresent (expectedErrorMessage = 'Select yes or no') {
+  await assertFieldErrorAndLinkTextPresentAndCorrect(
+    pages.areYouPregnant.getAreYouPregnantFieldErrorId(),
+    pages.areYouPregnant.getAreYouPregnantErrorLinkCss(),
+    expectedErrorMessage)
 }
 
-async function assertExpectedDeliveryDateErrorPresent (expectedMessage) {
-  try {
-    const error = await pages.areYouPregnant.getExpectedDeliveryDateFieldErrorText()
-    const errorLinkText = await pages.areYouPregnant.getExpectedDeliveryDateErrorLinkText()
-
-    expect(error).to.be.equal(expectedMessage)
-    expect(errorLinkText).to.be.equal(expectedMessage)
-  } catch (error) {
-    assert.fail(`Unexpected error caught trying to assert expected delivery date error message is present - ${error}`)
-  }
+async function assertExpectedDeliveryDateErrorPresent (expectedErrorMessage) {
+  await assertFieldErrorAndLinkTextPresentAndCorrect(
+    pages.areYouPregnant.getExpectedDeliveryDateFieldErrorId(),
+    pages.areYouPregnant.getExpectedDeliveryDateErrorLinkCss(),
+    expectedErrorMessage)
 }

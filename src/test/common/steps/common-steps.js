@@ -101,6 +101,22 @@ async function assertErrorHeaderTextPresent (page, message = 'There is a problem
   }
 }
 
+// TODO - New PR, use this in all the other step pages as well as are you pregnant and do you live in Scotland
+async function assertFieldErrorAndLinkTextPresentAndCorrect (fieldErrorId, errorLinkCss, expectedErrorMessage) {
+  try {
+    const fieldError = await pages.genericPage.findById(fieldErrorId)
+    const fieldErrorText = await pages.genericPage.getVisibleTextFromFieldError(fieldError)
+
+    const errorLink = await pages.genericPage.findByCSS(errorLinkCss)
+    const errorLinkText = await errorLink.getText()
+
+    expect(fieldErrorText).to.be.equal(expectedErrorMessage)
+    expect(errorLinkText).to.be.equal(expectedErrorMessage)
+  } catch (error) {
+    assert.fail(`Unexpected error caught trying to assert field error is present - ${error}`)
+  }
+}
+
 async function completeTheApplicationAsAPregnantWoman () {
   await enterDoYouLiveInScotlandNoAndSubmit()
   await enterDateOfBirthAndSubmit()
@@ -178,5 +194,6 @@ module.exports = {
   setupWiremockUpdatedClaimMapping,
   deleteWiremockMappings,
   getBodyOfLastRequestToClaimService,
-  enterDoYouLiveInScotlandNoAndSubmit
+  enterDoYouLiveInScotlandNoAndSubmit,
+  assertFieldErrorAndLinkTextPresentAndCorrect
 }

@@ -1,3 +1,5 @@
+const { validate } = require('./validate')
+
 const contentSummary = (req) => ({
   key: req.t('doYouLiveInScotland.summaryKey'),
   value: req.t(req.session.claim.doYouLiveInScotland)
@@ -16,7 +18,8 @@ const doYouLiveInScotland = {
   next: '/enter-dob',
   template: 'do-you-live-in-scotland',
   pageContent,
-  contentSummary
+  contentSummary,
+  validate
 }
 
 module.exports = {
