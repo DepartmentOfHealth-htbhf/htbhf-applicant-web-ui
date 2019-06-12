@@ -2,21 +2,18 @@
 const { When, Then } = require('cucumber')
 const { expect, assert } = require('chai')
 const Promise = require('bluebird')
+const { YES_LABEL, NO_LABEL } = require('./constants')
 
 const { assertErrorHeaderTextPresent } = require('./common-steps')
 
 const pages = require('./pages')
-const YES_LABEL = 'Yes'
-const NO_LABEL = 'No'
-const YES_VALUE = 'yes'
-const NO_VALUE = 'no'
 
 When(/^I select the No option$/, async function () {
-  await pages.areYouPregnant.selectRadioButton(NO_VALUE)
+  await pages.areYouPregnant.selectNoRadioButton()
 })
 
 When(/^I select the Yes option$/, async function () {
-  await pages.areYouPregnant.selectRadioButton(YES_VALUE)
+  await pages.areYouPregnant.selectYesRadioButton()
 })
 
 When(/^I enter a valid expected delivery date$/, async function () {
