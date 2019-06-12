@@ -53,6 +53,7 @@ const TOWN = 'Springfield'
 const POSTCODE = 'AA11BB'
 const FULL_ADDRESS = `${ADDRESS_LINE_1}\n${ADDRESS_LINE_2}\n${TOWN}\n${POSTCODE}`
 const FULL_ADDRESS_NO_LINE_2 = `${ADDRESS_LINE_1}\n${TOWN}\n${POSTCODE}`
+const PHONE_NUMBER = '07123456789'
 
 module.exports = {
   LONG_STRING,
@@ -72,5 +73,6 @@ module.exports = {
   TOWN,
   POSTCODE,
   FULL_ADDRESS,
-  FULL_ADDRESS_NO_LINE_2
+  FULL_ADDRESS_NO_LINE_2,
+  PHONE_NUMBER
 }

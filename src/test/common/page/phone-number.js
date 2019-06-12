@@ -22,6 +22,15 @@ class PhoneNumber extends SubmittablePage {
   getPageName () {
     return 'phone number'
   }
+
+  async enterPhoneNumber (phoneNumber) {
+    const phoneNumberField = await this.getPhoneNumberField()
+    await phoneNumberField.sendKeys(phoneNumber)
+  }
+
+  async getPhoneNumberField () {
+    return this.findById('phone-number')
+  }
 }
 
 module.exports = PhoneNumber
