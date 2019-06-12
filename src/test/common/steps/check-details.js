@@ -10,8 +10,8 @@ const {
   POSTCODE,
   FULL_ADDRESS,
   FULL_ADDRESS_NO_LINE_2,
-  YES,
-  NO
+  YES_LABEL,
+  NO_LABEL
 } = require('./constants')
 
 const pages = require('./pages')
@@ -21,11 +21,13 @@ const {
   enterNinoAndSubmit,
   enterDateOfBirthAndSubmit,
   enterCardAddressAndSubmit,
-  enterPhoneNumberAndSubmit
+  enterPhoneNumberAndSubmit,
+  enterDoYouLiveInScotlandNoAndSubmit
 } = require('./common-steps')
 const { formatDateForDisplayFromDate } = require('../../../web/routes/application/common/formatters')
 
 When(/^I complete the application with valid details that contains malicious input$/, async function () {
+  await enterDoYouLiveInScotlandNoAndSubmit()
   await enterDateOfBirthAndSubmit()
   await selectNoOnPregnancyPage()
   await enterNameAndSubmit('<script>window.alert(\'Boo\')</script>', LAST_NAME)
@@ -35,6 +37,7 @@ When(/^I complete the application with valid details that contains malicious inp
 })
 
 When(/^I complete the application with valid details for an applicant with no second line of address$/, async function () {
+  await enterDoYouLiveInScotlandNoAndSubmit()
   await enterDateOfBirthAndSubmit()
   await selectNoOnPregnancyPage()
   await enterNameAndSubmit()
@@ -52,7 +55,7 @@ Then(/^the check details page contains all data entered for a pregnant woman$/, 
   assertNameShown(tableContents)
   assertNinoShown(tableContents)
   assertDobShown(tableContents)
-  assertAreYouPregnantValueShown(tableContents, YES)
+  assertAreYouPregnantValueShown(tableContents, YES_LABEL)
   assertDueDateShownInSixMonths(tableContents)
   assertFullAddressShown(tableContents)
   // TODO DW HTBHF-1545 assert mobile number is shown
@@ -63,7 +66,7 @@ Then(/^the check details page contains all data entered for a woman who is not p
   assertNameShown(tableContents)
   assertNinoShown(tableContents)
   assertDobShown(tableContents)
-  assertAreYouPregnantValueShown(tableContents, NO)
+  assertAreYouPregnantValueShown(tableContents, NO_LABEL)
   assertNoValueForField(tableContents, 'Baby\'s due date')
   assertFullAddressShown(tableContents)
   // TODO DW HTBHF-1545 assert mobile number is shown
@@ -74,7 +77,7 @@ Then(/^the check details page contains all data entered for an applicant with no
   assertNameShown(tableContents)
   assertNinoShown(tableContents)
   assertDobShown(tableContents)
-  assertAreYouPregnantValueShown(tableContents, NO)
+  assertAreYouPregnantValueShown(tableContents, NO_LABEL)
   assertNoValueForField(tableContents, 'Baby\'s due date')
   assertAddressShownWithNoSecondLine(tableContents)
   // TODO DW HTBHF-1545 assert mobile number is shown

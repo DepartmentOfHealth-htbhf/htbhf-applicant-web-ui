@@ -9,5 +9,5 @@ Feature: Translations
 
   Scenario:
     Given I have completed the first step of the application with Welsh language selected
-    When I succesfully complete the next step
+    When I successfully complete the next step
     Then the next page continues to be displayed in Welsh

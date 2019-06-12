@@ -3,15 +3,16 @@ Feature: Application process navigation is controlled
   As a potential claimant
   I want to make sure that only the correct application flow can be used
 
-  Scenario Outline: Enter date of birth page is always the first page
+  Scenario Outline: Do you live in Scotland page is always the first page
     Given I am starting a new application
     When I navigate to the <page> page
-    Then I am shown the enter date of birth page
+    Then I am shown the do you live in scotland page
     Examples:
       | page                     |
       | enter name               |
       | enter national insurance |
       | enter date of birth      |
+      | do you live in scotland  |
       | are you pregnant         |
       | card address             |
       | phone number             |
@@ -32,6 +33,7 @@ Feature: Application process navigation is controlled
     Examples:
       | page                     |
       | enter name               |
+      | do you live in scotland  |
       | enter national insurance |
       | enter date of birth      |
       | are you pregnant         |
@@ -48,7 +50,6 @@ Feature: Application process navigation is controlled
       | enter date of birth | check details   |
       | are you pregnant    | confirmation    |
 
-
   Scenario Outline: Navigation to previous steps in an unsubmitted application flow is allowed
     Given I have entered my details up to the check details page
     When I navigate to the <page> page
@@ -58,6 +59,7 @@ Feature: Application process navigation is controlled
       | enter name               |
       | enter national insurance |
       | enter date of birth      |
+      | do you live in scotland  |
       | are you pregnant         |
       | card address             |
       | phone number             |
