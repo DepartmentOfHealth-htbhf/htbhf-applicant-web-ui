@@ -51,7 +51,10 @@
     "heading": "What's your mobile telephone number?",
     "formDescription": "This must be the same number you use for any benefits you claim.",
     "phoneNumberLabel": "UK mobile number",
-    "summaryKey": "Mobile telephone number"
+    "summaryKey": "Mobile telephone number",
+    "detail": {
+      "text": "To prevent fraud and contact you about your application if necessary."
+    }
   },
   "check": {
     "title": "Check your answers before sending your application",
@@ -98,5 +101,6 @@
   },
   "yes": "Yes",
   "no": "No",
-  "back": "Back"
+  "back": "Back",
+  "whyDoWeNeedThis": "Why do we need this?"
 }

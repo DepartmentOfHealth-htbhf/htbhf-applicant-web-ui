@@ -1,9 +1,16 @@
 const test = require('tape')
-const { validatePhoneNumber } = require('./validate')
+const safeRegex = require('safe-regex')
+
+const { validatePhoneNumber, PHONE_NUMBER_REGEX } = require('./validate')
 
 const req = {
   t: (string) => string
 }
+
+test('phone number regex is safe', (t) => {
+  t.equal(safeRegex(PHONE_NUMBER_REGEX), true)
+  t.end()
+})
 
 test('missing phone number - empty string', (t) => {
   const invalidPhoneNumber = ''
@@ -35,8 +42,8 @@ test('invalid phone number - not valid uk number', (t) => {
   t.end()
 })
 
-test('invalid phone number - non uk area area code', (t) => {
-  const invalidPhoneNumber = '+0017123456789'
+test('invalid phone number - non uk area code', (t) => {
+  const invalidPhoneNumber = '+937123456789'
 
   t.throws(validatePhoneNumber.bind(null, invalidPhoneNumber, { req }), /validation:phoneNumberInvalid/, 'should throw an error for invalid number')
   t.end()
@@ -105,6 +112,15 @@ test('valid phone number - braces', (t) => {
 
 test('valid phone number - leading 0044', (t) => {
   const validPhoneNumber = '00447123456789'
+
+  const result = validatePhoneNumber(validPhoneNumber, { req })
+
+  t.equal(result, true, 'it should be true')
+  t.end()
+})
+
+test('valid phone number - geographic number', (t) => {
+  const validPhoneNumber = '01171234567'
 
   const result = validatePhoneNumber(validPhoneNumber, { req })
 
