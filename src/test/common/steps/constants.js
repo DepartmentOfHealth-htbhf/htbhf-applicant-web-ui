@@ -1,8 +1,8 @@
 // Create a string 501 characters long
 const LONG_STRING = new Array(502).join('A')
 const BLANK_STRING = ''
-const YES = 'Yes'
-const NO = 'No'
+const YES_LABEL = 'Yes'
+const NO_LABEL = 'No'
 
 function randomCharFromChars (chars) {
   return chars.charAt(Math.floor(Math.random() * chars.length))
@@ -58,8 +58,8 @@ const PHONE_NUMBER = '07123456789'
 module.exports = {
   LONG_STRING,
   BLANK_STRING,
-  YES,
-  NO,
+  YES_LABEL,
+  NO_LABEL,
   VALID_ELIGIBLE_NINO,
   DAY,
   MONTH,

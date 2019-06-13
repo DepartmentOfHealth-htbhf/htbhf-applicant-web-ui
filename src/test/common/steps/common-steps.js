@@ -12,6 +12,15 @@ const testsRequireApiMocks = () => TESTS !== COMPATIBILITY_TESTS && TESTS !== IN
 
 const { VALID_ELIGIBLE_NINO, FIRST_NAME, LAST_NAME, DAY, MONTH, YEAR, ADDRESS_LINE_1, ADDRESS_LINE_2, TOWN, POSTCODE, CLAIMS_ENDPOINT, PHONE_NUMBER } = require('./constants')
 
+async function enterDoYouLiveInScotlandNoAndSubmit () {
+  try {
+    await pages.doYouLiveInScotland.selectNoRadioButton()
+    await pages.doYouLiveInScotland.submitForm()
+  } catch (error) {
+    assert.fail(`Unexpected error caught trying to select No on the Do You Live In Scotland page and submit - ${error}`)
+  }
+}
+
 async function enterNameAndSubmit (firstName = FIRST_NAME, lastName = LAST_NAME) {
   try {
     await pages.enterName.enterFirstName(firstName)
@@ -44,7 +53,7 @@ async function enterDateOfBirthAndSubmit (day = DAY, month = MONTH, year = YEAR)
 
 async function selectYesOnPregnancyPage () {
   try {
-    await pages.areYouPregnant.selectRadioButton('yes')
+    await pages.areYouPregnant.selectYesRadioButton()
     await pages.areYouPregnant.enterValidExpectedDeliveryDate()
     await pages.areYouPregnant.submitForm()
   } catch (error) {
@@ -54,7 +63,7 @@ async function selectYesOnPregnancyPage () {
 
 async function selectNoOnPregnancyPage () {
   try {
-    await pages.areYouPregnant.selectRadioButton('no')
+    await pages.areYouPregnant.selectNoRadioButton()
     await pages.areYouPregnant.submitForm()
   } catch (error) {
     assert.fail(`Unexpected error caught trying to select 'No' for 'Are you pregnant?' and submit the page - ${error}`)
@@ -93,6 +102,7 @@ async function assertErrorHeaderTextPresent (page, message = 'There is a problem
 }
 
 async function completeTheApplicationAsAPregnantWoman () {
+  await enterDoYouLiveInScotlandNoAndSubmit()
   await enterDateOfBirthAndSubmit()
   await selectYesOnPregnancyPage()
   await enterNameAndSubmit()
@@ -102,6 +112,7 @@ async function completeTheApplicationAsAPregnantWoman () {
 }
 
 async function completeTheApplicationAsAWomanWhoIsNotPregnant () {
+  await enterDoYouLiveInScotlandNoAndSubmit()
   await enterDateOfBirthAndSubmit()
   await selectNoOnPregnancyPage()
   await enterNameAndSubmit()
@@ -166,5 +177,6 @@ module.exports = {
   setupWiremockMappingsWithStatus,
   setupWiremockUpdatedClaimMapping,
   deleteWiremockMappings,
-  getBodyOfLastRequestToClaimService
+  getBodyOfLastRequestToClaimService,
+  enterDoYouLiveInScotlandNoAndSubmit
 }

@@ -13,6 +13,7 @@ const SubmittablePage = require('../page/submittable-page')
 const ServerError = require('../page/server-error')
 const PageNotFound = require('../page/page-not-found')
 const PrivacyNotice = require('../page/privacy-notice')
+const DoYouLiveInScotland = require('../page/do-you-live-in-scotland')
 const UnsuccessfulApplication = require('../page/unsuccessful-application')
 const { URL, DRIVER_MANAGER } = require('./test-startup-config')
 
@@ -48,6 +49,7 @@ class Pages {
     this.pageNotFound = null
     this.privacyNotice = null
     this.unsuccessfulApplication = null
+    this.doYouLiveInScotland = null
     this.url = URL
     this.allPages = null
   }
@@ -72,10 +74,11 @@ class Pages {
     this.serverError = new ServerError(this.driver)
     this.pageNotFound = new PageNotFound(this.driver)
     this.privacyNotice = new PrivacyNotice(this.driver)
+    this.doYouLiveInScotland = new DoYouLiveInScotland(this.driver)
     this.unsuccessfulApplication = new UnsuccessfulApplication(this.driver)
     // NOTE: This map should contain all page objects, and not the Generic Page as this doesn't itself represent a page
     this.allPages = [this.overview, this.enterName, this.enterNino, this.enterDOB, this.areYouPregnant, this.cardAddress, this.phoneNumber,
-      this.check, this.confirm, this.cookies, this.privacyNotice, this.confirmUpdated]
+      this.check, this.confirm, this.cookies, this.privacyNotice, this.confirmUpdated, this.doYouLiveInScotland]
     this.pageMap = this.allPages.reduce(addPageToMap, {})
   }
 
@@ -84,7 +87,11 @@ class Pages {
   }
 
   async startApplication () {
-    await this.enterDOB.open(this.url)
+    await this.doYouLiveInScotland.open(this.url)
+  }
+
+  async waitForFirstPage () {
+    await this.doYouLiveInScotland.waitForPageLoad()
   }
 }
 

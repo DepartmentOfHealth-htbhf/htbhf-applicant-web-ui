@@ -8,10 +8,12 @@ const {
   enterDateOfBirthAndSubmit,
   selectNoOnPregnancyPage,
   enterCardAddressAndSubmit,
-  enterPhoneNumberAndSubmit
+  enterPhoneNumberAndSubmit,
+  enterDoYouLiveInScotlandNoAndSubmit
 } = require('./common-steps')
 
 const ENTER_NAME_PAGE = 'enter name'
+const DO_YOU_LIVE_IN_SCOTLAND_PAGE = 'do you live in scotland'
 const ENTER_NINO_PAGE = 'enter national insurance'
 const ENTER_DOB_PAGE = 'enter date of birth'
 const ARE_YOU_PREGNANT_PAGE = 'are you pregnant'
@@ -21,8 +23,15 @@ const CHECK_PAGE = 'check details'
 
 const pageActions = [
   {
-    page: ENTER_DOB_PAGE,
+    page: DO_YOU_LIVE_IN_SCOTLAND_PAGE,
     action: async () => {}
+  },
+  {
+    page: ENTER_DOB_PAGE,
+    action: async () => {
+      await enterDoYouLiveInScotlandNoAndSubmit()
+      await pages.enterDOB.waitForPageLoad()
+    }
   },
   {
     page: ARE_YOU_PREGNANT_PAGE,
@@ -90,7 +99,7 @@ const enterDetailsUpToPage = async (page, actions) => {
   try {
     await pages.overview.open(pages.url)
     await pages.overview.clickStartButton()
-    await pages.enterDOB.waitForPageLoad()
+    await pages.waitForFirstPage()
 
     const pageIndex = getPageIndex(page)
     if (pageIndex === -1) {
