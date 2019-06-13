@@ -15,5 +15,5 @@ Then(/^I am shown the overview page$/, async function () {
 })
 
 Then(/^I am shown the first page of the application$/, async function () {
-  await pages.enterDOB.waitForPageLoad()
+  await pages.waitForFirstPage()
 })

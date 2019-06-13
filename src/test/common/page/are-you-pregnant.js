@@ -1,7 +1,7 @@
 'use strict'
 const webdriver = require('selenium-webdriver')
 
-const SubmittablePage = require('./submittable-page')
+const SubmittablePageWithRadioButtons = require('./submittable-page-with-radio-buttons')
 
 const PAGE_TITLES = {
   en: 'GOV.UK - Are you pregnant?',
@@ -16,7 +16,7 @@ const EXPECTED_DELIVERY_DATE_FIELD_ERROR_ID = 'expected-delivery-date-error'
 /**
  * Page object for the Are you pregnant? page.
  */
-class AreYouPregnant extends SubmittablePage {
+class AreYouPregnant extends SubmittablePageWithRadioButtons {
   getPath () {
     return '/are-you-pregnant'
   }
@@ -27,13 +27,6 @@ class AreYouPregnant extends SubmittablePage {
 
   async waitForPageLoad (lang = 'en') {
     return super.waitForPageWithTitle(PAGE_TITLES[lang])
-  }
-
-  async selectRadioButton (option) {
-    const radioButton = await this.getRadioButton(option)
-    const div = await radioButton.findElement(webdriver.By.xpath('..'))
-    const label = await div.findElement(webdriver.By.className('govuk-radios__label'))
-    await label.click()
   }
 
   async setExpectedDeliveryDate (day = 0, month = 0, year = 0) {
@@ -64,10 +57,6 @@ class AreYouPregnant extends SubmittablePage {
     await this.enterExpectedDeliveryDate({ incrementMonth: 9 })
   }
 
-  async getRadioButton (option) {
-    return this.findByCSS(`input[value="${option}"]`)
-  }
-
   async getExpectedDeliveryDateDayInput () {
     return this.findByCSS(`input[name="expectedDeliveryDate-day"]`)
   }
@@ -95,10 +84,6 @@ class AreYouPregnant extends SubmittablePage {
     return yearField.sendKeys(year)
   }
 
-  async getRadioButtons () {
-    return this.driver.findElements(webdriver.By.className('govuk-radios__item'))
-  }
-
   async getAreYouPregnantFieldErrorText () {
     const error = await this.findById(ARE_YOU_PREGNANT_FIELD_ERROR_ID)
     return this.getVisibleTextFromFieldError(error)
@@ -117,15 +102,6 @@ class AreYouPregnant extends SubmittablePage {
   async getExpectedDeliveryDateErrorLinkText () {
     const errorLink = await this.findByCSS(EXPECTED_DELIVERY_DATE_ERROR_LINK_CSS)
     return errorLink.getText()
-  }
-
-  async getAllRadioLabels (option) {
-    try {
-      return this.driver.findElements(webdriver.By.className('govuk-label govuk-radios__label'))
-    } catch (error) {
-      console.log(`Error getting radio button with option ${option}`)
-      throw new Error(error)
-    }
   }
 
   async getExpectedDeliveryDateInstructionalText () {
