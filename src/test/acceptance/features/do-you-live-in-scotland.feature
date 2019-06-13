@@ -7,7 +7,7 @@ Feature: Do you live in Scotland?
     Given I have entered my details up to the do you live in scotland page
 
   Scenario: Yes and No are displayed
-    Then Yes and No options are displayed
+    Then Yes and No options are displayed on the do you live in scotland page
 
   Scenario: Do not select an option
     When I do not select an option
@@ -15,6 +15,6 @@ Feature: Do you live in Scotland?
     Then I am informed that I need to select an option for do you live in scotland
 
   Scenario: Select the No option
-    When I select the No option
+    When I select the No option on the do you live in scotland page
     And I click continue
     Then I am shown the enter date of birth page

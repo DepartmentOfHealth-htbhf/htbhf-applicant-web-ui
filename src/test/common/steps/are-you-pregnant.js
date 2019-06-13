@@ -2,17 +2,16 @@
 const { When, Then } = require('cucumber')
 const { expect, assert } = require('chai')
 const Promise = require('bluebird')
-const { YES_LABEL, NO_LABEL } = require('./constants')
 
-const { assertErrorHeaderTextPresent, assertFieldErrorAndLinkTextPresentAndCorrect } = require('./common-steps')
+const { assertErrorHeaderTextPresent, assertFieldErrorAndLinkTextPresentAndCorrect, assertYesNoOptionsAreDisplayed } = require('./common-steps')
 
 const pages = require('./pages')
 
-When(/^I select the No option$/, async function () {
+When(/^I select the No option on the are you pregnant page$/, async function () {
   await pages.areYouPregnant.selectNoRadioButton()
 })
 
-When(/^I select the Yes option$/, async function () {
+When(/^I select the Yes option on the are you pregnant page$/, async function () {
   await pages.areYouPregnant.selectYesRadioButton()
 })
 
@@ -22,10 +21,6 @@ When(/^I enter a valid expected delivery date$/, async function () {
 
 When(/^I enter text in the expected delivery date fields$/, async function () {
   await pages.areYouPregnant.enterTextInDeliveryDateFields()
-})
-
-When(/^I do not select an option$/, function () {
-  // Specifically does nothing
 })
 
 When(/^I enter my expected delivery date too far in the past$/, async function () {
@@ -48,12 +43,8 @@ Then(/^No option is selected$/, async function () {
   expect(checkedRadioButtons.length).to.be.equal(0)
 })
 
-Then(/^Yes and No options are displayed$/, async function () {
-  const labels = await pages.areYouPregnant.getAllRadioLabels()
-  const text = await Promise.all(labels.map(async (label) => label.getText()))
-
-  expect(text).to.include(YES_LABEL)
-  expect(text).to.include(NO_LABEL)
+Then(/^Yes and No options are displayed on the are you pregnant page$/, async function () {
+  await assertYesNoOptionsAreDisplayed(pages.areYouPregnant)
 })
 
 Then(/^expected date of delivery instructional text is displayed$/, async function () {

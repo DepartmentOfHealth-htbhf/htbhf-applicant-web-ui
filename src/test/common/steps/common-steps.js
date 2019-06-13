@@ -10,7 +10,7 @@ const INTEGRATION_TESTS = 'integration'
 
 const testsRequireApiMocks = () => TESTS !== COMPATIBILITY_TESTS && TESTS !== INTEGRATION_TESTS
 
-const { VALID_ELIGIBLE_NINO, FIRST_NAME, LAST_NAME, DAY, MONTH, YEAR, ADDRESS_LINE_1, ADDRESS_LINE_2, TOWN, POSTCODE, CLAIMS_ENDPOINT } = require('./constants')
+const { VALID_ELIGIBLE_NINO, FIRST_NAME, LAST_NAME, DAY, MONTH, YEAR, ADDRESS_LINE_1, ADDRESS_LINE_2, TOWN, POSTCODE, CLAIMS_ENDPOINT, YES_LABEL, NO_LABEL } = require('./constants')
 
 async function enterDoYouLiveInScotlandNoAndSubmit () {
   try {
@@ -167,6 +167,18 @@ async function getBodyOfLastRequestToClaimService () {
   return null
 }
 
+async function assertYesNoOptionsAreDisplayed (page) {
+  const labels = await page.getAllRadioLabels()
+  const text = await Promise.all(labels.map(async (label) => label.getText()))
+
+  expect(text).to.include(YES_LABEL)
+  expect(text).to.include(NO_LABEL)
+}
+
+When(/^I do not select an option$/, function () {
+  // Specifically does nothing
+})
+
 When(/^I click continue$/, async function () {
   await pages.genericPage.submitForm()
 })
@@ -195,5 +207,6 @@ module.exports = {
   deleteWiremockMappings,
   getBodyOfLastRequestToClaimService,
   enterDoYouLiveInScotlandNoAndSubmit,
-  assertFieldErrorAndLinkTextPresentAndCorrect
+  assertFieldErrorAndLinkTextPresentAndCorrect,
+  assertYesNoOptionsAreDisplayed
 }
