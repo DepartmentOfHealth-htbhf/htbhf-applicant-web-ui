@@ -1,9 +1,7 @@
-const { check } = require('express-validator/check')
-const { translateValidationMessage } = require('../common/translate-validation-message')
-const { YES, NO } = require('../common/constants')
+const { validateIsYesOrNo } = require('../common/validators')
 
 const validate = [
-  check('doYouLiveInScotland').isIn([YES, NO]).withMessage(translateValidationMessage('validation:selectYesOrNo'))
+  validateIsYesOrNo('doYouLiveInScotland')
 ]
 
 module.exports = {
