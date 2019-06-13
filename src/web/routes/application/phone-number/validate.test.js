@@ -23,14 +23,14 @@ test('invalid phone number - too short for mobile', (t) => {
   // 07 numbers are always 11 digits
   const invalidPhoneNumber = '0712345678'
 
-  t.throws(validatePhoneNumber.bind(null, invalidPhoneNumber, { req }), /validation:phoneNumberInvalid/, 'should throw an error for invalid number')
+  t.throws(validatePhoneNumber.bind(null, invalidPhoneNumber, { req }), /validation:invalidPhoneNumber/, 'should throw an error for invalid number')
   t.end()
 })
 
 test('invalid phone number - too long', (t) => {
   const invalidPhoneNumber = '071234567890'
 
-  t.throws(validatePhoneNumber.bind(null, invalidPhoneNumber, { req }), /validation:phoneNumberInvalid/, 'should throw an error for invalid number')
+  t.throws(validatePhoneNumber.bind(null, invalidPhoneNumber, { req }), /validation:invalidPhoneNumber/, 'should throw an error for invalid number')
   t.end()
 })
 
@@ -38,21 +38,21 @@ test('invalid phone number - not valid uk number', (t) => {
   // ofcom test numbers (07700 900431) are not valid phone numbers
   const invalidPhoneNumber = '07700 900431'
 
-  t.throws(validatePhoneNumber.bind(null, invalidPhoneNumber, { req }), /validation:phoneNumberInvalid/, 'should throw an error for invalid number')
+  t.throws(validatePhoneNumber.bind(null, invalidPhoneNumber, { req }), /validation:invalidPhoneNumber/, 'should throw an error for invalid number')
   t.end()
 })
 
 test('invalid phone number - non uk area code', (t) => {
   const invalidPhoneNumber = '+937123456789'
 
-  t.throws(validatePhoneNumber.bind(null, invalidPhoneNumber, { req }), /validation:phoneNumberInvalid/, 'should throw an error for invalid number')
+  t.throws(validatePhoneNumber.bind(null, invalidPhoneNumber, { req }), /validation:invalidPhoneNumber/, 'should throw an error for invalid number')
   t.end()
 })
 
 test('invalid phone number - uk area code with out leading +', (t) => {
   const invalidPhoneNumber = '4417123456789'
 
-  t.throws(validatePhoneNumber.bind(null, invalidPhoneNumber, { req }), /validation:phoneNumberInvalid/, 'should throw an error for invalid number')
+  t.throws(validatePhoneNumber.bind(null, invalidPhoneNumber, { req }), /validation:invalidPhoneNumber/, 'should throw an error for invalid number')
   t.end()
 })
 

@@ -14,7 +14,7 @@ const validatePhoneNumber = (phoneNumber, { req }) => {
     return true
   }
 
-  throw new Error(req.t('validation:phoneNumberInvalid'))
+  throw new Error(req.t('validation:invalidPhoneNumber'))
 }
 
 const validate = [
