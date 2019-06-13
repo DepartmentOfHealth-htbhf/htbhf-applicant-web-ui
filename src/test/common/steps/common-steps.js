@@ -10,7 +10,7 @@ const INTEGRATION_TESTS = 'integration'
 
 const testsRequireApiMocks = () => TESTS !== COMPATIBILITY_TESTS && TESTS !== INTEGRATION_TESTS
 
-const { VALID_ELIGIBLE_NINO, FIRST_NAME, LAST_NAME, DAY, MONTH, YEAR, ADDRESS_LINE_1, ADDRESS_LINE_2, TOWN, POSTCODE, CLAIMS_ENDPOINT, PHONE_NUMBER } = require('./constants')
+const { VALID_ELIGIBLE_NINO, FIRST_NAME, LAST_NAME, DAY, MONTH, YEAR, ADDRESS_LINE_1, ADDRESS_LINE_2, TOWN, POSTCODE, CLAIMS_ENDPOINT, PHONE_NUMBER, YES_LABEL, NO_LABEL } = require('./constants')
 
 async function enterDoYouLiveInScotlandNoAndSubmit () {
   try {
@@ -101,6 +101,22 @@ async function assertErrorHeaderTextPresent (page, message = 'There is a problem
   }
 }
 
+// TODO - New PR, use this in all the other step pages as well as are you pregnant and do you live in Scotland
+async function assertFieldErrorAndLinkTextPresentAndCorrect (fieldErrorId, errorLinkCss, expectedErrorMessage) {
+  try {
+    const fieldError = await pages.genericPage.findById(fieldErrorId)
+    const fieldErrorText = await pages.genericPage.getVisibleTextFromFieldError(fieldError)
+
+    const errorLink = await pages.genericPage.findByCSS(errorLinkCss)
+    const errorLinkText = await errorLink.getText()
+
+    expect(fieldErrorText).to.be.equal(expectedErrorMessage)
+    expect(errorLinkText).to.be.equal(expectedErrorMessage)
+  } catch (error) {
+    assert.fail(`Unexpected error caught trying to assert field error is present - ${error}`)
+  }
+}
+
 async function completeTheApplicationAsAPregnantWoman () {
   await enterDoYouLiveInScotlandNoAndSubmit()
   await enterDateOfBirthAndSubmit()
@@ -151,6 +167,18 @@ async function getBodyOfLastRequestToClaimService () {
   return null
 }
 
+async function assertYesNoOptionsAreDisplayed (page) {
+  const labels = await page.getAllRadioLabels()
+  const text = await Promise.all(labels.map(async (label) => label.getText()))
+
+  expect(text).to.include(YES_LABEL)
+  expect(text).to.include(NO_LABEL)
+}
+
+When(/^I do not select an option$/, function () {
+  // Specifically does nothing
+})
+
 When(/^I click continue$/, async function () {
   await pages.genericPage.submitForm()
 })
@@ -178,5 +206,7 @@ module.exports = {
   setupWiremockUpdatedClaimMapping,
   deleteWiremockMappings,
   getBodyOfLastRequestToClaimService,
-  enterDoYouLiveInScotlandNoAndSubmit
+  enterDoYouLiveInScotlandNoAndSubmit,
+  assertFieldErrorAndLinkTextPresentAndCorrect,
+  assertYesNoOptionsAreDisplayed
 }

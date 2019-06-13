@@ -1,6 +1,9 @@
 const { isNil } = require('ramda')
 const validator = require('validator')
+const { check } = require('express-validator/check')
 const { dateAsString } = require('./formatters')
+const { translateValidationMessage } = require('./translate-validation-message')
+const { YES, NO } = require('./constants')
 
 const DATE_PATTERN = /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/
 
@@ -28,9 +31,13 @@ const isDateMoreThanEightMonthsInTheFuture = (dateString) => {
   return true
 }
 
+const validateIsYesOrNo = fieldName =>
+  check(fieldName).isIn([YES, NO]).withMessage(translateValidationMessage('validation:selectYesOrNo'))
+
 module.exports = {
   isValidDate,
   isDateInPast,
   isDateMoreThanOneMonthAgo,
-  isDateMoreThanEightMonthsInTheFuture
+  isDateMoreThanEightMonthsInTheFuture,
+  validateIsYesOrNo
 }
