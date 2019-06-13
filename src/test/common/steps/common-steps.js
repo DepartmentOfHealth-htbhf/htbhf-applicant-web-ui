@@ -10,7 +10,7 @@ const INTEGRATION_TESTS = 'integration'
 
 const testsRequireApiMocks = () => TESTS !== COMPATIBILITY_TESTS && TESTS !== INTEGRATION_TESTS
 
-const { VALID_ELIGIBLE_NINO, FIRST_NAME, LAST_NAME, DAY, MONTH, YEAR, ADDRESS_LINE_1, ADDRESS_LINE_2, TOWN, POSTCODE, CLAIMS_ENDPOINT, YES_LABEL, NO_LABEL } = require('./constants')
+const { VALID_ELIGIBLE_NINO, FIRST_NAME, LAST_NAME, DAY, MONTH, YEAR, ADDRESS_LINE_1, ADDRESS_LINE_2, TOWN, POSTCODE, CLAIMS_ENDPOINT, PHONE_NUMBER, YES_LABEL, NO_LABEL } = require('./constants')
 
 async function enterDoYouLiveInScotlandNoAndSubmit () {
   try {
@@ -82,9 +82,9 @@ async function enterCardAddressAndSubmit (addressLine1 = ADDRESS_LINE_1, address
   }
 }
 
-// TODO DW HTBHF-1545 Update to enter in mobile phone number
-async function enterPhoneNumberAndSubmit () {
+async function enterPhoneNumberAndSubmit (phoneNumber = PHONE_NUMBER) {
   try {
+    await pages.phoneNumber.enterPhoneNumber(phoneNumber)
     await pages.phoneNumber.submitForm()
   } catch (error) {
     assert.fail(`Unexpected error caught trying to enter phone number and submit the page - ${error}`)

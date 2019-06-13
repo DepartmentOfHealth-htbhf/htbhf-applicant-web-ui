@@ -1,11 +1,16 @@
-// TODO DW HTBHF-1544 add in phone number validation and sanitization
+const { validate } = require('./validate')
+const { sanitize } = require('./sanitize')
 
 const pageContent = ({ translate }) => ({
   title: translate('phoneNumber.title'),
   heading: translate('phoneNumber.heading'),
   formDescription: translate('phoneNumber.formDescription'),
   phoneNumberLabel: translate('phoneNumber.phoneNumberLabel'),
-  buttonText: translate('buttons:continue')
+  buttonText: translate('buttons:continue'),
+  detail: {
+    summaryText: translate('whyDoWeNeedThis'),
+    text: translate('phoneNumber.detail.text')
+  }
 })
 
 const contentSummary = (req) => ({
@@ -17,6 +22,8 @@ const phoneNumber = {
   path: '/phone-number',
   next: '/check',
   template: 'phone-number',
+  validate,
+  sanitize,
   pageContent,
   contentSummary
 }

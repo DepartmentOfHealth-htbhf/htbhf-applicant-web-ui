@@ -36,7 +36,8 @@ test('create claim body', (t) => {
     addressLine2: '221 Baker street',
     townOrCity: 'London',
     postcode: 'aa1 1ab',
-    phoneNumber: '07700 900000'
+    phoneNumber: '07700 900645',
+    formattedPhoneNumber: '+447700900645'
   }
 
   const request = {
@@ -59,7 +60,7 @@ test('create claim body', (t) => {
         postcode: 'aa1 1ab'
       },
       expectedDeliveryDate: '2019-03-01',
-      phoneNumber: '07700 900000'
+      phoneNumber: '+447700900645' // assert that the phone number posted is the formatted version
     },
     deviceFingerprint: expectedFingerprint
   }
@@ -88,7 +89,8 @@ test('create claim body without expectedDeliveryDate when not pregnant', (t) => 
     addressLine2: '221 Baker street',
     townOrCity: 'London',
     postcode: 'aa1 1ab',
-    phoneNumber: '07700 900000'
+    phoneNumber: '07700 900645',
+    formattedPhoneNumber: '+447700900645'
   }
 
   const request = {
@@ -111,7 +113,7 @@ test('create claim body without expectedDeliveryDate when not pregnant', (t) => 
         postcode: 'aa1 1ab'
       },
       expectedDeliveryDate: null,
-      phoneNumber: '07700 900000'
+      phoneNumber: '+447700900645' // assert that the phone number posted is the formatted version
     },
     deviceFingerprint: expectedFingerprint
   }

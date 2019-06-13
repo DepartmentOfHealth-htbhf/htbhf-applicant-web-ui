@@ -1,6 +1,7 @@
 {% extends "templates/form.njk" %}
 {% from "input/macro.njk" import govukInput %}
 {% from "fieldset/macro.njk" import govukFieldset %}
+{% from "details/macro.njk" import govukDetails %}
 
 {% block formContent %}
 
@@ -12,7 +13,7 @@
     }
   }) %}
 
-    <p class="govuk-body">{{ formDescription }}</p>
+    <span class="govuk-hint govuk-!-margin-bottom-6">{{ formDescription }}</p>
 
     {{ govukInput({
       label: {
@@ -28,5 +29,10 @@
     }) }}
 
   {% endcall %}
+
+  {{ govukDetails({
+        summaryText: detail.summaryText,
+        text: detail.text | safe
+    }) }}
 
 {% endblock %}
