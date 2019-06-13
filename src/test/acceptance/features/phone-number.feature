@@ -16,11 +16,11 @@ Feature: Enter phone number
       | +447123456789 |
       | 07123 456789  |
 
-  Scenario: Do not enter in a "phone number"
+  Scenario: Do not enter in a phone number
     When I do not enter a phone number
     Then I am informed that the phone number is required
 
-  Scenario Outline: Fill "phone number" with invalid format
+  Scenario Outline: Fill phone number with invalid format
     When I enter <phoneNumber> as my phone number
     Then I am informed that the phone number is in the wrong format
     Then I see the value <phoneNumber> in the phone number textbox
