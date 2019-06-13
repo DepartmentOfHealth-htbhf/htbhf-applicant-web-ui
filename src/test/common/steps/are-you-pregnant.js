@@ -2,17 +2,16 @@
 const { When, Then } = require('cucumber')
 const { expect, assert } = require('chai')
 const Promise = require('bluebird')
-const { YES_LABEL, NO_LABEL } = require('./constants')
 
-const { assertErrorHeaderTextPresent } = require('./common-steps')
+const { assertErrorHeaderTextPresent, assertFieldErrorAndLinkTextPresentAndCorrect, assertYesNoOptionsAreDisplayed } = require('./common-steps')
 
 const pages = require('./pages')
 
-When(/^I select the No option$/, async function () {
+When(/^I say No to the are you pregnant question$/, async function () {
   await pages.areYouPregnant.selectNoRadioButton()
 })
 
-When(/^I select the Yes option$/, async function () {
+When(/^I say Yes to the are you pregnant question$/, async function () {
   await pages.areYouPregnant.selectYesRadioButton()
 })
 
@@ -22,10 +21,6 @@ When(/^I enter a valid expected delivery date$/, async function () {
 
 When(/^I enter text in the expected delivery date fields$/, async function () {
   await pages.areYouPregnant.enterTextInDeliveryDateFields()
-})
-
-When(/^I do not select an option$/, function () {
-  // Specifically does nothing
 })
 
 When(/^I enter my expected delivery date too far in the past$/, async function () {
@@ -48,12 +43,8 @@ Then(/^No option is selected$/, async function () {
   expect(checkedRadioButtons.length).to.be.equal(0)
 })
 
-Then(/^Yes and No options are displayed$/, async function () {
-  const labels = await pages.areYouPregnant.getAllRadioLabels()
-  const text = await Promise.all(labels.map(async (label) => label.getText()))
-
-  expect(text).to.include(YES_LABEL)
-  expect(text).to.include(NO_LABEL)
+Then(/^Yes and No options are displayed on the are you pregnant page$/, async function () {
+  await assertYesNoOptionsAreDisplayed(pages.areYouPregnant)
 })
 
 Then(/^expected date of delivery instructional text is displayed$/, async function () {
@@ -87,7 +78,7 @@ Then(/^I am shown the are you pregnant page$/, async function () {
   await pages.areYouPregnant.waitForPageLoad()
 })
 
-Then(/^I am informed that I need to select an option$/, async function () {
+Then(/^I am informed that I need to select an option for are you pregnant$/, async function () {
   await assertErrorHeaderTextPresent(pages.areYouPregnant)
   await assertAreYouPregnantErrorPresent()
 })
@@ -107,26 +98,16 @@ Then(/^I am informed that the date is too far in the future$/, async function ()
   await assertExpectedDeliveryDateErrorPresent('If you have children under the age of 4, answer ‘no’ to this question to continue with this application on their behalf.')
 })
 
-async function assertAreYouPregnantErrorPresent () {
-  try {
-    const error = await pages.areYouPregnant.getAreYouPregnantFieldErrorText()
-    const errorLinkText = await pages.areYouPregnant.getAreYouPregnantErrorLinkText()
-
-    expect(error).to.be.equal('Select yes or no')
-    expect(errorLinkText).to.be.equal('Select yes or no')
-  } catch (error) {
-    assert.fail(`Unexpected error caught trying to assert are you pregnant error message is present - ${error}`)
-  }
+async function assertAreYouPregnantErrorPresent (expectedErrorMessage = 'Select yes or no') {
+  await assertFieldErrorAndLinkTextPresentAndCorrect(
+    pages.areYouPregnant.getAreYouPregnantFieldErrorId(),
+    pages.areYouPregnant.getAreYouPregnantErrorLinkCss(),
+    expectedErrorMessage)
 }
 
-async function assertExpectedDeliveryDateErrorPresent (expectedMessage) {
-  try {
-    const error = await pages.areYouPregnant.getExpectedDeliveryDateFieldErrorText()
-    const errorLinkText = await pages.areYouPregnant.getExpectedDeliveryDateErrorLinkText()
-
-    expect(error).to.be.equal(expectedMessage)
-    expect(errorLinkText).to.be.equal(expectedMessage)
-  } catch (error) {
-    assert.fail(`Unexpected error caught trying to assert expected delivery date error message is present - ${error}`)
-  }
+async function assertExpectedDeliveryDateErrorPresent (expectedErrorMessage) {
+  await assertFieldErrorAndLinkTextPresentAndCorrect(
+    pages.areYouPregnant.getExpectedDeliveryDateFieldErrorId(),
+    pages.areYouPregnant.getExpectedDeliveryDateErrorLinkCss(),
+    expectedErrorMessage)
 }

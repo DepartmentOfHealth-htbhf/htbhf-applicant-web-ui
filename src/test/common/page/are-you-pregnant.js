@@ -84,24 +84,20 @@ class AreYouPregnant extends SubmittablePageWithRadioButtons {
     return yearField.sendKeys(year)
   }
 
-  async getAreYouPregnantFieldErrorText () {
-    const error = await this.findById(ARE_YOU_PREGNANT_FIELD_ERROR_ID)
-    return this.getVisibleTextFromFieldError(error)
+  getAreYouPregnantFieldErrorId () {
+    return ARE_YOU_PREGNANT_FIELD_ERROR_ID
   }
 
-  async getAreYouPregnantErrorLinkText () {
-    const errorLink = await this.findByCSS(ARE_YOU_PREGNANT_ERROR_LINK_CSS)
-    return errorLink.getText()
+  getAreYouPregnantErrorLinkCss () {
+    return ARE_YOU_PREGNANT_ERROR_LINK_CSS
   }
 
-  async getExpectedDeliveryDateFieldErrorText () {
-    const error = await this.findById(EXPECTED_DELIVERY_DATE_FIELD_ERROR_ID)
-    return this.getVisibleTextFromFieldError(error)
+  getExpectedDeliveryDateFieldErrorId () {
+    return EXPECTED_DELIVERY_DATE_FIELD_ERROR_ID
   }
 
-  async getExpectedDeliveryDateErrorLinkText () {
-    const errorLink = await this.findByCSS(EXPECTED_DELIVERY_DATE_ERROR_LINK_CSS)
-    return errorLink.getText()
+  getExpectedDeliveryDateErrorLinkCss () {
+    return EXPECTED_DELIVERY_DATE_ERROR_LINK_CSS
   }
 
   async getExpectedDeliveryDateInstructionalText () {
