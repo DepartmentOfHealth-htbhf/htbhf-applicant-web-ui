@@ -23,7 +23,7 @@ class DoYouLiveInScotland extends SubmittablePageWithRadioButtons {
   }
 
   getPageName () {
-    return 'do you live in scotland'
+    return 'do you live in Scotland'
   }
 
   getFieldErrorId () {

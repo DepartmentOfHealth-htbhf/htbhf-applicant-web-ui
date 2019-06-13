@@ -6,13 +6,13 @@ Feature: Application process navigation is controlled
   Scenario Outline: Do you live in Scotland page is always the first page
     Given I am starting a new application
     When I navigate to the <page> page
-    Then I am shown the do you live in scotland page
+    Then I am shown the do you live in Scotland page
     Examples:
       | page                     |
       | enter name               |
       | enter national insurance |
       | enter date of birth      |
-      | do you live in scotland  |
+      | do you live in Scotland  |
       | are you pregnant         |
       | card address             |
       | phone number             |
@@ -33,7 +33,7 @@ Feature: Application process navigation is controlled
     Examples:
       | page                     |
       | enter name               |
-      | do you live in scotland  |
+      | do you live in Scotland  |
       | enter national insurance |
       | enter date of birth      |
       | are you pregnant         |
@@ -59,7 +59,7 @@ Feature: Application process navigation is controlled
       | enter name               |
       | enter national insurance |
       | enter date of birth      |
-      | do you live in scotland  |
+      | do you live in Scotland  |
       | are you pregnant         |
       | card address             |
       | phone number             |

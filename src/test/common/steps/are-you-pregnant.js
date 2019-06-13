@@ -7,11 +7,11 @@ const { assertErrorHeaderTextPresent, assertFieldErrorAndLinkTextPresentAndCorre
 
 const pages = require('./pages')
 
-When(/^I select the No option on the are you pregnant page$/, async function () {
+When(/^I say No to the are you pregnant question$/, async function () {
   await pages.areYouPregnant.selectNoRadioButton()
 })
 
-When(/^I select the Yes option on the are you pregnant page$/, async function () {
+When(/^I say Yes to the are you pregnant question$/, async function () {
   await pages.areYouPregnant.selectYesRadioButton()
 })
 

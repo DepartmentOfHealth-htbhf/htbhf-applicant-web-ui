@@ -13,7 +13,7 @@ const {
 } = require('./common-steps')
 
 const ENTER_NAME_PAGE = 'enter name'
-const DO_YOU_LIVE_IN_SCOTLAND_PAGE = 'do you live in scotland'
+const DO_YOU_LIVE_IN_SCOTLAND_PAGE = 'do you live in Scotland'
 const ENTER_NINO_PAGE = 'enter national insurance'
 const ENTER_DOB_PAGE = 'enter date of birth'
 const ARE_YOU_PREGNANT_PAGE = 'are you pregnant'
