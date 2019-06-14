@@ -1,8 +1,8 @@
 const { When, Then } = require('cucumber')
-const { expect, assert } = require('chai')
+const { expect } = require('chai')
 
 const pages = require('./pages')
-const { enterNameAndSubmit, assertErrorHeaderTextPresent } = require('./common-steps')
+const { enterNameAndSubmit, assertErrorHeaderTextPresent, assertFieldErrorAndLinkTextPresentAndCorrect } = require('./common-steps')
 const { LONG_STRING, BLANK_STRING } = require('./constants')
 
 When('I enter a first name which is too long', async function () {
@@ -51,25 +51,15 @@ Then(/^I am shown the enter name page$/, async function () {
 })
 
 async function assertFirstNameErrorFieldAndLink (expectedErrorMessage) {
-  try {
-    const errorFieldText = await pages.enterName.getFirstNameErrorFieldText()
-    const errorLinkText = await pages.enterName.getFirstNameErrorLinkText()
-
-    expect(errorFieldText).to.be.equal(expectedErrorMessage)
-    expect(errorLinkText).to.be.equal(expectedErrorMessage)
-  } catch (error) {
-    assert.fail(`Unexpected error caught trying to assert first name error message is present - ${error}`)
-  }
+  await assertFieldErrorAndLinkTextPresentAndCorrect(
+    pages.enterName.getFirstNameErrorFieldId(),
+    pages.enterName.getFirstNameErrorLinkCss(),
+    expectedErrorMessage)
 }
 
 async function assertLastNameErrorFieldAndLink (expectedErrorMessage) {
-  try {
-    const errorFieldText = await pages.enterName.getLastNameErrorFieldText()
-    const errorLinkText = await pages.enterName.getLastNameErrorLinkText()
-
-    expect(errorFieldText).to.be.equal(expectedErrorMessage)
-    expect(errorLinkText).to.be.equal(expectedErrorMessage)
-  } catch (error) {
-    assert.fail(`Unexpected error caught trying to assert last name error message is present - ${error}`)
-  }
+  await assertFieldErrorAndLinkTextPresentAndCorrect(
+    pages.enterName.getLastNameErrorFieldId(),
+    pages.enterName.getLastNameErrorLinkCss(),
+    expectedErrorMessage)
 }

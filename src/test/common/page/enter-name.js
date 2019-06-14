@@ -7,9 +7,9 @@ const PAGE_TITLES = {
   cy: 'GOV.UK - Vulputate dignissim suspendisse?'
 }
 
-const FIRST_NAME_ERROR_SELECTOR = 'span#first-name-error'
+const FIRST_NAME_ERROR_ID = 'first-name-error'
 const FIRST_NAME_ERROR_LINK_CSS = 'a[href="#first-name-error"]'
-const LAST_NAME_ERROR_SELECTOR = 'span#last-name-error'
+const LAST_NAME_ERROR_ID = 'last-name-error'
 const LAST_NAME_ERROR_LINK_CSS = 'a[href="#last-name-error"]'
 
 /**
@@ -56,24 +56,20 @@ class EnterName extends SubmittablePage {
     return super.waitForPageWithTitle(PAGE_TITLES[lang])
   }
 
-  async getFirstNameErrorFieldText () {
-    const fieldError = await this.findByCSS(FIRST_NAME_ERROR_SELECTOR)
-    return this.getVisibleTextFromFieldError(fieldError)
+  getFirstNameErrorFieldId () {
+    return FIRST_NAME_ERROR_ID
   }
 
-  async getFirstNameErrorLinkText () {
-    const errorLink = await this.findByCSS(FIRST_NAME_ERROR_LINK_CSS)
-    return errorLink.getText()
+  getFirstNameErrorLinkCss () {
+    return FIRST_NAME_ERROR_LINK_CSS
   }
 
-  async getLastNameErrorFieldText () {
-    const fieldError = await this.findByCSS(LAST_NAME_ERROR_SELECTOR)
-    return this.getVisibleTextFromFieldError(fieldError)
+  getLastNameErrorFieldId () {
+    return LAST_NAME_ERROR_ID
   }
 
-  async getLastNameErrorLinkText () {
-    const errorLink = await this.findByCSS(LAST_NAME_ERROR_LINK_CSS)
-    return errorLink.getText()
+  getLastNameErrorLinkCss () {
+    return LAST_NAME_ERROR_LINK_CSS
   }
 }
 

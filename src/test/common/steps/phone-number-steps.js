@@ -1,8 +1,8 @@
 const { When, Then } = require('cucumber')
-const { expect, assert } = require('chai')
+const { expect } = require('chai')
 
 const pages = require('./pages')
-const { enterPhoneNumberAndSubmit, assertErrorHeaderTextPresent } = require('./common-steps')
+const { enterPhoneNumberAndSubmit, assertErrorHeaderTextPresent, assertFieldErrorAndLinkTextPresentAndCorrect } = require('./common-steps')
 
 When(/^I enter (.*) as my phone number$/, async function (phoneNumber) {
   return enterPhoneNumberAndSubmit(phoneNumber)
@@ -32,13 +32,8 @@ Then(/^I see the value (.*) in the phone number textbox$/, async function (phone
 })
 
 async function assertPhoneNumberErrorFieldAndLink (expectedErrorMessage) {
-  try {
-    const errorFieldText = await pages.phoneNumber.getPhoneNumberFieldErrorText()
-    const errorLinkText = await pages.phoneNumber.getPhoneNumberLinkErrorText()
-
-    expect(errorFieldText).to.be.equal(expectedErrorMessage)
-    expect(errorLinkText).to.be.equal(expectedErrorMessage)
-  } catch (error) {
-    assert.fail(`Unexpected error caught trying to assert last name error message is present - ${error}`)
-  }
+  await assertFieldErrorAndLinkTextPresentAndCorrect(
+    pages.phoneNumber.getPhoneNumberFieldErrorId(),
+    pages.phoneNumber.getPhoneNumberLinkErrorCss(),
+    expectedErrorMessage)
 }
