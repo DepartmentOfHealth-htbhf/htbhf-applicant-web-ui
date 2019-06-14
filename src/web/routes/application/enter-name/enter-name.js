@@ -16,7 +16,7 @@ const contentSummary = (req) => ({
 
 const enterName = {
   path: '/enter-name',
-  next: '/enter-nino',
+  next: () => '/enter-nino',
   template: 'enter-name',
   validate,
   pageContent,

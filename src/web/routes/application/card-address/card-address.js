@@ -30,7 +30,7 @@ const contentSummary = (req) => ({
 
 const cardAddress = {
   path: '/card-address',
-  next: '/phone-number',
+  next: () => '/phone-number',
   template: 'card-address',
   pageContent,
   validate,

@@ -15,7 +15,7 @@ const pageContent = ({ translate }) => ({
 
 const doYouLiveInScotland = {
   path: '/do-you-live-in-scotland',
-  next: '/enter-dob',
+  next: () => '/enter-dob',
   template: 'do-you-live-in-scotland',
   pageContent,
   contentSummary,
