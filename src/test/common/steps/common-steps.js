@@ -101,7 +101,6 @@ async function assertErrorHeaderTextPresent (page, message = 'There is a problem
   }
 }
 
-// TODO - New PR, use this in all the other step pages as well as are you pregnant and do you live in Scotland
 async function assertFieldErrorAndLinkTextPresentAndCorrect (fieldErrorId, errorLinkCss, expectedErrorMessage) {
   try {
     const fieldError = await pages.genericPage.findById(fieldErrorId)

@@ -68,44 +68,36 @@ class CardAddress extends SubmittablePage {
     return postcodeField.sendKeys(postcode)
   }
 
-  async getPostcodeFieldErrorText () {
-    const postcodeError = await this.findById(POSTCODE_ERROR_ID)
-    return this.getVisibleTextFromFieldError(postcodeError)
+  getPostcodeFieldErrorId () {
+    return POSTCODE_ERROR_ID
   }
 
-  async getAddressLine1FieldErrorText () {
-    const addressLine1Error = await this.findById(ADDRESS_LINE_1_ERROR_ID)
-    return this.getVisibleTextFromFieldError(addressLine1Error)
+  getAddressLine1FieldErrorId () {
+    return ADDRESS_LINE_1_ERROR_ID
   }
 
-  async getAddressLine2FieldErrorText () {
-    const addressLine2Error = await this.findById(ADDRESS_LINE_2_ERROR_ID)
-    return this.getVisibleTextFromFieldError(addressLine2Error)
+  getAddressLine2FieldErrorId () {
+    return ADDRESS_LINE_2_ERROR_ID
   }
 
-  async getTownOrCityFieldErrorText () {
-    const townOrCityError = await this.findById(TOWN_OR_CITY_ERROR_ID)
-    return this.getVisibleTextFromFieldError(townOrCityError)
+  getTownOrCityFieldErrorId () {
+    return TOWN_OR_CITY_ERROR_ID
   }
 
-  async getAddressLine1ErrorLinkText () {
-    const fieldError = await this.findByCSS(ADDRESS_LINE_1_ERROR_LINK_CSS)
-    return fieldError.getText()
+  getAddressLine1ErrorLinkCss () {
+    return ADDRESS_LINE_1_ERROR_LINK_CSS
   }
 
-  async getAddressLine2ErrorLinkText () {
-    const fieldError = await this.findByCSS(ADDRESS_LINE_2_ERROR_LINK_CSS)
-    return fieldError.getText()
+  getAddressLine2ErrorLinkCss () {
+    return ADDRESS_LINE_2_ERROR_LINK_CSS
   }
 
-  async getTownOrCityErrorLinkText () {
-    const fieldError = await this.findByCSS(TOWN_OR_CITY_ERROR_LINK_CSS)
-    return fieldError.getText()
+  getTownOrCityErrorLinkCss () {
+    return TOWN_OR_CITY_ERROR_LINK_CSS
   }
 
-  async getPostcodeErrorLinkText () {
-    const fieldError = await this.findByCSS(POSTCODE_ERROR_LINK_CSS)
-    return fieldError.getText()
+  getPostcodeErrorLinkCss () {
+    return POSTCODE_ERROR_LINK_CSS
   }
 }
 

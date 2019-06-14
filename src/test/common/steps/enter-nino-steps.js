@@ -2,7 +2,7 @@ const { When, Then } = require('cucumber')
 const { expect } = require('chai')
 
 const pages = require('./pages')
-const { enterNinoAndSubmit, assertErrorHeaderTextPresent } = require('./common-steps')
+const { enterNinoAndSubmit, assertFieldErrorAndLinkTextPresentAndCorrect } = require('./common-steps')
 
 When(/^I enter a valid national insurance number$/, async function () {
   return enterNinoAndSubmit()
@@ -17,12 +17,10 @@ When(/^I do not enter a national insurance number$/, async function () {
 })
 
 Then(/^I am informed that the national insurance number is in the wrong format$/, async function () {
-  await assertErrorHeaderTextPresent(pages.enterNino)
-  const fieldErrorMessage = await pages.enterNino.getNinoFieldErrorText()
-  const linkErrorMessage = await pages.enterNino.getNinoLinkErrorText()
-
-  expect(fieldErrorMessage).to.be.equal('Enter a National Insurance number in the correct format')
-  expect(linkErrorMessage).to.be.equal('Enter a National Insurance number in the correct format')
+  await assertFieldErrorAndLinkTextPresentAndCorrect(
+    pages.enterNino.getNinoFieldErrorId(),
+    pages.enterNino.getNinoLinkErrorCss(),
+    'Enter a National Insurance number in the correct format')
 })
 
 Then(/^I see the value (.*) in the textbox$/, async function (nino) {

@@ -40,14 +40,12 @@ class PhoneNumber extends SubmittablePage {
     return this.findById('phone-number')
   }
 
-  async getPhoneNumberFieldErrorText () {
-    const fieldError = await this.findById(PHONE_NUMBER_FIELD_ERROR_ID)
-    return this.getVisibleTextFromFieldError(fieldError)
+  getPhoneNumberFieldErrorId () {
+    return PHONE_NUMBER_FIELD_ERROR_ID
   }
 
-  async getPhoneNumberLinkErrorText () {
-    const errorLink = await this.findByCSS(PHONE_NUMBER_ERROR_LINK_CSS)
-    return errorLink.getText()
+  getPhoneNumberLinkErrorCss () {
+    return PHONE_NUMBER_ERROR_LINK_CSS
   }
 }
 
