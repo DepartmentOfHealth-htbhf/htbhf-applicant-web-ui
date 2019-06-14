@@ -1,4 +1,5 @@
 const { equals } = require('ramda')
+const { getNextForStep } = require('./get-next-for-step')
 const { CHECK_URL, CONFIRM_URL } = require('../constants')
 const { logger } = require('../../../../logger')
 
@@ -13,17 +14,11 @@ const actions = {
   GET_NEXT_ALLOWED_PATH: 'getNextAllowedPath'
 }
 
-const getStepByPath = (steps, path) => steps.find(step => step.path === path)
+const getStepForPath = (path, steps) => steps.find(step => step.path === path)
 
-const getNextPath = (steps, path) => {
-  const step = getStepByPath(steps, path)
-  const nextPath = step.next
-
-  if (!nextPath) {
-    throw new Error(`No next step defined for ${path}`)
-  }
-
-  return nextPath
+const getNext = (req, steps) => {
+  const nextStep = getStepForPath(req.path, steps)
+  return getNextForStep(req, nextStep)
 }
 
 const isPathAllowed = (sequence, allowed, path) =>
@@ -31,7 +26,7 @@ const isPathAllowed = (sequence, allowed, path) =>
 
 const stateMachine = {
   [states.IN_PROGRESS]: {
-    getNextPath: (req, steps) => getNextPath(steps, req.path),
+    getNextPath: getNext,
     isPathAllowed: (req, sequence) => isPathAllowed(sequence, req.session.nextAllowedStep, req.path),
     getNextAllowedPath: (req) => req.session.nextAllowedStep
   },

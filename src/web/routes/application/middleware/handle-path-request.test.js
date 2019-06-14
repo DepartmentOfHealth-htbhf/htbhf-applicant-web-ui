@@ -4,7 +4,7 @@ const { CHECK_URL, CONFIRM_URL } = require('../common/constants')
 const { getPathsInSequence, handleRequestForPath } = require('./handle-path-request')
 const { states } = require('../common/state-machine')
 
-const steps = [{ path: '/first', next: '/second' }, { path: '/second' }]
+const steps = [{ path: '/first', next: () => '/second' }, { path: '/second' }]
 
 const config = {
   environment: {

@@ -2,7 +2,7 @@ const test = require('tape')
 const sinon = require('sinon')
 const { handlePostRedirects } = require('./handle-post-redirects')
 
-const steps = [{ path: '/first', next: '/second' }, { path: '/second' }]
+const steps = [{ path: '/first', next: () => '/second' }, { path: '/second' }]
 
 test('handlePostRedirects() should redirect when no response errors', async (t) => {
   const redirect = sinon.spy()

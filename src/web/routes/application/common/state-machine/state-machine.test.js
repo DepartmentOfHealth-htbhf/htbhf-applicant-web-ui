@@ -4,7 +4,7 @@ const { CHECK_URL, CONFIRM_URL } = require('../../common/constants')
 
 const { GET_NEXT_PATH } = actions
 
-const steps = [{ path: '/first', next: '/second' }, { path: '/second' }]
+const steps = [{ path: '/first', next: () => '/second' }, { path: '/second' }]
 const paths = ['/first', '/second', '/third', '/fourth']
 
 test(`Dispatching ${GET_NEXT_PATH} should return next property of associated step when no state defined in session`, async (t) => {

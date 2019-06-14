@@ -23,7 +23,7 @@ const contentSummary = (req) => ({
 
 const enterDob = {
   path: '/enter-dob',
-  next: '/are-you-pregnant',
+  next: () => '/are-you-pregnant',
   template: 'enter-dob',
   pageContent,
   validate,

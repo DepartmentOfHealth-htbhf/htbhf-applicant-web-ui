@@ -10,7 +10,7 @@ const defaultValidator = {
   }
 }
 
-const steps = [{ path: '/first', next: '/second' }, { path: '/second' }]
+const steps = [{ path: '/first', next: () => '/second' }, { path: '/second' }]
 
 test('handlePost() should add errors and claim to locals if errors exist', (t) => {
   const errors = ['error']
