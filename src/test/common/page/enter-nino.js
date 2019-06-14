@@ -40,14 +40,12 @@ class EnterNino extends SubmittablePage {
     return nino.getAttribute('value')
   }
 
-  async getNinoFieldErrorText () {
-    const fieldError = await this.findById(NINO_FIELD_ERROR_ID)
-    return this.getVisibleTextFromFieldError(fieldError)
+  getNinoFieldErrorId () {
+    return NINO_FIELD_ERROR_ID
   }
 
-  async getNinoLinkErrorText () {
-    const errorLink = await this.findByCSS(NINO_ERROR_LINK_CSS)
-    return errorLink.getText()
+  getNinoLinkErrorCss () {
+    return NINO_ERROR_LINK_CSS
   }
 }
 

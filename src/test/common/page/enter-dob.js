@@ -53,14 +53,12 @@ class EnterDOB extends SubmittablePage {
     return yearField.sendKeys(year)
   }
 
-  async getDateOfBirthFieldErrorText () {
-    const fieldError = await this.findById(DATE_OF_BIRTH_FIELD_ERROR_ID)
-    return this.getVisibleTextFromFieldError(fieldError)
+  getDateOfBirthFieldErrorId () {
+    return DATE_OF_BIRTH_FIELD_ERROR_ID
   }
 
-  async getDateOfBirthErrorLinkText () {
-    const errorLink = await this.findByCSS(DATE_OF_BIRTH_ERROR_LINK_CSS)
-    return errorLink.getText()
+  getDateOfBirthErrorLinkCss () {
+    return DATE_OF_BIRTH_ERROR_LINK_CSS
   }
 }
 

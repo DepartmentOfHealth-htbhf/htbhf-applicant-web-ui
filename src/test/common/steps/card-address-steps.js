@@ -1,8 +1,7 @@
 const { When, Then } = require('cucumber')
-const { expect } = require('chai')
 
 const pages = require('./pages')
-const { enterCardAddressAndSubmit, assertErrorHeaderTextPresent } = require('./common-steps')
+const { enterCardAddressAndSubmit, assertErrorHeaderTextPresent, assertFieldErrorAndLinkTextPresentAndCorrect } = require('./common-steps')
 const { LONG_STRING, BLANK_STRING } = require('./constants')
 
 const VALID_ADDRESS_LINE_1 = 'Flat b'
@@ -83,34 +82,30 @@ Then(/^I am informed that I need to enter an address on the 'address line 1', 'a
   await assertPostcodeErrorFieldAndLink('Enter a correct postcode, like AA1 1AA')
 })
 
-const assertAddressLine1ErrorFieldAndLink = async (message) => {
-  const errorFieldText = await pages.cardAddress.getAddressLine1FieldErrorText()
-  const errorLinkText = await pages.cardAddress.getAddressLine1ErrorLinkText()
-
-  expect(errorFieldText).to.be.equal(message)
-  expect(errorLinkText).to.be.equal(message)
+const assertAddressLine1ErrorFieldAndLink = async (expectedErrorMessage) => {
+  await assertFieldErrorAndLinkTextPresentAndCorrect(
+    pages.cardAddress.getAddressLine1FieldErrorId(),
+    pages.cardAddress.getAddressLine1ErrorLinkCss(),
+    expectedErrorMessage)
 }
 
-const assertAddressLine2ErrorFieldAndLink = async (message) => {
-  const errorFieldText = await pages.cardAddress.getAddressLine2FieldErrorText()
-  const errorLinkText = await pages.cardAddress.getAddressLine2ErrorLinkText()
-
-  expect(errorFieldText).to.be.equal(message)
-  expect(errorLinkText).to.be.equal(message)
+const assertAddressLine2ErrorFieldAndLink = async (expectedErrorMessage) => {
+  await assertFieldErrorAndLinkTextPresentAndCorrect(
+    pages.cardAddress.getAddressLine2FieldErrorId(),
+    pages.cardAddress.getAddressLine2ErrorLinkCss(),
+    expectedErrorMessage)
 }
 
-const assertTownOrCityErrorFieldAndLink = async (message) => {
-  const errorFieldText = await pages.cardAddress.getTownOrCityFieldErrorText()
-  const errorLinkText = await pages.cardAddress.getTownOrCityErrorLinkText()
-
-  expect(errorFieldText).to.be.equal(message)
-  expect(errorLinkText).to.be.equal(message)
+const assertTownOrCityErrorFieldAndLink = async (expectedErrorMessage) => {
+  await assertFieldErrorAndLinkTextPresentAndCorrect(
+    pages.cardAddress.getTownOrCityFieldErrorId(),
+    pages.cardAddress.getTownOrCityErrorLinkCss(),
+    expectedErrorMessage)
 }
 
-const assertPostcodeErrorFieldAndLink = async (message) => {
-  const errorFieldText = await pages.cardAddress.getPostcodeFieldErrorText()
-  const errorLinkText = await pages.cardAddress.getPostcodeErrorLinkText()
-
-  expect(errorFieldText).to.be.equal(message)
-  expect(errorLinkText).to.be.equal(message)
+const assertPostcodeErrorFieldAndLink = async (expectedErrorMessage) => {
+  await assertFieldErrorAndLinkTextPresentAndCorrect(
+    pages.cardAddress.getPostcodeFieldErrorId(),
+    pages.cardAddress.getPostcodeErrorLinkCss(),
+    expectedErrorMessage)
 }
