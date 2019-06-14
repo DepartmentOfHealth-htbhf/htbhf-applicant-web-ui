@@ -24,7 +24,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 32000000
+              "duration": 28000000
             }
           },
           {
@@ -37,7 +37,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 739000000
+              "duration": 568000000
             }
           },
           {
@@ -50,7 +50,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2227000000
+              "duration": 2131000000
             }
           },
           {
@@ -63,7 +63,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1620000000
+              "duration": 1484000000
             }
           },
           {
@@ -72,11 +72,11 @@
             "line": 10,
             "name": "I submit my application",
             "match": {
-              "location": "src/test/common/steps/common-steps.js:186"
+              "location": "src/test/common/steps/common-steps.js:185"
             },
             "result": {
               "status": "passed",
-              "duration": 228000000
+              "duration": 202000000
             }
           },
           {
@@ -89,7 +89,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 86000000
+              "duration": 81000000
             }
           },
           {
@@ -102,7 +102,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 77000000
+              "duration": 82000000
             }
           },
           {
