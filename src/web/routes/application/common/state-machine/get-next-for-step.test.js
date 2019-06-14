@@ -1,5 +1,4 @@
 const test = require('tape')
-const sinon = require('sinon')
 const { getNextForStep } = require('./get-next-for-step')
 
 test('getNextForStep() throws error if next is not a function', (t) => {
@@ -39,12 +38,12 @@ test('getNextForStep() should return the result of calling next', (t) => {
 })
 
 test('getNextForStep() passes request as an argument when calling next function', (t) => {
-  const next = sinon.stub().returns('/the-next-path')
-  const req = { session: { some: 'data' } }
+  const req = { session: { some: '/path' } }
+  const next = (req) => req.session.some
   const step = { next }
 
-  getNextForStep(req, step)
+  const result = getNextForStep(req, step)
 
-  t.equals(next.getCall(0).args[0], req, 'passes request as an argument when calling next function')
+  t.equals(result, '/path', 'passes request as an argument when calling next function')
   t.end()
 })
