@@ -1,9 +1,8 @@
-const { CHECK_URL, CONFIRM_URL } = require('../common/constants')
+const { CONFIRM_URL } = require('../common/constants')
 const { stateMachine, actions, states } = require('../common/state-machine')
+const { getPathsInSequence } = require('../common/sequence')
 
 const { IS_PATH_ALLOWED, GET_NEXT_ALLOWED_PATH } = actions
-
-const getPathsInSequence = (steps) => [...steps.map(step => step.path), CHECK_URL, CONFIRM_URL]
 
 const middleware = (config, pathsInSequence) => (req, res, next) => {
   // Destroy the session on navigating away from CONFIRM_URL

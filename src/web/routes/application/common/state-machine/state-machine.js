@@ -1,6 +1,7 @@
 const { equals } = require('ramda')
 const { getNextForStep } = require('./get-next-for-step')
 const { CHECK_URL, CONFIRM_URL } = require('../constants')
+const { isPathInSequence } = require('../sequence')
 const { logger } = require('../../../../logger')
 
 const states = {
@@ -17,8 +18,9 @@ const actions = {
 const getStepForPath = (path, steps) => steps.find(step => step.path === path)
 
 const getNext = (req, steps) => {
-  const nextStep = getStepForPath(req.path, steps)
-  return getNextForStep(req, nextStep)
+  const step = getStepForPath(req.path, steps)
+  const nextPath = getNextForStep(req, step)
+  return isPathInSequence(steps, nextPath) ? nextPath : req.path
 }
 
 const isPathAllowed = (sequence, allowed, path) =>

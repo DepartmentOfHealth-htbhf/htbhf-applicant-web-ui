@@ -1,7 +1,7 @@
 const test = require('tape')
 const sinon = require('sinon')
-const { CHECK_URL, CONFIRM_URL } = require('../common/constants')
-const { getPathsInSequence, handleRequestForPath } = require('./handle-path-request')
+const { CONFIRM_URL } = require('../common/constants')
+const { handleRequestForPath } = require('./handle-path-request')
 const { states } = require('../common/state-machine')
 
 const steps = [{ path: '/first', next: () => '/second' }, { path: '/second' }]
@@ -11,14 +11,6 @@ const config = {
     OVERVIEW_URL: '/'
   }
 }
-
-test('getPathsInSequence() returns the correct sequence of paths', (t) => {
-  const expected = ['/first', '/second', CHECK_URL, CONFIRM_URL]
-  const result = getPathsInSequence(steps)
-
-  t.deepEqual(result, expected, 'returns the correct sequence of paths')
-  t.end()
-})
 
 test('handleRequestForPath() should set next allowed path to first in sequence if none exists on session', (t) => {
   const req = {

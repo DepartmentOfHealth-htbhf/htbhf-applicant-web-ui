@@ -14,10 +14,21 @@ test(`Dispatching ${GET_NEXT_PATH} should return next property of associated ste
   t.end()
 })
 
-test(`Dispatching ${GET_NEXT_PATH} should return should return next property of associated step when state of ${states.IN_PROGRESS} defined in session`, async (t) => {
+test(`Dispatching ${GET_NEXT_PATH} should return next property of associated step when state of ${states.IN_PROGRESS} defined in session`, async (t) => {
   const req = { method: 'POST', session: { state: states.IN_PROGRESS }, path: '/first' }
 
   t.equal(stateMachine.dispatch(GET_NEXT_PATH, req, steps), '/second')
+  t.end()
+})
+
+test(`Dispatching ${GET_NEXT_PATH} should return current path when next property is not in the sequence of steps and state of ${states.IN_PROGRESS} defined in session`, async (t) => {
+  const req = { method: 'POST', session: { state: states.IN_PROGRESS }, path: '/first-in-sequence' }
+  const testSteps = [
+    { path: '/first-in-sequence', next: () => '/not-in-sequence' },
+    { path: '/next-in-sequence' }
+  ]
+
+  t.equal(stateMachine.dispatch(GET_NEXT_PATH, req, testSteps), '/first-in-sequence')
   t.end()
 })
 
