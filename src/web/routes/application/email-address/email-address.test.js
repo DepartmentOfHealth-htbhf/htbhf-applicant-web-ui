@@ -1,11 +1,11 @@
 const test = require('tape')
-const { contentSummary } = require('./phone-number')
+const { contentSummary } = require('./email-address')
 
 const req = {
   t: string => string,
   session: {
     claim: {
-      phoneNumber: '07123456789'
+      emailAddress: 'test@email.com'
     }
   }
 }
@@ -14,8 +14,8 @@ test('Enter name contentSummary() should return content summary in correct forma
   const result = contentSummary(req)
 
   const expected = {
-    key: 'phoneNumber.summaryKey',
-    value: '07123456789'
+    key: 'emailAddress.summaryKey',
+    value: 'test@email.com'
   }
 
   t.deepEqual(result, expected, 'should return content summary in correct format')

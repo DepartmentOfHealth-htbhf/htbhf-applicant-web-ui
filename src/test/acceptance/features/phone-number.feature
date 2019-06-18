@@ -8,7 +8,7 @@ Feature: Enter phone number
 
   Scenario Outline: Enter in a valid phone number
     When I enter <phoneNumber> as my phone number
-    Then I am shown the check details page
+    Then I am shown the email address page
 
     Examples:
       | phoneNumber   |

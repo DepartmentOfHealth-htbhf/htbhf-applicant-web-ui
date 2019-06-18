@@ -20,7 +20,7 @@ const contentSummary = (req) => ({
 
 const phoneNumber = {
   path: '/phone-number',
-  next: () => '/check',
+  next: () => '/email-address',
   template: 'phone-number',
   validate,
   sanitize,

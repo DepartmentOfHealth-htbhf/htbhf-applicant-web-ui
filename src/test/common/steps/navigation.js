@@ -9,7 +9,8 @@ const {
   selectNoOnPregnancyPage,
   enterCardAddressAndSubmit,
   enterPhoneNumberAndSubmit,
-  enterDoYouLiveInScotlandNoAndSubmit
+  enterDoYouLiveInScotlandNoAndSubmit,
+  enterEmailAddressAndSubmit
 } = require('./common-steps')
 
 const ENTER_NAME_PAGE = 'enter name'
@@ -19,6 +20,7 @@ const ENTER_DOB_PAGE = 'enter date of birth'
 const ARE_YOU_PREGNANT_PAGE = 'are you pregnant'
 const CARD_ADDRESS_PAGE = 'card address'
 const PHONE_NUMBER_PAGE = 'phone number'
+const EMAIL_ADDRESS_PAGE = 'email address'
 const CHECK_PAGE = 'check details'
 
 const pageActions = [
@@ -69,9 +71,16 @@ const pageActions = [
     }
   },
   {
-    page: CHECK_PAGE,
+    page: EMAIL_ADDRESS_PAGE,
     action: async () => {
       await enterPhoneNumberAndSubmit()
+      await pages.emailAddress.waitForPageLoad()
+    }
+  },
+  {
+    page: CHECK_PAGE,
+    action: async () => {
+      await enterEmailAddressAndSubmit()
       await pages.check.waitForPageLoad()
     }
   }
