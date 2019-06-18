@@ -4,7 +4,7 @@ const pageContent = ({ translate }) => ({
   title: translate('emailAddress.title'),
   heading: translate('emailAddress.heading'),
   formDescription: translate('emailAddress.formDescription'),
-  emailAddressLabel: translate('emailAddress.phoneNumberLabel'),
+  emailAddressLabel: translate('emailAddress.emailAddressLabel'),
   buttonText: translate('buttons:continue'),
   detail: {
     summaryText: translate('whyDoWeNeedThis'),
@@ -14,7 +14,7 @@ const pageContent = ({ translate }) => ({
 
 const contentSummary = (req) => ({
   key: req.t('emailAddress.summaryKey'),
-  value: `${req.session.claim.emailAddress}`.trim()
+  value: req.session.claim.emailAddress.trim()
 })
 
 const emailAddress = {
