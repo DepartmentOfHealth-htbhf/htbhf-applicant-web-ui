@@ -1,4 +1,5 @@
-const { flatten, path } = require('ramda')
+const { flatten, path, isNil } = require('ramda')
+const { notIsNil } = require('../../../../common/predicates')
 const { stateMachine, states } = require('../common/state-machine')
 
 const getLastStepPath = (steps) => {
@@ -24,15 +25,19 @@ const combinePathWithRow = (path) => (row) => ({
 })
 
 const getRowData = (req) => (step) => {
+  if (isNil(step.contentSummary)) {
+    return null
+  }
+
   const result = step.contentSummary(req)
 
   const applyPathToRow = combinePathWithRow(step.path)
 
-  return Array.isArray(result) ? result.map(applyPathToRow) : [applyPathToRow(result)]
+  return Array.isArray(result) ? result.map(applyPathToRow) : applyPathToRow(result)
 }
 
 const getCheck = (steps) => (req, res) => {
-  const stepArrays = steps.map(getRowData(req))
+  const stepArrays = steps.map(getRowData(req)).filter(notIsNil)
   const checkRowData = flatten(stepArrays)
 
   stateMachine.setState(states.IN_REVIEW, req)
