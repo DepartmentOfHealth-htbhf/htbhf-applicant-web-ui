@@ -1,5 +1,4 @@
 const { flatten, path } = require('ramda')
-const { steps } = require('../steps')
 const { stateMachine, states } = require('../common/state-machine')
 
 const getLastStepPath = (steps) => {
@@ -16,8 +15,7 @@ const pageContent = ({ translate }) => ({
   sendApplicationHeader: translate('check.sendApplicationHeader'),
   sendApplicationText: translate('check.sendApplicationText'),
   buttonText: translate('buttons:acceptAndSend'),
-  changeText: translate('check.change'),
-  previous: getLastStepPath(steps)
+  changeText: translate('check.change')
 })
 
 const combinePathWithRow = (path) => (row) => ({
@@ -33,7 +31,7 @@ const getRowData = (req) => (step) => {
   return Array.isArray(result) ? result.map(applyPathToRow) : [applyPathToRow(result)]
 }
 
-const getCheck = (req, res) => {
+const getCheck = (steps) => (req, res) => {
   const stepArrays = steps.map(getRowData(req))
   const checkRowData = flatten(stepArrays)
 
@@ -43,7 +41,8 @@ const getCheck = (req, res) => {
     claim: req.session.claim,
     ...pageContent({ translate: req.t }),
     csrfToken: req.csrfToken(),
-    checkRowData
+    checkRowData,
+    previous: getLastStepPath(steps)
   })
 }
 
