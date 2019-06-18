@@ -30,10 +30,12 @@ const getPreviousPath = (steps, step, session) => {
     throw new Error(`Unable to find ${JSON.stringify(step)} in the list of steps`)
   }
 
-  // first page doesn't have a back link
-  if (index > 0) {
-    return getPreviousNavigablePath(steps, index, session)
+  // first page does not have a back link
+  if (index === 0) {
+    return null
   }
+
+  return getPreviousNavigablePath(steps, index, session)
 }
 
 module.exports = {

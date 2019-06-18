@@ -75,12 +75,12 @@ test('getPreviousPath() throws an error if step does not exist in list of steps'
   t.end()
 })
 
-test('getPreviousPath() returns undefined if step is first in sequence', (t) => {
+test('getPreviousPath() returns null if step is first in sequence', (t) => {
   const step = { path: '/first' }
   const steps = [step]
   const result = getPreviousPath(steps, step, {})
 
-  t.equal(result, undefined)
+  t.equal(result, null)
   t.end()
 })
 
