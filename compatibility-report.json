@@ -24,7 +24,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 15000000
+              "duration": 29000000
             }
           },
           {
@@ -37,7 +37,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 500000000
+              "duration": 534000000
             }
           },
           {
@@ -50,7 +50,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2132000000
+              "duration": 2316000000
             }
           },
           {
@@ -59,11 +59,11 @@
             "line": 9,
             "name": "I am shown the check details page with correct page content",
             "match": {
-              "location": "src/test/common/steps/check-details.js:94"
+              "location": "src/test/common/steps/check-details.js:102"
             },
             "result": {
               "status": "passed",
-              "duration": 1528000000
+              "duration": 1688000000
             }
           },
           {
@@ -72,11 +72,11 @@
             "line": 10,
             "name": "I submit my application",
             "match": {
-              "location": "src/test/common/steps/common-steps.js:185"
+              "location": "src/test/common/steps/common-steps.js:196"
             },
             "result": {
               "status": "passed",
-              "duration": 199000000
+              "duration": 204000000
             }
           },
           {
@@ -89,7 +89,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 85000000
+              "duration": 84000000
             }
           },
           {
@@ -102,7 +102,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 82000000
+              "duration": 73000000
             }
           },
           {
