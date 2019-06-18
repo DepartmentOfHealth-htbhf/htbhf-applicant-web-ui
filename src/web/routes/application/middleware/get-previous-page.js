@@ -1,6 +1,6 @@
 const { isNil } = require('ramda')
 
-const getPreviousAllowedStep = (steps, index, session) => {
+const getPreviousNavigablePath = (steps, index, session) => {
   if (index === 0) {
     throw new Error('No allowed back route found')
   }
@@ -20,10 +20,10 @@ const getPreviousAllowedStep = (steps, index, session) => {
     throw new Error(`isNavigable must return a boolean for step ${JSON.stringify(previousStep)}`)
   }
 
-  return isNavigable(session) ? path : getPreviousAllowedStep(steps, index - 1, session)
+  return isNavigable(session) ? path : getPreviousNavigablePath(steps, index - 1, session)
 }
 
-const getPreviousPage = (steps, step, session) => {
+const getPreviousPath = (steps, step, session) => {
   const index = steps.indexOf(step)
 
   if (index === -1) {
@@ -32,11 +32,11 @@ const getPreviousPage = (steps, step, session) => {
 
   // first page doesn't have a back link
   if (index > 0) {
-    return getPreviousAllowedStep(steps, index, session)
+    return getPreviousNavigablePath(steps, index, session)
   }
 }
 
 module.exports = {
-  getPreviousAllowedStep,
-  getPreviousPage
+  getPreviousNavigablePath,
+  getPreviousPath
 }
