@@ -33,6 +33,8 @@ const registerRoutes = (config, app) => {
     registerConfirmRoute(config, steps, app)
     registerCookiesRoute(app)
     registerPrivacyNoticeRoute(app)
+
+    // Page not found route should always be registered last as it is a catch all route
     registerPageNotFoundRoute(app)
   }
 }
