@@ -1,7 +1,7 @@
-const { getPreviousPage } = require('./get-previous-page')
+const { getPreviousPath } = require('./get-previous-page')
 
 const configureGet = (steps, step) => (req, res, next) => {
-  res.locals.previous = getPreviousPage(steps, step, req.session)
+  res.locals.previous = getPreviousPath(steps, step, req.session)
 
   next()
 }
