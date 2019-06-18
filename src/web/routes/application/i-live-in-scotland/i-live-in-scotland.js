@@ -1,3 +1,4 @@
+const { path } = require('ramda')
 const { YES } = require('../common/constants')
 
 const pageContent = ({ translate }) => ({
@@ -5,7 +6,7 @@ const pageContent = ({ translate }) => ({
   heading: translate('iLiveInScotland.heading')
 })
 
-const isNavigable = (session) => session.claim.doYouLiveInScotland === YES
+const isNavigable = (session) => path(['claim', 'doYouLiveInScotland'], session) === YES
 
 const iLiveInScotland = {
   path: '/i-live-in-scotland',
