@@ -50,6 +50,22 @@ test('getPreviousAllowedStep() throws an error when no previous steps are allowe
   t.end()
 })
 
+test('getPreviousAllowedStep() throws an error if isNavigable() exists but is not a function', (t) => {
+  const steps = [{ path: '/first', isNavigable: 'not-a-function' }, { path: '/second' }]
+  const result = () => getPreviousAllowedStep(steps, 1, {})
+
+  t.throws(result, /isNavigable must be a function for step {"path":"\/first","isNavigable":"not-a-function"}/, 'throws an error if isNavigable() exists but is not a function')
+  t.end()
+})
+
+test('getPreviousAllowedStep() throws an error if isNavigable() does not return a boolean', (t) => {
+  const steps = [{ path: '/first', isNavigable: () => 'not-a-boolean' }, { path: '/second' }]
+  const result = () => getPreviousAllowedStep(steps, 1, {})
+
+  t.throws(result, /isNavigable must return a boolean for step {"path":"\/first"}/, 'throws an error if isNavigable() exists but is not a function')
+  t.end()
+})
+
 test('getPreviousPage() throws an error if step does not exist', (t) => {
   const steps = [{ path: '/first' }]
   const step = { path: '/second' }
