@@ -66,7 +66,7 @@ test('getPreviousAllowedStep() throws an error if isNavigable() does not return 
   t.end()
 })
 
-test('getPreviousPage() throws an error if step does not exist', (t) => {
+test('getPreviousPage() throws an error if step does not exist in list of steps', (t) => {
   const steps = [{ path: '/first' }]
   const step = { path: '/second' }
   const result = () => getPreviousPage(steps, step, {})
