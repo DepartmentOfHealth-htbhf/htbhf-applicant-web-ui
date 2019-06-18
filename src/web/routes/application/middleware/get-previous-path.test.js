@@ -1,5 +1,5 @@
 const test = require('tape')
-const { getPreviousNavigablePath, getPreviousPath } = require('./get-previous-page')
+const { getPreviousNavigablePath, getPreviousPath } = require('./get-previous-path')
 
 test('getPreviousNavigablePath() returns the path for previous step if isNavigable function does not exist', (t) => {
   const steps = [{ path: '/first' }, { path: '/second' }]
