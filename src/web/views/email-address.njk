@@ -1,0 +1,40 @@
+{% extends "templates/form.njk" %}
+{% from "input/macro.njk" import govukInput %}
+{% from "fieldset/macro.njk" import govukFieldset %}
+{% from "details/macro.njk" import govukDetails %}
+
+{% block formContent %}
+
+  {% call govukFieldset({
+    legend: {
+      text: heading,
+      classes: "govuk-fieldset__legend--xl",
+      isPageHeading: true
+    }
+  }) %}
+
+    <span class="govuk-hint govuk-!-margin-bottom-6">{{ formDescription }}</p>
+
+    {{ govukInput({
+      label: {
+        text: emailAddressLabel
+      },
+      id: 'email-address',
+      name: 'emailAddress',
+      value: claim.emailAddress,
+      errorMessage: errors | getErrorForField('emailAddress'),
+      type: "email",
+      autocomplete: "email",
+      attributes: {
+        spellcheck: "false"
+      }
+    }) }}
+
+  {% endcall %}
+
+  {{ govukDetails({
+        summaryText: detail.summaryText,
+        text: detail.text | safe
+    }) }}
+
+{% endblock %}

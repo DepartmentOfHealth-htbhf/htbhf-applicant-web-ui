@@ -7,7 +7,7 @@ const pa11yWithSettings = require('./pally')
 const handleTestResults = require('./results')
 const IGNORE_RULES = require('./ignore-rules')
 const { PORT } = require('../common/config')
-const { VALID_ELIGIBLE_NINO, PHONE_NUMBER } = require('../common/steps/constants')
+const { VALID_ELIGIBLE_NINO, PHONE_NUMBER, EMAIL_ADDRESS } = require('../common/steps/constants')
 
 const BASE_URL = `http://localhost:${PORT}`
 const ENTER_NAME_URL = `${BASE_URL}/enter-name`
@@ -16,6 +16,7 @@ const ENTER_DOB_URL = `${BASE_URL}/enter-dob`
 const ARE_YOU_PREGNANT_URL = `${BASE_URL}/are-you-pregnant`
 const CARD_ADDRESS_URL = `${BASE_URL}/card-address`
 const PHONE_NUMBER_URL = `${BASE_URL}/phone-number`
+const EMAIL_ADDRESS_URL = `${BASE_URL}/email-address`
 const CHECK_URL = `${BASE_URL}/check`
 const CONFIRM_URL = `${BASE_URL}/confirm`
 
@@ -73,6 +74,9 @@ const runTests = async () => {
 
     results.push(await pa11y(PHONE_NUMBER_URL))
     await postFormData(PHONE_NUMBER_URL, { ...formData, phoneNumber: PHONE_NUMBER }, requestCookie)
+
+    results.push(await pa11y(EMAIL_ADDRESS_URL))
+    await postFormData(EMAIL_ADDRESS_URL, { ...formData, emailAddress: EMAIL_ADDRESS }, requestCookie)
 
     results.push(await pa11y(CHECK_URL))
     await postFormData(CHECK_URL, formData, requestCookie)

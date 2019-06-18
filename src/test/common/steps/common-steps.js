@@ -10,7 +10,7 @@ const INTEGRATION_TESTS = 'integration'
 
 const testsRequireApiMocks = () => TESTS !== COMPATIBILITY_TESTS && TESTS !== INTEGRATION_TESTS
 
-const { VALID_ELIGIBLE_NINO, FIRST_NAME, LAST_NAME, DAY, MONTH, YEAR, ADDRESS_LINE_1, ADDRESS_LINE_2, TOWN, POSTCODE, CLAIMS_ENDPOINT, PHONE_NUMBER, YES_LABEL, NO_LABEL } = require('./constants')
+const { VALID_ELIGIBLE_NINO, FIRST_NAME, LAST_NAME, DAY, MONTH, YEAR, ADDRESS_LINE_1, ADDRESS_LINE_2, TOWN, POSTCODE, CLAIMS_ENDPOINT, PHONE_NUMBER, YES_LABEL, NO_LABEL, EMAIL_ADDRESS } = require('./constants')
 
 async function enterDoYouLiveInScotlandNoAndSubmit () {
   try {
@@ -91,6 +91,15 @@ async function enterPhoneNumberAndSubmit (phoneNumber = PHONE_NUMBER) {
   }
 }
 
+async function enterEmailAddressAndSubmit (emailAddress = EMAIL_ADDRESS) {
+  try {
+    await pages.emailAddress.enterEmailAddress(emailAddress)
+    await pages.emailAddress.submitForm()
+  } catch (error) {
+    assert.fail(`Unexpected error caught trying to enter phone number and submit the page - ${error}`)
+  }
+}
+
 async function assertErrorHeaderTextPresent (page, message = 'There is a problem') {
   try {
     await page.waitForPageLoad()
@@ -124,6 +133,7 @@ async function completeTheApplicationAsAPregnantWoman () {
   await enterNinoAndSubmit()
   await enterCardAddressAndSubmit()
   await enterPhoneNumberAndSubmit()
+  await enterEmailAddressAndSubmit()
 }
 
 async function completeTheApplicationAsAWomanWhoIsNotPregnant () {
@@ -134,6 +144,7 @@ async function completeTheApplicationAsAWomanWhoIsNotPregnant () {
   await enterNinoAndSubmit()
   await enterCardAddressAndSubmit()
   await enterPhoneNumberAndSubmit()
+  await enterEmailAddressAndSubmit()
 }
 
 async function setupWiremockMappingsWithStatus (status) {
@@ -207,5 +218,6 @@ module.exports = {
   getBodyOfLastRequestToClaimService,
   enterDoYouLiveInScotlandNoAndSubmit,
   assertFieldErrorAndLinkTextPresentAndCorrect,
-  assertYesNoOptionsAreDisplayed
+  assertYesNoOptionsAreDisplayed,
+  enterEmailAddressAndSubmit
 }
