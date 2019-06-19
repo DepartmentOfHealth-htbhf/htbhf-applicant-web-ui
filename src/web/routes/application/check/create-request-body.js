@@ -1,5 +1,6 @@
 const { toDateString } = require('../common/formatters')
 const { YES } = require('../common/constants')
+const { APP_VERSION } = require('../../../../config/environment')
 
 const createExpectedDeliveryDate = (claim) => {
   if (claim.areYouPregnant === YES) {
@@ -37,7 +38,8 @@ const createDeviceFingerprint = (headers) => ({
 
 const createRequestBody = (req) => ({
   claimant: createClaim(req.session.claim),
-  deviceFingerprint: createDeviceFingerprint(req.headers)
+  deviceFingerprint: createDeviceFingerprint(req.headers),
+  webUIVersion: APP_VERSION
 })
 
 module.exports = {

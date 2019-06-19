@@ -1,5 +1,6 @@
 const test = require('tape')
 const { createRequestBody } = require('./create-request-body')
+const { APP_VERSION } = require('../../../../config/environment')
 
 const requestHeaders = {
   'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.80 Safari/537.36',
@@ -62,7 +63,8 @@ test('create claim body', (t) => {
       expectedDeliveryDate: '2019-03-01',
       phoneNumber: '+447700900645' // assert that the phone number posted is the formatted version
     },
-    deviceFingerprint: expectedFingerprint
+    deviceFingerprint: expectedFingerprint,
+    webUIVersion: APP_VERSION
   }
 
   const bodyToPost = createRequestBody(request)
@@ -115,7 +117,8 @@ test('create claim body without expectedDeliveryDate when not pregnant', (t) => 
       expectedDeliveryDate: null,
       phoneNumber: '+447700900645' // assert that the phone number posted is the formatted version
     },
-    deviceFingerprint: expectedFingerprint
+    deviceFingerprint: expectedFingerprint,
+    webUIVersion: APP_VERSION
   }
 
   const bodyToPost = createRequestBody(request)

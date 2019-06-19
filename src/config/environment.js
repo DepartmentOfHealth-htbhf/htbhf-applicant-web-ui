@@ -9,5 +9,6 @@ module.exports = {
   LOG_LEVEL: getVCAPServicesVariable('UI_LOG_LEVEL', process.env.LOG_LEVEL || 'debug'),
   MAINTENANCE_MODE: toBoolean(getVCAPServicesVariable('MAINTENANCE_MODE', false)),
   SERVICE_AVAILABLE_DATE: getVCAPServicesVariable('SERVICE_AVAILABLE_DATE'),
-  OVERVIEW_URL: '/'
+  OVERVIEW_URL: '/',
+  APP_VERSION: process.env.APP_VERSION || 'unknown'
 }
