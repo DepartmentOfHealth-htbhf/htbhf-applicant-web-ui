@@ -11,7 +11,9 @@ const {
   FULL_ADDRESS,
   FULL_ADDRESS_NO_LINE_2,
   YES_LABEL,
-  NO_LABEL
+  NO_LABEL,
+  PHONE_NUMBER,
+  EMAIL_ADDRESS
 } = require('./constants')
 
 const pages = require('./pages')
@@ -22,7 +24,8 @@ const {
   enterDateOfBirthAndSubmit,
   enterCardAddressAndSubmit,
   enterPhoneNumberAndSubmit,
-  enterDoYouLiveInScotlandNoAndSubmit
+  enterDoYouLiveInScotlandNoAndSubmit,
+  enterEmailAddressAndSubmit
 } = require('./common-steps')
 const { formatDateForDisplayFromDate } = require('../../../web/routes/application/common/formatters')
 
@@ -34,6 +37,7 @@ When(/^I complete the application with valid details that contains malicious inp
   await enterNinoAndSubmit()
   await enterCardAddressAndSubmit()
   await enterPhoneNumberAndSubmit()
+  await enterEmailAddressAndSubmit()
 })
 
 When(/^I complete the application with valid details for an applicant with no second line of address$/, async function () {
@@ -44,6 +48,7 @@ When(/^I complete the application with valid details for an applicant with no se
   await enterNinoAndSubmit()
   await enterCardAddressAndSubmit(ADDRESS_LINE_1, '', TOWN, POSTCODE)
   await enterPhoneNumberAndSubmit()
+  await enterEmailAddressAndSubmit()
 })
 
 When(/^I choose to change my answer to are you pregnant$/, async function () {
@@ -58,7 +63,8 @@ Then(/^the check details page contains all data entered for a pregnant woman$/, 
   assertAreYouPregnantValueShown(tableContents, YES_LABEL)
   assertDueDateShownInSixMonths(tableContents)
   assertFullAddressShown(tableContents)
-  // TODO DW HTBHF-1545 assert mobile number is shown
+  assertPhoneNumberShown(tableContents)
+  assertEmailAddressShown(tableContents)
 })
 
 Then(/^the check details page contains all data entered for a woman who is not pregnant$/, async function () {
@@ -69,7 +75,8 @@ Then(/^the check details page contains all data entered for a woman who is not p
   assertAreYouPregnantValueShown(tableContents, NO_LABEL)
   assertNoValueForField(tableContents, 'Baby\'s due date')
   assertFullAddressShown(tableContents)
-  // TODO DW HTBHF-1545 assert mobile number is shown
+  assertPhoneNumberShown(tableContents)
+  assertEmailAddressShown(tableContents)
 })
 
 Then(/^the check details page contains all data entered for an applicant with no second line of address$/, async function () {
@@ -80,7 +87,8 @@ Then(/^the check details page contains all data entered for an applicant with no
   assertAreYouPregnantValueShown(tableContents, NO_LABEL)
   assertNoValueForField(tableContents, 'Baby\'s due date')
   assertAddressShownWithNoSecondLine(tableContents)
-  // TODO DW HTBHF-1545 assert mobile number is shown
+  assertPhoneNumberShown(tableContents)
+  assertEmailAddressShown(tableContents)
 })
 
 Then(/^all page content is present on the check details page$/, async function () {
@@ -163,6 +171,16 @@ function assertAddressShownWithNoSecondLine (tableContents) {
 function assertAddressShown (tableContents, expectedAddress) {
   const addressValue = getValueForField(tableContents, 'Address')
   expect(addressValue).to.be.equal(expectedAddress)
+}
+
+function assertPhoneNumberShown (tableContents) {
+  const phoneNumberValue = getValueForField(tableContents, 'Mobile telephone number')
+  expect(phoneNumberValue).to.be.equal(PHONE_NUMBER)
+}
+
+function assertEmailAddressShown (tableContents) {
+  const emailAddressValue = getValueForField(tableContents, 'Email address')
+  expect(emailAddressValue).to.be.equal(EMAIL_ADDRESS)
 }
 
 function hasChangeLinkAndHeaderText (row) {

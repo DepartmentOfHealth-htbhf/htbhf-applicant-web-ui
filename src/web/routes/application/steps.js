@@ -6,6 +6,7 @@ const { cardAddress } = require('./card-address')
 const { phoneNumber } = require('./phone-number')
 const { doYouLiveInScotland } = require('./do-you-live-in-scotland')
 const { iLiveInScotland } = require('./i-live-in-scotland')
+const { emailAddress } = require('./email-address')
 
 const steps = [
   doYouLiveInScotland,
@@ -15,7 +16,8 @@ const steps = [
   enterName,
   enterNino,
   cardAddress,
-  phoneNumber
+  phoneNumber,
+  emailAddress
 ]
 
 module.exports = { steps }

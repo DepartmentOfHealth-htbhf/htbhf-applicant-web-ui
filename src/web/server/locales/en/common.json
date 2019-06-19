@@ -56,6 +56,16 @@
       "text": "To prevent fraud and contact you about your application if necessary."
     }
   },
+  "emailAddress": {
+    "title": "What's your email address?",
+    "heading": "What's your email address?",
+    "formDescription": "This must be the same email you use for any benefits you claim",
+    "emailAddressLabel": "Email address",
+    "summaryKey": "Email address",
+    "detail": {
+      "text": "To send notifications about your application and your prepaid card."
+    }
+  },
   "doYouLiveInScotland": {
     "title": "Do you live in Scotland?",
     "heading": "Do you live in Scotland?",
