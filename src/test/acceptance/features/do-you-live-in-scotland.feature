@@ -18,3 +18,9 @@ Feature: Do you live in Scotland?
     When I say No to the do you live in Scotland question
     And I click continue
     Then I am shown the enter date of birth page
+
+  Scenario: Select the Yes option and claimant is told to use the Scottish scheme
+    When I select the Yes option on the do you live in Scotland page
+    And I click continue
+    Then I am shown the I live in Scotland page
+    And I am informed that I cannot apply and should use the Scottish scheme
