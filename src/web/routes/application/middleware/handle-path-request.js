@@ -5,7 +5,9 @@ const { IS_PATH_ALLOWED, GET_NEXT_ALLOWED_PATH } = actions
 
 const getPathsInSequence = (steps) => [...steps.map(step => step.path), CHECK_URL, CONFIRM_URL]
 
-const middleware = (config, pathsInSequence) => (req, res, next) => {
+const stepNotNavigable = (step, req) => step && typeof step.isNavigable === 'function' && !step.isNavigable(req.session)
+
+const middleware = (config, pathsInSequence, step) => (req, res, next) => {
   // Destroy the session on navigating away from CONFIRM_URL
   if (stateMachine.getState(req) === states.COMPLETED && req.path !== CONFIRM_URL) {
     req.session.destroy()
@@ -26,10 +28,15 @@ const middleware = (config, pathsInSequence) => (req, res, next) => {
     return res.redirect(nextAllowedPath)
   }
 
+  // If step is not navigable then return to the next allowed path (which will be the originating page)
+  if (stepNotNavigable(step, req)) {
+    return res.redirect(nextAllowedPath)
+  }
+
   next()
 }
 
-const handleRequestForPath = (config, steps) => middleware(config, getPathsInSequence(steps))
+const handleRequestForPath = (config, steps, step) => middleware(config, getPathsInSequence(steps), step)
 
 module.exports = {
   getPathsInSequence,
