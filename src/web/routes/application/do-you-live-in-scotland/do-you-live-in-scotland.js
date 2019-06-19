@@ -1,4 +1,5 @@
 const { validate } = require('./validate')
+const { YES } = require('../common/constants')
 
 const contentSummary = (req) => ({
   key: req.t('doYouLiveInScotland.summaryKey'),
@@ -13,9 +14,11 @@ const pageContent = ({ translate }) => ({
   no: translate('no')
 })
 
+const next = req => req.session.claim.doYouLiveInScotland === YES ? '/i-live-in-scotland' : '/enter-dob'
+
 const doYouLiveInScotland = {
   path: '/do-you-live-in-scotland',
-  next: () => '/enter-dob',
+  next,
   template: 'do-you-live-in-scotland',
   pageContent,
   contentSummary,

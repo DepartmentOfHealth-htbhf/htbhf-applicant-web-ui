@@ -5,10 +5,12 @@ const { areYouPregnant } = require('./are-you-pregnant')
 const { cardAddress } = require('./card-address')
 const { phoneNumber } = require('./phone-number')
 const { doYouLiveInScotland } = require('./do-you-live-in-scotland')
+const { iLiveInScotland } = require('./i-live-in-scotland')
 const { emailAddress } = require('./email-address')
 
 const steps = [
   doYouLiveInScotland,
+  iLiveInScotland,
   enterDob,
   areYouPregnant,
   enterName,
