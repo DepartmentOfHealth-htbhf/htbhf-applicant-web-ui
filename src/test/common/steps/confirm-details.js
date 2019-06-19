@@ -39,6 +39,7 @@ Then(/^my claim is sent to the back end$/, async function () {
   const body = await getBodyOfLastRequestToClaimService()
   expect(body).to.have.property('claimant')
   expect(body).to.have.property('deviceFingerprint')
+  expect(body).to.have.property('webUIVersion')
 })
 
 async function checkAllPageContentIsPresentAndCorrect () {
