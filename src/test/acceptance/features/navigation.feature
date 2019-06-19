@@ -13,6 +13,7 @@ Feature: Application process navigation is controlled
       | enter national insurance |
       | enter date of birth      |
       | do you live in Scotland  |
+      | I live in Scotland       |
       | are you pregnant         |
       | card address             |
       | phone number             |
@@ -35,6 +36,7 @@ Feature: Application process navigation is controlled
       | page                     |
       | enter name               |
       | do you live in Scotland  |
+      | I live in Scotland       |
       | enter national insurance |
       | enter date of birth      |
       | are you pregnant         |
@@ -66,3 +68,8 @@ Feature: Application process navigation is controlled
       | card address             |
       | phone number             |
       | email address            |
+
+  Scenario: Navigation to I live in Scotland from the check details page is not allowed
+    Given I have entered my details up to the check details page
+    When I navigate to the I live in Scotland page
+    Then I am shown the check details page

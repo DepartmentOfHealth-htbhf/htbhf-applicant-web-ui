@@ -11,7 +11,7 @@ const DATE_OF_BIRTH_ERROR_LINK_CSS = 'a[href="#date-of-birth-error"]'
 const DATE_OF_BIRTH_FIELD_ERROR_ID = 'date-of-birth-error'
 
 /**
- * Page object for EnterDOB page where the name is entered.
+ * Page object for the 'enter date of birth' page.
  */
 class EnterDOB extends SubmittablePage {
   getPath () {
