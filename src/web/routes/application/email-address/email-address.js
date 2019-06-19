@@ -1,4 +1,4 @@
-// TODO DW HTBHF-1612 add validation
+const { validate } = require('./validate')
 
 const pageContent = ({ translate }) => ({
   title: translate('emailAddress.title'),
@@ -21,6 +21,7 @@ const emailAddress = {
   path: '/email-address',
   next: () => '/check',
   template: 'email-address',
+  validate,
   pageContent,
   contentSummary
 }

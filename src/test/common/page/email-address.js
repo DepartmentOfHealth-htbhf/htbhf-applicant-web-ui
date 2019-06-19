@@ -7,6 +7,9 @@ const PAGE_TITLES = {
   cy: 'GOV.UK - Urna condimentum mattis?'
 }
 
+const EMAIL_ADDRESS_FIELD_ERROR_ID = 'email-address-error'
+const EMAIL_ADDRESS_ERROR_LINK_CSS = 'a[href="#email-address-error"]'
+
 /**
  * Page object for Email address page where the email address is entered.
  */
@@ -30,6 +33,19 @@ class EmailAddress extends SubmittablePage {
 
   async getEmailAddressField () {
     return this.findById('email-address')
+  }
+
+  async getEmailAddressValue () {
+    const emailAddress = await this.getEmailAddressField()
+    return emailAddress.getAttribute('value')
+  }
+
+  getEmailAddressFieldErrorId () {
+    return EMAIL_ADDRESS_FIELD_ERROR_ID
+  }
+
+  getEmailAddressLinkErrorCss () {
+    return EMAIL_ADDRESS_ERROR_LINK_CSS
   }
 }
 
