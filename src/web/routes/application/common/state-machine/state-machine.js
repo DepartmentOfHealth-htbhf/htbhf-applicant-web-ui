@@ -11,7 +11,8 @@ const states = {
 const actions = {
   GET_NEXT_PATH: 'getNextPath',
   IS_PATH_ALLOWED: 'isPathAllowed',
-  GET_NEXT_ALLOWED_PATH: 'getNextAllowedPath'
+  GET_NEXT_ALLOWED_PATH: 'getNextAllowedPath',
+  INVALIDATE_REVIEW: 'invalidateReview'
 }
 
 const getStepForPath = (path, steps) => steps.find(step => step.path === path)
@@ -33,7 +34,8 @@ const stateMachine = {
   [states.IN_REVIEW]: {
     getNextPath: () => CHECK_URL,
     isPathAllowed: (req, sequence) => isPathAllowed(sequence, req.session.nextAllowedStep, req.path),
-    getNextAllowedPath: (req) => req.session.nextAllowedStep
+    getNextAllowedPath: (req) => req.session.nextAllowedStep,
+    invalidateReview: (req) => stateMachine.setState(states.IN_PROGRESS, req)
   },
   [states.COMPLETED]: {
     getNextPath: () => CONFIRM_URL,
