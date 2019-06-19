@@ -28,7 +28,7 @@ const middleware = (config, pathsInSequence, step) => (req, res, next) => {
     return res.redirect(nextAllowedPath)
   }
 
-  // If step is not navigable then return to the next allowed path (which will be the originating page)
+  // If step is not navigable then return to the next allowed path
   if (stepNotNavigable(step, req)) {
     return res.redirect(nextAllowedPath)
   }

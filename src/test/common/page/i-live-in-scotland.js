@@ -8,7 +8,7 @@ const PAGE_TITLES = {
 }
 
 /**
- * Page object for ILiveInScotland page where the claimant is told they cannot apply if they live in Scotland.
+ * Page object for I Live in Scotland page where the claimant is told they cannot apply if they live in Scotland.
  */
 class ILiveInScotland extends Page {
   async waitForPageLoad (lang = 'en') {
