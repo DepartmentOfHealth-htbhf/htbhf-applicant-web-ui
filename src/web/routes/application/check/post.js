@@ -28,7 +28,7 @@ const postCheck = (steps, config) => (req, res, next) => {
       'X-Request-ID': req.headers[REQUEST_ID_HEADER],
       'X-Session-ID': req.sessionID
     },
-    body: createRequestBody(req),
+    body: createRequestBody(config, req),
     simple: false,
     transform: transformResponse
   })
