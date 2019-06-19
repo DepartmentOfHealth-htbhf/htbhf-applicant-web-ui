@@ -1,5 +1,5 @@
-const { flatten, path } = require('ramda')
-const { steps } = require('../steps')
+const { pipe, map, filter, flatten, path, isNil } = require('ramda')
+const { notIsNil } = require('../../../../common/predicates')
 const { stateMachine, states } = require('../common/state-machine')
 
 const getLastStepPath = (steps) => {
@@ -16,8 +16,7 @@ const pageContent = ({ translate }) => ({
   sendApplicationHeader: translate('check.sendApplicationHeader'),
   sendApplicationText: translate('check.sendApplicationText'),
   buttonText: translate('buttons:acceptAndSend'),
-  changeText: translate('check.change'),
-  previous: getLastStepPath(steps)
+  changeText: translate('check.change')
 })
 
 const combinePathWithRow = (path) => (row) => ({
@@ -25,30 +24,33 @@ const combinePathWithRow = (path) => (row) => ({
   path
 })
 
-const getRowData = (req) => (step) => {
-  const result = step.contentSummary(req)
+const getFlattenedRowData = (req) => pipe(map(getRowData(req)), filter(notIsNil), flatten)
 
+const getRowData = (req) => (step) => {
+  if (isNil(step.contentSummary)) {
+    return null
+  }
+  const result = step.contentSummary(req)
   const applyPathToRow = combinePathWithRow(step.path)
 
-  return Array.isArray(result) ? result.map(applyPathToRow) : [applyPathToRow(result)]
+  return Array.isArray(result) ? result.map(applyPathToRow) : applyPathToRow(result)
 }
 
-const getCheck = (req, res) => {
-  const stepArrays = steps.map(getRowData(req))
-  const checkRowData = flatten(stepArrays)
-
+const getCheck = (steps) => (req, res) => {
   stateMachine.setState(states.IN_REVIEW, req)
 
   res.render('check', {
     claim: req.session.claim,
     ...pageContent({ translate: req.t }),
     csrfToken: req.csrfToken(),
-    checkRowData
+    checkRowData: getFlattenedRowData(req)(steps),
+    previous: getLastStepPath(steps)
   })
 }
 
 module.exports = {
   getCheck,
   getRowData,
-  getLastStepPath
+  getLastStepPath,
+  getFlattenedRowData
 }

@@ -6,7 +6,7 @@ const { handleRequestForPath } = require('../middleware')
 const registerCheckRoutes = (csrfProtection, steps, config, app) => {
   app
     .route(CHECK_URL)
-    .get(csrfProtection, handleRequestForPath(config, steps), getCheck)
+    .get(csrfProtection, handleRequestForPath(config, steps), getCheck(steps))
     .post(csrfProtection, handleRequestForPath(config, steps), postCheck(steps, config))
 }
 

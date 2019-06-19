@@ -35,9 +35,10 @@ const createDeviceFingerprint = (headers) => ({
   'accept-language': headers['accept-language']
 })
 
-const createRequestBody = (req) => ({
+const createRequestBody = (config, req) => ({
   claimant: createClaim(req.session.claim),
-  deviceFingerprint: createDeviceFingerprint(req.headers)
+  deviceFingerprint: createDeviceFingerprint(req.headers),
+  webUIVersion: config.environment.APP_VERSION
 })
 
 module.exports = {

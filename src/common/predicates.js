@@ -4,7 +4,10 @@ const isNilOrEmpty = (string) => or(isNil(string), isEmpty(string))
 
 const notIsNilOrEmpty = compose(not, isNilOrEmpty)
 
+const notIsNil = compose(not, isNil)
+
 module.exports = {
   isNilOrEmpty,
-  notIsNilOrEmpty
+  notIsNilOrEmpty,
+  notIsNil
 }
