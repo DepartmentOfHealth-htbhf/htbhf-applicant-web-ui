@@ -10,6 +10,8 @@ const { PORT } = require('../common/config')
 const { VALID_ELIGIBLE_NINO, PHONE_NUMBER, EMAIL_ADDRESS } = require('../common/steps/constants')
 
 const BASE_URL = `http://localhost:${PORT}`
+const DO_YOU_LIVE_IN_SCOTLAND_URL = `${BASE_URL}/do-you-live-in-scotland`
+const I_LIVE_IN_SCOTLAND_URL = `${BASE_URL}/i-live-in-scotland`
 const ENTER_NAME_URL = `${BASE_URL}/enter-name`
 const ENTER_NINO_URL = `${BASE_URL}/enter-nino`
 const ENTER_DOB_URL = `${BASE_URL}/enter-dob`
@@ -39,22 +41,30 @@ const runTests = async () => {
     const pa11y = pa11yWithSettings(IGNORE_RULES, { Cookie: requestCookie })
     const formData = { '_csrf': csrfToken }
 
+    results.push(await pa11y(DO_YOU_LIVE_IN_SCOTLAND_URL))
+    await postFormData(DO_YOU_LIVE_IN_SCOTLAND_URL, { ...formData, doYouLiveInScotland: 'yes' }, requestCookie)
+
+    results.push(await pa11y(I_LIVE_IN_SCOTLAND_URL))
+
+    results.push(await pa11y(DO_YOU_LIVE_IN_SCOTLAND_URL))
+    await postFormData(DO_YOU_LIVE_IN_SCOTLAND_URL, { ...formData, doYouLiveInScotland: 'no' }, requestCookie)
+
     results.push(await pa11y(ENTER_DOB_URL))
     await postFormData(ENTER_DOB_URL, {
       ...formData,
-      'dob-day': '1',
-      'dob-month': '10',
-      'dob-year': '1980'
+      'dateOfBirth-day': '1',
+      'dateOfBirth-month': '10',
+      'dateOfBirth-year': '1980'
     }, requestCookie)
 
     results.push(await pa11y(ARE_YOU_PREGNANT_URL))
     const dueDate = dateIn3Months()
     await postFormData(ARE_YOU_PREGNANT_URL, {
       ...formData,
-      'areYouPregnant-1': 'yes',
+      areYouPregnant: 'yes',
       'expectedDeliveryDate-day': dueDate.getDate(),
       'expectedDeliveryDate-month': dueDate.getMonth() + 1,
-      'expectedDeliveryDate-year': dueDate.getYear()
+      'expectedDeliveryDate-year': dueDate.getFullYear()
     }, requestCookie)
 
     results.push(await pa11y(ENTER_NAME_URL))
