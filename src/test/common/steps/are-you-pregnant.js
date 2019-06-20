@@ -98,11 +98,11 @@ Then(/^I am informed that the date is too far in the future$/, async function ()
   await assertExpectedDeliveryDateErrorPresent('If you have children under the age of 4, answer ‘no’ to this question to continue with this application on their behalf.')
 })
 
-async function assertAreYouPregnantErrorPresent (expectedErrorMessage = 'Select yes or no') {
+async function assertAreYouPregnantErrorPresent () {
   await assertFieldErrorAndLinkTextPresentAndCorrect(
     pages.areYouPregnant.getAreYouPregnantFieldErrorId(),
     pages.areYouPregnant.getAreYouPregnantErrorLinkCss(),
-    expectedErrorMessage)
+    'Select yes or no')
 }
 
 async function assertExpectedDeliveryDateErrorPresent (expectedErrorMessage) {
