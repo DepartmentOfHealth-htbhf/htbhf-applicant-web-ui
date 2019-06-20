@@ -18,11 +18,11 @@ Feature: Enter phone number
 
   Scenario: Do not enter in a phone number
     When I do not enter a phone number
-    Then I am informed that the phone number is required
+    Then I am informed that I must enter in a valid phone number
 
   Scenario Outline: Fill phone number with invalid format
     When I enter <phoneNumber> as my phone number
-    Then I am informed that the phone number is in the wrong format
+    Then I am informed that I must enter in a valid phone number
     Then I see the value <phoneNumber> in the phone number textbox
 
     Examples:

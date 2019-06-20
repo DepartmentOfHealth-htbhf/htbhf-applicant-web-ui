@@ -16,12 +16,7 @@ Then(/^I am shown the phone number page$/, async function () {
   await pages.phoneNumber.waitForPageLoad()
 })
 
-Then(/^I am informed that the phone number is required$/, async function () {
-  await assertErrorHeaderTextPresent(pages.phoneNumber)
-  await assertPhoneNumberErrorFieldAndLink('Enter a UK mobile number')
-})
-
-Then(/^I am informed that the phone number is in the wrong format$/, async function () {
+Then(/^I am informed that I must enter in a valid phone number$/, async function () {
   await assertErrorHeaderTextPresent(pages.phoneNumber)
   await assertPhoneNumberErrorFieldAndLink('Enter in a valid UK mobile number')
 })

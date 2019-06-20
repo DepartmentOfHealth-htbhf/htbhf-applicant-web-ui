@@ -15,7 +15,7 @@ test('phone number regex is safe', (t) => {
 test('missing phone number - empty string', (t) => {
   const invalidPhoneNumber = ''
 
-  t.throws(validatePhoneNumber.bind(null, invalidPhoneNumber, { req }), /validation:missingPhoneNumber/, 'should throw an error for missing number')
+  t.throws(validatePhoneNumber.bind(null, invalidPhoneNumber, { req }), /validation:invalidPhoneNumber/, 'should throw an error for missing number')
   t.end()
 })
 
