@@ -2,7 +2,7 @@ const test = require('tape')
 const { stateMachine, states, actions, isPathAllowed } = require('./state-machine')
 const { CHECK_URL, CONFIRM_URL } = require('../../common/constants')
 
-const { GET_NEXT_PATH } = actions
+const { GET_NEXT_PATH, INVALIDATE_REVIEW } = actions
 
 const steps = [{ path: '/first', next: () => '/second' }, { path: '/second' }]
 const paths = ['/first', '/second', '/third', '/fourth']
@@ -57,5 +57,24 @@ test('isPathAllowed() should return true if path matches allowed', (t) => {
 test('isPathAllowed() should return false if path is after allowed in sequence', (t) => {
   const result = isPathAllowed(paths, '/third', '/fourth')
   t.equal(result, false, 'returns false if path is after allowed in sequence')
+  t.end()
+})
+
+test(`Dispatching ${INVALIDATE_REVIEW} should set state to ${states.IN_PROGRESS} when session.state is ${states.IN_REVIEW}`, async (t) => {
+  const req = { method: 'POST', session: { state: states.IN_REVIEW }, path: '/first' }
+
+  stateMachine.dispatch(INVALIDATE_REVIEW, req)
+
+  t.equal(req.session.state, states.IN_PROGRESS, `sets state to ${states.IN_PROGRESS}`)
+  t.end()
+})
+
+test(`Dispatching ${INVALIDATE_REVIEW} should not update state when session.state is not ${states.IN_REVIEW}`, async (t) => {
+  [states.IN_PROGRESS, states.COMPLETED].forEach(state => {
+    const req = { method: 'POST', session: { state }, path: '/first' }
+    stateMachine.dispatch(INVALIDATE_REVIEW, req)
+    t.equal(req.session.state, state, `does not update state for ${state}`)
+  })
+
   t.end()
 })

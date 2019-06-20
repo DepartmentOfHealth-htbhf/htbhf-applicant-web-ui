@@ -10,8 +10,6 @@ const defaultValidator = {
   }
 }
 
-const steps = [{ path: '/first', next: () => '/second' }, { path: '/second' }]
-
 test('handlePost() should add errors and claim to locals if errors exist', (t) => {
   const errors = ['error']
 
@@ -24,12 +22,14 @@ test('handlePost() should add errors and claim to locals if errors exist', (t) =
     }
   })
 
+  const steps = [{ path: '/first', next: () => '/second' }, { path: '/second' }]
+  const step = steps[0]
   const claim = 'claim'
   const req = { body: claim }
   const res = { locals: {} }
   const next = sinon.spy()
 
-  handlePost(steps)(req, res, next)
+  handlePost(steps, step)(req, res, next)
 
   t.deepEqual(res.locals.errors, errors, 'it should add errors to locals')
   t.deepEqual(res.locals.claim, claim, 'it should add claim to locals')
@@ -40,6 +40,8 @@ test('handlePost() should add errors and claim to locals if errors exist', (t) =
 test('handlePost() adds body to the session if no errors exist', (t) => {
   const { handlePost } = proxyquire('./handle-post', { ...defaultValidator })
 
+  const steps = [{ path: '/first', next: () => '/second' }, { path: '/second' }]
+  const step = steps[0]
   const req = {
     session: {
       claim: {
@@ -58,7 +60,7 @@ test('handlePost() adds body to the session if no errors exist', (t) => {
     new: 'claim data'
   }
 
-  handlePost(steps)(req, {}, next)
+  handlePost(steps, step)(req, {}, next)
 
   t.deepEqual(req.session.claim, expected, 'it should add body to session')
   t.equal(next.called, true, 'it should call next()')
@@ -75,6 +77,8 @@ test('handlePost() calls next() with error on error', (t) => {
     }
   })
 
+  const steps = [{ path: '/first', next: () => '/second' }, { path: '/second' }]
+  const step = steps[0]
   const req = {
     session: {
       claim: {}
@@ -85,7 +89,7 @@ test('handlePost() calls next() with error on error', (t) => {
   const res = { locals: {} }
   const next = sinon.spy()
 
-  handlePost(steps)(req, res, next)
+  handlePost(steps, step)(req, res, next)
 
   t.equal(next.calledWith(sinon.match.instanceOf(Error)), true, 'it should call next() with error')
   t.end()
@@ -94,6 +98,8 @@ test('handlePost() calls next() with error on error', (t) => {
 test('handlePost() adds next allowed step to session', (t) => {
   const { handlePost } = proxyquire('./handle-post', { ...defaultValidator })
 
+  const steps = [{ path: '/first', next: () => '/second' }, { path: '/second' }]
+  const step = steps[0]
   const req = {
     session: {},
     path: '/first'
@@ -102,7 +108,7 @@ test('handlePost() adds next allowed step to session', (t) => {
   const res = {}
   const next = () => {}
 
-  handlePost(steps)(req, res, next)
+  handlePost(steps, step)(req, res, next)
 
   t.equal(req.session.nextAllowedStep, '/second', 'it should add next allowed step to session')
   t.end()
@@ -111,6 +117,8 @@ test('handlePost() adds next allowed step to session', (t) => {
 test('handlePost() calls next() with error if no next property exists on step', (t) => {
   const { handlePost } = proxyquire('./handle-post', { ...defaultValidator })
 
+  const steps = [{ path: '/first', next: () => '/second' }, { path: '/second' }]
+  const step = steps[1]
   const req = {
     session: {},
     path: '/second'
@@ -119,7 +127,7 @@ test('handlePost() calls next() with error if no next property exists on step', 
   const res = {}
   const next = sinon.spy()
 
-  handlePost(steps)(req, res, next)
+  handlePost(steps, step)(req, res, next)
 
   t.equal(next.calledWith(sinon.match.instanceOf(Error)), true, 'it should throw an error')
   t.end()
@@ -128,6 +136,8 @@ test('handlePost() calls next() with error if no next property exists on step', 
 test('handlePost() calls next() with error if next property is blank', (t) => {
   const { handlePost } = proxyquire('./handle-post', { ...defaultValidator })
 
+  const steps = [{ path: '/first', next: () => '/second' }, { path: '/second' }]
+  const step = steps[1]
   const req = {
     session: {},
     path: '/second',
@@ -137,8 +147,36 @@ test('handlePost() calls next() with error if next property is blank', (t) => {
   const res = {}
   const next = sinon.spy()
 
-  handlePost(steps)(req, res, next)
+  handlePost(steps, step)(req, res, next)
 
   t.equal(next.calledWith(sinon.match.instanceOf(Error)), true, 'it should throw an error')
+  t.end()
+})
+
+test('handlePost() should invalidate review if required by step', (t) => {
+  const dispatch = sinon.spy()
+  const INVALIDATE_REVIEW = 'INVALIDATE_REVIEW'
+  const { handlePost } = proxyquire('./handle-post', {
+    ...defaultValidator,
+    '../common/state-machine': {
+      stateMachine: { dispatch },
+      actions: { INVALIDATE_REVIEW }
+    }
+  })
+
+  const steps = [{ path: '/first', next: () => '/second', shouldInvalidateReview: () => true }, { path: '/second' }]
+  const step = steps[0]
+
+  const req = {
+    session: {},
+    path: '/first'
+  }
+
+  const res = {}
+  const next = () => {}
+
+  handlePost(steps, step)(req, res, next)
+
+  t.equal(dispatch.calledWith(INVALIDATE_REVIEW, req), true, 'it calls dispatch with the correct arguments')
   t.end()
 })

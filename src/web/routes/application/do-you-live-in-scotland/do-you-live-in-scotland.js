@@ -14,11 +14,14 @@ const pageContent = ({ translate }) => ({
   no: translate('no')
 })
 
-const next = req => req.session.claim.doYouLiveInScotland === YES ? '/i-live-in-scotland' : '/enter-dob'
+const claimantLivesInScotland = claim => claim.doYouLiveInScotland === YES
+
+const next = req => claimantLivesInScotland(req.session.claim) ? '/i-live-in-scotland' : '/enter-dob'
 
 const doYouLiveInScotland = {
   path: '/do-you-live-in-scotland',
   next,
+  shouldInvalidateReview: claimantLivesInScotland,
   template: 'do-you-live-in-scotland',
   pageContent,
   contentSummary,
