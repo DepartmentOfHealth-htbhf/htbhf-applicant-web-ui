@@ -24,7 +24,8 @@ const createClaim = (claim) => ({
     postcode: claim.postcode
   },
   expectedDeliveryDate: createExpectedDeliveryDate(claim),
-  phoneNumber: claim.formattedPhoneNumber
+  phoneNumber: claim.formattedPhoneNumber,
+  emailAddress: claim.emailAddress
 })
 
 const createDeviceFingerprint = (headers) => ({
