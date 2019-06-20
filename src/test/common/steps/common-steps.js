@@ -100,7 +100,7 @@ async function enterEmailAddressAndSubmit (emailAddress = EMAIL_ADDRESS) {
   }
 }
 
-async function assertErrorHeaderTextPresent (page, message = 'There is a problem') {
+async function assertErrorHeaderTextPresent (page, message = `There's a problem`) {
   try {
     await page.waitForPageLoad()
     const errorHeader = await page.getPageErrorHeaderText()
