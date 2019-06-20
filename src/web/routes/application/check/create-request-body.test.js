@@ -44,7 +44,8 @@ test('create claim body', (t) => {
     townOrCity: 'London',
     postcode: 'aa1 1ab',
     phoneNumber: '07700 900645',
-    formattedPhoneNumber: '+447700900645'
+    formattedPhoneNumber: '+447700900645',
+    emailAddress: 'test@email.com'
   }
 
   const request = {
@@ -67,7 +68,8 @@ test('create claim body', (t) => {
         postcode: 'aa1 1ab'
       },
       expectedDeliveryDate: '2019-03-01',
-      phoneNumber: '+447700900645' // assert that the phone number posted is the formatted version
+      phoneNumber: '+447700900645', // assert that the phone number posted is the formatted version
+      emailAddress: 'test@email.com'
     },
     deviceFingerprint: expectedFingerprint,
     webUIVersion: APP_VERSION
@@ -98,7 +100,8 @@ test('create claim body without expectedDeliveryDate when not pregnant', (t) => 
     townOrCity: 'London',
     postcode: 'aa1 1ab',
     phoneNumber: '07700 900645',
-    formattedPhoneNumber: '+447700900645'
+    formattedPhoneNumber: '+447700900645',
+    emailAddress: 'test@email.com'
   }
 
   const request = {
@@ -121,7 +124,8 @@ test('create claim body without expectedDeliveryDate when not pregnant', (t) => 
         postcode: 'aa1 1ab'
       },
       expectedDeliveryDate: null,
-      phoneNumber: '+447700900645' // assert that the phone number posted is the formatted version
+      phoneNumber: '+447700900645', // assert that the phone number posted is the formatted version
+      emailAddress: 'test@email.com'
     },
     deviceFingerprint: expectedFingerprint,
     webUIVersion: APP_VERSION
