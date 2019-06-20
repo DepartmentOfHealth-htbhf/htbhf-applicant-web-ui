@@ -20,6 +20,7 @@ const CARD_ADDRESS_URL = `${BASE_URL}/card-address`
 const PHONE_NUMBER_URL = `${BASE_URL}/phone-number`
 const EMAIL_ADDRESS_URL = `${BASE_URL}/email-address`
 const CHECK_URL = `${BASE_URL}/check`
+const TERMS_AND_CONDITIONS_URL = `${BASE_URL}/terms-and-conditions`
 const CONFIRM_URL = `${BASE_URL}/confirm`
 
 const dateIn3Months = () => {
@@ -89,7 +90,12 @@ const runTests = async () => {
     await postFormData(EMAIL_ADDRESS_URL, { ...formData, emailAddress: EMAIL_ADDRESS }, requestCookie)
 
     results.push(await pa11y(CHECK_URL))
-    await postFormData(CHECK_URL, formData, requestCookie)
+
+    results.push(await pa11y(TERMS_AND_CONDITIONS_URL))
+    await postFormData(TERMS_AND_CONDITIONS_URL, {
+      ...formData,
+      'agree': 'agree'
+    }, requestCookie)
 
     results.push(await pa11y(CONFIRM_URL))
 
