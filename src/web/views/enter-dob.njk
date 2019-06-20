@@ -2,6 +2,7 @@
 {% from "fieldset/macro.njk" import govukFieldset %}
 {% from "macros/htbhf-date-input.njk" import htbhfDateInput %}
 
+
 {% block formContent %}
   {{ htbhfDateInput({
     fieldNamePrefix: "dateOfBirth",
@@ -16,4 +17,6 @@
       text: hint
     }
   }) }}
+
+  <div class="govuk-inset-text">{{explanation | safe}} </div>
 {% endblock %}
