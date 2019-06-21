@@ -4,7 +4,7 @@ const { sanitize } = require('./sanitize')
 const pageContent = ({ translate }) => ({
   title: translate('phoneNumber.title'),
   heading: translate('phoneNumber.heading'),
-  formDescription: translate('phoneNumber.formDescription'),
+  hint: translate('phoneNumber.hint'),
   phoneNumberLabel: translate('phoneNumber.phoneNumberLabel'),
   buttonText: translate('buttons:continue'),
   detail: {

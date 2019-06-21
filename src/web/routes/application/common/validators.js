@@ -31,8 +31,8 @@ const isDateMoreThanEightMonthsInTheFuture = (dateString) => {
   return true
 }
 
-const validateIsYesOrNo = fieldName =>
-  check(fieldName).isIn([YES, NO]).withMessage(translateValidationMessage('validation:selectYesOrNo'))
+const validateIsYesOrNo = (fieldName, validationMessage) =>
+  check(fieldName).isIn([YES, NO]).withMessage(translateValidationMessage(validationMessage))
 
 module.exports = {
   isValidDate,
