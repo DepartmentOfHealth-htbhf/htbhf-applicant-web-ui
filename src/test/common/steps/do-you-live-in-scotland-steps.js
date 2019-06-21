@@ -20,7 +20,7 @@ Then(/^I am informed that I need to select an option for do you live in Scotland
   await assertFieldErrorAndLinkTextPresentAndCorrect(
     pages.doYouLiveInScotland.getFieldErrorId(),
     pages.doYouLiveInScotland.getErrorLinkCss(),
-    'Select yes or no')
+    'Select if you live in Scotland or not')
 })
 
 Then(/^Yes and No options are displayed on the do you live in Scotland page$/, async function () {

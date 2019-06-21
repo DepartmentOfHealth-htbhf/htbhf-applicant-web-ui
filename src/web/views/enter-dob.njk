@@ -1,6 +1,7 @@
 {% extends "templates/form.njk" %}
 {% from "fieldset/macro.njk" import govukFieldset %}
 {% from "macros/htbhf-date-input.njk" import htbhfDateInput %}
+{% from "inset-text/macro.njk" import govukInsetText %}
 
 
 {% block formContent %}
@@ -18,5 +19,8 @@
     }
   }) }}
 
-  <div class="govuk-inset-text">{{explanation | safe}} </div>
+{{ govukInsetText({
+  text: explanation
+}) }}
+
 {% endblock %}
