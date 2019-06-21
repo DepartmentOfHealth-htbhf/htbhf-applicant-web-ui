@@ -13,6 +13,10 @@ When('I enter a last name which is too long', async function () {
   return enterNameAndSubmit('Joe', LONG_STRING)
 })
 
+When('I enter last name only', async function () {
+  return enterNameAndSubmit(BLANK_STRING, 'Bloggs')
+})
+
 When('I enter first name only', async function () {
   return enterNameAndSubmit('Joe', BLANK_STRING)
 })
@@ -39,6 +43,11 @@ Then(/^I see the last name I entered in the textbox$/, async function () {
 Then('I am informed that the last name is too long', async function () {
   await assertErrorHeaderTextPresent(pages.enterName)
   await assertLastNameErrorFieldAndLink('Enter a shorter last or family name')
+})
+
+Then('I am informed that a first name is required', async function () {
+  await assertErrorHeaderTextPresent(pages.enterName)
+  await assertFirstNameErrorFieldAndLink('Enter your first or given name')
 })
 
 Then('I am informed that a last name is required', async function () {

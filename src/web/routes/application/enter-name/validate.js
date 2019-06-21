@@ -9,6 +9,10 @@ const validate = [
     .isLength({ max: FIRST_NAME_MAX_LENGTH })
     .withMessage(translateValidationMessage('validation:firstNameTooLong')),
 
+  check('firstName')
+    .not().isEmpty()
+    .withMessage(translateValidationMessage('validation:missingFirstName')),
+
   check('lastName')
     .not().isEmpty()
     .withMessage(translateValidationMessage('validation:missingLastName')),
