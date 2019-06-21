@@ -9,7 +9,8 @@ const pageContent = ({ translate }) => ({
   buttonText: translate('buttons:continue'),
   dayLabel: translate('enterDob.dayLabel'),
   monthLabel: translate('enterDob.monthLabel'),
-  yearLabel: translate('enterDob.yearLabel')
+  yearLabel: translate('enterDob.yearLabel'),
+  explanation: translate('enterDob.explanation')
 })
 
 const contentSummary = (req) => ({

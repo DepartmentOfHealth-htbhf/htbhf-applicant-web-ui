@@ -19,13 +19,14 @@
     "summaryKey": "Your name"
   },
   "enterDob": {
-    "title": "What is your date of birth?",
-    "heading": "What is your date of birth?",
+    "title": "What's your date of birth?",
+    "heading": "What's your date of birth?",
     "dayLabel": "Day",
     "monthLabel": "Month",
     "yearLabel": "Year",
     "hint": "For example, 31 3 1990",
-    "summaryKey": "Date of birth"
+    "summaryKey": "Date of birth",
+    "explanation": "We need this to confirm your identity and eligibility."
   },
   "areYouPregnant": {
     "title": "Are you pregnant?",
