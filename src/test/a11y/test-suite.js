@@ -68,7 +68,7 @@ const runTests = async () => {
     }, requestCookie)
 
     results.push(await pa11y(ENTER_NAME_URL))
-    await postFormData(ENTER_NAME_URL, { ...formData, lastName: 'Lisa' }, requestCookie)
+    await postFormData(ENTER_NAME_URL, { ...formData, firstName: 'Lisa', lastName: 'Simpson' }, requestCookie)
 
     results.push(await pa11y(ENTER_NINO_URL))
     await postFormData(ENTER_NINO_URL, { ...formData, nino: VALID_ELIGIBLE_NINO }, requestCookie)
