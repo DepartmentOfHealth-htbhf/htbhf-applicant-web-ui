@@ -16,7 +16,11 @@ Feature: Enter name
     Then I am informed that the last name is too long
     Then I see the last name I entered in the textbox
 
-  Scenario: Fail to fill “Last name” textbox shows error
+  Scenario: Fail to fill "First name" textbox shows error
+    When I enter last name only
+    Then I am informed that a first name is required
+
+  Scenario: Fail to fill "Last name" textbox shows error
     When I enter first name only
     Then I am informed that a last name is required
 
