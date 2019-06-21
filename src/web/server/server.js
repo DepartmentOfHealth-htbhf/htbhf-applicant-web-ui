@@ -29,12 +29,6 @@ const listen = (config, app) =>
   })
 
 const start = (config, app) => () => {
-  /**
-   * Apply internationalisation as first middleware in queue to ensure
-   * translation function is available in error handlers
-   */
-  internationalisation(config, app)
-
   app.use(requestID)
   app.use(compression())
   app.use(bodyParser.urlencoded({ extended: false }))
@@ -47,7 +41,13 @@ const start = (config, app) => () => {
 }
 
 const initialise = (config, app) => {
+  // Configure static paths before registering any middleware to ensure
+  // assets are available to all middleware
   configureStaticPaths(app)
+
+  // Apply internationalisation before initialising session to ensure
+  // translation function is available to session middleware
+  internationalisation(config, app)
   initialiseSession(start(config, app), config, app)
 }
 
