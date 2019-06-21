@@ -1,6 +1,6 @@
 const { equals } = require('ramda')
 const { getNextForStep } = require('./get-next-for-step')
-const { CHECK_URL, CONFIRM_URL } = require('../constants')
+const { CHECK_URL, TERMS_AND_CONDITIONS_URL, CONFIRM_URL } = require('../constants')
 const { logger } = require('../../../../logger')
 
 const states = {
@@ -32,7 +32,7 @@ const stateMachine = {
     getNextAllowedPath: (req) => req.session.nextAllowedStep
   },
   [states.IN_REVIEW]: {
-    getNextPath: () => CHECK_URL,
+    getNextPath: (req) => req.path === CHECK_URL ? TERMS_AND_CONDITIONS_URL : CHECK_URL,
     isPathAllowed: (req, sequence) => isPathAllowed(sequence, req.session.nextAllowedStep, req.path),
     getNextAllowedPath: (req) => req.session.nextAllowedStep,
     invalidateReview: (req) => stateMachine.setState(states.IN_PROGRESS, req)

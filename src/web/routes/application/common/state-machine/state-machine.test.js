@@ -1,6 +1,6 @@
 const test = require('tape')
 const { stateMachine, states, actions, isPathAllowed } = require('./state-machine')
-const { CHECK_URL, CONFIRM_URL } = require('../../common/constants')
+const { CHECK_URL, TERMS_AND_CONDITIONS_URL, CONFIRM_URL } = require('../../common/constants')
 
 const { GET_NEXT_PATH, INVALIDATE_REVIEW } = actions
 
@@ -25,6 +25,13 @@ test(`Dispatching ${GET_NEXT_PATH} should return check path when state of ${stat
   const req = { method: 'POST', session: { state: states.IN_REVIEW }, path: '/first' }
 
   t.equal(stateMachine.dispatch(GET_NEXT_PATH, req, steps), CHECK_URL)
+  t.end()
+})
+
+test(`Dispatching ${GET_NEXT_PATH} should return /terms-and-conditions when state of ${states.IN_REVIEW} and current path is /check`, async (t) => {
+  const req = { method: 'POST', session: { state: states.IN_REVIEW }, path: CHECK_URL }
+
+  t.equal(stateMachine.dispatch(GET_NEXT_PATH, req, steps), TERMS_AND_CONDITIONS_URL)
   t.end()
 })
 

@@ -11,12 +11,13 @@
     "summaryKey": "National Insurance number"
   },
   "enterName": {
-    "title": "What is your name?",
-    "heading": "What is your name?",
-    "formDescription": "Tell us your full legal name as it appears on your passport or other benefit claims.",
+    "title": "What's your name?",
+    "heading": "What's your name?",
+    "hint": "Use the name that is on your official documents, such as passport, driving licence, or any benefit claims",
     "firstNameLabel": "First or given name",
     "lastNameLabel": "Last or family name",
-    "summaryKey": "Your name"
+    "summaryKey":  "Your name",
+    "explanation": "We need this to confirm your identity and eligibility. Your name will also appear on your prepaid card."
   },
   "enterDob": {
     "title": "What's your date of birth?",
@@ -50,7 +51,7 @@
   "phoneNumber": {
     "title": "What's your mobile telephone number?",
     "heading": "What's your mobile telephone number?",
-    "formDescription": "This must be the same number you use for any benefits you claim.",
+    "hint": "This must be the same number you use for any benefits you claim.",
     "phoneNumberLabel": "UK mobile number",
     "summaryKey": "Mobile telephone number",
     "detail": {
