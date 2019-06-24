@@ -201,19 +201,15 @@ class Page {
     return fullErrorText.replace(hiddenErrorText, '').trim()
   }
 
-  async getPageSessionId () {
-    return this.sessionId
-  }
-
   async getCurrentSessionId () {
     const cookies = await this.getCookies()
-    const sessionCookie = cookies.filter(this.getCookieByName('htbhf.sid'))
-    return (typeof sessionCookie[0] !== 'undefined') ? sessionCookie[0].value : null
+    const sessionCookie = cookies.find(this.getCookieByName('htbhf.sid'))
+    return (typeof sessionCookie !== 'undefined') ? sessionCookie.value : null
   }
 
   async getLangCookie () {
     const cookies = await this.getCookies()
-    return cookies.filter(this.getCookieByName('lang'))
+    return cookies.find(this.getCookieByName('lang'))
   }
 
   getCookieByName (cookieName) {
