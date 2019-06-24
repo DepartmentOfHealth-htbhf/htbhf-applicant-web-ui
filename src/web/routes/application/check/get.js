@@ -1,6 +1,6 @@
 const { pipe, map, filter, flatten, path, isNil } = require('ramda')
 const { notIsNil } = require('../../../../common/predicates')
-const { stateMachine, states } = require('../common/state-machine')
+const { stateMachine, states, actions } = require('../common/state-machine')
 
 const getLastStepPath = (steps) => {
   if (steps) {
@@ -15,7 +15,7 @@ const pageContent = ({ translate }) => ({
   heading: translate('check.heading'),
   sendApplicationHeader: translate('check.sendApplicationHeader'),
   sendApplicationText: translate('check.sendApplicationText'),
-  buttonText: translate('buttons:acceptAndSend'),
+  buttonText: translate('buttons:continue'),
   changeText: translate('check.change')
 })
 
@@ -39,10 +39,11 @@ const getRowData = (req) => (step) => {
 const getCheck = (steps) => (req, res) => {
   stateMachine.setState(states.IN_REVIEW, req)
 
+  req.session.nextAllowedStep = stateMachine.dispatch(actions.GET_NEXT_PATH, req, steps)
+
   res.render('check', {
     claim: req.session.claim,
     ...pageContent({ translate: req.t }),
-    csrfToken: req.csrfToken(),
     checkRowData: getFlattenedRowData(req)(steps),
     previous: getLastStepPath(steps)
   })

@@ -2,6 +2,9 @@
 {% from "input/macro.njk" import govukInput %}
 {% from "fieldset/macro.njk" import govukFieldset %}
 {% from "details/macro.njk" import govukDetails %}
+{% from "hint/macro.njk" import govukHint %}
+{% from "inset-text/macro.njk" import govukInsetText %}
+
 
 {% block formContent %}
 
@@ -13,7 +16,9 @@
     }
   }) %}
 
-    <span class="govuk-hint govuk-!-margin-bottom-6">{{ formDescription }}</p>
+    {{ govukHint({
+          text: hint
+    }) }}
 
     {{ govukInput({
       label: {
@@ -32,9 +37,8 @@
 
   {% endcall %}
 
-  {{ govukDetails({
-        summaryText: detail.summaryText,
-        text: detail.text | safe
-    }) }}
+  {{ govukInsetText({
+    text: explanation
+  }) }}
 
 {% endblock %}

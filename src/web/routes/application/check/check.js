@@ -1,13 +1,11 @@
 const { getCheck } = require('./get')
-const { postCheck } = require('./post')
 const { CHECK_URL } = require('../common/constants')
 const { handleRequestForPath } = require('../middleware')
 
-const registerCheckRoutes = (csrfProtection, steps, config, app) => {
+const registerCheckRoutes = (steps, config, app) => {
   app
     .route(CHECK_URL)
-    .get(csrfProtection, handleRequestForPath(config, steps), getCheck(steps))
-    .post(csrfProtection, handleRequestForPath(config, steps), postCheck(steps, config))
+    .get(handleRequestForPath(config, steps), getCheck(steps))
 }
 
 module.exports = {

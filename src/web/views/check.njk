@@ -1,4 +1,4 @@
-{% extends "templates/form.njk" %}
+{% extends "templates/page.njk" %}
 {% from "input/macro.njk" import govukInput %}
 {% from "summary-list/macro.njk" import govukSummaryList %}
 {% from "fieldset/macro.njk" import govukFieldset %}
@@ -23,22 +23,17 @@
   {{ safeRows.push(row) }}
 {% endfor %}
 
-{% set buttonText = buttonText %}
-{% block formContent %}
-  {% call govukFieldset({
-    legend: {
-      text: heading,
-      classes: "govuk-fieldset__legend--xl",
-      isPageHeading: true
-    }
-  }) %}
+{% block pageContent %}
 
-  {% endcall %}
+    <h1 class="govuk-heading-xl">{{ heading }}</h1>
+
   {{ govukSummaryList({
       rows: safeRows
   }) }}
 
-  <h2 class="govuk-heading-m">{{ sendApplicationHeader }}</h2>
-  <p class="govuk-body">{{ sendApplicationText }}</p>
+    {{ govukButton({
+        text: buttonText,
+        href: "/terms-and-conditions"
+    }) }}
 
 {% endblock %}

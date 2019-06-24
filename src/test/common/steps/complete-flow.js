@@ -5,6 +5,7 @@ const {
   completeTheApplicationAsAWomanWhoIsNotPregnant
 } = require('./common-steps')
 const { setupWiremockMappingsWithStatus, setupWiremockUpdatedClaimMapping } = require('./common-steps')
+const { acceptTsAndCsAndSubmitApplication } = require('./terms-and-conditions-steps')
 
 const pages = require('./pages')
 
@@ -51,7 +52,7 @@ async function submitApplicationWithStatus (status) {
   await completeTheApplicationAsAPregnantWoman()
   await pages.check.waitForPageLoad()
   await setupWiremockMappingsWithStatus(status)
-  await pages.genericPage.submitForm()
+  await acceptTsAndCsAndSubmitApplication()
 }
 
 async function submitApplicationForUpdatedClaim () {
@@ -59,5 +60,5 @@ async function submitApplicationForUpdatedClaim () {
   await completeTheApplicationAsAPregnantWoman()
   await pages.check.waitForPageLoad()
   await setupWiremockUpdatedClaimMapping()
-  await pages.genericPage.submitForm()
+  await acceptTsAndCsAndSubmitApplication()
 }

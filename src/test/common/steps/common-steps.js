@@ -193,11 +193,6 @@ When(/^I click continue$/, async function () {
   await pages.genericPage.submitForm()
 })
 
-When(/^I submit my application$/, async function () {
-  await setupWiremockMappingsWithStatus('ELIGIBLE')
-  await pages.genericPage.submitForm()
-})
-
 When(/^I complete the application with valid details$/, async function () {
   await completeTheApplicationAsAWomanWhoIsNotPregnant()
 })

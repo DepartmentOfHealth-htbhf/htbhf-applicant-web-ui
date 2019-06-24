@@ -113,8 +113,6 @@ async function allPageContentIsCorrectOnCheckPage () {
   expect(h1Text.toString().trim()).to.have.lengthOf.at.least(1, 'expected check page H1 text to not be empty')
   const h2Text = await pages.check.getH2Text()
   expect(h2Text.toString().trim()).to.have.lengthOf.at.least(1, 'expected check page H2 text to not be empty')
-  const sendApplicationHelperText = await pages.check.getSendApplicationHelperText()
-  expect(sendApplicationHelperText.toString().trim()).to.have.lengthOf.at.least(1, 'expected send application helper text to not be empty')
   const submitButtonText = await pages.check.getSubmitButtonText()
   expect(submitButtonText.toString().trim()).to.have.lengthOf.at.least(1, 'expected submit button text to not be empty')
   const tableContents = await pages.check.getCheckDetailsTableContents()

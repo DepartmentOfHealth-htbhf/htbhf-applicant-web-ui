@@ -17,6 +17,7 @@ const DoYouLiveInScotland = require('../page/do-you-live-in-scotland')
 const ILiveInScotland = require('../page/i-live-in-scotland')
 const EmailAddress = require('../page/email-address')
 const UnsuccessfulApplication = require('../page/unsuccessful-application')
+const TermsAndConditions = require('../page/terms-and-conditions')
 const { URL, DRIVER_MANAGER } = require('./test-startup-config')
 
 /**
@@ -51,6 +52,7 @@ class Pages {
     this.pageNotFound = null
     this.privacyNotice = null
     this.unsuccessfulApplication = null
+    this.termsAndConditions = null
     this.doYouLiveInScotland = null
     this.iLiveInScotland = null
     this.emailAddress = null
@@ -82,9 +84,11 @@ class Pages {
     this.iLiveInScotland = new ILiveInScotland(this.driver)
     this.emailAddress = new EmailAddress(this.driver)
     this.unsuccessfulApplication = new UnsuccessfulApplication(this.driver)
+    this.termsAndConditions = new TermsAndConditions(this.driver)
     // NOTE: This map should contain all page objects, and not the Generic Page as this doesn't itself represent a page
     this.allPages = [this.overview, this.enterName, this.enterNino, this.enterDOB, this.areYouPregnant, this.cardAddress, this.phoneNumber,
-      this.check, this.confirm, this.cookies, this.privacyNotice, this.confirmUpdated, this.doYouLiveInScotland, this.iLiveInScotland, this.emailAddress]
+      this.check, this.confirm, this.cookies, this.privacyNotice, this.confirmUpdated, this.doYouLiveInScotland, this.iLiveInScotland, this.emailAddress,
+      this.termsAndConditions]
     this.pageMap = this.allPages.reduce(addPageToMap, {})
   }
 

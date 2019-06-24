@@ -1,6 +1,6 @@
 const test = require('tape')
 const sinon = require('sinon')
-const { CHECK_URL, CONFIRM_URL } = require('../common/constants')
+const { CHECK_URL, TERMS_AND_CONDITIONS_URL, CONFIRM_URL } = require('../common/constants')
 const { getPathsInSequence, handleRequestForPath } = require('./handle-path-request')
 const { states } = require('../common/state-machine')
 
@@ -13,7 +13,7 @@ const config = {
 }
 
 test('getPathsInSequence() returns the correct sequence of paths', (t) => {
-  const expected = ['/first', '/second', CHECK_URL, CONFIRM_URL]
+  const expected = ['/first', '/second', CHECK_URL, TERMS_AND_CONDITIONS_URL, CONFIRM_URL]
   const result = getPathsInSequence(steps)
 
   t.deepEqual(result, expected, 'returns the correct sequence of paths')

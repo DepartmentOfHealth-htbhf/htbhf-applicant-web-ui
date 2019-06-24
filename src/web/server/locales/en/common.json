@@ -4,10 +4,7 @@
     "heading": "What is your National Insurance number?",
     "ninoLabel": "National Insurance number",
     "hint": "It is on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.",
-    "detail": {
-      "summaryText": "I do not have my National Insurance number",
-      "text": "We need to know your National Insurance number to check if you are eligible for Healthy Start vouchers. If you do not have a National Insurance number, please<br /><a target=\"_blank\" href=\"{{ninoLink}}\">visit GOV.UK (link opens in a new tab)</a> for help."
-    },
+    "explanation": "We need this to check your eligibility.",
     "summaryKey": "National Insurance number"
   },
   "enterName": {
@@ -54,19 +51,15 @@
     "hint": "This must be the same number you use for any benefits you claim.",
     "phoneNumberLabel": "UK mobile number",
     "summaryKey": "Mobile telephone number",
-    "detail": {
-      "text": "To prevent fraud and contact you about your application if necessary."
-    }
+    "explanation": "We need this to prevent fraud and to contact you about your application if necessary."
   },
   "emailAddress": {
     "title": "What's your email address?",
     "heading": "What's your email address?",
-    "formDescription": "This must be the same email you use for any benefits you claim",
+    "hint": "This must be the same email you use for any benefits you claim",
     "emailAddressLabel": "Email address",
     "summaryKey": "Email address",
-    "detail": {
-      "text": "To send notifications about your application and your prepaid card."
-    }
+    "explanation": "We need this to send notifications about your application and your prepaid card."
   },
   "doYouLiveInScotland": {
     "title": "Do you live in Scotland?",
@@ -79,6 +72,11 @@
     "sendApplicationHeader": "Now send your application",
     "sendApplicationText": "By submitting this notification you are confirming that, to the best of your knowledge, the details you are providing are correct.",
     "change": "Change"
+  },
+  "terms-and-conditions": {
+    "title": "Read and agree to our terms and conditions",
+    "heading": "Read and agree to our terms and conditions",
+    "statement": "I confirm that I have read and agree to comply with these terms and conditions."
   },
   "confirm": {
     "newClaimTitle": "Application complete",

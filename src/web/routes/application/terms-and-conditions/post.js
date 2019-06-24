@@ -1,6 +1,7 @@
 const httpStatus = require('http-status-codes')
 const request = require('request-promise')
 const { path } = require('ramda')
+const { validationResult } = require('express-validator/check')
 
 const { wrapError } = require('../common/formatters')
 const { logger } = require('../../../logger')
@@ -9,6 +10,7 @@ const { stateMachine, states, actions } = require('../common/state-machine')
 const { createRequestBody } = require('./create-request-body')
 const { isErrorStatusCode } = require('./predicates')
 const { CLAIMS_ENDPOINT, NO_ELIGIBILITY_STATUS_MESSAGE } = require('./constants')
+const { render } = require('./get')
 
 const transformResponse = (body, response) => {
   if (isErrorStatusCode(response.statusCode)) {
@@ -18,7 +20,15 @@ const transformResponse = (body, response) => {
   return response
 }
 
-const postCheck = (steps, config) => (req, res, next) => {
+const postTermsAndConditions = (steps, config) => (req, res, next) => {
+  const errors = validationResult(req)
+
+  if (!errors.isEmpty()) {
+    res.locals.errors = errors.array()
+    res.locals.errorTitleText = req.t('validation:errorTitleText')
+    return render(res, req)
+  }
+
   logger.info('Sending claim', { req })
 
   return request.post({
@@ -65,5 +75,5 @@ const postCheck = (steps, config) => (req, res, next) => {
 
 module.exports = {
   transformResponse,
-  postCheck
+  postTermsAndConditions
 }

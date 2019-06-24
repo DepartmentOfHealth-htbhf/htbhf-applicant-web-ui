@@ -4,10 +4,7 @@
     "heading": "Excepteur sint occaecat cupidatat non proident?",
     "ninoLabel": "Vel pharetra vel turpis nunc eget lorem",
     "hint": "Pellentesque elit eget gravida cum, ‘QQ 12 34 56 C’.",
-    "detail": {
-      "summaryText": "Lectus quam id leo in",
-      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit <br><a target=\"_blank\" href=\"{{ninoLink}}\">sed do eiusmod tempor incididunt ut labore et dolore</a> magna aliqua."
-    },
+    "explanation": "Lectus quam id leo in.",
     "summaryKey": "Aliquet"
   },
   "enterName": {
@@ -53,17 +50,16 @@
     "heading": "Urna condimentum mattis?",
     "hint": "Ullamcorper malesuada proin libero risus 2 non 2",
     "phoneNumberLabel": "Penatibus",
-    "summaryKey": "Risus sed vulputate"
+    "summaryKey": "Risus sed vulputate",
+    "explanation": "Consectetur adipiscing elit Sceela"
   },
   "emailAddress": {
     "title": "Urna condimentum mattis?",
     "heading": "Urna condimentum mattis?",
-    "formDescription": "Consectetur adipiscing elit Sceelan?",
+    "hint": "Consectetur adipiscing elit Sceelan?",
     "emailAddressLabel": "Condimentum mattis",
     "summaryKey": "Condimentum mattis",
-    "detail": {
-      "text": "Risus sed vulputate odio ut enim blandit."
-    }
+    "explanation": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
   },
   "doYouLiveInScotland": {
     "title": "Consectetur adipiscing elit Sceelan?",
@@ -76,6 +72,11 @@
     "sendApplicationHeader": "Dui faucibus in ornare quam.",
     "sendApplicationText": "Risus sed vulputate odio ut enim blandit volutpat maecenas volutpat.",
     "change": "Consectetur"
+  },
+  "terms-and-conditions": {
+    "title": "Risus sed vulputate odio ut enim blandit volutpat maecenas volutpat",
+    "heading": "Risus sed vulputate odio ut enim blandit volutpat maecenas volutpat",
+    "statement": "Risus sed vulputate odio ut enim blandit volutpat maecenas volutpat."
   },
   "confirm": {
     "newClaimTitle": "Ullamcorper malesuada",
