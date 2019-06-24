@@ -93,7 +93,7 @@ const runEndToEndTest = async (results) => {
 
     results.push(await pa11y(CONFIRM_URL))
   } catch (error) {
-    console.log(error)
+    console.error(error)
     process.exit(1)
   } finally {
     await deleteAllWiremockMappings()
@@ -123,7 +123,7 @@ const runAllTests = async () => {
     await runILiveInScotlandTest(results)
     handleTestResults(results)
   } catch (error) {
-    console.log(error)
+    console.error(error)
     process.exit(1)
   }
 }

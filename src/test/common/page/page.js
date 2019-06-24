@@ -202,18 +202,17 @@ class Page {
   }
 
   async getCurrentSessionId () {
-    const cookies = await this.getCookies()
-    const sessionCookie = cookies.find(this.getCookieByName('htbhf.sid'))
+    const sessionCookie = await this.getCookieByName('htbhf.sid')
     return (typeof sessionCookie !== 'undefined') ? sessionCookie.value : null
   }
 
   async getLangCookie () {
-    const cookies = await this.getCookies()
-    return cookies.find(this.getCookieByName('lang'))
+    return this.getCookieByName('lang')
   }
 
-  getCookieByName (cookieName) {
-    return cookie => cookie.name === cookieName
+  async getCookieByName (cookieName) {
+    const cookies = await this.getCookies()
+    return cookies.find(cookie => cookie.name === cookieName)
   }
 
   async getCookies () {
