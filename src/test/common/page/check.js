@@ -55,16 +55,6 @@ class Check extends SubmittablePage {
     }
   }
 
-  async getSendApplicationHelperText () {
-    try {
-      const sendApplicationTextParagraph = await this.findByClassName('govuk-body')
-      return sendApplicationTextParagraph.getText()
-    } catch (error) {
-      console.log(error)
-      throw new Error(error)
-    }
-  }
-
   async clickChangeLinkFor (headerText) {
     const link = await this.findByXPath(`//a[contains(@class, 'govuk-link') and contains(.//span, '${headerText}')]`)
     await link.click()
