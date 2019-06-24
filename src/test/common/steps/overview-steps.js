@@ -23,7 +23,7 @@ Then(/^I am shown the first page of the application$/, async function () {
 // that we navigate to a subsequent page (back to the Overview page is sufficient) to check for a new session id
 // We also verify that the lang cookie has been removed
 Then(/^my session has been destroyed$/, async function () {
-  const pageSessionId = await pages.overview.sessionId
+  const pageSessionId = pages.overview.sessionId
   const langCookie = await pages.overview.getLangCookie()
   expect(langCookie).to.be.equal(undefined)
   await pages.overview.openDirect(pages.url)
@@ -32,7 +32,7 @@ Then(/^my session has been destroyed$/, async function () {
 })
 
 Then(/^my session has not been destroyed$/, async function () {
-  const pageSessionId = await pages.overview.sessionId
+  const pageSessionId = pages.overview.sessionId
   const langCookie = await pages.overview.getLangCookie()
   expect(langCookie).not.to.be.equal(undefined)
   await pages.overview.openDirect(pages.url)
