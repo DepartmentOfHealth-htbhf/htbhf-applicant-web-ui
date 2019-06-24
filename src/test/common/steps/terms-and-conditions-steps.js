@@ -30,8 +30,8 @@ When(/^I click continue without accepting the terms and conditions$/, async func
 Then('I am told I must accept the terms and conditions', async function () {
   await assertErrorHeaderTextPresent(pages.termsAndConditions)
   await assertFieldErrorAndLinkTextPresentAndCorrect(
-    'agree-error',
-    'a[href="#agree-error"]',
+    pages.termsAndConditions.getFieldErrorId(),
+    pages.termsAndConditions.getErrorLinkCss(),
     'Select if you\'ve read and will comply with the terms and conditions')
 })
 
