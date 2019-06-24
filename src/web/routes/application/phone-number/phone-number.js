@@ -7,10 +7,7 @@ const pageContent = ({ translate }) => ({
   hint: translate('phoneNumber.hint'),
   phoneNumberLabel: translate('phoneNumber.phoneNumberLabel'),
   buttonText: translate('buttons:continue'),
-  detail: {
-    summaryText: translate('whyDoWeNeedThis'),
-    text: translate('phoneNumber.detail.text')
-  }
+  explanation: translate('phoneNumber.explanation')
 })
 
 const contentSummary = (req) => ({

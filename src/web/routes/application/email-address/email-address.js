@@ -3,13 +3,10 @@ const { validate } = require('./validate')
 const pageContent = ({ translate }) => ({
   title: translate('emailAddress.title'),
   heading: translate('emailAddress.heading'),
-  formDescription: translate('emailAddress.formDescription'),
+  hint: translate('emailAddress.hint'),
   emailAddressLabel: translate('emailAddress.emailAddressLabel'),
   buttonText: translate('buttons:continue'),
-  detail: {
-    summaryText: translate('whyDoWeNeedThis'),
-    text: translate('emailAddress.detail.text')
-  }
+  explanation: translate('emailAddress.explanation')
 })
 
 const contentSummary = (req) => ({
