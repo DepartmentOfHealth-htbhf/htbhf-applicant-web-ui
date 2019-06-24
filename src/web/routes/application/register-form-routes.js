@@ -29,7 +29,7 @@ const createRoute = (config, csrfProtection, steps, router) => (step) =>
       configureGet(steps, step),
       getSessionDetails,
       handleRequestForPath(config, steps, step),
-      handleOptionalMiddleware(step.behaviour),
+      handleOptionalMiddleware(step.behaviourForGet),
       renderView(step)
     )
     .post(

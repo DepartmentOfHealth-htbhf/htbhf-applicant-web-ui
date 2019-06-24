@@ -8,7 +8,7 @@ const pageContent = ({ translate }) => ({
 
 const isNavigable = (session) => path(['claim', 'doYouLiveInScotland'], session) === YES
 
-const behaviour = (req, res, next) => {
+const behaviourForGet = (req, res, next) => {
   req.session.destroy()
   res.clearCookie('lang')
   next()
@@ -19,7 +19,7 @@ const iLiveInScotland = {
   template: 'i-live-in-scotland',
   pageContent,
   isNavigable,
-  behaviour
+  behaviourForGet
 }
 
 module.exports = {
