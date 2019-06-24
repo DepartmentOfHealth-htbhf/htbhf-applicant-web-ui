@@ -34,18 +34,12 @@ const dateIn3Months = () => {
   Runs though the application, evaluating each page and performing post requests to populate the necessary
   data in the database.
  */
-const runTests = async () => {
+const runEndToEndTest = async (results) => {
   try {
     await setupSuccessfulWiremockClaimMapping()
-    let results = []
     const { requestCookie, csrfToken } = await getSIDCookieAndCSRFToken(ENTER_DOB_URL)
     const pa11y = pa11yWithSettings(IGNORE_RULES, { Cookie: requestCookie })
     const formData = { '_csrf': csrfToken }
-
-    results.push(await pa11y(DO_YOU_LIVE_IN_SCOTLAND_URL))
-    await postFormData(DO_YOU_LIVE_IN_SCOTLAND_URL, { ...formData, doYouLiveInScotland: 'yes' }, requestCookie)
-
-    results.push(await pa11y(I_LIVE_IN_SCOTLAND_URL))
 
     results.push(await pa11y(DO_YOU_LIVE_IN_SCOTLAND_URL))
     await postFormData(DO_YOU_LIVE_IN_SCOTLAND_URL, { ...formData, doYouLiveInScotland: 'no' }, requestCookie)
@@ -98,14 +92,40 @@ const runTests = async () => {
     }, requestCookie)
 
     results.push(await pa11y(CONFIRM_URL))
-
-    handleTestResults(results)
   } catch (error) {
-    console.log(error)
+    console.error(error)
     process.exit(1)
   } finally {
     await deleteAllWiremockMappings()
   }
 }
 
-runTests()
+const runILiveInScotlandTest = async (results) => {
+  try {
+    const { requestCookie, csrfToken } = await getSIDCookieAndCSRFToken(ENTER_DOB_URL)
+    const pa11y = pa11yWithSettings(IGNORE_RULES, { Cookie: requestCookie })
+    const formData = { '_csrf': csrfToken }
+
+    results.push(await pa11y(DO_YOU_LIVE_IN_SCOTLAND_URL))
+    await postFormData(DO_YOU_LIVE_IN_SCOTLAND_URL, { ...formData, doYouLiveInScotland: 'yes' }, requestCookie)
+
+    results.push(await pa11y(I_LIVE_IN_SCOTLAND_URL))
+  } catch (error) {
+    console.log(error)
+    process.exit(1)
+  }
+}
+
+const runAllTests = async () => {
+  try {
+    let results = []
+    await runEndToEndTest(results)
+    await runILiveInScotlandTest(results)
+    handleTestResults(results)
+  } catch (error) {
+    console.error(error)
+    process.exit(1)
+  }
+}
+
+runAllTests()

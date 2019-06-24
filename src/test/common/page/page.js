@@ -24,11 +24,13 @@ const BY = {
 class Page {
   constructor (driver) {
     this.driver = driver
+    this.sessionId = null
   }
 
   async open (baseURL, lang = 'en') {
     try {
       await this.openDirect(baseURL, lang)
+      this.sessionId = await this.getCurrentSessionId()
       return this.waitForPageLoad(lang)
     } catch (error) {
       console.error(`Error caught trying to open page at: ${baseURL}`, error)
@@ -197,6 +199,34 @@ class Page {
     const hiddenError = await errorElement.findElement(webdriver.By.className('govuk-visually-hidden'))
     const hiddenErrorText = await hiddenError.getText()
     return fullErrorText.replace(hiddenErrorText, '').trim()
+  }
+
+  async getCurrentSessionId () {
+    const sessionCookie = await this.getCookieByName('htbhf.sid')
+    return (typeof sessionCookie !== 'undefined') ? sessionCookie.value : null
+  }
+
+  async getLangCookie () {
+    return this.getCookieByName('lang')
+  }
+
+  async getCookieByName (cookieName) {
+    const cookies = await this.getCookies()
+    return cookies.find(cookie => cookie.name === cookieName)
+  }
+
+  async getCookies () {
+    const manage = await this.getManage()
+    return manage.getCookies()
+  }
+
+  async getManage () {
+    const driver = await this.getDriver()
+    return driver.manage()
+  }
+
+  async getDriver () {
+    return this.driver
   }
 }
 
