@@ -24,7 +24,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 27000000
+              "duration": 24000000
             }
           },
           {
@@ -37,7 +37,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1589000000
+              "duration": 1566000000
             }
           },
           {
@@ -46,11 +46,11 @@
             "line": 8,
             "name": "I select to start the process",
             "match": {
-              "location": "src/test/common/steps/overview-steps.js:9"
+              "location": "src/test/common/steps/overview-steps.js:10"
             },
             "result": {
               "status": "passed",
-              "duration": 460000000
+              "duration": 436000000
             }
           },
           {
@@ -59,7 +59,7 @@
             "line": 9,
             "name": "I am shown the first page of the application",
             "match": {
-              "location": "src/test/common/steps/overview-steps.js:17"
+              "location": "src/test/common/steps/overview-steps.js:18"
             },
             "result": {
               "status": "passed",
