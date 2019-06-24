@@ -1,10 +1,8 @@
-<div class="govuk-warning-text">
-    <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-    <strong class="govuk-warning-text__text">
-        <span class="govuk-warning-text__assistive">Warning</span>
-        If you do not comply with these terms and conditions, your payment may be stopped. You may also be asked to repay money you have received.
-    </strong>
-</div>
+{% from "warning-text/macro.njk" import govukWarningText %}
+{{ govukWarningText({
+    text: "If you do not comply with these terms and conditions, your payment may be stopped. You may also be asked to repay money you have received.",
+    iconFallbackText: "Warning"
+}) }}
 
 <h3 class="govuk-heading-m">About your application</h3>
 

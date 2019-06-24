@@ -1,10 +1,8 @@
-<div class="govuk-warning-text">
-    <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-    <strong class="govuk-warning-text__text">
-        <span class="govuk-warning-text__assistive">Maecenas in rhoncus ante</span>
-        Vivamus elementum libero sed efficitur laoreet. Vivamus fringilla porta eros, sit amet cursus lacus rhoncus at.
-    </strong>
-</div>
+{% from "warning-text/macro.njk" import govukWarningText %}
+{{ govukWarningText({
+    text: "Vivamus elementum libero sed efficitur laoreet. Vivamus fringilla porta eros, sit amet cursus lacus rhoncus at.",
+    iconFallbackText: "Warning"
+}) }}
 
 <h3 class="govuk-heading-m">Sed interdum maximus urna nec interdum</h3>
 
