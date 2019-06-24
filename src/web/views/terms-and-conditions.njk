@@ -1,0 +1,29 @@
+{% extends "templates/form.njk" %}
+{% from "input/macro.njk" import govukInput %}
+{% from "checkboxes/macro.njk" import govukCheckboxes %}
+
+{% set buttonText = buttonText %}
+
+{% block preambleContent %}
+
+    <h1 class="govuk-heading-xl">{{ heading }}</h1>
+
+    {% include "locales/" + language + "/terms-and-conditions.njk" %}
+
+{% endblock %}
+
+{% block formContent %}
+
+    {{ govukCheckboxes({
+        idPrefix: "agree",
+        name: "agree",
+        errorMessage: errors | getErrorForField('agree'),
+        items: [
+            {
+                value: "agree",
+                text: termsAndConditions
+            }
+        ]
+    }) }}
+
+{% endblock %}

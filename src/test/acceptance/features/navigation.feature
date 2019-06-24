@@ -72,4 +72,4 @@ Feature: Application process navigation is controlled
   Scenario: Navigation to I live in Scotland from the check details page is not allowed
     Given I have entered my details up to the check details page
     When I navigate to the I live in Scotland page
-    Then I am shown the check details page
+    Then I am shown the terms and conditions page

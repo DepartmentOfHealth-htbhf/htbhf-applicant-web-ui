@@ -6,7 +6,7 @@ const { CHECK_URL, CONFIRM_URL, ELIGIBLE } = require('../common/constants')
 
 const post = sinon.stub()
 
-const { transformResponse, postCheck } = proxyquire('./post', {
+const { transformResponse, postTermsAndConditions } = proxyquire('./post', {
   'request-promise': { post },
   './create-request-body': {
     createRequestBody: () => {}
@@ -43,6 +43,42 @@ test('transformResponse() throws an error for error statusCode', (t) => {
   t.end()
 })
 
+test('failure to agree to terms and conditions returns to the terms-and-conditions page', async (t) => {
+  const req = {
+    headers: {},
+    session: {},
+    t: () => {},
+    csrfToken: () => {}
+  }
+  const redirect = sinon.spy()
+  const render = sinon.spy()
+  const res = {
+    locals: {},
+    redirect,
+    render
+  }
+
+  const errors = ['error']
+
+  const steps = [{ path: '/first', next: () => '/second' }, { path: '/second' }]
+
+  const { postTermsAndConditions } = proxyquire('./post', {
+    'express-validator/check': {
+      validationResult: () => ({
+        isEmpty: () => false,
+        array: () => errors
+      })
+    }
+  })
+
+  postTermsAndConditions(steps)(req, res)
+
+  t.deepEqual(res.locals.errors, errors, 'it should add errors to locals')
+  t.equal(render.called, true, 'it should call render()')
+  t.equal(redirect.called, false, 'it does not call redirect()')
+  t.end()
+})
+
 test('unsuccessful post calls next with error', async (t) => {
   const req = {
     headers: {},
@@ -54,7 +90,7 @@ test('unsuccessful post calls next with error', async (t) => {
   const error = new Error('error')
   post.returns(Promise.reject(error))
 
-  postCheck({}, config)(req, res, next)
+  postTermsAndConditions({}, config)(req, res, next)
     .then(() => {
       t.equal(next.calledWith(sinon.match.instanceOf(Error)), true, 'calls next with error')
       t.end()
@@ -68,6 +104,7 @@ test(`successful post sets next allowed step to ${CONFIRM_URL} and returned fiel
   const steps = []
   const next = sinon.spy()
   const redirect = sinon.spy()
+  const render = sinon.spy()
   const req = {
     path: CHECK_URL,
     headers: [],
@@ -77,7 +114,7 @@ test(`successful post sets next allowed step to ${CONFIRM_URL} and returned fiel
       state: states.IN_REVIEW
     }
   }
-  const res = { redirect }
+  const res = { redirect, render }
 
   post.returns(Promise.resolve({
     body: {
@@ -89,13 +126,14 @@ test(`successful post sets next allowed step to ${CONFIRM_URL} and returned fiel
     }
   }))
 
-  postCheck(steps, config)(req, res, next)
+  postTermsAndConditions(steps, config)(req, res, next)
     .then(() => {
       t.equal(req.session.nextAllowedStep, CONFIRM_URL, `it sets next allowed step to ${CONFIRM_URL}`)
       t.equal(req.session.eligibilityStatus, ELIGIBLE, 'it sets the eligibility status to ELIGIBLE')
       t.deepEqual(req.session.voucherEntitlement, { totalVoucherValueInPence: 310 }, 'it sets the voucher entitlement field')
       t.equal(req.session.claimUpdated, true, 'it sets the claim updated field')
       t.equal(redirect.called, true, 'it calls redirect()')
+      t.equal(render.called, false, 'it does not call render()')
       t.end()
     })
     .catch((error) => {
