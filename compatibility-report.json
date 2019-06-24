@@ -24,7 +24,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 30000000
+              "duration": 19000000
             }
           },
           {
@@ -33,11 +33,11 @@
             "line": 7,
             "name": "I am on the first page of the application",
             "match": {
-              "location": "src/test/common/steps/complete-flow.js:13"
+              "location": "src/test/common/steps/complete-flow.js:14"
             },
             "result": {
               "status": "passed",
-              "duration": 536000000
+              "duration": 502000000
             }
           },
           {
@@ -46,11 +46,11 @@
             "line": 8,
             "name": "I complete the application with valid details for a pregnant woman",
             "match": {
-              "location": "src/test/common/steps/complete-flow.js:29"
+              "location": "src/test/common/steps/complete-flow.js:30"
             },
             "result": {
               "status": "passed",
-              "duration": 2407000000
+              "duration": 2288000000
             }
           },
           {
@@ -63,20 +63,20 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1831000000
+              "duration": 1690000000
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
             "line": 10,
-            "name": "I submit my application",
+            "name": "I accept the terms and conditions and submit my application",
             "match": {
-              "location": "src/test/common/steps/common-steps.js:196"
+              "location": "src/test/common/steps/terms-and-conditions-steps.js:20"
             },
             "result": {
               "status": "passed",
-              "duration": 247000000
+              "duration": 388000000
             }
           },
           {
@@ -89,7 +89,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 90000000
+              "duration": 88000000
             }
           },
           {
@@ -102,7 +102,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 82000000
+              "duration": 76000000
             }
           },
           {
@@ -113,7 +113,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2000000
+              "duration": 1000000
             }
           }
         ]
