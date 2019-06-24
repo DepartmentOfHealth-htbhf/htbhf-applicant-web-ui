@@ -11,7 +11,7 @@ const handleTestResults = results => {
     resultsWithIssues.forEach(console.error)
     process.exit(1)
   } else {
-    console.log('No accessibility issues found')
+    console.log(`No accessibility issues found, (${results.length} results in total)`)
   }
 }
 

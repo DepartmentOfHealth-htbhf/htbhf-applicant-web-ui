@@ -8,11 +8,18 @@ const pageContent = ({ translate }) => ({
 
 const isNavigable = (session) => path(['claim', 'doYouLiveInScotland'], session) === YES
 
+const behaviour = (req, res, next) => {
+  req.session.destroy()
+  res.clearCookie('lang')
+  next()
+}
+
 const iLiveInScotland = {
   path: '/i-live-in-scotland',
   template: 'i-live-in-scotland',
   pageContent,
-  isNavigable
+  isNavigable,
+  behaviour
 }
 
 module.exports = {
