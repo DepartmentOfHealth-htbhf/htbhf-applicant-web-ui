@@ -15,3 +15,11 @@ Feature: Temporary overview page
     When I navigate to the HTBHF overview page
     And I select to start the process
     Then I am shown the first page of the application
+
+  # Make sure the start page button takes you to Do You Live In Scotland, not Enter Name, which can best be tested by
+  # going through a process and returning (otherwise state machine always returns you to nextAllowedStep)
+  Scenario: The overview page takes the claimant to the first page of the application when details have been entered
+    Given I have entered my details up to the email address page
+    When I navigate to the HTBHF overview page
+    And I select to start the process
+    Then I am shown the first page of the application
