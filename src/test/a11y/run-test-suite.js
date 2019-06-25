@@ -10,7 +10,7 @@ const { runAllTests } = require('./test-suite')
 const runTestSuite = async () => {
   try {
     await setupSuccessfulWiremockClaimMapping()
-    runAllTests()
+    await runAllTests()
   } catch (error) {
     console.log(error)
     process.exit(1)

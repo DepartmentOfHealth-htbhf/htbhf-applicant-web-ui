@@ -1,7 +1,7 @@
 'use strict'
 
 const SubmittablePage = require('./submittable-page')
-const CHECK_PAGE_TITLE = 'GOV.UK - Check your answers before sending your application'
+const CHECK_PAGE_TITLE = 'GOV.UK - Check your answers'
 const GOV_LIST_ROW_CLASSNAME = 'govuk-summary-list__row'
 const GOV_LIST_HEADER_CLASSNAME = 'govuk-summary-list__key'
 const GOV_LIST_VALUE_CLASSNAME = 'govuk-summary-list__value'

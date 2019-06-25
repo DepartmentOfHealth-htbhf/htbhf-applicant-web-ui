@@ -1,4 +1,4 @@
-const { check } = require('express-validator/check')
+const { check } = require('express-validator')
 const { translateValidationMessage } = require('../common/translate-validation-message')
 
 // See https://stackoverflow.com/questions/201323/how-to-validate-an-email-address-using-a-regular-expression for regex explanation

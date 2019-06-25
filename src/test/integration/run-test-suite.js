@@ -8,7 +8,7 @@ const { runAllTests } = require('../a11y/test-suite')
  */
 const runTestSuite = async () => {
   try {
-    runAllTests()
+    await runAllTests()
   } catch (error) {
     console.log(error)
     process.exit(1)
