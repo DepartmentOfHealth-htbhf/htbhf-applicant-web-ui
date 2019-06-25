@@ -119,6 +119,7 @@ const runILiveInScotlandTest = async (results) => {
 const runAllTests = async () => {
   try {
     let results = []
+    console.log(`Running accessibility tests against ${BASE_URL}`)
     await runEndToEndTest(results)
     await runILiveInScotlandTest(results)
     handleTestResults(results)
