@@ -1,9 +1,9 @@
 {
   "enterNino": {
-    "title": "What is your National Insurance number?",
-    "heading": "What is your National Insurance number?",
+    "title": "What's your National Insurance number?",
+    "heading": "What's your National Insurance number?",
     "ninoLabel": "National Insurance number",
-    "hint": "It is on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.",
+    "hint": "You can find it on your National Insurance card, benefit letters, or official letters about tax. For example, QQ123456C.",
     "explanation": "We need this to check your eligibility.",
     "summaryKey": "National Insurance number"
   },
@@ -67,10 +67,8 @@
     "summaryKey": "Do you live in Scotland?"
   },
   "check": {
-    "title": "Check your answers before sending your application",
-    "heading": "Check your answers before sending your application",
-    "sendApplicationHeader": "Now send your application",
-    "sendApplicationText": "By submitting this notification you are confirming that, to the best of your knowledge, the details you are providing are correct.",
+    "title": "Check your answers",
+    "heading": "Check your answers",
     "change": "Change"
   },
   "terms-and-conditions": {

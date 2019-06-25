@@ -1,4 +1,4 @@
-const { check } = require('express-validator/check')
+const { check } = require('express-validator')
 const { toDateString } = require('../common/formatters')
 const { isValidDate, isDateInPast } = require('../common/validators')
 

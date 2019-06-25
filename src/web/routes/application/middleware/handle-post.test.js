@@ -3,7 +3,7 @@ const sinon = require('sinon')
 const proxyquire = require('proxyquire')
 
 const defaultValidator = {
-  'express-validator/check': {
+  'express-validator': {
     validationResult: () => ({
       isEmpty: () => true
     })
@@ -14,7 +14,7 @@ test('handlePost() should add errors and claim to locals if errors exist', (t) =
   const errors = ['error']
 
   const { handlePost } = proxyquire('./handle-post', {
-    'express-validator/check': {
+    'express-validator': {
       validationResult: () => ({
         isEmpty: () => false,
         array: () => errors
@@ -69,7 +69,7 @@ test('handlePost() adds body to the session if no errors exist', (t) => {
 
 test('handlePost() calls next() with error on error', (t) => {
   const { handlePost } = proxyquire('./handle-post', {
-    'express-validator/check': {
+    'express-validator': {
       validationResult: () => ({
         isEmpty: () => { throw new Error('error') },
         array: () => []

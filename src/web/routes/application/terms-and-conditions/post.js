@@ -1,7 +1,7 @@
 const httpStatus = require('http-status-codes')
 const request = require('request-promise')
 const { path } = require('ramda')
-const { validationResult } = require('express-validator/check')
+const { validationResult } = require('express-validator')
 
 const { wrapError } = require('../common/formatters')
 const { logger } = require('../../../logger')

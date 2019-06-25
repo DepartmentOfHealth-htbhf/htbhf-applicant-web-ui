@@ -2,7 +2,6 @@
 'use strict'
 require('dotenv')
 const { getSIDCookieAndCSRFToken, postFormData } = require('../common/request')
-const { setupSuccessfulWiremockClaimMapping, deleteAllWiremockMappings } = require('../common/wiremock')
 const pa11yWithSettings = require('./pally')
 const handleTestResults = require('./results')
 const { VALID_ELIGIBLE_NINO, PHONE_NUMBER, EMAIL_ADDRESS } = require('../common/steps/constants')
@@ -37,7 +36,6 @@ const dateIn3Months = () => {
  */
 const runEndToEndTest = async (results) => {
   try {
-    await setupSuccessfulWiremockClaimMapping()
     const { requestCookie, csrfToken } = await getSIDCookieAndCSRFToken(ENTER_DOB_URL)
     const pa11y = pa11yWithSettings(IGNORE_RULES, { Cookie: requestCookie })
     const formData = { '_csrf': csrfToken }
@@ -93,8 +91,6 @@ const runEndToEndTest = async (results) => {
   } catch (error) {
     console.error(error)
     process.exit(1)
-  } finally {
-    await deleteAllWiremockMappings()
   }
 
   handleTestResults(results)
