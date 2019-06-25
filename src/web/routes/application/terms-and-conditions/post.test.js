@@ -63,7 +63,7 @@ test('failure to agree to terms and conditions returns to the terms-and-conditio
   const steps = [{ path: '/first', next: () => '/second' }, { path: '/second' }]
 
   const { postTermsAndConditions } = proxyquire('./post', {
-    'express-validator/check': {
+    'express-validator': {
       validationResult: () => ({
         isEmpty: () => false,
         array: () => errors

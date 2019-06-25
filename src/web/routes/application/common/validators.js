@@ -1,6 +1,6 @@
 const { isNil } = require('ramda')
 const validator = require('validator')
-const { check } = require('express-validator/check')
+const { check } = require('express-validator')
 const { dateAsString } = require('./formatters')
 const { translateValidationMessage } = require('./translate-validation-message')
 const { YES, NO } = require('./constants')
