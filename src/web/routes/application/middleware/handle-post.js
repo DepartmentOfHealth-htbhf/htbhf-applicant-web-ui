@@ -1,5 +1,5 @@
 const httpStatus = require('http-status-codes')
-const { validationResult } = require('express-validator/check')
+const { validationResult } = require('express-validator')
 const { wrapError } = require('../common/formatters')
 const { stateMachine, actions } = require('../common/state-machine')
 

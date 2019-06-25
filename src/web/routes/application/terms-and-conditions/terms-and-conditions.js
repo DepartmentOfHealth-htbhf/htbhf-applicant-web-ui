@@ -1,4 +1,4 @@
-const { check } = require('express-validator/check')
+const { check } = require('express-validator')
 const { getTermsAndConditions } = require('./get')
 const { postTermsAndConditions } = require('./post')
 const { TERMS_AND_CONDITIONS_URL } = require('../common/constants')

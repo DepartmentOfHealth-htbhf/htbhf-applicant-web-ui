@@ -1,4 +1,4 @@
-const { check } = require('express-validator/check')
+const { check } = require('express-validator')
 const { translateValidationMessage } = require('../common/translate-validation-message')
 
 const FIRST_NAME_MAX_LENGTH = 500
