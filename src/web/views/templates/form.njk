@@ -3,15 +3,16 @@
 {% from "error-summary/macro.njk" import govukErrorSummary %}
 
 {% block pageContent %}
-  {% block preambleContent %}{% endblock %}
-  <form method="post">
-    {% if errors %}
-      {{ govukErrorSummary({
-        titleText: errorTitleText,
-        errorList: errors | toErrorList
-      }) }}
-    {% endif %}
+  {% if errors %}
+    {{ govukErrorSummary({
+      titleText: errorTitleText,
+      errorList: errors | toErrorList
+    }) }}
+  {% endif %}
 
+  {% block preambleContent %}{% endblock %}
+
+  <form method="post">
     <input type="hidden" name="_csrf" value="{{ csrfToken }}">
     {% block formContent %}{% endblock %}
     {{ govukButton({
