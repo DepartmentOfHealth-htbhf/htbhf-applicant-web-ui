@@ -1,0 +1,35 @@
+{% extends "templates/form.njk" %}
+{% from "radios/macro.njk" import govukRadios %}
+{% from "inset-text/macro.njk" import govukInsetText %}
+
+{% block formContent %}
+    {{ govukRadios({
+      classes: "govuk-radios--inline",
+      id: "do-you-have-children-three-or-under",
+      name: "doYouHaveChildrenThreeOrUnder",
+      fieldset: {
+        legend: {
+          text: heading,
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--xl"
+        }
+      },
+      errorMessage: errors | getErrorForField('doYouHaveChildrenThreeOrUnder'),
+      items: [
+        {
+          value: "yes",
+          text: yes,
+          checked : claim.doYouHaveChildrenThreeOrUnder === "yes"
+        },
+        {
+          value: "no",
+          text: no,
+          checked : claim.doYouHaveChildrenThreeOrUnder === "no"
+        }
+      ]
+    }) }}
+
+    {{ govukInsetText({
+      text: explanation
+    }) }}
+{% endblock %}

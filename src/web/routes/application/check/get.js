@@ -16,7 +16,9 @@ const pageContent = ({ translate }) => ({
   sendApplicationHeader: translate('check.sendApplicationHeader'),
   sendApplicationText: translate('check.sendApplicationText'),
   buttonText: translate('buttons:continue'),
-  changeText: translate('check.change')
+  changeText: translate('check.change'),
+  aboutYou: translate('check.aboutYou'),
+  aboutYourChildren: translate('check.aboutYourChildren')
 })
 
 const combinePathWithRow = (path) => (row) => ({

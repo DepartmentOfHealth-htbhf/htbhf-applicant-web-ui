@@ -26,6 +26,12 @@
     "summaryKey": "Date of birth",
     "explanation": "We need this to confirm your identity and eligibility."
   },
+  "doYouHaveChildrenThreeOrUnder": {
+    "title": "Do you have any children who are three years old or under?",
+    "heading": "Do you have any children who are three years old or under?",
+    "summaryKey": "Do you have any children who are three years old or under",
+    "explanation": "Children's names will not be stored or shared. We need their date of birth to confirm your identity and to prevent fraud."
+  },
   "areYouPregnant": {
     "title": "Are you pregnant?",
     "heading": "Are you pregnant?",
@@ -69,7 +75,9 @@
   "check": {
     "title": "Check your answers",
     "heading": "Check your answers",
-    "change": "Change"
+    "change": "Change",
+    "aboutYou": "About you",
+    "aboutYourChildren": "About your children"
   },
   "terms-and-conditions": {
     "title": "Read and agree to our terms and conditions",

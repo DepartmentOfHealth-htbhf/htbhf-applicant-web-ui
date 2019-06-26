@@ -10,13 +10,15 @@ const {
   enterCardAddressAndSubmit,
   enterPhoneNumberAndSubmit,
   enterDoYouLiveInScotlandNoAndSubmit,
-  enterEmailAddressAndSubmit
+  enterEmailAddressAndSubmit,
+  selectNoOnChildrenThreeOrUnderPage
 } = require('./common-steps')
 
 const ENTER_NAME_PAGE = 'enter name'
 const DO_YOU_LIVE_IN_SCOTLAND_PAGE = 'do you live in Scotland'
 const ENTER_NINO_PAGE = 'enter national insurance'
 const ENTER_DOB_PAGE = 'enter date of birth'
+const DO_YOU_HAVE_CHILDREN_THREE_OR_UNDER_PAGE = 'do you have children three or under'
 const ARE_YOU_PREGNANT_PAGE = 'are you pregnant'
 const CARD_ADDRESS_PAGE = 'card address'
 const PHONE_NUMBER_PAGE = 'phone number'
@@ -36,9 +38,16 @@ const pageActions = [
     }
   },
   {
-    page: ARE_YOU_PREGNANT_PAGE,
+    page: DO_YOU_HAVE_CHILDREN_THREE_OR_UNDER_PAGE,
     action: async () => {
       await enterDateOfBirthAndSubmit()
+      await pages.doYouHaveChildrenThreeOrUnder.waitForPageLoad()
+    }
+  },
+  {
+    page: ARE_YOU_PREGNANT_PAGE,
+    action: async () => {
+      await selectNoOnChildrenThreeOrUnderPage()
       await pages.areYouPregnant.waitForPageLoad()
     }
   },
