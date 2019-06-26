@@ -26,14 +26,14 @@ const {
   enterPhoneNumberAndSubmit,
   enterDoYouLiveInScotlandNoAndSubmit,
   enterEmailAddressAndSubmit,
-  selectNoOnChildrenThreeOrUnderPage
+  selectNoOnChildrenThreeOrYoungerPage
 } = require('./common-steps')
 const { formatDateForDisplayFromDate } = require('../../../web/routes/application/common/formatters')
 
 When(/^I complete the application with valid details that contains malicious input$/, async function () {
   await enterDoYouLiveInScotlandNoAndSubmit()
   await enterDateOfBirthAndSubmit()
-  await selectNoOnChildrenThreeOrUnderPage()
+  await selectNoOnChildrenThreeOrYoungerPage()
   await selectNoOnPregnancyPage()
   await enterNameAndSubmit('<script>window.alert(\'Boo\')</script>', LAST_NAME)
   await enterNinoAndSubmit()
@@ -45,7 +45,7 @@ When(/^I complete the application with valid details that contains malicious inp
 When(/^I complete the application with valid details for an applicant with no second line of address$/, async function () {
   await enterDoYouLiveInScotlandNoAndSubmit()
   await enterDateOfBirthAndSubmit()
-  await selectNoOnChildrenThreeOrUnderPage()
+  await selectNoOnChildrenThreeOrYoungerPage()
   await selectNoOnPregnancyPage()
   await enterNameAndSubmit()
   await enterNinoAndSubmit()

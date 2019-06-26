@@ -7,13 +7,13 @@ const { phoneNumber } = require('./phone-number')
 const { doYouLiveInScotland } = require('./do-you-live-in-scotland')
 const { iLiveInScotland } = require('./i-live-in-scotland')
 const { emailAddress } = require('./email-address')
-const { doYouHaveChildrenThreeOrUnder } = require('./do-you-have-children-three-or-under')
+const { doYouHaveChildrenThreeOrYounger } = require('./do-you-have-children-three-or-younger')
 
 const steps = [
   doYouLiveInScotland,
   iLiveInScotland,
   enterDob,
-  doYouHaveChildrenThreeOrUnder,
+  doYouHaveChildrenThreeOrYounger,
   areYouPregnant,
   enterName,
   enterNino,
