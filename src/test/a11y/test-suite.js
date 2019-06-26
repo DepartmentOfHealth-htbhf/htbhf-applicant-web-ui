@@ -2,14 +2,14 @@
 'use strict'
 require('dotenv')
 const { getSIDCookieAndCSRFToken, postFormData } = require('../common/request')
-const { setupSuccessfulWiremockClaimMapping, deleteAllWiremockMappings } = require('../common/wiremock')
 const pa11yWithSettings = require('./pally')
 const handleTestResults = require('./results')
+const { VALID_ELIGIBLE_NINO, PHONE_NUMBER, EMAIL_ADDRESS } = require('../common/steps/constants')
 const IGNORE_RULES = require('./ignore-rules')
 const { PORT } = require('../common/config')
-const { VALID_ELIGIBLE_NINO, PHONE_NUMBER, EMAIL_ADDRESS } = require('../common/steps/constants')
+const APP_BASE_URL = process.env.APP_BASE_URL || ''
 
-const BASE_URL = `http://localhost:${PORT}`
+const BASE_URL = APP_BASE_URL === '' ? `http://localhost:${PORT}` : `${APP_BASE_URL}`
 const DO_YOU_LIVE_IN_SCOTLAND_URL = `${BASE_URL}/do-you-live-in-scotland`
 const I_LIVE_IN_SCOTLAND_URL = `${BASE_URL}/i-live-in-scotland`
 const ENTER_NAME_URL = `${BASE_URL}/enter-name`
@@ -23,6 +23,7 @@ const EMAIL_ADDRESS_URL = `${BASE_URL}/email-address`
 const CHECK_URL = `${BASE_URL}/check`
 const TERMS_AND_CONDITIONS_URL = `${BASE_URL}/terms-and-conditions`
 const CONFIRM_URL = `${BASE_URL}/confirm`
+const APPLICATION_COMPLETE_TITLE = 'GOV.UK - Application complete'
 
 const dateIn3Months = () => {
   const dueDate = new Date()
@@ -37,7 +38,6 @@ const dateIn3Months = () => {
  */
 const runEndToEndTest = async (results) => {
   try {
-    await setupSuccessfulWiremockClaimMapping()
     const { requestCookie, csrfToken } = await getSIDCookieAndCSRFToken(ENTER_DOB_URL)
     const pa11y = pa11yWithSettings(IGNORE_RULES, { Cookie: requestCookie })
     const formData = { '_csrf': csrfToken }
@@ -93,17 +93,16 @@ const runEndToEndTest = async (results) => {
     results.push(await pa11y(CHECK_URL))
 
     results.push(await pa11y(TERMS_AND_CONDITIONS_URL))
-    await postFormData(TERMS_AND_CONDITIONS_URL, {
-      ...formData,
-      'agree': 'agree'
-    }, requestCookie)
+    await postFormData(TERMS_AND_CONDITIONS_URL, { ...formData, agree: 'agree' }, requestCookie)
 
-    results.push(await pa11y(CONFIRM_URL))
+    const confirmResult = await pa11y(CONFIRM_URL)
+    if (confirmResult.documentTitle !== APPLICATION_COMPLETE_TITLE) {
+      confirmResult.issues.push(`Expected title to be ${APPLICATION_COMPLETE_TITLE}, instead got ${confirmResult.documentTitle}`)
+    }
+    results.push(confirmResult)
   } catch (error) {
     console.error(error)
     process.exit(1)
-  } finally {
-    await deleteAllWiremockMappings()
   }
 }
 
@@ -136,4 +135,4 @@ const runAllTests = async () => {
   }
 }
 
-runAllTests()
+module.exports = { runAllTests }
