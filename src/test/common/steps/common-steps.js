@@ -100,6 +100,15 @@ async function enterEmailAddressAndSubmit (emailAddress = EMAIL_ADDRESS) {
   }
 }
 
+async function selectNoOnChildrenThreeOrYoungerPage () {
+  try {
+    await pages.doYouHaveChildrenThreeOrYounger.selectNoRadioButton()
+    await pages.doYouHaveChildrenThreeOrYounger.submitForm()
+  } catch (error) {
+    assert.fail(`Unexpected error caught trying to select 'No' for 'Do you have any children three or younger?' and submit the page - ${error}`)
+  }
+}
+
 async function assertErrorHeaderTextPresent (page, message = `There's a problem`) {
   try {
     await page.waitForPageLoad()
@@ -128,6 +137,7 @@ async function assertFieldErrorAndLinkTextPresentAndCorrect (fieldErrorId, error
 async function completeTheApplicationAsAPregnantWoman () {
   await enterDoYouLiveInScotlandNoAndSubmit()
   await enterDateOfBirthAndSubmit()
+  await selectNoOnChildrenThreeOrYoungerPage()
   await selectYesOnPregnancyPage()
   await enterNameAndSubmit()
   await enterNinoAndSubmit()
@@ -139,6 +149,7 @@ async function completeTheApplicationAsAPregnantWoman () {
 async function completeTheApplicationAsAWomanWhoIsNotPregnant () {
   await enterDoYouLiveInScotlandNoAndSubmit()
   await enterDateOfBirthAndSubmit()
+  await selectNoOnChildrenThreeOrYoungerPage()
   await selectNoOnPregnancyPage()
   await enterNameAndSubmit()
   await enterNinoAndSubmit()
@@ -214,5 +225,6 @@ module.exports = {
   enterDoYouLiveInScotlandNoAndSubmit,
   assertFieldErrorAndLinkTextPresentAndCorrect,
   assertYesNoOptionsAreDisplayed,
-  enterEmailAddressAndSubmit
+  enterEmailAddressAndSubmit,
+  selectNoOnChildrenThreeOrYoungerPage
 }

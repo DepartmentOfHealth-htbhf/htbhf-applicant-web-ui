@@ -25,15 +25,20 @@
 
 {% block pageContent %}
 
-    <h1 class="govuk-heading-xl">{{ heading }}</h1>
+  <h1 class="govuk-heading-xl">{{ heading }}</h1>
+  <h2 class="govuk-heading-m">{{ aboutYou }}</h2>
 
   {{ govukSummaryList({
       rows: safeRows
   }) }}
 
-    {{ govukButton({
-        text: buttonText,
-        href: "/terms-and-conditions"
-    }) }}
+  {{ govukButton({
+      text: buttonText,
+      href: "/terms-and-conditions"
+  }) }}
+
+  {% if claim.doYouHaveChildrenThreeOrYounger === 'yes' %}
+    <h2 class="gov-uk-heading-m">{{ aboutYourChildren }}</h2>
+  {% endif %}
 
 {% endblock %}
