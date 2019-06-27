@@ -32,7 +32,7 @@ Then('I am told I must accept the terms and conditions', async function () {
   await assertFieldErrorAndLinkTextPresentAndCorrect(
     pages.termsAndConditions.getFieldErrorId(),
     pages.termsAndConditions.getErrorLinkCss(),
-    'Select if you\'ve read and will comply with the terms and conditions')
+    'Confirm that you\'ve read and will comply with these terms and conditions')
 })
 
 Then(/^I am shown the terms and conditions page$/, async function () {
