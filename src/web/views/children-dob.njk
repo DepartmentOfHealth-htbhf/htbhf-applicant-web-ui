@@ -1,0 +1,55 @@
+{% extends "templates/form.njk" %}
+{% from "fieldset/macro.njk" import govukFieldset %}
+{% from "macros/htbhf-date-input.njk" import htbhfDateInput %}
+{% from "inset-text/macro.njk" import govukInsetText %}
+
+{% block formContent %}
+
+  {% call govukFieldset({
+    legend: {
+      text: heading,
+      classes: "govuk-fieldset__legend--xl",
+      isPageHeading: true
+    }
+  }) %}
+
+    {% call govukFieldset({
+      legend: {
+        text: aboutYourChild,
+        classes: "govuk-fieldset__legend--m"
+      }
+    }) %}
+
+    {{ govukInput({
+      label: {
+        text: nameLabel
+      },
+      id: 'children-name',
+      name: 'childrenName',
+      value: claim.childrenName,
+      errorMessage: errors | getErrorForField('childrenName'),
+      autocomplete: "off"
+    }) }}
+
+    {% endcall %}
+
+    {{ htbhfDateInput({
+      fieldNamePrefix: "childrenDob",
+      claim: claim,
+      errors: errors,
+      hint: {
+        text: hint
+      },
+      legend: {
+        text: dateOfBirth,
+        classes: "govuk-fieldset__legend--m"
+      }
+    }) }}
+
+  {% endcall %}
+
+{{ govukInsetText({
+  text: explanation
+}) }}
+
+{% endblock %}

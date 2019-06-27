@@ -4,7 +4,6 @@ const { formatDateForDisplay } = require('../common/formatters')
 const pageContent = ({ translate }) => ({
   title: translate('enterDob.title'),
   heading: translate('enterDob.heading'),
-  ninoLabel: translate('enterDob.ninoLabel'),
   hint: translate('enterDob.hint'),
   buttonText: translate('buttons:continue'),
   dayLabel: translate('enterDob.dayLabel'),
