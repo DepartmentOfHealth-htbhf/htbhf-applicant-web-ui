@@ -1,9 +1,5 @@
 const { validate } = require('./validate')
-
-const contentSummary = (req) => ({
-  key: req.t('doYouHaveChildrenThreeOrYounger.summaryKey'),
-  value: req.t(req.session.claim.doYouHaveChildrenThreeOrYounger)
-})
+const { YES } = require('../common/constants')
 
 const pageContent = ({ translate }) => ({
   title: translate('doYouHaveChildrenThreeOrYounger.title'),
@@ -14,15 +10,13 @@ const pageContent = ({ translate }) => ({
   explanation: translate('doYouHaveChildrenThreeOrYounger.explanation')
 })
 
-// Update to check response and direct to children dob page if the user selected yes.
-const next = () => '/are-you-pregnant'
+const next = req => req.session.claim.doYouHaveChildrenThreeOrYounger === YES ? '/children-dob' : '/are-you-pregnant'
 
 const doYouHaveChildrenThreeOrYounger = {
   path: '/do-you-have-children-three-or-younger',
   next,
   template: 'do-you-have-children-three-or-younger',
   pageContent,
-  contentSummary,
   validate
 }
 

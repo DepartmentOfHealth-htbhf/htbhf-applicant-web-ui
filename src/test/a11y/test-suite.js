@@ -16,6 +16,7 @@ const ENTER_NAME_URL = `${BASE_URL}/enter-name`
 const ENTER_NINO_URL = `${BASE_URL}/enter-nino`
 const ENTER_DOB_URL = `${BASE_URL}/enter-dob`
 const DO_YOU_HAVE_CHILDREN_THREE_OR_YOUNGER_URL = `${BASE_URL}/do-you-have-children-three-or-younger`
+const CHILDREN_DOB_URL = `${BASE_URL}/children-dob`
 const ARE_YOU_PREGNANT_URL = `${BASE_URL}/are-you-pregnant`
 const CARD_ADDRESS_URL = `${BASE_URL}/card-address`
 const PHONE_NUMBER_URL = `${BASE_URL}/phone-number`
@@ -30,6 +31,12 @@ const dateIn3Months = () => {
   dueDate.setDate(1)
   dueDate.setMonth(dueDate.getMonth() + 3)
   return dueDate
+}
+
+const dateLastYear = () => {
+  const date = new Date()
+  date.setFullYear(date.getFullYear() - 1)
+  return date
 }
 
 /*
@@ -57,6 +64,15 @@ const runEndToEndTest = async (results) => {
     await postFormData(DO_YOU_HAVE_CHILDREN_THREE_OR_YOUNGER_URL, {
       ...formData,
       doYouHaveChildrenThreeOrYounger: 'yes'
+    }, requestCookie)
+
+    results.push(await pa11y(CHILDREN_DOB_URL))
+    const childDob = dateLastYear()
+    await postFormData(CHILDREN_DOB_URL, {
+      ...formData,
+      'childrenDob-day': childDob.getDate(),
+      'childrenDob-month': childDob.getMonth() + 1,
+      'childrenDob-year': childDob.getFullYear()
     }, requestCookie)
 
     results.push(await pa11y(ARE_YOU_PREGNANT_URL))

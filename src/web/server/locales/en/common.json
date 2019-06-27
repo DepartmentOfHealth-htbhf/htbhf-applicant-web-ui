@@ -32,6 +32,19 @@
     "summaryKey": "Do you have any children who are three years old or younger?",
     "explanation": "Children's names will not be stored or shared. We need their dates of birth to confirm your identity and to prevent fraud."
   },
+  "childrenDob": {
+    "title": "Add your children's dates of birth",
+    "heading": "Add your children's dates of birth",
+    "dayLabel": "Day",
+    "monthLabel": "Month",
+    "yearLabel": "Year",
+    "hint": "For example, 31 3 1990",
+    "summaryKey": "Child date of birth",
+    "explanation": "Children's names will not be stored or shared. We need their dates of birth to confirm your identity and to prevent fraud.",
+    "nameLabel": "First name",
+    "dateOfBirth": "Date of birth",
+    "aboutYourChild": "About your child"
+  },
   "areYouPregnant": {
     "title": "Are you pregnant?",
     "heading": "Are you pregnant?",
