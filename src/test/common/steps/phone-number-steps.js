@@ -18,7 +18,7 @@ Then(/^I am shown the phone number page$/, async function () {
 
 Then(/^I am informed that I must enter in a valid phone number$/, async function () {
   await assertErrorHeaderTextPresent(pages.phoneNumber)
-  await assertPhoneNumberErrorFieldAndLink('Enter in a valid UK mobile number')
+  await assertPhoneNumberErrorFieldAndLink('Enter in a UK mobile number')
 })
 
 Then(/^I see the value (.*) in the phone number textbox$/, async function (phoneNumber) {
