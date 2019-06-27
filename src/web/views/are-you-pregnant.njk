@@ -1,6 +1,7 @@
 {% extends "templates/form.njk" %}
 {% from "radios/macro.njk" import govukRadios %}
 {% from "macros/htbhf-date-input.njk" import htbhfDateInput %}
+{% from "inset-text/macro.njk" import govukInsetText %}
 
 {% set eddHtml %}
 {{ htbhfDateInput({
@@ -44,4 +45,8 @@
         }
       ]
     }) }}
+
+  {{ govukInsetText({
+    text: explanation
+  }) }}
 {% endblock %}

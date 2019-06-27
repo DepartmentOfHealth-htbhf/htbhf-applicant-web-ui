@@ -48,10 +48,11 @@
   "areYouPregnant": {
     "title": "Are you pregnant?",
     "heading": "Are you pregnant?",
-    "expectedDeliveryDateText": "When is your baby due to be born?",
+    "expectedDeliveryDateText": "When is your baby due? You must be at least 10 weeks pregnant.",
     "expectedDeliveryDateHint": "For example, {{exampleDate}}",
     "summaryKey": "Are you pregnant?",
-    "expectedDeliveryDateSummaryKey": "Baby's due date"
+    "expectedDeliveryDateSummaryKey": "Baby's due date",
+    "explanation": "We need this to work out how much money you should get."
   },
   "cardAddress": {
     "title": "What is your address?",
