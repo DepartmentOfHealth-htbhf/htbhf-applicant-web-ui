@@ -24,7 +24,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 29000000
+              "duration": 17000000
             }
           },
           {
@@ -33,11 +33,11 @@
             "line": 7,
             "name": "I navigate to the HTBHF overview page",
             "match": {
-              "location": "src/test/common/steps/navigation.js:139"
+              "location": "src/test/common/steps/navigation.js:148"
             },
             "result": {
               "status": "passed",
-              "duration": 1616000000
+              "duration": 1560000000
             }
           },
           {
@@ -50,7 +50,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 342000000
+              "duration": 322000000
             }
           },
           {
@@ -63,7 +63,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 5000000
+              "duration": 6000000
             }
           },
           {
