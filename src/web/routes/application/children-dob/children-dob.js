@@ -9,7 +9,7 @@ const pageContent = ({ translate }) => ({
   explanation: translate('childrenDob.explanation'),
   nameLabel: translate('childrenDob.nameLabel'),
   dateOfBirth: translate('childrenDob.dateOfBirth'),
-  aboutYourChild: translate('childrenDob.')
+  aboutYourChild: translate('childrenDob.aboutYourChild')
 })
 
 const childrenDob = {

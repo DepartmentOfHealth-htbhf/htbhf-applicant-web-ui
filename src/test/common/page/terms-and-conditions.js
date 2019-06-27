@@ -2,7 +2,7 @@
 
 const webdriver = require('selenium-webdriver')
 const SubmittablePage = require('./submittable-page')
-const TERMS_AND_CONDITIONS_TITLE = 'GOV.UK - Read and agree to our terms and conditions'
+const TERMS_AND_CONDITIONS_TITLE = 'GOV.UK - Terms and conditions'
 const FIELD_ERROR_ID = 'agree-error'
 const ERROR_LINK_CSS = 'a[href="#agree-error"]'
 

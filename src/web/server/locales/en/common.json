@@ -41,7 +41,7 @@
     "hint": "For example, 31 3 1990",
     "summaryKey": "Child date of birth",
     "explanation": "Children's names will not be stored or shared. We need their dates of birth to confirm your identity and to prevent fraud.",
-    "childrenNameLabel": "First name",
+    "nameLabel": "First name",
     "dateOfBirth": "Date of birth",
     "aboutYourChild": "About your child"
   },
@@ -93,9 +93,9 @@
     "aboutYourChildren": "About your children"
   },
   "terms-and-conditions": {
-    "title": "Read and agree to our terms and conditions",
-    "heading": "Read and agree to our terms and conditions",
-    "statement": "I confirm that I have read and agree to comply with these terms and conditions."
+    "title": "Terms and conditions",
+    "heading": "Terms and conditions",
+    "statement": "I confirm that I've read and will comply with these terms and conditions."
   },
   "confirm": {
     "newClaimTitle": "Application complete",
