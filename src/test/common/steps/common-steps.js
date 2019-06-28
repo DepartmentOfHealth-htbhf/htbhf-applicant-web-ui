@@ -109,7 +109,7 @@ async function selectNoOnChildrenThreeOrYoungerPage () {
   }
 }
 
-async function assertErrorHeaderTextPresent (page, message = `There's a problem`) {
+async function assertErrorHeaderTextPresent (page, message = `There’s a problem`) {
   try {
     await page.waitForPageLoad()
     const errorHeader = await page.getPageErrorHeaderText()

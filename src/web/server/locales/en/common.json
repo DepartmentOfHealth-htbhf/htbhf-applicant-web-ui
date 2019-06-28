@@ -1,15 +1,15 @@
 {
   "enterNino": {
-    "title": "What's your National Insurance number?",
-    "heading": "What's your National Insurance number?",
+    "title": "What’s your National Insurance number?",
+    "heading": "What’s your National Insurance number?",
     "ninoLabel": "National Insurance number",
     "hint": "You can find it on your National Insurance card, benefit letters, or official letters about tax. For example, QQ123456C.",
     "explanation": "We need this to check your eligibility.",
     "summaryKey": "National Insurance number"
   },
   "enterName": {
-    "title": "What's your name?",
-    "heading": "What's your name?",
+    "title": "What’s your name?",
+    "heading": "What’s your name?",
     "hint": "Use the name that is on your official documents, such as passport, driving licence, or any benefit claims",
     "firstNameLabel": "First or given name",
     "lastNameLabel": "Last or family name",
@@ -17,8 +17,8 @@
     "explanation": "We need this to confirm your identity and eligibility. Your name will also appear on your prepaid card."
   },
   "enterDob": {
-    "title": "What's your date of birth?",
-    "heading": "What's your date of birth?",
+    "title": "What’s your date of birth?",
+    "heading": "What’s your date of birth?",
     "dayLabel": "Day",
     "monthLabel": "Month",
     "yearLabel": "Year",
@@ -30,17 +30,17 @@
     "title": "Do you have any children who are three years old or younger?",
     "heading": "Do you have any children who are three years old or younger?",
     "summaryKey": "Do you have any children who are three years old or younger?",
-    "explanation": "Children's names will not be stored or shared. We need their dates of birth to confirm your identity and to prevent fraud."
+    "explanation": "Children’s names will not be stored or shared. We need their dates of birth to confirm your identity and to prevent fraud."
   },
   "childrenDob": {
-    "title": "Add your children's dates of birth",
-    "heading": "Add your children's dates of birth",
+    "title": "Add your children’s dates of birth",
+    "heading": "Add your children’s dates of birth",
     "dayLabel": "Day",
     "monthLabel": "Month",
     "yearLabel": "Year",
     "hint": "For example, 31 3 1990",
     "summaryKey": "Child date of birth",
-    "explanation": "Children's names will not be stored or shared. We need their dates of birth to confirm your identity and to prevent fraud.",
+    "explanation": "Children’s names will not be stored or shared. We need their dates of birth to confirm your identity and to prevent fraud.",
     "nameLabel": "First name",
     "dateOfBirth": "Date of birth",
     "aboutYourChild": "About your child"
@@ -51,7 +51,7 @@
     "expectedDeliveryDateText": "When is your baby due? You must be at least 10 weeks pregnant.",
     "expectedDeliveryDateHint": "For example, {{exampleDate}}",
     "summaryKey": "Are you pregnant?",
-    "expectedDeliveryDateSummaryKey": "Baby's due date",
+    "expectedDeliveryDateSummaryKey": "Baby’s due date",
     "explanation": "We need this to work out how much money you should get."
   },
   "cardAddress": {
@@ -66,16 +66,16 @@
     "summaryKey": "Address"
   },
   "phoneNumber": {
-    "title": "What's your mobile telephone number?",
-    "heading": "What's your mobile telephone number?",
+    "title": "What’s your mobile telephone number?",
+    "heading": "What’s your mobile telephone number?",
     "hint": "This must be the same number you use for any benefits you claim.",
     "phoneNumberLabel": "UK mobile number",
     "summaryKey": "Mobile telephone number",
     "explanation": "We need this to prevent fraud and to contact you about your application if necessary."
   },
   "emailAddress": {
-    "title": "What's your email address?",
-    "heading": "What's your email address?",
+    "title": "What’s your email address?",
+    "heading": "What’s your email address?",
     "hint": "This must be the same email you use for any benefits you claim",
     "emailAddressLabel": "Email address",
     "summaryKey": "Email address",
@@ -96,7 +96,7 @@
   "terms-and-conditions": {
     "title": "Terms and conditions",
     "heading": "Terms and conditions",
-    "statement": "I confirm that I've read and will comply with these terms and conditions."
+    "statement": "I confirm that I’ve read and will comply with these terms and conditions."
   },
   "confirm": {
     "newClaimTitle": "Application complete",

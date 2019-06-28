@@ -96,7 +96,7 @@ test('getConfirmPage() calls next with error when invalid voucher value in pence
   t.end()
 })
 
-test('getTitle() returns \'Application Complete\' when the claimUpdated field is false', (t) => {
+test('getTitle() returns ’Application Complete’ when the claimUpdated field is false', (t) => {
   const req = {
     t: (name) => { return name === 'confirm.updatedClaimTitle' ? 'Application Updated' : 'Application Complete' },
     session: {
@@ -106,11 +106,11 @@ test('getTitle() returns \'Application Complete\' when the claimUpdated field is
 
   const result = getTitle(req)
 
-  t.equal(result, 'Application Complete', 'getTitle returns \'Application Complete\'')
+  t.equal(result, 'Application Complete', 'getTitle returns ’Application Complete’')
   t.end()
 })
 
-test('getTitle() returns \'Application Complete\' when the claimUpdated field is undefined', (t) => {
+test('getTitle() returns ’Application Complete’ when the claimUpdated field is undefined', (t) => {
   const req = {
     t: (name) => { return name === 'confirm.updatedClaimTitle' ? 'Application Updated' : 'Application Complete' },
     session: {}
@@ -118,11 +118,11 @@ test('getTitle() returns \'Application Complete\' when the claimUpdated field is
 
   const result = getTitle(req)
 
-  t.equal(result, 'Application Complete', 'getTitle returns \'Application Complete\'')
+  t.equal(result, 'Application Complete', 'getTitle returns ’Application Complete’')
   t.end()
 })
 
-test('getTitle() returns \'Application Updated\' when the claimUpdated field is true', (t) => {
+test('getTitle() returns ’Application Updated’ when the claimUpdated field is true', (t) => {
   const req = {
     t: (name) => { return name === 'confirm.updatedClaimTitle' ? 'Application Updated' : 'Application Complete' },
     session: {
@@ -132,6 +132,6 @@ test('getTitle() returns \'Application Updated\' when the claimUpdated field is 
 
   const result = getTitle(req)
 
-  t.equal(result, 'Application Updated', 'getTitle returns \'Application Updated\'')
+  t.equal(result, 'Application Updated', 'getTitle returns ’Application Updated’')
   t.end()
 })

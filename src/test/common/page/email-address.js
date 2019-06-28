@@ -3,7 +3,7 @@
 const SubmittablePage = require('./submittable-page')
 
 const PAGE_TITLES = {
-  en: 'GOV.UK - What\'s your email address?',
+  en: 'GOV.UK - What’s your email address?',
   cy: 'GOV.UK - Urna condimentum mattis?'
 }
 
