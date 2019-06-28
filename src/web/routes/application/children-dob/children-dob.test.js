@@ -3,10 +3,10 @@ const sinon = require('sinon')
 const { behaviourForPost, behaviourForGet } = require('./children-dob')
 
 const child = {
-  'childrenName-01': 'Lisa',
-  'childrenDob-day-01': '14',
-  'childrenDob-month-01': '11',
-  'childrenDob-year-01': '1990'
+  'childName-01': 'Lisa',
+  'childDob-day-01': '14',
+  'childDob-month-01': '11',
+  'childDob-year-01': '1990'
 }
 
 test('behaviourForPost() adds childrens DOBs to session on add action', (t) => {
