@@ -29,12 +29,10 @@ const validateExpectedDeliveryDate = (res) => (_, { req }) => {
   }
 
   if (isDateMoreThanOneMonthAgo(expectedDeliveryDate)) {
-    res.locals.errorTitleText = req.t('validation:expectedDeliveryDateTooFarInPastTitle')
     throw new Error(req.t('validation:expectedDeliveryDateTooFarInPast'))
   }
 
   if (isDateMoreThanEightMonthsInTheFuture(expectedDeliveryDate)) {
-    res.locals.errorTitleText = req.t('validation:expectedDeliveryDateTooFarInFutureTitle')
     throw new Error(req.t('validation:expectedDeliveryDateTooFarInFuture'))
   }
 
@@ -50,7 +48,7 @@ const callValidateExpectedDeliveryDate = (req, res, next) =>
   check('expectedDeliveryDate').custom(validateExpectedDeliveryDate(res))(req, res, next)
 
 const validate = [
-  validateIsYesOrNo('areYouPregnant', 'validation:selectYesOrNo'),
+  validateIsYesOrNo('areYouPregnant', 'validation:selectYesOrNoAreYouPregnant'),
   callValidateExpectedDeliveryDate
 ]
 

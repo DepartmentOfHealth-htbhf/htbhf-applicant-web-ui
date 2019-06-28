@@ -85,24 +85,24 @@ Then(/^I am informed that I need to select an option for are you pregnant$/, asy
 
 Then(/^I am informed that I need to enter an expected delivery date$/, async function () {
   await assertErrorHeaderTextPresent(pages.areYouPregnant)
-  await assertExpectedDeliveryDateErrorPresent('Enter your baby\'s due date')
+  await assertExpectedDeliveryDateErrorPresent('Enter the due date in the correct format')
 })
 
 Then(/^I am informed that the date is too far in the past$/, async function () {
-  await assertErrorHeaderTextPresent(pages.areYouPregnant, 'The due date you entered is more than 1 month ago')
-  await assertExpectedDeliveryDateErrorPresent('Please call our helpline on 0345 607 6823 to talk about your application.')
+  await assertErrorHeaderTextPresent(pages.areYouPregnant, 'There\'s a problem')
+  await assertExpectedDeliveryDateErrorPresent('Enter a due date to show you’re at least 10 weeks pregnant')
 })
 
 Then(/^I am informed that the date is too far in the future$/, async function () {
-  await assertErrorHeaderTextPresent(pages.areYouPregnant, 'The date you have entered is more than 8 months in the future. You must be at least 10 weeks pregnant to apply for yourself.')
-  await assertExpectedDeliveryDateErrorPresent('If you have children under the age of 4, answer ‘no’ to this question to continue with this application on their behalf.')
+  await assertErrorHeaderTextPresent(pages.areYouPregnant, 'There\'s a problem')
+  await assertExpectedDeliveryDateErrorPresent('Enter a due date to show you’re at least 10 weeks pregnant')
 })
 
 async function assertAreYouPregnantErrorPresent () {
   await assertFieldErrorAndLinkTextPresentAndCorrect(
     pages.areYouPregnant.getAreYouPregnantFieldErrorId(),
     pages.areYouPregnant.getAreYouPregnantErrorLinkCss(),
-    'Select yes or no')
+    'Select yes if you’re pregnant')
 }
 
 async function assertExpectedDeliveryDateErrorPresent (expectedErrorMessage) {

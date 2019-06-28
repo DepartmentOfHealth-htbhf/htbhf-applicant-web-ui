@@ -32,7 +32,7 @@ test('validation middleware errors for are you pregnant field', async (t) => {
   const error = result.array()[0]
   t.equal(result.array().length, 1, 'should have exactly one error')
   t.equal(error.param, 'areYouPregnant', 'error should be associated with correct field')
-  t.equal(error.msg, 'validation:selectYesOrNo', 'error should have correct message')
+  t.equal(error.msg, 'validation:selectYesOrNoAreYouPregnant', 'error should have correct message')
   t.end()
 })
 

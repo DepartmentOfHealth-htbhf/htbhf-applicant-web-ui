@@ -36,7 +36,8 @@ const pageContent = ({ translate }) => ({
   yes: translate('yes'),
   no: translate('no'),
   expectedDeliveryDateText: translate('areYouPregnant.expectedDeliveryDateText'),
-  expectedDeliveryDateHint: translate('areYouPregnant.expectedDeliveryDateHint', { exampleDate: exampleDate() })
+  expectedDeliveryDateHint: translate('areYouPregnant.expectedDeliveryDateHint', { exampleDate: exampleDate() }),
+  explanation: translate('areYouPregnant.explanation')
 })
 
 const areYouPregnant = {
