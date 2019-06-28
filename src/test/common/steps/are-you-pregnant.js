@@ -89,12 +89,12 @@ Then(/^I am informed that I need to enter an expected delivery date$/, async fun
 })
 
 Then(/^I am informed that the date is too far in the past$/, async function () {
-  await assertErrorHeaderTextPresent(pages.areYouPregnant, 'There\'s a problem')
+  await assertErrorHeaderTextPresent(pages.areYouPregnant, 'There’s a problem')
   await assertExpectedDeliveryDateErrorPresent('Enter a due date to show you’re at least 10 weeks pregnant')
 })
 
 Then(/^I am informed that the date is too far in the future$/, async function () {
-  await assertErrorHeaderTextPresent(pages.areYouPregnant, 'There\'s a problem')
+  await assertErrorHeaderTextPresent(pages.areYouPregnant, 'There’s a problem')
   await assertExpectedDeliveryDateErrorPresent('Enter a due date to show you’re at least 10 weeks pregnant')
 })
 

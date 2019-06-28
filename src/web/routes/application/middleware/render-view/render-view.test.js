@@ -4,7 +4,7 @@ const { renderView } = require('./render-view')
 
 const step = {
   template: 'template',
-  pageContent: () => ({ title: 'What\'s your name?' }),
+  pageContent: () => ({ title: 'What’s your name?' }),
   next: 'redirect'
 }
 

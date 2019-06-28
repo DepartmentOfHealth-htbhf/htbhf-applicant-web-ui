@@ -21,7 +21,7 @@ test('getPhoneNumber converts no leading zero or +44', (t) => {
   t.end()
 })
 
-test('getPhoneNumber doesn\'t convert leading +44', (t) => {
+test('getPhoneNumber doesn’t convert leading +44', (t) => {
   const phoneNumber = '+447700900645'
   const expected = '+447700900645'
 

@@ -80,7 +80,7 @@ Then(/^the check details page contains all data entered for a woman who is not p
   assertNinoShown(tableContents)
   assertDobShown(tableContents)
   assertAreYouPregnantValueShown(tableContents, NO_LABEL)
-  assertNoValueForField(tableContents, 'Baby\'s due date')
+  assertNoValueForField(tableContents, 'Baby’s due date')
   assertFullAddressShown(tableContents)
   assertPhoneNumberShown(tableContents)
   assertEmailAddressShown(tableContents)
@@ -92,7 +92,7 @@ Then(/^the check details page contains all data entered for an applicant with no
   assertNinoShown(tableContents)
   assertDobShown(tableContents)
   assertAreYouPregnantValueShown(tableContents, NO_LABEL)
-  assertNoValueForField(tableContents, 'Baby\'s due date')
+  assertNoValueForField(tableContents, 'Baby’s due date')
   assertAddressShownWithNoSecondLine(tableContents)
   assertPhoneNumberShown(tableContents)
   assertEmailAddressShown(tableContents)
@@ -161,7 +161,7 @@ function assertAreYouPregnantValueShown (tableContents, expectedValue) {
 }
 
 function assertDueDateShownInSixMonths (tableContents) {
-  const dueDateValue = getValueForField(tableContents, 'Baby\'s due date')
+  const dueDateValue = getValueForField(tableContents, 'Baby’s due date')
   expect(dueDateValue).to.be.equal(getDateInSixMonths())
 }
 

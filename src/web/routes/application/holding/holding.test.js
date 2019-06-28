@@ -30,7 +30,7 @@ test('formatDate returns undefined when invalid date is provided', (t) => {
   t.end()
 })
 
-test('formatDate returns undefined when date is not in the format \'HH:mm DD/MM/YYYY\'', (t) => {
+test('formatDate returns undefined when date is not in the format ’HH:mm DD/MM/YYYY’', (t) => {
   const result = formatDate('03/04/2019')
 
   t.equal(result, undefined)
