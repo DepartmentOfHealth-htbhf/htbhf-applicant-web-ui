@@ -1,0 +1,48 @@
+{% from "fieldset/macro.njk" import govukFieldset %}
+{% from "macros/htbhf-date-input.njk" import htbhfDateInput %}
+{% from "input/macro.njk" import govukInput %}
+
+{#
+  htbhfChildDobInput() contains a text input for a child's name and a htbhf-date-input for
+  the child's dob.
+#}
+
+{% macro htbhfChildDobInput(params) %}
+
+  {% call govukFieldset({
+      legend: {
+        text: params.aboutYourChild,
+        classes: "govuk-fieldset__legend--m"
+      }
+   }) %}
+
+    {{ govukInput({
+      label: {
+        text: params.nameLabel
+      },
+      id: 'children-name',
+      name: 'childrenName-' + params.index,
+      value: params.children['childrenName-'  + params.index],
+      errorMessage: errors | getErrorForField('childrenName'),
+      autocomplete: "off"
+    }) }}
+
+  {% endcall %}
+
+  {{ htbhfDateInput({
+    fieldNamePrefix: "childrenDob-" + params.index,
+    claim: params.children,
+    errors: errors,
+    hint: {
+      text: params.hint
+    },
+    legend: {
+      text: params.dateOfBirth,
+      classes: "govuk-fieldset__legend--m"
+    }
+  }) }}
+
+  {# TODO HTBHF-1686 Add css to style this #}
+  <input type="submit" value="Add another child" name="add">
+
+{% endmacro %}
