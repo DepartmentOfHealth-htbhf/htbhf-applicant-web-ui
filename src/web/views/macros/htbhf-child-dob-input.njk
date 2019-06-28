@@ -20,17 +20,17 @@
       label: {
         text: params.nameLabel
       },
-      id: 'children-name',
-      name: 'childrenName-' + params.index,
-      value: params.children['childrenName-'  + params.index],
-      errorMessage: errors | getErrorForField('childrenName'),
+      id: 'child-name',
+      name: 'childName-' + params.index,
+      value: params.children['childName-'  + params.index],
+      errorMessage: errors | getErrorForField('childName'),
       autocomplete: "off"
     }) }}
 
   {% endcall %}
 
   {{ htbhfDateInput({
-    fieldNamePrefix: "childrenDob-" + params.index,
+    fieldNamePrefix: "childDob-" + params.index,
     claim: params.children,
     errors: errors,
     hint: {

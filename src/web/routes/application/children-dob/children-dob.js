@@ -16,6 +16,10 @@ const pageContent = ({ translate }) => ({
   aboutYourChild: translate('childrenDob.aboutYourChild')
 })
 
+const addActionRequested = body => body.hasOwnProperty('add')
+
+const extractChildrenEntries = (val, key) => key.startsWith('child')
+
 const behaviourForGet = (req, res, next) => {
   if (!req.session.hasOwnProperty('children')) {
     req.session.children = {}
@@ -27,10 +31,8 @@ const behaviourForGet = (req, res, next) => {
   next()
 }
 
-const extractChildrenEntries = (val, key) => key.startsWith('children')
-
 const behaviourForPost = (req, res, next) => {
-  if (req.body.hasOwnProperty('add')) {
+  if (addActionRequested(req.body)) {
     req.session.children = pickBy(extractChildrenEntries, req.body)
     return res.redirect(PATH)
   }
