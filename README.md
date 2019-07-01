@@ -73,3 +73,27 @@ that are run to prove an environment is "up" and nothing more. They use the same
 tests and can be run via `npm run test:smoke`. To run these tests against a local instance for debuggging
 purposes, you simply need to set the environment variable `APP_HOST=http://localhost:8080` and it will run
 against your local running instance.
+
+### Compatibility tests
+
+The application is configured to run compatibility tests using Selenium and [Browserstack Automate](https://www.browserstack.com/automate). 
+`npm-run-all` is used to trigger tests on multiple browsers concurrently. The compatibility tests can be started with the command `npm run test:compatibility`.
+
+Operating system and browser combinations for the compatibility tests are based on the [GOV.UK guidelines](https://www.gov.uk/service-manual/technology/designing-for-different-browsers-and-devices).
+
+See `sample.env` for a list of the environment variables that need to be set for these tests to run.
+
+#### Testing locally against Safari
+
+Should you need to run the compatibility tests locally against Safari for debugging purposes, then the following
+page is a great reference on how to get the `safaridriver` setup:
+https://developer.apple.com/documentation/webkit/testing_with_webdriver_in_safari
+To change from the default Chrome headless for local testing, go to the `driver-manager.js` file and change the
+driver setup to simply be:
+
+```
+    this.driver = new webdriver.Builder()
+      .forBrowser('safari')
+      .build()
+```
+Then to run the tests locally, just use the `npm run test:compatibility:local` target.

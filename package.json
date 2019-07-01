@@ -1,7 +1,7 @@
 {
   "name": "htbhf-applicant-web-ui",
   "version_notice": "Patch versions are incremented by Travis (in tag_version.sh via .travis.yml) - never manually increment the patch version",
-  "version": "0.1.228",
+  "version": "0.1.229",
   "description": "",
   "main": "index.js",
   "engines": {
@@ -23,7 +23,7 @@
     "test:smoke:debug": "mkdir -p build/reports && cross-env TESTS=smoke node $NODE_DEBUG_OPTION node_modules/cucumber/bin/cucumber-js src/test/smoke/features/ --require 'src/test/common/steps/*.js' --require 'src/test/smoke/config' -f json:build/reports/smoke-report.json",
     "test:smoke:report": "node src/test/smoke/smoke-report.js",
     "test:compatibility:local": "npm-run-all -s test:compatibility:local:test test:compatibility:local:report",
-    "test:compatibility:local:test": "mkdir -p build/reports/compatibility && cross-env TESTS=localCompatibility cucumber-js src/test/compatibility/features/ --require 'src/test/common/steps/*.js' --require 'src/test/acceptance/config/timeout.js' --require 'src/test/compatibility/config/environment.js' -f json:build/reports/compatibility-report.json",
+    "test:compatibility:local:test": "mkdir -p build/reports/compatibility && cross-env TESTS=localCompatibility cucumber-js src/test/compatibility/features/ --require 'src/test/common/steps/*.js' --require 'src/test/common/timeout.js' --require 'src/test/compatibility/config/environment.js' -f json:build/reports/compatibility-report.json",
     "test:compatibility:local:report": "node src/test/compatibility/local-compatibility-report.js",
     "test:accessibility": "node 'src/test/a11y/run-test-suite.js'",
     "test:browser": "npm run test:wait && npm run test:startWiremock && npm-run-all -s test:smoke test:accessibility test:compatibility:local test:acceptance test:acceptance:report test:stopWiremock",
@@ -44,7 +44,7 @@
     "compat:win:edge": "cross-env BROWSER_STACK_BROWSER=Edge BROWSER_STACK_BROWSER_VERSION=18.0 cucumber-js src/test/compatibility/features/ --require 'src/test/common/steps/*.js' --require 'src/test/compatibility/config/environment.js' --format ./src/test/compatibility/custom-json-formatter.js:build/reports/compatibility/win-edge-report.json",
     "compat:win:chrome": "cross-env BROWSER_STACK_BROWSER=Chrome cucumber-js src/test/compatibility/features/ --require 'src/test/common/steps/*.js' --require 'src/test/compatibility/config/environment.js' --format ./src/test/compatibility/custom-json-formatter.js:build/reports/compatibility/win-chrome-report.json",
     "compat:win:firefox": "cross-env BROWSER_STACK_BROWSER=Firefox cucumber-js src/test/compatibility/features/ --require 'src/test/common/steps/*.js' --require 'src/test/compatibility/config/environment.js' --format ./src/test/compatibility/custom-json-formatter.js:build/reports/compatibility/win-firefox-report.json",
-    "compat:osx": "cross-env BROWSER_STACK_OS='OS X' BROWSER_STACK_OS_VERSION=Mojave npm-run-all -c -p --max-parallel 5 compat:osx:chrome compat:osx:firefox compat:osx:safari",
+    "compat:osx": "cross-env BROWSER_STACK_OS='OS X' BROWSER_STACK_OS_VERSION=Mojave npm-run-all -c -p --max-parallel 5 compat:osx:chrome compat:osx:firefox",
     "compat:osx:safari": "cross-env BROWSER_STACK_BROWSER=Safari cucumber-js src/test/compatibility/features/ --require 'src/test/common/steps/*.js' --require 'src/test/compatibility/config/environment.js' --format ./src/test/compatibility/custom-json-formatter.js:build/reports/compatibility/osx-safari-report.json",
     "compat:osx:chrome": "cross-env BROWSER_STACK_BROWSER=Chrome cucumber-js src/test/compatibility/features/ --require 'src/test/common/steps/*.js' --require 'src/test/compatibility/config/environment.js' --format ./src/test/compatibility/custom-json-formatter.js:build/reports/compatibility/osx-chrome-report.json",
     "compat:osx:firefox": "cross-env BROWSER_STACK_BROWSER=Firefox cucumber-js src/test/compatibility/features/ --require 'src/test/common/steps/*.js' --require 'src/test/compatibility/config/environment.js' --format ./src/test/compatibility/custom-json-formatter.js:build/reports/compatibility/osx-firefox-report.json",

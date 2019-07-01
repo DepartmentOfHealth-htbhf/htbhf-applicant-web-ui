@@ -114,7 +114,7 @@ async function selectTextOnChooseChannelForCode () {
     await pages.chooseChannelForCode.selectTextRadioButton()
     await pages.chooseChannelForCode.submitForm()
   } catch (error) {
-    assert.fail(`Unexpected error caught trying to select 'Text' for 'We're going to send you the code' and submit the page - ${error}`)
+    assert.fail(`Unexpected error caught trying to select 'Text' for 'We’re sending you a code' and submit the page - ${error}`)
   }
 }
 
