@@ -20,20 +20,31 @@ const addActionRequested = body => body.hasOwnProperty('add')
 
 const extractChildrenEntries = (val, key) => key.startsWith('child')
 
-const behaviourForGet = (req, res, next) => {
+const initialiseChildrenInSession = (req) => {
   if (!req.session.hasOwnProperty('children')) {
-    req.session.children = {}
+    req.session.children = {
+      count: 0
+    }
   }
 
-  req.session.children.count = 1
+  return req
+}
 
+const behaviourForGet = (req, res, next) => {
+  req = initialiseChildrenInSession(req)
   res.locals.children = req.session.children
   next()
 }
 
 const behaviourForPost = (req, res, next) => {
+  req = initialiseChildrenInSession(req)
+
   if (addActionRequested(req.body)) {
-    req.session.children = pickBy(extractChildrenEntries, req.body)
+    req.session.children = {
+      ...pickBy(extractChildrenEntries, req.body),
+      count: req.session.children.count += 1
+    }
+
     return res.redirect(PATH)
   }
 

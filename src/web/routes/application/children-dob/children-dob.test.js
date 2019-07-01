@@ -10,11 +10,24 @@ const child = {
 }
 
 test('behaviourForPost() adds childrens DOBs to session on add action', (t) => {
+  const newChild = {
+    'childName-02': 'Bart',
+    'childDob-day-02': '2',
+    'childDob-month-02': '3',
+    'childDob-year-02': '2001'
+  }
+
   const req = {
-    session: {},
+    session: {
+      children: {
+        ...child,
+        count: 1
+      }
+    },
     body: {
       add: 'Add another child',
-      ...child
+      ...child,
+      ...newChild
     }
   }
 
@@ -22,9 +35,15 @@ test('behaviourForPost() adds childrens DOBs to session on add action', (t) => {
   const res = { redirect }
   const next = sinon.spy()
 
+  const expected = {
+    ...child,
+    ...newChild,
+    count: 2
+  }
+
   behaviourForPost(req, res, next)
 
-  t.deepEqual(req.session.children, child, 'adds childrens DOBs to session on add action')
+  t.deepEqual(req.session.children, expected, 'adds childrens DOBs to session on add action')
   t.equal(redirect.calledWith('/children-dob'), true, 'redirects on add action')
   t.equal(next.called, false, 'does not call next')
   t.end()
@@ -44,6 +63,7 @@ test('behaviourForPost() calls next if no add action', (t) => {
 
   behaviourForPost(req, res, next)
 
+  t.equal(req.session.children.count, 0, 'initialises children in session')
   t.equal(redirect.called, false, 'does not redirect')
   t.equal(next.called, true, 'calls next')
   t.end()
@@ -62,7 +82,7 @@ test('behaviourForGet() initialises children in session', (t) => {
 
   behaviourForGet(req, res, next)
 
-  t.equal(req.session.children.count, 1, 'initialises children in session')
+  t.equal(req.session.children.count, 0, 'initialises children in session')
   t.end()
 })
 
@@ -70,7 +90,8 @@ test('behaviourForGet() adds childrens DOBs to res.locals', (t) => {
   const req = {
     session: {
       children: {
-        ...child
+        ...child,
+        count: 1
       }
     }
   }
