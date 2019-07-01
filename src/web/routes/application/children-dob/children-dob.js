@@ -1,6 +1,8 @@
 const { pickBy } = require('ramda')
+const { countKeysContainingString } = require('./count-keys')
 
 const PATH = '/children-dob'
+const DAY_FIELD_SUFFIX = '-day'
 
 const pageContent = ({ translate }) => ({
   title: translate('childrenDob.title'),
@@ -20,20 +22,36 @@ const addActionRequested = body => body.hasOwnProperty('add')
 
 const extractChildrenEntries = (val, key) => key.startsWith('child')
 
-const behaviourForGet = (req, res, next) => {
+const initialiseChildrenInSession = (req) => {
   if (!req.session.hasOwnProperty('children')) {
-    req.session.children = {}
+    req.session.children = {
+      inputCount: 1,
+      // TODO HTBHF-1678 review if `childCount` is required for validation, else remove
+      childCount: 0
+    }
   }
 
-  req.session.children.count = 1
+  return req
+}
 
+const behaviourForGet = (req, res, next) => {
+  req = initialiseChildrenInSession(req)
   res.locals.children = req.session.children
   next()
 }
 
 const behaviourForPost = (req, res, next) => {
+  const childCount = countKeysContainingString(DAY_FIELD_SUFFIX, req.body)
+
+  req.session.children = {
+    ...pickBy(extractChildrenEntries, req.body),
+    inputCount: childCount,
+    childCount: childCount
+  }
+
   if (addActionRequested(req.body)) {
-    req.session.children = pickBy(extractChildrenEntries, req.body)
+    const updatedCount = req.session.children.inputCount + 1
+    req.session.children.inputCount = updatedCount
     return res.redirect(PATH)
   }
 
@@ -52,5 +70,6 @@ const childrenDob = {
 module.exports = {
   behaviourForGet,
   behaviourForPost,
-  childrenDob
+  childrenDob,
+  countKeysContainingString
 }
