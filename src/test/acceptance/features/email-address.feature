@@ -8,7 +8,7 @@ Feature: Enter email address
 
   Scenario: Enter a valid email address
     When I enter a valid email address
-    Then I am shown the check details page
+    Then I am shown the choose channel for code page
 
   Scenario: Do not enter an email address
     When I do not enter an email address

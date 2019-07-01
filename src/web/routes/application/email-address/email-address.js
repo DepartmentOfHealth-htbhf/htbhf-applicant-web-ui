@@ -16,7 +16,7 @@ const contentSummary = (req) => ({
 
 const emailAddress = {
   path: '/email-address',
-  next: () => '/check',
+  next: () => '/choose-channel-for-code',
   template: 'email-address',
   validate,
   pageContent,

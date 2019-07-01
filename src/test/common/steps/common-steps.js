@@ -109,6 +109,15 @@ async function selectNoOnChildrenThreeOrYoungerPage () {
   }
 }
 
+async function selectTextOnChooseChannelForCode () {
+  try {
+    await pages.chooseChannelForCode.selectTextRadioButton()
+    await pages.chooseChannelForCode.submitForm()
+  } catch (error) {
+    assert.fail(`Unexpected error caught trying to select 'Text' for 'We’re sending you a code' and submit the page - ${error}`)
+  }
+}
+
 async function assertErrorHeaderTextPresent (page, message = `There’s a problem`) {
   try {
     await page.waitForPageLoad()
@@ -144,6 +153,7 @@ async function completeTheApplicationAsAPregnantWoman () {
   await enterCardAddressAndSubmit()
   await enterPhoneNumberAndSubmit()
   await enterEmailAddressAndSubmit()
+  await selectTextOnChooseChannelForCode()
 }
 
 async function completeTheApplicationAsAWomanWhoIsNotPregnant () {
@@ -156,6 +166,7 @@ async function completeTheApplicationAsAWomanWhoIsNotPregnant () {
   await enterCardAddressAndSubmit()
   await enterPhoneNumberAndSubmit()
   await enterEmailAddressAndSubmit()
+  await selectTextOnChooseChannelForCode()
 }
 
 async function setupWiremockMappingsWithStatus (status) {
@@ -226,5 +237,6 @@ module.exports = {
   assertFieldErrorAndLinkTextPresentAndCorrect,
   assertYesNoOptionsAreDisplayed,
   enterEmailAddressAndSubmit,
-  selectNoOnChildrenThreeOrYoungerPage
+  selectNoOnChildrenThreeOrYoungerPage,
+  selectTextOnChooseChannelForCode
 }

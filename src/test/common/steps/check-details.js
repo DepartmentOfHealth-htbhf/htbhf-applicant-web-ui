@@ -26,7 +26,8 @@ const {
   enterPhoneNumberAndSubmit,
   enterDoYouLiveInScotlandNoAndSubmit,
   enterEmailAddressAndSubmit,
-  selectNoOnChildrenThreeOrYoungerPage
+  selectNoOnChildrenThreeOrYoungerPage,
+  selectTextOnChooseChannelForCode
 } = require('./common-steps')
 const { formatDateForDisplayFromDate } = require('../../../web/routes/application/common/formatters')
 
@@ -40,6 +41,7 @@ When(/^I complete the application with valid details that contains malicious inp
   await enterCardAddressAndSubmit()
   await enterPhoneNumberAndSubmit()
   await enterEmailAddressAndSubmit()
+  await selectTextOnChooseChannelForCode()
 })
 
 When(/^I complete the application with valid details for an applicant with no second line of address$/, async function () {
@@ -52,6 +54,7 @@ When(/^I complete the application with valid details for an applicant with no se
   await enterCardAddressAndSubmit(ADDRESS_LINE_1, '', TOWN, POSTCODE)
   await enterPhoneNumberAndSubmit()
   await enterEmailAddressAndSubmit()
+  await selectTextOnChooseChannelForCode()
 })
 
 When(/^I choose to change my answer to are you pregnant$/, async function () {
