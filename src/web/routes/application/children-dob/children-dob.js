@@ -1,4 +1,5 @@
 const { pickBy } = require('ramda')
+const { countKeysContainingString } = require('./count-keys')
 
 const PATH = '/children-dob'
 
@@ -23,7 +24,9 @@ const extractChildrenEntries = (val, key) => key.startsWith('child')
 const initialiseChildrenInSession = (req) => {
   if (!req.session.hasOwnProperty('children')) {
     req.session.children = {
-      count: 0
+      inputCount: 1,
+      // TODO HTBHF-1678 review if `childCount` is required for validation, else remove
+      childCount: 0
     }
   }
 
@@ -37,14 +40,17 @@ const behaviourForGet = (req, res, next) => {
 }
 
 const behaviourForPost = (req, res, next) => {
-  req = initialiseChildrenInSession(req)
+  const childCount = countKeysContainingString('day', req.body)
 
   req.session.children = {
     ...pickBy(extractChildrenEntries, req.body),
-    count: req.session.children.count += 1
+    inputCount: childCount,
+    childCount: childCount
   }
 
   if (addActionRequested(req.body)) {
+    const updatedCount = req.session.children.inputCount + 1
+    req.session.children.inputCount = updatedCount
     return res.redirect(PATH)
   }
 
@@ -63,5 +69,6 @@ const childrenDob = {
 module.exports = {
   behaviourForGet,
   behaviourForPost,
-  childrenDob
+  childrenDob,
+  countKeysContainingString
 }
