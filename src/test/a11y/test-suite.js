@@ -22,6 +22,7 @@ const CARD_ADDRESS_URL = `${BASE_URL}/card-address`
 const PHONE_NUMBER_URL = `${BASE_URL}/phone-number`
 const EMAIL_ADDRESS_URL = `${BASE_URL}/email-address`
 const CHECK_URL = `${BASE_URL}/check`
+const CHOOSE_CHANNEL_FOR_CODE_URL = `${BASE_URL}/choose-channel-for-code`
 const TERMS_AND_CONDITIONS_URL = `${BASE_URL}/terms-and-conditions`
 const CONFIRM_URL = `${BASE_URL}/confirm`
 const APPLICATION_COMPLETE_TITLE = 'GOV.UK - Application complete'
@@ -105,6 +106,9 @@ const runEndToEndTest = async (results) => {
 
     results.push(await pa11y(EMAIL_ADDRESS_URL))
     await postFormData(EMAIL_ADDRESS_URL, { ...formData, emailAddress: EMAIL_ADDRESS }, requestCookie)
+
+    results.push(await pa11y(CHOOSE_CHANNEL_FOR_CODE_URL))
+    await postFormData(CHOOSE_CHANNEL_FOR_CODE_URL, { ...formData, chooseChannelForCode: 'text' }, requestCookie)
 
     results.push(await pa11y(CHECK_URL))
 

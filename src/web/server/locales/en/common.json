@@ -86,6 +86,12 @@
     "heading": "Do you live in Scotland?",
     "summaryKey": "Do you live in Scotland?"
   },
+  "chooseChannelForCode": {
+    "title": "We’re sending you a code",
+    "heading": "We’re sending you a code",
+    "hint": "Select how you would like to receive it",
+    "explanation": "We need this to confirm your identity and to prevent fraud."
+  },
   "check": {
     "title": "Check your answers",
     "heading": "Check your answers",
@@ -141,5 +147,7 @@
   "yes": "Yes",
   "no": "No",
   "back": "Back",
-  "whyDoWeNeedThis": "Why do we need this?"
+  "whyDoWeNeedThis": "Why do we need this?",
+  "text": "Text",
+  "email": "Email"
 }

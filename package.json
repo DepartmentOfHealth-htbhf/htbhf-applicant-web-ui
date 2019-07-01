@@ -23,7 +23,7 @@
     "test:smoke:debug": "mkdir -p build/reports && cross-env TESTS=smoke node $NODE_DEBUG_OPTION node_modules/cucumber/bin/cucumber-js src/test/smoke/features/ --require 'src/test/common/steps/*.js' --require 'src/test/smoke/config' -f json:build/reports/smoke-report.json",
     "test:smoke:report": "node src/test/smoke/smoke-report.js",
     "test:compatibility:local": "npm-run-all -s test:compatibility:local:test test:compatibility:local:report",
-    "test:compatibility:local:test": "mkdir -p build/reports/compatibility && cross-env TESTS=localCompatibility cucumber-js src/test/compatibility/features/ --require 'src/test/common/steps/*.js' --require 'src/test/compatibility/config/environment.js' -f json:build/reports/compatibility-report.json",
+    "test:compatibility:local:test": "mkdir -p build/reports/compatibility && cross-env TESTS=localCompatibility cucumber-js src/test/compatibility/features/ --require 'src/test/common/steps/*.js' --require 'src/test/acceptance/config/timeout.js' --require 'src/test/compatibility/config/environment.js' -f json:build/reports/compatibility-report.json",
     "test:compatibility:local:report": "node src/test/compatibility/local-compatibility-report.js",
     "test:accessibility": "node 'src/test/a11y/run-test-suite.js'",
     "test:browser": "npm run test:wait && npm run test:startWiremock && npm-run-all -s test:smoke test:accessibility test:compatibility:local test:acceptance test:acceptance:report test:stopWiremock",

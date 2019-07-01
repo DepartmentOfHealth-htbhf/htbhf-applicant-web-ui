@@ -1,0 +1,40 @@
+{% extends "templates/form.njk" %}
+{% from "radios/macro.njk" import govukRadios %}
+{% from "inset-text/macro.njk" import govukInsetText %}
+
+{% block formContent %}
+    {{ govukRadios({
+        id: "choose-channel-for-code",
+        name: "chooseChannelForCode",
+        fieldset: {
+            legend: {
+                text: heading,
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--xl"
+            }
+        },
+        errorMessage: errors | getErrorForField('chooseChannelForCode'),
+        items: [
+            {
+                value: "text",
+                text: text,
+                checked : claim.chooseChannelForCode === "text",
+                conditional: {
+                html: eddHtml
+            }
+            },
+            {
+                value: "email",
+                text: email,
+                checked : claim.chooseChannelForCode === "email"
+            }
+        ],
+        hint: {
+            text: hint
+        }
+    }) }}
+
+    {{ govukInsetText({
+        text: explanation
+    }) }}
+{% endblock %}
