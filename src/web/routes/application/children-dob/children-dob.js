@@ -2,6 +2,7 @@ const { pickBy } = require('ramda')
 const { countKeysContainingString } = require('./count-keys')
 
 const PATH = '/children-dob'
+const DAY_FIELD_SUFFIX = '-day'
 
 const pageContent = ({ translate }) => ({
   title: translate('childrenDob.title'),
@@ -40,7 +41,7 @@ const behaviourForGet = (req, res, next) => {
 }
 
 const behaviourForPost = (req, res, next) => {
-  const childCount = countKeysContainingString('day', req.body)
+  const childCount = countKeysContainingString(DAY_FIELD_SUFFIX, req.body)
 
   req.session.children = {
     ...pickBy(extractChildrenEntries, req.body),
