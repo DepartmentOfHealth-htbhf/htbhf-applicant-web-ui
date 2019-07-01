@@ -1,7 +1,7 @@
 {
   "name": "htbhf-applicant-web-ui",
   "version_notice": "Patch versions are incremented by Travis (in tag_version.sh via .travis.yml) - never manually increment the patch version",
-  "version": "0.1.229",
+  "version": "0.1.230",
   "description": "",
   "main": "index.js",
   "engines": {
@@ -14,7 +14,7 @@
     "test:lint": "standard",
     "test:unit": "tape -r './src/test/unit/setup' 'src/@(web|config)/**/*.test.js'",
     "test:unit:coverage": "nyc npm run test:unit",
-    "test:acceptance": "mkdir -p build/reports && cross-env TESTS=acceptance cucumber-js src/test/acceptance/features/navigation.feature --tags 'not @ignore' --require 'src/test/common/steps/*.js' --require 'src/test/acceptance/config' --require 'src/test/common/timeout.js' -f json:build/reports/acceptance-report.json",
+    "test:acceptance": "mkdir -p build/reports && cross-env TESTS=acceptance cucumber-js src/test/acceptance/features/ --tags 'not @ignore' --require 'src/test/common/steps/*.js' --require 'src/test/acceptance/config' --require 'src/test/common/timeout.js' -f json:build/reports/acceptance-report.json",
     "test:acceptance-no-wiremock": "mkdir -p build/reports && cross-env TESTS=acceptance cucumber-js src/test/acceptance/features/ --tags 'not @ignore' --tags 'not @RequiresWiremock' --require 'src/test/common/steps/*.js' --require 'src/test/acceptance/config' --require 'src/test/common/timeout.js' -f json:build/reports/acceptance-report.json",
     "test:acceptance:debug": "mkdir -p build/reports && cross-env TESTS=acceptance node $NODE_DEBUG_OPTION node_modules/cucumber/bin/cucumber-js src/test/acceptance/features/ --tags 'not @ignore' --require 'src/test/common/steps/*.js' --require 'src/test/acceptance/config' --require 'src/test/common/timeout.js' -f json:build/reports/acceptance-report.json",
     "test:acceptance:report": "node src/test/acceptance/acceptance-report.js",
