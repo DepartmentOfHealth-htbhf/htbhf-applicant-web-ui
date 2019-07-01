@@ -39,12 +39,12 @@ const behaviourForGet = (req, res, next) => {
 const behaviourForPost = (req, res, next) => {
   req = initialiseChildrenInSession(req)
 
-  if (addActionRequested(req.body)) {
-    req.session.children = {
-      ...pickBy(extractChildrenEntries, req.body),
-      count: req.session.children.count += 1
-    }
+  req.session.children = {
+    ...pickBy(extractChildrenEntries, req.body),
+    count: req.session.children.count += 1
+  }
 
+  if (addActionRequested(req.body)) {
     return res.redirect(PATH)
   }
 
