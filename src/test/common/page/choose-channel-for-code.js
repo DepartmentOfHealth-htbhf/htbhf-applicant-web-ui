@@ -37,6 +37,10 @@ class ChooseChannelForCode extends SubmittablePageWithRadioButtons {
   async selectTextRadioButton () {
     await super.selectRadioButton('text')
   }
+
+  async selectEmailRadioButton () {
+    await super.selectRadioButton('email')
+  }
 }
 
 module.exports = ChooseChannelForCode
