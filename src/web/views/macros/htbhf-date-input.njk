@@ -16,21 +16,21 @@
 
 {% set items = [
   {
-    id: 'day',
+    id: params.fieldNamePrefix + '-day',
     name: 'day',
     label: dayLabel,
     classes: 'govuk-input--width-2' + errorClass,
     value: params.claim[params.fieldNamePrefix + '-day']
   },
   {
-    id: 'month',
+    id: params.fieldNamePrefix + '-month',
     name: 'month',
     label: monthLabel,
     classes: 'govuk-input--width-2' + errorClass,
     value: params.claim[params.fieldNamePrefix + '-month']
   },
   {
-    id: 'year',
+    id: params.fieldNamePrefix + '-year',
     name: 'year',
     label: yearLabel,
     classes: 'govuk-input--width-4' + errorClass,

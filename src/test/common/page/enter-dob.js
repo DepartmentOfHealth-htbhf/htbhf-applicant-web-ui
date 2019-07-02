@@ -27,15 +27,15 @@ class EnterDOB extends SubmittablePage {
   }
 
   async getDayField () {
-    return this.findById('day')
+    return this.findById('dateOfBirth-day')
   }
 
   async getMonthField () {
-    return this.findById('month')
+    return this.findById('dateOfBirth-month')
   }
 
   async getYearField () {
-    return this.findById('year')
+    return this.findById('dateOfBirth-year')
   }
 
   async enterDay (day) {

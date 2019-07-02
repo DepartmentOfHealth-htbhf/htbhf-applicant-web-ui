@@ -58,7 +58,7 @@ class AreYouPregnant extends SubmittablePageWithRadioButtons {
   }
 
   async getExpectedDeliveryDateDayInput () {
-    return this.findByCSS(`input[name="expectedDeliveryDate-day"]`)
+    return this.findById('expectedDeliveryDate-day')
   }
 
   async setExpectedDeliveryDateDay (day) {
@@ -67,7 +67,7 @@ class AreYouPregnant extends SubmittablePageWithRadioButtons {
   }
 
   async getExpectedDeliveryDateMonthInput () {
-    return this.findByCSS(`input[name="expectedDeliveryDate-month"]`)
+    return this.findById('expectedDeliveryDate-month')
   }
 
   async setExpectedDeliveryDateMonth (month) {
@@ -76,7 +76,7 @@ class AreYouPregnant extends SubmittablePageWithRadioButtons {
   }
 
   async getExpectedDeliveryDateYearInput () {
-    return this.findByCSS(`input[name="expectedDeliveryDate-year"]`)
+    return this.findById('expectedDeliveryDate-year')
   }
 
   async setExpectedDeliveryDateYear (year) {
