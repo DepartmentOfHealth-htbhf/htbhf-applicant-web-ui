@@ -1,5 +1,6 @@
-const { pickBy } = require('ramda')
+const { pickBy, path } = require('ramda')
 const { countKeysContainingString } = require('./count-keys')
+const { YES } = require('../common/constants')
 
 const PATH = '/children-dob'
 const DAY_FIELD_SUFFIX = '-day'
@@ -34,6 +35,8 @@ const initialiseChildrenInSession = (req) => {
   return req
 }
 
+const isNavigable = (session) => path(['claim', 'doYouHaveChildrenThreeOrYounger'], session) === YES
+
 const behaviourForGet = (req, res, next) => {
   req = initialiseChildrenInSession(req)
   res.locals.children = req.session.children
@@ -63,6 +66,7 @@ const childrenDob = {
   next: () => '/are-you-pregnant',
   template: 'children-dob',
   pageContent,
+  isNavigable,
   behaviourForGet,
   behaviourForPost
 }
