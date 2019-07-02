@@ -109,10 +109,10 @@ async function selectNoOnChildrenThreeOrYoungerPage () {
   }
 }
 
-async function selectTextOnChooseChannelForCode () {
+async function selectTextOnSendCode () {
   try {
-    await pages.chooseChannelForCode.selectTextRadioButton()
-    await pages.chooseChannelForCode.submitForm()
+    await pages.sendCode.selectTextRadioButton()
+    await pages.sendCode.submitForm()
   } catch (error) {
     assert.fail(`Unexpected error caught trying to select 'Text' for 'We’re sending you a code' and submit the page - ${error}`)
   }
@@ -128,7 +128,7 @@ async function completeTheApplicationAsAPregnantWoman () {
   await enterCardAddressAndSubmit()
   await enterPhoneNumberAndSubmit()
   await enterEmailAddressAndSubmit()
-  await selectTextOnChooseChannelForCode()
+  await selectTextOnSendCode()
 }
 
 async function completeTheApplicationAsAWomanWhoIsNotPregnant () {
@@ -141,7 +141,7 @@ async function completeTheApplicationAsAWomanWhoIsNotPregnant () {
   await enterCardAddressAndSubmit()
   await enterPhoneNumberAndSubmit()
   await enterEmailAddressAndSubmit()
-  await selectTextOnChooseChannelForCode()
+  await selectTextOnSendCode()
 }
 
 async function setupWiremockMappingsWithStatus (status) {
@@ -202,5 +202,5 @@ module.exports = {
   enterDoYouLiveInScotlandNoAndSubmit,
   enterEmailAddressAndSubmit,
   selectNoOnChildrenThreeOrYoungerPage,
-  selectTextOnChooseChannelForCode
+  selectTextOnSendCode
 }
