@@ -8,19 +8,20 @@ Feature: Application process navigation is controlled
     When I navigate to the <page> page
     Then I am shown the do you live in Scotland page
     Examples:
-      | page                     |
-      | enter name               |
-      | enter national insurance |
-      | enter date of birth      |
-      | do you live in Scotland  |
-      | I live in Scotland       |
-      | are you pregnant         |
-      | card address             |
-      | phone number             |
-      | email address            |
-      | choose channel for code  |
-      | check details            |
-      | confirmation             |
+      | page                                  |
+      | enter name                            |
+      | enter national insurance              |
+      | enter date of birth                   |
+      | do you live in Scotland               |
+      | I live in Scotland                    |
+      | are you pregnant                      |
+      | card address                          |
+      | do you have children three or younger |
+      | phone number                          |
+      | email address                         |
+      | choose channel for code               |
+      | check details                         |
+      | confirmation                          |
 
   @RequiresWiremock
   Scenario: Navigation to confirm page after completing application stays on the confirm page
@@ -34,17 +35,18 @@ Feature: Application process navigation is controlled
     When I navigate to the <page> page
     Then I am shown the overview page
     Examples:
-      | page                     |
-      | enter name               |
-      | do you live in Scotland  |
-      | I live in Scotland       |
-      | enter national insurance |
-      | enter date of birth      |
-      | are you pregnant         |
-      | card address             |
-      | phone number             |
-      | email address            |
-      | choose channel for code  |
+      | page                                  |
+      | enter name                            |
+      | do you live in Scotland               |
+      | I live in Scotland                    |
+      | enter national insurance              |
+      | enter date of birth                   |
+      | are you pregnant                      |
+      | do you have children three or younger |
+      | card address                          |
+      | phone number                          |
+      | email address                         |
+      | choose channel for code               |
 
   Scenario Outline: Navigation is not allowed past the current page in the flow
     Given I have entered my details up to the <application page> page
@@ -61,16 +63,17 @@ Feature: Application process navigation is controlled
     When I navigate to the <page> page
     Then I am shown the <page> page
     Examples:
-      | page                     |
-      | enter name               |
-      | enter national insurance |
-      | enter date of birth      |
-      | do you live in Scotland  |
-      | are you pregnant         |
-      | card address             |
-      | phone number             |
-      | email address            |
-      | choose channel for code  |
+      | page                                  |
+      | enter name                            |
+      | enter national insurance              |
+      | enter date of birth                   |
+      | do you live in Scotland               |
+      | are you pregnant                      |
+      | do you have children three or younger |
+      | card address                          |
+      | phone number                          |
+      | email address                         |
+      | choose channel for code               |
 
   Scenario: Navigation to I live in Scotland from the check details page is not allowed
     Given I have entered my details up to the check details page
