@@ -3,6 +3,10 @@ const LONG_STRING = new Array(502).join('A')
 const BLANK_STRING = ''
 const YES_LABEL = 'Yes'
 const NO_LABEL = 'No'
+const TEXT_LABEL = 'Text'
+const EMAIL_LABEL = 'Email'
+const TEXT = 'text'
+const EMAIL = 'email'
 
 function randomCharFromChars (chars) {
   return chars.charAt(Math.floor(Math.random() * chars.length))
@@ -76,5 +80,9 @@ module.exports = {
   FULL_ADDRESS,
   FULL_ADDRESS_NO_LINE_2,
   PHONE_NUMBER,
-  EMAIL_ADDRESS
+  EMAIL_ADDRESS,
+  TEXT_LABEL,
+  EMAIL_LABEL,
+  TEXT,
+  EMAIL
 }

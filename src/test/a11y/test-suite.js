@@ -4,7 +4,7 @@ require('dotenv')
 const { getSIDCookieAndCSRFToken, postFormData } = require('../common/request')
 const pa11yWithSettings = require('./pally')
 const handleTestResults = require('./results')
-const { VALID_ELIGIBLE_NINO, PHONE_NUMBER, EMAIL_ADDRESS } = require('../common/steps/constants')
+const { VALID_ELIGIBLE_NINO, PHONE_NUMBER, EMAIL_ADDRESS, TEXT } = require('../common/steps/constants')
 const IGNORE_RULES = require('./ignore-rules')
 const { PORT } = require('../common/config')
 const APP_BASE_URL = process.env.APP_BASE_URL || ''
@@ -108,7 +108,7 @@ const runEndToEndTest = async (results) => {
     await postFormData(EMAIL_ADDRESS_URL, { ...formData, emailAddress: EMAIL_ADDRESS }, requestCookie)
 
     results.push(await pa11y(CHOOSE_CHANNEL_FOR_CODE_URL))
-    await postFormData(CHOOSE_CHANNEL_FOR_CODE_URL, { ...formData, chooseChannelForCode: 'text' }, requestCookie)
+    await postFormData(CHOOSE_CHANNEL_FOR_CODE_URL, { ...formData, chooseChannelForCode: TEXT }, requestCookie)
 
     results.push(await pa11y(CHECK_URL))
 
