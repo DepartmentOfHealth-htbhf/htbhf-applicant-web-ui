@@ -12,7 +12,8 @@
   hint: object (see govukDateInput macro params)
 #}
 {% macro htbhfDateInput(params) %}
-{% set errorClass = ' govuk-input--error' if params.errors else '' %}
+{% set errorMessage = params.errors | getErrorForField(params.fieldNamePrefix) %}
+{% set errorClass = ' govuk-input--error' if errorMessage else '' %}
 
 {% set items = [
   {
@@ -42,7 +43,7 @@
   id: params.fieldNamePrefix | camelToKebabCase,
   namePrefix: params.fieldNamePrefix,
   items: items,
-  errorMessage: params.errors | getErrorForField(params.fieldNamePrefix),
+  errorMessage: errorMessage,
   fieldset: {
     legend: params.legend
   },
