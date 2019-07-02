@@ -10,6 +10,7 @@ const { emailAddress } = require('./email-address')
 const { doYouHaveChildrenThreeOrYounger } = require('./do-you-have-children-three-or-younger')
 const { childrenDob } = require('./children-dob')
 const { sendCode } = require('./send-code')
+const { enterCode } = require('./enter-code')
 
 const steps = [
   doYouLiveInScotland,
@@ -23,7 +24,8 @@ const steps = [
   cardAddress,
   phoneNumber,
   emailAddress,
-  sendCode
+  sendCode,
+  enterCode
 ]
 
 module.exports = { steps }

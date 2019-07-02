@@ -17,9 +17,9 @@ Feature: We're going to send you a code
   Scenario: Select the Text option
     When I select Text as the method to receive the code
     And I click continue
-    Then I am shown the check details page
+    Then I am shown the enter code page
 
   Scenario: Select the Email option
     When I select Email as the method to receive the code
     And I click continue
-    Then I am shown the check details page
+    Then I am shown the enter code page

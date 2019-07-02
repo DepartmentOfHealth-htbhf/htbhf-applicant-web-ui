@@ -10,7 +10,24 @@ const INTEGRATION_TESTS = 'integration'
 
 const testsRequireApiMocks = () => TESTS !== COMPATIBILITY_TESTS && TESTS !== INTEGRATION_TESTS
 
-const { VALID_ELIGIBLE_NINO, FIRST_NAME, LAST_NAME, DAY, MONTH, YEAR, ADDRESS_LINE_1, ADDRESS_LINE_2, TOWN, POSTCODE, CLAIMS_ENDPOINT, PHONE_NUMBER, YES_LABEL, NO_LABEL, EMAIL_ADDRESS } = require('./constants')
+const {
+  VALID_ELIGIBLE_NINO,
+  FIRST_NAME,
+  LAST_NAME,
+  DAY,
+  MONTH,
+  YEAR,
+  ADDRESS_LINE_1,
+  ADDRESS_LINE_2,
+  TOWN,
+  POSTCODE,
+  CLAIMS_ENDPOINT,
+  PHONE_NUMBER,
+  YES_LABEL,
+  NO_LABEL,
+  EMAIL_ADDRESS,
+  CONFIRMATION_CODE
+} = require('./constants')
 
 async function enterDoYouLiveInScotlandNoAndSubmit () {
   try {
@@ -118,6 +135,15 @@ async function selectTextOnSendCode () {
   }
 }
 
+async function enterConfirmationCodeAndSubmit (confirmationCode = CONFIRMATION_CODE) {
+  try {
+    await pages.enterCode.enterConfirmationCode(confirmationCode)
+    await pages.enterCode.submitForm()
+  } catch (error) {
+    assert.fail(`Unexpected error caught trying to enter confirmation code for 'Enter code' and submit the page - ${error}`)
+  }
+}
+
 async function assertErrorHeaderTextPresent (page, message = `There’s a problem`) {
   try {
     await page.waitForPageLoad()
@@ -154,6 +180,7 @@ async function completeTheApplicationAsAPregnantWoman () {
   await enterPhoneNumberAndSubmit()
   await enterEmailAddressAndSubmit()
   await selectTextOnSendCode()
+  await enterConfirmationCodeAndSubmit()
 }
 
 async function completeTheApplicationAsAWomanWhoIsNotPregnant () {
@@ -167,6 +194,7 @@ async function completeTheApplicationAsAWomanWhoIsNotPregnant () {
   await enterPhoneNumberAndSubmit()
   await enterEmailAddressAndSubmit()
   await selectTextOnSendCode()
+  await enterConfirmationCodeAndSubmit()
 }
 
 async function setupWiremockMappingsWithStatus (status) {
@@ -238,5 +266,6 @@ module.exports = {
   assertYesNoOptionsAreDisplayed,
   enterEmailAddressAndSubmit,
   selectNoOnChildrenThreeOrYoungerPage,
-  selectTextOnSendCode
+  selectTextOnSendCode,
+  enterConfirmationCodeAndSubmit
 }

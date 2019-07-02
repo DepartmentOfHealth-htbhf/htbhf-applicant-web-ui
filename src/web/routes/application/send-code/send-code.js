@@ -12,7 +12,7 @@ const pageContent = ({ translate }) => ({
 
 const sendCode = {
   path: '/send-code',
-  next: () => '/check',
+  next: () => '/enter-code',
   template: 'send-code',
   pageContent,
   validate
