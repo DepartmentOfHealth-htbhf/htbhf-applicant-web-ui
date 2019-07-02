@@ -48,7 +48,12 @@ test('behaviourForPost() adds childrens DOBs to session on add action', (t) => {
   }
 
   const redirect = sinon.spy()
-  const res = { redirect }
+
+  const res = {
+    redirect,
+    locals: {}
+  }
+
   const next = sinon.spy()
 
   const expected = {
@@ -82,7 +87,12 @@ test('behaviourForPost() adds childrens DOBs to session on submit', (t) => {
   }
 
   const redirect = sinon.spy()
-  const res = { redirect }
+
+  const res = {
+    redirect,
+    locals: {}
+  }
+
   const next = sinon.spy()
 
   const expected = {
@@ -95,6 +105,7 @@ test('behaviourForPost() adds childrens DOBs to session on submit', (t) => {
   behaviourForPost(req, res, next)
 
   t.deepEqual(req.session.children, expected, 'adds childrens DOBs to session on submit')
+  t.deepEqual(res.locals.children, expected, 'adds childrens DOBs to res.locals')
   t.equal(redirect.called, false, 'does not redirect')
   t.equal(next.called, true, 'calls next')
   t.end()
