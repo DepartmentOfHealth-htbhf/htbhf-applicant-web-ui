@@ -1,5 +1,5 @@
 const { When, Then } = require('cucumber')
-const { assertBackLinkUrlIsEqualTo } = require('./common-assertions')
+const { assertBackLinkPointsToPage } = require('./common-assertions')
 
 const pages = require('./pages')
 const { assertErrorHeaderTextPresent, assertFieldErrorAndLinkTextPresentAndCorrect, assertYesNoOptionsAreDisplayed } = require('./common-steps')
@@ -39,5 +39,5 @@ Then(/^Yes and No options are displayed on the do you have children three or you
 })
 
 Then(/^The back link points to the Do you have any children who are three years old or younger page$/, async function () {
-  await assertBackLinkUrlIsEqualTo(`${pages.url}${pages.doYouHaveChildrenThreeOrYounger.getPath()}`)
+  await assertBackLinkPointsToPage(pages.doYouHaveChildrenThreeOrYounger)
 })

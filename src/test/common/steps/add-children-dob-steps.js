@@ -1,5 +1,5 @@
 const { Then } = require('cucumber')
-const { assertBackLinkUrlIsEqualTo } = require('./common-assertions')
+const { assertBackLinkPointsToPage } = require('./common-assertions')
 
 const pages = require('./pages')
 
@@ -8,5 +8,5 @@ Then(/^I am shown the add your childrens dates of birth page$/, async function (
 })
 
 Then(/^The back link points to the Add your children’s dates of birth page$/, async function () {
-  await assertBackLinkUrlIsEqualTo(`${pages.url}${pages.addChildrenDOB.getPath()}`)
+  await assertBackLinkPointsToPage(pages.addChildrenDOB)
 })
