@@ -1,5 +1,6 @@
 const { When, Then } = require('cucumber')
 const { expect } = require('chai')
+const { assertBackLinkPointsToPage } = require('./common-assertions')
 
 const pages = require('./pages')
 
@@ -23,12 +24,7 @@ Then(/^no back link is shown$/, async function () {
 })
 
 Then(/^the back link on the cookies page links to the enter name page$/, async function () {
-  const backLink = await pages.cookies.getBackLink()
-  const href = await backLink.getAttribute('href')
-
-  // using startsWith() instead of equals() so query parameters do not fail the test
-  const enterNameUrl = `${pages.url}${pages.enterName.getPath()}`
-  expect(href.startsWith(enterNameUrl)).to.equal(true)
+  await assertBackLinkPointsToPage(pages.enterName)
 })
 
 async function checkAllCookiePageContentIsPresentAndCorrect () {
