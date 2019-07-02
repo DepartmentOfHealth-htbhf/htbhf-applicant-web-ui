@@ -15,11 +15,11 @@ Feature: We're going to send you a code
     Then I am informed that I need to select an option for choose channel for code
 
   Scenario: Select the Text option
-    When I select Text to how would I like to receive my code
+    When I select Text as the method to receive the code
     And I click continue
     Then I am shown the check details page
 
   Scenario: Select the Email option
-    When I select Email to how would I like to receive my code
+    When I select Email as the method to receive the code
     And I click continue
     Then I am shown the check details page

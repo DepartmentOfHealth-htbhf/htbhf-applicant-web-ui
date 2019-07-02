@@ -1,6 +1,7 @@
 'use strict'
 
 const SubmittablePageWithRadioButtons = require('./submittable-page-with-radio-buttons')
+const { TEXT, EMAIL } = require('../steps/constants')
 
 const CHOOSE_CHANNEL_FOR_CODE_ERROR_LINK_CSS = 'a[href="#choose-channel-for-code-error"]'
 const CHOOSE_CHANNEL_FOR_CODE_FIELD_ERROR_ID = 'chooseChannelForCode-error'
@@ -35,11 +36,11 @@ class ChooseChannelForCode extends SubmittablePageWithRadioButtons {
   }
 
   async selectTextRadioButton () {
-    await super.selectRadioButton('text')
+    await super.selectRadioButton(TEXT)
   }
 
   async selectEmailRadioButton () {
-    await super.selectRadioButton('email')
+    await super.selectRadioButton(EMAIL)
   }
 }
 
