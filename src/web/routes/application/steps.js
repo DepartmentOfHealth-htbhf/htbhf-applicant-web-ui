@@ -9,7 +9,7 @@ const { iLiveInScotland } = require('./i-live-in-scotland')
 const { emailAddress } = require('./email-address')
 const { doYouHaveChildrenThreeOrYounger } = require('./do-you-have-children-three-or-younger')
 const { childrenDob } = require('./children-dob')
-const { chooseChannelForCode } = require('./choose-channel-for-code')
+const { sendCode } = require('./send-code')
 
 const steps = [
   doYouLiveInScotland,
@@ -23,7 +23,7 @@ const steps = [
   cardAddress,
   phoneNumber,
   emailAddress,
-  chooseChannelForCode
+  sendCode
 ]
 
 module.exports = { steps }
