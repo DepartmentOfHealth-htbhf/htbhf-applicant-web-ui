@@ -3,8 +3,8 @@
 const SubmittablePageWithRadioButtons = require('./submittable-page-with-radio-buttons')
 const { TEXT, EMAIL } = require('../steps/constants')
 
-const SEND_CODE_ERROR_LINK_CSS = 'a[href="#send-code-error"]'
-const SEND_CODE_FIELD_ERROR_ID = 'sendCode-error'
+const SEND_CODE_ERROR_LINK_CSS = 'a[href="#channel-for-code-error"]'
+const SEND_CODE_FIELD_ERROR_ID = 'channelForCode-error'
 
 const PAGE_TITLES = {
   en: 'GOV.UK - We’re sending you a code',

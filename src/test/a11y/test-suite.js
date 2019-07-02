@@ -108,7 +108,7 @@ const runEndToEndTest = async (results) => {
     await postFormData(EMAIL_ADDRESS_URL, { ...formData, emailAddress: EMAIL_ADDRESS }, requestCookie)
 
     results.push(await pa11y(SEND_CODE_URL))
-    await postFormData(SEND_CODE_URL, { ...formData, sendCode: TEXT }, requestCookie)
+    await postFormData(SEND_CODE_URL, { ...formData, channelForCode: TEXT }, requestCookie)
 
     results.push(await pa11y(CHECK_URL))
 
