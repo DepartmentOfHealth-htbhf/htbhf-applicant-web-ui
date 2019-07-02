@@ -1,5 +1,5 @@
 const { Then } = require('cucumber')
-const { assertBackLinkUrlIsEqualTo } = require('./common-asserts')
+const { assertBackLinkUrlIsEqualTo } = require('./common-assertions')
 
 const pages = require('./pages')
 

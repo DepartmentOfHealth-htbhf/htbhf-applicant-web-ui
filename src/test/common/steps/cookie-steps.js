@@ -1,6 +1,6 @@
 const { When, Then } = require('cucumber')
 const { expect } = require('chai')
-const { assertBackLinkUrlIsEqualTo } = require('./common-asserts')
+const { assertBackLinkUrlIsEqualTo } = require('./common-assertions')
 
 const pages = require('./pages')
 
