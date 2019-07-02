@@ -6,8 +6,6 @@ Feature: Add your children’s dates of birth
   Background:
     Given I have entered my details up to the do you have children three or younger page
 
-  # TODO HTBHF-1588 implement this scenario once the childrens-dob steps are in place
-  @ignore
   Scenario: Children’s dates of birth is not navigable via the back button if I’ve said I have no children
     Given I have said No to the do you have children three or younger question
     When I am shown the are you pregnant page
