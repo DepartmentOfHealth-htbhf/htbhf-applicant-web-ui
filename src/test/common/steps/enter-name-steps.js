@@ -2,7 +2,8 @@ const { When, Then } = require('cucumber')
 const { expect } = require('chai')
 
 const pages = require('./pages')
-const { enterNameAndSubmit, assertErrorHeaderTextPresent, assertFieldErrorAndLinkTextPresentAndCorrect } = require('./common-steps')
+const { enterNameAndSubmit } = require('./common-steps')
+const { assertFieldErrorAndLinkTextPresentAndCorrect, assertErrorHeaderTextPresent } = require('./common-assertions')
 const { LONG_STRING, BLANK_STRING } = require('./constants')
 
 When('I enter a first name which is too long', async function () {

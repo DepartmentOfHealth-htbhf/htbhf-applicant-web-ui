@@ -2,7 +2,7 @@ const { When, Then } = require('cucumber')
 const { expect } = require('chai')
 
 const pages = require('./pages')
-const { assertErrorHeaderTextPresent, assertFieldErrorAndLinkTextPresentAndCorrect } = require('./common-steps')
+const { assertErrorHeaderTextPresent, assertFieldErrorAndLinkTextPresentAndCorrect } = require('./common-assertions')
 const { TEXT_LABEL, EMAIL_LABEL } = require('../steps/constants')
 
 When(/^I select Text as the method to receive the code$/, async function () {
