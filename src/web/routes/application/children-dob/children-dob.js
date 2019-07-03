@@ -1,6 +1,7 @@
 const { pickBy, path } = require('ramda')
 const { countKeysContainingString } = require('./count-keys')
 const { YES } = require('../common/constants')
+const { validate } = require('./validate')
 
 const PATH = '/children-dob'
 const DAY_FIELD_SUFFIX = '-day'
@@ -27,7 +28,6 @@ const initialiseChildrenInSession = (req) => {
   if (!req.session.hasOwnProperty('children')) {
     req.session.children = {
       inputCount: 1,
-      // TODO HTBHF-1678 review if `childCount` is required for validation, else remove
       childCount: 0
     }
   }
@@ -52,6 +52,9 @@ const behaviourForPost = (req, res, next) => {
     childCount: childCount
   }
 
+  // GET behaviour is not called on validation error so locals also need setting for POST
+  res.locals.children = req.session.children
+
   if (addActionRequested(req.body)) {
     const updatedCount = req.session.children.inputCount + 1
     req.session.children.inputCount = updatedCount
@@ -68,7 +71,8 @@ const childrenDob = {
   pageContent,
   isNavigable,
   behaviourForGet,
-  behaviourForPost
+  behaviourForPost,
+  validate
 }
 
 module.exports = {
