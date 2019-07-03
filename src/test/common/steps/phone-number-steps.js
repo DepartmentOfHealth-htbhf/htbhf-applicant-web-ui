@@ -2,7 +2,8 @@ const { When, Then } = require('cucumber')
 const { expect } = require('chai')
 
 const pages = require('./pages')
-const { enterPhoneNumberAndSubmit, assertErrorHeaderTextPresent, assertFieldErrorAndLinkTextPresentAndCorrect } = require('./common-steps')
+const { enterPhoneNumberAndSubmit } = require('./common-steps')
+const { assertFieldErrorAndLinkTextPresentAndCorrect, assertErrorHeaderTextPresent } = require('./common-assertions')
 
 When(/^I enter (.*) as my phone number$/, async function (phoneNumber) {
   return enterPhoneNumberAndSubmit(phoneNumber)

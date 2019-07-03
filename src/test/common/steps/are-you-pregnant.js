@@ -3,7 +3,7 @@ const { When, Then } = require('cucumber')
 const { expect, assert } = require('chai')
 const Promise = require('bluebird')
 
-const { assertErrorHeaderTextPresent, assertFieldErrorAndLinkTextPresentAndCorrect, assertYesNoOptionsAreDisplayed } = require('./common-steps')
+const { assertErrorHeaderTextPresent, assertFieldErrorAndLinkTextPresentAndCorrect, assertYesNoOptionsAreDisplayed } = require('./common-assertions')
 
 const pages = require('./pages')
 
