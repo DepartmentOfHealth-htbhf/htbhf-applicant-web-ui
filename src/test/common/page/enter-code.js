@@ -7,6 +7,9 @@ const PAGE_TITLES = {
   cy: 'GOV.UK - Risus sed vulputate odio'
 }
 
+const CONFIRMATION_CODE_FIELD_ERROR_ID = 'confirmation-code-error'
+const CONFIRMATION_CODE_ERROR_LINK_CSS = 'a[href="#confirmation-code-error"]'
+
 /**
  * Page object for enter code page where the confirmation code sent to the claimant is entered.
  */
@@ -30,6 +33,14 @@ class EnterCode extends SubmittablePage {
 
   async getConfirmationCodeField () {
     return this.findById('confirmation-code')
+  }
+
+  getConfirmationCodeFieldErrorId () {
+    return CONFIRMATION_CODE_FIELD_ERROR_ID
+  }
+
+  getConfirmationCodeLinkErrorCss () {
+    return CONFIRMATION_CODE_ERROR_LINK_CSS
   }
 }
 
