@@ -2,7 +2,8 @@ const { When, Then } = require('cucumber')
 const { expect } = require('chai')
 
 const pages = require('./pages')
-const { enterNinoAndSubmit, assertFieldErrorAndLinkTextPresentAndCorrect } = require('./common-steps')
+const { enterNinoAndSubmit } = require('./common-steps')
+const { assertFieldErrorAndLinkTextPresentAndCorrect } = require('./common-assertions')
 
 When(/^I enter a valid national insurance number$/, async function () {
   return enterNinoAndSubmit()

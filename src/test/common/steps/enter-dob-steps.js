@@ -1,7 +1,8 @@
 const { When, Then } = require('cucumber')
 
 const pages = require('./pages')
-const { enterDateOfBirthAndSubmit, assertErrorHeaderTextPresent, assertFieldErrorAndLinkTextPresentAndCorrect } = require('./common-steps')
+const { enterDateOfBirthAndSubmit } = require('./common-steps')
+const { assertFieldErrorAndLinkTextPresentAndCorrect, assertErrorHeaderTextPresent } = require('./common-assertions')
 
 When(/^I enter my date of birth as day: (.*), month: (.*) and year: (.*)$/, async function (day, month, year) {
   return enterDateOfBirthAndSubmit(day, month, year)

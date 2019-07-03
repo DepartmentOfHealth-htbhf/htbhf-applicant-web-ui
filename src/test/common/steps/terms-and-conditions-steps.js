@@ -1,7 +1,8 @@
 const { Given, When, Then } = require('cucumber')
 
 const pages = require('./pages')
-const { assertErrorHeaderTextPresent, assertFieldErrorAndLinkTextPresentAndCorrect, setupWiremockMappingsWithStatus } = require('./common-steps')
+const { setupWiremockMappingsWithStatus } = require('./common-steps')
+const { assertErrorHeaderTextPresent, assertFieldErrorAndLinkTextPresentAndCorrect } = require('./common-assertions')
 
 async function acceptTsAndCs () {
   await pages.termsAndConditions.openDirect(pages.url)

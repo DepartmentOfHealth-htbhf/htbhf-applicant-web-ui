@@ -2,7 +2,8 @@ const { When, Then } = require('cucumber')
 const { expect } = require('chai')
 
 const pages = require('./pages')
-const { enterEmailAddressAndSubmit, assertFieldErrorAndLinkTextPresentAndCorrect } = require('./common-steps')
+const { enterEmailAddressAndSubmit } = require('./common-steps')
+const { assertFieldErrorAndLinkTextPresentAndCorrect } = require('./common-assertions')
 
 // create an email address in with valid format but over 256 characters long
 const LONG_EMAIL_ADDRESS = `${new Array(256).join('A')}@email.com`

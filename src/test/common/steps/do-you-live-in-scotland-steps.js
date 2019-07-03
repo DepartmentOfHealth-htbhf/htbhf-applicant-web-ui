@@ -1,7 +1,7 @@
 const { When, Then } = require('cucumber')
 
 const pages = require('./pages')
-const { assertErrorHeaderTextPresent, assertFieldErrorAndLinkTextPresentAndCorrect, assertYesNoOptionsAreDisplayed } = require('./common-steps')
+const { assertErrorHeaderTextPresent, assertFieldErrorAndLinkTextPresentAndCorrect, assertYesNoOptionsAreDisplayed } = require('./common-assertions')
 
 When(/^I say No to the do you live in Scotland question$/, async function () {
   await pages.doYouLiveInScotland.selectNoRadioButton()

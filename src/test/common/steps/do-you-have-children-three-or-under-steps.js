@@ -2,7 +2,7 @@ const { When, Then } = require('cucumber')
 const { assertBackLinkPointsToPage } = require('./common-assertions')
 
 const pages = require('./pages')
-const { assertErrorHeaderTextPresent, assertFieldErrorAndLinkTextPresentAndCorrect, assertYesNoOptionsAreDisplayed } = require('./common-steps')
+const { assertFieldErrorAndLinkTextPresentAndCorrect, assertErrorHeaderTextPresent, assertYesNoOptionsAreDisplayed } = require('./common-assertions')
 
 Then(/^I am shown the do you have children three or younger page$/, async function () {
   await pages.doYouHaveChildrenThreeOrYounger.waitForPageLoad()
