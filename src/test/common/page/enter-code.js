@@ -8,7 +8,7 @@ const PAGE_TITLES = {
 }
 
 /**
- * Page object for EnterCode page where the confirmation code sent to the claimant is entered.
+ * Page object for enter code page where the confirmation code sent to the claimant is entered.
  */
 class EnterCode extends SubmittablePage {
   async waitForPageLoad (lang = 'en') {
@@ -29,7 +29,7 @@ class EnterCode extends SubmittablePage {
   }
 
   async getConfirmationCodeField () {
-    return this.findById('confirmationCode')
+    return this.findById('confirmation-code')
   }
 }
 
