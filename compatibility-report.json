@@ -37,7 +37,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 482000000
+              "duration": 557000000
             }
           },
           {
@@ -50,7 +50,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2600000000
+              "duration": 2765000000
             }
           },
           {
@@ -63,7 +63,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1517000000
+              "duration": 1734000000
             }
           },
           {
@@ -72,11 +72,11 @@
             "line": 10,
             "name": "I accept the terms and conditions and submit my application",
             "match": {
-              "location": "src/test/common/steps/terms-and-conditions-steps.js:20"
+              "location": "src/test/common/steps/terms-and-conditions-steps.js:21"
             },
             "result": {
               "status": "passed",
-              "duration": 296000000
+              "duration": 336000000
             }
           },
           {
@@ -89,7 +89,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 76000000
+              "duration": 87000000
             }
           },
           {
@@ -102,7 +102,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 71000000
+              "duration": 80000000
             }
           },
           {
@@ -113,7 +113,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1000000
+              "duration": 2000000
             }
           }
         ]
