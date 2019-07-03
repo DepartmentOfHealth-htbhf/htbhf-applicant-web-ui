@@ -1,0 +1,38 @@
+{% extends "templates/form.njk" %}
+{% from "input/macro.njk" import govukInput %}
+{% from "fieldset/macro.njk" import govukFieldset %}
+{% from "details/macro.njk" import govukDetails %}
+
+{% block formContent %}
+
+    {% call govukFieldset({
+        legend: {
+            text: heading,
+            classes: "govuk-fieldset__legend--xl",
+            isPageHeading: true
+        }
+    }) %}
+
+        <p class="govuk-body-m">{{ weJustSentASixDigitCodeTo}} <strong>{{ confirmationCodeDestination }}</strong>. {{ itMayTakeAFewMinutesToArrive}}</p>
+
+        {{ govukInput({
+            label: {
+                text: codeLabel
+            },
+            classes: "govuk-input--width-10",
+            id: "confirmation-code",
+            name: "confirmationCode",
+            value: claim.confirmationCode,
+            errorMessage: errors | getErrorForField('confirmationCode'),
+            autocomplete: "off",
+            attributes: {
+                inputmode: "numeric"
+            }
+        }) }}
+
+    {% endcall %}
+
+    {# TODO DW HTBHF-1712 update link to send new confirmationCode  #}
+    <p class="govuk-body-m"><a href="#">{{ requestNewCode }}</a> {{ ifItDoesNotArrive }}</p>
+
+{% endblock %}

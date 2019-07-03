@@ -92,6 +92,15 @@
     "hint": "Select how you would like to receive it",
     "explanation": "We need this to confirm your identity and to prevent fraud."
   },
+  "enterCode": {
+    "title": "Enter your code",
+    "heading": "Enter your code",
+    "weJustSentASixDigitCodeTo": "We just sent a 6 digit code to",
+    "itMayTakeAFewMinutesToArrive": "It may take a few minutes to arrive.",
+    "codeLabel": "Code",
+    "requestNewCode": "Request new code",
+    "ifItDoesNotArrive": "if it does not arrive."
+  },
   "check": {
     "title": "Check your answers",
     "heading": "Check your answers",

@@ -12,7 +12,8 @@ const {
   enterDoYouLiveInScotlandNoAndSubmit,
   enterEmailAddressAndSubmit,
   selectNoOnChildrenThreeOrYoungerPage,
-  selectTextOnSendCode
+  selectTextOnSendCode,
+  enterConfirmationCodeAndSubmit
 } = require('./common-steps')
 
 const ENTER_NAME_PAGE = 'enter name'
@@ -25,6 +26,7 @@ const CARD_ADDRESS_PAGE = 'card address'
 const PHONE_NUMBER_PAGE = 'phone number'
 const EMAIL_ADDRESS_PAGE = 'email address'
 const SEND_CODE_PAGE = 'send code'
+const ENTER_CODE_PAGE = 'enter code'
 const CHECK_PAGE = 'check details'
 
 const pageActions = [
@@ -96,9 +98,16 @@ const pageActions = [
     }
   },
   {
-    page: CHECK_PAGE,
+    page: ENTER_CODE_PAGE,
     action: async () => {
       await selectTextOnSendCode()
+      await pages.enterCode.waitForPageLoad()
+    }
+  },
+  {
+    page: CHECK_PAGE,
+    action: async () => {
+      await enterConfirmationCodeAndSubmit()
       await pages.check.waitForPageLoad()
     }
   }
