@@ -23,7 +23,7 @@
       id: 'child-name',
       name: 'childName-' + params.index,
       value: params.children['childName-'  + params.index],
-      errorMessage: errors | getErrorForField('childName'),
+      errorMessage: params.errors | getErrorForField('childName'),
       autocomplete: "off"
     }) }}
 
@@ -32,7 +32,7 @@
   {{ htbhfDateInput({
     fieldNamePrefix: "childDob-" + params.index,
     claim: params.children,
-    errors: errors,
+    errors: params.errors,
     hint: {
       text: params.hint
     },
