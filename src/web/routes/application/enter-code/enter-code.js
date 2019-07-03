@@ -1,4 +1,3 @@
-const { validate } = require('./validate')
 const { TEXT, EMAIL } = require('../common/constants')
 
 const pageContent = ({ translate }) => ({
@@ -33,8 +32,7 @@ const enterCode = {
   next: () => '/check',
   template: 'enter-code',
   pageContent,
-  behaviourForGet,
-  validate
+  behaviourForGet
 }
 
 module.exports = {
