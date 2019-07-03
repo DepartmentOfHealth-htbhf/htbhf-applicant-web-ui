@@ -11,7 +11,7 @@ const pageContent = ({ translate }) => ({
   buttonText: translate('buttons:continue')
 })
 
-const getEmailOrPhoneNumberForConfirmationCode = (claim) => {
+const getConfirmationCodeDestination = (claim) => {
   if (claim.channelForCode === TEXT) {
     return claim.phoneNumber
   }
@@ -23,7 +23,7 @@ const getEmailOrPhoneNumberForConfirmationCode = (claim) => {
 }
 
 const behaviourForGet = (req, res, next) => {
-  res.locals.emailOrPhoneNumberForConfirmationCode = getEmailOrPhoneNumberForConfirmationCode(req.session.claim)
+  res.locals.confirmationCodeDestination = getConfirmationCodeDestination(req.session.claim)
   next()
 }
 
@@ -37,5 +37,5 @@ const enterCode = {
 
 module.exports = {
   enterCode,
-  getEmailOrPhoneNumberForConfirmationCode
+  getConfirmationCodeDestination
 }

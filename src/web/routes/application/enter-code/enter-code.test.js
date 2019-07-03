@@ -1,7 +1,7 @@
 const test = require('tape')
 
 const { TEXT, EMAIL } = require('../common/constants')
-const { getEmailOrPhoneNumberForConfirmationCode } = require('./enter-code')
+const { getConfirmationCodeDestination } = require('./enter-code')
 
 test('getPhoneNumberForConfirmationCode', (t) => {
   const claim = {
@@ -10,8 +10,8 @@ test('getPhoneNumberForConfirmationCode', (t) => {
     emailAddress: 'test@email.dom'
   }
 
-  const emailOrPhoneNumberForConfirmationCode = getEmailOrPhoneNumberForConfirmationCode(claim)
-  t.equal(emailOrPhoneNumberForConfirmationCode, claim.phoneNumber)
+  const confirmationCodeDestination = getConfirmationCodeDestination(claim)
+  t.equal(confirmationCodeDestination, claim.phoneNumber)
   t.end()
 })
 
@@ -22,8 +22,8 @@ test('getEmailAddressForConfirmationCode', (t) => {
     emailAddress: 'test@email.dom'
   }
 
-  const emailOrPhoneNumberForConfirmationCode = getEmailOrPhoneNumberForConfirmationCode(claim)
-  t.equal(emailOrPhoneNumberForConfirmationCode, claim.emailAddress)
+  const confirmationCodeDestination = getConfirmationCodeDestination(claim)
+  t.equal(confirmationCodeDestination, claim.emailAddress)
   t.end()
 })
 
@@ -34,7 +34,7 @@ test('throwExceptionWhenNeitherTextOrEmailSelected', (t) => {
   }
 
   t.throws(
-    getEmailOrPhoneNumberForConfirmationCode.bind(null, claim),
+    getConfirmationCodeDestination.bind(null, claim),
     /Expecting 'channelForCode' option to be either 'text' or 'email', instead was undefined/,
     `No 'channelForCode' option on the claim should throw an error`)
   t.end()
