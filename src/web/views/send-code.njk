@@ -4,8 +4,8 @@
 
 {% block formContent %}
     {{ govukRadios({
-        id: "choose-channel-for-code",
-        name: "chooseChannelForCode",
+        id: "channel-for-code",
+        name: "channelForCode",
         fieldset: {
             legend: {
                 text: heading,
@@ -13,12 +13,12 @@
                 classes: "govuk-fieldset__legend--xl"
             }
         },
-        errorMessage: errors | getErrorForField('chooseChannelForCode'),
+        errorMessage: errors | getErrorForField('channelForCode'),
         items: [
             {
                 value: "text",
                 text: text,
-                checked : claim.chooseChannelForCode === "text",
+                checked : claim.channelForCode === "text",
                 conditional: {
                 html: eddHtml
             }
@@ -26,7 +26,7 @@
             {
                 value: "email",
                 text: email,
-                checked : claim.chooseChannelForCode === "email"
+                checked : claim.channelForCode === "email"
             }
         ],
         hint: {

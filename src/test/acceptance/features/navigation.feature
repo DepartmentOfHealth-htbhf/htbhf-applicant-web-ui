@@ -19,7 +19,7 @@ Feature: Application process navigation is controlled
       | do you have children three or younger |
       | phone number                          |
       | email address                         |
-      | choose channel for code               |
+      | send code                             |
       | check details                         |
       | confirmation                          |
 
@@ -46,7 +46,7 @@ Feature: Application process navigation is controlled
       | card address                          |
       | phone number                          |
       | email address                         |
-      | choose channel for code               |
+      | send code                             |
 
   Scenario Outline: Navigation is not allowed past the current page in the flow
     Given I have entered my details up to the <application page> page
@@ -73,7 +73,7 @@ Feature: Application process navigation is controlled
       | card address                          |
       | phone number                          |
       | email address                         |
-      | choose channel for code               |
+      | send code                             |
 
   Scenario: Navigation to I live in Scotland from the check details page is not allowed
     Given I have entered my details up to the check details page

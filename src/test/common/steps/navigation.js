@@ -12,7 +12,7 @@ const {
   enterDoYouLiveInScotlandNoAndSubmit,
   enterEmailAddressAndSubmit,
   selectNoOnChildrenThreeOrYoungerPage,
-  selectTextOnChooseChannelForCode
+  selectTextOnSendCode
 } = require('./common-steps')
 
 const ENTER_NAME_PAGE = 'enter name'
@@ -24,7 +24,7 @@ const ARE_YOU_PREGNANT_PAGE = 'are you pregnant'
 const CARD_ADDRESS_PAGE = 'card address'
 const PHONE_NUMBER_PAGE = 'phone number'
 const EMAIL_ADDRESS_PAGE = 'email address'
-const CHOOSE_CHANNEL_FOR_CODE_PAGE = 'choose channel for code'
+const SEND_CODE_PAGE = 'send code'
 const CHECK_PAGE = 'check details'
 
 const pageActions = [
@@ -89,16 +89,16 @@ const pageActions = [
     }
   },
   {
-    page: CHOOSE_CHANNEL_FOR_CODE_PAGE,
+    page: SEND_CODE_PAGE,
     action: async () => {
       await enterEmailAddressAndSubmit()
-      await pages.chooseChannelForCode.waitForPageLoad()
+      await pages.sendCode.waitForPageLoad()
     }
   },
   {
     page: CHECK_PAGE,
     action: async () => {
-      await selectTextOnChooseChannelForCode()
+      await selectTextOnSendCode()
       await pages.check.waitForPageLoad()
     }
   }
