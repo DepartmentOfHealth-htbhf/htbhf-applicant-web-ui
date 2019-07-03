@@ -20,7 +20,7 @@
       label: {
         text: params.nameLabel
       },
-      id: 'child-name',
+      id: 'child-name-' + params.index,
       name: 'childName-' + params.index,
       value: params.children['childName-'  + params.index],
       errorMessage: params.errors | getErrorForField('childName'),
@@ -41,8 +41,5 @@
       classes: "govuk-fieldset__legend--m"
     }
   }) }}
-
-  {# TODO HTBHF-1686 Add css to style this #}
-  <input type="submit" value="Add another child" name="add">
 
 {% endmacro %}
