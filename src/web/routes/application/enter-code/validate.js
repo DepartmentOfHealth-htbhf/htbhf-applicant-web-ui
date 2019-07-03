@@ -4,7 +4,7 @@ const { translateValidationMessage } = require('../common/translate-validation-m
 const validate = [
   check('confirmationCode')
     .not().isEmpty()
-    .withMessage(translateValidationMessage('validation:enterTheCodeWeSentYou'))
+    .withMessage(translateValidationMessage('validation:enterTheSixDigitCodeWeSentYou'))
 ]
 
 module.exports = {

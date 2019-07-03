@@ -9,6 +9,10 @@ When(/^I enter my confirmation code$/, async function () {
   await enterConfirmationCodeAndSubmit()
 })
 
+When(/^I do not enter a confirmation code$/, async function () {
+  await enterConfirmationCodeAndSubmit('')
+})
+
 Then(/^I am shown the enter code page$/, async function () {
   await pages.enterCode.waitForPageLoad()
 })
