@@ -11,12 +11,18 @@ const toDateString = (day, month, year) => {
   return [year, parseMonth, parseDay].join('-')
 }
 
-const dateAsString = ({ date = new Date(), monthAdjustment = 0 } = {}) => {
+const dateAsString = ({ date = new Date(), monthAdjustment = 0, yearAdjustment = 0 } = {}) => {
   if (typeof monthAdjustment !== 'number') {
     throw new Error('Month adjustment must be numeric')
   }
+
+  if (typeof yearAdjustment !== 'number') {
+    throw new Error('Year adjustment must be numeric')
+  }
+
   const dateToChange = new Date(date)
   dateToChange.setMonth(dateToChange.getMonth() + monthAdjustment)
+  dateToChange.setFullYear(dateToChange.getFullYear() + yearAdjustment)
   const dd = dateToChange.getDate()
   const mm = dateToChange.getMonth() + 1
   const yyyy = dateToChange.getFullYear()
