@@ -21,6 +21,8 @@
   "invalidEmail": "Enter an email address in the correct format, like name@example.com",
   "acceptTermsAndConditions": "Confirm that you’ve read and will comply with these terms and conditions",
   "selectTextOrEmailChannel": "Select if you want to receive a code by text or email",
-  "childsDateOfBirthInvalid": "Enter your child’s date of birth in the correct format",
-  "enterTheSixDigitCodeWeSentYou": "Enter the 6 digit code we sent you"
+  "enterTheSixDigitCodeWeSentYou": "Enter the 6 digit code we sent you",
+  "childDateOfBirthInvalid": "Enter your child’s date of birth in the correct format",
+  "childDateOfBirthFourYearsOrOlder": "You can only apply for children who are 3 years old or younger",
+  "childNameTooLong": "Enter a shorter name"
 }
