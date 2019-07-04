@@ -58,7 +58,9 @@
     "compat:tablet": "npm-run-all -c -p --max-parallel 5 compat:ios:ipad6 compat:ios:ipad_pro_11 compat:ios:ipad_mini_4",
     "compat:ios:ipad6": "cross-env BROWSER_STACK_DEVICE='iPad 6th' BROWSER_STACK_OS_VERSION=11.3 BROWSER_STACK_BROWSER=iPad cucumber-js src/test/compatibility/features/ --require 'src/test/common/steps/*.js' --require 'src/test/compatibility/config/environment.js' --format ./src/test/compatibility/custom-json-formatter.js:build/reports/compatibility/ipad-6-report.json",
     "compat:ios:ipad_pro_11": "cross-env BROWSER_STACK_DEVICE='iPad Pro 11 2018' BROWSER_STACK_OS_VERSION=12.0 BROWSER_STACK_BROWSER=iPad cucumber-js src/test/compatibility/features/ --require 'src/test/common/steps/*.js' --require 'src/test/compatibility/config/environment.js' --format ./src/test/compatibility/custom-json-formatter.js:build/reports/compatibility/ipad-pro-11-report.json",
-    "compat:ios:ipad_mini_4": "cross-env BROWSER_STACK_DEVICE='iPad Mini 4' BROWSER_STACK_OS_VERSION=11.0 BROWSER_STACK_BROWSER=iPad cucumber-js src/test/compatibility/features/ --require 'src/test/common/steps/*.js' --require 'src/test/compatibility/config/environment.js' --format ./src/test/compatibility/custom-json-formatter.js:build/reports/compatibility/ipad-mini-4-report.json"
+    "compat:ios:ipad_mini_4": "cross-env BROWSER_STACK_DEVICE='iPad Mini 4' BROWSER_STACK_OS_VERSION=11.0 BROWSER_STACK_BROWSER=iPad cucumber-js src/test/compatibility/features/ --require 'src/test/common/steps/*.js' --require 'src/test/compatibility/config/environment.js' --format ./src/test/compatibility/custom-json-formatter.js:build/reports/compatibility/ipad-mini-4-report.json",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "author": "",
   "license": "MIT",
@@ -108,6 +110,8 @@
     "request": "^2.88.0",
     "request-promise": "^4.2.2",
     "uuidv4": "^3.0.1",
-    "winston": "^3.2.1"
-  }
+    "winston": "^3.2.1",
+    "snyk": "^1.192.0"
+  },
+  "snyk": true
 }
