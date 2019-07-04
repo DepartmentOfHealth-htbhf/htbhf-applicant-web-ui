@@ -38,3 +38,10 @@ process.on('SIGTERM', () => {
     process.exit(0)
   })
 })
+
+process.on('SIGINT', () => {
+  server.close(() => {
+    logger.info('Session Details App closed.')
+    process.exit(0)
+  })
+})
