@@ -11,7 +11,8 @@ const {
   enterPhoneNumberAndSubmit,
   enterDoYouLiveInScotlandNoAndSubmit,
   enterEmailAddressAndSubmit,
-  selectNoOnChildrenThreeOrYoungerPage,
+  selectYesOnChildrenThreeOrYoungerPage,
+  enterChildUnder3Details,
   selectTextOnSendCode,
   enterConfirmationCodeAndSubmit
 } = require('./common-steps')
@@ -28,6 +29,7 @@ const EMAIL_ADDRESS_PAGE = 'email address'
 const SEND_CODE_PAGE = 'send code'
 const ENTER_CODE_PAGE = 'enter code'
 const CHECK_PAGE = 'check details'
+const ADD_CHILDREN_DOB_PAGE = 'add your childrens dates of birth'
 
 const pageActions = [
   {
@@ -49,9 +51,16 @@ const pageActions = [
     }
   },
   {
+    page: ADD_CHILDREN_DOB_PAGE,
+    action: async () => {
+      await selectYesOnChildrenThreeOrYoungerPage()
+      await pages.addChildrenDOB.waitForPageLoad()
+    }
+  },
+  {
     page: ARE_YOU_PREGNANT_PAGE,
     action: async () => {
-      await selectNoOnChildrenThreeOrYoungerPage()
+      await enterChildUnder3Details()
       await pages.areYouPregnant.waitForPageLoad()
     }
   },

@@ -2,6 +2,7 @@
 'use strict'
 require('dotenv')
 const { getSIDCookieAndCSRFToken, postFormData, get } = require('../common/request')
+const { dateIn3Months, dateLastYear } = require('../common/dates')
 const pa11yWithSettings = require('./pally')
 const handleTestResults = require('./results')
 const { VALID_ELIGIBLE_NINO, PHONE_NUMBER, EMAIL_ADDRESS, TEXT } = require('../common/steps/constants')
@@ -27,19 +28,6 @@ const ENTER_CODE_URL = `${BASE_URL}/enter-code`
 const TERMS_AND_CONDITIONS_URL = `${BASE_URL}/terms-and-conditions`
 const CONFIRM_URL = `${BASE_URL}/confirm`
 const APPLICATION_COMPLETE_TITLE = 'GOV.UK - Application complete'
-
-const dateIn3Months = () => {
-  const dueDate = new Date()
-  dueDate.setDate(1)
-  dueDate.setMonth(dueDate.getMonth() + 3)
-  return dueDate
-}
-
-const dateLastYear = () => {
-  const date = new Date()
-  date.setFullYear(date.getFullYear() - 1)
-  return date
-}
 
 /*
   Runs though the application, evaluating each page and performing post requests to populate the necessary
