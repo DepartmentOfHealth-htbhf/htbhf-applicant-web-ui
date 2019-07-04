@@ -6,7 +6,7 @@ const pa11yWithSettings = require('./pally')
 const handleTestResults = require('./results')
 const { VALID_ELIGIBLE_NINO, PHONE_NUMBER, EMAIL_ADDRESS, TEXT } = require('../common/steps/constants')
 const IGNORE_RULES = require('./ignore-rules')
-const { PORT, SESSION_DETAILS_BASE_URL } = require('../common/config')
+const { PORT, SESSION_CONFIRMATION_CODE_URL } = require('../common/config')
 const APP_BASE_URL = process.env.APP_BASE_URL || ''
 
 const BASE_URL = APP_BASE_URL === '' ? `http://localhost:${PORT}` : `${APP_BASE_URL}`
@@ -111,7 +111,7 @@ const runEndToEndTest = async (results) => {
     results.push(await pa11y(SEND_CODE_URL))
     await postFormData(SEND_CODE_URL, { ...formData, channelForCode: TEXT }, requestCookie)
 
-    const confirmationCode = await get(SESSION_DETAILS_BASE_URL, requestCookie)
+    const confirmationCode = await get(SESSION_CONFIRMATION_CODE_URL, requestCookie)
 
     results.push(await pa11y(ENTER_CODE_URL))
     await postFormData(ENTER_CODE_URL, { ...formData, confirmationCode }, requestCookie)

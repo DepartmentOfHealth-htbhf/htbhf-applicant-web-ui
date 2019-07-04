@@ -3,6 +3,7 @@
 require('dotenv').config()
 
 const SESSION_DETAILS_PORT = process.env.SESSION_DETAILS_PORT || process.env.PORT
+const SESSION_DETAILS_BASE_URL = process.env.SESSION_DETAILS_BASE_URL || `http://localhost:${SESSION_DETAILS_PORT}/`
 
 module.exports.PORT = process.env.PORT
 module.exports.SCREEN_RESOLUTION = {
@@ -10,4 +11,4 @@ module.exports.SCREEN_RESOLUTION = {
   height: 480
 }
 module.exports.SESSION_DETAILS_PORT = SESSION_DETAILS_PORT
-module.exports.SESSION_DETAILS_BASE_URL = process.env.SESSION_DETAILS_BASE_URL || `http://localhost:${SESSION_DETAILS_PORT}/`
+module.exports.SESSION_CONFIRMATION_CODE_URL = `${SESSION_DETAILS_BASE_URL}confirmation-code`
