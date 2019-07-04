@@ -7,7 +7,6 @@ const TEXT_LABEL = 'Text'
 const EMAIL_LABEL = 'Email'
 const TEXT = 'text'
 const EMAIL = 'email'
-const CONFIRMATION_CODE = '123456'
 
 function randomCharFromChars (chars) {
   return chars.charAt(Math.floor(Math.random() * chars.length))
@@ -85,6 +84,5 @@ module.exports = {
   TEXT_LABEL,
   EMAIL_LABEL,
   TEXT,
-  EMAIL,
-  CONFIRMATION_CODE
+  EMAIL
 }

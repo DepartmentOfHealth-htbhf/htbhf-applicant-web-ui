@@ -1,6 +1,7 @@
 const { sendConfirmationCode } = require('./notify')
 const { validationResult } = require('express-validator')
 
+const { CONFIRMATION_CODE_SESSION_PROPERTY } = require('../common/constants')
 const { validate } = require('./validate')
 
 const pageContent = ({ translate }) => ({
@@ -18,7 +19,7 @@ const behaviourForPost = (req, res, next) => {
     // TODO DW HTBHF-1735 Randomly generate the code
     const confirmationCode = '123456'
     sendConfirmationCode(req.session.claim, req.body.channelForCode, confirmationCode)
-    req.session.confirmationCode = confirmationCode
+    req.session[CONFIRMATION_CODE_SESSION_PROPERTY] = '123456'
   }
 
   next()

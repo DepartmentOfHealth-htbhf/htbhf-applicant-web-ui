@@ -7,10 +7,12 @@ require('dotenv').config()
 
 const { EMAIL, TEXT } = require('../common/constants')
 
+// template ids matching the templates in govuk notify.
 const EMAIL_TEMPLATE_ID = '18cf4f69-e1b5-4aa9-bed7-c906d3a59285'
 const SMS_TEMPLATE_ID = 'a770479a-097c-4079-acc2-d452a6f21585'
 
 function sendConfirmationCode (claim, channel, code) {
+  // notify requires a unique reference for each request
   const reference = uuid()
   const notifyOptions = { personalisation: { confirmationCode: code }, reference: reference }
 

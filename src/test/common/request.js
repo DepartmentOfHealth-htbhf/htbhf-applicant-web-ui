@@ -48,6 +48,22 @@ const postFormData = (url, form, cookie) =>
     })
   })
 
+const get = (url, cookie) =>
+  new Promise((resolve, reject) => {
+    request.get({
+      url,
+      headers: {
+        Cookie: cookie
+      }
+    }, (error, httpResponse, body) => {
+      if (error) {
+        return reject(error)
+      }
+
+      resolve(body)
+    })
+  })
+
 const postJsonData = (url, body) =>
   new Promise((resolve, reject) => {
     request.post({
@@ -80,5 +96,6 @@ module.exports = {
   getSIDCookieAndCSRFToken,
   postFormData,
   postJsonData,
-  performDelete
+  performDelete,
+  get
 }

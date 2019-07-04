@@ -7,7 +7,7 @@
 
 ## Environment variables
 Before starting the application or running tests, ensure that the correct environment variables have been set. A list of required environment variables are available in `sample.env`.
-The environment variable `NOTIFY_API_KEY` is required and needs to be a real test api key (not the whitelisted team one) which can be found in 1password.
+The environment variable `NOTIFY_API_KEY` is required and needs to be a real test api key (not the whitelisted team one).
 
 Locally the app uses [`dotenv`](https://www.npmjs.com/package/dotenv) to set environment variables. The easiest way to get started locally is to duplicate `sample.env` and rename to `.env`. `dotenv` will use the `.env` file to set environemt varaiables. It is important that `.env` is never commited to the code repository as it may contain sensitive data.
 
