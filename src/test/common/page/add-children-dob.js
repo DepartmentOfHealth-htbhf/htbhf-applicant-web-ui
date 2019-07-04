@@ -41,8 +41,8 @@ class AddChildrenDOB extends SubmittablePage {
   }
 
   async enterChildUnder3Details () {
-    await this.enterChildUnder3DateOfBirth()
     await this.enterChildName()
+    await this.enterChildUnder3DateOfBirth()
     this.childIndex++
   }
 
