@@ -4,10 +4,10 @@ const session = require('express-session')
 const RedisStore = require('connect-redis')(session)
 const redis = require('redis')
 const config = require('../../config')
-const port = process.env.SESSION_DETAILS_PORT || process.env.PORT
 const app = express()
 const { COOKIE_EXPIRES_MILLISECONDS } = require('../../web/server/session/cookie-settings')
 const { CONFIRMATION_CODE_SESSION_PROPERTY } = require('../../web/routes/application/common/constants')
+const { SESSION_DETAILS_PORT } = require('../common/config')
 
 const client = redis.createClient(config.redis)
 const store = new RedisStore({ client })
@@ -27,8 +27,8 @@ app.use(session(sessionConfig))
 
 logger.info('config:' + JSON.stringify(config))
 
-const server = app.listen(port, () => {
-  logger.info(`Session Details App listening on port ${port}`)
+const server = app.listen(SESSION_DETAILS_PORT, () => {
+  logger.info(`Session Details App listening on port ${SESSION_DETAILS_PORT}`)
   app.get('/confirmation-code', (req, res) => res.send(req.session[CONFIRMATION_CODE_SESSION_PROPERTY]))
 })
 
