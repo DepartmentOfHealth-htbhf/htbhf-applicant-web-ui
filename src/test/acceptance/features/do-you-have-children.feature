@@ -1,4 +1,4 @@
-Feature: Do you have any childre who are 3 years old or younger?
+Feature: Do you have any children who are 3 years old or younger?
   In order to apply for the HTBHF programme
   As a potential claimant
   I want to select whether or not I have children who are 3 years old or younger
