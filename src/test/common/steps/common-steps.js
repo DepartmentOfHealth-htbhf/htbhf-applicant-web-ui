@@ -124,6 +124,24 @@ async function selectNoOnChildrenThreeOrYoungerPage () {
   }
 }
 
+async function selectYesOnChildrenThreeOrYoungerPage () {
+  try {
+    await pages.doYouHaveChildrenThreeOrYounger.selectYesRadioButton()
+    await pages.doYouHaveChildrenThreeOrYounger.submitForm()
+  } catch (error) {
+    assert.fail(`Unexpected error caught trying to select 'Yes' for 'Do you have any children three or younger?' and submit the page - ${error}`)
+  }
+}
+
+async function enterChildUnder3Details () {
+  try {
+    await pages.addChildrenDOB.enterChildUnder3Details()
+    await pages.addChildrenDOB.submitForm()
+  } catch (error) {
+    assert.fail(`Unexpected error caught trying to enter child details and submit the page - ${error}`)
+  }
+}
+
 async function selectTextOnSendCode () {
   try {
     await pages.sendCode.selectTextRadioButton()
@@ -145,7 +163,8 @@ async function enterConfirmationCodeAndSubmit (confirmationCode = CONFIRMATION_C
 async function completeTheApplicationAsAPregnantWoman () {
   await enterDoYouLiveInScotlandNoAndSubmit()
   await enterDateOfBirthAndSubmit()
-  await selectNoOnChildrenThreeOrYoungerPage()
+  await selectYesOnChildrenThreeOrYoungerPage()
+  await enterChildUnder3Details()
   await selectYesOnPregnancyPage()
   await enterNameAndSubmit()
   await enterNinoAndSubmit()
@@ -159,7 +178,8 @@ async function completeTheApplicationAsAPregnantWoman () {
 async function completeTheApplicationAsAWomanWhoIsNotPregnant () {
   await enterDoYouLiveInScotlandNoAndSubmit()
   await enterDateOfBirthAndSubmit()
-  await selectNoOnChildrenThreeOrYoungerPage()
+  await selectYesOnChildrenThreeOrYoungerPage()
+  await enterChildUnder3Details()
   await selectNoOnPregnancyPage()
   await enterNameAndSubmit()
   await enterNinoAndSubmit()
@@ -229,5 +249,7 @@ module.exports = {
   enterEmailAddressAndSubmit,
   selectNoOnChildrenThreeOrYoungerPage,
   selectTextOnSendCode,
-  enterConfirmationCodeAndSubmit
+  enterConfirmationCodeAndSubmit,
+  selectYesOnChildrenThreeOrYoungerPage,
+  enterChildUnder3Details
 }
