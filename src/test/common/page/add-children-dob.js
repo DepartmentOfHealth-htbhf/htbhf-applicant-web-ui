@@ -2,6 +2,8 @@
 
 const SubmittablePage = require('./submittable-page')
 
+const { dateLastYear } = require('../../common/dates')
+
 const PAGE_TITLES = {
   en: 'GOV.UK - Add your children’s dates of birth',
   cy: 'GOV.UK - Urna condimentum mattis?'
@@ -33,12 +35,6 @@ class AddChildrenDOB extends SubmittablePage {
     await addAnotherChildButton.click()
   }
 
-  getDateLastYear () {
-    const date = new Date()
-    date.setFullYear(date.getFullYear() - 1)
-    return date
-  }
-
   async enterChildUnder3DetailsWithoutAName () {
     await this.enterChildUnder3DateOfBirth()
     this.childIndex++
@@ -51,10 +47,10 @@ class AddChildrenDOB extends SubmittablePage {
   }
 
   async enterChildUnder3DateOfBirth () {
-    const dateLastYear = this.getDateLastYear()
-    await this.enterDay(dateLastYear.getDate())
-    await this.enterMonth(dateLastYear.getMonth() + 1)
-    await this.enterYear(dateLastYear.getFullYear())
+    const dateOfBirth = dateLastYear()
+    await this.enterDay(dateOfBirth.getDate())
+    await this.enterMonth(dateOfBirth.getMonth() + 1)
+    await this.enterYear(dateOfBirth.getFullYear())
   }
 
   async getNameField () {
