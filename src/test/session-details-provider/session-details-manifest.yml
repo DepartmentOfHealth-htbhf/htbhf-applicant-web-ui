@@ -1,0 +1,15 @@
+---
+applications:
+- name: ((session_details_app_name))
+  memory: 512M
+  command: node src/test/session-details-provider/session-details-app.js
+  env:
+    SESSION_SECRET: '((session_secret))'
+    NODE_ENV: production
+  buildpacks:
+    - nodejs_buildpack
+  services:
+    - help-to-buy-healthy-foods-redis
+    - variable-service
+# to deploy this app run this cloud foundry command (from the root of this project):
+# cf push -f src/test/session-details-provider/session-details-manifest.yml --var session_details_app_name=htbhf-session-details-staging --var session_secret=ReplaceWithTheRealSessionSecret
