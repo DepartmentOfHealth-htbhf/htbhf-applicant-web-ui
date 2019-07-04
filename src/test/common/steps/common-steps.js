@@ -4,6 +4,7 @@ const { path } = require('ramda')
 
 const pages = require('./pages')
 const { setupSuccessfulWiremockClaimMappingWithStatus, deleteAllWiremockMappings, setupSuccessfulWiremockUpdatedClaimMapping, getOutboundRequestsToUrl } = require('../wiremock')
+const { get } = require('./../request')
 const TESTS = process.env.TESTS
 const COMPATIBILITY_TESTS = 'compatibility'
 const INTEGRATION_TESTS = 'integration'
@@ -23,9 +24,10 @@ const {
   POSTCODE,
   CLAIMS_ENDPOINT,
   PHONE_NUMBER,
-  EMAIL_ADDRESS,
-  CONFIRMATION_CODE
+  EMAIL_ADDRESS
 } = require('./constants')
+
+const { SESSION_CONFIRMATION_CODE_URL } = require('./../../common/config')
 
 async function enterDoYouLiveInScotlandNoAndSubmit () {
   try {
@@ -133,9 +135,20 @@ async function selectTextOnSendCode () {
   }
 }
 
-async function enterConfirmationCodeAndSubmit (confirmationCode = CONFIRMATION_CODE) {
+async function getConfirmationCodeForSession (confirmationCode) {
+  if (typeof confirmationCode !== 'undefined') {
+    return confirmationCode
+  }
+  const currentSessionId = await pages.genericPage.getCurrentSessionId()
+  const requestCookie = `htbhf.sid=${currentSessionId}`
+  const sessionCode = await get(SESSION_CONFIRMATION_CODE_URL, requestCookie)
+  return sessionCode
+}
+
+async function enterConfirmationCodeAndSubmit (confirmationCode) {
   try {
-    await pages.enterCode.enterConfirmationCode(confirmationCode)
+    const sessionCode = await getConfirmationCodeForSession(confirmationCode)
+    await pages.enterCode.enterConfirmationCode(sessionCode)
     await pages.enterCode.submitForm()
   } catch (error) {
     assert.fail(`Unexpected error caught trying to enter confirmation code for 'Enter code' and submit the page - ${error}`)
