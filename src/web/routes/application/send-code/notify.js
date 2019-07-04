@@ -1,7 +1,8 @@
 const { NotifyClient } = require('notifications-node-client')
-const uuid = require('uuid/v4')
+const uuid = require('uuidv4')
 const config = require('../../../../config')
 const notifyClient = new NotifyClient(config.environment.NOTIFY_API_KEY)
+const { logger } = require('../../../logger')
 require('dotenv').config()
 
 const { EMAIL, TEXT } = require('../common/constants')
@@ -10,12 +11,14 @@ const EMAIL_TEMPLATE_ID = '18cf4f69-e1b5-4aa9-bed7-c906d3a59285'
 const SMS_TEMPLATE_ID = 'a770479a-097c-4079-acc2-d452a6f21585'
 
 function sendConfirmationCode (claim, channelForCode, confirmationCode) {
-  const notifyOptions = { personalisation: { confirmationCode }, reference: uuid() }
+  const reference = uuid()
+  const notifyOptions = { personalisation: { confirmationCode }, reference: reference }
 
   if (channelForCode === EMAIL) {
-    console.log(`Send email to ${claim.emailAddress}`)
+    logger.info(`Sending email with reference ${reference}`)
     notifyClient.sendEmail(EMAIL_TEMPLATE_ID, claim.emailAddress, notifyOptions)
   } else if (channelForCode === TEXT) {
+    logger.info(`Sending sms with reference ${reference}`)
     notifyClient.sendSms(SMS_TEMPLATE_ID, claim.phoneNumber, notifyOptions)
   } else {
     throw new Error(`Expecting 'channelForCode' option to be either 'text' or 'email', instead was ${channelForCode}`)

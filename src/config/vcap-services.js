@@ -10,11 +10,11 @@ function getVCAPServices (service) {
 }
 
 function getService (userProvidedServices, serviceName) {
-  const variableServices = userProvidedServices.filter(service => service.instance_name === serviceName)
-  if (variableServices.length !== 1) {
-    throw new Error(`Expected exactly one variable-service, instead found ${variableServices.length}`)
+  const services = userProvidedServices.filter(service => service.instance_name === serviceName)
+  if (services.length !== 1) {
+    throw new Error(`Expected exactly one variable-service, instead found ${services.length}`)
   }
-  return variableServices[0]
+  return services[0]
 }
 
 const getVariableServiceCredentials = () => {
