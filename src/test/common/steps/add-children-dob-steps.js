@@ -5,15 +5,16 @@ const { enterChildUnder3Details } = require('./common-steps')
 
 const pages = require('./pages')
 
-When(/^I enter the details of my child who is under 3$/, async function () {
+When(/^I submit the details of my child who is three or younger$/, async function () {
   await enterChildUnder3Details()
+  await pages.genericPage.submitForm()
 })
 
-When(/^I enter the details of my child who is under 3 without a name$/, async function () {
+When(/^I enter the details of my child who is three or younger without a name$/, async function () {
   await enterChildUnder3DetailsWithoutAName()
 })
 
-When(/^I enter the details of my two children who are under 3/, async function () {
+When(/^I enter the details of my two children who are three or younger/, async function () {
   await enterTwoSetsOfChildrensDatesOfBirth()
 })
 
