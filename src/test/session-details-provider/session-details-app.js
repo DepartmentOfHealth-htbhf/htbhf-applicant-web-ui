@@ -27,9 +27,15 @@ app.use(session(sessionConfig))
 
 logger.info('config:' + JSON.stringify(config))
 
+const handleConfirmationCode = (req, res) => {
+  const confirmationCode = req.session[CONFIRMATION_CODE_SESSION_PROPERTY] || '9999999999'
+  logger.info(`Confirmation code for session ${req.sessionID} is ${confirmationCode}`)
+  res.send(confirmationCode)
+}
+
 const server = app.listen(SESSION_DETAILS_PORT, () => {
   logger.info(`Session Details App listening on port ${SESSION_DETAILS_PORT}`)
-  app.get('/confirmation-code', (req, res) => res.send(req.session[CONFIRMATION_CODE_SESSION_PROPERTY]))
+  app.get('/confirmation-code', handleConfirmationCode)
 })
 
 process.on('SIGTERM', () => {
