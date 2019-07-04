@@ -1,9 +1,12 @@
 const { check } = require('express-validator')
-const { compose, keys, any, startsWith } = require('ramda')
+const { compose, keys, any, startsWith, pickBy } = require('ramda')
 const { toDateString } = require('../common/formatters')
-const { isValidDate } = require('../common/validators')
+const { isValidDate, isDateMoreThanFourYearsAgo } = require('../common/validators')
+const { translateValidationMessage } = require('../common/translate-validation-message')
 
 const FIELD_PREFIX = 'childDob-'
+const CHILD_NAME_PREFIX = 'childName-'
+const CHILD_NAME_MAX_LENGTH = 500
 
 const fieldExistsWithPrefix = (prefix) => compose(any(startsWith(prefix)), keys)
 
@@ -31,6 +34,8 @@ const convertDateFieldsToDateStrings = (fields, dates = {}, index = 1) => {
 const addDatesToBody = (req, res, next) => {
   const dateStrings = convertDateFieldsToDateStrings(req.body)
 
+  // At this point the date of birth keys are known, so they are stored in
+  // session for use by subsequent validation middleware
   req.session.children.datesOfBirthFields = Object.keys(dateStrings)
 
   req.body = {
@@ -43,23 +48,41 @@ const addDatesToBody = (req, res, next) => {
 
 const validateDateOfBirth = (dob, { req }) => {
   if (!isValidDate(dob)) {
-    throw new Error(req.t('validation:childsDateOfBirthInvalid'))
+    throw new Error(req.t('validation:childDateOfBirthInvalid'))
+  }
+
+  if (isDateMoreThanFourYearsAgo(dob)) {
+    throw new Error(req.t('validation:childDateOfBirthFourYearsOrOlder'))
   }
 
   return true
 }
 
 const callValidateChildrenDatesOfBirth = (req, res, next) =>
+  // Validating values in `req.body` from keys that have previously been stored in session
   check(req.session.children.datesOfBirthFields).custom(validateDateOfBirth)(req, res, next)
+
+const isChildNameKey = (val, key) => key.startsWith(CHILD_NAME_PREFIX)
+
+const getChildrenNameKeys = compose(keys, pickBy(isChildNameKey))
+
+const callValidateChildrenNames = (req, res, next) =>
+  check(getChildrenNameKeys(req.body))
+    .isLength({ max: CHILD_NAME_MAX_LENGTH })
+    .withMessage(translateValidationMessage('validation:childNameTooLong'))(req, res, next)
 
 const validate = [
   addDatesToBody,
-  callValidateChildrenDatesOfBirth
+  callValidateChildrenDatesOfBirth,
+  callValidateChildrenNames
 ]
 
 module.exports = {
   validate,
   fieldExistsWithPrefix,
   buildDateStringForPrefix,
-  convertDateFieldsToDateStrings
+  convertDateFieldsToDateStrings,
+  isChildNameKey,
+  getChildrenNameKeys,
+  validateDateOfBirth
 }
