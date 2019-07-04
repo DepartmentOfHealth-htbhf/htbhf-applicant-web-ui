@@ -11,4 +11,4 @@ cf push -f src/test/session-details-provider/session-details-manifest.yml --var 
 ```
 (It is deployed by the CD scripts during testing against the staging environment).
 
-During local testing the app is started by the `test:session-details` script in package.json.
+During local testing the app is started by the `test:session-details` script in `package.json`.
