@@ -85,7 +85,7 @@ Then(/^I am informed that I need to select an option for are you pregnant$/, asy
 
 Then(/^I am informed that I need to enter an expected delivery date$/, async function () {
   await assertErrorHeaderTextPresent(pages.areYouPregnant)
-  await assertExpectedDeliveryDateErrorPresent('Enter the due date in the correct format')
+  await assertExpectedDeliveryDateErrorPresent('Enter the due date')
 })
 
 Then(/^I am informed that the date is too far in the past$/, async function () {

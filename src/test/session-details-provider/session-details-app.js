@@ -27,7 +27,14 @@ app.use(session(sessionConfig))
 
 logger.info('config:' + JSON.stringify(config))
 
-app.listen(port, () => {
+const server = app.listen(port, () => {
   logger.info(`Session Details App listening on port ${port}`)
   app.get('/confirmation-code', (req, res) => res.send(req.session[CONFIRMATION_CODE_SESSION_PROPERTY]))
+})
+
+process.on('SIGTERM', () => {
+  server.close(() => {
+    logger.info('Session Details App closed.')
+    process.exit(0)
+  })
 })

@@ -23,7 +23,7 @@
       id: 'child-name-' + params.index,
       name: 'childName-' + params.index,
       value: params.children['childName-'  + params.index],
-      errorMessage: params.errors | getErrorForField('childName'),
+      errorMessage: params.errors | getErrorForField('childName-'  + params.index),
       autocomplete: "off"
     }) }}
 

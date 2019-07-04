@@ -33,6 +33,10 @@ test('dateAsString', (t) => {
   t.equal(dateAsString({ date: date }), '1999-12-31', '1999-12-31 is not formatted correctly')
   t.equal(dateAsString({ date: date, monthAdjustment: -2 }), '1999-10-31', '2 months from 1999-12-31 should ne 1999-10-31')
   t.throws(dateAsString.bind(null, { monthAdjustment: 'foo' }), /Month adjustment must be numeric/, 'not a valid month adjustment value')
+
+  t.equal(dateAsString({ date: date, yearAdjustment: 4 }), '2003-12-31', '4 years from 1999-12-31 should be 2003-12-31')
+  t.equal(dateAsString({ date: date, yearAdjustment: -2 }), '1997-12-31', '2 years from 1999-12-31 should ne 1997-12-31')
+  t.throws(dateAsString.bind(null, { yearAdjustment: 'foo' }), /Year adjustment must be numeric/, 'not a valid year adjustment value')
   t.end()
 })
 

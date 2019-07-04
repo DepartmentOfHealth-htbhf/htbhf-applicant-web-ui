@@ -1,6 +1,30 @@
 const test = require('tape')
 const proxyquire = require('proxyquire')
 
+const cfenvNoUserProvidedService = {
+  getAppEnv: () => ({
+    services: {
+      'redis': [
+        {
+          'binding_name': null,
+          'credentials': {
+            'name': 'test',
+            'password': 'test'
+          }
+        }
+      ]
+    }
+  })
+}
+
+const cfenvEmptyUserProvidedService = {
+  getAppEnv: () => ({
+    services: {
+      'user-provided': []
+    }
+  })
+}
+
 test('getVariableServiceCredentials()', (t) => {
   const trackingId = 'test'
   const cfenv = {
@@ -58,46 +82,14 @@ test('getNotifyVariableServiceCredentials()', (t) => {
 })
 
 test('getVariableServiceCredentials() throws error when no user provided services', (t) => {
-  const cfenv = {
-    getAppEnv: () => ({
-      services: {
-        'redis': [
-          {
-            'binding_name': null,
-            'credentials': {
-              'name': 'test',
-              'password': 'test'
-            }
-          }
-        ]
-      }
-    })
-  }
-
-  const vcapServices = proxyquire('./vcap-services', { 'cfenv': cfenv })
+  const vcapServices = proxyquire('./vcap-services', { 'cfenv': cfenvNoUserProvidedService })
 
   t.throws(() => vcapServices.getVariableServiceCredentials(), /Expected an array of user-provided services, got undefined/)
   t.end()
 })
 
 test('getNotifyVariableServiceCredentials() throws error when no user provided services', (t) => {
-  const cfenv = {
-    getAppEnv: () => ({
-      services: {
-        'redis': [
-          {
-            'binding_name': null,
-            'credentials': {
-              'name': 'test',
-              'password': 'test'
-            }
-          }
-        ]
-      }
-    })
-  }
-
-  const vcapServices = proxyquire('./vcap-services', { 'cfenv': cfenv })
+  const vcapServices = proxyquire('./vcap-services', { 'cfenv': cfenvNoUserProvidedService })
 
   t.throws(() => vcapServices.getNotifyVariableServiceCredentials(), /Expected an array of user-provided services, got undefined/)
   t.end()
@@ -146,28 +138,14 @@ test('getNotifyVariableServiceCredentials() throws an error when there are multi
 })
 
 test('getVariableServiceCredentials() throws an error when there no services called variable-service', (t) => {
-  const cfenv = {
-    getAppEnv: () => ({
-      services: {
-        'user-provided': []
-      }
-    })
-  }
-  const vcapServices = proxyquire('./vcap-services', { 'cfenv': cfenv })
+  const vcapServices = proxyquire('./vcap-services', { 'cfenv': cfenvEmptyUserProvidedService })
 
   t.throws(() => vcapServices.getVariableServiceCredentials(), /Expected exactly one variable-service, instead found 0/)
   t.end()
 })
 
 test('getNotifyVariableServiceCredentials() throws an error when there no services called notify-variable-service', (t) => {
-  const cfenv = {
-    getAppEnv: () => ({
-      services: {
-        'user-provided': []
-      }
-    })
-  }
-  const vcapServices = proxyquire('./vcap-services', { 'cfenv': cfenv })
+  const vcapServices = proxyquire('./vcap-services', { 'cfenv': cfenvEmptyUserProvidedService })
 
   t.throws(() => vcapServices.getNotifyVariableServiceCredentials(), /Expected exactly one variable-service, instead found 0/)
   t.end()
