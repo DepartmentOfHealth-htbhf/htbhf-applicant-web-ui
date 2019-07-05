@@ -1,7 +1,31 @@
 const test = require('tape')
 const proxyquire = require('proxyquire')
 
-test('getVariableServiceCredentials()', (t) => {
+const cfenvNoUserProvidedService = {
+  getAppEnv: () => ({
+    services: {
+      'redis': [
+        {
+          'binding_name': null,
+          'credentials': {
+            'name': 'test',
+            'password': 'test'
+          }
+        }
+      ]
+    }
+  })
+}
+
+const cfenvEmptyUserProvidedService = {
+  getAppEnv: () => ({
+    services: {
+      'user-provided': []
+    }
+  })
+}
+
+test('getServiceCredentials()', (t) => {
   const trackingId = 'test'
   const cfenv = {
     getAppEnv: () => ({
@@ -23,36 +47,20 @@ test('getVariableServiceCredentials()', (t) => {
   }
   const vcapServices = proxyquire('./vcap-services', { 'cfenv': cfenv })
 
-  const result = vcapServices.getVariableServiceCredentials()
+  const result = vcapServices.getServiceCredentials('variable-service')
 
   t.deepEqual(result.GA_TRACKING_ID, trackingId)
   t.end()
 })
 
-test('getVariableServiceCredentials() throws error when no user provided services', (t) => {
-  const cfenv = {
-    getAppEnv: () => ({
-      services: {
-        'redis': [
-          {
-            'binding_name': null,
-            'credentials': {
-              'name': 'test',
-              'password': 'test'
-            }
-          }
-        ]
-      }
-    })
-  }
+test('getServiceCredentials() throws error when no user provided services', (t) => {
+  const vcapServices = proxyquire('./vcap-services', { 'cfenv': cfenvNoUserProvidedService })
 
-  const vcapServices = proxyquire('./vcap-services', { 'cfenv': cfenv })
-
-  t.throws(() => vcapServices.getVariableServiceCredentials(), /Expected an array of user-provided services, got undefined/)
+  t.throws(() => vcapServices.getServiceCredentials('variable-service'), /Expected an array of user-provided services, got undefined/)
   t.end()
 })
 
-test('getVariableServiceCredentials() throws an error when there are multiple services called variable-service', (t) => {
+test('getServiceCredentials() throws an error when there are multiple services with the given name', (t) => {
   const cfenv = {
     getAppEnv: () => ({
       services: {
@@ -69,21 +77,14 @@ test('getVariableServiceCredentials() throws an error when there are multiple se
   }
   const vcapServices = proxyquire('./vcap-services', { 'cfenv': cfenv })
 
-  t.throws(() => vcapServices.getVariableServiceCredentials(), 'Expected exactly one variable-service, instead found 2')
+  t.throws(() => vcapServices.getServiceCredentials('variable-service'), 'Expected exactly one variable-service, instead found 2')
   t.end()
 })
 
-test('getVariableServiceCredentials() throws an error when there no services called variable-service', (t) => {
-  const cfenv = {
-    getAppEnv: () => ({
-      services: {
-        'user-provided': []
-      }
-    })
-  }
-  const vcapServices = proxyquire('./vcap-services', { 'cfenv': cfenv })
+test('getServiceCredentials() throws an error when there no services with the given name', (t) => {
+  const vcapServices = proxyquire('./vcap-services', { 'cfenv': cfenvEmptyUserProvidedService })
 
-  t.throws(() => vcapServices.getVariableServiceCredentials(), /Expected exactly one variable-service, instead found 0/)
+  t.throws(() => vcapServices.getServiceCredentials('variable-service'), /Expected exactly one variable-service, instead found 0/)
   t.end()
 })
 

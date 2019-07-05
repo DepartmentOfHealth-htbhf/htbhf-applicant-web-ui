@@ -9,17 +9,17 @@ function getVCAPServices (service) {
   return services
 }
 
-function getVariableService (userProvidedServices) {
-  const variableServices = userProvidedServices.filter(service => service.instance_name === 'variable-service')
-  if (variableServices.length !== 1) {
-    throw new Error(`Expected exactly one variable-service, instead found ${variableServices.length}`)
+function getService (userProvidedServices, serviceName) {
+  const services = userProvidedServices.filter(service => service.instance_name === serviceName)
+  if (services.length !== 1) {
+    throw new Error(`Expected exactly one ${serviceName}, instead found ${services.length}`)
   }
-  return variableServices[0]
+  return services[0]
 }
 
-const getVariableServiceCredentials = () => {
+const getServiceCredentials = (serviceName) => {
   const userProvidedServices = getVCAPServices('user-provided')
-  const variableService = getVariableService(userProvidedServices)
+  const variableService = getService(userProvidedServices, serviceName)
   return variableService.credentials
 }
 
@@ -34,11 +34,17 @@ const getRedisCredentials = () => {
 
 const getVCAPServicesVariable = (name, defaultValue = '') =>
   process.env.VCAP_SERVICES
-    ? getVariableServiceCredentials()[name]
+    ? getServiceCredentials('variable-service')[name]
+    : process.env[name] || defaultValue
+
+const getVCAPServiceNotifyVariable = (name, defaultValue = '') =>
+  process.env.VCAP_SERVICES
+    ? getServiceCredentials('notify-variable-service')[name]
     : process.env[name] || defaultValue
 
 module.exports = {
   getRedisCredentials,
-  getVariableServiceCredentials,
-  getVCAPServicesVariable
+  getServiceCredentials,
+  getVCAPServicesVariable,
+  getVCAPServiceNotifyVariable
 }
