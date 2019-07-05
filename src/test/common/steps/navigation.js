@@ -12,7 +12,7 @@ const {
   enterDoYouLiveInScotlandNoAndSubmit,
   enterEmailAddressAndSubmit,
   selectYesOnChildrenThreeOrYoungerPage,
-  enterChildUnder3Details,
+  submitChild3OrUnderDetails,
   selectTextOnSendCode,
   enterConfirmationCodeAndSubmit
 } = require('./common-steps')
@@ -60,7 +60,7 @@ const pageActions = [
   {
     page: ARE_YOU_PREGNANT_PAGE,
     action: async () => {
-      await enterChildUnder3Details()
+      await submitChild3OrUnderDetails()
       await pages.areYouPregnant.waitForPageLoad()
     }
   },

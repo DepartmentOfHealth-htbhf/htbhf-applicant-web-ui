@@ -5,8 +5,9 @@ const dateIn3Months = () => {
   return dueDate
 }
 
-const dateLastYear = () => {
+const dateLastYear = (dayIncrement = 0) => {
   const date = new Date()
+  date.setDate(date.getDate() + dayIncrement)
   date.setFullYear(date.getFullYear() - 1)
   return date
 }
