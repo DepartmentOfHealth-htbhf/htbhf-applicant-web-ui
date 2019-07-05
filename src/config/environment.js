@@ -1,5 +1,5 @@
 const { path } = require('ramda')
-const { getVCAPServicesVariable } = require('./vcap-services')
+const { getVCAPServicesVariable, getVCAPServiceNotifyVariable } = require('./vcap-services')
 const { toBoolean } = require('./to-boolean')
 
 module.exports = {
@@ -10,5 +10,6 @@ module.exports = {
   MAINTENANCE_MODE: toBoolean(getVCAPServicesVariable('MAINTENANCE_MODE', false)),
   SERVICE_AVAILABLE_DATE: getVCAPServicesVariable('SERVICE_AVAILABLE_DATE'),
   OVERVIEW_URL: '/',
-  APP_VERSION: process.env.APP_VERSION || 'unknown'
+  APP_VERSION: process.env.APP_VERSION || 'unknown',
+  NOTIFY_API_KEY: getVCAPServiceNotifyVariable('NOTIFY_API_KEY', process.env.NOTIFY_API_KEY)
 }
