@@ -3,7 +3,6 @@ const uuid = require('uuidv4')
 const config = require('../../../../config')
 const notifyClient = new NotifyClient(config.environment.NOTIFY_API_KEY)
 const { logger } = require('../../../logger')
-require('dotenv').config()
 
 const { EMAIL, TEXT } = require('../common/constants')
 
