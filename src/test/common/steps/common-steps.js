@@ -153,19 +153,33 @@ async function selectTextOnSendCode () {
   }
 }
 
+/** iPhone 8 refuses to give us secure cookies - including the session id, so we have to load the session details page in the browser
+ * (and assume that the session details app is on the same domain)
+ */
+async function getConfirmationCodeInBrowser () {
+  await pages.genericPage.openPage(SESSION_CONFIRMATION_CODE_URL)
+  const body = await pages.genericPage.findByXPath('html/body')
+  return body.getText()
+}
+
 async function getConfirmationCodeForSession (confirmationCode) {
   if (typeof confirmationCode !== 'undefined') {
     return confirmationCode
   }
   const currentSessionId = await pages.genericPage.getCurrentSessionId()
-  const requestCookie = `htbhf.sid=${currentSessionId}`
-  const sessionCode = await get(SESSION_CONFIRMATION_CODE_URL, requestCookie)
-  return sessionCode
+  if (currentSessionId === null) {
+    return getConfirmationCodeInBrowser()
+  } else {
+    const requestCookie = `htbhf.sid=${currentSessionId}`
+    return get(SESSION_CONFIRMATION_CODE_URL, requestCookie)
+  }
 }
 
 async function enterConfirmationCodeAndSubmit (confirmationCode) {
   try {
     const sessionCode = await getConfirmationCodeForSession(confirmationCode)
+    // some browsers may have visited a different page in order to get the session id - reload the enter code page
+    await pages.enterCode.openDirect(pages.url)
     await pages.enterCode.enterConfirmationCode(sessionCode)
     await pages.enterCode.submitForm()
   } catch (error) {

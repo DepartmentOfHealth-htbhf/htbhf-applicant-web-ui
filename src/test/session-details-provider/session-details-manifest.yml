@@ -8,8 +8,11 @@ applications:
     NODE_ENV: production
   buildpacks:
     - nodejs_buildpack
+  routes:
+    - route: ((session_details_host_name))/session-details
   services:
     - help-to-buy-healthy-foods-redis
     - variable-service
+    - notify-variable-service
 # to deploy this app run this cloud foundry command (from the root of this project):
-# cf push -f src/test/session-details-provider/session-details-manifest.yml --var session_details_app_name=htbhf-session-details-staging --var session_secret=ReplaceWithTheRealSessionSecret
+# cf push -f src/test/session-details-provider/session-details-manifest.yml --var session_details_app_name=htbhf-session-details-staging --var session_secret=ReplaceWithTheRealSessionSecret --var session_details_host_name=help-to-buy-healthy-foods-staging.london-cloudapps.digital
