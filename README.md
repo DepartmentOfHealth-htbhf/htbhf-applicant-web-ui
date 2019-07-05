@@ -98,3 +98,13 @@ driver setup to simply be:
       .build()
 ```
 Then to run the tests locally, just use the `npm run test:compatibility:local` target.
+
+## GOV.UK Notify
+The application requires users to enter a confirmation code that has been sent to their email address
+or mobile phone via GOV.UK Notify. In order to send such an email you need to be able to connect to GOV.UK Notify.
+When running locally this means you need to have the NOTIFY_API_KEY environment variable set - see sample.env for an example.
+
+### The Session Details App
+To enable tests to work without having to actually receive the confirmation code, a separate app (session-details-app)
+can be deployed to provide access to the confirmation code stored in the session.
+This app is started when running tests, but you can also start it manually using the `test:session-details` script in `package.json`
