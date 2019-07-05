@@ -178,7 +178,7 @@ async function getConfirmationCodeForSession (confirmationCode) {
 async function enterConfirmationCodeAndSubmit (confirmationCode) {
   try {
     const sessionCode = await getConfirmationCodeForSession(confirmationCode)
-    // some browsers may have visited a different page in order to get the session id - reload the enter code page
+    // some browsers may have visited a different page in order to get the session id, so we must reload the enter code page
     await pages.enterCode.openDirect(pages.url)
     await pages.enterCode.enterConfirmationCode(sessionCode)
     await pages.enterCode.submitForm()
