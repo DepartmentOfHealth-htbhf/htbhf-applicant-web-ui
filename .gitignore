@@ -42,3 +42,6 @@ build
 # Acceptance and Smoke Test Reports
 src/documentation/gh-pages/acceptance-report.html
 src/documentation/gh-pages/smoke-report.html
+
+# assets build directories
+src/web/public
