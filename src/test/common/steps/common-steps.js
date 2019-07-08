@@ -135,9 +135,9 @@ async function selectYesOnChildrenThreeOrYoungerPage () {
   }
 }
 
-async function enterChildUnder3Details () {
+async function submitChild3OrUnderDetails (name = 'Joe') {
   try {
-    await pages.addChildrenDOB.enterChildUnder3Details()
+    await pages.addChildrenDOB.enterChild3OrUnderDetails(name)
     await pages.addChildrenDOB.submitForm()
   } catch (error) {
     assert.fail(`Unexpected error caught trying to enter child details and submit the page - ${error}`)
@@ -191,7 +191,7 @@ async function completeTheApplicationAsAPregnantWoman () {
   await enterDoYouLiveInScotlandNoAndSubmit()
   await enterDateOfBirthAndSubmit()
   await selectYesOnChildrenThreeOrYoungerPage()
-  await enterChildUnder3Details()
+  await submitChild3OrUnderDetails()
   await selectYesOnPregnancyPage()
   await enterNameAndSubmit()
   await enterNinoAndSubmit()
@@ -206,7 +206,7 @@ async function completeTheApplicationAsAWomanWhoIsNotPregnant () {
   await enterDoYouLiveInScotlandNoAndSubmit()
   await enterDateOfBirthAndSubmit()
   await selectYesOnChildrenThreeOrYoungerPage()
-  await enterChildUnder3Details()
+  await submitChild3OrUnderDetails()
   await selectNoOnPregnancyPage()
   await enterNameAndSubmit()
   await enterNinoAndSubmit()
@@ -278,5 +278,5 @@ module.exports = {
   selectTextOnSendCode,
   enterConfirmationCodeAndSubmit,
   selectYesOnChildrenThreeOrYoungerPage,
-  enterChildUnder3Details
+  submitChild3OrUnderDetails
 }

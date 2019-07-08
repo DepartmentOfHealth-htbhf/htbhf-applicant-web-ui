@@ -35,19 +35,13 @@ class AddChildrenDOB extends SubmittablePage {
     await addAnotherChildButton.click()
   }
 
-  async enterChildUnder3DetailsWithoutAName () {
-    await this.enterChildUnder3DateOfBirth()
+  async enterChild3OrUnderDetails (name = `Child${this.childIndex}`, dayIncrement = 0) {
+    await this.enterChild3OrUnderDateOfBirth(dayIncrement)
+    await this.enterChildName(name)
     this.childIndex++
   }
-
-  async enterChildUnder3Details () {
-    await this.enterChildName()
-    await this.enterChildUnder3DateOfBirth()
-    this.childIndex++
-  }
-
-  async enterChildUnder3DateOfBirth () {
-    const dateOfBirth = dateLastYear()
+  async enterChild3OrUnderDateOfBirth (dayIncrement = 0) {
+    const dateOfBirth = dateLastYear(dayIncrement)
     await this.enterDay(dateOfBirth.getDate())
     await this.enterMonth(dateOfBirth.getMonth() + 1)
     await this.enterYear(dateOfBirth.getFullYear())
@@ -69,9 +63,9 @@ class AddChildrenDOB extends SubmittablePage {
     return this.findById(`childDob-${this.childIndex}-year`)
   }
 
-  async enterChildName () {
+  async enterChildName (name) {
     const dayField = await this.getNameField()
-    return dayField.sendKeys(`Child${this.childIndex}`)
+    return dayField.sendKeys(name)
   }
 
   async enterDay (day) {
@@ -87,6 +81,22 @@ class AddChildrenDOB extends SubmittablePage {
   async enterYear (year) {
     const yearField = await this.getYearField()
     return yearField.sendKeys(year)
+  }
+
+  getChildDateOfBirthFieldErrorId (index) {
+    return `child-dob-${index}-error`
+  }
+
+  getChildDateOfBirthErrorLinkCss (index) {
+    return `a[href="#child-dob-${index}-error"]`
+  }
+
+  getChildNameFieldErrorId (index) {
+    return `child-name-${index}-error`
+  }
+
+  getChildNameErrorLinkCss (index) {
+    return `a[href="#child-name-${index}-error"]`
   }
 }
 
