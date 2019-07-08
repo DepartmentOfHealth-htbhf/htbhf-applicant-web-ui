@@ -5,14 +5,14 @@ const SubmittablePage = require('./submittable-page')
 const { dateLastYear } = require('../../common/dates')
 
 const PAGE_TITLES = {
-  en: 'GOV.UK - Add your children’s dates of birth',
+  en: 'GOV.UK - Enter your children’s dates of birth',
   cy: 'GOV.UK - Urna condimentum mattis?'
 }
 
 /**
- * Page object for AddChildrenDOB page where the claimant can enter their children's dates of birth.
+ * Page object for the enter children's dates of birth page.
  */
-class AddChildrenDOB extends SubmittablePage {
+class EnterChildrenDOB extends SubmittablePage {
   constructor (driver) {
     super(driver)
     this.childIndex = 1
@@ -27,7 +27,7 @@ class AddChildrenDOB extends SubmittablePage {
   }
 
   getPageName () {
-    return 'add your childrens dates of birth'
+    return 'enter your childrens dates of birth'
   }
 
   async clickAddAnotherChild () {
@@ -36,8 +36,8 @@ class AddChildrenDOB extends SubmittablePage {
   }
 
   async enterChild3OrUnderDetails (name = `Child${this.childIndex}`, dayIncrement = 0) {
-    await this.enterChild3OrUnderDateOfBirth(dayIncrement)
     await this.enterChildName(name)
+    await this.enterChild3OrUnderDateOfBirth(dayIncrement)
     this.childIndex++
   }
   async enterChild3OrUnderDateOfBirth (dayIncrement = 0) {
@@ -100,4 +100,4 @@ class AddChildrenDOB extends SubmittablePage {
   }
 }
 
-module.exports = AddChildrenDOB
+module.exports = EnterChildrenDOB

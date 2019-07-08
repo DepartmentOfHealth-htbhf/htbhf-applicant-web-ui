@@ -20,7 +20,7 @@ const UnsuccessfulApplication = require('../page/unsuccessful-application')
 const TermsAndConditions = require('../page/terms-and-conditions')
 const DoYouHaveChildrenThreeOrYounger = require('../page/do-you-have-children-three-or-younger')
 const SendCode = require('../page/send-code')
-const AddChildrenDOB = require('../page/add-children-dob')
+const EnterChildrenDOB = require('../page/enter-children-dob')
 const EnterCode = require('../page/enter-code')
 const { URL, DRIVER_MANAGER } = require('./test-startup-config')
 
@@ -62,7 +62,7 @@ class Pages {
     this.emailAddress = null
     this.doYouHaveChildrenThreeOrYounger = null
     this.sendCode = null
-    this.addChildrenDOB = null
+    this.enterChildrenDOB = null
     this.enterCode = null
     this.url = URL
     this.allPages = null
@@ -95,12 +95,12 @@ class Pages {
     this.termsAndConditions = new TermsAndConditions(this.driver)
     this.doYouHaveChildrenThreeOrYounger = new DoYouHaveChildrenThreeOrYounger(this.driver)
     this.sendCode = new SendCode(this.driver)
-    this.addChildrenDOB = new AddChildrenDOB(this.driver)
+    this.enterChildrenDOB = new EnterChildrenDOB(this.driver)
     this.enterCode = new EnterCode(this.driver)
     // NOTE: This map should contain all page objects, and not the Generic Page as this doesn't itself represent a page
     this.allPages = [this.overview, this.enterName, this.enterNino, this.enterDOB, this.areYouPregnant, this.cardAddress, this.phoneNumber,
       this.check, this.confirm, this.cookies, this.privacyNotice, this.confirmUpdated, this.doYouLiveInScotland, this.iLiveInScotland, this.emailAddress,
-      this.termsAndConditions, this.doYouHaveChildrenThreeOrYounger, this.sendCode, this.addChildrenDOB, this.enterCode]
+      this.termsAndConditions, this.doYouHaveChildrenThreeOrYounger, this.sendCode, this.enterChildrenDOB, this.enterCode]
     this.pageMap = this.allPages.reduce(addPageToMap, {})
   }
 

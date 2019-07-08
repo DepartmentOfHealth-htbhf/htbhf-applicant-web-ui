@@ -29,7 +29,7 @@ const EMAIL_ADDRESS_PAGE = 'email address'
 const SEND_CODE_PAGE = 'send code'
 const ENTER_CODE_PAGE = 'enter code'
 const CHECK_PAGE = 'check details'
-const ADD_CHILDREN_DOB_PAGE = 'add your childrens dates of birth'
+const ENTER_CHILDREN_DOB_PAGE = 'enter your childrens dates of birth'
 
 const pageActions = [
   {
@@ -51,10 +51,10 @@ const pageActions = [
     }
   },
   {
-    page: ADD_CHILDREN_DOB_PAGE,
+    page: ENTER_CHILDREN_DOB_PAGE,
     action: async () => {
       await selectYesOnChildrenThreeOrYoungerPage()
-      await pages.addChildrenDOB.waitForPageLoad()
+      await pages.enterChildrenDOB.waitForPageLoad()
     }
   },
   {
