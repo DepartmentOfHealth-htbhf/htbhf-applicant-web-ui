@@ -58,5 +58,6 @@ const getCheck = (steps) => (req, res) => {
 module.exports = {
   getCheck,
   getRowData,
-  getFlattenedRowData
+  getFlattenedRowData,
+  getLastNavigablePath
 }
