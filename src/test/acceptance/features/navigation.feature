@@ -17,7 +17,7 @@ Feature: Application process navigation is controlled
       | are you pregnant                      |
       | card address                          |
       | do you have children three or younger |
-      | add your childrens dates of birth     |
+      | enter your childrens dates of birth   |
       | phone number                          |
       | email address                         |
       | send code                             |
@@ -44,7 +44,7 @@ Feature: Application process navigation is controlled
       | enter date of birth                   |
       | are you pregnant                      |
       | do you have children three or younger |
-      | add your childrens dates of birth     |
+      | enter your childrens dates of birth   |
       | card address                          |
       | phone number                          |
       | email address                         |
@@ -72,7 +72,7 @@ Feature: Application process navigation is controlled
       | do you live in Scotland               |
       | are you pregnant                      |
       | do you have children three or younger |
-      | add your childrens dates of birth     |
+      | enter your childrens dates of birth   |
       | card address                          |
       | phone number                          |
       | email address                         |

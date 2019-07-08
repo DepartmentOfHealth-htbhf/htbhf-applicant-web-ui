@@ -32,7 +32,7 @@ const getRowData = (req) => (step) => {
 }
 
 // a step is navigable if it hasn't defined an isNavigable function.
-const stepIsNavigable = (lastStep, session) => !lastStep.hasOwnProperty('isNavigable') || lastStep.isNavigable(session)
+const stepIsNavigable = (step, session) => !step.hasOwnProperty('isNavigable') || step.isNavigable(session)
 
 const getLastNavigablePath = (steps, req) => {
   const lastStep = steps[steps.length - 1]
