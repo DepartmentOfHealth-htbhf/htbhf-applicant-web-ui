@@ -20,7 +20,7 @@ const configureStaticPaths = (app) => {
    */
   app.use('/assets', express.static(path.resolve('node_modules/govuk-frontend/assets'))) /* 1 */
   app.use('/assets', express.static(path.resolve('node_modules/govuk-frontend'))) /* 2 */
-  app.use('/assets', express.static(path.resolve('src/web/assets'))) /* 3 */
+  app.use('/assets', express.static(path.resolve('src/web/public'))) /* 3 */
 }
 
 const listen = (config, app) =>

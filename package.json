@@ -1,7 +1,7 @@
 {
   "name": "htbhf-applicant-web-ui",
   "version_notice": "Patch versions are incremented by Travis (in tag_version.sh via .travis.yml) - never manually increment the patch version",
-  "version": "0.1.254",
+  "version": "0.1.255",
   "description": "",
   "main": "index.js",
   "engines": {
@@ -34,7 +34,8 @@
     "test:session-details": "cross-env SESSION_DETAILS_PORT=8081 node 'src/test/session-details-provider/session-details-app.js'",
     "coverage": "nyc report --reporter=lcov --reporter=text-lcov > coverage.lcov && codecov",
     "build": "npm run build:sass",
-    "build:sass": "node-sass node_modules/govuk-frontend/all.scss src/web/assets/styles/all.css --output-style compressed",
+    "build:sass": "node-sass src/web/assets/sass -o src/web/public/styles --output-style compressed",
+    "watch:sass": "node-sass -w src/web/assets/sass -o src/web/public/styles",
     "test:integration": "node 'src/test/integration/run-test-suite.js'",
     "postinstall": "npm run build",
     "test:compatibility": "mkdir -p build/reports/compatibility && cross-env TESTS=compatibility npm-run-all -c -p --max-parallel 1 compat:win compat:osx compat:mobile compat:tablet",
