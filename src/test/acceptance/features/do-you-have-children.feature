@@ -22,4 +22,4 @@ Feature: Do you have any children who are 3 years old or younger?
   Scenario: Select the Yes option and I am asked to enter my children's dates of birth
     When I say Yes to the do you have children three or younger question
     And I click continue
-    Then I am shown the add your childrens dates of birth page
+    Then I am shown the enter your childrens dates of birth page
