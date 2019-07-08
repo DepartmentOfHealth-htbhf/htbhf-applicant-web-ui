@@ -7,7 +7,7 @@ const { getRowData, getFlattenedRowData } = require('./get')
 const getPreviousPath = sinon.spy()
 const { getLastNavigablePath } = proxyquire('./get', { '../common/get-previous-path': { getPreviousPath } })
 
-test('getLastNavigablePath returns path of last step if last step has not isNavigable function', (t) => {
+test('getLastNavigablePath returns path of last step if last step has no isNavigable function', (t) => {
   const steps = [{ path: '/first' }, { path: '/last' }]
   const session = {}
 
@@ -17,7 +17,7 @@ test('getLastNavigablePath returns path of last step if last step has not isNavi
   t.end()
 })
 
-test('getLastNavigablePath returns path of last step if last step isNavigable return true', (t) => {
+test('returns path of last step if last step\'s isNavigable function returns true', (t) => {
   const steps = [{ path: '/first' }, { path: '/last', isNavigable: () => true }]
   const session = {}
 
@@ -80,11 +80,7 @@ test('getFlattenedRowData returns flattened row data', (t) => {
   const result = getFlattenedRowData(req)(steps)
 
   t.deepEqual(result,
-    [{ keyA: 'myKey1', valueA: 'myValue1', path: 'mypath1' }, { keyB: 'myKey3', valueB: 'myValue3', path: 'mypath1' }, {
-      key2: 'myKey2',
-      value: 'myValue2',
-      path: 'mypath2'
-    }],
+    [{ keyA: 'myKey1', valueA: 'myValue1', path: 'mypath1' }, { keyB: 'myKey3', valueB: 'myValue3', path: 'mypath1' }, { key2: 'myKey2', value: 'myValue2', path: 'mypath2' }],
     'should flatten step content summary')
   t.end()
 })
