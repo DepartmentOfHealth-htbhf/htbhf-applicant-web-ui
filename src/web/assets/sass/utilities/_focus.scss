@@ -1,0 +1,14 @@
+/**
+  * Replicate GOV.UK focus styles
+  *
+  * 1. Reset browser defaults
+  * 2. Emulate GOV.UK focus styles
+  */
+
+.u-htbhf-focus {
+  &:focus {
+    border: none; /* 1 */
+    background-color: $govuk-focus-colour; /* 2 */
+    outline: 3px solid $govuk-focus-colour; /* 2 */
+  }
+}

@@ -1,0 +1,35 @@
+/**
+  * Base styles for creating a button component
+  *
+  * 1. Apply default GOV.UK body styles
+  * 2. Reset browser defaults
+  */
+
+.c-htbhf-button {
+  @extend .govuk-body; /* 1 */
+  background-color: transparent; /* 2 */
+  border: none; /* 2 */
+  text-decoration: underline; /* 2 */
+  padding: 0; /* 2 */
+}
+
+
+
+
+
+/**
+  * Replicate GOV.UK link styles
+  */
+
+.c-htbhf-button--link {
+  color: $govuk-link-colour;
+
+  &:hover {
+    color: $govuk-link-hover-colour;
+    cursor: pointer;
+  }
+
+  &:active {
+    color: $govuk-link-active-colour;
+  }
+}
