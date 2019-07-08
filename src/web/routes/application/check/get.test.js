@@ -1,5 +1,5 @@
 const test = require('tape')
-const { getRowData, getLastStepPath, getFlattenedRowData } = require('./get')
+const { getRowData, getFlattenedRowData } = require('./get')
 
 test('getRowData should return an object combining path with row data', (t) => {
   const step = {
@@ -26,30 +26,6 @@ test('getRowData should return an array of objects combining path with row data'
     [{ key: 'myKey', value: 'myValue', path: 'mypath' }, { key: 'myKey2', value: 'myValue2', path: 'mypath' }],
     'should match expected content for multiple rows'
   )
-  t.end()
-})
-
-test('getLastStepPath returns path of last step', (t) => {
-  const steps = [
-    {
-      path: 'first',
-      next: 'second'
-    },
-    {
-      path: 'last'
-    }
-  ]
-
-  const result = getLastStepPath(steps)
-
-  t.equal(result, 'last')
-  t.end()
-})
-
-test('getLastStepPath returns undefined if steps are an empty array', (t) => {
-  const result = getLastStepPath([])
-
-  t.equal(result, undefined)
   t.end()
 })
 
@@ -89,12 +65,5 @@ test('getFlattenedRowData returns flattened row data with step with empty conten
   t.deepEqual(result,
     [{ key1: 'myKey1', value1: 'myValue1', path: 'mypath1' }],
     'should flatten step with content summary and remove step without content summary')
-  t.end()
-})
-
-test('getLastStepPath throws an error if steps are undefined', (t) => {
-  t.throws(() => getLastStepPath(undefined),
-    /steps should be a non empty array, instead got undefined/,
-    'should throw error if steps are undefined')
   t.end()
 })

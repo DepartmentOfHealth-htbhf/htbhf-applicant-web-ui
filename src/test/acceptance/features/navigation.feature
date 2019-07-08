@@ -60,7 +60,7 @@ Feature: Application process navigation is controlled
       | enter date of birth | check details   |
       | are you pregnant    | confirmation    |
 
-  Scenario Outline: Navigation to previous steps in an unsubmitted application flow is allowed
+  Scenario Outline: Navigation to previous steps (excluding enter code and send code) in an unsubmitted application flow is allowed
     Given I have entered my details up to the check details page
     When I navigate to the <page> page
     Then I am shown the <page> page
@@ -76,7 +76,6 @@ Feature: Application process navigation is controlled
       | card address                          |
       | phone number                          |
       | email address                         |
-      | send code                             |
 
   Scenario: Navigation to I live in Scotland from the check details page is not allowed
     Given I have entered my details up to the check details page
