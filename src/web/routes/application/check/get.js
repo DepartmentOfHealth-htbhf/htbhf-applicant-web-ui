@@ -31,6 +31,17 @@ const getRowData = (req) => (step) => {
   return Array.isArray(result) ? result.map(applyPathToRow) : applyPathToRow(result)
 }
 
+// a step is navigable if it hasn't defined an isNavigable function.
+const stepIsNavigable = (lastStep, session) => !lastStep.hasOwnProperty('isNavigable') || lastStep.isNavigable(session)
+
+const getLastNavigablePath = (steps, req) => {
+  const lastStep = steps[steps.length - 1]
+
+  return stepIsNavigable(lastStep, req.session)
+    ? lastStep.path
+    : getPreviousPath(steps, lastStep, req.session)
+}
+
 const getCheck = (steps) => (req, res) => {
   stateMachine.setState(states.IN_REVIEW, req)
 
@@ -40,7 +51,7 @@ const getCheck = (steps) => (req, res) => {
     claim: req.session.claim,
     ...pageContent({ translate: req.t }),
     checkRowData: getFlattenedRowData(req)(steps),
-    previous: getPreviousPath(steps, steps[steps.length - 1], req.session)
+    previous: getLastNavigablePath(steps, req)
   })
 }
 

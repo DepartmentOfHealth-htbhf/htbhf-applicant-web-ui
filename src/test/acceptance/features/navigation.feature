@@ -60,7 +60,7 @@ Feature: Application process navigation is controlled
       | enter date of birth | check details   |
       | are you pregnant    | confirmation    |
 
-  Scenario Outline: Navigation to previous steps (excluding enter code and send code) in an unsubmitted application flow is allowed
+  Scenario Outline: Navigation to previous navigable steps in an unsubmitted application flow is allowed
     Given I have entered my details up to the check details page
     When I navigate to the <page> page
     Then I am shown the <page> page
