@@ -2,7 +2,7 @@
 applications:
 - name: help-to-buy-healthy-foods((app-suffix))
   memory: 512M
-  command: node src/web
+  command: npm start
   env:
     SESSION_SECRET: '((session_secret))'
     CLAIMANT_SERVICE_URL: http://htbhf-claimant-service((space-suffix)).apps.internal:8080
