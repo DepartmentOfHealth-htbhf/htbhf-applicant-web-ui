@@ -31,6 +31,7 @@ const {
   enterConfirmationCodeAndSubmit
 } = require('./common-steps')
 const { formatDateForDisplayFromDate } = require('../../../web/routes/application/common/formatters')
+const { assertBackLinkPointsToPage } = require('./common-assertions')
 
 When(/^I complete the application with valid details that contains malicious input$/, async function () {
   await enterDoYouLiveInScotlandNoAndSubmit()
@@ -66,6 +67,10 @@ When(/^I choose to change my answer to are you pregnant$/, async function () {
 
 When(/^I choose to change my answer to Do you live in Scotland$/, async function () {
   await pages.check.clickChangeLinkFor('Do you live in Scotland?')
+})
+
+Then(/^The back link on the check details page links to the email address page$/, async function () {
+  await assertBackLinkPointsToPage(pages.emailAddress)
 })
 
 Then(/^the check details page contains all data entered for a pregnant woman$/, async function () {
