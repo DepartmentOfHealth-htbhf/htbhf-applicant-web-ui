@@ -92,6 +92,13 @@ test('validateDateOfBirth() throws an error for a date of birth more than four y
   t.end()
 })
 
+test('validateDateOfBirth() throws an error for a date of birth in the future', (t) => {
+  const dobInFuture = dateAsString({ yearAdjustment: 1 })
+  const result = validateDateOfBirth.bind(null, dobInFuture, { req })
+  t.throws(result, /validation:childDateOfBirthInvalid/, 'throws an error for a date of birth in the future')
+  t.end()
+})
+
 test('validateDateOfBirth() returns true for a valid date less than four years in the past', (t) => {
   const dob = dateAsString({ yearAdjustment: -2 })
   const result = validateDateOfBirth(dob, { req })

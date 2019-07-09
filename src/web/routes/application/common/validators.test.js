@@ -5,7 +5,8 @@ const {
   isDateInPast,
   isDateMoreThanOneMonthAgo,
   isDateMoreThanEightMonthsInTheFuture,
-  isDateMoreThanFourYearsAgo
+  isDateMoreThanFourYearsAgo,
+  isDateInTheFuture
 } = require('./validators')
 
 test('isValidDate', (t) => {
@@ -65,5 +66,17 @@ test('isDateMoreThanFourYearsAgo', (t) => {
   t.equal(isDateMoreThanFourYearsAgo(''), true, 'blank string should not be validated')
   t.equal(isDateMoreThanFourYearsAgo(null), true, 'null string should not be validated')
   t.equal(isDateMoreThanFourYearsAgo('12-12-1999'), true, 'invalid format string "12-12-1999" should not be validated')
+  t.end()
+})
+
+test('isDateInTheFuture', (t) => {
+  const futureDate = dateAsString({ monthAdjustment: 1 })
+  const pastDate = dateAsString({ monthAdjustment: -1 })
+
+  t.equal(isDateInTheFuture('3000-12-12'), true, '"3000-12-12" is a date in the future')
+  t.equal(isDateInTheFuture('2000-12-12'), false, '"2000-12-12" is a date in the past')
+  t.equal(isDateInTheFuture(futureDate), true, `"${futureDate}" is a date in the future`)
+  t.equal(isDateInTheFuture(pastDate), false, `"${pastDate}" is a date in the past`)
+  t.equal(isDateInTheFuture(null), true, 'null should not be validated')
   t.end()
 })

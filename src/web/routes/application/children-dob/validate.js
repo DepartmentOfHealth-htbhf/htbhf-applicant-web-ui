@@ -1,7 +1,7 @@
 const { check } = require('express-validator')
 const { compose, keys, any, startsWith, pickBy } = require('ramda')
 const { toDateString } = require('../common/formatters')
-const { isValidDate, isDateMoreThanFourYearsAgo } = require('../common/validators')
+const { isValidDate, isDateMoreThanFourYearsAgo, isDateInTheFuture } = require('../common/validators')
 const { translateValidationMessage } = require('../common/translate-validation-message')
 
 const FIELD_PREFIX = 'childDob-'
@@ -53,6 +53,10 @@ const validateDateOfBirth = (dob, { req }) => {
 
   if (isDateMoreThanFourYearsAgo(dob)) {
     throw new Error(req.t('validation:childDateOfBirthFourYearsOrOlder'))
+  }
+
+  if (isDateInTheFuture(dob)) {
+    throw new Error(req.t('validation:childDateOfBirthInvalid'))
   }
 
   return true
