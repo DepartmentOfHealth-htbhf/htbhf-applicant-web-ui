@@ -24,4 +24,3 @@ Feature: Enter National Insurance number
       | ab123456Q          |
       | QQ123456CQQ123456C |
       | QQ123456CQtest     |
-      | testQQ123456CQ     |
