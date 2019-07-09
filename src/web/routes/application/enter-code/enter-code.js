@@ -1,3 +1,6 @@
+const { validationResult } = require('express-validator')
+
+const { CONFIRMATION_CODE_ENTERED_SESSION_PROPERTY } = require('../common/constants')
 const { validate } = require('./validate')
 const { TEXT, EMAIL } = require('../common/constants')
 
@@ -28,13 +31,26 @@ const behaviourForGet = (req, res, next) => {
   next()
 }
 
+const behaviourForPost = (req, reqs, next) => {
+  if (validationResult(req).isEmpty()) {
+    req.session[CONFIRMATION_CODE_ENTERED_SESSION_PROPERTY] = true
+  }
+
+  next()
+}
+
+// do not let the user enter a confirmation code if the code has already been entered
+const isNavigable = (session) => session[CONFIRMATION_CODE_ENTERED_SESSION_PROPERTY] !== true
+
 const enterCode = {
   path: '/enter-code',
   next: () => '/check',
   template: 'enter-code',
   pageContent,
   behaviourForGet,
-  validate
+  validate,
+  isNavigable,
+  behaviourForPost
 }
 
 module.exports = {

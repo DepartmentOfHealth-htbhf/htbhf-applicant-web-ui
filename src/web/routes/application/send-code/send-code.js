@@ -1,6 +1,6 @@
-const { sendConfirmationCode } = require('./notify')
 const { validationResult } = require('express-validator')
-
+const { sendConfirmationCode } = require('./notify')
+const { CONFIRMATION_CODE_ENTERED_SESSION_PROPERTY } = require('../common/constants')
 const { CONFIRMATION_CODE_SESSION_PROPERTY } = require('../common/constants')
 const { validate } = require('./validate')
 
@@ -25,13 +25,17 @@ const behaviourForPost = (req, res, next) => {
   next()
 }
 
+// do not let the user select a confirmation code channel if the code has already been entered successfully
+const isNavigable = (session) => session[CONFIRMATION_CODE_ENTERED_SESSION_PROPERTY] !== true
+
 const sendCode = {
   path: '/send-code',
   next: () => '/enter-code',
   template: 'send-code',
   pageContent,
   validate,
-  behaviourForPost
+  behaviourForPost,
+  isNavigable
 }
 
 module.exports = {
