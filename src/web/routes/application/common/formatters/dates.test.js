@@ -57,6 +57,7 @@ test('formatDateForDisplayFromDate', (t) => {
 test('getExampleDate', (t) => {
   const date = new Date(2000, 1, 1)
   t.equal(getExampleDate({ fromDate: date }), `28 1 2000`, 'formats the example date correctly when setting from date')
-  t.equal(getExampleDate({ fromDate: date, monthOffset: 2, yearOffset: 2 }), `28 3 2002`, 'formats the example date correctly when setting month and year offsets')
+  t.equal(getExampleDate({ fromDate: date, monthOffset: 2, yearOffset: 2 }), '28 3 2002', 'formats the example date correctly when setting positive month and year offsets')
+  t.equal(getExampleDate({ fromDate: date, monthOffset: -2, yearOffset: -2 }), '28 11 1997', 'formats the example date correctly when setting negative month and year offsets')
   t.end()
 })

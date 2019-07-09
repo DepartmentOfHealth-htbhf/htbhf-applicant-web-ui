@@ -2,6 +2,7 @@ const { pickBy, path } = require('ramda')
 const { countKeysContainingString } = require('./count-keys')
 const { YES } = require('../common/constants')
 const { validate } = require('./validate')
+const { getExampleDate } = require('../common/formatters')
 
 const PATH = '/children-dob'
 const DAY_FIELD_SUFFIX = '-day'
@@ -9,7 +10,7 @@ const DAY_FIELD_SUFFIX = '-day'
 const pageContent = ({ translate }) => ({
   title: translate('childrenDob.title'),
   heading: translate('childrenDob.heading'),
-  hint: translate('childrenDob.hint'),
+  hint: translate('childrenDob.hint', { exampleDate: getExampleDate({ yearOffset: -2 }) }),
   buttonText: translate('buttons:continue'),
   dayLabel: translate('childrenDob.dayLabel'),
   monthLabel: translate('childrenDob.monthLabel'),
