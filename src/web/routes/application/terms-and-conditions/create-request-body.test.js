@@ -1,5 +1,5 @@
 const test = require('tape')
-const { createRequestBody } = require('./create-request-body')
+const { createRequestBody, createChildrenDobArray } = require('./create-request-body')
 const APP_VERSION = 'myAppVersion'
 
 const config = {
@@ -25,32 +25,67 @@ const expectedFingerprint = {
   'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8'
 }
 
-test('create claim body', (t) => {
-  const claim = {
-    _csrf: 'cmm9LYCZ-NU6gvQlx6BVmzJ16i0Q0rutqHXE',
-    firstName: 'James',
-    lastName: 'The third',
-    nino: 'qq123456c',
-    'dateOfBirth-day': '01',
-    'dateOfBirth-month': '01',
-    'dateOfBirth-year': '1920',
-    dateOfBirth: '1920-01-01',
-    areYouPregnant: 'yes',
-    'expectedDeliveryDate-day': '01',
-    'expectedDeliveryDate-month': '03',
-    'expectedDeliveryDate-year': '2019',
-    addressLine1: 'Flat b',
-    addressLine2: '221 Baker street',
-    townOrCity: 'London',
-    postcode: 'aa1 1ab',
-    phoneNumber: '07700 900645',
-    formattedPhoneNumber: '+447700900645',
-    emailAddress: 'test@email.com'
-  }
+const CLAIM_WITHOUT_EXPECTED_DELIVERY_DATE = {
+  _csrf: 'cmm9LYCZ-NU6gvQlx6BVmzJ16i0Q0rutqHXE',
+  firstName: 'James',
+  lastName: 'The third',
+  nino: 'qq123456c',
+  'dateOfBirth-day': '01',
+  'dateOfBirth-month': '01',
+  'dateOfBirth-year': '1920',
+  dateOfBirth: '1920-01-01',
+  areYouPregnant: 'no',
+  addressLine1: 'Flat b',
+  addressLine2: '221 Baker street',
+  townOrCity: 'London',
+  postcode: 'aa1 1ab',
+  phoneNumber: '07700 900645',
+  formattedPhoneNumber: '+447700900645',
+  emailAddress: 'test@email.com'
+}
 
+const CLAIM_WITH_EXPECTED_DELIVERY_DATE = {
+  _csrf: 'cmm9LYCZ-NU6gvQlx6BVmzJ16i0Q0rutqHXE',
+  firstName: 'James',
+  lastName: 'The third',
+  nino: 'qq123456c',
+  'dateOfBirth-day': '01',
+  'dateOfBirth-month': '01',
+  'dateOfBirth-year': '1920',
+  dateOfBirth: '1920-01-01',
+  areYouPregnant: 'yes',
+  'expectedDeliveryDate-day': '01',
+  'expectedDeliveryDate-month': '03',
+  'expectedDeliveryDate-year': '2019',
+  addressLine1: 'Flat b',
+  addressLine2: '221 Baker street',
+  townOrCity: 'London',
+  postcode: 'aa1 1ab',
+  phoneNumber: '07700 900645',
+  formattedPhoneNumber: '+447700900645',
+  emailAddress: 'test@email.com'
+}
+
+const CHILDREN = {
+  'childName-1': 'First',
+  'childDob-1-day': '1',
+  'childDob-1-month': '1',
+  'childDob-1-year': '2018',
+  'childName-2': 'Second',
+  'childDob-2-day': '2',
+  'childDob-2-month': '2',
+  'childDob-2-year': '2017',
+  'childDob-1': '2018-01-01',
+  'childDob-2': '2017-02-02',
+  'inputCount': 2,
+  'childCount': 2
+}
+
+test('create claim body', (t) => {
   const request = {
     session: {
-      claim
+      claim: CLAIM_WITH_EXPECTED_DELIVERY_DATE,
+      children: CHILDREN
     },
     headers: requestHeaders
   }
@@ -69,7 +104,11 @@ test('create claim body', (t) => {
       },
       expectedDeliveryDate: '2019-03-01',
       phoneNumber: '+447700900645', // assert that the phone number posted is the formatted version
-      emailAddress: 'test@email.com'
+      emailAddress: 'test@email.com',
+      childrenDob: [
+        '2018-01-01',
+        '2017-02-02'
+      ]
     },
     deviceFingerprint: expectedFingerprint,
     webUIVersion: APP_VERSION
@@ -82,31 +121,9 @@ test('create claim body', (t) => {
 })
 
 test('create claim body without expectedDeliveryDate when not pregnant', (t) => {
-  const claim = {
-    _csrf: 'cmm9LYCZ-NU6gvQlx6BVmzJ16i0Q0rutqHXE',
-    firstName: 'James',
-    lastName: 'The third',
-    nino: 'qq123456c',
-    'dateOfBirth-day': '01',
-    'dateOfBirth-month': '01',
-    'dateOfBirth-year': '1920',
-    dateOfBirth: '1920-01-01',
-    areYouPregnant: 'no',
-    'expectedDeliveryDate-day': '01',
-    'expectedDeliveryDate-month': '03',
-    'expectedDeliveryDate-year': '2019',
-    addressLine1: 'Flat b',
-    addressLine2: '221 Baker street',
-    townOrCity: 'London',
-    postcode: 'aa1 1ab',
-    phoneNumber: '07700 900645',
-    formattedPhoneNumber: '+447700900645',
-    emailAddress: 'test@email.com'
-  }
-
   const request = {
     session: {
-      claim
+      claim: CLAIM_WITHOUT_EXPECTED_DELIVERY_DATE
     },
     headers: requestHeaders
   }
@@ -125,7 +142,8 @@ test('create claim body without expectedDeliveryDate when not pregnant', (t) => 
       },
       expectedDeliveryDate: null,
       phoneNumber: '+447700900645', // assert that the phone number posted is the formatted version
-      emailAddress: 'test@email.com'
+      emailAddress: 'test@email.com',
+      childrenDob: null
     },
     deviceFingerprint: expectedFingerprint,
     webUIVersion: APP_VERSION
@@ -134,5 +152,23 @@ test('create claim body without expectedDeliveryDate when not pregnant', (t) => 
   const bodyToPost = createRequestBody(config, request)
 
   t.deepEqual(bodyToPost, expectedBody)
+  t.end()
+})
+
+test('createChildrenDob extracts childrens dates of birth', (t) => {
+  const expectedChildren = ['2018-01-01', '2017-02-02']
+
+  const childrenList = createChildrenDobArray(CHILDREN)
+
+  t.deepEqual(childrenList, expectedChildren)
+  t.end()
+})
+
+test('createChildrenDob returns null with undefined children object provided', (t) => {
+  let children
+
+  const childrenList = createChildrenDobArray(children)
+
+  t.equals(childrenList, null)
   t.end()
 })
