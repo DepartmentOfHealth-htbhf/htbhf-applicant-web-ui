@@ -60,9 +60,10 @@ const runEndToEndTest = async (results) => {
     const childDob = dateLastYear()
     await postFormData(CHILDREN_DOB_URL, {
       ...formData,
-      'childrenDob-day': childDob.getDate(),
-      'childrenDob-month': childDob.getMonth() + 1,
-      'childrenDob-year': childDob.getFullYear()
+      'childName-1': 'Bart',
+      'childDob-1-day': childDob.getDate(),
+      'childDob-1-month': childDob.getMonth() + 1,
+      'childDob-1-year': childDob.getFullYear()
     }, requestCookie)
 
     results.push(await pa11y(ARE_YOU_PREGNANT_URL))
