@@ -37,5 +37,4 @@ Feature: Check details
 
   Scenario: Clicking on the back link takes me to the last navigable page
     Given I have entered my details up to the check details page
-    When I click on the back link
-    Then I am shown the email address page
+    Then The back link on the check details page links to the email address page
