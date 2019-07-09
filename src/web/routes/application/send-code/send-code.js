@@ -14,12 +14,16 @@ const pageContent = ({ translate }) => ({
   explanation: translate('sendCode.explanation')
 })
 
+function randomSixDigitInteger () {
+  const number = Math.floor((Math.random() * (999999)) + 1)
+  return number.toString().padStart(6, '0')
+}
+
 const behaviourForPost = (req, res, next) => {
   if (validationResult(req).isEmpty()) {
-    // TODO DW HTBHF-1735 Randomly generate the code
-    const confirmationCode = '123456'
+    const confirmationCode = randomSixDigitInteger()
     sendConfirmationCode(req.session.claim, req.body.channelForCode, confirmationCode)
-    req.session[CONFIRMATION_CODE_SESSION_PROPERTY] = '123456'
+    req.session[CONFIRMATION_CODE_SESSION_PROPERTY] = confirmationCode
   }
 
   next()
@@ -39,5 +43,6 @@ const sendCode = {
 }
 
 module.exports = {
-  sendCode
+  sendCode,
+  randomSixDigitInteger
 }
