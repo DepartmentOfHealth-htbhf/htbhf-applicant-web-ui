@@ -175,3 +175,11 @@ When(/^I click the Cookies link$/, async function () {
 When(/^I navigate to the (.*) page$/, async function (page) {
   await navigateToPage(page)
 })
+
+When(/^I go directly to the send code page$/, async function () {
+  await pages.sendCode.openDirect(pages.url)
+})
+
+When(/^I go directly to the enter code page$/, async function () {
+  await pages.enterCode.openDirect(pages.url)
+})
