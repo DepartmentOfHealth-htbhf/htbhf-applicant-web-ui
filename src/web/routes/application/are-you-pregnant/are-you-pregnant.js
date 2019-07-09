@@ -1,13 +1,6 @@
 const { validate } = require('./validate')
 const { YES } = require('../common/constants')
-const { formatDateForDisplay } = require('../common/formatters')
-
-const exampleDate = (fromDate = new Date()) => {
-  const future = new Date(fromDate)
-  future.setDate(28)
-  future.setMonth(future.getMonth() + 5)
-  return `${future.getDate()} ${future.getMonth() + 1} ${future.getFullYear()}`
-}
+const { formatDateForDisplay, getExampleDate } = require('../common/formatters')
 
 const contentSummary = (req) => {
   const pregnantSummary = {
@@ -36,7 +29,7 @@ const pageContent = ({ translate }) => ({
   yes: translate('yes'),
   no: translate('no'),
   expectedDeliveryDateText: translate('areYouPregnant.expectedDeliveryDateText'),
-  expectedDeliveryDateHint: translate('areYouPregnant.expectedDeliveryDateHint', { exampleDate: exampleDate() }),
+  expectedDeliveryDateHint: translate('areYouPregnant.expectedDeliveryDateHint', { exampleDate: getExampleDate({ monthOffset: 5 }) }),
   explanation: translate('areYouPregnant.explanation')
 })
 
@@ -51,6 +44,5 @@ const areYouPregnant = {
 
 module.exports = {
   areYouPregnant,
-  exampleDate,
   contentSummary
 }

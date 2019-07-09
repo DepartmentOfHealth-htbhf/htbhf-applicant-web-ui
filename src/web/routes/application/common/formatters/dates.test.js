@@ -1,5 +1,5 @@
 const test = require('tape')
-const { toDateString, dateAsString, formatDateForDisplay, formatDateForDisplayFromDate } = require('./dates')
+const { toDateString, dateAsString, formatDateForDisplay, formatDateForDisplayFromDate, getExampleDate } = require('./dates')
 
 test('toDateString() should concatenate digits with hyphens', (t) => {
   const result = toDateString('31', '13', '1980')
@@ -51,5 +51,12 @@ test('formatDateForDisplayFromDate', (t) => {
   t.equal(formatDateForDisplayFromDate(new Date(1990, 0, 30)), '30 January 1990', 'should format date correctly')
   t.throws(formatDateForDisplayFromDate.bind(null, { date: undefined }), /A date must be provided/, 'no date provided')
   t.throws(formatDateForDisplayFromDate.bind(null, { date: [] }), /A date must be provided/, 'no date provided')
+  t.end()
+})
+
+test('getExampleDate', (t) => {
+  const date = new Date(2000, 1, 1)
+  t.equal(getExampleDate({ fromDate: date }), `28 1 2000`, 'formats the example date correctly when setting from date')
+  t.equal(getExampleDate({ fromDate: date, monthOffset: 2, yearOffset: 2 }), `28 3 2002`, 'formats the example date correctly when setting month and year offsets')
   t.end()
 })
