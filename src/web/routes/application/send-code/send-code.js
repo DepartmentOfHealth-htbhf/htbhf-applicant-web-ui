@@ -43,5 +43,6 @@ const sendCode = {
 }
 
 module.exports = {
-  sendCode
+  sendCode,
+  randomSixDigitInteger
 }
