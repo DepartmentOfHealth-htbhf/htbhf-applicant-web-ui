@@ -34,3 +34,7 @@ Feature: Check details
     Given I am on the first page of the application
     When I complete the application with valid details that contains malicious input
     Then I am shown the check details page
+
+  Scenario: Clicking on the back link takes me to the last navigable page
+    Given I have entered my details up to the check details page
+    Then The back link on the check details page links to the email address page

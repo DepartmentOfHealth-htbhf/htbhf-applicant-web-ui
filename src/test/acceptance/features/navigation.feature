@@ -54,3 +54,13 @@ Feature: Application process navigation is controlled
     Given I have entered my details up to the check details page
     When I navigate to the I live in Scotland page
     Then I am shown the terms and conditions page
+
+  Scenario: Navigation to send code is not allowed after the confirmation code has been sent
+    Given I have entered my details up to the check details page
+    When I go directly to the send code page
+    Then I am shown the terms and conditions page
+
+  Scenario: Navigation to enter code is not allowed after the confirmation code has been sent
+    Given I have entered my details up to the check details page
+    When I go directly to the enter code page
+    Then I am shown the terms and conditions page
