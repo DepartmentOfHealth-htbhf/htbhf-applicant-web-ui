@@ -1,14 +1,7 @@
-const { pipe, map, filter, flatten, path, isNil } = require('ramda')
+const { pipe, map, filter, flatten, isNil } = require('ramda')
 const { notIsNil } = require('../../../../common/predicates')
 const { stateMachine, states, actions } = require('../common/state-machine')
-
-const getLastStepPath = (steps) => {
-  if (steps) {
-    return path(['path'], steps[steps.length - 1])
-  } else {
-    throw new Error(`steps should be a non empty array, instead got ${steps}`)
-  }
-}
+const { getPreviousPath } = require('../common/get-previous-path')
 
 const pageContent = ({ translate }) => ({
   title: translate('check.title'),
@@ -38,6 +31,17 @@ const getRowData = (req) => (step) => {
   return Array.isArray(result) ? result.map(applyPathToRow) : applyPathToRow(result)
 }
 
+// a step is navigable if it hasn't defined an isNavigable function.
+const stepIsNavigable = (step, session) => !step.hasOwnProperty('isNavigable') || step.isNavigable(session)
+
+const getLastNavigablePath = (steps, req) => {
+  const lastStep = steps[steps.length - 1]
+
+  return stepIsNavigable(lastStep, req.session)
+    ? lastStep.path
+    : getPreviousPath(steps, lastStep, req.session)
+}
+
 const getCheck = (steps) => (req, res) => {
   stateMachine.setState(states.IN_REVIEW, req)
 
@@ -47,13 +51,13 @@ const getCheck = (steps) => (req, res) => {
     claim: req.session.claim,
     ...pageContent({ translate: req.t }),
     checkRowData: getFlattenedRowData(req)(steps),
-    previous: getLastStepPath(steps)
+    previous: getLastNavigablePath(steps, req)
   })
 }
 
 module.exports = {
   getCheck,
   getRowData,
-  getLastStepPath,
-  getFlattenedRowData
+  getFlattenedRowData,
+  getLastNavigablePath
 }

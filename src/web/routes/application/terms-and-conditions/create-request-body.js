@@ -12,7 +12,24 @@ const createExpectedDeliveryDate = (claim) => {
   return null
 }
 
-const createClaim = (claim) => ({
+const createChildrenDobArray = (children) => {
+  if (typeof children === 'undefined') {
+    return null
+  }
+
+  let childrenArray = []
+  for (let i = 1; i <= children.childCount; i++) {
+    const childDobKey = `childDob-${i}`
+    const childDob = children[childDobKey]
+    if (typeof childDob === 'undefined') {
+      throw new Error(`No child date of birth stored in session for ${childDobKey}`)
+    }
+    childrenArray.push(childDob)
+  }
+  return childrenArray
+}
+
+const createClaim = (claim, children) => ({
   firstName: claim.firstName,
   lastName: claim.lastName,
   nino: claim.nino,
@@ -25,7 +42,8 @@ const createClaim = (claim) => ({
   },
   expectedDeliveryDate: createExpectedDeliveryDate(claim),
   phoneNumber: claim.formattedPhoneNumber,
-  emailAddress: claim.emailAddress
+  emailAddress: claim.emailAddress,
+  childrenDob: createChildrenDobArray(children)
 })
 
 const createDeviceFingerprint = (headers) => ({
@@ -37,11 +55,12 @@ const createDeviceFingerprint = (headers) => ({
 })
 
 const createRequestBody = (config, req) => ({
-  claimant: createClaim(req.session.claim),
+  claimant: createClaim(req.session.claim, req.session.children),
   deviceFingerprint: createDeviceFingerprint(req.headers),
   webUIVersion: config.environment.APP_VERSION
 })
 
 module.exports = {
-  createRequestBody
+  createRequestBody,
+  createChildrenDobArray
 }
