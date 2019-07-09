@@ -175,3 +175,11 @@ When(/^I click the Cookies link$/, async function () {
 When(/^I navigate to the (.*) page$/, async function (page) {
   await navigateToPage(page)
 })
+
+When(/^I go directly to the send code page$/, async function () {
+  await pages.driver.get(`${pages.url}/send-code`)
+})
+
+When(/^I go directly to the enter code page$/, async function () {
+  await pages.driver.get(`${pages.url}/enter-code`)
+})

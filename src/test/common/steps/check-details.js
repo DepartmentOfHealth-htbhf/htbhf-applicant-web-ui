@@ -68,6 +68,11 @@ When(/^I choose to change my answer to Do you live in Scotland$/, async function
   await pages.check.clickChangeLinkFor('Do you live in Scotland?')
 })
 
+When(/^I click on the back link$/, async function () {
+  const backLink = await pages.check.getBackLink()
+  await backLink.click()
+})
+
 Then(/^the check details page contains all data entered for a pregnant woman$/, async function () {
   const tableContents = await pages.check.getCheckDetailsTableContents()
   assertNameShown(tableContents)
