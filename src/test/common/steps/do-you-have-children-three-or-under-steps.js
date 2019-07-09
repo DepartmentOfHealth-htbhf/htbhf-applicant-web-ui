@@ -31,13 +31,13 @@ Then(/^I am informed that I need to select an option for do you have children th
   await assertFieldErrorAndLinkTextPresentAndCorrect(
     pages.doYouHaveChildrenThreeOrYounger.getFieldErrorId(),
     pages.doYouHaveChildrenThreeOrYounger.getErrorLinkCss(),
-    'Select yes if you have any children who are three years old or younger')
+    'Select yes if you have children who are three years old or younger')
 })
 
 Then(/^Yes and No options are displayed on the do you have children three or younger page$/, async function () {
   await assertYesNoOptionsAreDisplayed(pages.doYouHaveChildrenThreeOrYounger)
 })
 
-Then(/^The back link points to the Do you have any children who are three years old or younger page$/, async function () {
+Then(/^The back link points to the Do you have children who are three years old or younger page$/, async function () {
   await assertBackLinkPointsToPage(pages.doYouHaveChildrenThreeOrYounger)
 })

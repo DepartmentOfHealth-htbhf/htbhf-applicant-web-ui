@@ -6,12 +6,12 @@ const DO_YOU_HAVE_CHILDREN_THREE_OR_UNDER_ERROR_LINK_CSS = 'a[href="#do-you-have
 const DO_YOU_HAVE_CHILDREN_THREE_OR_UNDER_FIELD_ERROR_ID = 'doYouHaveChildrenThreeOrYounger-error'
 
 const PAGE_TITLES = {
-  en: 'GOV.UK - Do you have any children who are three years old or younger?',
+  en: 'GOV.UK - Do you have children who are three years old or younger?',
   cy: 'GOV.UK - Urna condimentum mattis?'
 }
 
 /**
- * Page object for DoYouHaveChildrenThreeOrYounger page where the claimant enters whether they have any children three years old or younger or not.
+ * Page object for Do you have children three or younger page.
  */
 class DoYouHaveChildrenThreeOrYounger extends SubmittablePageWithRadioButtons {
   async waitForPageLoad (lang = 'en') {
