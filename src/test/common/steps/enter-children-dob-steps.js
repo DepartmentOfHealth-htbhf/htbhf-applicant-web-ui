@@ -39,6 +39,10 @@ When(/^I select to add another child/, async function () {
   await pages.enterChildrenDOB.clickAddAnotherChild()
 })
 
+When(/^I enter a future date as my child's date of birth/, async function () {
+  await submitDateOfBirthInFuture()
+})
+
 Then(/^I am shown the enter your childrens dates of birth page$/, async function () {
   await pages.enterChildrenDOB.waitForPageLoad()
 })
@@ -97,6 +101,17 @@ async function submitTwoSetsOfChildren3OrUnderDetails (firstChildName = 'Joe', s
     await pages.enterChildrenDOB.submitForm()
   } catch (error) {
     assert.fail(`Unexpected error caught trying to enter two sets of children details and submit the page - ${error}`)
+  }
+}
+
+async function submitDateOfBirthInFuture () {
+  try {
+    const dateInFuture = new Date()
+    dateInFuture.setFullYear(dateInFuture.getFullYear() + 5)
+    await pages.enterChildrenDOB.enterChild3OrUnderDateOfBirth(dateInFuture)
+    await pages.enterChildrenDOB.submitForm()
+  } catch (error) {
+    assert.fail(`Unexpected error caught trying to enter future date of birth and submit the page - ${error}`)
   }
 }
 

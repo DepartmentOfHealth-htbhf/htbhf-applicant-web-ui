@@ -36,6 +36,12 @@ Feature: Enter your children’s dates of birth
     And I click continue
     Then I am informed that I need to enter the date of birth for the first child
 
+  Scenario: Future date entered for single child
+    Given I have entered my details up to the enter your childrens dates of birth page
+    When I enter a future date as my child's date of birth
+    And I click continue
+    Then I am informed that I need to enter the date of birth for the first child
+
   Scenario: Invalid dates entered for two children
     Given I have entered my details up to the enter your childrens dates of birth page
     When I select to add another child
