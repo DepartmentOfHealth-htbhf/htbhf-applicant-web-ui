@@ -32,7 +32,6 @@
 
     {% endcall %}
 
-    {# TODO DW HTBHF-1712 update link to send new confirmationCode  #}
-    <p class="govuk-body-m"><a href="#">{{ requestNewCode }}</a> {{ ifItDoesNotArrive }}</p>
+    <p class="govuk-body-m"><a href="send-code">{{ requestNewCode }}</a> {{ ifItDoesNotArrive }}</p>
 
 {% endblock %}

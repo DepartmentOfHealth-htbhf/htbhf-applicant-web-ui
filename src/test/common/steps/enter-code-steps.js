@@ -1,11 +1,11 @@
 const { When, Then } = require('cucumber')
 
 const pages = require('./pages')
+const { assertBackLinkPointsToPage } = require('./common-assertions')
 const { enterConfirmationCodeAndSubmit } = require('./common-steps')
 const { assertFieldErrorAndLinkTextPresentAndCorrect } = require('./common-assertions')
 
 When(/^I enter my confirmation code$/, async function () {
-  // TODO DW HTBHF-1702 enter the code that was generated for this session
   await enterConfirmationCodeAndSubmit()
 })
 
@@ -22,4 +22,8 @@ Then(/^I am informed that I must enter in the code that was sent to me$/, async 
     pages.enterCode.getConfirmationCodeFieldErrorId(),
     pages.enterCode.getConfirmationCodeLinkErrorCss(),
     'Enter the 6 digit code we sent you')
+})
+
+Then(/^The back link points to the send code page$/, async function () {
+  await assertBackLinkPointsToPage(pages.sendCode)
 })
