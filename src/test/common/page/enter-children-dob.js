@@ -37,11 +37,11 @@ class EnterChildrenDOB extends SubmittablePage {
 
   async enterChild3OrUnderDetails (name = `Child${this.childIndex}`, dayIncrement = 0) {
     await this.enterChildName(name)
-    await this.enterChild3OrUnderDateOfBirth(dayIncrement)
+    const dateOfBirth = dateLastYear(dayIncrement)
+    await this.enterChild3OrUnderDateOfBirth(dateOfBirth)
     this.childIndex++
   }
-  async enterChild3OrUnderDateOfBirth (dayIncrement = 0) {
-    const dateOfBirth = dateLastYear(dayIncrement)
+  async enterChild3OrUnderDateOfBirth (dateOfBirth) {
     await this.enterDay(dateOfBirth.getDate())
     await this.enterMonth(dateOfBirth.getMonth() + 1)
     await this.enterYear(dateOfBirth.getFullYear())

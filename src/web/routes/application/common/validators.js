@@ -31,6 +31,13 @@ const isDateMoreThanEightMonthsInTheFuture = (dateString) => {
   return true
 }
 
+const isDateInTheFuture = (dateString) => {
+  if (isValidDate(dateString)) {
+    return validator.isAfter(dateString, dateAsString())
+  }
+  return true
+}
+
 const validateIsYesOrNo = (fieldName, validationMessage) =>
   check(fieldName).isIn([YES, NO]).withMessage(translateValidationMessage(validationMessage))
 
@@ -47,5 +54,6 @@ module.exports = {
   isDateMoreThanOneMonthAgo,
   isDateMoreThanEightMonthsInTheFuture,
   validateIsYesOrNo,
-  isDateMoreThanFourYearsAgo
+  isDateMoreThanFourYearsAgo,
+  isDateInTheFuture
 }
