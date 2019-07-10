@@ -18,7 +18,9 @@ const pageContent = ({ translate }) => ({
   explanation: translate('childrenDob.explanation'),
   nameLabel: translate('childrenDob.nameLabel'),
   dateOfBirth: translate('childrenDob.dateOfBirth'),
-  aboutYourChild: translate('childrenDob.aboutYourChild')
+  aboutYourChild: translate('childrenDob.aboutYourChild'),
+  addChild: translate('buttons:addChild'),
+  removeChild: translate('buttons:removeChild')
 })
 
 const addActionRequested = body => body.hasOwnProperty('add')
