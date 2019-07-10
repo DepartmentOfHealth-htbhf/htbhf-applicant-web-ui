@@ -19,6 +19,12 @@ class SubmittablePageWithRadioButtons extends SubmittablePage {
     await label.click()
   }
 
+  async getRadioButtonHint (option) {
+    const radioButton = await this.getRadioButton(option)
+    const div = await radioButton.findElement(webdriver.By.xpath('..'))
+    return div.findElement(webdriver.By.className('govuk-radios__hint'))
+  }
+
   async getRadioButton (option) {
     return this.findByCSS(`input[value="${option}"]`)
   }

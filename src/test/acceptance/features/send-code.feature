@@ -8,6 +8,8 @@ Feature: We're going to send you a code
 
   Scenario: Text and Email are displayed
     Then Text and Email options are displayed on the send code page
+    And The change-text link points to the phone number page
+    And The change-email link points to the email address page
 
   Scenario: Do not select an option
     When I do not select an option
