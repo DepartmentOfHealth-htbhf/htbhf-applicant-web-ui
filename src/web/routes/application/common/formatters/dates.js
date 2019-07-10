@@ -1,6 +1,8 @@
 const { isNil } = require('ramda')
 const moment = require('moment')
+
 const DATE_FORMAT = 'D MMMM YYYY'
+const EXAMPLE_DATE_FORMAT = 'D M YYYY'
 
 const nilToString = (value) => isNil(value) ? '' : value.toString()
 
@@ -42,9 +44,13 @@ const formatDateForDisplayFromDate = (date) => {
   return moment(date).format(DATE_FORMAT)
 }
 
+const getExampleDate = ({ fromDate = new Date(), monthOffset = 0, yearOffset = 0 } = {}) =>
+  moment(fromDate).set('date', 28).add(monthOffset - 1, 'months').add(yearOffset, 'years').format(EXAMPLE_DATE_FORMAT)
+
 module.exports = {
   toDateString,
   dateAsString,
   formatDateForDisplay,
-  formatDateForDisplayFromDate
+  formatDateForDisplayFromDate,
+  getExampleDate
 }
