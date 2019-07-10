@@ -1,7 +1,7 @@
 const { When, Then } = require('cucumber')
+const { expect } = require('chai')
 
 const pages = require('./pages')
-const { assertBackLinkPointsToPage } = require('./common-assertions')
 const { enterConfirmationCodeAndSubmit } = require('./common-steps')
 const { assertFieldErrorAndLinkTextPresentAndCorrect } = require('./common-assertions')
 
@@ -24,6 +24,8 @@ Then(/^I am informed that I must enter in the code that was sent to me$/, async 
     'Enter the 6 digit code we sent you')
 })
 
-Then(/^The back link points to the send code page$/, async function () {
-  await assertBackLinkPointsToPage(pages.sendCode)
+Then(/^The request a new code link points to the send code page$/, async function () {
+  const requestNewCodeLink = await pages.enterCode.getRequestNewCodeLink()
+  const requestNewCodeLinkHref = await requestNewCodeLink.getAttribute('href')
+  expect(requestNewCodeLinkHref).to.be.equal(`${pages.url}/send-code`)
 })

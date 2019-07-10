@@ -10,7 +10,7 @@ const pageContent = ({ translate }) => ({
   codeLabel: translate('enterCode.codeLabel'),
   weJustSentASixDigitCodeTo: translate('enterCode.weJustSentASixDigitCodeTo'),
   itMayTakeAFewMinutesToArrive: translate('enterCode.itMayTakeAFewMinutesToArrive'),
-  requestNewCode: translate('enterCode.requestNewCode'),
+  requestANewCode: translate('enterCode.requestANewCode'),
   ifItDoesNotArrive: translate('enterCode.ifItDoesNotArrive'),
   buttonText: translate('buttons:continue')
 })

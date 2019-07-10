@@ -42,6 +42,10 @@ class EnterCode extends SubmittablePage {
   getConfirmationCodeLinkErrorCss () {
     return CONFIRMATION_CODE_ERROR_LINK_CSS
   }
+
+  getRequestNewCodeLink () {
+    return this.findByLinkText('Request a new code')
+  }
 }
 
 module.exports = EnterCode
