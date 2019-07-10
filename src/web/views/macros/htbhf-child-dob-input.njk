@@ -1,6 +1,7 @@
 {% from "fieldset/macro.njk" import govukFieldset %}
 {% from "macros/htbhf-date-input.njk" import htbhfDateInput %}
 {% from "input/macro.njk" import govukInput %}
+{% from "button/macro.njk" import govukButton %}
 
 {#
   htbhfChildDobInput() contains a text input for a child's name and a htbhf-date-input for
@@ -11,7 +12,7 @@
 
   {% call govukFieldset({
       legend: {
-        text: params.aboutYourChild,
+        text: params.text.legend,
         classes: "govuk-fieldset__legend--m"
       }
    }) %}
@@ -37,9 +38,22 @@
       text: params.hint
     },
     legend: {
-      text: params.dateOfBirth,
+      text: params.text.dateLegend,
       classes: "govuk-fieldset__legend--m"
     }
   }) }}
+
+  {% if params.showRemoveButton %}
+    {{ govukButton({
+      text: params.text.removeButton,
+      classes: "govuk-button--secondary",
+      type: "submit",
+      value: params.index,
+      name: "remove",
+      attributes: {
+        id: "remove-child-" + params.index
+      }
+    }) }}
+  {% endif %}
 
 {% endmacro %}
