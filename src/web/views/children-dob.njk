@@ -17,17 +17,21 @@
     {{ htbhfChildDobInput({
       index: i + 1,
       children: children,
-      dateOfBirth: dateOfBirth,
       hint: hint,
       nameLabel: nameLabel,
       errors: errors,
-      aboutYourChild: aboutYourChild
+      showRemoveButton: children.inputCount > 1,
+      text: {
+        legend: aboutYourChild,
+        dateLegend: dateOfBirth,
+        removeButton: removeChild
+      }
     }) }}
   {% endfor %}
 
   {% endcall %}
 
-  <input class="c-htbhf-button c-htbhf-button--link u-htbhf-focus" type="submit" value="Add another child" name="add" id="add-another-child">
+  <input class="c-htbhf-button c-htbhf-button--link u-htbhf-focus" type="submit" value="{{ addChild }}" name="add" id="add-another-child">
 
 {{ govukInsetText({
   text: explanation
