@@ -13,11 +13,7 @@ Feature: Card address
     Examples:
       | postcode |
       | EC11BB   |
-      | W1A0AX   |
       | M11AE    |
-      | B338TH   |
-      | CR26XH   |
-      | DN551PT  |
       | DN55 1PT |
 
   Scenario: Enter a valid address without an optional second address line
@@ -33,9 +29,6 @@ Feature: Card address
       | AA1122BB |
       | A        |
       | 11AA21   |
-      | ''       |
-      | E!       |
-      | EA123    |
 
   Scenario: Do not enter in any address fields
     When I do not enter in any address fields
