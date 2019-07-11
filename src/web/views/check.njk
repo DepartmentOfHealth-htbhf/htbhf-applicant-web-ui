@@ -34,7 +34,10 @@
 
   {{ govukButton({
       text: buttonText,
-      href: "/terms-and-conditions"
+      href: "/terms-and-conditions",
+      attributes: {
+        id: 'submit-button'
+      }
   }) }}
 
 {% endblock %}
