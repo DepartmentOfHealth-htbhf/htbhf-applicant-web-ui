@@ -1,5 +1,7 @@
 const { validate } = require('./validate')
 const { sanitize } = require('./sanitize')
+const { TEXT } = require('../common/constants')
+const { handleConfirmationCodeReset, getConfirmationCodeChannel } = require('../common/confirmation-code')
 
 const pageContent = ({ translate }) => ({
   title: translate('phoneNumber.title'),
@@ -15,6 +17,18 @@ const contentSummary = (req) => ({
   value: `${req.session.claim.phoneNumber}`.trim()
 })
 
+const phoneNumberHasBeenUpdated = req => req.body.phoneNumber !== req.session.claim.phoneNumber
+
+const confirmationChannelIsText = req => getConfirmationCodeChannel(req) === TEXT
+
+const behaviourForPost = (req, res, next) => {
+  if (confirmationChannelIsText(req) && phoneNumberHasBeenUpdated(req)) {
+    handleConfirmationCodeReset(req)
+  }
+
+  next()
+}
+
 const phoneNumber = {
   path: '/phone-number',
   next: () => '/email-address',
@@ -22,7 +36,8 @@ const phoneNumber = {
   validate,
   sanitize,
   pageContent,
-  contentSummary
+  contentSummary,
+  behaviourForPost
 }
 
 module.exports = {
