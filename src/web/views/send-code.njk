@@ -19,14 +19,17 @@
                 value: "text",
                 text: text,
                 checked : claim.channelForCode === "text",
-                conditional: {
-                html: eddHtml
-            }
+                hint: {
+                    html: claim.phoneNumber + " <a href=\"/phone-number\" id=\"change-text\">" + change + "</a>"
+                }
             },
             {
                 value: "email",
                 text: email,
-                checked : claim.channelForCode === "email"
+                checked : claim.channelForCode === "email",
+                hint: {
+                    html: claim.emailAddress + " <a href=\"/email-address\" id=\"change-email\">" + change + "</a>"
+                }
             }
         ],
         hint: {
