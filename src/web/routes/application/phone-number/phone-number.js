@@ -42,5 +42,6 @@ const phoneNumber = {
 
 module.exports = {
   contentSummary,
-  phoneNumber
+  phoneNumber,
+  behaviourForPost
 }

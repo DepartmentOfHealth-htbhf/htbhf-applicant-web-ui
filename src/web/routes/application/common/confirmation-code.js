@@ -1,7 +1,7 @@
-// reset confirmation code and reset state to in progress so that the user is not taken straight back to check details.
 const { CONFIRMATION_CODE_ENTERED_SESSION_PROPERTY } = require('./constants')
 const { stateMachine, states } = require('../common/state-machine')
 
+// reset confirmation code and reset state to in progress so that the user is not taken straight back to check details.
 const handleConfirmationCodeReset = req => {
   req.session[CONFIRMATION_CODE_ENTERED_SESSION_PROPERTY] = false
   req.session.claim.confirmationCode = null
