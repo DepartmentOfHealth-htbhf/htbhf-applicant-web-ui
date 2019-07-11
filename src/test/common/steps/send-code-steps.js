@@ -38,16 +38,16 @@ Then(/^I am informed that I need to select an option for send code$/, async func
   await assertSendCodePresent()
 })
 
-Then(/^The change-text link points to the phone number page$/, async function () {
+Then(/^The change text link points to the phone number page$/, async function () {
   const changeLink = await pages.sendCode.getChangeTextLink()
   const linkHref = await changeLink.getAttribute('href')
-  expect(linkHref).to.be.equal(`${pages.url}/phone-number`)
+  expect(linkHref).to.be.equal(`${pages.url}${pages.phoneNumber.getPath()}`)
 })
 
-Then(/^The change-email link points to the email address page$/, async function () {
+Then(/^The change email link points to the email address page$/, async function () {
   const changeLink = await pages.sendCode.getChangeEmailLink()
   const linkHref = await changeLink.getAttribute('href')
-  expect(linkHref).to.be.equal(`${pages.url}/email-address`)
+  expect(linkHref).to.be.equal(`${pages.url}${pages.emailAddress.getPath()}`)
 })
 
 async function assertSendCodePresent () {
