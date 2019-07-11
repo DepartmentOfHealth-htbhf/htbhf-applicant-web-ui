@@ -124,15 +124,6 @@ class Page {
     }
   }
 
-  async findByLinkText (linkText) {
-    try {
-      return await this.driver.findElement(webdriver.By.linkText(linkText))
-    } catch (error) {
-      console.log(error)
-      throw new Error(error)
-    }
-  }
-
   async findH1 () {
     return this.findByCSS('h1')
   }

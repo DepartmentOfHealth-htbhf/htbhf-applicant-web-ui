@@ -44,7 +44,7 @@ class EnterCode extends SubmittablePage {
   }
 
   getRequestNewCodeLink () {
-    return this.findByLinkText('Request a new code')
+    return this.findById('request-new-code')
   }
 }
 

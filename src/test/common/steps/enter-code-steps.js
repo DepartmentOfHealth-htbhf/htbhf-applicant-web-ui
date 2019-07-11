@@ -27,5 +27,5 @@ Then(/^I am informed that I must enter in the code that was sent to me$/, async 
 Then(/^The request a new code link points to the send code page$/, async function () {
   const requestNewCodeLink = await pages.enterCode.getRequestNewCodeLink()
   const requestNewCodeLinkHref = await requestNewCodeLink.getAttribute('href')
-  expect(requestNewCodeLinkHref).to.be.equal(`${pages.url}/send-code`)
+  expect(requestNewCodeLinkHref).to.be.equal(pages.url + pages.sendCode.getPath())
 })
