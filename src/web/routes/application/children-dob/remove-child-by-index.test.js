@@ -1,18 +1,5 @@
 const test = require('tape')
-const { isKeyAfterRemoved, decrementKey } = require('./remove-child-by-index')
-
-const children = {
-  'childDob-1-day': '1',
-  'childDob-1-month': '1',
-  'childDob-1-year': '2001',
-  'childDob-2-day': '2',
-  'childDob-2-month': '2',
-  'childDob-2-year': '2002',
-  'childDob-3-day': '3',
-  'childDob-3-month': '3',
-  'childDob-3-year': '2003',
-  'inputCount': 3
-}
+const { isKeyAfterRemoved, decrementKey, keyDoesNotContainIndex, removeChildByIndex } = require('./remove-child-by-index')
 
 test('isKeyAfterRemoved()', (t) => {
   t.equal(isKeyAfterRemoved('childDob-1-day', 1), false)
@@ -43,5 +30,39 @@ test('decrementKey()', (t) => {
   t.throws(() => decrementKey('childDob-day'), /Could not find index for key childDob-day/)
   t.throws(() => decrementKey('inputCount'), /Could not find index for key inputCount/)
   t.throws(() => decrementKey('childDob-1-day'), /Unable to decrement index for key childDob-1-day/)
+  t.end()
+})
+
+test('keyDoesNotContainIndex()', (t) => {
+  t.equal(keyDoesNotContainIndex(1)('value', 'childDob-1-day'), false)
+  t.equal(keyDoesNotContainIndex(2)('value', 'childDob-1-day'), true)
+  t.end()
+})
+
+test.only('removeChildByIndex', (t) => {
+  const children = {
+    'childDob-1-day': '1',
+    'childDob-1-month': '1',
+    'childDob-1-year': '2001',
+    'childDob-2-day': '2',
+    'childDob-2-month': '2',
+    'childDob-2-year': '2002',
+    'childDob-3-day': '3',
+    'childDob-3-month': '3',
+    'childDob-3-year': '2003',
+    'inputCount': 3
+  }
+
+  const expected = {
+    'childDob-1-day': '1',
+    'childDob-1-month': '1',
+    'childDob-1-year': '2001',
+    'childDob-2-day': '3',
+    'childDob-2-month': '3',
+    'childDob-2-year': '2003',
+    'inputCount': 3
+  }
+
+  t.deepEqual(removeChildByIndex(children, 2), expected)
   t.end()
 })
