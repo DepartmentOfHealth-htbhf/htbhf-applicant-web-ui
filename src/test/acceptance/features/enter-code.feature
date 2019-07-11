@@ -16,3 +16,7 @@ Feature: Enter confirmation code
 
   Scenario: Request a new code link takes me to the send code page
     Then The request a new code link points to the send code page
+
+  Scenario: Enter in the wrong confirmation code
+    When I enter in the wrong confirmation code
+    Then I am informed that I must enter in the code that was sent to me
