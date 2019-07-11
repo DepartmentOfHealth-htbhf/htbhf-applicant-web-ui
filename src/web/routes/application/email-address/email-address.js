@@ -40,5 +40,6 @@ const emailAddress = {
 
 module.exports = {
   contentSummary,
-  emailAddress
+  emailAddress,
+  behaviourForPost
 }
