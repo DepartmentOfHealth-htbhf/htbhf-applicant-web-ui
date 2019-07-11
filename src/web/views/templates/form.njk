@@ -16,7 +16,10 @@
     <input type="hidden" name="_csrf" value="{{ csrfToken }}">
     {% block formContent %}{% endblock %}
     {{ govukButton({
-      text: buttonText
+      text: buttonText,
+      attributes: {
+        id: 'submit-button'
+      }
     }) }}
   </form>
 {% endblock %}
