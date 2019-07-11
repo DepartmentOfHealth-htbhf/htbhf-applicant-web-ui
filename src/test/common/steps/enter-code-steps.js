@@ -13,6 +13,12 @@ When(/^I do not enter a confirmation code$/, async function () {
   await enterConfirmationCodeAndSubmit('')
 })
 
+When(/^I enter in the wrong confirmation code$/, async function () {
+  // confirmation code is always six digits
+  const wrongCode = '1234567890'
+  await enterConfirmationCodeAndSubmit(wrongCode)
+})
+
 Then(/^I am shown the enter code page$/, async function () {
   await pages.enterCode.waitForPageLoad()
 })
