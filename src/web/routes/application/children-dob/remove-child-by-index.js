@@ -1,16 +1,30 @@
 const { isNil } = require('ramda')
 
-const isKeyAfterRemoved = (key, index) => {
-  const getIndexFromKeyRegExp = /.*-(\d+).*/
-  const match = getIndexFromKeyRegExp.exec(key)
+const INDEX_FROM_KEY_REG_EXP = /.*-(\d+).*/
 
-  if (isNil(match)) {
-    throw new Error(`Could not find index ${index} for key ${key}`)
+const getIndexFromKey = (key) => {
+  const groups = INDEX_FROM_KEY_REG_EXP.exec(key)
+
+  if (isNil(groups)) {
+    throw new Error(`Could not find index for key ${key}`)
   }
 
-  return parseInt(match[1], 10) > index
+  return parseInt(groups[1], 10)
+}
+
+const isKeyAfterRemoved = (key, index) => getIndexFromKey(key) > index
+
+const decrementKey = (key) => {
+  const index = getIndexFromKey(key)
+
+  if (index <= 1) {
+    throw new Error(`Unable to decrement index for key ${key}`)
+  }
+
+  return key.replace(index, index - 1)
 }
 
 module.exports = {
-  isKeyAfterRemoved
+  isKeyAfterRemoved,
+  decrementKey
 }
