@@ -13,3 +13,7 @@ Feature: Enter confirmation code
   Scenario: Do not enter a confirmation code
     When I do not enter a confirmation code
     Then I am informed that I must enter in the code that was sent to me
+
+  Scenario: Enter in the wrong confirmation code
+    When I enter in the wrong confirmation code
+    Then I am informed that I must enter in the code that was sent to me
