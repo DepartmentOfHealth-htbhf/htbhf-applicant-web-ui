@@ -14,6 +14,9 @@ Feature: Enter confirmation code
     When I do not enter a confirmation code
     Then I am informed that I must enter in the code that was sent to me
 
+  Scenario: Request a new code link takes me to the send code page
+    Then The request a new code link points to the send code page
+
   Scenario: Enter in the wrong confirmation code
     When I enter in the wrong confirmation code
     Then I am informed that I must enter in the code that was sent to me

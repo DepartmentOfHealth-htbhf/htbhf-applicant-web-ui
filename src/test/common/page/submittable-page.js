@@ -2,7 +2,7 @@ const Page = require('./page')
 
 class SubmittablePage extends Page {
   async getSubmitButton () {
-    return this.findByClassName('govuk-button')
+    return this.findById('submit-button')
   }
 
   async submitForm () {
