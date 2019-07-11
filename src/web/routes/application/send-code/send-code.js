@@ -11,7 +11,7 @@ const pageContent = ({ translate }) => ({
   buttonText: translate('buttons:continue'),
   text: translate('text'),
   email: translate('email'),
-  explanation: translate('sendCode.explanation')
+  change: translate('sendCode.change')
 })
 
 function randomSixDigitInteger () {

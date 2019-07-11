@@ -27,6 +27,22 @@ class SendCode extends SubmittablePageWithRadioButtons {
     return 'send code'
   }
 
+  getChangeTextLink () {
+    return this.findById('change-text')
+  }
+
+  getChangeEmailLink () {
+    return this.findById('change-email')
+  }
+
+  getTextHint () {
+    return this.getRadioButtonHint('text')
+  }
+
+  getEmailHint () {
+    return this.getRadioButtonHint('email')
+  }
+
   getFieldErrorId () {
     return SEND_CODE_FIELD_ERROR_ID
   }

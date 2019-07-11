@@ -7,7 +7,10 @@ without those tests needing to actually receive the code via text or email.
 
 `session-details-manifest.yml` is used to deploy it to cloud foundry, by running this command from the root of the project:
 ```
-cf push -f src/test/session-details-provider/session-details-manifest.yml --var session_details_app_name=htbhf-session-details-staging --var session_secret=ReplaceWithTheRealSessionSecret
+cf push -f src/test/session-details-provider/session-details-manifest.yml \
+    --var session_details_app_name=htbhf-session-details-staging \
+    --var session_secret=ReplaceWithTheRealSessionSecret \
+    --var session_details_host_name=help-to-buy-healthy-foods-staging.london.cloudapps.digital
 ```
 (It is deployed by the CD scripts during testing against the staging environment).
 
