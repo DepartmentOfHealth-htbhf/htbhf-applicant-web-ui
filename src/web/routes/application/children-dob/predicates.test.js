@@ -3,6 +3,8 @@ const { keyDoesNotContainIndex, isNotChildEntry, isChildEntry } = require('./pre
 
 test('keyDoesNotContainIndex()', (t) => {
   t.equal(keyDoesNotContainIndex(1)('value', 'childDob-1-day'), false)
+  t.equal(keyDoesNotContainIndex(1)('value', 'childDob-11-day'), true)
+  t.equal(keyDoesNotContainIndex(1)('value', 'childDob-10-day'), true)
   t.equal(keyDoesNotContainIndex(2)('value', 'childDob-1-day'), true)
   t.end()
 })

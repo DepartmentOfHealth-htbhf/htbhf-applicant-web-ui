@@ -25,6 +25,7 @@ test('isKeyAfterRemoved()', (t) => {
 
 test('decrementKey()', (t) => {
   t.equal(decrementKey('childDob-2-day'), 'childDob-1-day')
+  t.equal(decrementKey('childDob-10-day'), 'childDob-9-day')
   t.equal(decrementKey('childDob-11-day'), 'childDob-10-day')
 
   t.throws(() => decrementKey('childDob-day'), /Could not find index for key childDob-day/)
