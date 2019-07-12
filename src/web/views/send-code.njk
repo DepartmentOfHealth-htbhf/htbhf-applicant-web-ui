@@ -20,7 +20,7 @@
                 text: text,
                 checked : claim.channelForCode === "text",
                 hint: {
-                    html: claim.phoneNumber + " <a href=\"/phone-number\" id=\"change-text\">" + change + "</a>"
+                    html: claim.phoneNumber + " <a href=\"/phone-number\" id=\"change-text\" class=\"govuk-!-margin-left-2\">" + change + "</a>"
                 }
             },
             {
@@ -28,7 +28,7 @@
                 text: email,
                 checked : claim.channelForCode === "email",
                 hint: {
-                    html: claim.emailAddress + " <a href=\"/email-address\" id=\"change-email\">" + change + "</a>"
+                    html: claim.emailAddress + " <a href=\"/email-address\" id=\"change-email\" class=\"govuk-!-margin-left-2\">" + change + "</a>"
                 }
             }
         ],
