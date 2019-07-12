@@ -12,7 +12,7 @@ Given(/^I enter the details of my child who is three or younger$/, async functio
 })
 
 Given(/^there are no Remove Child buttons visible$/, async function () {
-  const allRemoveButtons = await pages.enterChildrenDOB.findAllRemoveChildButtonsWithoutWait()
+  const allRemoveButtons = await pages.enterChildrenDOB.findAllRemoveChildButtons()
   expect(allRemoveButtons.length).to.be.equal(0)
 })
 
