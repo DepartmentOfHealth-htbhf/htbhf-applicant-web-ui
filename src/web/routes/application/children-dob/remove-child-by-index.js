@@ -1,6 +1,6 @@
 const { compose, map, toPairs, fromPairs } = require('ramda')
 const { handleDecrement } = require('./decrement-keys')
-const { getChildEntries, getNonChildEntries, getEntriesWithoutIndex } = require('./selectors')
+const { getChildEntries, getNonChildEntries, omitKeysWithIndex } = require('./selectors')
 
 const reIndexChildren = (children, index) => compose(fromPairs, map(handleDecrement(index)), toPairs)(children)
 
@@ -12,7 +12,7 @@ const reIndexChildren = (children, index) => compose(fromPairs, map(handleDecrem
  */
 const removeChildByIndex = (children, index) => {
   const childEntries = getChildEntries(children)
-  const filteredChildren = getEntriesWithoutIndex(childEntries, index)
+  const filteredChildren = omitKeysWithIndex(childEntries, index)
 
   return {
     ...reIndexChildren(filteredChildren, index),
