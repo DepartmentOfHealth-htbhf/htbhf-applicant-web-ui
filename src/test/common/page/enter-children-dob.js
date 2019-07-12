@@ -84,12 +84,8 @@ class EnterChildrenDOB extends SubmittablePage {
     return yearField.sendKeys(year)
   }
 
-  async findAllRemoveChildButtons (withWait = true) {
-    return this.findAllByClassName('govuk-button govuk-button--secondary', withWait)
-  }
-
-  async findAllRemoveChildButtonsWithoutWait () {
-    return this.findAllRemoveChildButtons(false)
+  async findAllRemoveChildButtons () {
+    return this.findAllByClassName('govuk-button govuk-button--secondary')
   }
 
   async clickRemoveButtonForChild (childIndex) {
