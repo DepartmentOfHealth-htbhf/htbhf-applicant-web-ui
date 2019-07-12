@@ -85,9 +85,11 @@ class Page {
     }
   }
 
-  async findAllByClassName (className) {
+  async findAllByClassName (className, waitFirst = true) {
     try {
-      await this.waitForElement(className, CLASSNAME_TYPE)
+      if (waitFirst) {
+        await this.waitForElement(className, CLASSNAME_TYPE)
+      }
       return this.driver.findElements(webdriver.By.className(className))
     } catch (error) {
       console.log(error)
@@ -122,6 +124,11 @@ class Page {
       console.log(error)
       throw new Error(error)
     }
+  }
+
+  async getTextForElementWithId (id) {
+    const elementWithId = await this.findById(id)
+    return elementWithId.getText()
   }
 
   async findH1 () {
