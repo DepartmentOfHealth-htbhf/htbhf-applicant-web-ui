@@ -41,6 +41,7 @@ class EnterChildrenDOB extends SubmittablePage {
     await this.enterChild3OrUnderDateOfBirth(dateOfBirth)
     this.childIndex++
   }
+
   async enterChild3OrUnderDateOfBirth (dateOfBirth) {
     await this.enterDay(dateOfBirth.getDate())
     await this.enterMonth(dateOfBirth.getMonth() + 1)
@@ -81,6 +82,31 @@ class EnterChildrenDOB extends SubmittablePage {
   async enterYear (year) {
     const yearField = await this.getYearField()
     return yearField.sendKeys(year)
+  }
+
+  async findAllRemoveChildButtons (withWait = true) {
+    return this.findAllByClassName('govuk-button govuk-button--secondary', withWait)
+  }
+
+  async findAllRemoveChildButtonsWithoutWait () {
+    return this.findAllRemoveChildButtons(false)
+  }
+
+  async clickRemoveButtonForChild (childIndex) {
+    const removeButton = await this.findById(`remove-child-${childIndex}`)
+    await removeButton.click()
+  }
+
+  async getChildDateOfBirthDay (childIndex) {
+    return this.getTextForElementWithId(`childDob-${childIndex}-day`)
+  }
+
+  async getChildDateOfBirthMonth (childIndex) {
+    return this.getTextForElementWithId(`childDob-${childIndex}-month`)
+  }
+
+  async getChildDateOfBirthYear (childIndex) {
+    return this.getTextForElementWithId(`childDob-${childIndex}-year`)
   }
 
   getChildDateOfBirthFieldErrorId (index) {
