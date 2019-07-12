@@ -85,11 +85,8 @@ class Page {
     }
   }
 
-  async findAllByClassName (className, waitFirst = true) {
+  async findAllByClassName (className) {
     try {
-      if (waitFirst) {
-        await this.waitForElement(className, CLASSNAME_TYPE)
-      }
       return this.driver.findElements(webdriver.By.className(className))
     } catch (error) {
       console.log(error)
@@ -109,7 +106,6 @@ class Page {
 
   async findAllByCSS (selector) {
     try {
-      await this.waitForElement(selector, CSS_TYPE)
       return this.driver.findElements(webdriver.By.css(selector))
     } catch (error) {
       console.log(error)
