@@ -1,9 +1,9 @@
 const { isNil } = require('ramda')
 
-const INDEX_FROM_KEY_REG_EXP = /.*-(\d+).*/
+const KEY_INDEX_REG_EXP = /.*-(\d+).*/
 
 const getIndexFromKey = (key) => {
-  const groups = INDEX_FROM_KEY_REG_EXP.exec(key)
+  const groups = KEY_INDEX_REG_EXP.exec(key)
 
   if (isNil(groups)) {
     throw new Error(`Could not find index for key ${key}`)
