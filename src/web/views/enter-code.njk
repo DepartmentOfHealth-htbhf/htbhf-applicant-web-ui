@@ -13,7 +13,8 @@
         }
     }) %}
 
-        <p class="govuk-body-m">{{ weJustSentASixDigitCodeTo}} <strong>{{ confirmationCodeDestination }}</strong>. {{ itMayTakeAFewMinutesToArrive}}</p>
+        <p class="govuk-body-m">{{ weJustSentASixDigitCodeTo }}
+            <strong>{{ confirmationCodeDestination }}</strong>. {{ itMayTakeAFewMinutesToArrive }}</p>
 
         {{ govukInput({
             label: {
@@ -32,7 +33,6 @@
 
     {% endcall %}
 
-    {# TODO DW HTBHF-1712 update link to send new confirmationCode  #}
-    <p class="govuk-body-m"><a href="/send-code" id="request-new-code">{{ requestANewCode }}</a> {{ ifItDoesNotArrive }}</p>
+    <p class="govuk-body-m">{{ requestNewCodeLink | safe }}</p>
 
 {% endblock %}
