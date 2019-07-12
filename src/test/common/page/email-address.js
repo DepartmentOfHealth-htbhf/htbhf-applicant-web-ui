@@ -26,6 +26,11 @@ class EmailAddress extends SubmittablePage {
     return 'email address'
   }
 
+  async clearEmailAddress () {
+    const emailAddressField = await this.getEmailAddressField()
+    await emailAddressField.clear()
+  }
+
   async enterEmailAddress (emailAddress) {
     const emailAddressField = await this.getEmailAddressField()
     await emailAddressField.sendKeys(emailAddress)

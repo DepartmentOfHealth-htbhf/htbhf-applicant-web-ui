@@ -69,6 +69,14 @@ When(/^I choose to change my answer to Do you live in Scotland$/, async function
   await pages.check.clickChangeLinkFor('Do you live in Scotland?')
 })
 
+When(/^I choose to change my answer to phone number$/, async function () {
+  await pages.check.clickChangeLinkFor('Mobile telephone number')
+})
+
+When(/^I choose to change my answer to email address$/, async function () {
+  await pages.check.clickChangeLinkFor('Email address')
+})
+
 Then(/^The back link on the check details page links to the email address page$/, async function () {
   await assertBackLinkPointsToPage(pages.emailAddress)
 })
