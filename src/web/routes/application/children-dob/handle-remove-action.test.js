@@ -1,6 +1,7 @@
 const test = require('tape')
 const sinon = require('sinon')
 const { handleRemoveAction } = require('./handle-remove-action')
+const { REMOVE_CHILD_INDEX_KEY } = require('./constants')
 
 const child = {
   'childDobName-1': 'Lisa',
@@ -29,7 +30,7 @@ test('handleRemoveAction() removes child’s DOB from session on remove action',
     body: {
       ...child,
       ...newChild,
-      remove: '1'
+      [REMOVE_CHILD_INDEX_KEY]: '1'
     }
   }
 
@@ -110,7 +111,7 @@ test('handleRemoveAction() removes child’s DOB from session on remove action w
     },
     body: {
       ...child,
-      remove: '1'
+      [REMOVE_CHILD_INDEX_KEY]: '1'
     }
   }
 
@@ -145,7 +146,7 @@ test('handleRemoveAction() throws an error on remove action when index is less t
       }
     },
     body: {
-      remove: '0'
+      [REMOVE_CHILD_INDEX_KEY]: '0'
     }
   }
 

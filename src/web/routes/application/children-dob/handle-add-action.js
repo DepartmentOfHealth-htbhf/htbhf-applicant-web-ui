@@ -1,6 +1,6 @@
-const { PATH } = require('./constants')
+const { PATH, ADD_CHILD_KEY } = require('./constants')
 
-const addActionRequested = body => body.hasOwnProperty('add')
+const addActionRequested = body => body.hasOwnProperty(ADD_CHILD_KEY)
 
 const handleAddAction = (req, res, next) => {
   if (!addActionRequested(req.body)) {

@@ -1,7 +1,7 @@
 const { removeChildByIndex } = require('./remove-child-by-index')
-const { PATH } = require('./constants')
+const { PATH, REMOVE_CHILD_INDEX_KEY } = require('./constants')
 
-const removeActionRequested = body => body.hasOwnProperty('remove')
+const removeActionRequested = body => body.hasOwnProperty(REMOVE_CHILD_INDEX_KEY)
 
 const decrementInputCount = childCount => childCount === 1 ? 1 : childCount - 1
 
@@ -11,7 +11,7 @@ const handleRemoveAction = (req, res, next) => {
   }
 
   const { childCount } = req.session.children
-  const index = req.body.remove
+  const index = req.body[REMOVE_CHILD_INDEX_KEY]
 
   if (index <= 0) {
     throw new Error(`Unable to remove index ${index}`)
