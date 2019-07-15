@@ -42,14 +42,14 @@ When(/^I enter in a new email address/, async function () {
   await enterEmailAddressAndSubmit(EMAIL_ADDRESS_2)
 })
 
-Then(/^I must continue the application from the email address page, including entering a new code$/, async function () {
+Then(/^I must complete all steps after the phone number page, including entering a new code$/, async function () {
   // The email address will already be filled in, no need to enter one in
   await pages.emailAddress.submitForm()
   await selectTextOnSendCode()
   await enterConfirmationCodeAndSubmit()
 })
 
-Then(/^I must continue the application from the send code page, including entering a new code$/, async function () {
+Then(/^I must complete all steps after the email address page, including entering a new code$/, async function () {
   await selectEmailOnSendCode()
   await enterConfirmationCodeAndSubmit()
 })

@@ -12,10 +12,10 @@ Feature: Confirmation code navigation
     When I complete the application with valid details, selecting to receive my confirmation code via text
     And I choose to change my phone number
     And I enter in a new phone number
-    And I must continue the application from the email address page, including entering a new code
+    Then I must complete all steps after the phone number page, including entering a new code
 
   Scenario: Changing my email address after using it to receive a code requires me to be sent a new code
     When I complete the application with valid details, selecting to receive my confirmation code via email
     And I choose to change my email address
     And I enter in a new email address
-    And I must continue the application from the send code page, including entering a new code
+    Then I must complete all steps after the email address page, including entering a new code
