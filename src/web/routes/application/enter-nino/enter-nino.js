@@ -6,7 +6,7 @@ const pageContent = ({ translate }) => ({
   heading: translate('enterNino.heading'),
   ninoLabel: translate('enterNino.ninoLabel'),
   hint: translate('enterNino.hint'),
-  explanation: translate('enterNino.explanation', { ninoLink: 'https://www.gov.uk/lost-national-insurance-number' }),
+  explanation: translate('enterNino.explanation'),
   buttonText: translate('buttons:continue')
 })
 
