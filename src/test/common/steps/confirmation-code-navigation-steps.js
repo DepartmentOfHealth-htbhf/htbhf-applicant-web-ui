@@ -19,13 +19,13 @@ const {
 } = require('./common-steps')
 
 When(/^I complete the application with valid details, selecting to receive my confirmation code via text$/, async function () {
-  await stepsUpToSendCode()
+  await completeProcessUpToSendCode()
   await selectTextOnSendCode()
   await enterConfirmationCodeAndSubmit()
 })
 
 When(/^I complete the application with valid details, selecting to receive my confirmation code via email$/, async function () {
-  await stepsUpToSendCode()
+  await completeProcessUpToSendCode()
   await selectEmailOnSendCode()
   await enterConfirmationCodeAndSubmit()
 })
@@ -54,7 +54,7 @@ Then(/^I must continue the application from the send code page, including enteri
   await enterConfirmationCodeAndSubmit()
 })
 
-async function stepsUpToSendCode () {
+async function completeProcessUpToSendCode () {
   await enterDoYouLiveInScotlandNoAndSubmit()
   await enterDateOfBirthAndSubmit()
   await selectNoOnChildrenThreeOrYoungerPage()

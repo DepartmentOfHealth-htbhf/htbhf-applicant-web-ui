@@ -69,11 +69,11 @@ When(/^I choose to change my answer to Do you live in Scotland$/, async function
   await pages.check.clickChangeLinkFor('Do you live in Scotland?')
 })
 
-When(/^I choose to change my answer to phone number$/, async function () {
+When(/^I choose to change my phone number$/, async function () {
   await pages.check.clickChangeLinkFor('Mobile telephone number')
 })
 
-When(/^I choose to change my answer to email address$/, async function () {
+When(/^I choose to change my email address$/, async function () {
   await pages.check.clickChangeLinkFor('Email address')
 })
 
