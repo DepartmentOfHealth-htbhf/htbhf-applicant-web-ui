@@ -1,0 +1,10 @@
+/**
+ * Breakpoint definitions
+ * Defensively define breakpoints for different devices
+ */
+
+$govuk-breakpoints: (
+        mobile:  320px,
+        tablet:  641px,
+        desktop: 769px
+) !default;
