@@ -49,7 +49,7 @@ class EnterChildrenDOB extends SubmittablePage {
   }
 
   async getNameField () {
-    return this.findById(`child-name-${this.childIndex}`)
+    return this.findById(`childDob-name-${this.childIndex}`)
   }
 
   async getDayField () {
@@ -114,11 +114,11 @@ class EnterChildrenDOB extends SubmittablePage {
   }
 
   getChildNameFieldErrorId (index) {
-    return `child-name-${index}-error`
+    return `childDob-name-${index}-error`
   }
 
   getChildNameErrorLinkCss (index) {
-    return `a[href="#child-name-${index}-error"]`
+    return `a[href="#child-dob-name-${index}-error"]`
   }
 }
 
