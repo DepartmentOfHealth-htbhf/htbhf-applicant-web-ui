@@ -10,15 +10,15 @@ const {
 } = require('./validate')
 
 const fields = {
-  'childName-1': 'Lisa',
+  'childDobName-1': 'Lisa',
   'childDob-1-day': '1',
   'childDob-1-month': '2',
   'childDob-1-year': '2001',
-  'childName-2': 'Bart',
+  'childDobName-2': 'Bart',
   'childDob-2-day': '3',
   'childDob-2-month': '4',
   'childDob-2-year': '2002',
-  'childName-3': 'Maggie',
+  'childDobName-3': 'Maggie',
   'childDob-3-day': '5',
   'childDob-3-month': '6',
   'childDob-3-year': '2003'
@@ -61,7 +61,7 @@ test('convertDateFieldsToDateStrings() converts individual date fields to compos
 })
 
 test('isChildNameKey() returns true if key contains child name prefix', (t) => {
-  const result = isChildNameKey(undefined, 'childName-')
+  const result = isChildNameKey(undefined, 'childDobName-')
   t.equal(result, true, 'returns true if key contains child name prefix')
   t.end()
 })
@@ -74,7 +74,7 @@ test('isChildNameKey() returns false if key does not contain child name prefix',
 
 test('getChildrenNameKeys() returns an array of keys for children names', (t) => {
   const result = getChildrenNameKeys(fields)
-  const expected = ['childName-1', 'childName-2', 'childName-3']
+  const expected = ['childDobName-1', 'childDobName-2', 'childDobName-3']
 
   t.deepEqual(result, expected, 'returns an array of keys for children names')
   t.end()

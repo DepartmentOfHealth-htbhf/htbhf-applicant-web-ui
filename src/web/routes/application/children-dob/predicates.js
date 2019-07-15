@@ -1,7 +1,7 @@
 const { compose, not } = require('ramda')
 const { getIndexFromKey } = require('./decrement-keys')
 
-const CHID_DOB_PREFIX = 'childDob-'
+const CHID_DOB_PREFIX = 'childDob'
 
 const isChildEntry = (val, key) => key.startsWith(CHID_DOB_PREFIX)
 

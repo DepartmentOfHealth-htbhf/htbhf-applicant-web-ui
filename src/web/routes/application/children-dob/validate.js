@@ -5,7 +5,7 @@ const { isValidDate, isDateMoreThanFourYearsAgo, isDateInTheFuture } = require('
 const { translateValidationMessage } = require('../common/translate-validation-message')
 
 const FIELD_PREFIX = 'childDob-'
-const CHILD_NAME_PREFIX = 'childName-'
+const CHILD_NAME_PREFIX = 'childDobName-'
 const CHILD_NAME_MAX_LENGTH = 500
 
 const fieldExistsWithPrefix = (prefix) => compose(any(startsWith(prefix)), keys)
