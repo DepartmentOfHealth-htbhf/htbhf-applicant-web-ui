@@ -1,10 +1,11 @@
-Feature: Card address
+#TODO DW HTBHF-1845 rename filename (not doing in current pr as rename and content change will appear as new file)
+Feature: Address
   In order to apply for the HTBHF programme
   As a potential claimant
-  I want to enter the address to send the card to
+  I want to enter my address
 
   Background:
-    Given I have entered my details up to the card address page
+    Given I have entered my details up to the address page
 
   Scenario Outline: Enter a valid address with all fields entered
     When I enter an address with postcode <postcode>

@@ -14,7 +14,7 @@ const req = {
   }
 }
 
-test('Card address contentSummary() should return content summary in correct format', (t) => {
+test('Address contentSummary() should return content summary in correct format', (t) => {
   const result = contentSummary(req)
   const expected = {
     key: 'cardAddress.summaryKey',
@@ -25,7 +25,7 @@ test('Card address contentSummary() should return content summary in correct for
   t.end()
 })
 
-test('Card address contentSummary() should return content summary in correct format without address line 2', (t) => {
+test('Address contentSummary() should return content summary in correct format without address line 2', (t) => {
   const testReq = assocPath(['session', 'claim', 'addressLine2'], undefined, req)
   const result = contentSummary(testReq)
   const expected = {
@@ -37,7 +37,7 @@ test('Card address contentSummary() should return content summary in correct for
   t.end()
 })
 
-test('Card address contentSummary() should return content summary in correct format with address line 2 undefined', (t) => {
+test('Address contentSummary() should return content summary in correct format with address line 2 undefined', (t) => {
   const testReq = assocPath(['session', 'claim', 'addressLine2'], '', req)
   const result = contentSummary(testReq)
   const expected = {

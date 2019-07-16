@@ -1,5 +1,5 @@
-const { cardAddress } = require('./card-address')
+const { address } = require('./card-address')
 
 module.exports = {
-  cardAddress
+  address
 }
