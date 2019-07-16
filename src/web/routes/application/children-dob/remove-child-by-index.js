@@ -1,6 +1,9 @@
-const { compose, map, toPairs, fromPairs } = require('ramda')
+const { pickBy, compose, map, toPairs, fromPairs } = require('ramda')
 const { handleDecrement } = require('./decrement-keys')
-const { getChildEntries, getNonChildEntries, omitKeysWithIndex } = require('./selectors')
+const { keyDoesNotContainIndex, isChildEntry } = require('./predicates')
+const { partitionObj } = require('./partition-obj')
+
+const omitKeysWithIndex = (entries, index) => pickBy(keyDoesNotContainIndex(index), entries)
 
 const reIndexChildren = (children, index) => compose(fromPairs, map(handleDecrement(index)), toPairs)(children)
 
@@ -11,12 +14,12 @@ const reIndexChildren = (children, index) => compose(fromPairs, map(handleDecrem
  *  - Rebuild the object with the remaining children entries re-indexed plus everything else (non-'childDob-x' entries)
  */
 const removeChildByIndex = (children, index) => {
-  const childEntries = getChildEntries(children)
-  const filteredChildren = omitKeysWithIndex(childEntries, parseInt(index, 10))
+  const partitioned = partitionObj(isChildEntry, children)
+  const filteredChildren = omitKeysWithIndex(partitioned[0], parseInt(index, 10))
 
   return {
     ...reIndexChildren(filteredChildren, index),
-    ...getNonChildEntries(children)
+    ...partitioned[1]
   }
 }
 
