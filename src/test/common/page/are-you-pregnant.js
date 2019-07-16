@@ -12,6 +12,9 @@ const ARE_YOU_PREGNANT_ERROR_LINK_CSS = 'a[href="#are-you-pregnant-error"]'
 const ARE_YOU_PREGNANT_FIELD_ERROR_ID = 'areYouPregnant-error'
 const EXPECTED_DELIVERY_DATE_ERROR_LINK_CSS = 'a[href="#expected-delivery-date-error"]'
 const EXPECTED_DELIVERY_DATE_FIELD_ERROR_ID = 'expected-delivery-date-error'
+const EXPECTED_DELIVERY_DATE_DAY_INPUT_ID = 'expectedDeliveryDate-day'
+const EXPECTED_DELIVERY_DATE_MONTH_INPUT_ID = 'expectedDeliveryDate-month'
+const EXPECTED_DELIVERY_DATE_YEAR_INPUT_ID = 'expectedDeliveryDate-year'
 
 /**
  * Page object for the Are you pregnant? page.
@@ -30,9 +33,9 @@ class AreYouPregnant extends SubmittablePageWithRadioButtons {
   }
 
   async setExpectedDeliveryDate (day = 0, month = 0, year = 0) {
-    await this.setExpectedDeliveryDateDay(day)
-    await this.setExpectedDeliveryDateMonth(month)
-    await this.setExpectedDeliveryDateYear(year)
+    await this.enterExpectedDeliveryDateDay(day)
+    await this.enterExpectedDeliveryDateMonth(month)
+    await this.enterExpectedDeliveryDateYear(year)
   }
 
   async enterExpectedDeliveryDate ({ incrementMonth = 0 } = {}) {
@@ -57,31 +60,28 @@ class AreYouPregnant extends SubmittablePageWithRadioButtons {
     await this.enterExpectedDeliveryDate({ incrementMonth: 9 })
   }
 
-  async getExpectedDeliveryDateDayInput () {
-    return this.findById('expectedDeliveryDate-day')
+  async getExpectedDeliveryDateDay () {
+    return this.getValueForInputWithId(EXPECTED_DELIVERY_DATE_DAY_INPUT_ID)
   }
 
-  async setExpectedDeliveryDateDay (day) {
-    const dayField = await this.getExpectedDeliveryDateDayInput()
-    return dayField.sendKeys(day)
+  async enterExpectedDeliveryDateDay (day) {
+    await this.enterValueForInputWithId(EXPECTED_DELIVERY_DATE_DAY_INPUT_ID, day)
   }
 
-  async getExpectedDeliveryDateMonthInput () {
-    return this.findById('expectedDeliveryDate-month')
+  async getExpectedDeliveryDateMonth () {
+    return this.getValueForInputWithId(EXPECTED_DELIVERY_DATE_MONTH_INPUT_ID)
   }
 
-  async setExpectedDeliveryDateMonth (month) {
-    const monthField = await this.getExpectedDeliveryDateMonthInput()
-    return monthField.sendKeys(month)
+  async enterExpectedDeliveryDateMonth (day) {
+    await this.enterValueForInputWithId(EXPECTED_DELIVERY_DATE_MONTH_INPUT_ID, day)
   }
 
-  async getExpectedDeliveryDateYearInput () {
-    return this.findById('expectedDeliveryDate-year')
+  async getExpectedDeliveryDateYear () {
+    return this.getValueForInputWithId(EXPECTED_DELIVERY_DATE_YEAR_INPUT_ID)
   }
 
-  async setExpectedDeliveryDateYear (year) {
-    const yearField = await this.getExpectedDeliveryDateYearInput()
-    return yearField.sendKeys(year)
+  async enterExpectedDeliveryDateYear (day) {
+    await this.enterValueForInputWithId(EXPECTED_DELIVERY_DATE_YEAR_INPUT_ID, day)
   }
 
   getAreYouPregnantFieldErrorId () {

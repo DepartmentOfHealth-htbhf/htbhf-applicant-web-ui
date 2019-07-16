@@ -58,16 +58,13 @@ Then(/^expected date of delivery instructional text is displayed$/, async functi
 
 Then(/^no values are present in the expected delivery date fields$/, async function () {
   try {
-    const day = await pages.areYouPregnant.getExpectedDeliveryDateDayInput()
-    const dayValue = await day.getAttribute('value')
+    const dayValue = await pages.areYouPregnant.getExpectedDeliveryDateDay()
     assert(dayValue.length === 0, 'expected delivery date day to be empty')
 
-    const month = await pages.areYouPregnant.getExpectedDeliveryDateMonthInput()
-    const monthValue = await month.getAttribute('value')
+    const monthValue = await pages.areYouPregnant.getExpectedDeliveryDateMonth()
     assert(monthValue.length === 0, 'expected delivery date month to be empty')
 
-    const year = await pages.areYouPregnant.getExpectedDeliveryDateYearInput()
-    const yearValue = await year.getAttribute('value')
+    const yearValue = await pages.areYouPregnant.getExpectedDeliveryDateYear()
     assert(yearValue.length === 0, 'expected delivery date year to be empty')
   } catch (error) {
     assert.fail(`Unexpected error caught trying to assert no values are present in the expected delivery date fields - ${error}`)
