@@ -94,15 +94,15 @@ class EnterChildrenDOB extends SubmittablePage {
   }
 
   async getChildDateOfBirthDay (childIndex) {
-    return this.getTextForElementWithId(`childDob-${childIndex}-day`)
+    return this.getValueForInputWithId(`childDob-${childIndex}-day`)
   }
 
   async getChildDateOfBirthMonth (childIndex) {
-    return this.getTextForElementWithId(`childDob-${childIndex}-month`)
+    return this.getValueForInputWithId(`childDob-${childIndex}-month`)
   }
 
   async getChildDateOfBirthYear (childIndex) {
-    return this.getTextForElementWithId(`childDob-${childIndex}-year`)
+    return this.getValueForInputWithId(`childDob-${childIndex}-year`)
   }
 
   getChildDateOfBirthFieldErrorId (index) {

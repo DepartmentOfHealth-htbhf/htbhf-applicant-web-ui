@@ -106,9 +106,9 @@ Then(/^I only see the second child's date of birth$/, async function () {
   // The second child will have the date incremented by 1 day
   const dateOfBirthForSecondChild = dateLastYear(1)
 
-  expect(childDobDay).to.be.equal(dateOfBirthForSecondChild.getDate())
-  expect(childDobMonth).to.be.equal(dateOfBirthForSecondChild.getMonth() + 1)
-  expect(childDobYear).to.be.equal(dateOfBirthForSecondChild.getFullYear())
+  expect(childDobDay).to.be.equal(dateOfBirthForSecondChild.getDate().toString())
+  expect(childDobMonth).to.be.equal((dateOfBirthForSecondChild.getMonth() + 1).toString())
+  expect(childDobYear).to.be.equal(dateOfBirthForSecondChild.getFullYear().toString())
 })
 
 async function assertNameTooLongErrorPresentForChild (index) {
