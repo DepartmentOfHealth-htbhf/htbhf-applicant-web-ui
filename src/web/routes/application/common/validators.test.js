@@ -3,9 +3,9 @@ const { dateAsString } = require('./formatters')
 const {
   isValidDate,
   isDateInPast,
-  isDateMoreThanOneMonthAgo,
+  isDateOneOrMoreMonthsInThePast,
   isDateMoreThanEightMonthsInTheFuture,
-  isDateMoreThanFourYearsAgo,
+  isDateFourOrMoreYearsInThePast,
   isDateInTheFuture
 } = require('./validators')
 
@@ -36,12 +36,12 @@ test('isDateInPast', (t) => {
 test('isDateMoreThanOneMonthAgo', (t) => {
   const oneMonthAgo = dateAsString({ monthAdjustment: -1 })
 
-  t.equal(isDateMoreThanOneMonthAgo('1999-12-12'), true, '"1999-12-12" is more than one month ago')
-  t.equal(isDateMoreThanOneMonthAgo('9999-12-12'), false, '"9999-12-12" is not more than one month ago')
-  t.equal(isDateMoreThanOneMonthAgo(oneMonthAgo), false, `"${oneMonthAgo}" is exactly one month ago`)
-  t.equal(isDateMoreThanOneMonthAgo(''), true, 'blank string should not be validated')
-  t.equal(isDateMoreThanOneMonthAgo(null), true, 'null string should not be validated')
-  t.equal(isDateMoreThanOneMonthAgo('12-12-1999'), true, 'invalid format string "12-12-1999" should not be validated')
+  t.equal(isDateOneOrMoreMonthsInThePast('1999-12-12'), true, '"1999-12-12" is more than one month ago')
+  t.equal(isDateOneOrMoreMonthsInThePast('9999-12-12'), false, '"9999-12-12" is not more than one month ago')
+  t.equal(isDateOneOrMoreMonthsInThePast(oneMonthAgo), true, `"${oneMonthAgo}" is exactly one month ago`)
+  t.equal(isDateOneOrMoreMonthsInThePast(''), true, 'blank string should not be validated')
+  t.equal(isDateOneOrMoreMonthsInThePast(null), true, 'null string should not be validated')
+  t.equal(isDateOneOrMoreMonthsInThePast('12-12-1999'), true, 'invalid format string "12-12-1999" should not be validated')
   t.end()
 })
 
@@ -60,12 +60,12 @@ test('isDateMoreThanEightMonthsInTheFuture', (t) => {
 test('isDateMoreThanFourYearsAgo', (t) => {
   const fourYearsAgo = dateAsString({ yearAdjustment: -4 })
 
-  t.equal(isDateMoreThanFourYearsAgo('9999-12-12'), false, '"9999-12-12" is not more than four years ago')
-  t.equal(isDateMoreThanFourYearsAgo('1900-12-12'), true, '"1900-12-12" is more than four years ago')
-  t.equal(isDateMoreThanFourYearsAgo(fourYearsAgo), false, `"${fourYearsAgo}" is exactly four years ago`)
-  t.equal(isDateMoreThanFourYearsAgo(''), true, 'blank string should not be validated')
-  t.equal(isDateMoreThanFourYearsAgo(null), true, 'null string should not be validated')
-  t.equal(isDateMoreThanFourYearsAgo('12-12-1999'), true, 'invalid format string "12-12-1999" should not be validated')
+  t.equal(isDateFourOrMoreYearsInThePast('9999-12-12'), false, '"9999-12-12" is not more than four years ago')
+  t.equal(isDateFourOrMoreYearsInThePast('1900-12-12'), true, '"1900-12-12" is more than four years ago')
+  t.equal(isDateFourOrMoreYearsInThePast(fourYearsAgo), true, `"${fourYearsAgo}" is exactly four years ago`)
+  t.equal(isDateFourOrMoreYearsInThePast(''), true, 'blank string should not be validated')
+  t.equal(isDateFourOrMoreYearsInThePast(null), true, 'null string should not be validated')
+  t.equal(isDateFourOrMoreYearsInThePast('12-12-1999'), true, 'invalid format string "12-12-1999" should not be validated')
   t.end()
 })
 

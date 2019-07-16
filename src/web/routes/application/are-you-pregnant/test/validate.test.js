@@ -42,9 +42,9 @@ test('validateExpectedDeliveryDate() one month in the past', (t) => {
     }
   }
 
-  const result = validateExpectedDeliveryDate(res)({}, { req })
+  const result = validateExpectedDeliveryDate(res).bind(null, {}, { req })
 
-  t.equal(result, true, 'should return true for exactly one month in past')
+  t.throws(result, /validation:expectedDeliveryDateTooFarInPast/, 'not in valid date range')
   t.end()
 })
 
