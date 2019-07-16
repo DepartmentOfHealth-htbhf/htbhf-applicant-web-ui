@@ -9,6 +9,7 @@ const PAGE_TITLES = {
 
 const NINO_FIELD_ERROR_ID = 'nino-error'
 const NINO_ERROR_LINK_CSS = 'a[href="#nino-error"]'
+const NINO_INPUT_ID = 'nino'
 
 /**
  * Page object for EnterNino page where the national insurance number is entered.
@@ -27,17 +28,11 @@ class EnterNino extends SubmittablePage {
   }
 
   async enterNino (nino) {
-    const ninoField = await this.getNinoField()
-    await ninoField.sendKeys(nino)
-  }
-
-  async getNinoField () {
-    return this.findById('nino')
+    await this.enterValueForInputWithId(NINO_INPUT_ID, nino)
   }
 
   async getNinoValue () {
-    const nino = await this.getNinoField()
-    return nino.getAttribute('value')
+    return this.getValueForInputWithId(NINO_INPUT_ID)
   }
 
   getNinoFieldErrorId () {

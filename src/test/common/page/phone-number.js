@@ -9,6 +9,7 @@ const PAGE_TITLES = {
 
 const PHONE_NUMBER_FIELD_ERROR_ID = 'phone-number-error'
 const PHONE_NUMBER_ERROR_LINK_CSS = 'a[href="#phone-number-error"]'
+const PHONE_NUMBER_INPUT_ID = 'phone-number'
 
 /**
  * Page object for PhoneNumber page where the phone number is entered.
@@ -27,17 +28,11 @@ class PhoneNumber extends SubmittablePage {
   }
 
   async enterPhoneNumber (phoneNumber) {
-    const phoneNumberField = await this.getPhoneNumberField()
-    await phoneNumberField.sendKeys(phoneNumber)
+    await this.enterValueForInputWithId(PHONE_NUMBER_INPUT_ID, phoneNumber)
   }
 
   async getPhoneNumberValue () {
-    const phoneNumberField = await this.getPhoneNumberField()
-    return phoneNumberField.getAttribute('value')
-  }
-
-  async getPhoneNumberField () {
-    return this.findById('phone-number')
+    return this.getValueForInputWithId(PHONE_NUMBER_INPUT_ID)
   }
 
   getPhoneNumberFieldErrorId () {
