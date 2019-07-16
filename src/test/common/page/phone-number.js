@@ -27,6 +27,11 @@ class PhoneNumber extends SubmittablePage {
     return 'phone number'
   }
 
+  async clearPhoneNumber () {
+    const phoneNumberField = await this.getPhoneNumberField()
+    await phoneNumberField.clear()
+  }
+
   async enterPhoneNumber (phoneNumber) {
     await this.enterValueForInputWithId(PHONE_NUMBER_INPUT_ID, phoneNumber)
   }

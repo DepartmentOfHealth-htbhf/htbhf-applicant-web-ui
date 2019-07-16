@@ -153,6 +153,15 @@ async function selectTextOnSendCode () {
   }
 }
 
+async function selectEmailOnSendCode () {
+  try {
+    await pages.sendCode.selectEmailRadioButton()
+    await pages.sendCode.submitForm()
+  } catch (error) {
+    assert.fail(`Unexpected error caught trying to select 'Email' for 'We’re sending you a code' and submit the page - ${error}`)
+  }
+}
+
 /** iPhone 8 refuses to give us secure cookies - including the session id, so we have to load the session details page in the browser
  * (and assume that the session details app is on the same domain)
  */
@@ -276,6 +285,7 @@ module.exports = {
   enterEmailAddressAndSubmit,
   selectNoOnChildrenThreeOrYoungerPage,
   selectTextOnSendCode,
+  selectEmailOnSendCode,
   enterConfirmationCodeAndSubmit,
   selectYesOnChildrenThreeOrYoungerPage,
   submitChild3OrUnderDetails

@@ -58,7 +58,9 @@ const POSTCODE = 'AA11BB'
 const FULL_ADDRESS = `${ADDRESS_LINE_1}\n${ADDRESS_LINE_2}\n${TOWN}\n${POSTCODE}`
 const FULL_ADDRESS_NO_LINE_2 = `${ADDRESS_LINE_1}\n${TOWN}\n${POSTCODE}`
 const PHONE_NUMBER = '07123456789'
+const PHONE_NUMBER_2 = '07111111111'
 const EMAIL_ADDRESS = 'test@email.com'
+const EMAIL_ADDRESS_2 = 'different-email-address@email.com'
 
 module.exports = {
   LONG_STRING,
@@ -80,7 +82,9 @@ module.exports = {
   FULL_ADDRESS,
   FULL_ADDRESS_NO_LINE_2,
   PHONE_NUMBER,
+  PHONE_NUMBER_2,
   EMAIL_ADDRESS,
+  EMAIL_ADDRESS_2,
   TEXT_LABEL,
   EMAIL_LABEL,
   TEXT,
