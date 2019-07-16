@@ -6,7 +6,7 @@ const { NO } = require('../common/constants')
 
 const {
   isValidDate,
-  isDateMoreThanOneMonthAgo,
+  isDateOneOrMoreMonthsInThePast,
   isDateMoreThanEightMonthsInTheFuture,
   validateIsYesOrNo
 } = require('../common/validators')
@@ -28,7 +28,7 @@ const validateExpectedDeliveryDate = (res) => (_, { req }) => {
     throw new Error(req.t('validation:expectedDeliveryDateInvalid'))
   }
 
-  if (isDateMoreThanOneMonthAgo(expectedDeliveryDate)) {
+  if (isDateOneOrMoreMonthsInThePast(expectedDeliveryDate)) {
     throw new Error(req.t('validation:expectedDeliveryDateTooFarInPast'))
   }
 
