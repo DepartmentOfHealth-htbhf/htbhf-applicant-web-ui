@@ -1,16 +1,19 @@
 const partitionObj = (predicate, obj) => {
-  const obj1 = {}
-  const obj2 = {}
+  const matches = {}
+  const others = {}
 
   Object.keys(obj).forEach(key => {
     if (predicate(obj[key], key)) {
-      obj1[key] = obj[key]
+      matches[key] = obj[key]
     } else {
-      obj2[key] = obj[key]
+      others[key] = obj[key]
     }
   })
 
-  return [obj1, obj2]
+  return {
+    matches,
+    others
+  }
 }
 
 module.exports = {

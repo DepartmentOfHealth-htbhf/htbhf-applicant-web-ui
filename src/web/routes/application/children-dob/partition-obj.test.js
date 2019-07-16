@@ -15,18 +15,18 @@ test('partitionObj() returns two objects based on predicate acting on key', (t) 
     'bad-three': 'Armageddon'
   }
 
-  const expected = [
-    {
+  const expected = {
+    matches: {
       'good-one': 'Fudge',
       'good-two': 'Denim',
       'good-three': 'Deep Impact'
     },
-    {
+    others: {
       'bad-one': 'Rollerblading',
       'bad-two': 'Red Leicester',
       'bad-three': 'Armageddon'
     }
-  ]
+  }
 
   const result = partitionObj(isGood, obj)
   t.deepEqual(result, expected, 'returns two objects based on predicate acting on key')
@@ -42,17 +42,17 @@ test('partitionObj() returns two objects based on predicate acting on value', (t
     'five': 5
   }
 
-  const expected = [
-    {
+  const expected = {
+    matches: {
       'two': 2,
       'four': 4
     },
-    {
+    others: {
       'one': 1,
       'three': 3,
       'five': 5
     }
-  ]
+  }
 
   const result = partitionObj(isEven, obj)
   t.deepEqual(result, expected, 'returns two objects based on predicate acting on value')
