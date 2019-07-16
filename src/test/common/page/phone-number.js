@@ -27,6 +27,11 @@ class PhoneNumber extends SubmittablePage {
     return 'phone number'
   }
 
+  // TODO MS: HTBHF-1836 Refactor this and clearPhoneNumber into InputField Class
+  async getPhoneNumberField () {
+    return this.findById('phone-number')
+  }
+
   async clearPhoneNumber () {
     const phoneNumberField = await this.getPhoneNumberField()
     await phoneNumberField.clear()
