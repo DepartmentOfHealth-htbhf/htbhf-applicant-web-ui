@@ -12,7 +12,7 @@ const reIndexChildren = (children, index) => compose(fromPairs, map(handleDecrem
  */
 const removeChildByIndex = (children, index) => {
   const childEntries = getChildEntries(children)
-  const filteredChildren = omitKeysWithIndex(childEntries, index)
+  const filteredChildren = omitKeysWithIndex(childEntries, parseInt(index, 10))
 
   return {
     ...reIndexChildren(filteredChildren, index),

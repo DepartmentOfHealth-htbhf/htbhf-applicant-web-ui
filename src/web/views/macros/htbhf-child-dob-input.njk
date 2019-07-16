@@ -9,9 +9,7 @@
 #}
 
 {% macro htbhfChildDobInput(params) %}
-
   <div class="c-htbhf-child-dob-input">
-
     {% call govukFieldset({
         legend: {
           text: params.text.legend,
@@ -52,12 +50,12 @@
           classes: "govuk-button--secondary",
           type: "submit",
           value: params.index,
-          name: "remove",
+          name: "removeChildIndex",
           attributes: {
             id: "remove-child-" + params.index
           }
         }) }}
-      </div>
-    {% endif %}
+        </div>
+      {% endif %}
   </div>
 {% endmacro %}
