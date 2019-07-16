@@ -122,11 +122,13 @@ class Page {
     }
   }
 
+  // TODO - Remove this when done, we MUST get rid of this
   async getValueForInputWithId (id) {
     const elementWithId = await this.findById(id)
     return elementWithId.getAttribute('value')
   }
 
+  // TODO - Remove this when done, we MUST get rid of this
   async enterValueForInputWithId (id, value) {
     const input = await this.findById(id)
     return input.sendKeys(value)

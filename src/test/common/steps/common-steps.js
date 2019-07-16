@@ -40,8 +40,8 @@ async function enterDoYouLiveInScotlandNoAndSubmit () {
 
 async function enterNameAndSubmit (firstName = FIRST_NAME, lastName = LAST_NAME) {
   try {
-    await pages.enterName.enterFirstName(firstName)
-    await pages.enterName.enterLastName(lastName)
+    await pages.enterName.firstNameInputField.enterValue(firstName)
+    await pages.enterName.lastNameInputField.enterValue(lastName)
     await pages.enterName.submitForm()
   } catch (error) {
     assert.fail(`Unexpected error caught trying to enter the name and submit the page - ${error}`)
@@ -50,7 +50,7 @@ async function enterNameAndSubmit (firstName = FIRST_NAME, lastName = LAST_NAME)
 
 async function enterNinoAndSubmit (nino = VALID_ELIGIBLE_NINO) {
   try {
-    await pages.enterNino.enterNino(nino)
+    await pages.enterNino.inputField.enterValue(nino)
     await pages.enterNino.submitForm()
   } catch (error) {
     assert.fail(`Unexpected error caught trying to enter the national insurance number and submit the page - ${error}`)
@@ -101,7 +101,7 @@ async function enterCardAddressAndSubmit (addressLine1 = ADDRESS_LINE_1, address
 
 async function enterPhoneNumberAndSubmit (phoneNumber = PHONE_NUMBER) {
   try {
-    await pages.phoneNumber.enterPhoneNumber(phoneNumber)
+    await pages.phoneNumber.inputField.enterValue(phoneNumber)
     await pages.phoneNumber.submitForm()
   } catch (error) {
     assert.fail(`Unexpected error caught trying to enter phone number and submit the page - ${error}`)
@@ -110,7 +110,7 @@ async function enterPhoneNumberAndSubmit (phoneNumber = PHONE_NUMBER) {
 
 async function enterEmailAddressAndSubmit (emailAddress = EMAIL_ADDRESS) {
   try {
-    await pages.emailAddress.enterEmailAddress(emailAddress)
+    await pages.emailAddress.inputField.enterValue(emailAddress)
     await pages.emailAddress.submitForm()
   } catch (error) {
     assert.fail(`Unexpected error caught trying to enter phone number and submit the page - ${error}`)
@@ -189,7 +189,7 @@ async function enterConfirmationCodeAndSubmit (confirmationCode) {
     const sessionCode = await getConfirmationCodeForSession(confirmationCode)
     // some browsers may have visited a different page in order to get the session id, so we must reload the enter code page
     await pages.enterCode.openDirect(pages.url)
-    await pages.enterCode.enterConfirmationCode(sessionCode)
+    await pages.enterCode.inputField.enterValue(sessionCode)
     await pages.enterCode.submitForm()
   } catch (error) {
     assert.fail(`Unexpected error caught trying to enter confirmation code for 'Enter code' and submit the page - ${error}`)

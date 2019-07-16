@@ -25,8 +25,8 @@ Then(/^I am shown the enter code page$/, async function () {
 
 Then(/^I am informed that I must enter in the code that was sent to me$/, async function () {
   await assertFieldErrorAndLinkTextPresentAndCorrect(
-    pages.enterCode.getConfirmationCodeFieldErrorId(),
-    pages.enterCode.getConfirmationCodeLinkErrorCss(),
+    pages.enterCode.inputField.getInputErrorId(),
+    pages.enterCode.inputField.getInputErrorLinkCss(),
     'Enter the 6 digit code we sent you')
 })
 
