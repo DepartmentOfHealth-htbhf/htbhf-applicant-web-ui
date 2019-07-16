@@ -122,9 +122,9 @@ class Page {
     }
   }
 
-  async getTextForElementWithId (id) {
+  async getValueForInputWithId (id) {
     const elementWithId = await this.findById(id)
-    return elementWithId.getText()
+    return elementWithId.getAttribute('value')
   }
 
   async findH1 () {

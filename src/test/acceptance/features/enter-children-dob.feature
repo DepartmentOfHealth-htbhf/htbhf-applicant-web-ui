@@ -23,7 +23,6 @@ Feature: Enter your children’s dates of birth
     When I click continue
     Then I am shown the are you pregnant page
 
-  @ignore
   Scenario: Remove children's date of birth
     Given I enter the details of my two children who are three or younger
     When I click remove for the first child's date of birth
