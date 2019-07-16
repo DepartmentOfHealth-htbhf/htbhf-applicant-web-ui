@@ -15,11 +15,11 @@ const reIndexChildren = (children, index) => compose(fromPairs, map(handleDecrem
  */
 const removeChildByIndex = (children, index) => {
   const partitioned = partitionObj(isChildEntry, children)
-  const filteredChildren = omitKeysWithIndex(partitioned[0], parseInt(index, 10))
+  const filteredChildren = omitKeysWithIndex(partitioned.matches, parseInt(index, 10))
 
   return {
     ...reIndexChildren(filteredChildren, index),
-    ...partitioned[1]
+    ...partitioned.others
   }
 }
 
