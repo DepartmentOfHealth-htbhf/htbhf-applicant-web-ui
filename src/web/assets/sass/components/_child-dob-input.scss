@@ -1,0 +1,12 @@
+
+.c-htbhf-child-dob-input {
+  position: relative;
+}
+
+.c-htbhf-child-dob-input__remove-button {
+  @media (min-width: map-get($govuk-breakpoints, tablet)) {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}

@@ -23,3 +23,8 @@ Feature: Do you have children who are 3 years old or younger?
     When I say Yes to the do you have children three or younger question
     And I click continue
     Then I am shown the enter your childrens dates of birth page
+
+  Scenario: Children’s dates of birth is not navigable via the back button if I’ve said I have no children
+    When I have said No to the do you have children three or younger question
+    And I am shown the are you pregnant page
+    Then The back link points to the Do you have children who are three years old or younger page

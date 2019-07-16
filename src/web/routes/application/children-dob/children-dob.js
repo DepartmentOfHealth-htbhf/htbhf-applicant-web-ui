@@ -1,11 +1,11 @@
-const { pickBy, path } = require('ramda')
-const { countKeysContainingString } = require('./count-keys')
+const { path } = require('ramda')
 const { YES } = require('../common/constants')
 const { validate } = require('./validate')
 const { getExampleDate } = require('../common/formatters')
-
-const PATH = '/children-dob'
-const DAY_FIELD_SUFFIX = '-day'
+const { setChildrenInSessionForGet, setChildrenInSessionForPost } = require('./set-children-in-session')
+const { handleRemoveAction } = require('./handle-remove-action')
+const { handleAddAction } = require('./handle-add-action')
+const { PATH } = require('./constants')
 
 const pageContent = ({ translate }) => ({
   title: translate('childrenDob.title'),
@@ -18,52 +18,24 @@ const pageContent = ({ translate }) => ({
   explanation: translate('childrenDob.explanation'),
   nameLabel: translate('childrenDob.nameLabel'),
   dateOfBirth: translate('childrenDob.dateOfBirth'),
-  aboutYourChild: translate('childrenDob.aboutYourChild')
+  aboutYourChild: translate('childrenDob.aboutYourChild'),
+  addChild: translate('buttons:addChild'),
+  removeChild: translate('buttons:removeChild')
 })
-
-const addActionRequested = body => body.hasOwnProperty('add')
-
-const extractChildrenEntries = (val, key) => key.startsWith('child')
-
-const initialiseChildrenInSession = (req) => {
-  if (!req.session.hasOwnProperty('children')) {
-    req.session.children = {
-      inputCount: 1,
-      childCount: 0
-    }
-  }
-
-  return req
-}
 
 const isNavigable = (session) => path(['claim', 'doYouHaveChildrenThreeOrYounger'], session) === YES
 
 const behaviourForGet = (req, res, next) => {
-  req = initialiseChildrenInSession(req)
+  req = setChildrenInSessionForGet(req)
   res.locals.children = req.session.children
   next()
 }
 
-const behaviourForPost = (req, res, next) => {
-  const childCount = countKeysContainingString(DAY_FIELD_SUFFIX, req.body)
-
-  req.session.children = {
-    ...pickBy(extractChildrenEntries, req.body),
-    inputCount: childCount,
-    childCount: childCount
-  }
-
-  // GET behaviour is not called on validation error so locals also need setting for POST
-  res.locals.children = req.session.children
-
-  if (addActionRequested(req.body)) {
-    const updatedCount = req.session.children.inputCount + 1
-    req.session.children.inputCount = updatedCount
-    return res.redirect(PATH)
-  }
-
-  next()
-}
+const behaviourForPost = [
+  setChildrenInSessionForPost,
+  handleAddAction,
+  handleRemoveAction
+]
 
 const childrenDob = {
   path: PATH,
@@ -79,6 +51,5 @@ const childrenDob = {
 module.exports = {
   behaviourForGet,
   behaviourForPost,
-  childrenDob,
-  countKeysContainingString
+  childrenDob
 }

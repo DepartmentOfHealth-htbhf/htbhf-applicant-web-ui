@@ -9,6 +9,12 @@ const PAGE_TITLES = {
   cy: 'GOV.UK - Urna condimentum mattis?'
 }
 
+const getDayInputIdForIndex = (index) => `childDob-${index}-day`
+const getMonthInputIdForIndex = (index) => `childDob-${index}-month`
+const getYearInputIdForIndex = (index) => `childDob-${index}-year`
+const getNameInputIdForIndex = (index) => `childDob-name-${index}`
+const getRemoveButtonIdForIndex = (index) => `remove-child-${index}`
+
 /**
  * Page object for the enter children's dates of birth page.
  */
@@ -41,46 +47,48 @@ class EnterChildrenDOB extends SubmittablePage {
     await this.enterChild3OrUnderDateOfBirth(dateOfBirth)
     this.childIndex++
   }
+
   async enterChild3OrUnderDateOfBirth (dateOfBirth) {
     await this.enterDay(dateOfBirth.getDate())
     await this.enterMonth(dateOfBirth.getMonth() + 1)
     await this.enterYear(dateOfBirth.getFullYear())
   }
 
-  async getNameField () {
-    return this.findById(`child-name-${this.childIndex}`)
-  }
-
-  async getDayField () {
-    return this.findById(`childDob-${this.childIndex}-day`)
-  }
-
-  async getMonthField () {
-    return this.findById(`childDob-${this.childIndex}-month`)
-  }
-
-  async getYearField () {
-    return this.findById(`childDob-${this.childIndex}-year`)
-  }
-
   async enterChildName (name) {
-    const dayField = await this.getNameField()
-    return dayField.sendKeys(name)
+    await this.enterValueForInputWithId(getNameInputIdForIndex(this.childIndex), name)
   }
 
   async enterDay (day) {
-    const dayField = await this.getDayField()
-    return dayField.sendKeys(day)
+    await this.enterValueForInputWithId(getDayInputIdForIndex(this.childIndex), day)
   }
 
   async enterMonth (month) {
-    const monthField = await this.getMonthField()
-    return monthField.sendKeys(month)
+    await this.enterValueForInputWithId(getMonthInputIdForIndex(this.childIndex), month)
   }
 
   async enterYear (year) {
-    const yearField = await this.getYearField()
-    return yearField.sendKeys(year)
+    await this.enterValueForInputWithId(getYearInputIdForIndex(this.childIndex), year)
+  }
+
+  async findAllRemoveChildButtons () {
+    return this.findAllByClassName('govuk-button govuk-button--secondary')
+  }
+
+  async clickRemoveButtonForChild (childIndex) {
+    const removeButton = await this.findById(getRemoveButtonIdForIndex(childIndex))
+    await removeButton.click()
+  }
+
+  async getChildDateOfBirthDay (childIndex) {
+    return this.getValueForInputWithId(getDayInputIdForIndex(childIndex))
+  }
+
+  async getChildDateOfBirthMonth (childIndex) {
+    return this.getValueForInputWithId(getMonthInputIdForIndex(childIndex))
+  }
+
+  async getChildDateOfBirthYear (childIndex) {
+    return this.getValueForInputWithId(getYearInputIdForIndex(childIndex))
   }
 
   getChildDateOfBirthFieldErrorId (index) {
@@ -92,11 +100,11 @@ class EnterChildrenDOB extends SubmittablePage {
   }
 
   getChildNameFieldErrorId (index) {
-    return `child-name-${index}-error`
+    return `childDob-name-${index}-error`
   }
 
   getChildNameErrorLinkCss (index) {
-    return `a[href="#child-name-${index}-error"]`
+    return `a[href="#child-dob-name-${index}-error"]`
   }
 }
 

@@ -17,17 +17,22 @@
     {{ htbhfChildDobInput({
       index: i + 1,
       children: children,
-      dateOfBirth: dateOfBirth,
       hint: hint,
       nameLabel: nameLabel,
       errors: errors,
-      aboutYourChild: aboutYourChild
+      showRemoveButton: children.inputCount > 1,
+      text: {
+        legend: aboutYourChild,
+        dateLegend: dateOfBirth,
+        removeButton: removeChild
+      }
     }) }}
+    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
   {% endfor %}
 
   {% endcall %}
 
-  <input class="c-htbhf-button c-htbhf-button--link u-htbhf-focus" type="submit" value="Add another child" name="add" id="add-another-child">
+  <button class="c-htbhf-button c-htbhf-button--link u-htbhf-focus" type="submit" name="addChild" id="add-another-child">{{ addChild }}</button>
 
 {{ govukInsetText({
   text: explanation
