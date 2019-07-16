@@ -9,51 +9,53 @@
 #}
 
 {% macro htbhfChildDobInput(params) %}
+  <div class="c-htbhf-child-dob-input">
+    {% call govukFieldset({
+        legend: {
+          text: params.text.legend,
+          classes: "govuk-fieldset__legend--m"
+        }
+     }) %}
 
-  {% call govukFieldset({
+      {{ govukInput({
+        label: {
+          text: params.nameLabel
+        },
+        id: 'childDob-name-' + params.index,
+        name: 'childDobName-' + params.index,
+        value: params.children['childDobName-'  + params.index],
+        errorMessage: params.errors | getErrorForField('childDobName-'  + params.index),
+        autocomplete: "off"
+      }) }}
+
+    {% endcall %}
+
+    {{ htbhfDateInput({
+      fieldNamePrefix: "childDob-" + params.index,
+      claim: params.children,
+      errors: params.errors,
+      hint: {
+        text: params.hint
+      },
       legend: {
-        text: params.text.legend,
+        text: params.text.dateLegend,
         classes: "govuk-fieldset__legend--m"
       }
-   }) %}
-
-    {{ govukInput({
-      label: {
-        text: params.nameLabel
-      },
-      id: 'childDob-name-' + params.index,
-      name: 'childDobName-' + params.index,
-      value: params.children['childDobName-'  + params.index],
-      errorMessage: params.errors | getErrorForField('childDobName-'  + params.index),
-      autocomplete: "off"
     }) }}
 
-  {% endcall %}
-
-  {{ htbhfDateInput({
-    fieldNamePrefix: "childDob-" + params.index,
-    claim: params.children,
-    errors: params.errors,
-    hint: {
-      text: params.hint
-    },
-    legend: {
-      text: params.text.dateLegend,
-      classes: "govuk-fieldset__legend--m"
-    }
-  }) }}
-
-  {% if params.showRemoveButton %}
-    {{ govukButton({
-      text: params.text.removeButton,
-      classes: "govuk-button--secondary",
-      type: "submit",
-      value: params.index,
-      name: "removeChildIndex",
-      attributes: {
-        id: "remove-child-" + params.index
-      }
-    }) }}
-  {% endif %}
-
+    {% if params.showRemoveButton %}
+      <div class="c-htbhf-child-dob-input__remove-button">
+        {{ govukButton({
+          text: params.text.removeButton,
+          classes: "govuk-button--secondary",
+          type: "submit",
+          value: params.index,
+          name: "removeChildIndex",
+          attributes: {
+            id: "remove-child-" + params.index
+          }
+        }) }}
+        </div>
+      {% endif %}
+  </div>
 {% endmacro %}
