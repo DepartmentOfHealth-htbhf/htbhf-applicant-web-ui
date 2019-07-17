@@ -1,5 +1,5 @@
 Feature: Are you pregnant?
-  In order to apply for the HTBHF programme
+  In order to apply for the Apply for Healthy Start programme
   As a potential claimant
   I want to select whether or not I am pregnant
 

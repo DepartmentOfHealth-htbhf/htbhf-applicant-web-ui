@@ -1,5 +1,5 @@
 Feature: We're going to send you a code
-  In order to apply for the HTBHF programme
+  In order to apply for the Apply for Healthy Start programme
   As a potential claimant
   I want to select text or email to receive my code
 

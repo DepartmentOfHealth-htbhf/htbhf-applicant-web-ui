@@ -12,7 +12,7 @@ class Overview extends Page {
   }
 
   getPageName () {
-    return 'HTBHF overview'
+    return 'Apply for Healthy Start overview'
   }
 
   async waitForPageLoad () {
