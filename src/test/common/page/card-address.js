@@ -19,8 +19,8 @@ const POSTCODE_ERROR_LINK_CSS = 'a[href="#postcode-error"]'
 /**
  * Page object for Address page where the address is entered.
  */
-// TODO DW HTBHF-1845 rename class and filename (not doing in current pr as rename and content change will appear as new file)
-class CardAddress extends SubmittablePage {
+// TODO DW HTBHF-1845 rename file (not doing in current pr as rename and content change will appear as new file)
+class Address extends SubmittablePage {
   getPath () {
     return '/address'
   }
@@ -102,4 +102,4 @@ class CardAddress extends SubmittablePage {
   }
 }
 
-module.exports = CardAddress
+module.exports = Address

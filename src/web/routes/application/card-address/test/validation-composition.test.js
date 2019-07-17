@@ -19,7 +19,7 @@ const req = {
   }
 }
 
-test('validation middleware passes with valid card delivery address', async (t) => {
+test('validation middleware passes with valid address', async (t) => {
   const testReq = { ...req }
 
   const result = await applyExpressValidation(testReq, validate)
