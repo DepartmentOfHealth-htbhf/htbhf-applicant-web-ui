@@ -23,13 +23,13 @@ Then(/^I am informed that I must enter in a valid phone number$/, async function
 })
 
 Then(/^I see the value (.*) in the phone number textbox$/, async function (phoneNumber) {
-  const enteredPhoneNumber = await pages.phoneNumber.getPhoneNumberValue()
+  const enteredPhoneNumber = await pages.phoneNumber.inputField.getValue()
   expect(enteredPhoneNumber).to.be.equal(phoneNumber)
 })
 
 async function assertPhoneNumberErrorFieldAndLink (expectedErrorMessage) {
   await assertFieldErrorAndLinkTextPresentAndCorrect(
-    pages.phoneNumber.getPhoneNumberFieldErrorId(),
-    pages.phoneNumber.getPhoneNumberLinkErrorCss(),
+    pages.phoneNumber.inputField.getInputErrorId(),
+    pages.phoneNumber.inputField.getInputErrorLinkCss(),
     expectedErrorMessage)
 }
