@@ -105,3 +105,10 @@ test('validateDateOfBirth() returns true for a valid date less than four years i
   t.equal(result, true, 'returns true for a valid date less than four years in the past')
   t.end()
 })
+
+test('validateDateOfBirth() throws an error for a date of birth exactly four years in the past', (t) => {
+  const dobExactlyFourYearsAgo = dateAsString({ yearAdjustment: -4 })
+  const result = validateDateOfBirth.bind(null, dobExactlyFourYearsAgo, { req })
+  t.throws(result, /validation:childDateOfBirthFourYearsOrOlder/, 'throws an error for a date of birth exactly four years ago')
+  t.end()
+})

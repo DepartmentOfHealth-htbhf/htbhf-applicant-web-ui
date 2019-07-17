@@ -17,9 +17,9 @@ const isDateInPast = (dateString) => {
   return true
 }
 
-const isDateMoreThanOneMonthAgo = (dateString) => {
+const isDateOneOrMoreMonthsInThePast = (dateString) => {
   if (isValidDate(dateString)) {
-    return validator.isBefore(dateString, dateAsString({ monthAdjustment: -1 }))
+    return !validator.isAfter(dateString, dateAsString({ monthAdjustment: -1 }))
   }
   return true
 }
@@ -41,9 +41,9 @@ const isDateInTheFuture = (dateString) => {
 const validateIsYesOrNo = (fieldName, validationMessage) =>
   check(fieldName).isIn([YES, NO]).withMessage(translateValidationMessage(validationMessage))
 
-const isDateMoreThanFourYearsAgo = (dateString) => {
+const isDateFourOrMoreYearsInThePast = (dateString) => {
   if (isValidDate(dateString)) {
-    return validator.isBefore(dateString, dateAsString({ yearAdjustment: -4 }))
+    return !validator.isAfter(dateString, dateAsString({ yearAdjustment: -4 }))
   }
   return true
 }
@@ -51,9 +51,9 @@ const isDateMoreThanFourYearsAgo = (dateString) => {
 module.exports = {
   isValidDate,
   isDateInPast,
-  isDateMoreThanOneMonthAgo,
+  isDateOneOrMoreMonthsInThePast,
   isDateMoreThanEightMonthsInTheFuture,
   validateIsYesOrNo,
-  isDateMoreThanFourYearsAgo,
+  isDateFourOrMoreYearsInThePast,
   isDateInTheFuture
 }
