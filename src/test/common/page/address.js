@@ -11,7 +11,6 @@ const PAGE_TITLES = {
 /**
  * Page object for Address page where the address is entered.
  */
-// TODO DW HTBHF-1845 rename class and filename (not doing in current pr as rename and content change will appear as new file)
 class Address extends SubmittablePage {
   constructor (driver) {
     super(driver)
