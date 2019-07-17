@@ -1,6 +1,7 @@
 'use strict'
 
 const SubmittablePage = require('./submittable-page')
+const InputField = require('./input-field')
 
 const { dateLastYear } = require('../../common/dates')
 
@@ -55,19 +56,39 @@ class EnterChildrenDOB extends SubmittablePage {
   }
 
   async enterChildName (name) {
-    await this.enterValueForInputWithId(getNameInputIdForIndex(this.childIndex), name)
+    const inputField = this.getNameInputFieldForIndex(this.childIndex)
+    await inputField.enterValue(name)
   }
 
   async enterDay (day) {
-    await this.enterValueForInputWithId(getDayInputIdForIndex(this.childIndex), day)
+    const inputField = this.getDayInputFieldForIndex(this.childIndex)
+    await inputField.enterValue(day)
   }
 
   async enterMonth (month) {
-    await this.enterValueForInputWithId(getMonthInputIdForIndex(this.childIndex), month)
+    const inputField = this.getMonthInputFieldForIndex(this.childIndex)
+    await inputField.enterValue(month)
   }
 
   async enterYear (year) {
-    await this.enterValueForInputWithId(getYearInputIdForIndex(this.childIndex), year)
+    const inputField = this.getYearInputFieldForIndex(this.childIndex)
+    await inputField.enterValue(year)
+  }
+
+  getNameInputFieldForIndex (index) {
+    return new InputField(getNameInputIdForIndex(index), this)
+  }
+
+  getDayInputFieldForIndex (index) {
+    return new InputField(getDayInputIdForIndex(index), this)
+  }
+
+  getMonthInputFieldForIndex (index) {
+    return new InputField(getMonthInputIdForIndex(index), this)
+  }
+
+  getYearInputFieldForIndex (index) {
+    return new InputField(getYearInputIdForIndex(index), this)
   }
 
   async findAllRemoveChildButtons () {
@@ -80,27 +101,18 @@ class EnterChildrenDOB extends SubmittablePage {
   }
 
   async getChildDateOfBirthDay (childIndex) {
-    return this.getValueForInputWithId(getDayInputIdForIndex(childIndex))
+    const inputField = this.getDayInputFieldForIndex(childIndex)
+    return inputField.getValue()
   }
 
   async getChildDateOfBirthMonth (childIndex) {
-    return this.getValueForInputWithId(getMonthInputIdForIndex(childIndex))
+    const inputField = this.getMonthInputFieldForIndex(childIndex)
+    return inputField.getValue()
   }
 
   async getChildDateOfBirthYear (childIndex) {
-    return this.getValueForInputWithId(getYearInputIdForIndex(childIndex))
-  }
-
-  // TODO - Can this use InputField when there are a dynamic number of them?
-  async getValueForInputWithId (id) {
-    const elementWithId = await this.findById(id)
-    return elementWithId.getAttribute('value')
-  }
-
-  // TODO - Would like to get rid of this and use InputField
-  async enterValueForInputWithId (id, value) {
-    const input = await this.findById(id)
-    return input.sendKeys(value)
+    const inputField = this.getYearInputFieldForIndex(childIndex)
+    return inputField.getValue()
   }
 
   getChildDateOfBirthFieldErrorId (index) {
@@ -112,10 +124,13 @@ class EnterChildrenDOB extends SubmittablePage {
   }
 
   getChildNameFieldErrorId (index) {
-    return `childDob-name-${index}-error`
+    const inputField = this.getNameInputFieldForIndex(index)
+    return inputField.getInputErrorId()
   }
 
   getChildNameErrorLinkCss (index) {
+    // TODO Should the inconsistency in camel case vs kebab case in htbhf-date-input.njk be fixed, this will fail and
+    //  should be corrected to use this.getNameInputFieldForIndex(index) and getInputErrorLinkCss()
     return `a[href="#child-dob-name-${index}-error"]`
   }
 }
