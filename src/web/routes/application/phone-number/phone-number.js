@@ -6,7 +6,7 @@ const { handleConfirmationCodeReset, getConfirmationCodeChannel } = require('../
 const pageContent = ({ translate }) => ({
   title: translate('phoneNumber.title'),
   heading: translate('phoneNumber.heading'),
-  hint: translate('phoneNumber.hint'),
+  formDescription: translate('phoneNumber.formDescription'),
   phoneNumberLabel: translate('phoneNumber.phoneNumberLabel'),
   buttonText: translate('buttons:continue'),
   explanation: translate('phoneNumber.explanation')
