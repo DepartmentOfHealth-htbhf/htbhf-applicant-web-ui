@@ -40,8 +40,8 @@ async function enterDoYouLiveInScotlandNoAndSubmit () {
 
 async function enterNameAndSubmit (firstName = FIRST_NAME, lastName = LAST_NAME) {
   try {
-    await pages.enterName.enterFirstName(firstName)
-    await pages.enterName.enterLastName(lastName)
+    await pages.enterName.firstNameInputField.enterValue(firstName)
+    await pages.enterName.lastNameInputField.enterValue(lastName)
     await pages.enterName.submitForm()
   } catch (error) {
     assert.fail(`Unexpected error caught trying to enter the name and submit the page - ${error}`)
@@ -50,7 +50,7 @@ async function enterNameAndSubmit (firstName = FIRST_NAME, lastName = LAST_NAME)
 
 async function enterNinoAndSubmit (nino = VALID_ELIGIBLE_NINO) {
   try {
-    await pages.enterNino.enterNino(nino)
+    await pages.enterNino.inputField.enterValue(nino)
     await pages.enterNino.submitForm()
   } catch (error) {
     assert.fail(`Unexpected error caught trying to enter the national insurance number and submit the page - ${error}`)
@@ -59,9 +59,9 @@ async function enterNinoAndSubmit (nino = VALID_ELIGIBLE_NINO) {
 
 async function enterDateOfBirthAndSubmit (day = DAY, month = MONTH, year = YEAR) {
   try {
-    await pages.enterDOB.enterDay(day)
-    await pages.enterDOB.enterMonth(month)
-    await pages.enterDOB.enterYear(year)
+    await pages.enterDOB.dayInputField.enterValue(day)
+    await pages.enterDOB.monthInputField.enterValue(month)
+    await pages.enterDOB.yearInputField.enterValue(year)
     await pages.enterDOB.submitForm()
   } catch (error) {
     assert.fail(`Unexpected error caught trying to enter the date of birth and submit the page - ${error}`)
@@ -87,21 +87,21 @@ async function selectNoOnPregnancyPage () {
   }
 }
 
-async function enterCardAddressAndSubmit (addressLine1 = ADDRESS_LINE_1, addressLine2 = ADDRESS_LINE_2, townOrCity = TOWN, postcode = POSTCODE) {
+async function enterAddressAndSubmit (addressLine1 = ADDRESS_LINE_1, addressLine2 = ADDRESS_LINE_2, townOrCity = TOWN, postcode = POSTCODE) {
   try {
-    await pages.cardAddress.enterAddressLine1(addressLine1)
-    await pages.cardAddress.enterAddressLine2(addressLine2)
-    await pages.cardAddress.enterTownOrCity(townOrCity)
-    await pages.cardAddress.enterPostcode(postcode)
-    await pages.cardAddress.submitForm()
+    await pages.address.line1InputField.enterValue(addressLine1)
+    await pages.address.line2InputField.enterValue(addressLine2)
+    await pages.address.townOrCityInputField.enterValue(townOrCity)
+    await pages.address.postcodeInputField.enterValue(postcode)
+    await pages.address.submitForm()
   } catch (error) {
-    assert.fail(`Unexpected error caught trying to enter card address and submit the page - ${error}`)
+    assert.fail(`Unexpected error caught trying to enter address and submit the page - ${error}`)
   }
 }
 
 async function enterPhoneNumberAndSubmit (phoneNumber = PHONE_NUMBER) {
   try {
-    await pages.phoneNumber.enterPhoneNumber(phoneNumber)
+    await pages.phoneNumber.inputField.enterValue(phoneNumber)
     await pages.phoneNumber.submitForm()
   } catch (error) {
     assert.fail(`Unexpected error caught trying to enter phone number and submit the page - ${error}`)
@@ -110,7 +110,7 @@ async function enterPhoneNumberAndSubmit (phoneNumber = PHONE_NUMBER) {
 
 async function enterEmailAddressAndSubmit (emailAddress = EMAIL_ADDRESS) {
   try {
-    await pages.emailAddress.enterEmailAddress(emailAddress)
+    await pages.emailAddress.inputField.enterValue(emailAddress)
     await pages.emailAddress.submitForm()
   } catch (error) {
     assert.fail(`Unexpected error caught trying to enter phone number and submit the page - ${error}`)
@@ -189,7 +189,7 @@ async function enterConfirmationCodeAndSubmit (confirmationCode) {
     const sessionCode = await getConfirmationCodeForSession(confirmationCode)
     // some browsers may have visited a different page in order to get the session id, so we must reload the enter code page
     await pages.enterCode.openDirect(pages.url)
-    await pages.enterCode.enterConfirmationCode(sessionCode)
+    await pages.enterCode.inputField.enterValue(sessionCode)
     await pages.enterCode.submitForm()
   } catch (error) {
     assert.fail(`Unexpected error caught trying to enter confirmation code for 'Enter code' and submit the page - ${error}`)
@@ -204,7 +204,7 @@ async function completeTheApplicationAsAPregnantWoman () {
   await selectYesOnPregnancyPage()
   await enterNameAndSubmit()
   await enterNinoAndSubmit()
-  await enterCardAddressAndSubmit()
+  await enterAddressAndSubmit()
   await enterPhoneNumberAndSubmit()
   await enterEmailAddressAndSubmit()
   await selectTextOnSendCode()
@@ -219,7 +219,7 @@ async function completeTheApplicationAsAWomanWhoIsNotPregnant () {
   await selectNoOnPregnancyPage()
   await enterNameAndSubmit()
   await enterNinoAndSubmit()
-  await enterCardAddressAndSubmit()
+  await enterAddressAndSubmit()
   await enterPhoneNumberAndSubmit()
   await enterEmailAddressAndSubmit()
   await selectTextOnSendCode()
@@ -273,7 +273,7 @@ module.exports = {
   enterNameAndSubmit,
   enterNinoAndSubmit,
   selectNoOnPregnancyPage,
-  enterCardAddressAndSubmit,
+  enterAddressAndSubmit,
   enterPhoneNumberAndSubmit,
   completeTheApplicationAsAPregnantWoman,
   completeTheApplicationAsAWomanWhoIsNotPregnant,

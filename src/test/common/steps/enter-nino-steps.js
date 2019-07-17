@@ -19,13 +19,13 @@ When(/^I do not enter a national insurance number$/, async function () {
 
 Then(/^I am informed that the national insurance number is in the wrong format$/, async function () {
   await assertFieldErrorAndLinkTextPresentAndCorrect(
-    pages.enterNino.getNinoFieldErrorId(),
-    pages.enterNino.getNinoLinkErrorCss(),
+    pages.enterNino.inputField.getInputErrorId(),
+    pages.enterNino.inputField.getInputErrorLinkCss(),
     'Enter a National Insurance number in the correct format')
 })
 
 Then(/^I see the value (.*) in the textbox$/, async function (nino) {
-  const enteredNino = await pages.enterNino.getNinoValue()
+  const enteredNino = await pages.enterNino.inputField.getValue()
   expect(enteredNino).to.be.equal(nino)
 })
 

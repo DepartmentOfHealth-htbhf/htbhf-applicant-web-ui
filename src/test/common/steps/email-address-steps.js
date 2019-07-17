@@ -32,13 +32,13 @@ Then(/^I am shown the email address page$/, async function () {
 
 Then(/^I am informed that I must enter in a valid email address$/, async function () {
   await assertFieldErrorAndLinkTextPresentAndCorrect(
-    pages.emailAddress.getEmailAddressFieldErrorId(),
-    pages.emailAddress.getEmailAddressLinkErrorCss(),
+    pages.emailAddress.inputField.getInputErrorId(),
+    pages.emailAddress.inputField.getInputErrorLinkCss(),
     'Enter an email address in the correct format, like name@example.com')
 })
 
 Then(/^I see the email address (.*) in the textbox$/, async function (emailAddress) {
-  const enteredEmailAddress = await pages.emailAddress.getEmailAddressValue()
+  const enteredEmailAddress = await pages.emailAddress.inputField.getValue()
   expect(enteredEmailAddress).to.be.equal(emailAddress)
 })
 

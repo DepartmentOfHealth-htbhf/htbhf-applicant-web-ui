@@ -8,7 +8,7 @@ const {
   enterNameAndSubmit,
   enterNinoAndSubmit,
   enterDateOfBirthAndSubmit,
-  enterCardAddressAndSubmit,
+  enterAddressAndSubmit,
   enterPhoneNumberAndSubmit,
   enterDoYouLiveInScotlandNoAndSubmit,
   enterEmailAddressAndSubmit,
@@ -32,13 +32,13 @@ When(/^I complete the application with valid details, selecting to receive my co
 
 When(/^I enter in a new phone number$/, async function () {
   // the phone number text box will contain the previously entered number, need to clear it before entering new number
-  await pages.phoneNumber.clearPhoneNumber()
+  await pages.phoneNumber.inputField.clearValue()
   await enterPhoneNumberAndSubmit(PHONE_NUMBER_2)
 })
 
 When(/^I enter in a new email address/, async function () {
   // the email address text box will contain the previously entered email address, need to clear it before entering new email address
-  await pages.emailAddress.clearEmailAddress()
+  await pages.emailAddress.inputField.clearValue()
   await enterEmailAddressAndSubmit(EMAIL_ADDRESS_2)
 })
 
@@ -61,7 +61,7 @@ async function completeProcessUpToSendCode () {
   await selectNoOnPregnancyPage()
   await enterNameAndSubmit()
   await enterNinoAndSubmit()
-  await enterCardAddressAndSubmit()
+  await enterAddressAndSubmit()
   await enterPhoneNumberAndSubmit()
   await enterEmailAddressAndSubmit()
 }

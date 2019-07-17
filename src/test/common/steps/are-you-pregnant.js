@@ -20,7 +20,7 @@ When(/^I enter a valid expected delivery date$/, async function () {
 })
 
 When(/^I enter text in the expected delivery date fields$/, async function () {
-  await pages.areYouPregnant.enterTextInDeliveryDateFields()
+  await pages.areYouPregnant.setExpectedDeliveryDate('foo', 'bar', 'baz!')
 })
 
 When(/^I enter my expected delivery date too far in the past$/, async function () {
@@ -58,13 +58,13 @@ Then(/^expected date of delivery instructional text is displayed$/, async functi
 
 Then(/^no values are present in the expected delivery date fields$/, async function () {
   try {
-    const dayValue = await pages.areYouPregnant.getExpectedDeliveryDateDay()
+    const dayValue = await pages.areYouPregnant.dayInputField.getValue()
     assert(dayValue.length === 0, 'expected delivery date day to be empty')
 
-    const monthValue = await pages.areYouPregnant.getExpectedDeliveryDateMonth()
+    const monthValue = await pages.areYouPregnant.monthInputField.getValue()
     assert(monthValue.length === 0, 'expected delivery date month to be empty')
 
-    const yearValue = await pages.areYouPregnant.getExpectedDeliveryDateYear()
+    const yearValue = await pages.areYouPregnant.yearInputField.getValue()
     assert(yearValue.length === 0, 'expected delivery date year to be empty')
   } catch (error) {
     assert.fail(`Unexpected error caught trying to assert no values are present in the expected delivery date fields - ${error}`)
