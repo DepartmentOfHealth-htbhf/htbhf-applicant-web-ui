@@ -91,6 +91,18 @@ class EnterChildrenDOB extends SubmittablePage {
     return this.getValueForInputWithId(getYearInputIdForIndex(childIndex))
   }
 
+  // TODO - Can this use InputField when there are a dynamic number of them?
+  async getValueForInputWithId (id) {
+    const elementWithId = await this.findById(id)
+    return elementWithId.getAttribute('value')
+  }
+
+  // TODO - Would like to get rid of this and use InputField
+  async enterValueForInputWithId (id, value) {
+    const input = await this.findById(id)
+    return input.sendKeys(value)
+  }
+
   getChildDateOfBirthFieldErrorId (index) {
     return `child-dob-${index}-error`
   }

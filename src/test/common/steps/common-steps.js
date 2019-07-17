@@ -59,9 +59,9 @@ async function enterNinoAndSubmit (nino = VALID_ELIGIBLE_NINO) {
 
 async function enterDateOfBirthAndSubmit (day = DAY, month = MONTH, year = YEAR) {
   try {
-    await pages.enterDOB.enterDay(day)
-    await pages.enterDOB.enterMonth(month)
-    await pages.enterDOB.enterYear(year)
+    await pages.enterDOB.dayInputField.enterValue(day)
+    await pages.enterDOB.monthInputField.enterValue(month)
+    await pages.enterDOB.yearInputField.enterValue(year)
     await pages.enterDOB.submitForm()
   } catch (error) {
     assert.fail(`Unexpected error caught trying to enter the date of birth and submit the page - ${error}`)
@@ -89,10 +89,10 @@ async function selectNoOnPregnancyPage () {
 
 async function enterCardAddressAndSubmit (addressLine1 = ADDRESS_LINE_1, addressLine2 = ADDRESS_LINE_2, townOrCity = TOWN, postcode = POSTCODE) {
   try {
-    await pages.cardAddress.enterAddressLine1(addressLine1)
-    await pages.cardAddress.enterAddressLine2(addressLine2)
-    await pages.cardAddress.enterTownOrCity(townOrCity)
-    await pages.cardAddress.enterPostcode(postcode)
+    await pages.cardAddress.line1InputField.enterValue(addressLine1)
+    await pages.cardAddress.line2InputField.enterValue(addressLine2)
+    await pages.cardAddress.townOrCityInputField.enterValue(townOrCity)
+    await pages.cardAddress.postcodeInputField.enterValue(postcode)
     await pages.cardAddress.submitForm()
   } catch (error) {
     assert.fail(`Unexpected error caught trying to enter card address and submit the page - ${error}`)

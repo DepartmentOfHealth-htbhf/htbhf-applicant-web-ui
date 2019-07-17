@@ -1,6 +1,7 @@
 'use strict'
 
 const SubmittablePage = require('./submittable-page')
+const InputField = require('./input-field')
 
 const PAGE_TITLES = {
   en: 'GOV.UK - What’s your date of birth?',
@@ -14,6 +15,12 @@ const DATE_OF_BIRTH_FIELD_ERROR_ID = 'date-of-birth-error'
  * Page object for the 'enter date of birth' page.
  */
 class EnterDOB extends SubmittablePage {
+  constructor (driver) {
+    super(driver)
+    this.dayInputField = new InputField('dateOfBirth-day', this)
+    this.monthInputField = new InputField('dateOfBirth-month', this)
+    this.yearInputField = new InputField('dateOfBirth-year', this)
+  }
   getPath () {
     return '/enter-dob'
   }
@@ -24,33 +31,6 @@ class EnterDOB extends SubmittablePage {
 
   async waitForPageLoad (lang = 'en') {
     return super.waitForPageWithTitle(PAGE_TITLES[lang])
-  }
-
-  async getDayField () {
-    return this.findById('dateOfBirth-day')
-  }
-
-  async getMonthField () {
-    return this.findById('dateOfBirth-month')
-  }
-
-  async getYearField () {
-    return this.findById('dateOfBirth-year')
-  }
-
-  async enterDay (day) {
-    const dayField = await this.getDayField()
-    return dayField.sendKeys(day)
-  }
-
-  async enterMonth (month) {
-    const monthField = await this.getMonthField()
-    return monthField.sendKeys(month)
-  }
-
-  async enterYear (year) {
-    const yearField = await this.getYearField()
-    return yearField.sendKeys(year)
   }
 
   getDateOfBirthFieldErrorId () {
