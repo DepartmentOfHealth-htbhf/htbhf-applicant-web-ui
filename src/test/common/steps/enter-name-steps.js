@@ -32,12 +32,12 @@ Then('I am informed that the first name is too long', async function () {
 })
 
 Then(/^I see the invalid first name I entered in the textbox$/, async function () {
-  const enteredFirstName = await pages.enterName.getFirstNameValue()
+  const enteredFirstName = await pages.enterName.firstNameInputField.getValue()
   expect(enteredFirstName).to.be.equal(LONG_STRING)
 })
 
 Then(/^I see the last name I entered in the textbox$/, async function () {
-  const enteredLastName = await pages.enterName.getLastNameValue()
+  const enteredLastName = await pages.enterName.lastNameInputField.getValue()
   expect(enteredLastName).to.be.equal(LONG_STRING)
 })
 
@@ -62,14 +62,14 @@ Then(/^I am shown the enter name page$/, async function () {
 
 async function assertFirstNameErrorFieldAndLink (expectedErrorMessage) {
   await assertFieldErrorAndLinkTextPresentAndCorrect(
-    pages.enterName.getFirstNameErrorFieldId(),
-    pages.enterName.getFirstNameErrorLinkCss(),
+    pages.enterName.firstNameInputField.getInputErrorId(),
+    pages.enterName.firstNameInputField.getInputErrorLinkCss(),
     expectedErrorMessage)
 }
 
 async function assertLastNameErrorFieldAndLink (expectedErrorMessage) {
   await assertFieldErrorAndLinkTextPresentAndCorrect(
-    pages.enterName.getLastNameErrorFieldId(),
-    pages.enterName.getLastNameErrorLinkCss(),
+    pages.enterName.lastNameInputField.getInputErrorId(),
+    pages.enterName.lastNameInputField.getInputErrorLinkCss(),
     expectedErrorMessage)
 }
