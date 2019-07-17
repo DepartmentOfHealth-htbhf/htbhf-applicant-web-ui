@@ -17,7 +17,7 @@ const contentSummary = (req) => ({
 
 const enterNino = {
   path: '/enter-nino',
-  next: () => '/card-address',
+  next: () => '/address',
   template: 'enter-nino',
   sanitize,
   validate,

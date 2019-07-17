@@ -23,7 +23,7 @@ const ENTER_NINO_PAGE = 'enter national insurance'
 const ENTER_DOB_PAGE = 'enter date of birth'
 const DO_YOU_HAVE_CHILDREN_THREE_OR_YOUNGER_PAGE = 'do you have children three or younger'
 const ARE_YOU_PREGNANT_PAGE = 'are you pregnant'
-const CARD_ADDRESS_PAGE = 'card address'
+const ADDRESS_PAGE = 'address'
 const PHONE_NUMBER_PAGE = 'phone number'
 const EMAIL_ADDRESS_PAGE = 'email address'
 const SEND_CODE_PAGE = 'send code'
@@ -79,7 +79,7 @@ const pageActions = [
     }
   },
   {
-    page: CARD_ADDRESS_PAGE,
+    page: ADDRESS_PAGE,
     action: async () => {
       await enterNinoAndSubmit()
       await pages.cardAddress.waitForPageLoad()

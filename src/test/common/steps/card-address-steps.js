@@ -42,7 +42,7 @@ When(/^I do not enter in any address fields$/, async function () {
   await enterCardAddressAndSubmit(BLANK_STRING, BLANK_STRING, BLANK_STRING, BLANK_STRING)
 })
 
-Then(/^I am shown the card address page$/, async function () {
+Then(/^I am shown the address page$/, async function () {
   await pages.cardAddress.waitForPageLoad()
 })
 
