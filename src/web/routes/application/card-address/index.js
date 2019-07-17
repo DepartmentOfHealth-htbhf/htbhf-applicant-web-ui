@@ -1,4 +1,4 @@
-const { address } = require('./card-address')
+const { address } = require('./address')
 
 module.exports = {
   address
