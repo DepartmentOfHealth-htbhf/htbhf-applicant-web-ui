@@ -122,16 +122,6 @@ class Page {
     }
   }
 
-  async getValueForInputWithId (id) {
-    const elementWithId = await this.findById(id)
-    return elementWithId.getAttribute('value')
-  }
-
-  async enterValueForInputWithId (id, value) {
-    const input = await this.findById(id)
-    return input.sendKeys(value)
-  }
-
   async findH1 () {
     return this.findByCSS('h1')
   }

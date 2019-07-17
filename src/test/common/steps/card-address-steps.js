@@ -85,28 +85,28 @@ Then(/^I am informed that I need to enter an address on the 'address line 1', 'a
 
 const assertAddressLine1ErrorFieldAndLink = async (expectedErrorMessage) => {
   await assertFieldErrorAndLinkTextPresentAndCorrect(
-    pages.address.getAddressLine1FieldErrorId(),
-    pages.address.getAddressLine1ErrorLinkCss(),
+    pages.address.line1InputField.getInputErrorId(),
+    pages.address.line1InputField.getInputErrorLinkCss(),
     expectedErrorMessage)
 }
 
 const assertAddressLine2ErrorFieldAndLink = async (expectedErrorMessage) => {
   await assertFieldErrorAndLinkTextPresentAndCorrect(
-    pages.address.getAddressLine2FieldErrorId(),
-    pages.address.getAddressLine2ErrorLinkCss(),
+    pages.address.line2InputField.getInputErrorId(),
+    pages.address.line2InputField.getInputErrorLinkCss(),
     expectedErrorMessage)
 }
 
 const assertTownOrCityErrorFieldAndLink = async (expectedErrorMessage) => {
   await assertFieldErrorAndLinkTextPresentAndCorrect(
-    pages.address.getTownOrCityFieldErrorId(),
-    pages.address.getTownOrCityErrorLinkCss(),
+    pages.address.townOrCityInputField.getInputErrorId(),
+    pages.address.townOrCityInputField.getInputErrorLinkCss(),
     expectedErrorMessage)
 }
 
 const assertPostcodeErrorFieldAndLink = async (expectedErrorMessage) => {
   await assertFieldErrorAndLinkTextPresentAndCorrect(
-    pages.address.getPostcodeFieldErrorId(),
-    pages.address.getPostcodeErrorLinkCss(),
+    pages.address.postcodeInputField.getInputErrorId(),
+    pages.address.postcodeInputField.getInputErrorLinkCss(),
     expectedErrorMessage)
 }
