@@ -8,7 +8,7 @@ const {
   enterNameAndSubmit,
   enterNinoAndSubmit,
   enterDateOfBirthAndSubmit,
-  enterCardAddressAndSubmit,
+  enterAddressAndSubmit,
   enterPhoneNumberAndSubmit,
   enterDoYouLiveInScotlandNoAndSubmit,
   enterEmailAddressAndSubmit,
@@ -61,7 +61,7 @@ async function completeProcessUpToSendCode () {
   await selectNoOnPregnancyPage()
   await enterNameAndSubmit()
   await enterNinoAndSubmit()
-  await enterCardAddressAndSubmit()
+  await enterAddressAndSubmit()
   await enterPhoneNumberAndSubmit()
   await enterEmailAddressAndSubmit()
 }

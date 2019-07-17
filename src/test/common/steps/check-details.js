@@ -22,7 +22,7 @@ const {
   enterNameAndSubmit,
   enterNinoAndSubmit,
   enterDateOfBirthAndSubmit,
-  enterCardAddressAndSubmit,
+  enterAddressAndSubmit,
   enterPhoneNumberAndSubmit,
   enterDoYouLiveInScotlandNoAndSubmit,
   enterEmailAddressAndSubmit,
@@ -40,7 +40,7 @@ When(/^I complete the application with valid details that contains malicious inp
   await selectNoOnPregnancyPage()
   await enterNameAndSubmit('<script>window.alert(\'Boo\')</script>', LAST_NAME)
   await enterNinoAndSubmit()
-  await enterCardAddressAndSubmit()
+  await enterAddressAndSubmit()
   await enterPhoneNumberAndSubmit()
   await enterEmailAddressAndSubmit()
   await selectTextOnSendCode()
@@ -54,7 +54,7 @@ When(/^I complete the application with valid details for an applicant with no se
   await selectNoOnPregnancyPage()
   await enterNameAndSubmit()
   await enterNinoAndSubmit()
-  await enterCardAddressAndSubmit(ADDRESS_LINE_1, '', TOWN, POSTCODE)
+  await enterAddressAndSubmit(ADDRESS_LINE_1, '', TOWN, POSTCODE)
   await enterPhoneNumberAndSubmit()
   await enterEmailAddressAndSubmit()
   await selectTextOnSendCode()

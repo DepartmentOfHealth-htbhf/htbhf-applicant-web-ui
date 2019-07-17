@@ -87,15 +87,15 @@ async function selectNoOnPregnancyPage () {
   }
 }
 
-async function enterCardAddressAndSubmit (addressLine1 = ADDRESS_LINE_1, addressLine2 = ADDRESS_LINE_2, townOrCity = TOWN, postcode = POSTCODE) {
+async function enterAddressAndSubmit (addressLine1 = ADDRESS_LINE_1, addressLine2 = ADDRESS_LINE_2, townOrCity = TOWN, postcode = POSTCODE) {
   try {
-    await pages.cardAddress.line1InputField.enterValue(addressLine1)
-    await pages.cardAddress.line2InputField.enterValue(addressLine2)
-    await pages.cardAddress.townOrCityInputField.enterValue(townOrCity)
-    await pages.cardAddress.postcodeInputField.enterValue(postcode)
-    await pages.cardAddress.submitForm()
+    await pages.address.line1InputField.enterValue(addressLine1)
+    await pages.address.line2InputField.enterValue(addressLine2)
+    await pages.address.townOrCityInputField.enterValue(townOrCity)
+    await pages.address.postcodeInputField.enterValue(postcode)
+    await pages.address.submitForm()
   } catch (error) {
-    assert.fail(`Unexpected error caught trying to enter card address and submit the page - ${error}`)
+    assert.fail(`Unexpected error caught trying to enter address and submit the page - ${error}`)
   }
 }
 
@@ -204,7 +204,7 @@ async function completeTheApplicationAsAPregnantWoman () {
   await selectYesOnPregnancyPage()
   await enterNameAndSubmit()
   await enterNinoAndSubmit()
-  await enterCardAddressAndSubmit()
+  await enterAddressAndSubmit()
   await enterPhoneNumberAndSubmit()
   await enterEmailAddressAndSubmit()
   await selectTextOnSendCode()
@@ -219,7 +219,7 @@ async function completeTheApplicationAsAWomanWhoIsNotPregnant () {
   await selectNoOnPregnancyPage()
   await enterNameAndSubmit()
   await enterNinoAndSubmit()
-  await enterCardAddressAndSubmit()
+  await enterAddressAndSubmit()
   await enterPhoneNumberAndSubmit()
   await enterEmailAddressAndSubmit()
   await selectTextOnSendCode()
@@ -273,7 +273,7 @@ module.exports = {
   enterNameAndSubmit,
   enterNinoAndSubmit,
   selectNoOnPregnancyPage,
-  enterCardAddressAndSubmit,
+  enterAddressAndSubmit,
   enterPhoneNumberAndSubmit,
   completeTheApplicationAsAPregnantWoman,
   completeTheApplicationAsAWomanWhoIsNotPregnant,

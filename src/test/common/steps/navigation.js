@@ -7,7 +7,7 @@ const {
   enterNinoAndSubmit,
   enterDateOfBirthAndSubmit,
   selectNoOnPregnancyPage,
-  enterCardAddressAndSubmit,
+  enterAddressAndSubmit,
   enterPhoneNumberAndSubmit,
   enterDoYouLiveInScotlandNoAndSubmit,
   enterEmailAddressAndSubmit,
@@ -82,13 +82,13 @@ const pageActions = [
     page: ADDRESS_PAGE,
     action: async () => {
       await enterNinoAndSubmit()
-      await pages.cardAddress.waitForPageLoad()
+      await pages.address.waitForPageLoad()
     }
   },
   {
     page: PHONE_NUMBER_PAGE,
     action: async () => {
-      await enterCardAddressAndSubmit()
+      await enterAddressAndSubmit()
       await pages.phoneNumber.waitForPageLoad()
     }
   },
