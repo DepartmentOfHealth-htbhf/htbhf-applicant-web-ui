@@ -17,15 +17,16 @@ const TOWN_OR_CITY_ERROR_LINK_CSS = 'a[href="#town-or-city-error"]'
 const POSTCODE_ERROR_LINK_CSS = 'a[href="#postcode-error"]'
 
 /**
- * Page object for CardAddress page where the card card-address is entered.
+ * Page object for Address page where the address is entered.
  */
+// TODO DW HTBHF-1845 rename class and filename (not doing in current pr as rename and content change will appear as new file)
 class CardAddress extends SubmittablePage {
   getPath () {
-    return '/card-address'
+    return '/address'
   }
 
   getPageName () {
-    return 'card address'
+    return 'address'
   }
 
   async waitForPageLoad (lang = 'en') {

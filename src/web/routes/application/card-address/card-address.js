@@ -28,8 +28,8 @@ const contentSummary = (req) => ({
   ])
 })
 
-const cardAddress = {
-  path: '/card-address',
+const address = {
+  path: '/address',
   next: () => '/phone-number',
   template: 'card-address',
   pageContent,
@@ -40,5 +40,5 @@ const cardAddress = {
 
 module.exports = {
   contentSummary,
-  cardAddress
+  address
 }
