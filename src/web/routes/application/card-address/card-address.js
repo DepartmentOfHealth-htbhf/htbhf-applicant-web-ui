@@ -4,22 +4,22 @@ const { sanitize } = require('./sanitize')
 const { notIsNilOrEmpty } = require('../../../../common/predicates')
 
 const pageContent = ({ translate }) => ({
-  title: translate('cardAddress.title'),
-  heading: translate('cardAddress.heading'),
-  buildingAndStreetLabel: translate('cardAddress.buildingAndStreetLabel'),
-  buildingAndStreetLine1of2: translate('cardAddress.buildingAndStreetLine1of2'),
-  buildingAndStreetLine2of2: translate('cardAddress.buildingAndStreetLine2of2'),
-  townOrCityLabel: translate('cardAddress.townOrCityLabel'),
-  postcodeLabel: translate('cardAddress.postcodeLabel'),
+  title: translate('address.title'),
+  heading: translate('address.heading'),
+  buildingAndStreetLabel: translate('address.buildingAndStreetLabel'),
+  buildingAndStreetLine1of2: translate('address.buildingAndStreetLine1of2'),
+  buildingAndStreetLine2of2: translate('address.buildingAndStreetLine2of2'),
+  townOrCityLabel: translate('address.townOrCityLabel'),
+  postcodeLabel: translate('address.postcodeLabel'),
   buttonText: translate('buttons:continue'),
-  formDescription: translate('cardAddress.formDescription')
+  formDescription: translate('address.formDescription')
 })
 
 const newLineChar = '\n'
 const toMultiLineString = compose(join(newLineChar), filter(notIsNilOrEmpty))
 
 const contentSummary = (req) => ({
-  key: req.t('cardAddress.summaryKey'),
+  key: req.t('address.summaryKey'),
   value: toMultiLineString([
     req.session.claim.addressLine1,
     req.session.claim.addressLine2,
@@ -31,7 +31,7 @@ const contentSummary = (req) => ({
 const address = {
   path: '/address',
   next: () => '/phone-number',
-  template: 'card-address',
+  template: 'address',
   pageContent,
   validate,
   sanitize,

@@ -17,7 +17,7 @@ const req = {
 test('Address contentSummary() should return content summary in correct format', (t) => {
   const result = contentSummary(req)
   const expected = {
-    key: 'cardAddress.summaryKey',
+    key: 'address.summaryKey',
     value: 'Flat b\n221 Baker street\nLondon\naa1 1ab'
   }
 
@@ -29,7 +29,7 @@ test('Address contentSummary() should return content summary in correct format w
   const testReq = assocPath(['session', 'claim', 'addressLine2'], undefined, req)
   const result = contentSummary(testReq)
   const expected = {
-    key: 'cardAddress.summaryKey',
+    key: 'address.summaryKey',
     value: 'Flat b\nLondon\naa1 1ab'
   }
 
@@ -41,7 +41,7 @@ test('Address contentSummary() should return content summary in correct format w
   const testReq = assocPath(['session', 'claim', 'addressLine2'], '', req)
   const result = contentSummary(testReq)
   const expected = {
-    key: 'cardAddress.summaryKey',
+    key: 'address.summaryKey',
     value: 'Flat b\nLondon\naa1 1ab'
   }
 
