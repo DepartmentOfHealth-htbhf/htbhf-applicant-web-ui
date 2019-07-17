@@ -61,3 +61,9 @@ test('camelToKebabCase', (t) => {
   t.deepEqual(result, 'persons-first-name', 'it should convert camelcase to kebab case')
   t.end()
 })
+
+test('camelToKebabCase ending in a number', (t) => {
+  const result = camelToKebabCase('addressLine1')
+  t.deepEqual(result, 'address-line-1', 'it should convert camelcase to kebab case including the number')
+  t.end()
+})

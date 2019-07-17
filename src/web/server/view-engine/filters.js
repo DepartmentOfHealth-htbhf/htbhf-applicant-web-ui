@@ -1,6 +1,6 @@
 const { compose, map, values, isNil } = require('ramda')
 
-const camelToKebabCase = (string) => string.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()
+const camelToKebabCase = (string) => string.replace(/([a-z0-9])([A-Z0-9])/g, '$1-$2').toLowerCase()
 
 const toError = (error) => ({
   text: error.msg,
