@@ -18,13 +18,16 @@ const contentSummary = (req) => ({
   value: req.session.claim.doYouHaveChildrenThreeOrYounger
 })
 
+const claimantHasChildren = claim => claim.doYouHaveChildrenThreeOrYounger === YES
+
 const doYouHaveChildrenThreeOrYounger = {
   path: '/do-you-have-children-three-or-younger',
   next,
   template: 'do-you-have-children-three-or-younger',
   pageContent,
   validate,
-  contentSummary
+  contentSummary,
+  shouldInvalidateReview: claimantHasChildren
 }
 
 module.exports = {
