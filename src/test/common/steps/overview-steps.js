@@ -33,8 +33,10 @@ Then(/^my session has been destroyed$/, async function () {
 
 Then(/^my session has not been destroyed$/, async function () {
   const pageSessionId = pages.overview.sessionId
-  const langCookie = await pages.overview.getLangCookie()
-  expect(langCookie).not.to.be.equal(undefined)
+  // TODO - Enable this assertion when language support has been reinstated, the language cookie is not currently
+  //  set so this assertion cannot be made until it is reinstated.
+  // const langCookie = await pages.overview.getLangCookie()
+  // expect(langCookie).not.to.be.equal(undefined)
   await pages.overview.openDirect(pages.url)
   const currentSessionId = await pages.overview.getCurrentSessionId()
   expect(pageSessionId).to.be.equal(currentSessionId)
