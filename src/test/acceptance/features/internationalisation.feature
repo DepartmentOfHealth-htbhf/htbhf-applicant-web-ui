@@ -1,3 +1,5 @@
+# TODO - Currently all translations are disabled and English is the default, remove @ignore when reinstated
+@ignore
 Feature: Translations
   In order to apply for the Apply for Healthy Start programme
   As a potential claimant

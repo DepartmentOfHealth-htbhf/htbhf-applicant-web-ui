@@ -25,7 +25,8 @@ const refreshCookieExpirationDate = (req, res, next) => {
 const internationalisation = (config, app) => {
   i18next
     .use(Backend)
-    .use(middleware.LanguageDetector)
+    // TODO - To reinstate language detection and translations, simply uncomment the line below
+    // .use(middleware.LanguageDetector)
     .init({
       ns: ['common', 'validation', 'buttons', 'errors'],
       defaultNS: 'common',
