@@ -1,36 +1,19 @@
 {% extends "templates/page.njk" %}
-{% from "input/macro.njk" import govukInput %}
-{% from "summary-list/macro.njk" import govukSummaryList %}
-{% from "fieldset/macro.njk" import govukFieldset %}
-
-{% set safeRows = [] %}
-{% for rowData in checkRowData %}
-  {% set row = {
-   key : {
-    text: rowData.key
-   },
-   value: {
-    text: rowData.value | escape | nl2br | safe
-   },
-   actions: {
-    items: [ {
-        href: rowData.path,
-        text: changeText,
-        visuallyHiddenText: rowData.key
-    } ]
-   }
-  } %}
-  {{ safeRows.push(row) }}
-{% endfor %}
+{% from "macros/htbhf-summary-list.njk" import htbhfSummaryList %}
 
 {% block pageContent %}
 
   <h1 class="govuk-heading-xl">{{ heading }}</h1>
-  <h2 class="govuk-heading-m">{{ aboutYou }}</h2>
 
-  {{ govukSummaryList({
-      rows: safeRows
-  }) }}
+  {% for list, listRows in checkRowData %}
+    {{ htbhfSummaryList({
+      listRows: listRows,
+      text: {
+        heading: summaryListHeadings[list],
+        change: changeText
+      }
+    }) }}
+  {% endfor %}
 
   {{ govukButton({
       text: buttonText,
