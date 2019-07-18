@@ -5,7 +5,7 @@ const { EMAIL } = require('../common/constants')
 const pageContent = ({ translate }) => ({
   title: translate('emailAddress.title'),
   heading: translate('emailAddress.heading'),
-  hint: translate('emailAddress.hint'),
+  formDescription: translate('emailAddress.formDescription'),
   emailAddressLabel: translate('emailAddress.emailAddressLabel'),
   buttonText: translate('buttons:continue'),
   explanation: translate('emailAddress.explanation')
