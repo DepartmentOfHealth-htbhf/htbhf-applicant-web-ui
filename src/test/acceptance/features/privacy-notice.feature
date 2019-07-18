@@ -1,5 +1,5 @@
 Feature: Privacy notice page
-  In order to facilitate the beta HTBHF programme
+  In order to facilitate the beta Apply for Healthy Start programme
   As a potential claimant
   I want to see the details of how my details are used and retained
 
