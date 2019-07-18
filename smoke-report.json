@@ -1,6 +1,6 @@
 [
   {
-    "description": "  In order facilitate the beta HTBHF programme\n  As the continuous delivery pipeline\n  I want know that a new release has deployed correctly and is functional",
+    "description": "  In order facilitate the beta Apply for Healthy Start programme\n  As the continuous delivery pipeline\n  I want know that a new release has deployed correctly and is functional",
     "keyword": "Feature",
     "name": "Smoke test",
     "line": 1,
@@ -24,20 +24,20 @@
             },
             "result": {
               "status": "passed",
-              "duration": 19000000
+              "duration": 31000000
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
             "line": 7,
-            "name": "I navigate to the HTBHF overview page",
+            "name": "I navigate to the Apply for Healthy Start overview page",
             "match": {
               "location": "src/test/common/steps/navigation.js:175"
             },
             "result": {
               "status": "passed",
-              "duration": 1726000000
+              "duration": 1627000000
             }
           },
           {
@@ -50,7 +50,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 340000000
+              "duration": 331000000
             }
           },
           {
@@ -63,7 +63,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 6000000
+              "duration": 5000000
             }
           },
           {
@@ -74,7 +74,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2000000
+              "duration": 1000000
             }
           }
         ]
