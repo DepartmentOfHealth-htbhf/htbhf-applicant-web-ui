@@ -116,13 +116,13 @@ test('groupRowData returns an object with row data grouped by list', (t) => {
   t.end()
 })
 
-test('getGroupedRowData returns grouped row data', (t) => {
+test('getGroupedRowData returns row data grouped by list', (t) => {
   const step1 = {
     contentSummary: () => ([{ keyA: 'myKeyA', valueA: 'myValueA', list: 'list1' }, { keyB: 'myKeyB', valueB: 'myValueB', list: 'list1' }]),
     path: 'mypath1'
   }
   const step2 = {
-    contentSummary: () => ({ key2: 'myKey2', value: 'myValue2' }),
+    contentSummary: () => ({ key2: 'myKey2', value: 'myValue2', list: 'list2' }),
     path: 'mypath2'
   }
   const step3 = {
@@ -138,13 +138,36 @@ test('getGroupedRowData returns grouped row data', (t) => {
       { keyB: 'myKeyB', valueB: 'myValueB', list: 'list1', path: 'mypath1' },
       { key3: 'myKey3', value: 'myValue3', list: 'list1', path: 'mypath3' }
     ],
-    [DEFAULT_LIST]: [
-      { key2: 'myKey2', value: 'myValue2', path: 'mypath2' }
+    list2: [
+      { key2: 'myKey2', value: 'myValue2', path: 'mypath2', list: 'list2' }
     ]
   }
 
   const result = getGroupedRowData(req, steps)
 
-  t.deepEqual(result, expected, 'should flatten step content summary')
+  t.deepEqual(result, expected, 'returns row data grouped by list')
+  t.end()
+})
+
+test('getGroupedRowData sets a default list if no list is defined', (t) => {
+  const step1 = {
+    contentSummary: () => ({ key1: 'myKey1', value: 'myValue1' }),
+    path: 'mypath1'
+  }
+  const step2 = {
+    contentSummary: () => ({ key2: 'myKey2', value: 'myValue2', list: 'list2' }),
+    path: 'mypath2'
+  }
+  const req = {}
+  const steps = [step1, step2]
+
+  const expected = {
+    [DEFAULT_LIST]: [{ key1: 'myKey1', value: 'myValue1', path: 'mypath1' }],
+    list2: [{ key2: 'myKey2', value: 'myValue2', list: 'list2', path: 'mypath2' }]
+  }
+
+  const result = getGroupedRowData(req, steps)
+
+  t.deepEqual(result, expected, 'sets a default list if no list is defined')
   t.end()
 })
