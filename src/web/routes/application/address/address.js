@@ -12,7 +12,7 @@ const pageContent = ({ translate }) => ({
   buttonText: translate('buttons:continue'),
   formDescription: translate('address.formDescription'),
   explanation: translate('address.explanation'),
-  street: translate('address.street')
+  streetLabel: translate('address.streetLabel')
 })
 
 const newLineChar = '\n'
