@@ -55,15 +55,15 @@
     "explanation": "We need this to work out how much money you should get."
   },
   "address": {
-    "title": "What is your address?",
-    "heading": "What is your address?",
-    "buildingAndStreetLabel": "Building and street",
-    "buildingAndStreetLine1of2": "line 1 of 2",
-    "buildingAndStreetLine2of2": "Building and street line 2 of 2",
+    "title": "What’s your address?",
+    "heading": "What’s your address?",
+    "houseNumberOrNameLabel": "House number or name",
+    "streetLabel": "Street",
     "townOrCityLabel": "Town or city",
     "postcodeLabel": "Postcode",
-    "formDescription": "This is the address you would like your prepaid card to be sent to. It does not have to be your home address.",
-    "summaryKey": "Address"
+    "formDescription": "If you claim any benefits you must use the same address registered with the benefits agency (DWP or HMRC).",
+    "summaryKey": "Address",
+    "explanation": "We need this to confirm your identity and eligibility. We'll send your prepaid card to this address."
   },
   "phoneNumber": {
     "title": "What’s your mobile telephone number?",
