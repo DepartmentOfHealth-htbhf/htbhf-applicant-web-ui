@@ -1,4 +1,4 @@
-const { pipe, map, filter, flatten, isNil } = require('ramda')
+const { pipe, map, filter, flatten, isNil, groupBy, path } = require('ramda')
 const { notIsNil } = require('../../../../common/predicates')
 
 const combinePathWithRow = (path) => (row) => ({
@@ -18,7 +18,12 @@ const getRowData = (req) => (step) => {
   return Array.isArray(result) ? result.map(applyPathToRow) : applyPathToRow(result)
 }
 
+const listPath = path(['list'])
+
+const groupRowData = groupBy(listPath)
+
 module.exports = {
   getRowData,
-  getFlattenedRowData
+  getFlattenedRowData,
+  groupRowData
 }
