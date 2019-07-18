@@ -6,13 +6,13 @@ const { notIsNilOrEmpty } = require('../../../../common/predicates')
 const pageContent = ({ translate }) => ({
   title: translate('address.title'),
   heading: translate('address.heading'),
-  buildingAndStreetLabel: translate('address.buildingAndStreetLabel'),
-  buildingAndStreetLine1of2: translate('address.buildingAndStreetLine1of2'),
-  buildingAndStreetLine2of2: translate('address.buildingAndStreetLine2of2'),
+  houseNumberOrNameLabel: translate('address.houseNumberOrNameLabel'),
   townOrCityLabel: translate('address.townOrCityLabel'),
   postcodeLabel: translate('address.postcodeLabel'),
   buttonText: translate('buttons:continue'),
-  formDescription: translate('address.formDescription')
+  formDescription: translate('address.formDescription'),
+  explanation: translate('address.explanation'),
+  street: translate('address.street')
 })
 
 const newLineChar = '\n'
