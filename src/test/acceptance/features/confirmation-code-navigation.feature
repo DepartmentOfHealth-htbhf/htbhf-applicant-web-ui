@@ -1,5 +1,5 @@
 Feature: Confirmation code navigation
-  In order to apply for the HTBHF programme
+  In order to apply for the Apply for Healthy Start programme
   As a potential claimant
   Once I have entered my confirmation code
   If I change the contact details used to receive that code

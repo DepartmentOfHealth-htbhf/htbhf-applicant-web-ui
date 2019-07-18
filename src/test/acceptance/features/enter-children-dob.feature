@@ -1,5 +1,5 @@
 Feature: Enter your children’s dates of birth
-  In order to apply for the HTBHF programme
+  In order to apply for the Apply for Healthy Start programme
   As a potential claimant
   I want to provide my children’s dates of birth
 

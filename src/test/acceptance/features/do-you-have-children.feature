@@ -1,5 +1,5 @@
 Feature: Do you have children who are 3 years old or younger?
-  In order to apply for the HTBHF programme
+  In order to apply for the Apply for Healthy Start programme
   As a potential claimant
   I want to select whether or not I have children who are 3 years old or younger
 
