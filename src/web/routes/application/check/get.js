@@ -1,6 +1,6 @@
 const { stateMachine, states, actions } = require('../common/state-machine')
 const { getPreviousPath } = require('../common/get-previous-path')
-const { getFlattenedRowData } = require('./get-row-data')
+const { getGroupedRowData } = require('./get-row-data')
 
 const pageContent = ({ translate }) => ({
   title: translate('check.title'),
@@ -9,8 +9,10 @@ const pageContent = ({ translate }) => ({
   sendApplicationText: translate('check.sendApplicationText'),
   buttonText: translate('buttons:continue'),
   changeText: translate('check.change'),
-  aboutYou: translate('check.aboutYou'),
-  aboutYourChildren: translate('check.aboutYourChildren')
+  summaryListHeadings: {
+    aboutYou: translate('check.aboutYou'),
+    aboutYourChildren: translate('check.aboutYourChildren')
+  }
 })
 
 // a step is navigable if it hasn't defined an isNavigable function.
@@ -32,7 +34,7 @@ const getCheck = (steps) => (req, res) => {
   res.render('check', {
     claim: req.session.claim,
     ...pageContent({ translate: req.t }),
-    checkRowData: getFlattenedRowData(req)(steps),
+    checkRowData: getGroupedRowData(req, steps),
     previous: getLastNavigablePath(steps, req)
   })
 }

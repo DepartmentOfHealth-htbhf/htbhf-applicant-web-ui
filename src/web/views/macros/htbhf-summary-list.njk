@@ -1,0 +1,38 @@
+{% from "summary-list/macro.njk" import govukSummaryList %}
+
+{#
+  htbhfSummaryList() wraps govukSummaryList() mapping list data to the correct parameters and adding a heading
+
+  params:
+  listRows: array of rows for summary list
+  text: object { heading: text, change: text }
+#}
+{% macro htbhfSummaryList(params) %}
+  <h2 class="govuk-heading-m">{{ params.text.heading }}</h2>
+
+  {% set safeRows = [] %}
+
+  {% for rowData in params.listRows %}
+    {% set row = {
+      key : {
+        text: rowData.key
+      },
+      value: {
+        text: rowData.value | escape | nl2br | safe
+      },
+      actions: {
+        items: [ {
+            href: rowData.path,
+            text: params.text.change,
+            visuallyHiddenText: rowData.key
+        } ]
+      }
+    } %}
+
+    {% set safeRowsLength = safeRows.push(row) %}
+  {% endfor %}
+
+  {{ govukSummaryList({
+      rows: safeRows
+  }) }}
+{% endmacro %}
