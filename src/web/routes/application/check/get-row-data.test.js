@@ -1,5 +1,5 @@
 const test = require('tape')
-const { getRowData, getFlattenedRowData } = require('./get-row-data')
+const { getRowData, getFlattenedRowData, groupRowData } = require('./get-row-data')
 
 test('getRowData should return an object combining path with row data', (t) => {
   const step = {
@@ -65,5 +65,52 @@ test('getFlattenedRowData returns flattened row data with step with empty conten
   t.deepEqual(result,
     [{ key1: 'myKey1', value1: 'myValue1', path: 'mypath1' }],
     'should flatten step with content summary and remove step without content summary')
+  t.end()
+})
+
+test.only('groupRowData returns an object with row data grouped by list', (t) => {
+  const rowData = [
+    {
+      list: 'About you',
+      key: 'email address',
+      value: 'my@email.com'
+    },
+    {
+      list: 'About your children',
+      key: 'Do you have children',
+      value: 'yes'
+    },
+    {
+      list: 'About you',
+      key: 'Telephone',
+      value: '111-111-111-111'
+    }
+  ]
+
+  const expected = {
+    'About you': [
+      {
+        list: 'About you',
+        key: 'email address',
+        value: 'my@email.com'
+      },
+      {
+        list: 'About you',
+        key: 'Telephone',
+        value: '111-111-111-111'
+      }
+    ],
+    'About your children': [
+      {
+        list: 'About your children',
+        key: 'Do you have children',
+        value: 'yes'
+      }
+    ]
+  }
+
+  const result = groupRowData(rowData)
+
+  t.deepEqual(result, expected, 'returns an object with row data grouped by list')
   t.end()
 })
