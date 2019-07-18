@@ -6,6 +6,7 @@
   params:
   listRows: array of rows for summary list
   text: object { heading: text, change: text }
+  classes: string of class names
 #}
 {% macro htbhfSummaryList(params) %}
   <h2 class="govuk-heading-m">{{ params.text.heading }}</h2>
@@ -33,6 +34,7 @@
   {% endfor %}
 
   {{ govukSummaryList({
+      classes: params.classes,
       rows: safeRows
   }) }}
 {% endmacro %}
