@@ -1,5 +1,6 @@
-const { pipe, map, filter, flatten, isNil, groupBy, path } = require('ramda')
+const { pipe, map, filter, flatten, isNil, groupBy, pathOr } = require('ramda')
 const { notIsNil } = require('../../../../common/predicates')
+const { DEFAULT_LIST } = require('./constants')
 
 const combinePathWithRow = (path) => (row) => ({
   ...row,
@@ -18,12 +19,18 @@ const getRowData = (req) => (step) => {
   return Array.isArray(result) ? result.map(applyPathToRow) : applyPathToRow(result)
 }
 
-const listPath = path(['list'])
+const listPath = pathOr(DEFAULT_LIST, ['list'])
 
 const groupRowData = groupBy(listPath)
+
+const getGroupedRowData = (req, steps) => {
+  const flattened = getFlattenedRowData(req)(steps)
+  return groupRowData(flattened)
+}
 
 module.exports = {
   getRowData,
   getFlattenedRowData,
-  groupRowData
+  groupRowData,
+  getGroupedRowData
 }

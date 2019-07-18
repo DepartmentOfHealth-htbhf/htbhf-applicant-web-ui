@@ -1,5 +1,6 @@
 const test = require('tape')
-const { getRowData, getFlattenedRowData, groupRowData } = require('./get-row-data')
+const { getRowData, getFlattenedRowData, groupRowData, getGroupedRowData } = require('./get-row-data')
+const { DEFAULT_LIST } = require('./constants')
 
 test('getRowData should return an object combining path with row data', (t) => {
   const step = {
@@ -68,7 +69,7 @@ test('getFlattenedRowData returns flattened row data with step with empty conten
   t.end()
 })
 
-test.only('groupRowData returns an object with row data grouped by list', (t) => {
+test('groupRowData returns an object with row data grouped by list', (t) => {
   const rowData = [
     {
       list: 'About you',
@@ -112,5 +113,38 @@ test.only('groupRowData returns an object with row data grouped by list', (t) =>
   const result = groupRowData(rowData)
 
   t.deepEqual(result, expected, 'returns an object with row data grouped by list')
+  t.end()
+})
+
+test('getGroupedRowData returns grouped row data', (t) => {
+  const step1 = {
+    contentSummary: () => ([{ keyA: 'myKeyA', valueA: 'myValueA', list: 'list1' }, { keyB: 'myKeyB', valueB: 'myValueB', list: 'list1' }]),
+    path: 'mypath1'
+  }
+  const step2 = {
+    contentSummary: () => ({ key2: 'myKey2', value: 'myValue2' }),
+    path: 'mypath2'
+  }
+  const step3 = {
+    contentSummary: () => ({ key3: 'myKey3', value: 'myValue3', list: 'list1' }),
+    path: 'mypath3'
+  }
+  const req = {}
+  const steps = [step1, step2, step3]
+
+  const expected = {
+    list1: [
+      { keyA: 'myKeyA', valueA: 'myValueA', list: 'list1', path: 'mypath1' },
+      { keyB: 'myKeyB', valueB: 'myValueB', list: 'list1', path: 'mypath1' },
+      { key3: 'myKey3', value: 'myValue3', list: 'list1', path: 'mypath3' }
+    ],
+    [DEFAULT_LIST]: [
+      { key2: 'myKey2', value: 'myValue2', path: 'mypath2' }
+    ]
+  }
+
+  const result = getGroupedRowData(req, steps)
+
+  t.deepEqual(result, expected, 'should flatten step content summary')
   t.end()
 })
