@@ -1,5 +1,5 @@
 Feature: Date of birth
-  In order to apply for the HTBHF programme
+  In order to apply for the Apply for Healthy Start programme
   As a potential claimant
   I want to enter my date of birth
 

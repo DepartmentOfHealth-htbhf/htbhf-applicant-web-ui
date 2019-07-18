@@ -1,5 +1,5 @@
 Feature: Check details
-  In order to apply for the HTBHF programme
+  In order to apply for the Apply for Healthy Start programme
   As a potential claimant
   I want to enter my details and check that my details are correct before completing my application
 

@@ -1,5 +1,5 @@
 Feature: Server Error page
-  In order to facilitate the beta HTBHF programme
+  In order to facilitate the beta Apply for Healthy Start programme
   As a potential claimant
   I want to see the Server Error page when an error occurs with the application
 
