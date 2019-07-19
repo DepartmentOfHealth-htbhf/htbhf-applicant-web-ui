@@ -17,9 +17,33 @@ const actions = {
 
 const getStepForPath = (path, steps) => steps.find(step => step.path === path)
 
+/**
+ * Next path is navigable if the next step does not exist, if it doesn't define an isNavigable function, or that function returns true.
+ * E.g. if the current step is the end of the 'in-progress' journey, the next path will be /check. There is no step matching /check, so we assume it is navigable.
+ */
+function isNextPathNavigable (nextStep, req) {
+  return !nextStep || !nextStep.isNavigable || nextStep.isNavigable(req.session)
+}
+
+/**
+ * Ask the current step for the next path. Test whether the step matching that path is navigable. If not, ask that step for the next path; repeat.
+ * @param path the path of the current step
+ * @param req the current request
+ * @param steps the steps of the apply journey
+ * @returns the path of the next step
+ */
+const getNextPath = (path, req, steps) => {
+  const thisStep = getStepForPath(path, steps)
+  const nextPath = getNextForStep(req, thisStep)
+  const nextStep = getStepForPath(nextPath, steps)
+  if (isNextPathNavigable(nextStep, req)) {
+    return nextPath
+  }
+  return getNextPath(nextPath, req, steps)
+}
+
 const getNext = (req, steps) => {
-  const nextStep = getStepForPath(req.path, steps)
-  return getNextForStep(req, nextStep)
+  return getNextPath(req.path, req, steps)
 }
 
 const isPathAllowed = (sequence, allowed, path) =>
