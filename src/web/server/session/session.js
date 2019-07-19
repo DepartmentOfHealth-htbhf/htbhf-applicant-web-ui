@@ -34,6 +34,7 @@ const getSessionConfig = (store, config) => {
     secret: config.server.SESSION_SECRET,
     saveUninitialized: false,
     resave: false,
+    rolling: true,
     name: config.server.SESSION_ID_NAME,
     cookie: {
       secure: true,
