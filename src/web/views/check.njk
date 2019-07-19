@@ -6,32 +6,35 @@
 
   <h1 class="govuk-heading-xl">{{ heading }}</h1>
 
-  {% for list, listRows in checkRowData %}
-    {% set classes %}
-      {% if loop.last and children %} govuk-!-margin-bottom-1 {% else %} govuk-!-margin-bottom-9 {% endif %}
-    {% endset %}
+  <div id="claim-summary">
+    {% for list, listRows in checkRowData %}
+      {% set classes %}
+        {% if loop.last and children %} govuk-!-margin-bottom-1 {% else %} govuk-!-margin-bottom-9 {% endif %}
+      {% endset %}
 
-    {{ htbhfSummaryList({
-      classes: classes,
-      listRows: listRows,
-      text: {
-        heading: summaryListHeadings[list],
-        change: changeText
-      }
-    }) }}
-  {% endfor %}
-
-  {% if children %}
-    {{ htbhfChildrenSummaryList({
-      classes: 'govuk-!-margin-bottom-9',
-      children: children,
-      action: {
-        href: "/children-dob",
-        text: changeText,
-        visuallyHiddenText: childrensDobHiddenText
-      }
-    }) }}
-  {% endif %}
+      {{ htbhfSummaryList({
+        classes: classes,
+        listRows: listRows,
+        text: {
+          heading: summaryListHeadings[list],
+          change: changeText
+        }
+      }) }}
+    {% endfor %}
+  </div>
+  <div id="children-summary">
+    {% if children %}
+      {{ htbhfChildrenSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        children: children,
+        action: {
+          href: "/children-dob",
+          text: changeText,
+          visuallyHiddenText: childrensDobHiddenText
+        }
+      }) }}
+    {% endif %}
+  </div>
 
   {{ govukButton({
       text: buttonText,
