@@ -1,0 +1,54 @@
+/**
+  * Wraps the GOV.UK summary list component to provide a single action for multiple
+  * summary list rows
+  *
+  * 1. Allow space for action on desktop
+  * 2. Visually group rows for each child
+  * 3. Position action on desktop
+  */
+.c-htbhf-children-summary-list {
+  position: relative;  /* 3 */
+
+  .govuk-summary-list {
+    border-bottom: 1px solid $govuk-border-colour;
+  }
+
+  .govuk-summary-list__value {
+    @media (min-width: map-get($govuk-breakpoints, tablet)) {
+      padding-right: 30%; /* 1 */
+    }
+  }
+
+  /**
+   * Using overly specific selectors (instead of modifiers) to avoid rewriting HTML
+   * for GOV.UK summary list
+   */
+  .govuk-summary-list__row:nth-child(odd) {
+    .govuk-summary-list__key,
+    .govuk-summary-list__value {
+      @media (min-width: map-get($govuk-breakpoints, tablet)) {
+        padding-bottom: 0; /* 2 */
+      }
+    }
+  }
+
+  .govuk-summary-list__row:nth-child(even) {
+    .govuk-summary-list__key,
+    .govuk-summary-list__value {
+      @media (min-width: map-get($govuk-breakpoints, tablet)) {
+        padding-top: 0; /* 2 */
+      }
+    }
+  }
+}
+
+.c-htbhf-children-summary-list__action {
+  @extend .govuk-body;
+  padding-top: govuk-spacing(2);
+
+  @media (min-width: map-get($govuk-breakpoints, tablet)) {
+    position: absolute; /* 3 */
+    top: 0; /* 3 */
+    right: 0; /* 3 */
+  }
+}
