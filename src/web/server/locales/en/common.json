@@ -116,7 +116,7 @@
   "confirm": {
     "newClaimTitle": "Application complete",
     "updatedClaimTitle": "Application updated",
-    "subTitle": "You are entitled to\n£{{totalVoucherValue}} per week"
+    "subTitle": "You’re entitled to\n<strong>£{{totalVoucherValue}}</strong> a week. Your first payment\nwill be <strong>£{{totalVoucherValueForFourWeeks}}</strong>."
   },
   "unsuccessfulApplication": {
     "title": "Application unsuccessful",
