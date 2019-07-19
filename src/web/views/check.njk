@@ -1,13 +1,18 @@
 {% extends "templates/page.njk" %}
 {% from "macros/htbhf-summary-list.njk" import htbhfSummaryList %}
+{% from "macros/htbhf-children-summary-list.njk" import htbhfChildrenSummaryList %}
 
 {% block pageContent %}
 
   <h1 class="govuk-heading-xl">{{ heading }}</h1>
 
   {% for list, listRows in checkRowData %}
+    {% set classes %}
+      {% if loop.last and children %} govuk-!-margin-bottom-1 {% else %} govuk-!-margin-bottom-9 {% endif %}
+    {% endset %}
+
     {{ htbhfSummaryList({
-      classes: 'govuk-!-margin-bottom-9',
+      classes: classes,
       listRows: listRows,
       text: {
         heading: summaryListHeadings[list],
@@ -15,6 +20,18 @@
       }
     }) }}
   {% endfor %}
+
+  {% if children %}
+    {{ htbhfChildrenSummaryList({
+      classes: 'govuk-!-margin-bottom-9',
+      children: children,
+      action: {
+        href: "/children-dob",
+        text: changeText,
+        visuallyHiddenText: childrensDobHiddenText
+      }
+    }) }}
+  {% endif %}
 
   {{ govukButton({
       text: buttonText,
