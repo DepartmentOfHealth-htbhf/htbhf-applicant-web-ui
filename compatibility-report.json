@@ -24,7 +24,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 30000000
+              "duration": 29000000
             }
           },
           {
@@ -37,7 +37,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 533000000
+              "duration": 566000000
             }
           },
           {
@@ -50,7 +50,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3345000000
+              "duration": 3362000000
             }
           },
           {
@@ -63,7 +63,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1611000000
+              "duration": 1660000000
             }
           },
           {
@@ -76,7 +76,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 347000000
+              "duration": 348000000
             }
           },
           {
@@ -96,13 +96,13 @@
             "arguments": [],
             "keyword": "And ",
             "line": 12,
-            "name": "my entitlement is 12.40 per week",
+            "name": "my entitlement is 12.40 per week with a first payment of 49.60",
             "match": {
               "location": "src/test/common/steps/confirm-details.js:32"
             },
             "result": {
               "status": "passed",
-              "duration": 67000000
+              "duration": 40000000
             }
           },
           {
@@ -113,7 +113,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3000000
+              "duration": 1000000
             }
           }
         ]
