@@ -12,7 +12,8 @@ const pageContent = ({ translate }) => ({
   summaryListHeadings: {
     aboutYou: translate('check.aboutYou'),
     aboutYourChildren: translate('check.aboutYourChildren')
-  }
+  },
+  childrensDobHiddenText: translate('childrenDob.summaryKey')
 })
 
 // a step is navigable if it hasn't defined an isNavigable function.
@@ -32,7 +33,7 @@ const getCheck = (steps) => (req, res) => {
   req.session.nextAllowedStep = stateMachine.dispatch(actions.GET_NEXT_PATH, req, steps)
 
   res.render('check', {
-    claim: req.session.claim,
+    children: req.session.children,
     ...pageContent({ translate: req.t }),
     checkRowData: getGroupedRowData(req, steps),
     previous: getLastNavigablePath(steps, req)
