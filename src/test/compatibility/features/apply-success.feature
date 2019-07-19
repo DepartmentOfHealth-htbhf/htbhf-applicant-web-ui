@@ -9,4 +9,4 @@ Feature: Complete application journey
     Then I am shown the check details page with correct page content
     And I accept the terms and conditions and submit my application
     And I am shown a successful confirmation page
-    And my entitlement is 12.40 per week
+    And my entitlement is 12.40 per week with a first payment of 49.60

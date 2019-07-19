@@ -31,8 +31,11 @@ const getConfirmPage = (req, res, next) => {
 
     return res.render('confirm', {
       title: getTitle(req),
-      subTitle: req.t('confirm.subTitle', { totalVoucherValue: toPounds(totalVoucherValueInPence) }),
-      totalVoucherValueForFourWeeks: toPounds(totalVoucherValueInPence * 4)
+      subTitle: req.t('confirm.subTitle',
+        {
+          totalVoucherValue: toPounds(totalVoucherValueInPence),
+          totalVoucherValueForFourWeeks: toPounds(totalVoucherValueInPence * 4)
+        })
     })
   }
 

@@ -9,7 +9,7 @@ Feature: Confirm application
     When I submit an application with valid details
     Then I am shown the confirm details page
     And all page content is present on the confirm details page
-    And my entitlement is 12.40 per week
+    And my entitlement is 12.40 per week with a first payment of 49.60
     And my claim is sent to the back end
 
   @RequiresWiremock
@@ -18,4 +18,4 @@ Feature: Confirm application
     When I submit an application to update an existing claim
     Then I am shown the confirm updated page
     And I am informed that my claim has been updated
-    And my entitlement is 12.40 per week
+    And my entitlement is 12.40 per week with a first payment of 49.60
