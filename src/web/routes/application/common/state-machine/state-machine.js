@@ -40,16 +40,12 @@ const getNextNavigablePath = (path, req, steps) => {
   return getNextNavigablePath(nextPath, req, steps)
 }
 
-const getNext = (req, steps) => {
-  return getNextNavigablePath(req.path, req, steps)
-}
-
 const isPathAllowed = (sequence, allowed, path) =>
   sequence.findIndex(equals(path)) <= sequence.findIndex(equals(allowed))
 
 const stateMachine = {
   [states.IN_PROGRESS]: {
-    getNextPath: getNext,
+    getNextPath: (req, steps) => getNextNavigablePath(req.path, req, steps),
     isPathAllowed: (req, sequence) => isPathAllowed(sequence, req.session.nextAllowedStep, req.path),
     getNextAllowedPath: (req) => req.session.nextAllowedStep
   },
