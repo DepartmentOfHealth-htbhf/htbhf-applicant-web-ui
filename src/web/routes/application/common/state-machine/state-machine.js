@@ -1,4 +1,4 @@
-const { equals } = require('ramda')
+const { equals, isNil } = require('ramda')
 const { getNextForStep } = require('./get-next-for-step')
 const { CHECK_URL, TERMS_AND_CONDITIONS_URL, CONFIRM_URL } = require('../constants')
 const { logger } = require('../../../../logger')
@@ -21,7 +21,7 @@ const getStepForPath = (path, steps) => steps.find(step => step.path === path)
  * Next path is navigable if the next step does not exist, if it doesn't define an isNavigable function, or that function returns true.
  * E.g. if the current step is the end of the 'in-progress' journey, the next path will be /check. There is no step matching /check, so we assume it is navigable.
  */
-const isNextPathNavigable = (nextStep, req) => !nextStep || !nextStep.isNavigable || nextStep.isNavigable(req.session)
+const isNextPathNavigable = (nextStep, req) => isNil(nextStep) || isNil(nextStep.isNavigable) || nextStep.isNavigable(req.session)
 
 /**
  * Ask the current step for the next path. Test whether the step matching that path is navigable. If not, ask that step for the next path; repeat.
