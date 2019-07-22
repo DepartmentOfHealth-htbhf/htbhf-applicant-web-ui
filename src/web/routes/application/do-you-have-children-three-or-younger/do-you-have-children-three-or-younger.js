@@ -12,12 +12,22 @@ const pageContent = ({ translate }) => ({
 
 const next = req => req.session.claim.doYouHaveChildrenThreeOrYounger === YES ? '/children-dob' : '/are-you-pregnant'
 
+const contentSummary = (req) => ({
+  list: 'aboutYourChildren',
+  key: req.t('doYouHaveChildrenThreeOrYounger.summaryKey'),
+  value: req.session.claim.doYouHaveChildrenThreeOrYounger
+})
+
+const claimantHasChildren = claim => claim.doYouHaveChildrenThreeOrYounger === YES
+
 const doYouHaveChildrenThreeOrYounger = {
   path: '/do-you-have-children-three-or-younger',
   next,
   template: 'do-you-have-children-three-or-younger',
   pageContent,
-  validate
+  validate,
+  contentSummary,
+  shouldInvalidateReview: claimantHasChildren
 }
 
 module.exports = {

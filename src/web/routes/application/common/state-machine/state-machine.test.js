@@ -4,7 +4,11 @@ const { CHECK_URL, TERMS_AND_CONDITIONS_URL, CONFIRM_URL } = require('../../comm
 
 const { GET_NEXT_PATH, INVALIDATE_REVIEW } = actions
 
-const steps = [{ path: '/first', next: () => '/second' }, { path: '/second' }]
+const steps = [
+  { path: '/first', next: () => '/second' },
+  { path: '/second', next: () => '/third' },
+  { path: '/third', isNavigable: () => false, next: () => '/fourth' }
+]
 const paths = ['/first', '/second', '/third', '/fourth']
 
 test(`Dispatching ${GET_NEXT_PATH} should return next property of associated step when no state defined in session`, async (t) => {
@@ -18,6 +22,13 @@ test(`Dispatching ${GET_NEXT_PATH} should return should return next property of 
   const req = { method: 'POST', session: { state: states.IN_PROGRESS }, path: '/first' }
 
   t.equal(stateMachine.dispatch(GET_NEXT_PATH, req, steps), '/second')
+  t.end()
+})
+
+test(`Dispatching ${GET_NEXT_PATH} should return next navigable path when state of ${states.IN_PROGRESS} defined in session and next step is not navigable`, async (t) => {
+  const req = { method: 'POST', session: { state: states.IN_PROGRESS }, path: '/second' }
+
+  t.equal(stateMachine.dispatch(GET_NEXT_PATH, req, steps), '/fourth')
   t.end()
 })
 

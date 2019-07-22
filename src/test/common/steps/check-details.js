@@ -69,6 +69,10 @@ When(/^I choose to change my answer to Do you live in Scotland$/, async function
   await pages.check.clickChangeLinkFor('Do you live in Scotland?')
 })
 
+When(/^I choose to change my answer to Do you have children$/, async function () {
+  await pages.check.clickChangeLinkFor('Children under 4 years old?')
+})
+
 When(/^I choose to change my phone number$/, async function () {
   await pages.check.clickChangeLinkFor('Mobile telephone number')
 })
