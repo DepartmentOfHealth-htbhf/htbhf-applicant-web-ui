@@ -15,7 +15,7 @@ const next = req => req.session.claim.doYouHaveChildrenThreeOrYounger === YES ? 
 const contentSummary = (req) => ({
   list: 'aboutYourChildren',
   key: req.t('doYouHaveChildrenThreeOrYounger.summaryKey'),
-  value: req.session.claim.doYouHaveChildrenThreeOrYounger
+  value: req.t(req.session.claim.doYouHaveChildrenThreeOrYounger)
 })
 
 const claimantHasChildren = claim => claim.doYouHaveChildrenThreeOrYounger === YES

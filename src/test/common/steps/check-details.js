@@ -95,6 +95,7 @@ Then(/^the check details page contains all data entered for a pregnant woman$/, 
   assertFullAddressShown(tableContents)
   assertPhoneNumberShown(tableContents)
   assertEmailAddressShown(tableContents)
+  assertDoYouHaveChildrenIsShown(tableContents, YES_LABEL)
 })
 
 Then(/^the check details page contains all data entered for a woman who is not pregnant$/, async function () {
@@ -107,6 +108,7 @@ Then(/^the check details page contains all data entered for a woman who is not p
   assertFullAddressShown(tableContents)
   assertPhoneNumberShown(tableContents)
   assertEmailAddressShown(tableContents)
+  assertDoYouHaveChildrenIsShown(tableContents, YES_LABEL)
 })
 
 Then(/^the check details page contains all data entered for an applicant with no second line of address$/, async function () {
@@ -119,6 +121,7 @@ Then(/^the check details page contains all data entered for an applicant with no
   assertAddressShownWithNoSecondLine(tableContents)
   assertPhoneNumberShown(tableContents)
   assertEmailAddressShown(tableContents)
+  assertDoYouHaveChildrenIsShown(tableContents, NO_LABEL)
 })
 
 Then(/^all page content is present on the check details page$/, async function () {
@@ -209,6 +212,11 @@ function assertPhoneNumberShown (tableContents) {
 function assertEmailAddressShown (tableContents) {
   const emailAddressValue = getValueForField(tableContents, 'Email address')
   expect(emailAddressValue).to.be.equal(EMAIL_ADDRESS)
+}
+
+function assertDoYouHaveChildrenIsShown (tableContents, expectedValue) {
+  const doYouHaveChildrenValue = getValueForField(tableContents, 'Children under 4 years old?')
+  expect(doYouHaveChildrenValue).to.be.equal(expectedValue)
 }
 
 function hasChangeLinkAndHeaderText (row) {
