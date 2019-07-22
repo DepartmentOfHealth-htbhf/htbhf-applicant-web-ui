@@ -13,6 +13,7 @@
     }
   }) %}
 
+  {# set autofocus for the last input only if there is more than one input #}
   {%  for i in range(0, children.inputCount) %}
     {{ htbhfChildDobInput({
       index: i + 1,
@@ -25,7 +26,8 @@
         legend: aboutYourChild,
         dateLegend: dateOfBirth,
         removeButton: removeChild
-      }
+      },
+      autofocus: i === children.inputCount - 1 and children.autofocus
     }) }}
     <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
   {% endfor %}

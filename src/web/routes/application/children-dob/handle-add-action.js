@@ -7,6 +7,7 @@ const handleAddAction = (req, res, next) => {
     return next()
   }
 
+  req.session.children.autofocus = true
   req.session.children.inputCount = req.session.children.childCount + 1
   return res.redirect(PATH)
 }

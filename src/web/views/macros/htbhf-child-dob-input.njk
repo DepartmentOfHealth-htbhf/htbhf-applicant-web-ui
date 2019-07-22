@@ -17,6 +17,7 @@
         }
      }) %}
 
+
       {{ govukInput({
         label: {
           text: params.nameLabel
@@ -25,7 +26,8 @@
         name: 'childDobName-' + params.index,
         value: params.children['childDobName-'  + params.index],
         errorMessage: params.errors | getErrorForField('childDobName-'  + params.index),
-        autocomplete: "off"
+        autocomplete: "off",
+        attributes: {autofocus: true} if params.autofocus
       }) }}
 
     {% endcall %}
