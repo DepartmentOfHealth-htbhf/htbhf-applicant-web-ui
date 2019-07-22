@@ -62,6 +62,7 @@ test('getSessionConfig', (t) => {
     secret: 'password123',
     saveUninitialized: false,
     resave: false,
+    rolling: true,
     name: 'session.sid',
     cookie: {
       secure: false,
