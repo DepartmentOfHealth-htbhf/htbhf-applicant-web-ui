@@ -1,3 +1,5 @@
+const { dateLastYear } = require('../../common/dates')
+
 // Create a string 501 characters long
 const LONG_STRING = new Array(502).join('A')
 const BLANK_STRING = ''
@@ -62,6 +64,19 @@ const PHONE_NUMBER_2 = '07111111111'
 const EMAIL_ADDRESS = 'test@email.com'
 const EMAIL_ADDRESS_2 = 'different-email-address@email.com'
 
+// TO DO GJ HTBHF-1852 format date using formatDateForDisplayFromDate() on check details page
+function formatDate (date) {
+  const year = date.getFullYear()
+  const month = date.getMonth() + 1
+  const day = date.getDate()
+  return `${year}-${month.toString().padStart(2, '0')}-${day}`
+}
+
+const CHILDRENS_DATES_OF_BIRTH = [
+  { header: 'Name', value: 'Joe' },
+  { header: 'Date of birth', value: formatDate(dateLastYear()) }
+]
+
 module.exports = {
   LONG_STRING,
   BLANK_STRING,
@@ -88,5 +103,6 @@ module.exports = {
   TEXT_LABEL,
   EMAIL_LABEL,
   TEXT,
-  EMAIL
+  EMAIL,
+  CHILDRENS_DATES_OF_BIRTH
 }

@@ -13,7 +13,8 @@ const {
   YES_LABEL,
   NO_LABEL,
   PHONE_NUMBER,
-  EMAIL_ADDRESS
+  EMAIL_ADDRESS,
+  CHILDRENS_DATES_OF_BIRTH
 } = require('./constants')
 
 const pages = require('./pages')
@@ -86,42 +87,47 @@ Then(/^The back link on the check details page links to the email address page$/
 })
 
 Then(/^the check details page contains all data entered for a pregnant woman$/, async function () {
-  const tableContents = await pages.check.getCheckDetailsTableContents()
-  assertNameShown(tableContents)
-  assertNinoShown(tableContents)
-  assertDobShown(tableContents)
-  assertAreYouPregnantValueShown(tableContents, YES_LABEL)
-  assertDueDateShownInSixMonths(tableContents)
-  assertFullAddressShown(tableContents)
-  assertPhoneNumberShown(tableContents)
-  assertEmailAddressShown(tableContents)
-  assertDoYouHaveChildrenIsShown(tableContents, YES_LABEL)
+  const claimContents = await pages.check.getClaimSummaryListContents()
+  const childrenContents = await pages.check.getChildrenSummaryListContents()
+  assertNameShown(claimContents)
+  assertNinoShown(claimContents)
+  assertDobShown(claimContents)
+  assertAreYouPregnantValueShown(claimContents, YES_LABEL)
+  assertDueDateShownInSixMonths(claimContents)
+  assertFullAddressShown(claimContents)
+  assertPhoneNumberShown(claimContents)
+  assertEmailAddressShown(claimContents)
+  assertDoYouHaveChildrenIsShown(claimContents, YES_LABEL)
+  assertChildrensDatesOfBirthIsShown(childrenContents, CHILDRENS_DATES_OF_BIRTH)
 })
 
 Then(/^the check details page contains all data entered for a woman who is not pregnant$/, async function () {
-  const tableContents = await pages.check.getCheckDetailsTableContents()
-  assertNameShown(tableContents)
-  assertNinoShown(tableContents)
-  assertDobShown(tableContents)
-  assertAreYouPregnantValueShown(tableContents, NO_LABEL)
-  assertNoValueForField(tableContents, 'Baby’s due date')
-  assertFullAddressShown(tableContents)
-  assertPhoneNumberShown(tableContents)
-  assertEmailAddressShown(tableContents)
-  assertDoYouHaveChildrenIsShown(tableContents, YES_LABEL)
+  const claimContents = await pages.check.getClaimSummaryListContents()
+  const childrenContents = await pages.check.getChildrenSummaryListContents()
+  assertNameShown(claimContents)
+  assertNinoShown(claimContents)
+  assertDobShown(claimContents)
+  assertAreYouPregnantValueShown(claimContents, NO_LABEL)
+  assertNoValueForField(claimContents, 'Baby’s due date')
+  assertFullAddressShown(claimContents)
+  assertPhoneNumberShown(claimContents)
+  assertEmailAddressShown(claimContents)
+  assertDoYouHaveChildrenIsShown(claimContents, YES_LABEL)
+  assertChildrensDatesOfBirthIsShown(childrenContents, CHILDRENS_DATES_OF_BIRTH)
 })
 
+// TO DO GJ HTBHF-1852 assert childrens dates of birth is not shown
 Then(/^the check details page contains all data entered for an applicant with no second line of address$/, async function () {
-  const tableContents = await pages.check.getCheckDetailsTableContents()
-  assertNameShown(tableContents)
-  assertNinoShown(tableContents)
-  assertDobShown(tableContents)
-  assertAreYouPregnantValueShown(tableContents, NO_LABEL)
-  assertNoValueForField(tableContents, 'Baby’s due date')
-  assertAddressShownWithNoSecondLine(tableContents)
-  assertPhoneNumberShown(tableContents)
-  assertEmailAddressShown(tableContents)
-  assertDoYouHaveChildrenIsShown(tableContents, NO_LABEL)
+  const claimContents = await pages.check.getClaimSummaryListContents()
+  assertNameShown(claimContents)
+  assertNinoShown(claimContents)
+  assertDobShown(claimContents)
+  assertAreYouPregnantValueShown(claimContents, NO_LABEL)
+  assertNoValueForField(claimContents, 'Baby’s due date')
+  assertAddressShownWithNoSecondLine(claimContents)
+  assertPhoneNumberShown(claimContents)
+  assertEmailAddressShown(claimContents)
+  assertDoYouHaveChildrenIsShown(claimContents, NO_LABEL)
 })
 
 Then(/^all page content is present on the check details page$/, async function () {
@@ -144,8 +150,10 @@ async function allPageContentIsCorrectOnCheckPage () {
   expect(h2Text.toString().trim()).to.have.lengthOf.at.least(1, 'expected check page H2 text to not be empty')
   const submitButtonText = await pages.check.getSubmitButtonText()
   expect(submitButtonText.toString().trim()).to.have.lengthOf.at.least(1, 'expected submit button text to not be empty')
-  const tableContents = await pages.check.getCheckDetailsTableContents()
-  assertHeaderAndChangeLinkShownForEachRow(tableContents)
+  const claimContents = await pages.check.getClaimSummaryListContents()
+  assertHeaderAndChangeLinkShownForEachRow(claimContents)
+  const childrenContents = await pages.check.getChildrenSummaryListContents()
+  assertHeaderTextShownForEachRow(childrenContents)
 }
 
 function getValueForField (tableContents, fieldName) {
@@ -166,64 +174,91 @@ function getDateInSixMonths () {
   return formatDateForDisplayFromDate(date)
 }
 
-function assertNameShown (tableContents) {
-  const nameValue = getValueForField(tableContents, 'Your name')
+function assertNameShown (contents) {
+  const nameValue = getValueForField(contents, 'Your name')
   expect(nameValue).to.be.equal(FULL_NAME)
 }
 
-function assertNinoShown (tableContents) {
-  const ninoValue = getValueForField(tableContents, 'National Insurance number')
+function assertNinoShown (contents) {
+  const ninoValue = getValueForField(contents, 'National Insurance number')
   expect(ninoValue).to.be.equal(VALID_ELIGIBLE_NINO)
 }
 
-function assertDobShown (tableContents) {
-  const dobValue = getValueForField(tableContents, 'Date of birth')
+function assertDobShown (contents) {
+  const dobValue = getValueForField(contents, 'Date of birth')
   expect(dobValue).to.be.equal(DATE_OF_BIRTH)
 }
 
-function assertAreYouPregnantValueShown (tableContents, expectedValue) {
-  const areYouPregnantValue = getValueForField(tableContents, 'Are you pregnant?')
+function assertAreYouPregnantValueShown (contents, expectedValue) {
+  const areYouPregnantValue = getValueForField(contents, 'Are you pregnant?')
   expect(areYouPregnantValue).to.be.equal(expectedValue)
 }
 
-function assertDueDateShownInSixMonths (tableContents) {
-  const dueDateValue = getValueForField(tableContents, 'Baby’s due date')
+function assertDueDateShownInSixMonths (contents) {
+  const dueDateValue = getValueForField(contents, 'Baby’s due date')
   expect(dueDateValue).to.be.equal(getDateInSixMonths())
 }
 
-function assertFullAddressShown (tableContents) {
-  assertAddressShown(tableContents, FULL_ADDRESS)
+function assertFullAddressShown (contents) {
+  assertAddressShown(contents, FULL_ADDRESS)
 }
 
-function assertAddressShownWithNoSecondLine (tableContents) {
-  assertAddressShown(tableContents, FULL_ADDRESS_NO_LINE_2)
+function assertAddressShownWithNoSecondLine (contents) {
+  assertAddressShown(contents, FULL_ADDRESS_NO_LINE_2)
 }
 
-function assertAddressShown (tableContents, expectedAddress) {
-  const addressValue = getValueForField(tableContents, 'Address')
+function assertAddressShown (contents, expectedAddress) {
+  const addressValue = getValueForField(contents, 'Address')
   expect(addressValue).to.be.equal(expectedAddress)
 }
 
-function assertPhoneNumberShown (tableContents) {
-  const phoneNumberValue = getValueForField(tableContents, 'Mobile telephone number')
+function assertPhoneNumberShown (contents) {
+  const phoneNumberValue = getValueForField(contents, 'Mobile telephone number')
   expect(phoneNumberValue).to.be.equal(PHONE_NUMBER)
 }
 
-function assertEmailAddressShown (tableContents) {
-  const emailAddressValue = getValueForField(tableContents, 'Email address')
+function assertEmailAddressShown (contents) {
+  const emailAddressValue = getValueForField(contents, 'Email address')
   expect(emailAddressValue).to.be.equal(EMAIL_ADDRESS)
 }
 
-function assertDoYouHaveChildrenIsShown (tableContents, expectedValue) {
-  const doYouHaveChildrenValue = getValueForField(tableContents, 'Children under 4 years old?')
+function assertDoYouHaveChildrenIsShown (contents, expectedValue) {
+  const doYouHaveChildrenValue = getValueForField(contents, 'Children under 4 years old?')
   expect(doYouHaveChildrenValue).to.be.equal(expectedValue)
 }
 
-function hasChangeLinkAndHeaderText (row) {
-  return row.action.text === 'Change' && row.header.trim().length > 0
+async function assertChildrensDatesOfBirthChangeLinkIsShown () {
+  const changeLinks = await pages.check.getChangeLinksFor('Children’s date of birth')
+  expect(changeLinks.length).to.be.equal(1)
 }
 
-function assertHeaderAndChangeLinkShownForEachRow (tableContents) {
-  const matchingRows = tableContents.filter(hasChangeLinkAndHeaderText)
-  expect(matchingRows.length).to.be.equal(tableContents.length)
+async function assertChildrensDatesOfBirthIsShown (contents, expectedValues) {
+  expectedValues.forEach((expected) => {
+    const value = getValueForField(contents, expected.header)
+    expect(value).to.be.equal(expected.value)
+  })
+
+  await assertChildrensDatesOfBirthChangeLinkIsShown()
+}
+
+function hasChangeLink (row) {
+  return row.action.text === 'Change'
+}
+
+function hasHeaderText (row) {
+  return row.header.trim().length > 0
+}
+
+function hasChangeLinkAndHeaderText (row) {
+  return hasChangeLink(row) && hasHeaderText(row)
+}
+
+function assertHeaderTextShownForEachRow (contents) {
+  const matchingRows = contents.filter(hasHeaderText)
+  expect(matchingRows.length).to.be.equal(contents.length)
+}
+
+function assertHeaderAndChangeLinkShownForEachRow (contents) {
+  const matchingRows = contents.filter(hasChangeLinkAndHeaderText)
+  expect(matchingRows.length).to.be.equal(contents.length)
 }
