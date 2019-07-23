@@ -2,7 +2,7 @@
 
 const SubmittablePage = require('./submittable-page')
 const CHECK_PAGE_TITLE = 'GOV.UK - Check your answers'
-const GOV_LIST_ROW_CLASSNAME = 'govuk-summary-list__row'
+const GOV_LIST_ROW_SELECTOR = '#claim-summary .govuk-summary-list__row'
 const GOV_LIST_HEADER_CLASSNAME = 'govuk-summary-list__key'
 const GOV_LIST_VALUE_CLASSNAME = 'govuk-summary-list__value'
 const GOV_LIST_ACTION_CLASSNAME = 'govuk-summary-list__actions'
@@ -26,7 +26,7 @@ class Check extends SubmittablePage {
   }
 
   async getCheckDetailsTableContents () {
-    const tableRows = await this.findAllByClassName(GOV_LIST_ROW_CLASSNAME)
+    const tableRows = await this.findAllByCSS(GOV_LIST_ROW_SELECTOR)
     const getDataForRows = tableRows.map(async (tableRow) => this.getDataForRow(tableRow))
     return Promise.all(getDataForRows)
   }
