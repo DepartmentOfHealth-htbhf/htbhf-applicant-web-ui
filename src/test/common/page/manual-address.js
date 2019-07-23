@@ -9,9 +9,9 @@ const PAGE_TITLES = {
 }
 
 /**
- * Page object for Address page where the address is entered.
+ * Page object for Address page where the address is entered manually.
  */
-class Address extends SubmittablePage {
+class ManualAddress extends SubmittablePage {
   constructor (driver) {
     super(driver)
     this.line1InputField = new InputField('address-line-1', this)
@@ -20,7 +20,7 @@ class Address extends SubmittablePage {
     this.postcodeInputField = new InputField('postcode', this)
   }
   getPath () {
-    return '/address'
+    return '/manual-address'
   }
 
   getPageName () {
@@ -32,4 +32,4 @@ class Address extends SubmittablePage {
   }
 }
 
-module.exports = Address
+module.exports = ManualAddress

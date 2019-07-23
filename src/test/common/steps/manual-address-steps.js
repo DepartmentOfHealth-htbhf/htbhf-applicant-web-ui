@@ -43,41 +43,41 @@ When(/^I do not enter in any address fields$/, async function () {
 })
 
 Then(/^I am shown the address page$/, async function () {
-  await pages.address.waitForPageLoad()
+  await pages.manualAddress.waitForPageLoad()
 })
 
 Then(/^I am informed that the postcode is in the wrong format$/, async function () {
-  await assertErrorHeaderTextPresent(pages.address)
+  await assertErrorHeaderTextPresent(pages.manualAddress)
   await assertPostcodeErrorFieldAndLink('Enter a correct postcode, like AA1 1AA')
 })
 
 Then(/^I am informed that I need to enter an address on the 'address line 1' field$/, async function () {
-  await assertErrorHeaderTextPresent(pages.address)
+  await assertErrorHeaderTextPresent(pages.manualAddress)
   await assertAddressLine1ErrorFieldAndLink('Tell us your address')
 })
 
 Then(/^I am informed that I need to enter an address on the 'town or city' field$/, async function () {
-  await assertErrorHeaderTextPresent(pages.address)
+  await assertErrorHeaderTextPresent(pages.manualAddress)
   await assertTownOrCityErrorFieldAndLink('Tell us your address')
 })
 
 Then(/^I am informed that the first line of the address is too long$/, async function () {
-  await assertErrorHeaderTextPresent(pages.address)
+  await assertErrorHeaderTextPresent(pages.manualAddress)
   await assertAddressLine1ErrorFieldAndLink('The information you entered is too long')
 })
 
 Then(/^I am informed that the second line of the address is too long$/, async function () {
-  await assertErrorHeaderTextPresent(pages.address)
+  await assertErrorHeaderTextPresent(pages.manualAddress)
   await assertAddressLine2ErrorFieldAndLink('The information you entered is too long')
 })
 
 Then(/^I am informed that the 'town or city' of the address is too long$/, async function () {
-  await assertErrorHeaderTextPresent(pages.address)
+  await assertErrorHeaderTextPresent(pages.manualAddress)
   await assertTownOrCityErrorFieldAndLink('The information you entered is too long')
 })
 
 Then(/^I am informed that I need to enter an address on the 'address line 1', 'address line 2' and 'town or city' fields$/, async function () {
-  await assertErrorHeaderTextPresent(pages.address)
+  await assertErrorHeaderTextPresent(pages.manualAddress)
   await assertAddressLine1ErrorFieldAndLink('Tell us your address')
   await assertTownOrCityErrorFieldAndLink('Tell us your address')
   await assertPostcodeErrorFieldAndLink('Enter a correct postcode, like AA1 1AA')
@@ -85,28 +85,28 @@ Then(/^I am informed that I need to enter an address on the 'address line 1', 'a
 
 const assertAddressLine1ErrorFieldAndLink = async (expectedErrorMessage) => {
   await assertFieldErrorAndLinkTextPresentAndCorrect(
-    pages.address.line1InputField.getInputErrorId(),
-    pages.address.line1InputField.getInputErrorLinkCss(),
+    pages.manualAddress.line1InputField.getInputErrorId(),
+    pages.manualAddress.line1InputField.getInputErrorLinkCss(),
     expectedErrorMessage)
 }
 
 const assertAddressLine2ErrorFieldAndLink = async (expectedErrorMessage) => {
   await assertFieldErrorAndLinkTextPresentAndCorrect(
-    pages.address.line2InputField.getInputErrorId(),
-    pages.address.line2InputField.getInputErrorLinkCss(),
+    pages.manualAddress.line2InputField.getInputErrorId(),
+    pages.manualAddress.line2InputField.getInputErrorLinkCss(),
     expectedErrorMessage)
 }
 
 const assertTownOrCityErrorFieldAndLink = async (expectedErrorMessage) => {
   await assertFieldErrorAndLinkTextPresentAndCorrect(
-    pages.address.townOrCityInputField.getInputErrorId(),
-    pages.address.townOrCityInputField.getInputErrorLinkCss(),
+    pages.manualAddress.townOrCityInputField.getInputErrorId(),
+    pages.manualAddress.townOrCityInputField.getInputErrorLinkCss(),
     expectedErrorMessage)
 }
 
 const assertPostcodeErrorFieldAndLink = async (expectedErrorMessage) => {
   await assertFieldErrorAndLinkTextPresentAndCorrect(
-    pages.address.postcodeInputField.getInputErrorId(),
-    pages.address.postcodeInputField.getInputErrorLinkCss(),
+    pages.manualAddress.postcodeInputField.getInputErrorId(),
+    pages.manualAddress.postcodeInputField.getInputErrorLinkCss(),
     expectedErrorMessage)
 }

@@ -2,7 +2,7 @@ const { enterNino } = require('./enter-nino')
 const { enterName } = require('./enter-name')
 const { enterDob } = require('./enter-dob')
 const { areYouPregnant } = require('./are-you-pregnant')
-const { address } = require('./address')
+const { manualAddress } = require('./manual-address')
 const { phoneNumber } = require('./phone-number')
 const { doYouLiveInScotland } = require('./do-you-live-in-scotland')
 const { iLiveInScotland } = require('./i-live-in-scotland')
@@ -21,7 +21,7 @@ const steps = [
   areYouPregnant,
   enterName,
   enterNino,
-  address,
+  manualAddress,
   phoneNumber,
   emailAddress,
   sendCode,

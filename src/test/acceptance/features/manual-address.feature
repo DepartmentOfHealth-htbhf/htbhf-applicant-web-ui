@@ -1,8 +1,7 @@
-#TODO DW HTBHF-1845 rename filename (not doing in current pr as rename and content change will appear as new file)
 Feature: Address
   In order to apply for the Apply for Healthy Start programme
   As a potential claimant
-  I want to enter my address
+  I want to enter my address manually
 
   Background:
     Given I have entered my details up to the address page
