@@ -122,6 +122,15 @@ class Page {
     }
   }
 
+  async findAllByXPath (xpath) {
+    try {
+      return await this.driver.findElements(webdriver.By.xpath(xpath))
+    } catch (error) {
+      console.log(error)
+      throw new Error(error)
+    }
+  }
+
   async findH1 () {
     return this.findByCSS('h1')
   }
