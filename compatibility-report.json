@@ -37,7 +37,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 518000000
+              "duration": 544000000
             }
           },
           {
@@ -50,7 +50,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3373000000
+              "duration": 3238000000
             }
           },
           {
@@ -59,11 +59,11 @@
             "line": 9,
             "name": "I am shown the check details page with correct page content",
             "match": {
-              "location": "src/test/common/steps/check-details.js:135"
+              "location": "src/test/common/steps/check-details.js:141"
             },
             "result": {
               "status": "passed",
-              "duration": 1816000000
+              "duration": 1702000000
             }
           },
           {
@@ -76,7 +76,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 361000000
+              "duration": 372000000
             }
           },
           {
@@ -89,7 +89,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 90000000
+              "duration": 79000000
             }
           },
           {
@@ -102,7 +102,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 39000000
+              "duration": 36000000
             }
           },
           {
