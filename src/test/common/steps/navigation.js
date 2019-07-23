@@ -82,7 +82,7 @@ const pageActions = [
     page: ADDRESS_PAGE,
     action: async () => {
       await enterNinoAndSubmit()
-      await pages.address.waitForPageLoad()
+      await pages.manualAddress.waitForPageLoad()
     }
   },
   {

@@ -1,6 +1,6 @@
 const test = require('tape')
 const { assocPath } = require('ramda')
-const { contentSummary } = require('./address')
+const { contentSummary } = require('./manual-address')
 
 const req = {
   t: string => string,

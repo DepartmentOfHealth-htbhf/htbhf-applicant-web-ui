@@ -89,11 +89,11 @@ async function selectNoOnPregnancyPage () {
 
 async function enterAddressAndSubmit (addressLine1 = ADDRESS_LINE_1, addressLine2 = ADDRESS_LINE_2, townOrCity = TOWN, postcode = POSTCODE) {
   try {
-    await pages.address.line1InputField.enterValue(addressLine1)
-    await pages.address.line2InputField.enterValue(addressLine2)
-    await pages.address.townOrCityInputField.enterValue(townOrCity)
-    await pages.address.postcodeInputField.enterValue(postcode)
-    await pages.address.submitForm()
+    await pages.manualAddress.line1InputField.enterValue(addressLine1)
+    await pages.manualAddress.line2InputField.enterValue(addressLine2)
+    await pages.manualAddress.townOrCityInputField.enterValue(townOrCity)
+    await pages.manualAddress.postcodeInputField.enterValue(postcode)
+    await pages.manualAddress.submitForm()
   } catch (error) {
     assert.fail(`Unexpected error caught trying to enter address and submit the page - ${error}`)
   }

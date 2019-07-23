@@ -19,7 +19,7 @@ const ENTER_DOB_URL = `${BASE_URL}/enter-dob`
 const DO_YOU_HAVE_CHILDREN_THREE_OR_YOUNGER_URL = `${BASE_URL}/do-you-have-children-three-or-younger`
 const CHILDREN_DOB_URL = `${BASE_URL}/children-dob`
 const ARE_YOU_PREGNANT_URL = `${BASE_URL}/are-you-pregnant`
-const ADDRESS_URL = `${BASE_URL}/address`
+const MANUAL_ADDRESS_URL = `${BASE_URL}/manual-address`
 const PHONE_NUMBER_URL = `${BASE_URL}/phone-number`
 const EMAIL_ADDRESS_URL = `${BASE_URL}/email-address`
 const CHECK_URL = `${BASE_URL}/check`
@@ -82,8 +82,8 @@ const runEndToEndTest = async (results) => {
     results.push(await pa11y(ENTER_NINO_URL))
     await postFormData(ENTER_NINO_URL, { ...formData, nino: VALID_ELIGIBLE_NINO }, requestCookie)
 
-    results.push(await pa11y(ADDRESS_URL))
-    await postFormData(ADDRESS_URL, {
+    results.push(await pa11y(MANUAL_ADDRESS_URL))
+    await postFormData(MANUAL_ADDRESS_URL, {
       ...formData,
       'addressLine1': 'Flat B',
       'addressLine2': 'Baker Street',

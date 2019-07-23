@@ -3,7 +3,7 @@ const EnterNino = require('../page/enter-nino')
 const Overview = require('../page/overview')
 const EnterDOB = require('../page/enter-dob')
 const AreYouPregnant = require('../page/are-you-pregnant')
-const Address = require('../page/address')
+const ManualAddress = require('../page/manual-address')
 const PhoneNumber = require('../page/phone-number')
 const Check = require('../page/check')
 const Confirm = require('../page/confirm')
@@ -45,7 +45,7 @@ class Pages {
     this.enterNino = null
     this.enterDOB = null
     this.areYouPregnant = null
-    this.address = null
+    this.manualAddress = null
     this.phoneNumber = null
     this.check = null
     this.confirm = null
@@ -78,7 +78,7 @@ class Pages {
     this.enterNino = new EnterNino(this.driver)
     this.enterDOB = new EnterDOB(this.driver)
     this.areYouPregnant = new AreYouPregnant(this.driver)
-    this.address = new Address(this.driver)
+    this.manualAddress = new ManualAddress(this.driver)
     this.phoneNumber = new PhoneNumber(this.driver)
     this.check = new Check(this.driver)
     this.confirm = new Confirm(this.driver)
@@ -98,7 +98,7 @@ class Pages {
     this.enterChildrenDOB = new EnterChildrenDOB(this.driver)
     this.enterCode = new EnterCode(this.driver)
     // NOTE: This map should contain all page objects, and not the Generic Page as this doesn't itself represent a page
-    this.allPages = [this.overview, this.enterName, this.enterNino, this.enterDOB, this.areYouPregnant, this.address, this.phoneNumber,
+    this.allPages = [this.overview, this.enterName, this.enterNino, this.enterDOB, this.areYouPregnant, this.manualAddress, this.phoneNumber,
       this.check, this.confirm, this.cookies, this.privacyNotice, this.confirmUpdated, this.doYouLiveInScotland, this.iLiveInScotland, this.emailAddress,
       this.termsAndConditions, this.doYouHaveChildrenThreeOrYounger, this.sendCode, this.enterChildrenDOB, this.enterCode]
     this.pageMap = this.allPages.reduce(addPageToMap, {})
