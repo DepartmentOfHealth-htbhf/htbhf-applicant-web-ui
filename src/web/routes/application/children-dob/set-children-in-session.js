@@ -25,6 +25,7 @@ const setChildrenInSessionForPost = (req, res, next) => {
 
   // GET behaviour is not called on validation error so locals also need setting for POST
   res.locals.children = req.session.children
+  req.session.children.autofocus = false
   return next()
 }
 

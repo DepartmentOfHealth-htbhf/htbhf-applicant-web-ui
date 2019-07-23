@@ -37,7 +37,8 @@ test('handleAddAction() increments the input count in session on add action', (t
   const expected = {
     ...child,
     childCount: 1,
-    inputCount: 2
+    inputCount: 2,
+    autofocus: true
   }
 
   handleAddAction(req, res, next)

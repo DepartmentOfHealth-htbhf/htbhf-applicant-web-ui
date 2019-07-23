@@ -57,7 +57,8 @@ test('setChildrenInSessionForPost() sets childrens DOBs in session', (t) => {
     ...child,
     ...newChild,
     childCount: 2,
-    inputCount: 2
+    inputCount: 2,
+    autofocus: false
   }
 
   setChildrenInSessionForPost(req, res, next)
