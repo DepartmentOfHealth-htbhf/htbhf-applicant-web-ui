@@ -5,37 +5,10 @@
   summary list rows
 #}
 {% macro htbhfChildrenSummaryList(params) %}
-  {% set childRows = [] %}
-
-  {% for i in range(0, params.children.childCount) %}
-    {% set index = i + 1 %}
-
-    {% set name = {
-      key : {
-        text: 'Name'
-      },
-      value: {
-        text: params.children['childDobName-' + index]
-      }
-    } %}
-
-    {% set dateOfBirth = {
-      key : {
-        text: 'Date of birth'
-      },
-      value: {
-        text: params.children['childDob-' + index]
-      }
-    } %}
-
-    {% set childRowsLength = childRows.push(name) %}
-    {% set childRowsLength = childRows.push(dateOfBirth) %}
-  {% endfor %}
-
   <div class="c-htbhf-children-summary-list">
     {{ govukSummaryList({
       classes: 'govuk-summary-list--no-border ' + params.classes,
-      rows: childRows
+      rows: params.rows
     }) }}
     <div class="c-htbhf-children-summary-list__action">
       <a href="{{ params.action.href }}" class="govuk-link">

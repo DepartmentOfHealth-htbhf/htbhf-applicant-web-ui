@@ -7,7 +7,7 @@
   <h1 class="govuk-heading-xl">{{ heading }}</h1>
 
   <div id="claim-summary">
-    {% for list, listRows in checkRowData %}
+    {% for list, listRows in claimSummaryLists %}
       {% set classes %}
         {% if loop.last and children %} govuk-!-margin-bottom-1 {% else %} govuk-!-margin-bottom-9 {% endif %}
       {% endset %}
@@ -23,10 +23,10 @@
     {% endfor %}
   </div>
   <div id="children-summary">
-    {% if children %}
+    {% if childrensDatesOfBirthRows | length %}
       {{ htbhfChildrenSummaryList({
         classes: 'govuk-!-margin-bottom-9',
-        children: children,
+        rows: childrensDatesOfBirthRows,
         action: {
           href: "/children-dob",
           text: changeText,
