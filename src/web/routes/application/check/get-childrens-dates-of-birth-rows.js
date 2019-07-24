@@ -1,5 +1,4 @@
 const { formatDateForDisplay } = require('../common/formatters')
-const { NAME_KEY, DATE_OF_BIRTH_KEY } = require('./constants')
 
 const buildRow = (keyText, valueText) => ({
   key: {
@@ -17,13 +16,13 @@ const getFormattedDateForChild = (children, index) =>
     children[`childDob-${index}-year`]
   )
 
-const getChildrensDatesOfBirthRows = (children) => {
+const getChildrensDatesOfBirthRows = (localisation) => (children) => {
   const rows = []
 
   for (let i = 0; i < children.childCount; i++) {
     const index = i + 1
-    const nameRow = buildRow(NAME_KEY, children[`childDobName-${index}`])
-    const dateOfBirthRow = buildRow(DATE_OF_BIRTH_KEY, getFormattedDateForChild(children, index))
+    const nameRow = buildRow(localisation['name'], children[`childDobName-${index}`])
+    const dateOfBirthRow = buildRow(localisation['dateOfBirth'], getFormattedDateForChild(children, index))
     rows.push(nameRow, dateOfBirthRow)
   }
 
