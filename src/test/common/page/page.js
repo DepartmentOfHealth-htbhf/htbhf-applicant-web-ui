@@ -75,6 +75,15 @@ class Page {
     }
   }
 
+  async findAllById (id) {
+    try {
+      return this.driver.findElements(webdriver.By.id(id))
+    } catch (error) {
+      console.log(error)
+      throw new Error(error)
+    }
+  }
+
   async findByClassName (className, scope = this.driver) {
     try {
       await this.waitForElement(className, CLASSNAME_TYPE)

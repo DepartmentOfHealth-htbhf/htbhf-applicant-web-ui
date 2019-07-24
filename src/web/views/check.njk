@@ -22,8 +22,8 @@
       }) }}
     {% endfor %}
   </div>
-  <div id="children-summary">
-    {% if childrensDatesOfBirthRows | length %}
+  {% if childrensDatesOfBirthRows | length %}
+    <div id="children-summary">
       {{ htbhfChildrenSummaryList({
         classes: 'govuk-!-margin-bottom-9',
         rows: childrensDatesOfBirthRows,
@@ -33,8 +33,8 @@
           visuallyHiddenText: childrensDobHiddenText
         }
       }) }}
-    {% endif %}
-  </div>
+    </div>
+  {% endif %}
 
   {{ govukButton({
       text: buttonText,
