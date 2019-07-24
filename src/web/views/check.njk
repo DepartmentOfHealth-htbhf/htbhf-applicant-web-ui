@@ -2,6 +2,8 @@
 {% from "macros/htbhf-summary-list.njk" import htbhfSummaryList %}
 {% from "macros/htbhf-children-summary-list.njk" import htbhfChildrenSummaryList %}
 
+{% set childrenExist = childrensDatesOfBirthRows | length %}
+
 {% block pageContent %}
 
   <h1 class="govuk-heading-xl">{{ heading }}</h1>
@@ -9,7 +11,7 @@
   <div id="claim-summary">
     {% for list, listRows in claimSummaryLists %}
       {% set classes %}
-        {% if loop.last and children %} govuk-!-margin-bottom-1 {% else %} govuk-!-margin-bottom-9 {% endif %}
+        {% if loop.last and childrenExist %} govuk-!-margin-bottom-1 {% else %} govuk-!-margin-bottom-9 {% endif %}
       {% endset %}
 
       {{ htbhfSummaryList({
@@ -22,7 +24,7 @@
       }) }}
     {% endfor %}
   </div>
-  {% if childrensDatesOfBirthRows | length %}
+  {% if childrenExist %}
     <div id="children-summary">
       {{ htbhfChildrenSummaryList({
         classes: 'govuk-!-margin-bottom-9',
