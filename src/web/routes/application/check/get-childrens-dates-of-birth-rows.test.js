@@ -1,8 +1,12 @@
 const test = require('tape')
 const { getChildrensDatesOfBirthRows } = require('./get-childrens-dates-of-birth-rows')
-const { NAME_KEY, DATE_OF_BIRTH_KEY } = require('./constants')
 
 test('getChildrensDatesOfBirthRows() builds rows in correct format', (t) => {
+  const localisation = {
+    name: 'Name',
+    dateOfBirth: 'Date of birth'
+  }
+
   const children = {
     'childDobName-1': 'Lisa',
     'childDob-1-day': '14',
@@ -17,23 +21,23 @@ test('getChildrensDatesOfBirthRows() builds rows in correct format', (t) => {
 
   const expected = [
     {
-      key: { text: NAME_KEY },
+      key: { text: 'Name' },
       value: { text: 'Lisa' }
     },
     {
-      key: { text: DATE_OF_BIRTH_KEY },
+      key: { text: 'Date of birth' },
       value: { text: '14 November 1990' }
     },
     {
-      key: { text: NAME_KEY },
+      key: { text: 'Name' },
       value: { text: 'Bart' } },
     {
-      key: { text: DATE_OF_BIRTH_KEY },
+      key: { text: 'Date of birth' },
       value: { text: '2 March 1999' }
     }
   ]
 
-  const result = getChildrensDatesOfBirthRows(children)
+  const result = getChildrensDatesOfBirthRows(localisation)(children)
 
   t.deepEqual(result, expected, 'builds rows in correct format')
   t.end()
