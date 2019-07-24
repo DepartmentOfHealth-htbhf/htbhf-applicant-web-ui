@@ -1,6 +1,7 @@
 const { stateMachine, states, actions } = require('../common/state-machine')
 const { getPreviousPath } = require('../common/get-previous-path')
 const { getGroupedRowData } = require('./get-row-data')
+const { getChildrensDatesOfBirthRows } = require('./get-childrens-dates-of-birth-rows')
 
 const pageContent = ({ translate }) => ({
   title: translate('check.title'),
@@ -28,14 +29,14 @@ const getLastNavigablePath = (steps, req) => {
 }
 
 const getCheck = (steps) => (req, res) => {
+  const { children } = req.session
   stateMachine.setState(states.IN_REVIEW, req)
-
   req.session.nextAllowedStep = stateMachine.dispatch(actions.GET_NEXT_PATH, req, steps)
 
   res.render('check', {
-    children: req.session.children,
     ...pageContent({ translate: req.t }),
-    checkRowData: getGroupedRowData(req, steps),
+    claimSummaryLists: getGroupedRowData(req, steps),
+    childrensDatesOfBirthRows: children ? getChildrensDatesOfBirthRows(children) : [],
     previous: getLastNavigablePath(steps, req)
   })
 }
