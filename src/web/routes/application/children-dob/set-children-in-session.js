@@ -1,10 +1,10 @@
-const { pickBy } = require('ramda')
+const { pickBy, isNil } = require('ramda')
 const { countKeysContainingString } = require('./count-keys')
 const { DAY_FIELD_SUFFIX } = require('./constants')
 const { isChildEntry } = require('./predicates')
 
 const setChildrenInSessionForGet = (req) => {
-  if (!req.session.hasOwnProperty('children')) {
+  if (isNil(req.session.children)) {
     req.session.children = {
       inputCount: 1,
       childCount: 0
