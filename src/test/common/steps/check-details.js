@@ -116,7 +116,6 @@ Then(/^the check details page contains all data entered for a woman who is not p
   assertChildrensDatesOfBirthIsShown(childrenContents, CHILDRENS_DATES_OF_BIRTH)
 })
 
-// TO DO GJ HTBHF-1852 assert childrens dates of birth is not shown
 Then(/^the check details page contains all data entered for an applicant with no second line of address$/, async function () {
   const claimContents = await pages.check.getClaimSummaryListContents()
   assertNameShown(claimContents)
@@ -128,6 +127,7 @@ Then(/^the check details page contains all data entered for an applicant with no
   assertPhoneNumberShown(claimContents)
   assertEmailAddressShown(claimContents)
   assertDoYouHaveChildrenIsShown(claimContents, NO_LABEL)
+  await assertChildrensDatesOfBirthIsNotShown()
 })
 
 Then(/^all page content is present on the check details page$/, async function () {
@@ -239,6 +239,11 @@ async function assertChildrensDatesOfBirthIsShown (contents, expectedValues) {
   })
 
   await assertChildrensDatesOfBirthChangeLinkIsShown()
+}
+
+async function assertChildrensDatesOfBirthIsNotShown () {
+  const childrenSummary = await pages.check.findAllById('children-summary')
+  expect(childrenSummary.length).to.be.equal(0)
 }
 
 function hasChangeLink (row) {
