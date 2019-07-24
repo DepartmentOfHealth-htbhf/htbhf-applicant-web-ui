@@ -11,10 +11,12 @@ const DEFAULT_WAIT_MILLIS = 5000
 const CSS_TYPE = 'CSS'
 const ID_TYPE = 'ID'
 const CLASSNAME_TYPE = 'CLASSNAME'
+const XPATH_TYPE = 'XPATH'
 const BY = {
   [CSS_TYPE]: webdriver.By.css,
   [CLASSNAME_TYPE]: webdriver.By.className,
-  [ID_TYPE]: webdriver.By.id
+  [ID_TYPE]: webdriver.By.id,
+  [XPATH_TYPE]: webdriver.By.xpath
 }
 
 /**
@@ -65,79 +67,55 @@ class Page {
     throw new Error('getPageName needs to be implemented by all Page objects')
   }
 
-  async findById (id) {
+  async findBy (method, selector, scope = this.driver) {
     try {
-      await this.waitForElement(id, ID_TYPE)
-      return this.driver.findElement(webdriver.By.id(id))
+      await this.waitForElement(selector, method)
+      return scope['findElement'](BY[method](selector))
     } catch (error) {
       console.log(error)
       throw new Error(error)
     }
+  }
+
+  async findAllBy (method, selector) {
+    try {
+      return this.driver.findElements(BY[method](selector))
+    } catch (error) {
+      console.log(error)
+      throw new Error(error)
+    }
+  }
+
+  async findById (id, scope) {
+    return this.findBy(ID_TYPE, id, scope)
   }
 
   async findAllById (id) {
-    try {
-      return this.driver.findElements(webdriver.By.id(id))
-    } catch (error) {
-      console.log(error)
-      throw new Error(error)
-    }
+    return this.findAllBy(ID_TYPE, id)
   }
 
-  async findByClassName (className, scope = this.driver) {
-    try {
-      await this.waitForElement(className, CLASSNAME_TYPE)
-      return scope['findElement'](webdriver.By.className(className))
-    } catch (error) {
-      console.log(error)
-      throw new Error(error)
-    }
+  async findByClassName (className, scope) {
+    return this.findBy(CLASSNAME_TYPE, className, scope)
   }
 
   async findAllByClassName (className) {
-    try {
-      return this.driver.findElements(webdriver.By.className(className))
-    } catch (error) {
-      console.log(error)
-      throw new Error(error)
-    }
+    return this.findAllBy(CLASSNAME_TYPE, className)
   }
 
-  async findByCSS (selector) {
-    try {
-      await this.waitForElement(selector, CSS_TYPE)
-      return this.driver.findElement(webdriver.By.css(selector))
-    } catch (error) {
-      console.log(error)
-      throw new Error(error)
-    }
+  async findByCSS (className, scope) {
+    return this.findBy(CSS_TYPE, className, scope)
   }
 
   async findAllByCSS (selector) {
-    try {
-      return this.driver.findElements(webdriver.By.css(selector))
-    } catch (error) {
-      console.log(error)
-      throw new Error(error)
-    }
+    return this.findAllBy(CSS_TYPE, selector)
   }
 
-  async findByXPath (xpath) {
-    try {
-      return await this.driver.findElement(webdriver.By.xpath(xpath))
-    } catch (error) {
-      console.log(error)
-      throw new Error(error)
-    }
+  async findByXPath (xpath, scope) {
+    return this.findBy(XPATH_TYPE, xpath, scope)
   }
 
   async findAllByXPath (xpath) {
-    try {
-      return await this.driver.findElements(webdriver.By.xpath(xpath))
-    } catch (error) {
-      console.log(error)
-      throw new Error(error)
-    }
+    return this.findAllBy(XPATH_TYPE, xpath)
   }
 
   async findH1 () {
