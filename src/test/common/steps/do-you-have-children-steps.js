@@ -4,29 +4,29 @@ const { assertBackLinkPointsToPage } = require('./common-assertions')
 const pages = require('./pages')
 const { assertFieldErrorAndLinkTextPresentAndCorrect, assertErrorHeaderTextPresent, assertYesNoOptionsAreDisplayed } = require('./common-assertions')
 
-Then(/^I am shown the do you have children three or younger page$/, async function () {
+Then(/^I am shown the do you have children under four years old page$/, async function () {
   await pages.doYouHaveChildrenThreeOrYounger.waitForPageLoad()
 })
 
-When(/^I say No to the do you have children three or younger question$/, async function () {
+When(/^I say No to the do you have children under four years old question$/, async function () {
   await pages.doYouHaveChildrenThreeOrYounger.selectNoRadioButton()
 })
 
-When(/^I say Yes to the do you have children three or younger question$/, async function () {
+When(/^I say Yes to the do you have children under four years old question$/, async function () {
   await pages.doYouHaveChildrenThreeOrYounger.selectYesRadioButton()
 })
 
-When(/^I have said No to the do you have children three or younger question$/, async function () {
+When(/^I have said No to the do you have children under four years old question$/, async function () {
   await pages.doYouHaveChildrenThreeOrYounger.selectNoRadioButton()
   await pages.doYouHaveChildrenThreeOrYounger.submitForm()
 })
 
-When(/^I have said Yes to the do you have children three or younger question$/, async function () {
+When(/^I have said Yes to the do you have children under four years old question$/, async function () {
   await pages.doYouHaveChildrenThreeOrYounger.selectYesRadioButton()
   await pages.doYouHaveChildrenThreeOrYounger.submitForm()
 })
 
-Then(/^I am informed that I need to select an option for do you have children three or younger$/, async function () {
+Then(/^I am informed that I need to select an option for do you have children under four years old$/, async function () {
   await assertErrorHeaderTextPresent(pages.doYouHaveChildrenThreeOrYounger)
   await assertFieldErrorAndLinkTextPresentAndCorrect(
     pages.doYouHaveChildrenThreeOrYounger.getFieldErrorId(),
@@ -34,10 +34,10 @@ Then(/^I am informed that I need to select an option for do you have children th
     'Select yes if you have children who are three years old or younger')
 })
 
-Then(/^Yes and No options are displayed on the do you have children three or younger page$/, async function () {
+Then(/^Yes and No options are displayed on the do you have children under four years old page$/, async function () {
   await assertYesNoOptionsAreDisplayed(pages.doYouHaveChildrenThreeOrYounger)
 })
 
-Then(/^The back link points to the Do you have children who are three years old or younger page$/, async function () {
+Then(/^The back link points to the Do you have children under four years old page$/, async function () {
   await assertBackLinkPointsToPage(pages.doYouHaveChildrenThreeOrYounger)
 })

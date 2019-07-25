@@ -122,7 +122,7 @@ async function selectNoOnChildrenThreeOrYoungerPage () {
     await pages.doYouHaveChildrenThreeOrYounger.selectNoRadioButton()
     await pages.doYouHaveChildrenThreeOrYounger.submitForm()
   } catch (error) {
-    assert.fail(`Unexpected error caught trying to select 'No' for 'Do you have children three or younger?' and submit the page - ${error}`)
+    assert.fail(`Unexpected error caught trying to select 'No' for 'Do you have children under four years old?' and submit the page - ${error}`)
   }
 }
 
@@ -131,7 +131,7 @@ async function selectYesOnChildrenThreeOrYoungerPage () {
     await pages.doYouHaveChildrenThreeOrYounger.selectYesRadioButton()
     await pages.doYouHaveChildrenThreeOrYounger.submitForm()
   } catch (error) {
-    assert.fail(`Unexpected error caught trying to select 'Yes' for 'Do you have children three or younger?' and submit the page - ${error}`)
+    assert.fail(`Unexpected error caught trying to select 'Yes' for 'Do you have children under four years old?' and submit the page - ${error}`)
   }
 }
 

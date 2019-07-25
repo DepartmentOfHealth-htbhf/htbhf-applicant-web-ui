@@ -23,7 +23,7 @@ class DoYouHaveChildrenThreeOrYounger extends SubmittablePageWithRadioButtons {
   }
 
   getPageName () {
-    return 'do you have children three or younger'
+    return 'do you have children under four years old'
   }
 
   getFieldErrorId () {
