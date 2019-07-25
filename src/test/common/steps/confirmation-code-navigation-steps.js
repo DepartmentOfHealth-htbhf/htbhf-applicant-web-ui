@@ -12,7 +12,7 @@ const {
   enterPhoneNumberAndSubmit,
   enterDoYouLiveInScotlandNoAndSubmit,
   enterEmailAddressAndSubmit,
-  selectNoOnChildrenThreeOrYoungerPage,
+  selectNoOnDoYouHaveChildrenPage,
   selectTextOnSendCode,
   selectEmailOnSendCode,
   enterConfirmationCodeAndSubmit
@@ -57,7 +57,7 @@ Then(/^I must complete all steps after the email address page, including enterin
 async function completeProcessUpToSendCode () {
   await enterDoYouLiveInScotlandNoAndSubmit()
   await enterDateOfBirthAndSubmit()
-  await selectNoOnChildrenThreeOrYoungerPage()
+  await selectNoOnDoYouHaveChildrenPage()
   await selectNoOnPregnancyPage()
   await enterNameAndSubmit()
   await enterNinoAndSubmit()

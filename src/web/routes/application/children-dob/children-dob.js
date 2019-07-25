@@ -23,7 +23,7 @@ const pageContent = ({ translate }) => ({
   removeChild: translate('buttons:removeChild')
 })
 
-const isNavigable = (session) => path(['claim', 'doYouHaveChildrenThreeOrYounger'], session) === YES
+const isNavigable = (session) => path(['claim', 'doYouHaveChildren'], session) === YES
 
 const behaviourForGet = (req, res, next) => {
   req = setChildrenInSessionForGet(req)

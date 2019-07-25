@@ -16,7 +16,7 @@ const I_LIVE_IN_SCOTLAND_URL = `${BASE_URL}/i-live-in-scotland`
 const ENTER_NAME_URL = `${BASE_URL}/enter-name`
 const ENTER_NINO_URL = `${BASE_URL}/enter-nino`
 const ENTER_DOB_URL = `${BASE_URL}/enter-dob`
-const DO_YOU_HAVE_CHILDREN_THREE_OR_YOUNGER_URL = `${BASE_URL}/do-you-have-children-three-or-younger`
+const DO_YOU_HAVE_CHILDREN_URL = `${BASE_URL}/do-you-have-children-three-or-younger`
 const CHILDREN_DOB_URL = `${BASE_URL}/children-dob`
 const ARE_YOU_PREGNANT_URL = `${BASE_URL}/are-you-pregnant`
 const MANUAL_ADDRESS_URL = `${BASE_URL}/manual-address`
@@ -50,10 +50,10 @@ const runEndToEndTest = async (results) => {
       'dateOfBirth-year': '1980'
     }, requestCookie)
 
-    results.push(await pa11y(DO_YOU_HAVE_CHILDREN_THREE_OR_YOUNGER_URL))
-    await postFormData(DO_YOU_HAVE_CHILDREN_THREE_OR_YOUNGER_URL, {
+    results.push(await pa11y(DO_YOU_HAVE_CHILDREN_URL))
+    await postFormData(DO_YOU_HAVE_CHILDREN_URL, {
       ...formData,
-      doYouHaveChildrenThreeOrYounger: 'yes'
+      doYouHaveChildren: 'yes'
     }, requestCookie)
 
     results.push(await pa11y(CHILDREN_DOB_URL))

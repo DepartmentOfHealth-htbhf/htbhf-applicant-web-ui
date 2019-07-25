@@ -18,7 +18,7 @@ const ILiveInScotland = require('../page/i-live-in-scotland')
 const EmailAddress = require('../page/email-address')
 const UnsuccessfulApplication = require('../page/unsuccessful-application')
 const TermsAndConditions = require('../page/terms-and-conditions')
-const DoYouHaveChildrenThreeOrYounger = require('../page/do-you-have-children')
+const DoYouHaveChildren = require('../page/do-you-have-children')
 const SendCode = require('../page/send-code')
 const EnterChildrenDOB = require('../page/enter-children-dob')
 const EnterCode = require('../page/enter-code')
@@ -60,7 +60,7 @@ class Pages {
     this.doYouLiveInScotland = null
     this.iLiveInScotland = null
     this.emailAddress = null
-    this.doYouHaveChildrenThreeOrYounger = null
+    this.doYouHaveChildren = null
     this.sendCode = null
     this.enterChildrenDOB = null
     this.enterCode = null
@@ -93,14 +93,14 @@ class Pages {
     this.emailAddress = new EmailAddress(this.driver)
     this.unsuccessfulApplication = new UnsuccessfulApplication(this.driver)
     this.termsAndConditions = new TermsAndConditions(this.driver)
-    this.doYouHaveChildrenThreeOrYounger = new DoYouHaveChildrenThreeOrYounger(this.driver)
+    this.doYouHaveChildren = new DoYouHaveChildren(this.driver)
     this.sendCode = new SendCode(this.driver)
     this.enterChildrenDOB = new EnterChildrenDOB(this.driver)
     this.enterCode = new EnterCode(this.driver)
     // NOTE: This map should contain all page objects, and not the Generic Page as this doesn't itself represent a page
     this.allPages = [this.overview, this.enterName, this.enterNino, this.enterDOB, this.areYouPregnant, this.manualAddress, this.phoneNumber,
       this.check, this.confirm, this.cookies, this.privacyNotice, this.confirmUpdated, this.doYouLiveInScotland, this.iLiveInScotland, this.emailAddress,
-      this.termsAndConditions, this.doYouHaveChildrenThreeOrYounger, this.sendCode, this.enterChildrenDOB, this.enterCode]
+      this.termsAndConditions, this.doYouHaveChildren, this.sendCode, this.enterChildrenDOB, this.enterCode]
     this.pageMap = this.allPages.reduce(addPageToMap, {})
   }
 

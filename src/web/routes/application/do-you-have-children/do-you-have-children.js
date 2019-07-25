@@ -2,33 +2,33 @@ const { validate } = require('./validate')
 const { YES, NO } = require('../common/constants')
 
 const pageContent = ({ translate }) => ({
-  title: translate('doYouHaveChildrenThreeOrYounger.title'),
-  heading: translate('doYouHaveChildrenThreeOrYounger.heading'),
+  title: translate('doYouHaveChildren.title'),
+  heading: translate('doYouHaveChildren.heading'),
   buttonText: translate('buttons:continue'),
   yes: translate('yes'),
   no: translate('no'),
-  explanation: translate('doYouHaveChildrenThreeOrYounger.explanation')
+  explanation: translate('doYouHaveChildren.explanation')
 })
 
-const next = req => req.session.claim.doYouHaveChildrenThreeOrYounger === YES ? '/children-dob' : '/are-you-pregnant'
+const next = req => req.session.claim.doYouHaveChildren === YES ? '/children-dob' : '/are-you-pregnant'
 
 const contentSummary = (req) => ({
   list: 'aboutYourChildren',
-  key: req.t('doYouHaveChildrenThreeOrYounger.summaryKey'),
-  value: req.t(req.session.claim.doYouHaveChildrenThreeOrYounger)
+  key: req.t('doYouHaveChildren.summaryKey'),
+  value: req.t(req.session.claim.doYouHaveChildren)
 })
 
-const claimantHasChildren = claim => claim.doYouHaveChildrenThreeOrYounger === YES
+const claimantHasChildren = claim => claim.doYouHaveChildren === YES
 
 const behaviourForPost = (req, res, next) => {
-  if (req.body.doYouHaveChildrenThreeOrYounger === NO) {
+  if (req.body.doYouHaveChildren === NO) {
     req.session.children = null
   }
 
   next()
 }
 
-const doYouHaveChildrenThreeOrYounger = {
+const doYouHaveChildren = {
   path: '/do-you-have-children-three-or-younger',
   next,
   template: 'do-you-have-children',
@@ -40,6 +40,6 @@ const doYouHaveChildrenThreeOrYounger = {
 }
 
 module.exports = {
-  doYouHaveChildrenThreeOrYounger,
+  doYouHaveChildren,
   behaviourForPost
 }

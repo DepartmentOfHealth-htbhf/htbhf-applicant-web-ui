@@ -1,5 +1,5 @@
-const { doYouHaveChildrenThreeOrYounger } = require('./do-you-have-children')
+const { doYouHaveChildren } = require('./do-you-have-children')
 
 module.exports = {
-  doYouHaveChildrenThreeOrYounger
+  doYouHaveChildren
 }
