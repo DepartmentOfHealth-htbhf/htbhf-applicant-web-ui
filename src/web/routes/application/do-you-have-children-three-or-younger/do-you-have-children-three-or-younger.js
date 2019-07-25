@@ -1,5 +1,5 @@
 const { validate } = require('./validate')
-const { YES } = require('../common/constants')
+const { YES, NO } = require('../common/constants')
 
 const pageContent = ({ translate }) => ({
   title: translate('doYouHaveChildrenThreeOrYounger.title'),
@@ -20,6 +20,14 @@ const contentSummary = (req) => ({
 
 const claimantHasChildren = claim => claim.doYouHaveChildrenThreeOrYounger === YES
 
+const behaviourForPost = (req, res, next) => {
+  if (req.body.doYouHaveChildrenThreeOrYounger === NO) {
+    req.session.children = null
+  }
+
+  next()
+}
+
 const doYouHaveChildrenThreeOrYounger = {
   path: '/do-you-have-children-three-or-younger',
   next,
@@ -27,9 +35,11 @@ const doYouHaveChildrenThreeOrYounger = {
   pageContent,
   validate,
   contentSummary,
-  shouldInvalidateReview: claimantHasChildren
+  shouldInvalidateReview: claimantHasChildren,
+  behaviourForPost
 }
 
 module.exports = {
-  doYouHaveChildrenThreeOrYounger
+  doYouHaveChildrenThreeOrYounger,
+  behaviourForPost
 }
