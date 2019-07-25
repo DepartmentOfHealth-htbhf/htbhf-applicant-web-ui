@@ -143,6 +143,10 @@ Then(/^I am shown the check details page with correct page content$/, async func
   await allPageContentIsCorrectOnCheckPage()
 })
 
+Then(/^there are no children displayed$/, async function () {
+  await assertChildrensDatesOfBirthIsNotShown()
+})
+
 async function allPageContentIsCorrectOnCheckPage () {
   const h1Text = await pages.check.getH1Text()
   expect(h1Text.toString().trim()).to.have.lengthOf.at.least(1, 'expected check page H1 text to not be empty')

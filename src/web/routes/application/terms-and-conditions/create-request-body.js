@@ -1,3 +1,4 @@
+const { isNil } = require('ramda')
 const { toDateString } = require('../common/formatters')
 const { YES } = require('../common/constants')
 
@@ -13,7 +14,7 @@ const createExpectedDeliveryDate = (claim) => {
 }
 
 const createChildrenDobArray = (children) => {
-  if (typeof children === 'undefined') {
+  if (isNil(children)) {
     return null
   }
 
