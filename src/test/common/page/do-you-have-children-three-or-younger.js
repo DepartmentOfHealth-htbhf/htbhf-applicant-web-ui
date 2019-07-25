@@ -6,7 +6,7 @@ const DO_YOU_HAVE_CHILDREN_THREE_OR_UNDER_ERROR_LINK_CSS = 'a[href="#do-you-have
 const DO_YOU_HAVE_CHILDREN_THREE_OR_UNDER_FIELD_ERROR_ID = 'doYouHaveChildrenThreeOrYounger-error'
 
 const PAGE_TITLES = {
-  en: 'GOV.UK - Do you have children who are three years old or younger?',
+  en: 'GOV.UK - Do you have any children under 4 years old?',
   cy: 'GOV.UK - Urna condimentum mattis?'
 }
 
