@@ -1,6 +1,6 @@
 const test = require('tape')
 const sinon = require('sinon')
-const { behaviourForPost } = require('./do-you-have-children-three-or-younger')
+const { behaviourForPost } = require('./do-you-have-children')
 const { YES, NO } = require('../common/constants')
 
 const children = {

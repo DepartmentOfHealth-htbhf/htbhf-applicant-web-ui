@@ -31,7 +31,7 @@ const behaviourForPost = (req, res, next) => {
 const doYouHaveChildrenThreeOrYounger = {
   path: '/do-you-have-children-three-or-younger',
   next,
-  template: 'do-you-have-children-three-or-younger',
+  template: 'do-you-have-children',
   pageContent,
   validate,
   contentSummary,
