@@ -173,6 +173,13 @@ test('createChildrenDob returns null with undefined children object provided', (
   t.end()
 })
 
+test('createChildrenDob returns null when children argument is null', (t) => {
+  const childrenList = createChildrenDobArray(null)
+
+  t.equals(childrenList, null)
+  t.end()
+})
+
 test('createChildrenDob throws an error when the childCount is 1 and there is no date of birth in the session.children object', (t) => {
   // This object is invalid because it doesn't have the constructed date for the first child under the key childDob-1
   const invalidConstructedChildren = {
