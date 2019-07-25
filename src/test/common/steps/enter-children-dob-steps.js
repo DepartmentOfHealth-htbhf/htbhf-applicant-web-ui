@@ -7,7 +7,7 @@ const { dateLastYear } = require('../../common/dates')
 
 const pages = require('./pages')
 
-Given(/^I enter the details of my child who is three or younger$/, async function () {
+Given(/^I enter the details of my child who is under four years old$/, async function () {
   await pages.enterChildrenDOB.enterChild3OrUnderDetails('Joe')
 })
 
@@ -26,7 +26,7 @@ Given(/^there is a Remove Button for both children's date of birth$/, async func
   expect(resolvedButtonIds).to.have.members(['remove-child-1', 'remove-child-2'])
 })
 
-When(/^I submit the details of my child who is three or younger$/, async function () {
+When(/^I submit the details of my child who is under four years old$/, async function () {
   await submitChild3OrUnderDetails()
 })
 
@@ -34,28 +34,28 @@ When(/^I click remove for the first child's date of birth$/, async function () {
   await pages.enterChildrenDOB.clickRemoveButtonForChild(1)
 })
 
-When(/^I submit the details of my child who is three or younger without a name$/, async function () {
+When(/^I submit the details of my child who is under four years old without a name$/, async function () {
   await submitChild3OrUnderDetails('')
 })
 
-When(/^I submit the details of my child who is three or under with a very long name$/, async function () {
+When(/^I submit the details of my child who is under four years old with a very long name$/, async function () {
   await submitChild3OrUnderDetails(LONG_STRING)
 })
 
-When(/^I submit the details of my two children who are three or younger/, async function () {
+When(/^I submit the details of my two children who are under four years old/, async function () {
   await enterTwoSetsOfChildren3OrUnderDetails()
   await pages.enterChildrenDOB.submitForm()
 })
 
-When(/^I enter the details of my two children who are three or younger/, async function () {
+When(/^I enter the details of my two children who are under four years old/, async function () {
   await enterTwoSetsOfChildren3OrUnderDetails()
 })
 
-When(/^I submit the details of my ten children who are three or younger/, async function () {
+When(/^I submit the details of my ten children who are under four years old/, async function () {
   await submitTenSetsOfChildren3OrUnderDetails()
 })
 
-When(/^I submit the details of my two children who are three or under both with very long names/, async function () {
+When(/^I submit the details of my two children who are under four years both with very long names/, async function () {
   await enterTwoSetsOfChildren3OrUnderDetails(LONG_STRING, LONG_STRING)
   await pages.enterChildrenDOB.submitForm()
 })
