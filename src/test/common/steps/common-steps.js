@@ -117,19 +117,19 @@ async function enterEmailAddressAndSubmit (emailAddress = EMAIL_ADDRESS) {
   }
 }
 
-async function selectNoOnChildrenThreeOrYoungerPage () {
+async function selectNoOnDoYouHaveChildrenPage () {
   try {
-    await pages.doYouHaveChildrenThreeOrYounger.selectNoRadioButton()
-    await pages.doYouHaveChildrenThreeOrYounger.submitForm()
+    await pages.doYouHaveChildren.selectNoRadioButton()
+    await pages.doYouHaveChildren.submitForm()
   } catch (error) {
     assert.fail(`Unexpected error caught trying to select 'No' for 'Do you have children under four years old?' and submit the page - ${error}`)
   }
 }
 
-async function selectYesOnChildrenThreeOrYoungerPage () {
+async function selectYesOnDoYouHaveChildrenPage () {
   try {
-    await pages.doYouHaveChildrenThreeOrYounger.selectYesRadioButton()
-    await pages.doYouHaveChildrenThreeOrYounger.submitForm()
+    await pages.doYouHaveChildren.selectYesRadioButton()
+    await pages.doYouHaveChildren.submitForm()
   } catch (error) {
     assert.fail(`Unexpected error caught trying to select 'Yes' for 'Do you have children under four years old?' and submit the page - ${error}`)
   }
@@ -199,7 +199,7 @@ async function enterConfirmationCodeAndSubmit (confirmationCode) {
 async function completeTheApplicationAsAPregnantWoman () {
   await enterDoYouLiveInScotlandNoAndSubmit()
   await enterDateOfBirthAndSubmit()
-  await selectYesOnChildrenThreeOrYoungerPage()
+  await selectYesOnDoYouHaveChildrenPage()
   await submitChild3OrUnderDetails()
   await selectYesOnPregnancyPage()
   await enterNameAndSubmit()
@@ -214,7 +214,7 @@ async function completeTheApplicationAsAPregnantWoman () {
 async function completeTheApplicationAsAWomanWhoIsNotPregnant () {
   await enterDoYouLiveInScotlandNoAndSubmit()
   await enterDateOfBirthAndSubmit()
-  await selectYesOnChildrenThreeOrYoungerPage()
+  await selectYesOnDoYouHaveChildrenPage()
   await submitChild3OrUnderDetails()
   await selectNoOnPregnancyPage()
   await enterNameAndSubmit()
@@ -283,10 +283,10 @@ module.exports = {
   getBodyOfLastRequestToClaimService,
   enterDoYouLiveInScotlandNoAndSubmit,
   enterEmailAddressAndSubmit,
-  selectNoOnChildrenThreeOrYoungerPage,
+  selectNoOnDoYouHaveChildrenPage,
   selectTextOnSendCode,
   selectEmailOnSendCode,
   enterConfirmationCodeAndSubmit,
-  selectYesOnChildrenThreeOrYoungerPage,
+  selectYesOnDoYouHaveChildrenPage,
   submitChild3OrUnderDetails
 }

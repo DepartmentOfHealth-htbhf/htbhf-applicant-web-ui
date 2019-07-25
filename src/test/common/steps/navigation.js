@@ -11,7 +11,7 @@ const {
   enterPhoneNumberAndSubmit,
   enterDoYouLiveInScotlandNoAndSubmit,
   enterEmailAddressAndSubmit,
-  selectYesOnChildrenThreeOrYoungerPage,
+  selectYesOnDoYouHaveChildrenPage,
   submitChild3OrUnderDetails,
   selectTextOnSendCode,
   enterConfirmationCodeAndSubmit
@@ -21,7 +21,7 @@ const ENTER_NAME_PAGE = 'enter name'
 const DO_YOU_LIVE_IN_SCOTLAND_PAGE = 'do you live in Scotland'
 const ENTER_NINO_PAGE = 'enter national insurance'
 const ENTER_DOB_PAGE = 'enter date of birth'
-const DO_YOU_HAVE_CHILDREN_THREE_OR_YOUNGER_PAGE = 'do you have children under four years old'
+const DO_YOU_HAVE_CHILDREN_PAGE = 'do you have children under four years old'
 const ARE_YOU_PREGNANT_PAGE = 'are you pregnant'
 const ADDRESS_PAGE = 'address'
 const PHONE_NUMBER_PAGE = 'phone number'
@@ -44,16 +44,16 @@ const pageActions = [
     }
   },
   {
-    page: DO_YOU_HAVE_CHILDREN_THREE_OR_YOUNGER_PAGE,
+    page: DO_YOU_HAVE_CHILDREN_PAGE,
     action: async () => {
       await enterDateOfBirthAndSubmit()
-      await pages.doYouHaveChildrenThreeOrYounger.waitForPageLoad()
+      await pages.doYouHaveChildren.waitForPageLoad()
     }
   },
   {
     page: ENTER_CHILDREN_DOB_PAGE,
     action: async () => {
-      await selectYesOnChildrenThreeOrYoungerPage()
+      await selectYesOnDoYouHaveChildrenPage()
       await pages.enterChildrenDOB.waitForPageLoad()
     }
   },

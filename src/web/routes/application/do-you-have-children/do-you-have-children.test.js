@@ -14,7 +14,7 @@ test('behaviourForPost() removes children from session when answer to “Do you 
       children
     },
     body: {
-      doYouHaveChildrenThreeOrYounger: NO
+      doYouHaveChildren: NO
     }
   }
 
@@ -34,7 +34,7 @@ test('behaviourForPost() does not update children when answer to “Do you have 
       children
     },
     body: {
-      doYouHaveChildrenThreeOrYounger: YES
+      doYouHaveChildren: YES
     }
   }
 

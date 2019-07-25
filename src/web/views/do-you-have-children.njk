@@ -5,8 +5,8 @@
 {% block formContent %}
     {{ govukRadios({
       classes: "govuk-radios--inline",
-      id: "do-you-have-children-three-or-younger",
-      name: "doYouHaveChildrenThreeOrYounger",
+      id: "do-you-have-children",
+      name: "doYouHaveChildren",
       fieldset: {
         legend: {
           text: heading,
@@ -14,17 +14,17 @@
           classes: "govuk-fieldset__legend--xl"
         }
       },
-      errorMessage: errors | getErrorForField('doYouHaveChildrenThreeOrYounger'),
+      errorMessage: errors | getErrorForField('doYouHaveChildren'),
       items: [
         {
           value: "yes",
           text: yes,
-          checked : claim.doYouHaveChildrenThreeOrYounger === "yes"
+          checked : claim.doYouHaveChildren === "yes"
         },
         {
           value: "no",
           text: no,
-          checked : claim.doYouHaveChildrenThreeOrYounger === "no"
+          checked : claim.doYouHaveChildren === "no"
         }
       ]
     }) }}

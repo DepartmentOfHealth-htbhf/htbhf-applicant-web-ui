@@ -2,8 +2,8 @@
 
 const SubmittablePageWithRadioButtons = require('./submittable-page-with-radio-buttons')
 
-const DO_YOU_HAVE_CHILDREN_THREE_OR_UNDER_ERROR_LINK_CSS = 'a[href="#do-you-have-children-three-or-younger-error"]'
-const DO_YOU_HAVE_CHILDREN_THREE_OR_UNDER_FIELD_ERROR_ID = 'doYouHaveChildrenThreeOrYounger-error'
+const DO_YOU_HAVE_CHILDREN_ERROR_LINK_CSS = 'a[href="#do-you-have-children-error"]'
+const DO_YOU_HAVE_CHILDREN_FIELD_ERROR_ID = 'doYouHaveChildren-error'
 
 const PAGE_TITLES = {
   en: 'GOV.UK - Do you have any children under 4 years old?',
@@ -11,9 +11,9 @@ const PAGE_TITLES = {
 }
 
 /**
- * Page object for Do you have children three or younger page.
+ * Page object for Do you have children page.
  */
-class DoYouHaveChildrenThreeOrYounger extends SubmittablePageWithRadioButtons {
+class DoYouHaveChildren extends SubmittablePageWithRadioButtons {
   async waitForPageLoad (lang = 'en') {
     return super.waitForPageWithTitle(PAGE_TITLES[lang])
   }
@@ -27,12 +27,12 @@ class DoYouHaveChildrenThreeOrYounger extends SubmittablePageWithRadioButtons {
   }
 
   getFieldErrorId () {
-    return DO_YOU_HAVE_CHILDREN_THREE_OR_UNDER_FIELD_ERROR_ID
+    return DO_YOU_HAVE_CHILDREN_FIELD_ERROR_ID
   }
 
   getErrorLinkCss () {
-    return DO_YOU_HAVE_CHILDREN_THREE_OR_UNDER_ERROR_LINK_CSS
+    return DO_YOU_HAVE_CHILDREN_ERROR_LINK_CSS
   }
 }
 
-module.exports = DoYouHaveChildrenThreeOrYounger
+module.exports = DoYouHaveChildren

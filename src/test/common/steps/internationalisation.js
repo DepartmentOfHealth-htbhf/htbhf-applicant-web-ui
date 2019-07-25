@@ -22,7 +22,7 @@ Then('the next page is displayed in Welsh', async function () {
 })
 
 Then('the next page continues to be displayed in Welsh', async function () {
-  await pages.doYouHaveChildrenThreeOrYounger.waitForPageLoad(WELSH_LANG_CODE)
-  const language = await pages.doYouHaveChildrenThreeOrYounger.getLangAttribute()
+  await pages.doYouHaveChildren.waitForPageLoad(WELSH_LANG_CODE)
+  const language = await pages.doYouHaveChildren.getLangAttribute()
   expect(language).to.be.equal(WELSH_LANG_CODE)
 })
