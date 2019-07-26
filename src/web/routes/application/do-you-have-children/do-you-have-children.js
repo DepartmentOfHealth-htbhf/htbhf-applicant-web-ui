@@ -29,7 +29,7 @@ const behaviourForPost = (req, res, next) => {
 }
 
 const doYouHaveChildren = {
-  path: '/do-you-have-children-three-or-younger',
+  path: '/do-you-have-children',
   next,
   template: 'do-you-have-children',
   pageContent,
