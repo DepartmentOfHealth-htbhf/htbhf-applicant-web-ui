@@ -19,7 +19,7 @@ class DoYouHaveChildren extends SubmittablePageWithRadioButtons {
   }
 
   getPath () {
-    return '/do-you-have-children-three-or-younger'
+    return '/do-you-have-children'
   }
 
   getPageName () {
