@@ -10,7 +10,7 @@ const setViewEngine = (config, app) => {
   ], {
     autoescape: true,
     express: app,
-    noCache: config.server.CACHE_VIEW_TEMPLATES
+    noCache: config.server.NO_CACHE_VIEW_TEMPLATES
   })
 
   env.addFilter('camelToKebabCase', camelToKebabCase)
