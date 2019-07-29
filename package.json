@@ -45,7 +45,7 @@
     "compat:retry:osx": "./npm_scripts/rety-npm.sh compat:osx",
     "compat:retry:mobile": "./npm_scripts/rety-npm.sh compat:mobile",
     "compat:retry:tablet": "./npm_scripts/rety-npm.sh compat:tablet",
-    "compat:win": "cross-env BROWSER_STACK_OS=Windows BROWSER_STACK_OS_VERSION=10 npm-run-all -c -p --max-parallel 5 compat:win:ie compat:win:edge compat:win:chrome compat:win:firefox",
+    "compat:win": "cross-env BROWSER_STACK_OS=Windows BROWSER_STACK_OS_VERSION=10 npm-run-all -c -p --max-parallel 5 compat:win:edge compat:win:chrome compat:win:firefox",
     "compat:win:ie": "cross-env BROWSER_STACK_BROWSER=IE cucumber-js src/test/compatibility/features/ --require 'src/test/common/steps/*.js' --require 'src/test/compatibility/config/environment.js' --format ./src/test/compatibility/custom-json-formatter.js:build/reports/compatibility/win-ie-report.json",
     "compat:win:edge": "cross-env BROWSER_STACK_BROWSER=Edge BROWSER_STACK_BROWSER_VERSION=18.0 cucumber-js src/test/compatibility/features/ --require 'src/test/common/steps/*.js' --require 'src/test/compatibility/config/environment.js' --format ./src/test/compatibility/custom-json-formatter.js:build/reports/compatibility/win-edge-report.json",
     "compat:win:chrome": "cross-env BROWSER_STACK_BROWSER=Chrome cucumber-js src/test/compatibility/features/ --require 'src/test/common/steps/*.js' --require 'src/test/compatibility/config/environment.js' --format ./src/test/compatibility/custom-json-formatter.js:build/reports/compatibility/win-chrome-report.json",
