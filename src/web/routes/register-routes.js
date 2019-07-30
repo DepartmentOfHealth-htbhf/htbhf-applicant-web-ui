@@ -8,6 +8,7 @@ const { registerPrivacyNoticeRoute } = require('./privacy-notice')
 const { getLanguageBase } = require('./language')
 const { registerHoldingRoute } = require('./application/holding')
 const { registerPageNotFoundRoute } = require('./application/page-not-found')
+const { registerGuidanceRoutes } = require('./guidance')
 
 const { steps } = require('./application/steps')
 const { registerFormRoutes } = require('./application/register-form-routes')
@@ -35,6 +36,7 @@ const registerRoutes = (config, app) => {
     registerConfirmRoute(config, steps, app)
     registerCookiesRoute(app)
     registerPrivacyNoticeRoute(app)
+    registerGuidanceRoutes(config, steps, app)
 
     // Page not found route should always be registered last as it is a catch all route
     registerPageNotFoundRoute(app)
