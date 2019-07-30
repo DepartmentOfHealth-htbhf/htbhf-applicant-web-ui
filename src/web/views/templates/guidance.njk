@@ -1,0 +1,20 @@
+{% extends "./page.njk" %}
+
+{% block pageContent %}
+  <h1 class="govuk-heading-xl">Get money off milk, food and vitamins (Healthy Start)</h1>
+  <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+  {% block guidanceContent %}{% endblock %}
+  <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+  {% if previous %}
+  <div>
+    <a class="govuk-link govuk-body" href="{{ previous.path }}"><strong>Previous</strong><br />{{ previous.title }}</a>
+  </div>
+  {% endif %}
+  {% if next %}
+  <div>
+    <a class="govuk-link govuk-body" href="{{ next.path }}"><strong>Next</strong><br />{{ next.title }}</a>
+  </div>
+  {% endif %}
+
+{% endblock %}
