@@ -1,5 +1,6 @@
 const { compose, equals, prop } = require('ramda')
 const { handleRequestForPath } = require('./application/middleware')
+const { getLanguageBase } = require('./language')
 
 const pages = [
   {
@@ -53,7 +54,7 @@ const getPageMetadata = (pages, path) => {
 const getPageForPath = (pages, path) => pages.find(hasMatchingPath(path))
 
 const getHowItWorks = (req, res) => {
-  res.render('guidance/how-it-works', {
+  res.render(`guidance/${getLanguageBase(req.language)}/how-it-works`, {
     pages,
     ...getPageMetadata(pages, '/how-it-works')
   })
