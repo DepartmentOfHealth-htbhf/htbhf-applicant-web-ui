@@ -11,6 +11,10 @@ const pages = [
     path: '/eligibility'
   },
   {
+    title: 'What you get',
+    path: '/what-you-get'
+  },
+  {
     title: 'What you can buy',
     path: '/what-you-can-buy'
   },
@@ -50,6 +54,7 @@ const getPageForPath = (pages, path) => pages.find(hasMatchingPath(path))
 
 const getHowItWorks = (req, res) => {
   res.render('guidance/how-it-works', {
+    pages,
     ...getPageMetadata(pages, '/how-it-works')
   })
 }
