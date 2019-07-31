@@ -2,6 +2,15 @@
 
 {% block pageContent %}
   <h1 class="govuk-heading-xl">Get money off milk, food and vitamins (Healthy Start)</h1>
+
+  <p class="govuk-body">Contents</p>
+
+  <ul class="govuk-list">
+    {% for page in pages %}
+      <li>— {% if page.path === activePath %} {{ page.title }} {% else %}  <a href="{{ page.path }}">{{ page.title }}</a> {% endif %}</li>
+    {% endfor %}
+  </ul>
+
   <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
   {% block guidanceContent %}{% endblock %}
   <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
