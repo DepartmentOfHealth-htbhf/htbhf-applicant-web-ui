@@ -2,8 +2,9 @@
 
 const webdriver = require('selenium-webdriver')
 const chrome = require('selenium-webdriver/chrome')
+const firefox = require('selenium-webdriver/firefox')
 
-const { SCREEN_RESOLUTION } = require('../config')
+const { TEST_BROWSER, SCREEN_RESOLUTION } = require('../config')
 
 class DriverManager {
   constructor () {
@@ -12,8 +13,9 @@ class DriverManager {
 
   initialise () {
     this.driver = new webdriver.Builder()
-      .forBrowser('chrome')
+      .forBrowser(TEST_BROWSER)
       .setChromeOptions(new chrome.Options().headless().windowSize(SCREEN_RESOLUTION))
+      .setFirefoxOptions(new firefox.Options().headless().windowSize(SCREEN_RESOLUTION))
       .build()
 
     return this.driver

@@ -7,6 +7,7 @@ const SESSION_DETAILS_BASE_URL = process.env.SESSION_DETAILS_BASE_URL || `http:/
 const SESSION_DETAILS_PATH = '/session-details/confirmation-code'
 
 module.exports.PORT = process.env.PORT
+module.exports.TEST_BROWSER = process.env.TEST_BROWSER || 'chrome'
 module.exports.SCREEN_RESOLUTION = {
   width: 640,
   height: 480
