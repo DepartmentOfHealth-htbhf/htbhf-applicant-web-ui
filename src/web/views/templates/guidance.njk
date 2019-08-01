@@ -7,7 +7,7 @@
 
   <ul class="govuk-list">
     {% for page in pages %}
-      <li>— {% if page.path === activePath %} {{ page.title }} {% else %}  <a class="govuk-link" href="{{ page.path }}">{{ page.title }}</a> {% endif %}</li>
+      <li>&#8212; {% if page.path === activePath %} {{ page.title }} {% else %}  <a class="govuk-link" href="{{ page.path }}">{{ page.title }}</a> {% endif %}</li>
     {% endfor %}
   </ul>
 
