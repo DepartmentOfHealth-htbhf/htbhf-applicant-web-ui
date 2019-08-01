@@ -1,7 +1,7 @@
 const express = require('express')
 const { compose, equals, prop } = require('ramda')
-const { handleRequestForPath } = require('./application/middleware')
-const { getLanguageBase } = require('./language')
+const { handleRequestForPath } = require('../application/middleware')
+const { getLanguageBase } = require('../language')
 
 const PAGES = [
   {
