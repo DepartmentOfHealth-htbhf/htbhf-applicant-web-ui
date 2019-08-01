@@ -1,4 +1,5 @@
 {% extends "../../templates/guidance.njk" %}
+{% from "inset-text/macro.njk" import govukInsetText %}
 
 {% block guidanceContent %}
 <h2 class="govuk-heading-l">Using your card</h2>
@@ -39,7 +40,9 @@
 </ul>
 <p class="govuk-body">They must display a Mastercard&#174; symbol.</p>
 
-<div class="govuk-inset-text">If you try to spend the money anywhere else the card will be declined.</div>
+{{ govukInsetText({
+  text: "If you try to spend the money anywhere else the card will be declined"
+}) }}
 
 <hr class="govuk-section-break govuk-section-break--l">
 <h2 class="govuk-heading-l">If your situation changes </h2>
