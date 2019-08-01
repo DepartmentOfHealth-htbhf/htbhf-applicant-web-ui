@@ -21,7 +21,7 @@ module.exports.PAGES = [
   },
   {
     title: 'Apply for Healthy Start',
-    path: '/apply-for-healthy-start'
+    path: '/apply'
   },
   {
     title: 'Report a change',
