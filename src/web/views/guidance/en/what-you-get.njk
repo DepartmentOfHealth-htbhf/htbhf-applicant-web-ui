@@ -1,4 +1,5 @@
 {% extends "../../templates/guidance.njk" %}
+{% from "inset-text/macro.njk" import govukInsetText %}
 
 {% block guidanceContent %}
 <h2 class="govuk-heading-l">What you’ll get</h2>
@@ -11,7 +12,9 @@
   <li>£3.10 each week for children between 1 and 4 years old</li>
 </ul>
 
-<div class="govuk-inset-text">The money will stop when your child is 4 years old or if you no longer receive benefits.</div>
+{{ govukInsetText({
+    text: "The money will stop when your child is 4 years old or if you no longer receive benefits."
+}) }}
 
 <hr class="govuk-section-break govuk-section-break--l">
 
@@ -31,7 +34,9 @@
 <p class="govuk-body">If you spend all of the £49.60 your payments will start up again as normal.</p>
 <p class="govuk-body">If you only spend £2 you would only get a £2 payment. This is because you will have reached your maximum amount again.</p>
 
-<div class="govuk-inset-text">Try to spend your money each month and keep your balance low to make sure you get your full amount.</div>
+{{ govukInsetText({
+    text: "Try to spend your money each month and keep your balance low to make sure you get your full amount."
+}) }}
 
 <hr class="govuk-section-break govuk-section-break--l">
 
