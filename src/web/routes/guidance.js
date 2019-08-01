@@ -1,8 +1,9 @@
+const express = require('express')
 const { compose, equals, prop } = require('ramda')
 const { handleRequestForPath } = require('./application/middleware')
 const { getLanguageBase } = require('./language')
 
-const pages = [
+const PAGES = [
   {
     title: 'How it works',
     path: '/how-it-works'
@@ -53,19 +54,23 @@ const getPageMetadata = (pages, path) => {
 
 const getPageForPath = (pages, path) => pages.find(hasMatchingPath(path))
 
-const getHowItWorks = (req, res) => {
-  res.render(`guidance/${getLanguageBase(req.language)}/how-it-works`, {
+const renderGuidanceRoute = (pages, path) => (req, res) =>
+  res.render(`guidance/${getLanguageBase(req.language)}/${path}`, {
     pages,
-    ...getPageMetadata(pages, '/how-it-works')
+    ...getPageMetadata(pages, path)
   })
-}
+
+const registerGuidanceRoute = (router) => (page, index, pages) => router.get(page.path, renderGuidanceRoute(pages, page.path))
 
 /**
  * handleRequestForPath() checks the state machine before rendering the page to see if the session
  * needs to be cleared.
  */
 const registerGuidanceRoutes = (config, steps, app) => {
-  app.get('/how-it-works', handleRequestForPath(config, steps), getHowItWorks)
+  const guidanceRouter = express.Router()
+  guidanceRouter.use(handleRequestForPath(config, steps))
+  PAGES.forEach(registerGuidanceRoute(guidanceRouter))
+  app.use(guidanceRouter)
 }
 
 module.exports = {
