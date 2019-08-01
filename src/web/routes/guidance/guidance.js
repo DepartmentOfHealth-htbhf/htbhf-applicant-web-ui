@@ -1,37 +1,8 @@
+const express = require('express')
 const { compose, equals, prop } = require('ramda')
-const { handleRequestForPath } = require('./application/middleware')
-const { getLanguageBase } = require('./language')
-
-const pages = [
-  {
-    title: 'How it works',
-    path: '/how-it-works'
-  },
-  {
-    title: 'Eligibility',
-    path: '/eligibility'
-  },
-  {
-    title: 'What you get',
-    path: '/what-you-get'
-  },
-  {
-    title: 'What you can buy',
-    path: '/what-you-can-buy'
-  },
-  {
-    title: 'Using your card',
-    path: '/using-your-card'
-  },
-  {
-    title: 'Apply for Healthy Start',
-    path: '/apply-for-healthy-start'
-  },
-  {
-    title: 'Report a change',
-    path: '/report-a-change'
-  }
-]
+const { handleRequestForPath } = require('../application/middleware')
+const { getLanguageBase } = require('../language')
+const { PAGES } = require('./pages')
 
 const hasMatchingPath = (path) => compose(equals(path), prop('path'))
 
@@ -53,19 +24,23 @@ const getPageMetadata = (pages, path) => {
 
 const getPageForPath = (pages, path) => pages.find(hasMatchingPath(path))
 
-const getHowItWorks = (req, res) => {
-  res.render(`guidance/${getLanguageBase(req.language)}/how-it-works`, {
+const renderGuidanceRoute = (pages, path) => (req, res) =>
+  res.render(`guidance/${getLanguageBase(req.language)}/${path}`, {
     pages,
-    ...getPageMetadata(pages, '/how-it-works')
+    ...getPageMetadata(pages, path)
   })
-}
+
+const registerGuidanceRoute = (router) => (page, index, pages) => router.get(page.path, renderGuidanceRoute(pages, page.path))
 
 /**
  * handleRequestForPath() checks the state machine before rendering the page to see if the session
  * needs to be cleared.
  */
 const registerGuidanceRoutes = (config, steps, app) => {
-  app.get('/how-it-works', handleRequestForPath(config, steps), getHowItWorks)
+  const guidanceRouter = express.Router()
+  guidanceRouter.use(handleRequestForPath(config, steps))
+  PAGES.forEach(registerGuidanceRoute(guidanceRouter))
+  app.use(guidanceRouter)
 }
 
 module.exports = {
