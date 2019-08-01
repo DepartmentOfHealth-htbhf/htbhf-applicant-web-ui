@@ -57,13 +57,16 @@
   "address": {
     "title": "What’s your address?",
     "heading": "What’s your address?",
-    "houseNumberOrNameLabel": "House number or name",
-    "streetLabel": "Street",
+    "buildingAndStreetLabel": "Building and street",
+    "buildingAndStreetLine1of2": "line 1 of 2",
+    "buildingAndStreetLine2of2": "Building and street line 2 of 2",
     "townOrCityLabel": "Town or city",
+    "county": "County",
     "postcodeLabel": "Postcode",
     "formDescription": "If you claim any benefits you must use the same address registered with the benefits agency (DWP or HMRC).",
     "summaryKey": "Address",
-    "explanation": "We need this to confirm your identity and eligibility. We'll send your prepaid card to this address."
+    "explanation": "We need this to confirm your identity and eligibility. We'll send your prepaid card to this address.",
+    "hint": "Enter the first line of your address"
   },
   "phoneNumber": {
     "title": "What’s your mobile telephone number?",
