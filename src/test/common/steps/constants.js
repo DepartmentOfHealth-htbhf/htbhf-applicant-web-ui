@@ -57,6 +57,7 @@ const FULL_NAME = `${FIRST_NAME} ${LAST_NAME}`
 const ADDRESS_LINE_1 = 'Flat b'
 const ADDRESS_LINE_2 = '123 Fake street'
 const TOWN = 'Springfield'
+const COUNTY = 'Devon'
 const POSTCODE = 'AA11BB'
 const FULL_ADDRESS = `${ADDRESS_LINE_1}\n${ADDRESS_LINE_2}\n${TOWN}\n${POSTCODE}`
 const FULL_ADDRESS_NO_LINE_2 = `${ADDRESS_LINE_1}\n${TOWN}\n${POSTCODE}`
@@ -86,6 +87,7 @@ module.exports = {
   ADDRESS_LINE_1,
   ADDRESS_LINE_2,
   TOWN,
+  COUNTY,
   POSTCODE,
   FULL_ADDRESS,
   FULL_ADDRESS_NO_LINE_2,

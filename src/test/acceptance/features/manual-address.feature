@@ -42,6 +42,10 @@ Feature: Address
     When I do not enter the 'town or city' of an address
     Then I am informed that I need to enter an address on the 'town or city' field
 
+  Scenario: Do not enter in the county
+    When I do not enter the 'county' of an address
+    Then I am informed that I need to enter an address on the 'county' field
+
   Scenario: Enter in an address where the first line is too long
     When I enter in an address where the first line is too long
     Then I am informed that the first line of the address is too long
@@ -53,3 +57,7 @@ Feature: Address
   Scenario: Enter in an address where the 'town or city' is too long
     When I enter in an address where the 'town or city' is too long
     Then I am informed that the 'town or city' of the address is too long
+
+  Scenario: Enter in an address where the 'county' is too long
+    When I enter in an address where the 'county' is too long
+    Then I am informed that the 'county' of the address is too long

@@ -15,6 +15,7 @@ const req = {
     addressLine1: 'Flat B',
     addressLine2: '221 Baker Street',
     townOrCity: 'London',
+    county: 'Greater London',
     postcode: 'AA1 1AA'
   }
 }
@@ -45,6 +46,17 @@ test('validation middleware errors for empty town or city field', async (t) => {
   const error = result.array()[0]
   t.equal(result.array().length, 1, 'should have exactly one error')
   t.equal(error.param, 'townOrCity', 'error should be associated with correct field')
+  t.equal(error.msg, 'validation:missingAddressField', 'error should have correct message')
+  t.end()
+})
+
+test('validation middleware errors for empty county field', async (t) => {
+  const testReq = assocPath(['body', 'county'], null, req)
+
+  const result = await applyExpressValidation(testReq, validate)
+  const error = result.array()[0]
+  t.equal(result.array().length, 1, 'should have exactly one error')
+  t.equal(error.param, 'county', 'error should be associated with correct field')
   t.equal(error.msg, 'validation:missingAddressField', 'error should have correct message')
   t.end()
 })
@@ -100,6 +112,17 @@ test('validation middleware errors for town or city field being too long', async
   const error = result.array()[0]
   t.equal(result.array().length, 1, 'should have exactly one error')
   t.equal(error.param, 'townOrCity', 'error should be associated with correct field')
+  t.equal(error.msg, 'validation:informationTooLong', 'error should have correct message')
+  t.end()
+})
+
+test('validation middleware errors for county field being too long', async (t) => {
+  const testReq = assocPath(['body', 'county'], LONG_STRING, req)
+
+  const result = await applyExpressValidation(testReq, validate)
+  const error = result.array()[0]
+  t.equal(result.array().length, 1, 'should have exactly one error')
+  t.equal(error.param, 'county', 'error should be associated with correct field')
   t.equal(error.msg, 'validation:informationTooLong', 'error should have correct message')
   t.end()
 })
