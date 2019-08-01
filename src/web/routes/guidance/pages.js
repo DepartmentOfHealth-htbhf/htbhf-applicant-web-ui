@@ -13,7 +13,7 @@ module.exports.PAGES = [
   },
   {
     title: 'What you can buy',
-    path: '/what-you-can-buy'
+    path: '/buy'
   },
   {
     title: 'Using your card',
