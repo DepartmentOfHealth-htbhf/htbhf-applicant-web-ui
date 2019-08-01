@@ -1,0 +1,35 @@
+/**
+  * Next and previous pagination links for pages in a sequence
+  *
+  * 1. Apply default GOV.UK body styles without directly referencing fonts. This hopefully
+  *    protects the component from any updates to the font stack in GOV.UK frontend
+  * 2. Apply default GOV.UK link styles
+  * 3. Overide "govuk-body" styles as the GOV.UK design system doesn’t provide sass variables
+  *    or classes for core styles
+  * 4. Layout and alignment for icon / text
+  */
+.c-htbhf-pagination__link {
+  @extend .govuk-body; /* 1 */
+  @extend .govuk-link; /* 2 */
+  text-decoration: none;
+  margin-bottom: 0; /* 3 */
+  display: table; /* 4 */
+}
+
+.c-htbhf-pagination__link--previous {
+  margin-bottom: govuk-spacing(6);
+}
+
+.c-htbhf-pagination__link__direction,
+.c-htbhf-pagination__link__label {
+  display: block; /* 4 */
+}
+
+.c-htbhf-pagination__link__direction {
+  @extend .govuk-\!-font-weight-bold;
+}
+
+.c-htbhf-pagination__link__icon {
+  display: table-cell; /* 4 */
+  padding-right: govuk-spacing(2);
+}
