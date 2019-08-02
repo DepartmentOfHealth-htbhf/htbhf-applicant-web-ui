@@ -3,31 +3,31 @@
   Next and previous pagination links for pages in a sequence
 
   params:
-  next: {
+  nextPage: {
     title: string,
     path: string
   }
-  previous: {
+  previousPage: {
     title: string,
     path: string
   }
 #}
 {% macro htbhfPagination(params) %}
   <div class ="c-htbhf-pagination">
-    {% if params.previous %}
+    {% if params.previousPage %}
       {{ htbhfPaginationLink({
         direction: 'previous',
         directionLabel: 'Previous',
-        title: params.previous.title,
-        path: params.previous.path
+        title: params.previousPage.title,
+        path: params.previousPage.path
       }) }}
     {% endif %}
-    {% if params.next %}
+    {% if params.nextPage %}
       {{ htbhfPaginationLink({
         direction: 'next',
         directionLabel: 'Next',
-        title: params.next.title,
-        path: params.next.path
+        title: params.nextPage.title,
+        path: params.nextPage.path
       }) }}
     {% endif %}
   </div>
