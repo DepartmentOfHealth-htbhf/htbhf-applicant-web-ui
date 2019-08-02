@@ -14,8 +14,8 @@ const getPageMetadata = (pages, path) => {
 
   return {
     activePath: path,
-    previous: getPreviousPage(pages, pageIndexForPath),
-    next: getNextPage(pages, pageIndexForPath),
+    previousPage: getPreviousPage(pages, pageIndexForPath),
+    nextPage: getNextPage(pages, pageIndexForPath),
     title: page.title
   }
 }
