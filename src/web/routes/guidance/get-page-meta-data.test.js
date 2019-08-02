@@ -1,6 +1,6 @@
 const test = require('tape')
 
-const { getPageForPath, getNextPage, getPreviousPage, getPageMetadata } = require('./guidance')
+const { getPageForPath, getNextPage, getPreviousPage, getPageMetadata } = require('./get-page-meta-data')
 
 const page1 = {
   title: 'How it works',
