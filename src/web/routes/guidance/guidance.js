@@ -4,10 +4,18 @@ const { getLanguageBase } = require('../language')
 const { getPageMetadata } = require('./get-page-meta-data')
 const { PAGES } = require('./pages')
 
+const internationalisation = (translateFn) => ({
+  title: translateFn('guidance.title'),
+  navigationHeading: translateFn('guidance.navigationHeading'),
+  previousLabel: translateFn('previous'),
+  nextLabel: translateFn('next')
+})
+
 const renderGuidanceRoute = (pages, path) => (req, res) =>
   res.render(`guidance/${getLanguageBase(req.language)}/${path}`, {
     pages,
-    ...getPageMetadata(pages, path)
+    ...getPageMetadata(pages, path),
+    ...internationalisation(req.t)
   })
 
 const registerGuidanceRoute = (router) => (page, index, pages) => router.get(page.path, renderGuidanceRoute(pages, page.path))
