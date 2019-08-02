@@ -102,8 +102,8 @@ class Page {
     return this.findAllBy(CLASSNAME_TYPE, className)
   }
 
-  async findByCSS (className, scope) {
-    return this.findBy(CSS_TYPE, className, scope)
+  async findByCSS (selector, scope) {
+    return this.findBy(CSS_TYPE, selector, scope)
   }
 
   async findAllByCSS (selector) {
