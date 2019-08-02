@@ -2,9 +2,9 @@
 {% from "macros/htbhf-pagination.njk" import htbhfPagination %}
 
 {% block pageContent %}
-  <h1 class="govuk-heading-xl">Get money off milk, food and vitamins (Healthy Start)</h1>
+  <h1 class="govuk-heading-xl">{{ title }}</h1>
 
-  <p class="govuk-body">Contents</p>
+  <p class="govuk-body">{{ navigationHeading }}</p>
 
   <ul class="govuk-list">
     {% for page in pages %}
@@ -18,6 +18,8 @@
 
   {{ htbhfPagination({
     previousPage: previousPage,
-    nextPage: nextPage
+    nextPage: nextPage,
+    previousLabel: previousLabel,
+    nextLabel: nextLabel
   }) }}
 {% endblock %}

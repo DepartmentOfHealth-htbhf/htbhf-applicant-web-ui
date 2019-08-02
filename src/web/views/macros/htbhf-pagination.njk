@@ -3,6 +3,8 @@
   Next and previous pagination links for pages in a sequence
 
   params:
+  previousLabel: string
+  nextLabel: string
   nextPage: {
     title: string,
     path: string
@@ -17,7 +19,7 @@
     {% if params.previousPage %}
       {{ htbhfPaginationLink({
         direction: 'previous',
-        directionLabel: 'Previous',
+        directionLabel: params.previousLabel,
         title: params.previousPage.title,
         path: params.previousPage.path
       }) }}
@@ -25,7 +27,7 @@
     {% if params.nextPage %}
       {{ htbhfPaginationLink({
         direction: 'next',
-        directionLabel: 'Next',
+        directionLabel: params.nextLabel,
         title: params.nextPage.title,
         path: params.nextPage.path
       }) }}
