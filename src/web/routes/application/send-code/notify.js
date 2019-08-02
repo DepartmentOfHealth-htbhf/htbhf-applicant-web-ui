@@ -36,10 +36,10 @@ function sendConfirmationCode (claim, channel, code) {
 
   if (channel === EMAIL) {
     notifyClient.sendEmail(EMAIL_TEMPLATE_ID, claim.emailAddress, notifyOptions)
-      .catch(e => { logFailureEvent(logData, 'Error sending email', e) })
+      .catch(e => logFailureEvent(logData, 'Error sending email', e))
   } else if (channel === TEXT) {
     notifyClient.sendSms(SMS_TEMPLATE_ID, claim.phoneNumber, notifyOptions)
-      .catch(e => { logFailureEvent(logData, 'Error sending SMS', e) })
+      .catch(e => logFailureEvent(logData, 'Error sending SMS', e))
   } else {
     throw new Error(`Expecting 'channelForCode' option to be either 'text' or 'email', instead was ${channel}`)
   }
