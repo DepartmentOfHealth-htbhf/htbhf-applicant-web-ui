@@ -1,5 +1,5 @@
 'use strict'
-
+const { head, last } = require('ramda')
 const Page = require('./page')
 
 const { PAGES, getPageMetadata } = require('../../../web/routes/guidance')
@@ -20,7 +20,7 @@ class Guidance extends Page {
   }
 
   getPageTitle (pageName) {
-    return 'GOV.UK - ' + pageName
+    return `GOV.UK - ${pageName}`
   }
 
   getPageWithTitle (pages, pageName) {
@@ -28,11 +28,11 @@ class Guidance extends Page {
   }
 
   hasPreviousLink (pageName) {
-    return pageName !== 'How it works'
+    return pageName !== head(PAGES).title
   }
 
   hasNextLink (pageName) {
-    return pageName !== 'Report a change'
+    return pageName !== last(PAGES).title
   }
 
   getNextLink (pageName) {
@@ -59,9 +59,9 @@ class Guidance extends Page {
 
   // Find links in the contents section, which should be for all the pages except the current page
   async getContentsLinks (pageName) {
-    const allPageExceptCurrent = PAGES.filter(page => page.title !== pageName)
-    const pagePath = allPageExceptCurrent.map(async (page) => this.findLinkForHref(this.getPageMetadataForPage(page.title).activePath))
-    return Promise.all(pagePath)
+    const allPagesExceptCurrent = PAGES.filter(page => page.title !== pageName)
+    const pagePaths = allPagesExceptCurrent.map(async (page) => this.findLinkForHref(this.getPageMetadataForPage(page.title).activePath))
+    return Promise.all(pagePaths)
   }
 
   async findLinkForHref (href) {

@@ -33,11 +33,11 @@ class SubmittablePageWithRadioButtons extends SubmittablePage {
     return this.driver.findElements(webdriver.By.className('govuk-radios__item'))
   }
 
-  async getAllRadioLabels (option) {
+  async getAllRadioLabels () {
     try {
       return this.driver.findElements(webdriver.By.className('govuk-label govuk-radios__label'))
     } catch (error) {
-      console.log(`Error getting radio button with option ${option}`)
+      console.log(`Error getting all radio button labels`)
       throw new Error(error)
     }
   }
