@@ -27,6 +27,7 @@ const contentSummary = (req) => ({
     req.session.claim.addressLine1,
     req.session.claim.addressLine2,
     req.session.claim.townOrCity,
+    req.session.claim.county,
     req.session.claim.postcode
   ])
 })

@@ -6,10 +6,13 @@ const {
   VALID_ELIGIBLE_NINO,
   DATE_OF_BIRTH,
   ADDRESS_LINE_1,
+  ADDRESS_LINE_2,
   TOWN,
+  COUNTY,
   POSTCODE,
   FULL_ADDRESS,
   FULL_ADDRESS_NO_LINE_2,
+  FULL_ADDRESS_NO_COUNTY,
   YES_LABEL,
   NO_LABEL,
   PHONE_NUMBER,
@@ -49,17 +52,11 @@ When(/^I complete the application with valid details that contains malicious inp
 })
 
 When(/^I complete the application with valid details for an applicant with no second line of address$/, async function () {
-  await enterDoYouLiveInScotlandNoAndSubmit()
-  await enterDateOfBirthAndSubmit()
-  await selectNoOnDoYouHaveChildrenPage()
-  await selectNoOnPregnancyPage()
-  await enterNameAndSubmit()
-  await enterNinoAndSubmit()
-  await enterAddressAndSubmit(ADDRESS_LINE_1, '', TOWN, POSTCODE)
-  await enterPhoneNumberAndSubmit()
-  await enterEmailAddressAndSubmit()
-  await selectTextOnSendCode()
-  await enterConfirmationCodeAndSubmit()
+  await completeApplicationWithAddressDetails(ADDRESS_LINE_1, '', TOWN, COUNTY, POSTCODE)
+})
+
+When(/^I complete the application with valid details for an applicant with no county$/, async function () {
+  await completeApplicationWithAddressDetails(ADDRESS_LINE_1, ADDRESS_LINE_2, TOWN, '', POSTCODE)
 })
 
 When(/^I choose to change my answer to are you pregnant$/, async function () {
@@ -130,6 +127,20 @@ Then(/^the check details page contains all data entered for an applicant with no
   await assertChildrensDatesOfBirthIsNotShown()
 })
 
+Then(/^the check details page contains all data entered for an applicant with no county$/, async function () {
+  const claimContents = await pages.check.getClaimSummaryListContents()
+  assertNameShown(claimContents)
+  assertNinoShown(claimContents)
+  assertDobShown(claimContents)
+  assertAreYouPregnantValueShown(claimContents, NO_LABEL)
+  assertNoValueForField(claimContents, 'Baby’s due date')
+  assertAddressShownWithNoCounty(claimContents)
+  assertPhoneNumberShown(claimContents)
+  assertEmailAddressShown(claimContents)
+  assertDoYouHaveChildrenIsShown(claimContents, NO_LABEL)
+  await assertChildrensDatesOfBirthIsNotShown()
+})
+
 Then(/^all page content is present on the check details page$/, async function () {
   await allPageContentIsCorrectOnCheckPage()
 })
@@ -146,6 +157,20 @@ Then(/^I am shown the check details page with correct page content$/, async func
 Then(/^there are no children displayed$/, async function () {
   await assertChildrensDatesOfBirthIsNotShown()
 })
+
+async function completeApplicationWithAddressDetails (addressLine1, addressLine2, townOrCity, county, postcode) {
+  await enterDoYouLiveInScotlandNoAndSubmit()
+  await enterDateOfBirthAndSubmit()
+  await selectNoOnDoYouHaveChildrenPage()
+  await selectNoOnPregnancyPage()
+  await enterNameAndSubmit()
+  await enterNinoAndSubmit()
+  await enterAddressAndSubmit(addressLine1, addressLine2, townOrCity, county, postcode)
+  await enterPhoneNumberAndSubmit()
+  await enterEmailAddressAndSubmit()
+  await selectTextOnSendCode()
+  await enterConfirmationCodeAndSubmit()
+}
 
 async function allPageContentIsCorrectOnCheckPage () {
   const h1Text = await pages.check.getH1Text()
@@ -209,6 +234,9 @@ function assertFullAddressShown (contents) {
 
 function assertAddressShownWithNoSecondLine (contents) {
   assertAddressShown(contents, FULL_ADDRESS_NO_LINE_2)
+}
+function assertAddressShownWithNoCounty (contents) {
+  assertAddressShown(contents, FULL_ADDRESS_NO_COUNTY)
 }
 
 function assertAddressShown (contents, expectedAddress) {
