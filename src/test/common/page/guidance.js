@@ -36,11 +36,11 @@ class Guidance extends Page {
   }
 
   getNextLink (pageName) {
-    return this.getPageMetadataForPage(pageName).next
+    return this.getPageMetadataForPage(pageName).nextPage
   }
 
   getPreviousLink (pageName) {
-    return this.getPageMetadataForPage(pageName).previous
+    return this.getPageMetadataForPage(pageName).previousPage
   }
 
   getPageMetadataForPage (pageName) {
