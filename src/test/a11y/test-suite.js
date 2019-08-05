@@ -88,6 +88,7 @@ const runEndToEndTest = async (results) => {
       'addressLine1': 'Flat B',
       'addressLine2': 'Baker Street',
       'townOrCity': 'London',
+      'county': 'Greater London',
       'postcode': 'AA1 1AA'
     }, requestCookie)
 
