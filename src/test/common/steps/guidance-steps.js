@@ -18,12 +18,7 @@ async function assertGuidancePageHeadersCorrect (pageName) {
   expect(h1Text.toString().trim()).to.be.equal('Get money off milk, food and vitamins (Healthy Start)',
     'expected guidance page H1 text to be correct')
   const h2Text = await pages.cookies.getH2Text()
-  let expectedH2PageName = pageName
-  if (pageName === 'What you get') {
-    // Page title from pages doesn't match what's in the title of the What you get page
-    expectedH2PageName = 'What you’ll get'
-  }
-  expect(h2Text.toString().trim()).to.be.equal(expectedH2PageName, 'expected guidance page H2 text to be correct')
+  expect(h2Text.toString().trim()).to.be.equal(pageName, 'expected guidance page H2 text to be correct')
 }
 
 // Make sure that the links in the table of contents are correct on the page
