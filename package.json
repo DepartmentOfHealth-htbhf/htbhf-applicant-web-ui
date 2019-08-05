@@ -1,7 +1,7 @@
 {
   "name": "htbhf-applicant-web-ui",
   "version_notice": "Patch versions are incremented by Travis (in tag_version.sh via .travis.yml) - never manually increment the patch version",
-  "version": "0.1.318",
+  "version": "0.1.320",
   "description": "",
   "main": "index.js",
   "engines": {
@@ -82,7 +82,7 @@
     "pa11y": "^5.1.0",
     "proxyquire": "^2.1.0",
     "safe-regex": "^2.0.1",
-    "selenium-webdriver": "^4.0.0-alpha.1",
+    "selenium-webdriver": "^4.0.0-alpha.4",
     "sinon": "^7.2.2",
     "standard": "^12.0.1",
     "tap-spec": "^5.0.0",
