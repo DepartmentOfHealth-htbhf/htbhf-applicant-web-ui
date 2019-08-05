@@ -11,14 +11,14 @@ const internationalisation = (translateFn) => ({
   nextLabel: translateFn('next')
 })
 
-const renderGuidanceRoute = (pages, path) => (req, res) =>
-  res.render(`guidance/${getLanguageBase(req.language)}/${path}`, {
+const renderGuidanceRoute = (pages, page) => (req, res) =>
+  res.render(`guidance/${getLanguageBase(req.language)}/${page.template}`, {
     pages,
-    ...getPageMetadata(pages, path),
+    ...getPageMetadata(pages, page.path),
     ...internationalisation(req.t)
   })
 
-const registerGuidanceRoute = (router) => (page, index, pages) => router.get(page.path, renderGuidanceRoute(pages, page.path))
+const registerGuidanceRoute = (router) => (page, index, pages) => router.get(page.path, renderGuidanceRoute(pages, page))
 
 /**
  * handleRequestForPath() checks the state machine before rendering the page to see if the session
