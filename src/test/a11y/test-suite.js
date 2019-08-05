@@ -29,13 +29,21 @@ const TERMS_AND_CONDITIONS_URL = `${BASE_URL}/terms-and-conditions`
 const CONFIRM_URL = `${BASE_URL}/confirm`
 const APPLICATION_COMPLETE_TITLE = 'GOV.UK - Application complete'
 
+const HOW_IT_WORKS_URL = `${BASE_URL}/how-it-works`
+const ELIGIBILITY_URL = `${BASE_URL}/eligibility`
+const WHAT_YOU_GET_URL = `${BASE_URL}/what-you-get`
+const WHAT_YOU_CAN_BUY_URL = `${BASE_URL}/buy`
+const USING_YOUR_CARD_URL = `${BASE_URL}/using-your-card`
+const APPLY_URL = `${BASE_URL}/apply`
+const REPORT_A_CHANGE_URL = `${BASE_URL}/report-a-change`
+
 /*
   Runs though the application, evaluating each page and performing post requests to populate the necessary
   data in the database.
  */
 const runEndToEndTest = async (results) => {
   try {
-    const { requestCookie, csrfToken } = await getSIDCookieAndCSRFToken(ENTER_DOB_URL)
+    const { requestCookie, csrfToken } = await getSIDCookieAndCSRFToken(DO_YOU_LIVE_IN_SCOTLAND_URL)
     const pa11y = pa11yWithSettings(IGNORE_RULES, { Cookie: requestCookie })
     const formData = { '_csrf': csrfToken }
 
@@ -123,7 +131,7 @@ const runEndToEndTest = async (results) => {
 
 const runILiveInScotlandTest = async (results) => {
   try {
-    const { requestCookie, csrfToken } = await getSIDCookieAndCSRFToken(ENTER_DOB_URL)
+    const { requestCookie, csrfToken } = await getSIDCookieAndCSRFToken(DO_YOU_LIVE_IN_SCOTLAND_URL)
     const pa11y = pa11yWithSettings(IGNORE_RULES, { Cookie: requestCookie })
     const formData = { '_csrf': csrfToken }
 
@@ -137,12 +145,31 @@ const runILiveInScotlandTest = async (results) => {
   }
 }
 
+const runGuidancePageTest = async (results) => {
+  try {
+    const { requestCookie } = await getSIDCookieAndCSRFToken(DO_YOU_LIVE_IN_SCOTLAND_URL)
+    const pa11y = pa11yWithSettings(IGNORE_RULES, { Cookie: requestCookie })
+
+    results.push(await pa11y(HOW_IT_WORKS_URL))
+    results.push(await pa11y(ELIGIBILITY_URL))
+    results.push(await pa11y(WHAT_YOU_GET_URL))
+    results.push(await pa11y(WHAT_YOU_CAN_BUY_URL))
+    results.push(await pa11y(USING_YOUR_CARD_URL))
+    results.push(await pa11y(APPLY_URL))
+    results.push(await pa11y(REPORT_A_CHANGE_URL))
+  } catch (error) {
+    console.log(error)
+    process.exit(1)
+  }
+}
+
 const runAllTests = async () => {
   try {
     let results = []
     console.log(`Running accessibility tests against ${BASE_URL}`)
     await runEndToEndTest(results)
     await runILiveInScotlandTest(results)
+    await runGuidancePageTest(results)
     handleTestResults(results)
   } catch (error) {
     console.error(error)
