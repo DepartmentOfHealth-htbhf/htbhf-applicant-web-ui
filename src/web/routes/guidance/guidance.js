@@ -5,7 +5,7 @@ const { getPageMetadata } = require('./get-page-meta-data')
 const { PAGES } = require('./pages')
 
 const internationalisation = (translateFn) => ({
-  title: translateFn('guidance.title'),
+  heading: translateFn('guidance.heading'),
   navigationHeading: translateFn('guidance.navigationHeading'),
   previousLabel: translateFn('previous'),
   nextLabel: translateFn('next')

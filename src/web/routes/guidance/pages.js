@@ -8,7 +8,7 @@ module.exports.PAGES = [
     path: '/eligibility'
   },
   {
-    title: 'What you get',
+    title: 'What you’ll get',
     path: '/what-you-get'
   },
   {
