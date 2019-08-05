@@ -8,7 +8,7 @@ cache:
   directories:
     - bin/
 
-dist: bionic
+dist: trusty
 
 services:
 - redis-server
