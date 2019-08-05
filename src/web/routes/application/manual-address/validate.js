@@ -34,10 +34,6 @@ const validate = [
     .isLength({ max: ADDRESS_LINE_MAX_LENGTH })
     .withMessage(translateValidationMessage('validation:informationTooLong')),
 
-  check('county')
-    .not().isEmpty()
-    .withMessage(translateValidationMessage('validation:missingAddressField')),
-
   check('postcode')
     .matches(UK_POSTCODE_PATTERN)
     .withMessage(translateValidationMessage('validation:invalidPostcode'))

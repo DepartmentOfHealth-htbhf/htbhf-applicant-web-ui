@@ -20,6 +20,10 @@ Feature: Address
     When I do not enter the second line of an address
     Then I am shown the phone number page
 
+  Scenario: Enter a valid address without an optional county line
+    When I do not enter the 'county' of an address
+    Then I am shown the phone number page
+
   Scenario Outline: Enter an address with an invalid postcode
     When I enter an address with postcode <postcode>
     Then I am informed that the postcode is in the wrong format
@@ -42,9 +46,6 @@ Feature: Address
     When I do not enter the 'town or city' of an address
     Then I am informed that I need to enter an address on the 'town or city' field
 
-  Scenario: Do not enter in the county
-    When I do not enter the 'county' of an address
-    Then I am informed that I need to enter an address on the 'county' field
 
   Scenario: Enter in an address where the first line is too long
     When I enter in an address where the first line is too long

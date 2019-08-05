@@ -70,11 +70,6 @@ Then(/^I am informed that I need to enter an address on the 'town or city' field
   await assertTownOrCityErrorFieldAndLink('Tell us your address')
 })
 
-Then(/^I am informed that I need to enter an address on the 'county' field$/, async function () {
-  await assertErrorHeaderTextPresent(pages.manualAddress)
-  await assertCountyErrorFieldAndLink('Tell us your address')
-})
-
 Then(/^I am informed that the first line of the address is too long$/, async function () {
   await assertErrorHeaderTextPresent(pages.manualAddress)
   await assertAddressLine1ErrorFieldAndLink('The information you entered is too long')

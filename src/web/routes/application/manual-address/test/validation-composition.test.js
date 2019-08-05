@@ -50,17 +50,6 @@ test('validation middleware errors for empty town or city field', async (t) => {
   t.end()
 })
 
-test('validation middleware errors for empty county field', async (t) => {
-  const testReq = assocPath(['body', 'county'], null, req)
-
-  const result = await applyExpressValidation(testReq, validate)
-  const error = result.array()[0]
-  t.equal(result.array().length, 1, 'should have exactly one error')
-  t.equal(error.param, 'county', 'error should be associated with correct field')
-  t.equal(error.msg, 'validation:missingAddressField', 'error should have correct message')
-  t.end()
-})
-
 test('validation middleware errors for empty postcode field', async (t) => {
   const testReq = assocPath(['body', 'postcode'], null, req)
 
