@@ -21,6 +21,7 @@ const {
   ADDRESS_LINE_1,
   ADDRESS_LINE_2,
   TOWN,
+  COUNTY,
   POSTCODE,
   CLAIMS_ENDPOINT,
   PHONE_NUMBER,
@@ -87,11 +88,12 @@ async function selectNoOnPregnancyPage () {
   }
 }
 
-async function enterAddressAndSubmit (addressLine1 = ADDRESS_LINE_1, addressLine2 = ADDRESS_LINE_2, townOrCity = TOWN, postcode = POSTCODE) {
+async function enterAddressAndSubmit (addressLine1 = ADDRESS_LINE_1, addressLine2 = ADDRESS_LINE_2, townOrCity = TOWN, county = COUNTY, postcode = POSTCODE) {
   try {
     await pages.manualAddress.line1InputField.enterValue(addressLine1)
     await pages.manualAddress.line2InputField.enterValue(addressLine2)
     await pages.manualAddress.townOrCityInputField.enterValue(townOrCity)
+    await pages.manualAddress.countyField.enterValue(county)
     await pages.manualAddress.postcodeInputField.enterValue(postcode)
     await pages.manualAddress.submitForm()
   } catch (error) {

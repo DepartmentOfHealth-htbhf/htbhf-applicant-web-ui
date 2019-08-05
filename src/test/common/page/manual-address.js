@@ -17,6 +17,7 @@ class ManualAddress extends SubmittablePage {
     this.line1InputField = new InputField('address-line-1', this)
     this.line2InputField = new InputField('address-line-2', this)
     this.townOrCityInputField = new InputField('town-or-city', this)
+    this.countyField = new InputField('county', this)
     this.postcodeInputField = new InputField('postcode', this)
   }
   getPath () {
