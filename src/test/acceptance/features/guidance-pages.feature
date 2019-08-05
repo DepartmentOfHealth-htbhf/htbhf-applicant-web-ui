@@ -10,7 +10,7 @@ Feature: Guidance pages
       | page                    |
       | How it works            |
       | Eligibility             |
-      | What you get            |
+      | What you’ll get         |
       | What you can buy        |
       | Using your card         |
       | Apply for Healthy Start |
