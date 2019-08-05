@@ -46,7 +46,6 @@ Feature: Address
     When I do not enter the 'town or city' of an address
     Then I am informed that I need to enter an address on the 'town or city' field
 
-
   Scenario: Enter in an address where the first line is too long
     When I enter in an address where the first line is too long
     Then I am informed that the first line of the address is too long

@@ -22,6 +22,12 @@ Feature: Check details
     Then I am shown the check details page
     And the check details page contains all data entered for an applicant with no second line of address
 
+  Scenario: Valid application details for an applicant with no county are shown on the check details page
+    Given I am on the first page of the application
+    When I complete the application with valid details for an applicant with no county
+    Then I am shown the check details page
+    And the check details page contains all data entered for an applicant with no county
+
   Scenario: I can change my answer to a question and am returned to the check details page with the correct information
     Given I am on the check details page having entered valid details for a pregnant woman
     When I choose to change my answer to are you pregnant
