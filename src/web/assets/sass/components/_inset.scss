@@ -1,0 +1,8 @@
+/**
+* Creates an inset with a thin border.
+*/
+.c-htbhf-inset {
+  @extend .govuk-body;
+  border-left: 1px solid $govuk-border-colour;
+  padding-left: govuk-spacing(3);
+}
