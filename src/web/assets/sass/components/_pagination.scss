@@ -1,0 +1,53 @@
+/**
+  * Next and previous pagination links for pages in a sequence
+  *
+  * 1. Apply default GOV.UK body styles without directly referencing fonts. This hopefully
+  *    protects the component from any updates to the font stack in GOV.UK frontend
+  * 2. Apply default GOV.UK link styles
+  * 3. Overide "govuk-body" styles as the GOV.UK design system doesn’t provide sass variables
+  *    or classes for core styles
+  * 4. Layout and alignment for icon and text
+  * 5. Align text to left when no hover state
+  */
+.c-htbhf-pagination__link {
+  @extend .govuk-body; /* 1 */
+  @extend .govuk-link; /* 2 */
+  text-decoration: none;
+  margin-bottom: 0; /* 3 */
+  display: table; /* 4 */
+  width: 100%;
+  margin-left: -#{govuk-spacing(3)}; /* 5 */
+  padding: govuk-spacing(3);
+
+  &:hover {
+    background: govuk-colour("grey-4");
+  }
+}
+
+/**
+  * 1. Layout and alignment for icon and text
+  */
+.c-htbhf-pagination__link__direction,
+.c-htbhf-pagination__link__label {
+  display: block; /* 1 */
+}
+
+.c-htbhf-pagination__link__direction {
+  @extend .govuk-\!-font-weight-bold;
+}
+
+.c-htbhf-pagination__link__label {
+  @extend .govuk-\!-font-size-16;
+  text-decoration: underline;
+}
+
+/**
+  * 1. Layout and alignment for icon and text
+  * 2. Visually group text and icon
+  */
+.c-htbhf-pagination__link__icon {
+  display: table-cell; /* 1 */
+  padding-right: govuk-spacing(2);
+  width: 1%; /* 2 */
+  white-space: nowrap; /* 2 */
+}

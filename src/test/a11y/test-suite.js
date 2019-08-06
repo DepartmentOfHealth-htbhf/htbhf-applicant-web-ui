@@ -29,19 +29,29 @@ const TERMS_AND_CONDITIONS_URL = `${BASE_URL}/terms-and-conditions`
 const CONFIRM_URL = `${BASE_URL}/confirm`
 const APPLICATION_COMPLETE_TITLE = 'GOV.UK - Application complete'
 
+const HOW_IT_WORKS_URL = `${BASE_URL}/how-it-works`
+const ELIGIBILITY_URL = `${BASE_URL}/eligibility`
+const WHAT_YOU_GET_URL = `${BASE_URL}/what-you-get`
+const WHAT_YOU_CAN_BUY_URL = `${BASE_URL}/buy`
+const USING_YOUR_CARD_URL = `${BASE_URL}/using-your-card`
+const APPLY_URL = `${BASE_URL}/apply`
+const REPORT_A_CHANGE_URL = `${BASE_URL}/report-a-change`
+
 /*
   Runs though the application, evaluating each page and performing post requests to populate the necessary
   data in the database.
  */
 const runEndToEndTest = async (results) => {
   try {
-    const { requestCookie, csrfToken } = await getSIDCookieAndCSRFToken(ENTER_DOB_URL)
+    const { requestCookie, csrfToken } = await getSIDCookieAndCSRFToken(DO_YOU_LIVE_IN_SCOTLAND_URL)
     const pa11y = pa11yWithSettings(IGNORE_RULES, { Cookie: requestCookie })
     const formData = { '_csrf': csrfToken }
 
+    console.log('Testing', DO_YOU_LIVE_IN_SCOTLAND_URL)
     results.push(await pa11y(DO_YOU_LIVE_IN_SCOTLAND_URL))
     await postFormData(DO_YOU_LIVE_IN_SCOTLAND_URL, { ...formData, doYouLiveInScotland: 'no' }, requestCookie)
 
+    console.log('Testing', ENTER_DOB_URL)
     results.push(await pa11y(ENTER_DOB_URL))
     await postFormData(ENTER_DOB_URL, {
       ...formData,
@@ -50,12 +60,14 @@ const runEndToEndTest = async (results) => {
       'dateOfBirth-year': '1980'
     }, requestCookie)
 
+    console.log('Testing', DO_YOU_HAVE_CHILDREN_URL)
     results.push(await pa11y(DO_YOU_HAVE_CHILDREN_URL))
     await postFormData(DO_YOU_HAVE_CHILDREN_URL, {
       ...formData,
       doYouHaveChildren: 'yes'
     }, requestCookie)
 
+    console.log('Testing', CHILDREN_DOB_URL)
     results.push(await pa11y(CHILDREN_DOB_URL))
     const childDob = dateLastYear()
     await postFormData(CHILDREN_DOB_URL, {
@@ -66,6 +78,7 @@ const runEndToEndTest = async (results) => {
       'childDob-1-year': childDob.getFullYear()
     }, requestCookie)
 
+    console.log('Testing', ARE_YOU_PREGNANT_URL)
     results.push(await pa11y(ARE_YOU_PREGNANT_URL))
     const dueDate = dateIn3Months()
     await postFormData(ARE_YOU_PREGNANT_URL, {
@@ -76,12 +89,15 @@ const runEndToEndTest = async (results) => {
       'expectedDeliveryDate-year': dueDate.getFullYear()
     }, requestCookie)
 
+    console.log('Testing', ENTER_NAME_URL)
     results.push(await pa11y(ENTER_NAME_URL))
     await postFormData(ENTER_NAME_URL, { ...formData, firstName: 'Lisa', lastName: 'Simpson' }, requestCookie)
 
+    console.log('Testing', ENTER_NINO_URL)
     results.push(await pa11y(ENTER_NINO_URL))
     await postFormData(ENTER_NINO_URL, { ...formData, nino: VALID_ELIGIBLE_NINO }, requestCookie)
 
+    console.log('Testing', MANUAL_ADDRESS_URL)
     results.push(await pa11y(MANUAL_ADDRESS_URL))
     await postFormData(MANUAL_ADDRESS_URL, {
       ...formData,
@@ -92,25 +108,33 @@ const runEndToEndTest = async (results) => {
       'postcode': 'AA1 1AA'
     }, requestCookie)
 
+    console.log('Testing', PHONE_NUMBER_URL)
     results.push(await pa11y(PHONE_NUMBER_URL))
     await postFormData(PHONE_NUMBER_URL, { ...formData, phoneNumber: PHONE_NUMBER }, requestCookie)
 
+    console.log('Testing', EMAIL_ADDRESS_URL)
     results.push(await pa11y(EMAIL_ADDRESS_URL))
     await postFormData(EMAIL_ADDRESS_URL, { ...formData, emailAddress: EMAIL_ADDRESS }, requestCookie)
 
+    console.log('Testing', SEND_CODE_URL)
     results.push(await pa11y(SEND_CODE_URL))
     await postFormData(SEND_CODE_URL, { ...formData, channelForCode: TEXT }, requestCookie)
 
+    console.log('Getting confirmation code from', SESSION_CONFIRMATION_CODE_URL)
     const confirmationCode = await get(SESSION_CONFIRMATION_CODE_URL, requestCookie)
 
+    console.log('Testing', ENTER_CODE_URL)
     results.push(await pa11y(ENTER_CODE_URL))
     await postFormData(ENTER_CODE_URL, { ...formData, confirmationCode }, requestCookie)
 
+    console.log('Testing', CHECK_URL)
     results.push(await pa11y(CHECK_URL))
 
+    console.log('Testing', TERMS_AND_CONDITIONS_URL)
     results.push(await pa11y(TERMS_AND_CONDITIONS_URL))
     await postFormData(TERMS_AND_CONDITIONS_URL, { ...formData, agree: 'agree' }, requestCookie)
 
+    console.log('Testing', CONFIRM_URL)
     const confirmResult = await pa11y(CONFIRM_URL)
     if (confirmResult.documentTitle !== APPLICATION_COMPLETE_TITLE) {
       confirmResult.issues.push(`Expected title to be ${APPLICATION_COMPLETE_TITLE}, instead got ${confirmResult.documentTitle}`)
@@ -124,14 +148,34 @@ const runEndToEndTest = async (results) => {
 
 const runILiveInScotlandTest = async (results) => {
   try {
-    const { requestCookie, csrfToken } = await getSIDCookieAndCSRFToken(ENTER_DOB_URL)
+    const { requestCookie, csrfToken } = await getSIDCookieAndCSRFToken(DO_YOU_LIVE_IN_SCOTLAND_URL)
     const pa11y = pa11yWithSettings(IGNORE_RULES, { Cookie: requestCookie })
     const formData = { '_csrf': csrfToken }
 
+    console.log('Scotland testing', DO_YOU_LIVE_IN_SCOTLAND_URL)
     results.push(await pa11y(DO_YOU_LIVE_IN_SCOTLAND_URL))
     await postFormData(DO_YOU_LIVE_IN_SCOTLAND_URL, { ...formData, doYouLiveInScotland: 'yes' }, requestCookie)
 
+    console.log('Scotland testing', I_LIVE_IN_SCOTLAND_URL)
     results.push(await pa11y(I_LIVE_IN_SCOTLAND_URL))
+  } catch (error) {
+    console.log(error)
+    process.exit(1)
+  }
+}
+
+const runGuidancePageTest = async (results) => {
+  try {
+    const { requestCookie } = await getSIDCookieAndCSRFToken(DO_YOU_LIVE_IN_SCOTLAND_URL)
+    const pa11y = pa11yWithSettings(IGNORE_RULES, { Cookie: requestCookie })
+
+    results.push(await pa11y(HOW_IT_WORKS_URL))
+    results.push(await pa11y(ELIGIBILITY_URL))
+    results.push(await pa11y(WHAT_YOU_GET_URL))
+    results.push(await pa11y(WHAT_YOU_CAN_BUY_URL))
+    results.push(await pa11y(USING_YOUR_CARD_URL))
+    results.push(await pa11y(APPLY_URL))
+    results.push(await pa11y(REPORT_A_CHANGE_URL))
   } catch (error) {
     console.log(error)
     process.exit(1)
@@ -144,6 +188,7 @@ const runAllTests = async () => {
     console.log(`Running accessibility tests against ${BASE_URL}`)
     await runEndToEndTest(results)
     await runILiveInScotlandTest(results)
+    await runGuidancePageTest(results)
     handleTestResults(results)
   } catch (error) {
     console.error(error)

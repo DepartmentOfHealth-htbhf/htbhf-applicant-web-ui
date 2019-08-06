@@ -1,0 +1,56 @@
+{#
+  htbhfPagination()
+  Next and previous pagination links for pages in a sequence
+
+  params:
+  previousLabel: string
+  nextLabel: string
+  nextPage: {
+    title: string,
+    path: string
+  }
+  previousPage: {
+    title: string,
+    path: string
+  }
+#}
+{% macro htbhfPagination(params) %}
+  <div class ="c-htbhf-pagination">
+    {% if params.previousPage %}
+      {{ htbhfPaginationLink({
+        direction: 'previous',
+        directionLabel: params.previousLabel,
+        title: params.previousPage.title,
+        path: params.previousPage.path
+      }) }}
+    {% endif %}
+    {% if params.nextPage %}
+      {{ htbhfPaginationLink({
+        direction: 'next',
+        directionLabel: params.nextLabel,
+        title: params.nextPage.title,
+        path: params.nextPage.path
+      }) }}
+    {% endif %}
+  </div>
+{% endmacro %}
+
+{#
+  htbhfPaginationLink()
+  Link for next and previous navigation
+
+  params:
+  direction: string (previous | next)
+  directionLabel: string
+  title: string
+  path: string
+#}
+{% macro htbhfPaginationLink(params) %}
+  <a href="{{ params.path }}" class="c-htbhf-pagination__link c-htbhf-pagination__link--{{ params.direction }}">
+    <span class="c-htbhf-pagination__link__icon">
+      {% include "../partials/icons/arrow-" + params.direction + ".njk" %}
+    </span>
+    <span class="c-htbhf-pagination__link__direction">{{ params.directionLabel }}</span>
+    <span class="c-htbhf-pagination__link__label">{{ params.title }}</span>
+  </a>
+{% endmacro %}

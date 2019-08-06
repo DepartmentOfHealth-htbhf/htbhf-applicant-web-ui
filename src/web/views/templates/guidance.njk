@@ -1,0 +1,25 @@
+{% extends "./page.njk" %}
+{% from "macros/htbhf-pagination.njk" import htbhfPagination %}
+
+{% block pageContent %}
+  <h1 class="govuk-heading-xl">{{ heading }}</h1>
+
+  <p class="govuk-body">{{ navigationHeading }}</p>
+
+  <ul class="govuk-list">
+    {% for page in pages %}
+      <li>&#8212; {% if page.path === activePath %} {{ page.title }} {% else %}  <a class="govuk-link" href="{{ page.path }}">{{ page.title }}</a> {% endif %}</li>
+    {% endfor %}
+  </ul>
+
+  <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+  {% block guidanceContent %}{% endblock %}
+  <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible govuk-!-margin-bottom-7">
+
+  {{ htbhfPagination({
+    previousPage: previousPage,
+    nextPage: nextPage,
+    previousLabel: previousLabel,
+    nextLabel: nextLabel
+  }) }}
+{% endblock %}
