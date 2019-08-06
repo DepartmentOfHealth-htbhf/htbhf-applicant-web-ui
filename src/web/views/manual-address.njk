@@ -17,17 +17,20 @@
 
     {{ govukInput({
       label: {
-        text: houseNumberOrNameLabel
+            html: buildingAndStreetLabel + '<span class="govuk-visually-hidden">' + buildingAndStreetLine1of2 + '</span>'
       },
       id: "address-line-1",
       name: "addressLine1",
       errorMessage: errors | getErrorForField('addressLine1'),
       value: claim.addressLine1,
-      autocomplete: "off"
+      autocomplete: "off",
+      hint: {
+            text: hint
+        }
     }) }}
    {{ govukInput({
       label: {
-           text: streetLabel
+           html: '<span class="govuk-visually-hidden">' + buildingAndStreetLine2of2 + '</span>'
       },
       id: "address-line-2",
       name: "addressLine2",
@@ -46,6 +49,17 @@
       value: claim.townOrCity,
       autocomplete: "off"
     }) }}
+   {{ govukInput({
+       label: {
+       text: countyLabel
+       },
+       classes: "govuk-!-width-two-thirds",
+       id: "county",
+       name: "county",
+       errorMessage: errors | getErrorForField('county'),
+       value: claim.county,
+       autocomplete: "off"
+   }) }}
    {{ govukInput({
       label: {
         text: postcodeLabel
