@@ -1,7 +1,7 @@
 module.exports.PAGES = [
   {
     title: 'How it works',
-    path: '/how-it-works',
+    path: '/',
     template: 'how-it-works'
   },
   {

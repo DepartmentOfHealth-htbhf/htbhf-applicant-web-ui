@@ -26,13 +26,11 @@ const BY = {
 class Page {
   constructor (driver) {
     this.driver = driver
-    this.sessionId = null
   }
 
   async open (baseURL, lang = 'en') {
     try {
       await this.openDirect(baseURL, lang)
-      this.sessionId = await this.getCurrentSessionId()
       return this.waitForPageLoad(lang)
     } catch (error) {
       console.error(`Error caught trying to open page at: ${baseURL}`, error)
