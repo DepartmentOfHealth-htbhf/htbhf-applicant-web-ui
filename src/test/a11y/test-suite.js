@@ -29,7 +29,7 @@ const TERMS_AND_CONDITIONS_URL = `${BASE_URL}/terms-and-conditions`
 const CONFIRM_URL = `${BASE_URL}/confirm`
 const APPLICATION_COMPLETE_TITLE = 'GOV.UK - Application complete'
 
-const HOW_IT_WORKS_URL = `${BASE_URL}/how-it-works`
+const HOW_IT_WORKS_URL = `${BASE_URL}/`
 const ELIGIBILITY_URL = `${BASE_URL}/eligibility`
 const WHAT_YOU_GET_URL = `${BASE_URL}/what-you-get`
 const WHAT_YOU_CAN_BUY_URL = `${BASE_URL}/buy`
