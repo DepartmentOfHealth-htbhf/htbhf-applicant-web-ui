@@ -9,10 +9,10 @@
     "uri": "src/test/smoke/features/smoke-test.feature",
     "elements": [
       {
-        "id": "smoke-test;the-overview-page-is-available-and-starts-the-application-process",
+        "id": "smoke-test;the-apply-guidance-page-is-available-and-starts-the-application-process",
         "keyword": "Scenario",
         "line": 6,
-        "name": "The overview page is available and starts the application process",
+        "name": "The apply guidance page is available and starts the application process",
         "tags": [],
         "type": "scenario",
         "steps": [
@@ -24,20 +24,20 @@
             },
             "result": {
               "status": "passed",
-              "duration": 35000000
+              "duration": 29000000
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
             "line": 7,
-            "name": "I navigate to the Apply for Healthy Start overview page",
+            "name": "I am starting a new application",
             "match": {
-              "location": "src/test/common/steps/navigation.js:175"
+              "location": "src/test/common/steps/navigation.js:171"
             },
             "result": {
               "status": "passed",
-              "duration": 1660000000
+              "duration": 1667000000
             }
           },
           {
@@ -46,11 +46,11 @@
             "line": 8,
             "name": "I select to start the process",
             "match": {
-              "location": "src/test/common/steps/overview-steps.js:10"
+              "location": "src/test/common/steps/navigation.js:191"
             },
             "result": {
               "status": "passed",
-              "duration": 370000000
+              "duration": 362000000
             }
           },
           {
@@ -59,7 +59,7 @@
             "line": 9,
             "name": "I am shown the first page of the application",
             "match": {
-              "location": "src/test/common/steps/overview-steps.js:18"
+              "location": "src/test/common/steps/navigation.js:195"
             },
             "result": {
               "status": "passed",
@@ -74,7 +74,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2000000
+              "duration": 1000000
             }
           }
         ]
