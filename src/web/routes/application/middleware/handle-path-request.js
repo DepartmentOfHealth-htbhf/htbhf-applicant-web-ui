@@ -1,5 +1,5 @@
 const { CHECK_URL, TERMS_AND_CONDITIONS_URL, CONFIRM_URL } = require('../common/constants')
-const { PAGES } = require('../../guidance/pages')
+const { isGuidancePageUrl } = require('../../guidance/predicates')
 const { stateMachine, actions, states } = require('../common/state-machine')
 
 const { IS_PATH_ALLOWED, GET_NEXT_ALLOWED_PATH } = actions
@@ -8,14 +8,12 @@ const getPathsInSequence = (steps) => [...steps.map(step => step.path), CHECK_UR
 
 const stepNotNavigable = (step, req) => step && typeof step.isNavigable === 'function' && !step.isNavigable(req.session)
 
-const isGuidancePageUrl = (path) => PAGES.map((page) => page.path).includes(path)
-
 const middleware = (config, pathsInSequence, step) => (req, res, next) => {
   // Destroy the session on navigating away from CONFIRM_URL
   if (stateMachine.getState(req) === states.COMPLETED && req.path !== CONFIRM_URL) {
     req.session.destroy()
     res.clearCookie('lang')
-    const redirectPath = isGuidancePageUrl(req.path, PAGES) ? req.path : config.environment.OVERVIEW_URL
+    const redirectPath = isGuidancePageUrl(req.path) ? req.path : config.environment.OVERVIEW_URL
     return res.redirect(redirectPath)
   }
 
@@ -44,6 +42,5 @@ const handleRequestForPath = (config, steps, step) => middleware(config, getPath
 
 module.exports = {
   getPathsInSequence,
-  handleRequestForPath,
-  isGuidancePageUrl
+  handleRequestForPath
 }
