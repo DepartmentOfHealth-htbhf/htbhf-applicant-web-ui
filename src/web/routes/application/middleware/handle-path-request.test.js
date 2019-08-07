@@ -1,7 +1,8 @@
 const test = require('tape')
 const sinon = require('sinon')
 const { CHECK_URL, TERMS_AND_CONDITIONS_URL, CONFIRM_URL } = require('../common/constants')
-const { getPathsInSequence, handleRequestForPath } = require('./handle-path-request')
+const { PAGES } = require('../../guidance/pages')
+const { getPathsInSequence, handleRequestForPath, isGuidancePageUrl } = require('./handle-path-request')
 const { states } = require('../common/state-machine')
 
 const steps = [{ path: '/first', next: () => '/second' }, { path: '/second' }]
@@ -97,5 +98,40 @@ test(`handleRequestForPath() should destroy the session and redirect when naviga
   t.equal(destroy.called, true, 'it should destroy the session')
   t.equal(clearCookie.calledWith('lang'), true, 'it should clear language preference cookie')
   t.equal(redirect.calledWith('/'), true, 'it should call redirect() with correct path')
+  t.end()
+})
+
+test(`handleRequestForPath() should destroy the session and redirect to requested guidance page when navigating away from ${CONFIRM_URL}`, (t) => {
+  const destroy = sinon.spy()
+  const clearCookie = sinon.spy()
+  const redirect = sinon.spy()
+  const next = sinon.spy()
+
+  const req = {
+    path: '/what-you-get',
+    session: {
+      destroy,
+      state: states.COMPLETED
+    }
+  }
+
+  const res = {
+    clearCookie,
+    redirect
+  }
+
+  handleRequestForPath(config, steps)(req, res, next)
+
+  t.equal(destroy.called, true, 'it should destroy the session')
+  t.equal(clearCookie.calledWith('lang'), true, 'it should clear language preference cookie')
+  t.equal(redirect.calledWith('/what-you-get'), true, 'it should call redirect() with correct guidance page path')
+  t.end()
+})
+
+test('isGuidancePageUrl() identifies a guidance page url', (t) => {
+  t.deepEqual(isGuidancePageUrl('/what-you-get', PAGES), true, 'returns true for guidance url')
+  t.deepEqual(isGuidancePageUrl('/buy', PAGES), true, 'returns true for guidance url')
+  t.deepEqual(isGuidancePageUrl('/', PAGES), true, 'returns true for root url')
+  t.deepEqual(isGuidancePageUrl('/blah', PAGES), false, 'returns false for any other url')
   t.end()
 })
