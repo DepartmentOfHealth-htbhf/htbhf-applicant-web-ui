@@ -1,4 +1,5 @@
 const { CHECK_URL, TERMS_AND_CONDITIONS_URL, CONFIRM_URL } = require('../common/constants')
+const { isGuidancePageUrl } = require('../../guidance/predicates')
 const { stateMachine, actions, states } = require('../common/state-machine')
 
 const { IS_PATH_ALLOWED, GET_NEXT_ALLOWED_PATH } = actions
@@ -12,7 +13,8 @@ const middleware = (config, pathsInSequence, step) => (req, res, next) => {
   if (stateMachine.getState(req) === states.COMPLETED && req.path !== CONFIRM_URL) {
     req.session.destroy()
     res.clearCookie('lang')
-    return res.redirect(config.environment.OVERVIEW_URL)
+    const redirectPath = isGuidancePageUrl(req.path) ? req.path : config.environment.OVERVIEW_URL
+    return res.redirect(redirectPath)
   }
 
   // Initialise nextAllowedStep if none exists in session
