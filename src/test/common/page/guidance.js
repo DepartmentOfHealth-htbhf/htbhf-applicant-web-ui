@@ -4,14 +4,23 @@ const Page = require('./page')
 
 const { PAGES, getPageMetadata } = require('../../../web/routes/guidance')
 
+const APPLY_PAGE_NAME = 'Apply for Healthy Start'
+const START_BUTTON_CLASS = 'govuk-button--start'
+
 /**
  * Page object for all the guidance pages. This may extend Page, but as it represent multiple static page, it must
  * implement its own methods for navigation, but can use all the find methods from Page when required.
  */
 class Guidance extends Page {
+  constructor (driver) {
+    super(driver)
+    this.sessionId = null
+  }
+
   async openGuidancePage (baseURL, pageName, lang = 'en') {
     try {
       await this.openPage(`${baseURL}${this.getPageWithTitle(PAGES, pageName).path}`, lang)
+      this.sessionId = await this.getCurrentSessionId()
       return super.waitForPageWithTitle(this.getPageTitle(pageName))
     } catch (error) {
       console.error(`Error caught trying to open guidance page at: ${baseURL}`, error)
@@ -67,6 +76,19 @@ class Guidance extends Page {
   async findLinkForHref (href) {
     const linkCss = `a[href="${href}"]`
     return this.findByCSS(linkCss)
+  }
+
+  async openApplyPage (url) {
+    await this.openGuidancePage(url, APPLY_PAGE_NAME)
+  }
+
+  async getStartButton () {
+    return this.findByClassName(START_BUTTON_CLASS)
+  }
+
+  async clickStartButton () {
+    const startButton = await this.getStartButton()
+    return startButton.click()
   }
 }
 

@@ -1,5 +1,4 @@
 const csrf = require('csurf')
-const { registerStartRoute } = require('./start')
 const { registerConfirmRoute } = require('./application/confirm')
 const { registerCheckRoutes } = require('./application/check')
 const { registerTermsAndConditionsRoutes } = require('./application/terms-and-conditions')
@@ -29,7 +28,6 @@ const registerRoutes = (config, app) => {
     registerHoldingRoute(config, app)
   } else {
     const csrfProtection = csrf({})
-    registerStartRoute(config, steps, app)
     registerFormRoutes(config, csrfProtection, steps, app)
     registerCheckRoutes(steps, config, app)
     registerTermsAndConditionsRoutes(csrfProtection, steps, config, app)

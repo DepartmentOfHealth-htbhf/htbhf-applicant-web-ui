@@ -1,39 +1,39 @@
 {% from "table/macro.njk" import govukTable %}
 
-<h1 class="govuk-heading-xl">Cwci</h1>
+<h1 class="govuk-heading-xl">Cookies - Translation TBC</h1>
 
-<p class="govuk-body">In hac habitasse platea dictumst donec in purus et enim sodales pharetra 'cwcis'
-    nisi vitae faucibus.</p>
-<p class="govuk-body">Duis ac dui elementum fermentum nisi vitae:</p>
+<p class="govuk-body">Cookies are files saved on your phone, tablet or computer when you visit a website</p>
+<p class="govuk-body">We use cookies to store information about how you use the Apply for Healthy Start website.</p>
+
+<h2 class="govuk-heading-m">Cookie settings</h2>
+<p class="govuk-body">We use 2 types of cookies.</p>
+
+<h2 class="govuk-heading-m">Cookies that measure website use</h2>
+<p class="govuk-body">We use Google Analytics to measure how you use the website. This is so we can improve it based on user needs.</p>
+<p class="govuk-body">The Google analytics cookie collects and stores information anonymously about:</p>
 
 <ul class="govuk-list govuk-list--bullet">
-    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod</li>
-    <li>Eget felis eget nunc lobortis mattis</li>
-    <li>Urna condimentum mattis nunc imperdiet ipsum a condimentum pretium leo neque</li>
+    <li>the pages you visit - how long you spend on each page</li>
+    <li>how you got to the site</li>
+    <li>what you click on while you’re using the site</li>
 </ul>
-<p class="govuk-body">Donec sit <a class="govuk-link" href="https://ico.org.uk/for-the-public/online/cookies/">leo nunc imperdiet ipsum a condimentum pretium leo.</a></p>
 
-<h2 class="govuk-heading-m">Urna condimentum cwci</h2>
+<div class="govuk-inset-text">
+    Google cannot use or share the data about how you use this site, but you can <a class="govuk-link" href="https://tools.google.com/dlpage/gaoptout">opt out of Google Analytics cookies</a>.
+</div>
 
-<p class="govuk-body">Tempus egestas sed sed risus pretium quam vulputate dignissim suspendisse. Lectus quam id leo in.</p>
-
-<p class="govuk-body">In hac habitasse platea dictumst donec in purus et enim sodales pharetra:</p>
-<ul class="govuk-list govuk-list--bullet">
-    <li>Sed nisl felis, commodo eu bibendum</li>
-    <li>In hac habitasse platea dictumst donec</li>
-    <li>Quisque vel ex porttitor accumsan massa egestas</li>
-</ul>
+<p class="govuk-body">Google Analytics sets the following cookies:</p>
 
 {{ govukTable({
   head: [
     {
-      text: "Nominus"
+      text: "Name"
     },
     {
-      text: "Bibendum"
+      text: "Purpose"
     },
     {
-      text: "Porttitor"
+      text: "Expires"
     }
   ],
   rows: [
@@ -42,10 +42,10 @@
         text: "_ga"
       },
       {
-        text: "Maecenas id molestie orci nec suscipit neque vivamus."
+        text: "Used to distinguish users to help us count how many people visit the site"
       },
       {
-          text: "2 annus"
+          text: "2 years"
       }
     ],
     [
@@ -53,10 +53,10 @@
         text: "_gid"
       },
       {
-        text: "Maecenas id molestie orci nec suscipit neque vivamus."
+        text: "Used to distinguish users to help us count how many people visit the site"
       },
       {
-        text: "24 horrors"
+        text: "24 hours"
       }
     ],
     [
@@ -64,31 +64,32 @@
         text: "_gat_UA-133839203_4"
       },
       {
-        text: "Maecenas id molestie orci nec suscipit neque vivamus."
+        text: "Used to protect the Google Analytics server by limiting the number of requests being made"
       },
       {
-        text: "1 momento"
+        text: "1 minute"
       }
     ]
   ]
 }) }}
 
-<p class="govuk-body">Tempus egestas sed sed risus pretium quam vulputate dignissim suspendisse.</p>
+<hr class="govuk-section-break govuk-section-break--m">
 
-<h2 class="govuk-heading-m">Septimus cwcis</h2>
+<h2 class="govuk-heading-m">Strictly necessary cookies</h2>
 
-<p class="govuk-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+<p class="govuk-body">These essential cookies remember your information and keep it secure while you use the service.</p>
+<p class="govuk-body">They always need to be on.</p>
 
 {{ govukTable({
   head: [
     {
-      text: "Nominus"
+      text: "Name"
     },
     {
-      text: "Bibendum"
+      text: "Purpose"
     },
     {
-      text: "Porttitor"
+      text: "Expires"
     }
   ],
   rows: [
@@ -97,10 +98,10 @@
         text: "htbhf.sid"
       },
       {
-        text: "Duis ac dui elementum fermentum."
+        text: "Used for session management"
       },
       {
-          text: "Quisque vel ex 30 porttitor."
+          text: "30 minutes after you open each webpage"
       }
     ],
     [
@@ -108,11 +109,13 @@
         text: "lang"
       },
       {
-        text: "Morbi porta tellus diam."
+        text: "To remember your choice of language"
       },
       {
-        text: "Quisque vel ex 30 porttitor."
+        text: "30 minutes after you open each webpage"
       }
     ]
   ]
 }) }}
+
+<p class="govuk-body">Find out more about cookies on <a class="govuk-link" href="https://www.gov.uk/help/cookie-details">GOV.UK</a>.</p>

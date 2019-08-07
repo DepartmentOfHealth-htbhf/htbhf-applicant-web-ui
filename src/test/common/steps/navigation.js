@@ -1,4 +1,4 @@
-const { Given, When } = require('cucumber')
+const { Given, When, Then } = require('cucumber')
 const { assert } = require('chai')
 
 const pages = require('./pages')
@@ -142,8 +142,8 @@ const runPageActions = async (actions) => {
 
 const enterDetailsUpToPage = async (page, actions) => {
   try {
-    await pages.overview.open(pages.url)
-    await pages.overview.clickStartButton()
+    await pages.guidance.openApplyPage(pages.url)
+    await pages.guidance.clickStartButton()
     await pages.waitForFirstPage()
 
     const pageIndex = getPageIndex(page)
@@ -168,6 +168,10 @@ Given(/^I have entered my details up to the (.*) page$/, async function (page) {
   }
 })
 
+Given(/^I am starting a new application$/, async function () {
+  await pages.guidance.openApplyPage(pages.url)
+})
+
 When(/^I click the Cookies link$/, async function () {
   await pages.overview.clickCookieLink()
 })
@@ -182,4 +186,12 @@ When(/^I go directly to the send code page$/, async function () {
 
 When(/^I go directly to the enter code page$/, async function () {
   await pages.enterCode.openDirect(pages.url)
+})
+
+When(/^I select to start the process$/, async function () {
+  await pages.guidance.clickStartButton()
+})
+
+Then(/^I am shown the first page of the application$/, async function () {
+  await pages.waitForFirstPage()
 })
