@@ -1,5 +1,5 @@
-const { CHECK_URL, TERMS_AND_CONDITIONS_URL, CONFIRM_URL } = require('../common/constants')
-const { stateMachine, actions, states } = require('../common/state-machine')
+const { CHECK_URL, TERMS_AND_CONDITIONS_URL, CONFIRM_URL } = require('../../common/constants')
+const { stateMachine, actions, states } = require('../../common/state-machine')
 
 const { IS_PATH_ALLOWED, GET_NEXT_ALLOWED_PATH } = actions
 
