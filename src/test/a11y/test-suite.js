@@ -190,6 +190,7 @@ const runAllTests = async () => {
     await runILiveInScotlandTest(results)
     await runGuidancePageTest(results)
     handleTestResults(results)
+    console.log(`Finished running accessibility tests against ${BASE_URL}`)
   } catch (error) {
     console.error(error)
     process.exit(1)
