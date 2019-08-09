@@ -1,8 +1,8 @@
 const test = require('tape')
 const sinon = require('sinon')
-const { CHECK_URL, TERMS_AND_CONDITIONS_URL, CONFIRM_URL } = require('../common/constants')
-const { getPathsInSequence, handleRequestForPath } = require('./handle-path-request')
-const { states } = require('../common/state-machine')
+const { CONFIRM_URL } = require('../../common/constants')
+const { handleRequestForPath } = require('./handle-path-request')
+const { states } = require('../../common/state-machine')
 
 const steps = [{ path: '/first', next: () => '/second' }, { path: '/second' }]
 
@@ -11,14 +11,6 @@ const config = {
     OVERVIEW_URL: '/'
   }
 }
-
-test('getPathsInSequence() returns the correct sequence of paths', (t) => {
-  const expected = ['/first', '/second', CHECK_URL, TERMS_AND_CONDITIONS_URL, CONFIRM_URL]
-  const result = getPathsInSequence(steps)
-
-  t.deepEqual(result, expected, 'returns the correct sequence of paths')
-  t.end()
-})
 
 test('handleRequestForPath() should set next allowed path to first in sequence if none exists on session', (t) => {
   const req = {
@@ -73,7 +65,7 @@ test('handleRequestForPath() should call next() if requested path is allowed', (
   t.end()
 })
 
-test(`handleRequestForPath() should destroy the session and redirect when navigating away from ${CONFIRM_URL}`, (t) => {
+test(`handleRequestForPath() should destroy the session and redirect to root when navigating away from ${CONFIRM_URL} to a path in sequence`, (t) => {
   const destroy = sinon.spy()
   const clearCookie = sinon.spy()
   const redirect = sinon.spy()
@@ -100,7 +92,7 @@ test(`handleRequestForPath() should destroy the session and redirect when naviga
   t.end()
 })
 
-test(`handleRequestForPath() should destroy the session and redirect to requested guidance page when navigating away from ${CONFIRM_URL}`, (t) => {
+test(`handleRequestForPath() should destroy the session when navigating away from ${CONFIRM_URL} to a path not in sequence`, (t) => {
   const destroy = sinon.spy()
   const clearCookie = sinon.spy()
   const redirect = sinon.spy()
@@ -123,6 +115,7 @@ test(`handleRequestForPath() should destroy the session and redirect to requeste
 
   t.equal(destroy.called, true, 'it should destroy the session')
   t.equal(clearCookie.calledWith('lang'), true, 'it should clear language preference cookie')
-  t.equal(redirect.calledWith('/what-you-get'), true, 'it should call redirect() with correct guidance page path')
+  t.equal(next.called, true, 'it should call next()')
+  t.equal(redirect.called, false, 'it should not call redirect()')
   t.end()
 })
