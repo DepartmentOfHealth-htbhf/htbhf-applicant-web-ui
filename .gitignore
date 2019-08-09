@@ -32,6 +32,10 @@ node_modules/
 .idea/
 .DS_Store
 
+# visual studio code
+.history/
+launch.json
+
 # browser tests
 test/screenshots
 
