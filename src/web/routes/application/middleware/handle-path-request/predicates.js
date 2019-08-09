@@ -1,8 +1,8 @@
 const stepNotNavigable = (step, req) => step && typeof step.isNavigable === 'function' && !step.isNavigable(req.session)
 
-const isPathInSequence = (path, sequence) => sequence.includes(path)
+const isPathInApplicationFlow = (path, sequence) => sequence.includes(path)
 
 module.exports = {
   stepNotNavigable,
-  isPathInSequence
+  isPathInApplicationFlow
 }

@@ -1,10 +1,10 @@
 const test = require('tape')
-const { isPathInSequence } = require('./handle-path-request')
+const { isPathInApplicationFlow } = require('./predicates')
 
-test('isPathInSequence()', (t) => {
+test('isPathInApplicationFlow()', (t) => {
   const sequence = ['/first', '/second', '/third']
 
-  t.equal(isPathInSequence('/second', sequence), true, 'returns true for a path in the sequence')
-  t.equal(isPathInSequence('/not-in-sequence', sequence), false, 'returns false for a path not in the sequence')
+  t.equal(isPathInApplicationFlow('/second', sequence), true, 'returns true for a path in the sequence')
+  t.equal(isPathInApplicationFlow('/not-in-sequence', sequence), false, 'returns false for a path not in the sequence')
   t.end()
 })

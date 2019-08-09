@@ -1,6 +1,6 @@
 const { CONFIRM_URL } = require('../../common/constants')
 const { stateMachine, actions, states } = require('../../common/state-machine')
-const { isPathInSequence, stepNotNavigable } = require('./predicates')
+const { isPathInApplicationFlow, stepNotNavigable } = require('./predicates')
 const { getPathsInSequence } = require('./selectors')
 
 const { IS_PATH_ALLOWED, GET_NEXT_ALLOWED_PATH } = actions
@@ -11,7 +11,7 @@ const middleware = (config, pathsInSequence, step) => (req, res, next) => {
     req.session.destroy()
     res.clearCookie('lang')
 
-    if (isPathInSequence(req.path, pathsInSequence)) {
+    if (isPathInApplicationFlow(req.path, pathsInSequence)) {
       return res.redirect(config.environment.OVERVIEW_URL)
     }
 
@@ -42,7 +42,5 @@ const middleware = (config, pathsInSequence, step) => (req, res, next) => {
 const handleRequestForPath = (config, steps, step) => middleware(config, getPathsInSequence(steps), step)
 
 module.exports = {
-  isPathInSequence,
-  getPathsInSequence,
   handleRequestForPath
 }
