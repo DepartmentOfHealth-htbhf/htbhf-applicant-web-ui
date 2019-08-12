@@ -50,7 +50,7 @@ test('registerSteps() throws an error if toggle is not boolean', (t) => {
   const steps = [step2]
   const config = { STEP_2_ENABLED: 'elephant' }
   const result = () => registerSteps(config, steps)
-  t.throws(result, /Invalid toggle config value for step {"path":"\/second","toggle":"STEP_2_ENABLED"}. Config values for toggles must be boolean/, 'throws an error if toggle is not boolean')
+  t.throws(result, /Invalid toggle config value \[STEP_2_ENABLED:elephant\] for step {"path":"\/second","toggle":"STEP_2_ENABLED"}. Error: Can’t coerce elephant to boolean/, 'throws an error if toggle is not boolean')
   t.end()
 })
 
