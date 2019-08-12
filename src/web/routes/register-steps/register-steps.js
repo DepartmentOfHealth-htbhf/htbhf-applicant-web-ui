@@ -1,25 +1,42 @@
-const { isUndefined, isBoolean, isString } = require('./predicates')
+const { isUndefined, isString } = require('./predicates')
+const { toBooleanStrict } = require('./to-boolean-strict')
 
-const isInvalidFeatureToggleConfigValue = toggleValue => !isUndefined(toggleValue) && !isBoolean(toggleValue)
-
+/**
+ *
+ * All steps are registered except when:
+ * - a toggle exists on the step but is undefined in config
+ * - a toggle exists on the step and config for toggle is set to false
+ *
+ * Invalid toggle or config will throw errors:
+ * - toggle must be a string
+ * - config must be a boolean (if it exists)
+ *
+ * N.B. shouldRegisterStep coerces string representations of 'true' and 'false' to boolean
+ * as it is assumed the config values will be set as environment variables.
+ */
 const shouldRegisterStep = config => step => {
-  if (isUndefined(step.toggle)) {
+  const toggleName = step.toggle
+
+  if (isUndefined(toggleName)) {
     return true
   }
 
-  if (!isString(step.toggle)) {
+  if (!isString(toggleName)) {
     throw new Error(`Invalid toggle for step ${JSON.stringify(step)}. Toggle keys must be a string`)
   }
 
-  const toggleValue = config[step.toggle]
-
-  if (isInvalidFeatureToggleConfigValue(toggleValue)) {
-    throw new Error(`Invalid toggle config value for step ${JSON.stringify(step)}. Config values for toggles must be boolean`)
+  try {
+    const toggleValue = toBooleanStrict(config[toggleName])
+    return isUndefined(toggleValue) ? false : toggleValue
+  } catch (error) {
+    throw new Error(`Invalid toggle config value [${toggleName}:${config[toggleName]}] for step ${JSON.stringify(step)}. ${error}`)
   }
-
-  return toggleValue
 }
 
+/**
+ *
+ * Removes steps from array that are toggled off based on logic in shouldRegisterStep filter
+ */
 const registerSteps = (config, steps) => steps.filter(shouldRegisterStep(config))
 
 module.exports = {
