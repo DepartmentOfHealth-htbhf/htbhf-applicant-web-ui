@@ -3,5 +3,6 @@ require('dotenv').config()
 module.exports = {
   environment: require('./environment'),
   server: require('./server'),
-  redis: require('./redis')
+  redis: require('./redis'),
+  features: require('./features')
 }
