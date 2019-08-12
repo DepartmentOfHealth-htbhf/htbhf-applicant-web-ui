@@ -1,11 +1,13 @@
-const isInvalidFeatureToggleConfigValue = toggleValue => typeof toggleValue !== 'undefined' && typeof toggleValue !== 'boolean'
+const { isUndefined, isBoolean, isString } = require('./predicates')
+
+const isInvalidFeatureToggleConfigValue = toggleValue => !isUndefined(toggleValue) && !isBoolean(toggleValue)
 
 const shouldRegisterStep = config => step => {
-  if (typeof step.toggle === 'undefined') {
+  if (isUndefined(step.toggle)) {
     return true
   }
 
-  if (typeof step.toggle !== 'string') {
+  if (!isString(step.toggle)) {
     throw new Error(`Invalid toggle for step ${JSON.stringify(step)}. Toggle keys must be a string`)
   }
 
