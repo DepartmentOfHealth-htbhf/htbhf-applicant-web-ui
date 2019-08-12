@@ -68,6 +68,13 @@
     "explanation": "We need this to confirm your identity and eligibility. We'll send your prepaid card to this address.",
     "hint": "Enter the first line of your address"
   },
+  "postcode": {
+    "title": "What’s your address?",
+    "heading": "What’s your address?",
+    "formDescription": "If you claim any benefits you must use the same address registered with the benefits agency (DWP or HMRC).",
+    "explanation": "We need this to confirm your identity and eligibility. We'll send your prepaid card to this address.",
+    "postcodeLabel": "Postcode"
+  },
   "phoneNumber": {
     "title": "What’s your mobile telephone number?",
     "heading": "What’s your mobile telephone number?",
