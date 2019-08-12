@@ -122,6 +122,7 @@ const runEndToEndTest = async (results) => {
 
     console.log('Getting confirmation code from', SESSION_CONFIRMATION_CODE_URL)
     const confirmationCode = await get(SESSION_CONFIRMATION_CODE_URL, requestCookie)
+    console.log(`Received confirmation code: ${confirmationCode}`)
 
     console.log('Testing', ENTER_CODE_URL)
     results.push(await pa11y(ENTER_CODE_URL))
