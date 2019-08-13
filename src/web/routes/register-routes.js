@@ -8,9 +8,9 @@ const { getLanguageBase } = require('./language')
 const { registerHoldingRoute } = require('./application/holding')
 const { registerPageNotFoundRoute } = require('./application/page-not-found')
 const { registerGuidanceRoutes } = require('./guidance')
-
 const { steps } = require('./application/steps')
 const { registerFormRoutes } = require('./application/register-form-routes')
+const { registerSteps } = require('./register-steps')
 
 const setCommonTemplateValues = (req, res, next) => {
   res.locals.htmlLang = req.language
@@ -27,14 +27,16 @@ const registerRoutes = (config, app) => {
   if (config.environment.MAINTENANCE_MODE) {
     registerHoldingRoute(config, app)
   } else {
-    const csrfProtection = csrf({})
-    registerFormRoutes(config, csrfProtection, steps, app)
-    registerCheckRoutes(steps, config, app)
-    registerTermsAndConditionsRoutes(csrfProtection, steps, config, app)
-    registerConfirmRoute(config, steps, app)
+    const registeredSteps = registerSteps(config.features, steps)
+    const csrfProtection = csrf()
+
+    registerFormRoutes(config, csrfProtection, registeredSteps, app)
+    registerCheckRoutes(registeredSteps, config, app)
+    registerTermsAndConditionsRoutes(csrfProtection, registeredSteps, config, app)
+    registerConfirmRoute(config, registeredSteps, app)
     registerCookiesRoute(app)
     registerPrivacyNoticeRoute(app)
-    registerGuidanceRoutes(config, steps, app)
+    registerGuidanceRoutes(config, registeredSteps, app)
 
     // Page not found route should always be registered last as it is a catch all route
     registerPageNotFoundRoute(app)
