@@ -12,7 +12,6 @@ const isNavigable = () => false
 
 const postcode = {
   path: '/postcode',
-  next: () => '/manual-address',
   template: 'postcode',
   pageContent,
   isNavigable
