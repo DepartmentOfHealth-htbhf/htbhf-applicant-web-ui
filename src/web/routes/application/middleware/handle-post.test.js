@@ -114,45 +114,6 @@ test('handlePost() adds next allowed step to session', (t) => {
   t.end()
 })
 
-test('handlePost() calls next() with error if no next property exists on step', (t) => {
-  const { handlePost } = proxyquire('./handle-post', { ...defaultValidator })
-
-  const steps = [{ path: '/first', next: () => '/second' }, { path: '/second' }]
-  const step = steps[1]
-  const req = {
-    session: {},
-    path: '/second'
-  }
-
-  const res = {}
-  const next = sinon.spy()
-
-  handlePost(steps, step)(req, res, next)
-
-  t.equal(next.calledWith(sinon.match.instanceOf(Error)), true, 'it should throw an error')
-  t.end()
-})
-
-test('handlePost() calls next() with error if next property is blank', (t) => {
-  const { handlePost } = proxyquire('./handle-post', { ...defaultValidator })
-
-  const steps = [{ path: '/first', next: () => '/second' }, { path: '/second' }]
-  const step = steps[1]
-  const req = {
-    session: {},
-    path: '/second',
-    next: ''
-  }
-
-  const res = {}
-  const next = sinon.spy()
-
-  handlePost(steps, step)(req, res, next)
-
-  t.equal(next.calledWith(sinon.match.instanceOf(Error)), true, 'it should throw an error')
-  t.end()
-})
-
 test('handlePost() should invalidate review if required by step', (t) => {
   const dispatch = sinon.spy()
   const INVALIDATE_REVIEW = 'INVALIDATE_REVIEW'
