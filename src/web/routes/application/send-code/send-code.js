@@ -35,7 +35,6 @@ const isNavigable = (session) => session[CONFIRMATION_CODE_ENTERED_SESSION_PROPE
 
 const sendCode = {
   path: '/send-code',
-  next: () => '/enter-code',
   template: 'send-code',
   pageContent,
   validate,
