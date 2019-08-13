@@ -34,7 +34,6 @@ const contentSummary = (req) => ({
 
 const manualAddress = {
   path: '/manual-address',
-  next: () => '/phone-number',
   template: 'manual-address',
   pageContent,
   validate,

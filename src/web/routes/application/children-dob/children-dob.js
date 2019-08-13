@@ -39,7 +39,6 @@ const behaviourForPost = [
 
 const childrenDob = {
   path: PATH,
-  next: () => '/are-you-pregnant',
   template: 'children-dob',
   pageContent,
   isNavigable,

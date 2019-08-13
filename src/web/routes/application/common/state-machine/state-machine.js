@@ -32,7 +32,7 @@ const isNextPathNavigable = (nextStep, req) => isNil(nextStep) || isNil(nextStep
  */
 const getNextNavigablePath = (path, req, steps) => {
   const thisStep = getStepForPath(path, steps)
-  const nextPath = getNextForStep(req, thisStep)
+  const nextPath = getNextForStep(req, thisStep, steps)
   const nextStep = getStepForPath(nextPath, steps)
   if (isNextPathNavigable(nextStep, req)) {
     return nextPath

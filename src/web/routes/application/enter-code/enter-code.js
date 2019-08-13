@@ -43,7 +43,6 @@ const isNavigable = (session) => session[CONFIRMATION_CODE_ENTERED_SESSION_PROPE
 
 const enterCode = {
   path: '/enter-code',
-  next: () => '/check',
   template: 'enter-code',
   pageContent,
   behaviourForGet,
