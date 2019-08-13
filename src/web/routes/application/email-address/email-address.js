@@ -30,7 +30,6 @@ const behaviourForPost = (req, res, next) => {
 
 const emailAddress = {
   path: '/email-address',
-  next: () => '/send-code',
   template: 'email-address',
   validate,
   pageContent,

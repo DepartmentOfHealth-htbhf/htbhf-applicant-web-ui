@@ -31,7 +31,6 @@ const behaviourForPost = (req, res, next) => {
 
 const phoneNumber = {
   path: '/phone-number',
-  next: () => '/email-address',
   template: 'phone-number',
   validate,
   sanitize,
