@@ -11,6 +11,7 @@ const { doYouHaveChildren } = require('./do-you-have-children')
 const { childrenDob } = require('./children-dob')
 const { sendCode } = require('./send-code')
 const { enterCode } = require('./enter-code')
+const { postcode } = require('./postcode')
 
 const steps = [
   doYouLiveInScotland,
@@ -21,6 +22,7 @@ const steps = [
   areYouPregnant,
   enterName,
   enterNino,
+  postcode,
   manualAddress,
   phoneNumber,
   emailAddress,
