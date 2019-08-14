@@ -1,16 +1,19 @@
 const csrf = require('csurf')
-const { registerConfirmRoute } = require('./application/confirm')
-const { registerCheckRoutes } = require('./application/check')
-const { registerTermsAndConditionsRoutes } = require('./application/terms-and-conditions')
 const { registerCookiesRoute } = require('./cookies')
 const { registerPrivacyNoticeRoute } = require('./privacy-notice')
 const { getLanguageBase } = require('./language')
-const { registerHoldingRoute } = require('./application/holding')
-const { registerPageNotFoundRoute } = require('./application/page-not-found')
+const { registerHoldingRoute } = require('./holding')
+const { registerPageNotFoundRoute } = require('./page-not-found')
 const { registerGuidanceRoutes } = require('./guidance')
-const { steps } = require('./application/steps')
-const { registerFormRoutes } = require('./application/register-form-routes')
 const { registerSteps } = require('./register-steps')
+
+const {
+  registerConfirmRoute,
+  registerCheckRoutes,
+  registerTermsAndConditionsRoutes,
+  registerFormRoutes,
+  steps
+} = require('./application')
 
 const setCommonTemplateValues = (req, res, next) => {
   res.locals.htmlLang = req.language
