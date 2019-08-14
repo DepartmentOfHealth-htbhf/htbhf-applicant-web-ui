@@ -198,36 +198,6 @@ async function enterConfirmationCodeAndSubmit (confirmationCode) {
   }
 }
 
-async function completeTheApplicationAsAPregnantWoman () {
-  await enterDoYouLiveInScotlandNoAndSubmit()
-  await enterDateOfBirthAndSubmit()
-  await selectYesOnDoYouHaveChildrenPage()
-  await submitChild3OrUnderDetails()
-  await selectYesOnPregnancyPage()
-  await enterNameAndSubmit()
-  await enterNinoAndSubmit()
-  await enterAddressAndSubmit()
-  await enterPhoneNumberAndSubmit()
-  await enterEmailAddressAndSubmit()
-  await selectTextOnSendCode()
-  await enterConfirmationCodeAndSubmit()
-}
-
-async function completeTheApplicationAsAWomanWhoIsNotPregnant () {
-  await enterDoYouLiveInScotlandNoAndSubmit()
-  await enterDateOfBirthAndSubmit()
-  await selectYesOnDoYouHaveChildrenPage()
-  await submitChild3OrUnderDetails()
-  await selectNoOnPregnancyPage()
-  await enterNameAndSubmit()
-  await enterNinoAndSubmit()
-  await enterAddressAndSubmit()
-  await enterPhoneNumberAndSubmit()
-  await enterEmailAddressAndSubmit()
-  await selectTextOnSendCode()
-  await enterConfirmationCodeAndSubmit()
-}
-
 async function setupWiremockMappingsWithStatus (status) {
   if (testsRequireApiMocks()) {
     await setupSuccessfulWiremockClaimMappingWithStatus(status)
@@ -266,19 +236,14 @@ When(/^I click continue$/, async function () {
   await pages.genericPage.submitForm()
 })
 
-When(/^I complete the application with valid details$/, async function () {
-  await completeTheApplicationAsAWomanWhoIsNotPregnant()
-})
-
 module.exports = {
   enterDateOfBirthAndSubmit,
   enterNameAndSubmit,
   enterNinoAndSubmit,
   selectNoOnPregnancyPage,
+  selectYesOnPregnancyPage,
   enterAddressAndSubmit,
   enterPhoneNumberAndSubmit,
-  completeTheApplicationAsAPregnantWoman,
-  completeTheApplicationAsAWomanWhoIsNotPregnant,
   setupWiremockMappingsWithStatus,
   setupWiremockUpdatedClaimMapping,
   deleteWiremockMappings,
