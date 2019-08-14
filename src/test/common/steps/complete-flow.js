@@ -1,9 +1,9 @@
 const { Given, When } = require('cucumber')
 
 const {
-  completeTheApplicationAsAPregnantWoman,
-  completeTheApplicationAsAWomanWhoIsNotPregnant
-} = require('./common-steps')
+  enterDetailsUpToCheckDetailsPageForAPregnantWoman,
+  enterDetailsUpToCheckDetailsPageForANotPregnantWoman
+} = require('./navigation')
 const { setupWiremockMappingsWithStatus, setupWiremockUpdatedClaimMapping } = require('./common-steps')
 const { acceptTsAndCsAndSubmitApplication } = require('./terms-and-conditions-steps')
 
@@ -17,7 +17,7 @@ Given('I am on the first page of the application', async function () {
 
 Given('I am on the check details page having entered valid details for a pregnant woman', async function () {
   await pages.startApplication()
-  await completeTheApplicationAsAPregnantWoman()
+  await enterDetailsUpToCheckDetailsPageForAPregnantWoman()
   await pages.check.waitForPageLoad()
 })
 
@@ -28,11 +28,15 @@ Given(/^I have completed my application$/, async function () {
 })
 
 When(/^I complete the application with valid details for a pregnant woman$/, async function () {
-  await completeTheApplicationAsAPregnantWoman()
+  await enterDetailsUpToCheckDetailsPageForAPregnantWoman()
 })
 
 When(/^I complete the application with valid details for a woman who is not pregnant$/, async function () {
-  await completeTheApplicationAsAWomanWhoIsNotPregnant()
+  await enterDetailsUpToCheckDetailsPageForANotPregnantWoman()
+})
+
+When(/^I complete the application with valid details$/, async function () {
+  await enterDetailsUpToCheckDetailsPageForANotPregnantWoman()
 })
 
 Given(/^I submit an application with valid details$/, async function () {
@@ -49,7 +53,7 @@ When(/^I submit an application which returns a (.*) eligibility status$/, async 
 
 async function submitApplicationWithStatus (status) {
   await pages.startApplication()
-  await completeTheApplicationAsAPregnantWoman()
+  await enterDetailsUpToCheckDetailsPageForAPregnantWoman()
   await pages.check.waitForPageLoad()
   await setupWiremockMappingsWithStatus(status)
   await acceptTsAndCsAndSubmitApplication()
@@ -57,7 +61,7 @@ async function submitApplicationWithStatus (status) {
 
 async function submitApplicationForUpdatedClaim () {
   await pages.startApplication()
-  await completeTheApplicationAsAPregnantWoman()
+  await enterDetailsUpToCheckDetailsPageForAPregnantWoman()
   await pages.check.waitForPageLoad()
   await setupWiremockUpdatedClaimMapping()
   await acceptTsAndCsAndSubmitApplication()

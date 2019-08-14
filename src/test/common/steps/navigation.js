@@ -7,6 +7,7 @@ const {
   enterNinoAndSubmit,
   enterDateOfBirthAndSubmit,
   selectNoOnPregnancyPage,
+  selectYesOnPregnancyPage,
   enterAddressAndSubmit,
   enterPhoneNumberAndSubmit,
   enterDoYouLiveInScotlandNoAndSubmit,
@@ -30,6 +31,10 @@ const SEND_CODE_PAGE = 'send code'
 const ENTER_CODE_PAGE = 'enter code'
 const CHECK_PAGE = 'check details'
 const ENTER_CHILDREN_DOB_PAGE = 'enter your childrens dates of birth'
+
+const DEFAULT_ACTION_OPTIONS = {
+  isClaimantPregnant: false
+}
 
 const pageActions = [
   {
@@ -66,8 +71,8 @@ const pageActions = [
   },
   {
     page: ENTER_NAME_PAGE,
-    action: async () => {
-      await selectNoOnPregnancyPage()
+    action: async (actionOptions) => {
+      actionOptions.isClaimantPregnant ? await selectYesOnPregnancyPage() : await selectNoOnPregnancyPage()
       await pages.enterName.waitForPageLoad()
     }
   },
@@ -134,13 +139,13 @@ const getPageIndex = (pageName) => pageActions.findIndex(pageAction => pageActio
 
 const getActionsForPage = (index, actions) => actions.slice(0, index + 1).map(page => page.action)
 
-const runPageActions = async (actions) => {
+const runPageActions = async (actions, actionOptions) => {
   for (const action of actions) {
-    await action()
+    await action(actionOptions)
   }
 }
 
-const enterDetailsUpToPage = async (page, actions) => {
+const enterDetailsUpToPage = async (page, actions, actionOptions) => {
   try {
     await pages.guidance.openApplyPage(pages.url)
     await pages.guidance.clickStartButton()
@@ -152,16 +157,36 @@ const enterDetailsUpToPage = async (page, actions) => {
     }
 
     const actionsForPage = getActionsForPage(pageIndex, actions)
-    await runPageActions(actionsForPage)
+    await runPageActions(actionsForPage, actionOptions)
   } catch (error) {
     assert.fail(`Unexpected error caught trying to enterDetailsUpToPage ${page} - ${error}`)
     throw new Error(error)
   }
 }
 
+const enterDetailsUpToCheckDetailsPage = async (actionOptions) => {
+  await enterDetailsUpToPage(CHECK_PAGE, pageActions, actionOptions)
+}
+
+const enterDetailsUpToCheckDetailsPageForAPregnantWoman = async () => {
+  const actionOptions = {
+    ...DEFAULT_ACTION_OPTIONS,
+    isClaimantPregnant: true
+  }
+  await enterDetailsUpToCheckDetailsPage(actionOptions)
+}
+
+const enterDetailsUpToCheckDetailsPageForANotPregnantWoman = async () => {
+  const actionOptions = {
+    ...DEFAULT_ACTION_OPTIONS,
+    isClaimantPregnant: false
+  }
+  await enterDetailsUpToCheckDetailsPage(actionOptions)
+}
+
 Given(/^I have entered my details up to the (.*) page$/, async function (page) {
   try {
-    await enterDetailsUpToPage(page, pageActions)
+    await enterDetailsUpToPage(page, pageActions, DEFAULT_ACTION_OPTIONS)
   } catch (error) {
     assert.fail(`Unexpected error caught trying to enter details up to page ${page} - ${error}`)
     throw new Error(error)
@@ -195,3 +220,8 @@ When(/^I select to start the process$/, async function () {
 Then(/^I am shown the first page of the application$/, async function () {
   await pages.waitForFirstPage()
 })
+
+module.exports = {
+  enterDetailsUpToCheckDetailsPageForAPregnantWoman,
+  enterDetailsUpToCheckDetailsPageForANotPregnantWoman
+}
