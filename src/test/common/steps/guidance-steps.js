@@ -41,10 +41,10 @@ Then(/^my session has not been destroyed$/, async function () {
 })
 
 async function assertGuidancePageHeadersCorrect (pageName) {
-  const h1Text = await pages.cookies.getH1Text()
+  const h1Text = await pages.guidance.getH1Text()
   expect(h1Text.toString().trim()).to.be.equal('Get money off milk, food and vitamins (Healthy Start)',
     'expected guidance page H1 text to be correct')
-  const h2Text = await pages.cookies.getH2Text()
+  const h2Text = await pages.guidance.getH2Text()
   expect(h2Text.toString().trim()).to.be.equal(pageName, 'expected guidance page H2 text to be correct')
 }
 
