@@ -1,7 +1,7 @@
 'use strict'
 
 const SubmittablePage = require('./submittable-page')
-const UNSUCCESSFUL_APPLICATION_PAGE_TITLE = 'GOV.UK - Application unsuccessful'
+const UNSUCCESSFUL_APPLICATION_PAGE_TITLE = 'GOV.UK - Application not successful'
 const GOV_UK_BODY = 'govuk-body'
 
 /**

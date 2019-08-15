@@ -1,6 +1,13 @@
 {% extends "templates/page.njk" %}
+{% from "panel/macro.njk" import govukPanel %}
 
 {% block pageContent %}
-  <h1 class="govuk-heading-xl">{{ title }}</h1>
-  <p class="govuk-body">{{ content }}</p>
+    {{ govukPanel({
+        titleText: title,
+        html: subTitle | nl2br | safe,
+        classes: "govuk-!-margin-bottom-5"
+    }) }}
+
+    {% include "locales/" + language + "/unsuccessful/" + eligibilityStatus + ".html" %}
+
 {% endblock %}

@@ -5,9 +5,10 @@ const pages = require('./pages')
 const { deleteWiremockMappings } = require('./common-steps')
 
 const statusToBodyTextMap = {
-  'INELIGIBLE': 'You are not on a qualifying benefit',
+  // *during private beta* INELIGIBLE messaging refers to being unable to find someone in our records, as all invited applicants are eligible
+  'INELIGIBLE': 'We cannot find you in our records. You may have entered something wrong.',
   'PENDING': 'Your benefit status is pending',
-  'NO_MATCH': 'You have not been found',
+  'NO_MATCH': 'We cannot find you in our records. You may have entered something wrong.',
   'ERROR': 'An error occurred whilst checking your eligibility',
   'DUPLICATE': 'A claim already exists with your details'
 }

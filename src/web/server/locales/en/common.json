@@ -109,7 +109,7 @@
     "weJustSentASixDigitCodeTo": "We just sent a 6 digit code to",
     "itMayTakeAFewMinutesToArrive": "It may take a few minutes to arrive.",
     "codeLabel": "Code",
-    "requestNewCodeLink": "<a href=\"/send-code\" id=\"{{requestNewCodeLinkId}}\">Request a new code</a> if it does not arrive"
+    "requestNewCodeLink": "<a class=\"govuk-link\" href=\"/send-code\" id=\"{{requestNewCodeLinkId}}\">Request a new code</a> if it does not arrive"
   },
   "check": {
     "title": "Check your answers",
@@ -131,15 +131,10 @@
     "subTitle": "You’re entitled to\n<strong>£{{totalVoucherValue}}</strong> a week. Your first payment\nwill be <strong>£{{totalVoucherValueForFourWeeks}}</strong>."
   },
   "unsuccessfulApplication": {
-    "title": "Application unsuccessful",
-    "heading": "Application unsuccessful",
-    "content": {
-      "ineligible": "You are not on a qualifying benefit",
-      "pending": "Your benefit status is pending",
-      "no_match": "You have not been found",
-      "error": "An error occurred whilst checking your eligibility",
-      "duplicate": "A claim already exists with your details"
-    }
+    "title": "Application not successful",
+    "subTitle": "You will not be sent a Healthy Start card",
+    "heading": "Application not successful",
+    "content": "See locales/en/unsuccessful/*.html"
   },
   "cookies": {
     "title": "Cookies",
