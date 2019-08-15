@@ -109,7 +109,7 @@
     "weJustSentASixDigitCodeTo": "We just sent a 6 digit code to",
     "itMayTakeAFewMinutesToArrive": "It may take a few minutes to arrive.",
     "codeLabel": "Code",
-    "requestNewCodeLink": "<a href=\"/send-code\" id=\"{{requestNewCodeLinkId}}\">Request a new code</a> if it does not arrive"
+    "requestNewCodeLink": "<a class=\"govuk-link\" href=\"/send-code\" id=\"{{requestNewCodeLinkId}}\">Request a new code</a> if it does not arrive"
   },
   "check": {
     "title": "Check your answers",
