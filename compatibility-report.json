@@ -24,7 +24,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 32000000
+              "duration": 26000000
             }
           },
           {
@@ -37,7 +37,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 535000000
+              "duration": 534000000
             }
           },
           {
@@ -46,11 +46,11 @@
             "line": 8,
             "name": "I complete the application with valid details for a pregnant woman",
             "match": {
-              "location": "src/test/common/steps/complete-flow.js:30"
+              "location": "src/test/common/steps/complete-flow.js:27"
             },
             "result": {
               "status": "passed",
-              "duration": 3626000000
+              "duration": 3621000000
             }
           },
           {
@@ -63,7 +63,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1781000000
+              "duration": 1812000000
             }
           },
           {
@@ -76,7 +76,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 353000000
+              "duration": 334000000
             }
           },
           {
@@ -89,7 +89,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 78000000
+              "duration": 85000000
             }
           },
           {
@@ -102,7 +102,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 42000000
+              "duration": 43000000
             }
           },
           {

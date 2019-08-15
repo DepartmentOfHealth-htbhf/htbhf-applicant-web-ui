@@ -24,7 +24,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 25000000
+              "duration": 38000000
             }
           },
           {
@@ -33,11 +33,11 @@
             "line": 7,
             "name": "I am starting a new application",
             "match": {
-              "location": "src/test/common/steps/navigation.js:196"
+              "location": "src/test/common/steps/navigation/steps.js:16"
             },
             "result": {
               "status": "passed",
-              "duration": 1644000000
+              "duration": 1829000000
             }
           },
           {
@@ -46,11 +46,11 @@
             "line": 8,
             "name": "I select to start the process",
             "match": {
-              "location": "src/test/common/steps/navigation.js:216"
+              "location": "src/test/common/steps/navigation/steps.js:36"
             },
             "result": {
               "status": "passed",
-              "duration": 348000000
+              "duration": 359000000
             }
           },
           {
@@ -59,7 +59,7 @@
             "line": 9,
             "name": "I am shown the first page of the application",
             "match": {
-              "location": "src/test/common/steps/navigation.js:220"
+              "location": "src/test/common/steps/navigation/steps.js:40"
             },
             "result": {
               "status": "passed",
