@@ -1,0 +1,38 @@
+{% extends "templates/form.njk" %}
+{% from "input/macro.njk" import govukInput %}
+{% from "fieldset/macro.njk" import govukFieldset %}
+{% from "details/macro.njk" import govukDetails %}
+{% from "inset-text/macro.njk" import govukInsetText %}
+{% from "macros/htbhf-form-description.njk" import htbhfFormDescription %}
+
+{% block formContent %}
+
+    {% call govukFieldset({
+        legend: {
+            text: heading,
+            classes: "govuk-fieldset__legend--xl",
+            isPageHeading: true
+        }
+    }) %}
+
+    {{ htbhfFormDescription(formDescription) }}
+
+    {{ govukInput({
+        label: {
+            text: postcodeLabel
+        },
+        classes: "govuk-input--width-10",
+        id: "postcode",
+        name: "postcode",
+        value: claim.postcode,
+        errorMessage: errors | getErrorForField('postcode'),
+        autocomplete: "off"
+    }) }}
+
+    {% endcall %}
+
+    {{ govukInsetText({
+        text: explanation
+    }) }}
+
+{% endblock %}
