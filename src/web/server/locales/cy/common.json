@@ -131,14 +131,9 @@
   },
   "unsuccessfulApplication": {
     "title": "Lorem ipsum dolor sit amet",
+    "subTitle": "Risus sed vulputate odio ut enim blandit",
     "heading": "Lorem ipsum dolor sit amet",
-    "content": {
-      "ineligible": "Risus sed vulputate odio",
-      "pending": "Excepteur sint occaecat cupidatat",
-      "no_match": "Eget, felis eget nunc lobortis mattis",
-      "error": "Excepteur sint occaecat",
-      "duplicate": "Hysbysiad preifatrwydd"
-    }
+    "content": "See locales/cy/unsuccessful/*.html"
   },
   "cookies": {
     "title": "Cwcis",

@@ -42,8 +42,9 @@ const getConfirmPage = (req, res, next) => {
   const eligibilityStatus = req.session.eligibilityStatus.toLowerCase()
   return res.render('unsuccessful-application', {
     title: req.t('unsuccessfulApplication.title'),
+    subTitle: req.t('unsuccessfulApplication.subTitle'),
     heading: req.t('unsuccessfulApplication.title'),
-    content: req.t(`unsuccessfulApplication.content.${eligibilityStatus}`)
+    eligibilityStatus
   })
 }
 
