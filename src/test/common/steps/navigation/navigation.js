@@ -9,7 +9,8 @@ const { features } = require('../../../../config')
 
 const getPageIndex = (stepActions, pageName, pages) => stepActions.findIndex(pageAction => pageAction.page(pages).getPageName() === pageName)
 
-// Uses isStepEnabled to enable/disable page navigation by the toggle specified
+// Uses isStepEnabled to enable / disable page navigation by the toggle specified
+// To be concise “features” is referenced directly rather than being an argument
 const getStepsUpToPage = (page, stepActions) => {
   const pageIndex = getPageIndex(stepActions, page, pages)
   if (pageIndex === -1) {
