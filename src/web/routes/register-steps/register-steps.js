@@ -1,5 +1,6 @@
 const { isUndefined, isString } = require('./predicates')
 const { toBooleanStrict } = require('./to-boolean-strict')
+const { logger } = require('../../logger')
 
 /**
  *
@@ -37,7 +38,10 @@ const isStepEnabled = config => step => {
  *
  * Removes steps from array that are toggled off based on logic in isStepEnabled filter
  */
-const registerSteps = (config, steps) => steps.filter(isStepEnabled(config))
+const registerSteps = (config, steps) => {
+  logger.info(`Registering steps using feature toggles ${JSON.stringify(config)}`)
+  return steps.filter(isStepEnabled(config))
+}
 
 module.exports = {
   registerSteps,
