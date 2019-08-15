@@ -11,10 +11,10 @@ const { toBooleanStrict } = require('./to-boolean-strict')
  * - toggle must be a string
  * - config must be a boolean (if it exists)
  *
- * N.B. shouldRegisterStep coerces string representations of 'true' and 'false' to boolean
+ * N.B. isStepEnabled coerces string representations of 'true' and 'false' to boolean
  * as it is assumed the config values will be set as environment variables.
  */
-const shouldRegisterStep = config => step => {
+const isStepEnabled = config => step => {
   const toggleName = step.toggle
 
   if (isUndefined(toggleName)) {
@@ -35,10 +35,11 @@ const shouldRegisterStep = config => step => {
 
 /**
  *
- * Removes steps from array that are toggled off based on logic in shouldRegisterStep filter
+ * Removes steps from array that are toggled off based on logic in isStepEnabled filter
  */
-const registerSteps = (config, steps) => steps.filter(shouldRegisterStep(config))
+const registerSteps = (config, steps) => steps.filter(isStepEnabled(config))
 
 module.exports = {
-  registerSteps
+  registerSteps,
+  isStepEnabled
 }
