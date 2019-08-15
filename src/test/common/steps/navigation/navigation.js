@@ -33,7 +33,7 @@ const enterDetailsUpToPage = async ({ page, stepActions = STEP_PAGE_ACTIONS, act
     await pages.guidance.clickStartButton()
     await Promise.each(getStepsUpToPage(page, stepActions), runPageActions(actionOptions))
   } catch (error) {
-    assert.fail(`Unexpected error caught trying to enterDetailsUpToPage ${page} - ${error}`)
+    assert.fail(`Unexpected error caught trying to enter details up to page ${page} - ${error}`)
     throw new Error(error)
   }
 }
