@@ -15,4 +15,3 @@ applications:
     - logit-ssl-drain
     - variable-service
     - notify-variable-service
-    - address-lookup-variable-service
