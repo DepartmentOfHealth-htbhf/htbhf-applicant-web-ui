@@ -10,13 +10,13 @@ const { URLS, BASE_URL } = require('./paths')
 
 const FIRST_APPLY_PAGE_URL = URLS['DO_YOU_LIVE_IN_SCOTLAND']
 
-const runAndAggregateIssueChecks = (url, result) => (acc, checkFn) => {
+const runAndAggregateIssueChecks = (url, result) => (results, checkFn) => {
   const resultOfCheck = checkFn(url, result)
   if (resultOfCheck !== null) {
-    return [...acc, resultOfCheck]
+    return [...results, resultOfCheck]
   }
 
-  return acc
+  return results
 }
 
 /*
