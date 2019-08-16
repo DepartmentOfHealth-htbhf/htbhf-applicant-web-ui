@@ -88,7 +88,7 @@ async function selectNoOnPregnancyPage () {
   }
 }
 
-async function enterAddressAndSubmit (addressLine1 = ADDRESS_LINE_1, addressLine2 = ADDRESS_LINE_2, townOrCity = TOWN, county = COUNTY, postcode = POSTCODE) {
+async function enterManualAddressAndSubmit (addressLine1 = ADDRESS_LINE_1, addressLine2 = ADDRESS_LINE_2, townOrCity = TOWN, county = COUNTY, postcode = POSTCODE) {
   try {
     await pages.manualAddress.line1InputField.enterValue(addressLine1)
     await pages.manualAddress.line2InputField.enterValue(addressLine2)
@@ -242,7 +242,7 @@ module.exports = {
   enterNinoAndSubmit,
   selectNoOnPregnancyPage,
   selectYesOnPregnancyPage,
-  enterAddressAndSubmit,
+  enterManualAddressAndSubmit,
   enterPhoneNumberAndSubmit,
   setupWiremockMappingsWithStatus,
   setupWiremockUpdatedClaimMapping,
