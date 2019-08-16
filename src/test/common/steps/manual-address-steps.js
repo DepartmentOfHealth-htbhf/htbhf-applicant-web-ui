@@ -1,7 +1,7 @@
 const { When, Then } = require('cucumber')
 
 const pages = require('./pages')
-const { enterAddressAndSubmit } = require('./common-steps')
+const { enterManualAddressAndSubmit } = require('./common-steps')
 const { assertFieldErrorAndLinkTextPresentAndCorrect, assertErrorHeaderTextPresent } = require('./common-assertions')
 const { LONG_STRING, BLANK_STRING } = require('./constants')
 
@@ -12,43 +12,43 @@ const VALID_COUNTY = 'Greater London'
 const VALID_POSTCODE = 'AA1 1AA'
 
 When(/^I enter an address with postcode (.*)$/, async function (postcode) {
-  await enterAddressAndSubmit(VALID_ADDRESS_LINE_1, VALID_ADDRESS_LINE_2, VALID_TOWN_OR_CITY, VALID_COUNTY, postcode)
+  await enterManualAddressAndSubmit(VALID_ADDRESS_LINE_1, VALID_ADDRESS_LINE_2, VALID_TOWN_OR_CITY, VALID_COUNTY, postcode)
 })
 
 When(/^I do not enter the first line of an address$/, async function () {
-  await enterAddressAndSubmit(BLANK_STRING, VALID_ADDRESS_LINE_2, VALID_TOWN_OR_CITY, VALID_COUNTY, VALID_POSTCODE)
+  await enterManualAddressAndSubmit(BLANK_STRING, VALID_ADDRESS_LINE_2, VALID_TOWN_OR_CITY, VALID_COUNTY, VALID_POSTCODE)
 })
 
 When(/I do not enter the 'town or city' of an address$/, async function () {
-  await enterAddressAndSubmit(VALID_ADDRESS_LINE_1, VALID_ADDRESS_LINE_2, BLANK_STRING, VALID_COUNTY, VALID_POSTCODE)
+  await enterManualAddressAndSubmit(VALID_ADDRESS_LINE_1, VALID_ADDRESS_LINE_2, BLANK_STRING, VALID_COUNTY, VALID_POSTCODE)
 })
 
 When(/I do not enter the 'county' of an address$/, async function () {
-  await enterAddressAndSubmit(VALID_ADDRESS_LINE_1, VALID_ADDRESS_LINE_2, VALID_TOWN_OR_CITY, BLANK_STRING, VALID_POSTCODE)
+  await enterManualAddressAndSubmit(VALID_ADDRESS_LINE_1, VALID_ADDRESS_LINE_2, VALID_TOWN_OR_CITY, BLANK_STRING, VALID_POSTCODE)
 })
 
 When(/^I enter in an address where the first line is too long$/, async function () {
-  await enterAddressAndSubmit(LONG_STRING, VALID_ADDRESS_LINE_2, VALID_TOWN_OR_CITY, VALID_COUNTY, VALID_POSTCODE)
+  await enterManualAddressAndSubmit(LONG_STRING, VALID_ADDRESS_LINE_2, VALID_TOWN_OR_CITY, VALID_COUNTY, VALID_POSTCODE)
 })
 
 When(/^I enter in an address where the second line is too long$/, async function () {
-  await enterAddressAndSubmit(VALID_ADDRESS_LINE_1, LONG_STRING, VALID_TOWN_OR_CITY, VALID_COUNTY, VALID_POSTCODE)
+  await enterManualAddressAndSubmit(VALID_ADDRESS_LINE_1, LONG_STRING, VALID_TOWN_OR_CITY, VALID_COUNTY, VALID_POSTCODE)
 })
 
 When(/^I enter in an address where the 'town or city' is too long$/, async function () {
-  await enterAddressAndSubmit(VALID_ADDRESS_LINE_1, VALID_ADDRESS_LINE_2, LONG_STRING, VALID_COUNTY, VALID_POSTCODE)
+  await enterManualAddressAndSubmit(VALID_ADDRESS_LINE_1, VALID_ADDRESS_LINE_2, LONG_STRING, VALID_COUNTY, VALID_POSTCODE)
 })
 
 When(/^I enter in an address where the 'county' is too long$/, async function () {
-  await enterAddressAndSubmit(VALID_ADDRESS_LINE_1, VALID_ADDRESS_LINE_2, LONG_STRING, LONG_STRING, VALID_POSTCODE)
+  await enterManualAddressAndSubmit(VALID_ADDRESS_LINE_1, VALID_ADDRESS_LINE_2, LONG_STRING, LONG_STRING, VALID_POSTCODE)
 })
 
 When(/^I do not enter the second line of an address$/, async function () {
-  await enterAddressAndSubmit(VALID_ADDRESS_LINE_1, BLANK_STRING, VALID_TOWN_OR_CITY, VALID_COUNTY, VALID_POSTCODE)
+  await enterManualAddressAndSubmit(VALID_ADDRESS_LINE_1, BLANK_STRING, VALID_TOWN_OR_CITY, VALID_COUNTY, VALID_POSTCODE)
 })
 
 When(/^I do not enter in any address fields$/, async function () {
-  await enterAddressAndSubmit(BLANK_STRING, BLANK_STRING, BLANK_STRING, BLANK_STRING, BLANK_STRING)
+  await enterManualAddressAndSubmit(BLANK_STRING, BLANK_STRING, BLANK_STRING, BLANK_STRING, BLANK_STRING)
 })
 
 Then(/^I am shown the address page$/, async function () {
