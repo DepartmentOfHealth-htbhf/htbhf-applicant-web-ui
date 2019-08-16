@@ -80,6 +80,10 @@ Then(/^The back link points to the Enter your children’s dates of birth page$/
   await assertBackLinkPointsToPage(pages.enterChildrenDOB)
 })
 
+Then(/^I am informed that the first child must be under four$/, async function () {
+  await assertChildUnder4ErrorPresentForChild(1)
+})
+
 Then(/^I am informed that I need to enter the date of birth for the first child$/, async function () {
   await assertDateOfBirthErrorPresentForChild(1)
 })
@@ -130,6 +134,18 @@ async function assertDateOfBirthErrorPresentForChild (index) {
       pages.enterChildrenDOB.getChildDateOfBirthFieldErrorId(index),
       pages.enterChildrenDOB.getChildDateOfBirthErrorLinkCss(index),
       'Enter your child’s date of birth')
+  } catch (error) {
+    assert.fail(`Unexpected error caught trying to assert the date of birth error present for child with index ${index} - ${error}`)
+  }
+}
+
+async function assertChildUnder4ErrorPresentForChild (index) {
+  try {
+    await assertErrorHeaderTextPresent(pages.enterChildrenDOB)
+    await assertFieldErrorAndLinkTextPresentAndCorrect(
+      pages.enterChildrenDOB.getChildDateOfBirthFieldErrorId(index),
+      pages.enterChildrenDOB.getChildDateOfBirthErrorLinkCss(index),
+      'You can only apply for children who are under 4 years old')
   } catch (error) {
     assert.fail(`Unexpected error caught trying to assert the date of birth error present for child with index ${index} - ${error}`)
   }

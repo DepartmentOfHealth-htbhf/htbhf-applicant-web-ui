@@ -10,10 +10,11 @@
   "selectYesOrNo": "Select yes or no",
   "selectYesOrNoAreYouPregnant": "Select yes if you’re pregnant",
   "selectYesOrNoDoYouLiveInScotland": "Select yes if you live in Scotland",
-  "selectYesOrNoDoYouHaveChildren": "Select yes if you have children who are under four years old",
+  "selectYesOrNoDoYouHaveChildren": "Select yes if you have children who are under 4 years old",
   "invalidPostcode": "Enter a correct postcode, like AA1 1AA",
   "informationTooLong": "The information you entered is too long",
-  "missingAddressField": "Tell us your address",
+  "missingAddressLine1": "Enter a building and street",
+  "missingAddressTownOrCity": "Enter a town or city",
   "expectedDeliveryDateInvalid": "Enter the due date",
   "expectedDeliveryDateTooFarInPast": "Enter a due date to show you’re at least 10 weeks pregnant",
   "expectedDeliveryDateTooFarInFuture": "Enter a due date to show you’re at least 10 weeks pregnant",
@@ -23,6 +24,6 @@
   "selectTextOrEmailChannel": "Select if you want to receive a code by text or email",
   "enterTheSixDigitCodeWeSentYou": "Enter the 6 digit code we sent you",
   "childDateOfBirthInvalid": "Enter your child’s date of birth",
-  "childDateOfBirthFourYearsOrOlder": "You can only apply for children who are 3 years old or younger",
+  "childDateOfBirthFourYearsOrOlder": "You can only apply for children who are under 4 years old",
   "childNameTooLong": "Enter a shorter name"
 }

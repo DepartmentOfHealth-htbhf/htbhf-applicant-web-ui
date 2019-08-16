@@ -12,7 +12,7 @@ const ADDRESS_LINE_MAX_LENGTH = 500
 const validate = [
   check('addressLine1')
     .not().isEmpty()
-    .withMessage(translateValidationMessage('validation:missingAddressField')),
+    .withMessage(translateValidationMessage('validation:missingAddressLine1')),
 
   check('addressLine1')
     .isLength({ max: ADDRESS_LINE_MAX_LENGTH })
@@ -28,7 +28,7 @@ const validate = [
 
   check('townOrCity')
     .not().isEmpty()
-    .withMessage(translateValidationMessage('validation:missingAddressField')),
+    .withMessage(translateValidationMessage('validation:missingAddressTownOrCity')),
 
   check('county')
     .isLength({ max: ADDRESS_LINE_MAX_LENGTH })

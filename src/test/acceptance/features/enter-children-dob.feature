@@ -44,7 +44,7 @@ Feature: Enter your children’s dates of birth
   Scenario: Future date entered for single child
     When I enter a future date as my child's date of birth
     And I click continue
-    Then I am informed that I need to enter the date of birth for the first child
+    Then I am informed that the first child must be under four
 
   Scenario: Invalid dates entered for two children
     When I select to add another child

@@ -36,7 +36,7 @@ Feature: Address
 
   Scenario: Do not enter in any address fields
     When I do not enter in any address fields
-    Then I am informed that I need to enter an address on the 'address line 1', 'address line 2' and 'town or city' fields
+    Then I am informed that I need to enter an address on the 'address line 1', 'town or city' and 'postcode' fields
 
   Scenario: Do not enter in the first line of the address
     When I do not enter the first line of an address

@@ -62,12 +62,12 @@ Then(/^I am informed that the postcode is in the wrong format$/, async function 
 
 Then(/^I am informed that I need to enter an address on the 'address line 1' field$/, async function () {
   await assertErrorHeaderTextPresent(pages.manualAddress)
-  await assertAddressLine1ErrorFieldAndLink('Tell us your address')
+  await assertAddressLine1ErrorFieldAndLink('Enter a building and street')
 })
 
 Then(/^I am informed that I need to enter an address on the 'town or city' field$/, async function () {
   await assertErrorHeaderTextPresent(pages.manualAddress)
-  await assertTownOrCityErrorFieldAndLink('Tell us your address')
+  await assertTownOrCityErrorFieldAndLink('Enter a town or city')
 })
 
 Then(/^I am informed that the first line of the address is too long$/, async function () {
@@ -90,10 +90,10 @@ Then(/^I am informed that the 'county' of the address is too long$/, async funct
   await assertCountyErrorFieldAndLink('The information you entered is too long')
 })
 
-Then(/^I am informed that I need to enter an address on the 'address line 1', 'address line 2' and 'town or city' fields$/, async function () {
+Then(/^I am informed that I need to enter an address on the 'address line 1', 'town or city' and 'postcode' fields$/, async function () {
   await assertErrorHeaderTextPresent(pages.manualAddress)
-  await assertAddressLine1ErrorFieldAndLink('Tell us your address')
-  await assertTownOrCityErrorFieldAndLink('Tell us your address')
+  await assertAddressLine1ErrorFieldAndLink('Enter a building and street')
+  await assertTownOrCityErrorFieldAndLink('Enter a town or city')
   await assertPostcodeErrorFieldAndLink('Enter a correct postcode, like AA1 1AA')
 })
 

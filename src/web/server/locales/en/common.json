@@ -10,7 +10,7 @@
   "enterName": {
     "title": "What’s your name?",
     "heading": "What’s your name?",
-    "hint": "Use the name that is on your official documents, such as passport, driving licence, or any benefit claims",
+    "hint": "Use the name that’s on your official documents, such as passport, driving licence, or any benefit claims.",
     "firstNameLabel": "First or given name",
     "lastNameLabel": "Last or family name",
     "summaryKey":  "Your name",
@@ -30,6 +30,7 @@
     "title": "Do you have any children under 4 years old?",
     "heading": "Do you have any children under 4 years old?",
     "summaryKey": "Children under 4 years old?",
+    "formDescription": "Do not include children who are 4 years old or over.",
     "explanation": "We need this to work out how much money you should get."
   },
   "childrenDob": {
@@ -40,7 +41,7 @@
     "yearLabel": "Year",
     "hint": "For example, {{exampleDate}}",
     "summaryKey": "Children’s date of birth",
-    "explanation": "Children’s names will not be stored or shared. We need their dates of birth to confirm your identity and to prevent fraud.",
+    "explanation": "Children’s names will not be stored or shared. We need their dates of birth to check eligibility, to confirm your identity and to prevent fraud.",
     "nameLabel": "First name",
     "dateOfBirth": "Date of birth",
     "aboutYourChild": "About your child"
@@ -132,7 +133,7 @@
   },
   "unsuccessfulApplication": {
     "title": "Application not successful",
-    "subTitle": "You will not be sent a Healthy Start card",
+    "subTitle": "You will not be sent a prepaid money card",
     "heading": "Application not successful",
     "content": "See locales/en/unsuccessful/*.html"
   },
@@ -149,8 +150,8 @@
   "pageNotFound": {
     "title": "Page not found",
     "heading": "Page not found",
-    "checkTypedAddress": "If you typed the web address, check it is correct.",
-    "checkPastedAddress": "If you pasted the web address, check you copied the entire address."
+    "checkTypedAddress": "Check that you typed or pasted the correct web address.",
+    "checkPastedAddress": ""
   },
   "privacyNotice": {
     "title": "Privacy notice",

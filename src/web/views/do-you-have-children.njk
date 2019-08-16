@@ -1,12 +1,17 @@
 {% extends "templates/form.njk" %}
 {% from "radios/macro.njk" import govukRadios %}
 {% from "inset-text/macro.njk" import govukInsetText %}
+{% from "macros/htbhf-form-description.njk" import htbhfFormDescription %}
 
 {% block formContent %}
-    {{ govukRadios({
+
+  {{ govukRadios({
       classes: "govuk-radios--inline",
       id: "do-you-have-children",
       name: "doYouHaveChildren",
+      hint: {
+        html: htbhfFormDescription(formDescription)
+      },
       fieldset: {
         legend: {
           text: heading,
