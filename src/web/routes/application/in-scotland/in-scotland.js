@@ -2,8 +2,8 @@ const { path } = require('ramda')
 const { YES } = require('../common/constants')
 
 const pageContent = ({ translate }) => ({
-  title: translate('iLiveInScotland.title'),
-  heading: translate('iLiveInScotland.heading')
+  title: translate('inScotland.title'),
+  heading: translate('inScotland.heading')
 })
 
 const isNavigable = (session) => path(['claim', 'scotland'], session) === YES
@@ -14,14 +14,14 @@ const behaviourForGet = (req, res, next) => {
   next()
 }
 
-const iLiveInScotland = {
-  path: '/i-live-in-scotland',
-  template: 'i-live-in-scotland',
+const inScotland = {
+  path: '/in-scotland',
+  template: 'in-scotland',
   pageContent,
   isNavigable,
   behaviourForGet
 }
 
 module.exports = {
-  iLiveInScotland
+  iLiveInScotland: inScotland
 }

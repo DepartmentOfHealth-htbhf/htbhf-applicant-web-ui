@@ -1,5 +1,5 @@
 const { apply } = require('./apply')
-const { iLiveInScotland } = require('./i-live-in-scotland')
+const { iLiveInScotland } = require('./in-scotland')
 const { guidance } = require('./guidance')
 
 const checkPageUrl = (url, result) => {

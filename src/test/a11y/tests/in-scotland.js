@@ -1,6 +1,6 @@
 const { URLS } = require('../paths')
 
-const iLiveInScotland = [
+const inScotland = [
   {
     url: URLS['DO_YOU_LIVE_IN_SCOTLAND'],
     formData: () => ({
@@ -13,5 +13,5 @@ const iLiveInScotland = [
 ]
 
 module.exports = {
-  iLiveInScotland
+  iLiveInScotland: inScotland
 }
