@@ -57,10 +57,10 @@ const runTestsAndAggregateResults = async (acc, pages) => {
   return [...acc, ...testResults]
 }
 
-const runAllTests = async (testSuites) => {
+const runAllTests = async (testSuite) => {
   try {
     console.log(`Running accessibility tests against ${BASE_URL}`)
-    const results = await Promise.reduce(testSuites, runTestsAndAggregateResults, [])
+    const results = await Promise.reduce(testSuite, runTestsAndAggregateResults, [])
     handleTestResults(results)
   } catch (error) {
     console.error(error)
