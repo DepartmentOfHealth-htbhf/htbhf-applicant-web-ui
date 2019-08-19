@@ -1,5 +1,5 @@
-const { iLiveInScotland } = require('./in-scotland')
+const { inScotland } = require('./in-scotland')
 
 module.exports = {
-  iLiveInScotland
+  inScotland
 }

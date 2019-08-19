@@ -29,5 +29,5 @@ const scotland = {
 }
 
 module.exports = {
-  scotland: scotland
+  scotland
 }

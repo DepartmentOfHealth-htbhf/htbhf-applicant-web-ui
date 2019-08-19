@@ -1,5 +1,5 @@
 const { apply } = require('./apply')
-const { iLiveInScotland } = require('./in-scotland')
+const { inScotland } = require('./in-scotland')
 const { guidance } = require('./guidance')
 
 const checkPageUrl = (url, result) => {
@@ -15,7 +15,7 @@ const addUrlCheck = (testSuite) =>
   }))
 
 // Add a default page URL check to every test
-const testSuitesWithUrlCheck = [apply, iLiveInScotland, guidance].map(addUrlCheck)
+const testSuitesWithUrlCheck = [apply, inScotland, guidance].map(addUrlCheck)
 
 module.exports = {
   TEST_SUITES: testSuitesWithUrlCheck

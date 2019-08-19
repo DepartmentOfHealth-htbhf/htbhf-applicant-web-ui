@@ -23,5 +23,5 @@ const inScotland = {
 }
 
 module.exports = {
-  iLiveInScotland: inScotland
+  inScotland
 }
