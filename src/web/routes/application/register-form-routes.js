@@ -11,40 +11,39 @@ const {
   sanitize
 } = require('./middleware')
 
-const middlewareNoop = (req, res, next) => next()
+const middlewareNoop = () => (req, res, next) => next()
 
-const handleOptionalMiddleware = (operation, fallback = middlewareNoop) => {
-  if (typeof operation === 'undefined') {
-    return fallback
-  }
+const handleOptionalMiddleware = (args) => (operation, fallback = middlewareNoop) =>
+  typeof operation === 'undefined' ? fallback.apply(null, args) : operation.apply(null, args)
 
-  return operation
-}
+const createRoute = (config, csrfProtection, steps, router) => (step) => {
+  // Make [config, steps, step] available as arguments to all optional middleware
+  const optionalMiddleware = handleOptionalMiddleware([config, steps, step])
 
-const createRoute = (config, csrfProtection, steps, router) => (step) =>
-  router
+  return router
     .route(step.path)
     .get(
       csrfProtection,
       configureGet(steps, step),
       getSessionDetails,
       handleRequestForPath(config, steps, step),
-      handleOptionalMiddleware(step.behaviourForGet),
+      optionalMiddleware(step.behaviourForGet),
       renderView(step)
     )
     .post(
       csrfProtection,
       configurePost(steps, step),
       sanitize,
-      handleOptionalMiddleware(step.sanitize),
-      handleOptionalMiddleware(step.validate),
+      optionalMiddleware(step.sanitize),
+      optionalMiddleware(step.validate),
       getSessionDetails,
-      handleOptionalMiddleware(step.behaviourForPost),
+      optionalMiddleware(step.behaviourForPost),
       handlePost(steps, step),
       handleRequestForPath(config, steps, step),
       handlePostRedirects(steps),
       renderView(step)
     )
+}
 
 const registerFormRoutes = (config, csrfProtection, steps, app) => {
   const wizard = express.Router()
