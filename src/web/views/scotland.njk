@@ -4,8 +4,8 @@
 {% block formContent %}
     {{ govukRadios({
       classes: "govuk-radios--inline",
-      id: "do-you-live-in-scotland",
-      name: "doYouLiveInScotland",
+      id: "scotland",
+      name: "scotland",
       fieldset: {
         legend: {
           text: heading,
@@ -13,17 +13,17 @@
           classes: "govuk-fieldset__legend--xl"
         }
       },
-      errorMessage: errors | getErrorForField('doYouLiveInScotland'),
+      errorMessage: errors | getErrorForField('scotland'),
       items: [
         {
           value: "yes",
           text: yes,
-          checked : claim.doYouLiveInScotland === "yes"
+          checked : claim.scotland === "yes"
         },
         {
           value: "no",
           text: no,
-          checked : claim.doYouLiveInScotland === "no"
+          checked : claim.scotland === "no"
         }
       ]
     }) }}

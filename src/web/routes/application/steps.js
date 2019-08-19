@@ -4,8 +4,8 @@ const { enterDob } = require('./enter-dob')
 const { areYouPregnant } = require('./are-you-pregnant')
 const { manualAddress } = require('./manual-address')
 const { phoneNumber } = require('./phone-number')
-const { doYouLiveInScotland } = require('./do-you-live-in-scotland')
-const { iLiveInScotland } = require('./i-live-in-scotland')
+const { scotland } = require('./scotland')
+const { inScotland } = require('./in-scotland')
 const { emailAddress } = require('./email-address')
 const { doYouHaveChildren } = require('./do-you-have-children')
 const { childrenDob } = require('./children-dob')
@@ -14,8 +14,8 @@ const { enterCode } = require('./enter-code')
 const { postcode } = require('./postcode')
 
 const steps = [
-  doYouLiveInScotland,
-  iLiveInScotland,
+  scotland,
+  inScotland,
   enterDob,
   doYouHaveChildren,
   childrenDob,

@@ -2,8 +2,8 @@
 
 const SubmittablePageWithRadioButtons = require('./submittable-page-with-radio-buttons')
 
-const DO_YOU_LIVE_IN_SCOTLAND_ERROR_LINK_CSS = 'a[href="#do-you-live-in-scotland-error"]'
-const DO_YOU_LIVE_IN_SCOTLAND_FIELD_ERROR_ID = 'doYouLiveInScotland-error'
+const DO_YOU_LIVE_IN_SCOTLAND_ERROR_LINK_CSS = 'a[href="#scotland-error"]'
+const DO_YOU_LIVE_IN_SCOTLAND_FIELD_ERROR_ID = 'scotland-error'
 
 const PAGE_TITLES = {
   en: 'GOV.UK - Do you live in Scotland?',
@@ -11,15 +11,15 @@ const PAGE_TITLES = {
 }
 
 /**
- * Page object for DoYouLiveInScotland page where the claimant enters whether they live in Scotland or not.
+ * Page object for Scotland page where the claimant enters whether they live in Scotland or not.
  */
-class DoYouLiveInScotland extends SubmittablePageWithRadioButtons {
+class Scotland extends SubmittablePageWithRadioButtons {
   async waitForPageLoad (lang = 'en') {
     return super.waitForPageWithTitle(PAGE_TITLES[lang])
   }
 
   getPath () {
-    return '/do-you-live-in-scotland'
+    return '/scotland'
   }
 
   getPageName () {
@@ -35,4 +35,4 @@ class DoYouLiveInScotland extends SubmittablePageWithRadioButtons {
   }
 }
 
-module.exports = DoYouLiveInScotland
+module.exports = Scotland
