@@ -6,7 +6,7 @@ const pageContent = ({ translate }) => ({
   heading: translate('iLiveInScotland.heading')
 })
 
-const isNavigable = (session) => path(['claim', 'doYouLiveInScotland'], session) === YES
+const isNavigable = (session) => path(['claim', 'scotland'], session) === YES
 
 const behaviourForGet = (req, res, next) => {
   req.session.destroy()

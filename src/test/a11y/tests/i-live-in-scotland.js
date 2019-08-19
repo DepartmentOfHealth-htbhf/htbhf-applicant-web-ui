@@ -4,7 +4,7 @@ const iLiveInScotland = [
   {
     url: URLS['DO_YOU_LIVE_IN_SCOTLAND'],
     formData: () => ({
-      doYouLiveInScotland: 'yes'
+      scotland: 'yes'
     })
   },
   {

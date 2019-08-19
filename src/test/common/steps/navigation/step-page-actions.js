@@ -16,7 +16,7 @@ const {
 
 const STEP_PAGE_ACTIONS = [
   {
-    page: (pages) => pages.doYouLiveInScotland,
+    page: (pages) => pages.scotland,
     actions: async () => enterDoYouLiveInScotlandNoAndSubmit()
   },
   {

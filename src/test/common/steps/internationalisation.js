@@ -7,7 +7,7 @@ const { enterDoYouLiveInScotlandNoAndSubmit, enterDateOfBirthAndSubmit } = requi
 const WELSH_LANG_CODE = 'cy'
 
 When('I have completed the first step of the application with Welsh language selected', async function () {
-  await pages.doYouLiveInScotland.open(pages.url, WELSH_LANG_CODE)
+  await pages.scotland.open(pages.url, WELSH_LANG_CODE)
   await enterDoYouLiveInScotlandNoAndSubmit()
   await pages.enterDOB.waitForPageLoad(WELSH_LANG_CODE)
 })
