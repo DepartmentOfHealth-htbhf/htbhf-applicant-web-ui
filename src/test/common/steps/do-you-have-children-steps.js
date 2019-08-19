@@ -31,7 +31,7 @@ Then(/^I am informed that I need to select an option for do you have children un
   await assertFieldErrorAndLinkTextPresentAndCorrect(
     pages.doYouHaveChildren.getFieldErrorId(),
     pages.doYouHaveChildren.getErrorLinkCss(),
-    'Select yes if you have children who are under four years old')
+    'Select yes if you have children who are under 4 years old')
 })
 
 Then(/^Yes and No options are displayed on the do you have children under four years old page$/, async function () {

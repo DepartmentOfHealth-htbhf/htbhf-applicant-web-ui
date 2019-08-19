@@ -2,7 +2,7 @@
 {% from "input/macro.njk" import govukInput %}
 {% from "fieldset/macro.njk" import govukFieldset %}
 {% from "inset-text/macro.njk" import govukInsetText %}
-{% from "hint/macro.njk" import govukHint %}
+{% from "macros/htbhf-form-description.njk" import htbhfFormDescription %}
 
 {% block formContent %}
 
@@ -14,9 +14,7 @@
     }
   }) %}
 
-    {{ govukHint({
-      text: hint
-    }) }}
+    {{ htbhfFormDescription(hint) }}
 
     {{ govukInput({
       label: {

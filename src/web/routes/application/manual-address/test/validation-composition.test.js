@@ -35,7 +35,7 @@ test('validation middleware errors for empty address line 1 field', async (t) =>
   const error = result.array()[0]
   t.equal(result.array().length, 1, 'should have exactly one error')
   t.equal(error.param, 'addressLine1', 'error should be associated with correct field')
-  t.equal(error.msg, 'validation:missingAddressField', 'error should have correct message')
+  t.equal(error.msg, 'validation:missingAddressLine1', 'error should have correct message')
   t.end()
 })
 
@@ -46,7 +46,7 @@ test('validation middleware errors for empty town or city field', async (t) => {
   const error = result.array()[0]
   t.equal(result.array().length, 1, 'should have exactly one error')
   t.equal(error.param, 'townOrCity', 'error should be associated with correct field')
-  t.equal(error.msg, 'validation:missingAddressField', 'error should have correct message')
+  t.equal(error.msg, 'validation:missingAddressTownOrCity', 'error should have correct message')
   t.end()
 })
 

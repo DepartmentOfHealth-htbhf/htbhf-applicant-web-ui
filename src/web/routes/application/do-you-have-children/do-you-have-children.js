@@ -7,7 +7,8 @@ const pageContent = ({ translate }) => ({
   buttonText: translate('buttons:continue'),
   yes: translate('yes'),
   no: translate('no'),
-  explanation: translate('doYouHaveChildren.explanation')
+  explanation: translate('doYouHaveChildren.explanation'),
+  formDescription: translate('doYouHaveChildren.formDescription')
 })
 
 const next = req => req.session.claim.doYouHaveChildren === YES ? '/children-dob' : '/are-you-pregnant'

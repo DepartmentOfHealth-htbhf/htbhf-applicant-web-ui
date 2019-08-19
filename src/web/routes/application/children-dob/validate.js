@@ -56,7 +56,7 @@ const validateDateOfBirth = (dob, { req }) => {
   }
 
   if (isDateInTheFuture(dob)) {
-    throw new Error(req.t('validation:childDateOfBirthInvalid'))
+    throw new Error(req.t('validation:childDateOfBirthFourYearsOrOlder'))
   }
 
   return true
