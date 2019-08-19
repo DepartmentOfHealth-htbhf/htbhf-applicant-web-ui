@@ -1,16 +1,17 @@
 /* no-process-exit */
 'use strict'
-require('dotenv')
+
 const { setupSuccessfulWiremockClaimMapping, deleteAllWiremockMappings } = require('../common/wiremock')
 const { runAllTests } = require('./test-suite')
+const { TEST_SUITES } = require('./tests')
 
 /*
   Runs the accessibility test suite, having set up wiremock to mock the claim service.
  */
-const runTestSuite = async () => {
+const runTestSuite = async (testSuites) => {
   try {
     await setupSuccessfulWiremockClaimMapping()
-    await runAllTests()
+    await runAllTests(testSuites)
   } catch (error) {
     console.log(error)
     process.exit(1)
@@ -19,4 +20,4 @@ const runTestSuite = async () => {
   }
 }
 
-runTestSuite()
+runTestSuite(TEST_SUITES)
