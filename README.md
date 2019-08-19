@@ -20,7 +20,7 @@ The application implements the GOV.UK design system. Visit the project website [
 To easily implement the GOV.UK design system, the application uses Nunjucks as a templating language. Visit the website [https://mozilla.github.io/nunjucks](https://mozilla.github.io/nunjucks) for more information and documentation.
 
 ### Creating a new step in the form
-To add a new form step to the application, create an object matching the following schema 
+To add a new form step to the application, create an object matching the following schema
 
 ```
 {
@@ -32,16 +32,16 @@ To add a new form step to the application, create an object matching the followi
   pageContent : Object
 }
 ```
-See [enter-name](src/web/routes/application/enter-name/enter-name.js) for an example. 
+See [enter-name](src/web/routes/application/enter-name/enter-name.js) for an example.
 
 Then add the step to the [list of steps](src/web/routes/application/steps.js)
 
 ### Translations
-The application uses the library [i18next](https://github.com/i18next/i18next) to allow the user to view pages in different languages. 
+The application uses the library [i18next](https://github.com/i18next/i18next) to allow the user to view pages in different languages.
 The requests [accept-language](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Language) header is used to determine which language to render the page in.
 Currently English and Welsh are supported (currently using Lorem Ipsum for Welsh until translations are provided).
 
-To add support for a new language, the translation documents (.json files) must be added to [src/web/server/locales/](src/web/server/locales). 
+To add support for a new language, the translation documents (.json files) must be added to [src/web/server/locales/](src/web/server/locales).
 See [src/web/server/locales/en/common.json](src/web/server/locales/en/common.json) for an example.
 
 If no accept-language header is provided the application will default to English.
@@ -77,7 +77,7 @@ against your local running instance.
 
 ### Compatibility tests
 
-The application is configured to run compatibility tests using Selenium and [Browserstack Automate](https://www.browserstack.com/automate). 
+The application is configured to run compatibility tests using Selenium and [Browserstack Automate](https://www.browserstack.com/automate).
 `npm-run-all` is used to trigger tests on multiple browsers concurrently. The compatibility tests can be started with the command `npm run test:compatibility`.
 
 Operating system and browser combinations for the compatibility tests are based on the [GOV.UK guidelines](https://www.gov.uk/service-manual/technology/designing-for-different-browsers-and-devices).
@@ -108,3 +108,53 @@ When running locally this means you need to have the NOTIFY_API_KEY environment 
 To enable tests to work without having to actually receive the confirmation code, a separate app (session-details-app)
 can be deployed to provide access to the confirmation code stored in the session.
 This app is started when running tests, but you can also start it manually using the `test:session-details` script in `package.json`
+
+## Feature toggle
+It is possible to turn off any step in the app using a feature toggle key:
+
+### 1. Add a feature toggle key to the step definition
+Adding a `toggle` property to a step definition will remove the step from the application. This ensures that all toggled steps are **disabled** by default:
+
+```
+const myStep = {
+  path: '/my-step',
+  template: 'my-step',
+  toggle: 'MY_STEP_ENABLED'
+  ...
+}
+```
+
+If a step is disabled ensure there are no direct references to the steps `path` property. i.e. the `next` property of another step does not reference the disabled step.
+
+### 2. Add the feature toggle key to `features.json`
+Adding a feature toggle key to `features.json` allows the step to be **enabled** or **disabled** by setting the value of the key to `true` or `false` respectively. e.g. the following json will disable any step with the feature toggle key `MY_STEP_ENABLED`:
+
+```
+{
+  "MY_STEP_ENABLED": false
+}
+```
+
+### 3. Add the feature toggle key to the step in the acceptance tests
+Adding the feature toggle key to the associated step in `./src/test/common/steps/navigation/step-page-actions.js` ensures that the acceptance tests use the same feature toggles as the application:
+
+```
+{
+  page: (pages) => pages.myStep,
+  actions: async () => completeMyStepAndSubmit(),
+  toggle: 'MY_STEP_ENABLED'
+}
+```
+
+### 4. Add the feature toggle key to the step in the a11y tests
+Adding the feature toggle key to the associated step in `./src/test/a11y/tests` ensures that the a11y tests use the same feature toggles as the application:
+
+```
+{
+  url: URLS['MY_STEP'],
+  formData: () => ({
+    someValue: SOME_VALID_DATA
+  }),
+  toggle: 'MY_STEP_ENABLED'
+}
+```
