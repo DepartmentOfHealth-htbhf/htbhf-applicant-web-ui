@@ -4,6 +4,7 @@ const {
   enterDateOfBirthAndSubmit,
   selectNoOnPregnancyPage,
   selectYesOnPregnancyPage,
+  enterPostcodeAndSubmit,
   enterManualAddressAndSubmit,
   enterPhoneNumberAndSubmit,
   enterDoYouLiveInScotlandNoAndSubmit,
@@ -45,6 +46,10 @@ const STEP_PAGE_ACTIONS = [
   {
     page: (pages) => pages.enterNino,
     actions: async () => enterNinoAndSubmit()
+  },
+  {
+    page: (pages) => pages.postcode,
+    actions: async () => enterPostcodeAndSubmit()
   },
   {
     page: (pages) => pages.manualAddress,

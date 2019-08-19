@@ -7,14 +7,11 @@ const pageContent = ({ translate }) => ({
   explanation: translate('postcode.explanation')
 })
 
-// TODO HTBHF-2060 replace hardcoded value with feature toggle function
-const isNavigable = () => false
-
 const postcode = {
   path: '/postcode',
   template: 'postcode',
   pageContent,
-  isNavigable
+  toggle: 'ADDRESS_LOOKUP_ENABLED'
 }
 
 module.exports = {
