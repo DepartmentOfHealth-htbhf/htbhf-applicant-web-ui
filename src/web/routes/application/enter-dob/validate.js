@@ -21,7 +21,7 @@ const validateDateOfBirth = (dob, { req }) => {
   return true
 }
 
-const validate = [
+const validate = () => [
   addDateToBody,
   check('dateOfBirth').custom(validateDateOfBirth)
 ]

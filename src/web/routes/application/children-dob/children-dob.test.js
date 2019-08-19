@@ -14,7 +14,7 @@ test('behaviourForGet() initialises children in session', (t) => {
   const res = { locals: {} }
   const next = sinon.spy()
 
-  behaviourForGet(req, res, next)
+  behaviourForGet()(req, res, next)
 
   t.equal(req.session.children.inputCount, 1, 'initialises input count in session')
   t.equal(req.session.children.childCount, 0, 'initialises children count in session')
@@ -45,7 +45,7 @@ test('behaviourForGet() adds childrens DOBs to res.locals', (t) => {
     inputCount: 1
   }
 
-  behaviourForGet(req, res, next)
+  behaviourForGet()(req, res, next)
 
   t.deepEqual(res.locals.children, expected, 'adds childrens DOBs to res.locals')
   t.equal(next.called, true, 'calls next')

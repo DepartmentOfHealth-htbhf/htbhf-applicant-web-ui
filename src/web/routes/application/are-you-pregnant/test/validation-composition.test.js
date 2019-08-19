@@ -20,7 +20,7 @@ const req = {
 test('validation middleware passes with valid body', async (t) => {
   const testReq = { ...req }
 
-  const result = await applyExpressValidation(testReq, validate)
+  const result = await applyExpressValidation(testReq, validate())
   t.equal(result.isEmpty(), true)
   t.end()
 })
@@ -28,7 +28,7 @@ test('validation middleware passes with valid body', async (t) => {
 test('validation middleware errors for are you pregnant field', async (t) => {
   const testReq = assocPath(['body', 'areYouPregnant'], 'maybe', req)
 
-  const result = await applyExpressValidation(testReq, validate)
+  const result = await applyExpressValidation(testReq, validate())
   const error = result.array()[0]
   t.equal(result.array().length, 1, 'should have exactly one error')
   t.equal(error.param, 'areYouPregnant', 'error should be associated with correct field')
@@ -49,7 +49,7 @@ test('validation middleware errors for expected delivery date field', async (t) 
     }
   }
 
-  const result = await applyExpressValidation(testReq, validate)
+  const result = await applyExpressValidation(testReq, validate())
   const error = result.array()[0]
   t.equal(result.array().length, 1, 'should have exactly one error')
   t.equal(error.param, 'expectedDeliveryDate', 'error should be associated with correct field')

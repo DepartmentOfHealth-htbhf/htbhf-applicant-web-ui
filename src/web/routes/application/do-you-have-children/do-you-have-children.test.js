@@ -21,7 +21,7 @@ test('behaviourForPost() removes children from session when answer to “Do you 
   const res = {}
   const next = sinon.spy()
 
-  behaviourForPost(req, res, next)
+  behaviourForPost()(req, res, next)
 
   t.equal(req.session.children, null, 'removes children from session')
   t.equal(next.called, true, 'calls next')
@@ -41,7 +41,7 @@ test('behaviourForPost() does not update children when answer to “Do you have 
   const res = {}
   const next = sinon.spy()
 
-  behaviourForPost(req, res, next)
+  behaviourForPost()(req, res, next)
 
   t.deepEqual(req.session.children, children, 'does not update children')
   t.equal(next.called, true, 'calls next')

@@ -25,13 +25,13 @@ const pageContent = ({ translate }) => ({
 
 const isNavigable = (session) => path(['claim', 'doYouHaveChildren'], session) === YES
 
-const behaviourForGet = (req, res, next) => {
+const behaviourForGet = () => (req, res, next) => {
   req = setChildrenInSessionForGet(req)
   res.locals.children = req.session.children
   next()
 }
 
-const behaviourForPost = [
+const behaviourForPost = () => [
   setChildrenInSessionForPost,
   handleAddAction,
   handleRemoveAction

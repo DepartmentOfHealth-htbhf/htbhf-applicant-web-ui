@@ -20,7 +20,7 @@ function randomSixDigitInteger () {
   return number.toString().padStart(6, '0')
 }
 
-const behaviourForPost = (req, res, next) => {
+const behaviourForPost = () => (req, res, next) => {
   if (validationResult(req).isEmpty()) {
     const confirmationCode = randomSixDigitInteger()
     sendConfirmationCode(req.session.claim, req.body.channelForCode, confirmationCode)

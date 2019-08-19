@@ -9,7 +9,7 @@ const { translateValidationMessage } = require('../common/translate-validation-m
 const UK_POSTCODE_PATTERN = /^([Gg][Ii][Rr] 0[Aa]{2})$|^((([A-Za-z][0-9]{1,2})|(([A-Za-z][A-Ha-hJ-Yj-y][0-9]{1,2})|(([A-Za-z][0-9][A-Za-z])|([A-Za-z][A-Ha-hJ-Yj-y][0-9][A-Za-z]?))))\s?[0-9][A-Za-z]{2})$/
 const ADDRESS_LINE_MAX_LENGTH = 500
 
-const validate = [
+const validate = () => [
   check('addressLine1')
     .not().isEmpty()
     .withMessage(translateValidationMessage('validation:missingAddressLine1')),
