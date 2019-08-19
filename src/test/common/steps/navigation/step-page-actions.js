@@ -17,7 +17,7 @@ const {
 
 const STEP_PAGE_ACTIONS = [
   {
-    page: (pages) => pages.doYouLiveInScotland,
+    page: (pages) => pages.scotland,
     actions: async () => enterDoYouLiveInScotlandNoAndSubmit()
   },
   {
@@ -41,7 +41,7 @@ const STEP_PAGE_ACTIONS = [
   },
   {
     page: (pages) => pages.enterName,
-    actions: async () => enterNameAndSubmit()
+    actions: async (actionOptions) => enterNameAndSubmit(actionOptions.firstName, actionOptions.lastName)
   },
   {
     page: (pages) => pages.enterNino,
@@ -49,11 +49,13 @@ const STEP_PAGE_ACTIONS = [
   },
   {
     page: (pages) => pages.postcode,
-    actions: async () => enterPostcodeAndSubmit()
+    actions: async () => enterPostcodeAndSubmit(),
+    toggle: 'ADDRESS_LOOKUP_ENABLED'
   },
   {
     page: (pages) => pages.manualAddress,
-    actions: async () => enterManualAddressAndSubmit()
+    actions: async (actionOptions) =>
+      enterManualAddressAndSubmit(actionOptions.addressLine1, actionOptions.addressLine2, actionOptions.townOrCity, actionOptions.county, actionOptions.postcode)
   },
   {
     page: (pages) => pages.phoneNumber,

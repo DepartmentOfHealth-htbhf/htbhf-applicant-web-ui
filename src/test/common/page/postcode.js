@@ -9,7 +9,7 @@ const PAGE_TITLES = {
 }
 
 /**
- * Page object for Address page where the address is entered manually.
+ * Page object for postcode page where the postcode is entered for address lookup.
  */
 class Postcode extends SubmittablePage {
   constructor (driver) {

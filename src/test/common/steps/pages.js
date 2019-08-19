@@ -12,8 +12,8 @@ const SubmittablePage = require('../page/submittable-page')
 const ServerError = require('../page/server-error')
 const PageNotFound = require('../page/page-not-found')
 const PrivacyNotice = require('../page/privacy-notice')
-const DoYouLiveInScotland = require('../page/do-you-live-in-scotland')
-const ILiveInScotland = require('../page/i-live-in-scotland')
+const Scotland = require('../page/scotland')
+const ILiveInScotland = require('../page/in-scotland')
 const EmailAddress = require('../page/email-address')
 const UnsuccessfulApplication = require('../page/unsuccessful-application')
 const TermsAndConditions = require('../page/terms-and-conditions')
@@ -57,7 +57,7 @@ class Pages {
     this.privacyNotice = null
     this.unsuccessfulApplication = null
     this.termsAndConditions = null
-    this.doYouLiveInScotland = null
+    this.scotland = null
     this.iLiveInScotland = null
     this.emailAddress = null
     this.doYouHaveChildren = null
@@ -89,7 +89,7 @@ class Pages {
     this.serverError = new ServerError(this.driver)
     this.pageNotFound = new PageNotFound(this.driver)
     this.privacyNotice = new PrivacyNotice(this.driver)
-    this.doYouLiveInScotland = new DoYouLiveInScotland(this.driver)
+    this.scotland = new Scotland(this.driver)
     this.iLiveInScotland = new ILiveInScotland(this.driver)
     this.emailAddress = new EmailAddress(this.driver)
     this.unsuccessfulApplication = new UnsuccessfulApplication(this.driver)
@@ -103,7 +103,7 @@ class Pages {
     this.guidance = new Guidance(this.driver)
     // NOTE: This map should contain all page objects, and not the Generic Page as this doesn't itself represent a page
     this.allPages = [this.enterName, this.enterNino, this.enterDOB, this.areYouPregnant, this.manualAddress, this.phoneNumber,
-      this.check, this.confirm, this.cookies, this.privacyNotice, this.confirmUpdated, this.doYouLiveInScotland, this.iLiveInScotland, this.emailAddress,
+      this.check, this.confirm, this.cookies, this.privacyNotice, this.confirmUpdated, this.scotland, this.iLiveInScotland, this.emailAddress,
       this.termsAndConditions, this.doYouHaveChildren, this.sendCode, this.enterChildrenDOB, this.enterCode, this.postcode]
     this.pageMap = this.allPages.reduce(addPageToMap, {})
   }
@@ -113,11 +113,11 @@ class Pages {
   }
 
   async startApplication () {
-    await this.doYouLiveInScotland.open(this.url)
+    await this.scotland.open(this.url)
   }
 
   async waitForFirstPage () {
-    await this.doYouLiveInScotland.waitForPageLoad()
+    await this.scotland.waitForPageLoad()
   }
 }
 

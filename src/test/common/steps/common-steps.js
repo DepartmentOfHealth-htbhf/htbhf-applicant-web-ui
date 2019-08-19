@@ -32,8 +32,8 @@ const { SESSION_CONFIRMATION_CODE_URL } = require('./../../common/config')
 
 async function enterDoYouLiveInScotlandNoAndSubmit () {
   try {
-    await pages.doYouLiveInScotland.selectNoRadioButton()
-    await pages.doYouLiveInScotland.submitForm()
+    await pages.scotland.selectNoRadioButton()
+    await pages.scotland.submitForm()
   } catch (error) {
     assert.fail(`Unexpected error caught trying to select No on the Do You Live In Scotland page and submit - ${error}`)
   }

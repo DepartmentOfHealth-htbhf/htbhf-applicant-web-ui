@@ -1,7 +1,7 @@
 const { validateIsYesOrNo } = require('../common/validators')
 
 const validate = [
-  validateIsYesOrNo('doYouLiveInScotland', 'validation:selectYesOrNoDoYouLiveInScotland')
+  validateIsYesOrNo('scotland', 'validation:selectYesOrNoDoYouLiveInScotland')
 ]
 
 module.exports = {
