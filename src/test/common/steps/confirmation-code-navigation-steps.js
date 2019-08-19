@@ -2,30 +2,24 @@ const { When, Then } = require('cucumber')
 
 const { PHONE_NUMBER_2, EMAIL_ADDRESS_2 } = require('./constants')
 const pages = require('./pages')
+const { enterDetailsUpToPage } = require('./navigation')
 
 const {
-  selectNoOnPregnancyPage,
-  enterNameAndSubmit,
-  enterNinoAndSubmit,
-  enterDateOfBirthAndSubmit,
-  enterManualAddressAndSubmit,
   enterPhoneNumberAndSubmit,
-  enterDoYouLiveInScotlandNoAndSubmit,
   enterEmailAddressAndSubmit,
-  selectNoOnDoYouHaveChildrenPage,
   selectTextOnSendCode,
   selectEmailOnSendCode,
   enterConfirmationCodeAndSubmit
 } = require('./common-steps')
 
 When(/^I complete the application with valid details, selecting to receive my confirmation code via text$/, async function () {
-  await completeProcessUpToSendCode()
+  await enterDetailsUpToPage({ page: 'send code' })
   await selectTextOnSendCode()
   await enterConfirmationCodeAndSubmit()
 })
 
 When(/^I complete the application with valid details, selecting to receive my confirmation code via email$/, async function () {
-  await completeProcessUpToSendCode()
+  await enterDetailsUpToPage({ page: 'send code' })
   await selectEmailOnSendCode()
   await enterConfirmationCodeAndSubmit()
 })
@@ -53,15 +47,3 @@ Then(/^I must complete all steps after the email address page, including enterin
   await selectEmailOnSendCode()
   await enterConfirmationCodeAndSubmit()
 })
-
-async function completeProcessUpToSendCode () {
-  await enterDoYouLiveInScotlandNoAndSubmit()
-  await enterDateOfBirthAndSubmit()
-  await selectNoOnDoYouHaveChildrenPage()
-  await selectNoOnPregnancyPage()
-  await enterNameAndSubmit()
-  await enterNinoAndSubmit()
-  await enterManualAddressAndSubmit()
-  await enterPhoneNumberAndSubmit()
-  await enterEmailAddressAndSubmit()
-}

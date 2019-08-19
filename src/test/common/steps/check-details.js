@@ -1,7 +1,6 @@
 const { expect } = require('chai')
 const { When, Then } = require('cucumber')
 const {
-  LAST_NAME,
   FULL_NAME,
   VALID_ELIGIBLE_NINO,
   DATE_OF_BIRTH,
@@ -21,34 +20,14 @@ const {
 } = require('./constants')
 
 const pages = require('./pages')
-const {
-  selectNoOnPregnancyPage,
-  enterNameAndSubmit,
-  enterNinoAndSubmit,
-  enterDateOfBirthAndSubmit,
-  enterManualAddressAndSubmit,
-  enterPhoneNumberAndSubmit,
-  enterDoYouLiveInScotlandNoAndSubmit,
-  enterEmailAddressAndSubmit,
-  selectNoOnDoYouHaveChildrenPage,
-  selectTextOnSendCode,
-  enterConfirmationCodeAndSubmit
-} = require('./common-steps')
+const { DEFAULT_ACTION_OPTIONS } = require('./navigation/default-action-options')
+const { enterDetailsUpToPage } = require('./navigation')
 const { formatDateForDisplayFromDate } = require('../../../web/routes/application/common/formatters')
 const { assertBackLinkPointsToPage } = require('./common-assertions')
 
 When(/^I complete the application with valid details that contains malicious input$/, async function () {
-  await enterDoYouLiveInScotlandNoAndSubmit()
-  await enterDateOfBirthAndSubmit()
-  await selectNoOnDoYouHaveChildrenPage()
-  await selectNoOnPregnancyPage()
-  await enterNameAndSubmit('<script>window.alert(\'Boo\')</script>', LAST_NAME)
-  await enterNinoAndSubmit()
-  await enterManualAddressAndSubmit()
-  await enterPhoneNumberAndSubmit()
-  await enterEmailAddressAndSubmit()
-  await selectTextOnSendCode()
-  await enterConfirmationCodeAndSubmit()
+  const actionOptions = { ...DEFAULT_ACTION_OPTIONS, firstName: '<script>window.alert(\'Boo\')</script>' }
+  await enterDetailsUpToPage({ page: 'check details', actionOptions })
 })
 
 When(/^I complete the application with valid details for an applicant with no second line of address$/, async function () {
@@ -114,31 +93,11 @@ Then(/^the check details page contains all data entered for a woman who is not p
 })
 
 Then(/^the check details page contains all data entered for an applicant with no second line of address$/, async function () {
-  const claimContents = await pages.check.getClaimSummaryListContents()
-  assertNameShown(claimContents)
-  assertNinoShown(claimContents)
-  assertDobShown(claimContents)
-  assertAreYouPregnantValueShown(claimContents, NO_LABEL)
-  assertNoValueForField(claimContents, 'Baby’s due date')
-  assertAddressShownWithNoSecondLine(claimContents)
-  assertPhoneNumberShown(claimContents)
-  assertEmailAddressShown(claimContents)
-  assertDoYouHaveChildrenIsShown(claimContents, NO_LABEL)
-  await assertChildrensDatesOfBirthIsNotShown()
+  await assertCheckDetailsWithAddressForClaimantWithChildrenAndNotPregnant(FULL_ADDRESS_NO_LINE_2)
 })
 
 Then(/^the check details page contains all data entered for an applicant with no county$/, async function () {
-  const claimContents = await pages.check.getClaimSummaryListContents()
-  assertNameShown(claimContents)
-  assertNinoShown(claimContents)
-  assertDobShown(claimContents)
-  assertAreYouPregnantValueShown(claimContents, NO_LABEL)
-  assertNoValueForField(claimContents, 'Baby’s due date')
-  assertAddressShownWithNoCounty(claimContents)
-  assertPhoneNumberShown(claimContents)
-  assertEmailAddressShown(claimContents)
-  assertDoYouHaveChildrenIsShown(claimContents, NO_LABEL)
-  await assertChildrensDatesOfBirthIsNotShown()
+  await assertCheckDetailsWithAddressForClaimantWithChildrenAndNotPregnant(FULL_ADDRESS_NO_COUNTY)
 })
 
 Then(/^all page content is present on the check details page$/, async function () {
@@ -159,17 +118,23 @@ Then(/^there are no children displayed$/, async function () {
 })
 
 async function completeApplicationWithAddressDetails (addressLine1, addressLine2, townOrCity, county, postcode) {
-  await enterDoYouLiveInScotlandNoAndSubmit()
-  await enterDateOfBirthAndSubmit()
-  await selectNoOnDoYouHaveChildrenPage()
-  await selectNoOnPregnancyPage()
-  await enterNameAndSubmit()
-  await enterNinoAndSubmit()
-  await enterManualAddressAndSubmit(addressLine1, addressLine2, townOrCity, county, postcode)
-  await enterPhoneNumberAndSubmit()
-  await enterEmailAddressAndSubmit()
-  await selectTextOnSendCode()
-  await enterConfirmationCodeAndSubmit()
+  const actionOptions = { ...DEFAULT_ACTION_OPTIONS, addressLine1, addressLine2, townOrCity, county, postcode }
+  await enterDetailsUpToPage({ page: 'check details', actionOptions })
+}
+
+async function assertCheckDetailsWithAddressForClaimantWithChildrenAndNotPregnant (fullAddress) {
+  const claimContents = await pages.check.getClaimSummaryListContents()
+  const childrenContents = await pages.check.getChildrenSummaryListContents()
+  assertNameShown(claimContents)
+  assertNinoShown(claimContents)
+  assertDobShown(claimContents)
+  assertAreYouPregnantValueShown(claimContents, NO_LABEL)
+  assertNoValueForField(claimContents, 'Baby’s due date')
+  assertAddressShown(claimContents, fullAddress)
+  assertPhoneNumberShown(claimContents)
+  assertEmailAddressShown(claimContents)
+  assertDoYouHaveChildrenIsShown(claimContents, YES_LABEL)
+  await assertChildrensDatesOfBirthIsShown(childrenContents, CHILDRENS_DATES_OF_BIRTH)
 }
 
 async function allPageContentIsCorrectOnCheckPage () {
@@ -230,13 +195,6 @@ function assertDueDateShownInSixMonths (contents) {
 
 function assertFullAddressShown (contents) {
   assertAddressShown(contents, FULL_ADDRESS)
-}
-
-function assertAddressShownWithNoSecondLine (contents) {
-  assertAddressShown(contents, FULL_ADDRESS_NO_LINE_2)
-}
-function assertAddressShownWithNoCounty (contents) {
-  assertAddressShown(contents, FULL_ADDRESS_NO_COUNTY)
 }
 
 function assertAddressShown (contents, expectedAddress) {
