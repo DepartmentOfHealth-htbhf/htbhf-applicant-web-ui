@@ -1,22 +1,10 @@
 const { apply } = require('./apply')
 const { inScotland } = require('./in-scotland')
 const { guidance } = require('./guidance')
+const { configureTestSuite } = require('./configure-test-suite')
 
-const checkPageUrl = (url, result) => {
-  return result.pageUrl !== url
-    ? `Expected to GET ${url}, but was ${result.pageUrl}`
-    : null
-}
-
-const addUrlCheck = (testSuite) =>
-  testSuite.map(test => ({
-    ...test,
-    issueChecks: !test.issueChecks ? [checkPageUrl] : [...test.issueChecks, checkPageUrl]
-  }))
-
-// Add a default page URL check to every test
-const testSuitesWithUrlCheck = [apply, inScotland, guidance].map(addUrlCheck)
+const ALL_TESTS = [apply, inScotland, guidance]
 
 module.exports = {
-  TEST_SUITES: testSuitesWithUrlCheck
+  TEST_SUITE: ALL_TESTS.map(configureTestSuite)
 }
