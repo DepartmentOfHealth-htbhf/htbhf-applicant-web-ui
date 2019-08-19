@@ -1,5 +1,5 @@
 const test = require('tape')
-const { enterDob } = require('./enter-dob')
+const { dateOfBirth } = require('./date-of-birth')
 
 const req = {
   t: string => string,
@@ -12,11 +12,11 @@ const req = {
   }
 }
 
-test('Enter dob contentSummary() should return content summary in correct format', (t) => {
-  const result = enterDob.contentSummary(req)
+test('Date of birth contentSummary() should return content summary in correct format', (t) => {
+  const result = dateOfBirth.contentSummary(req)
 
   const expected = {
-    key: 'enterDob.summaryKey',
+    key: 'dateOfBirth.summaryKey',
     value: '30 May 1920'
   }
 

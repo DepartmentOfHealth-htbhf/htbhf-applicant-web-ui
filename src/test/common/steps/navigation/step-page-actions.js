@@ -20,7 +20,7 @@ const STEP_PAGE_ACTIONS = [
     actions: async () => enterDoYouLiveInScotlandNoAndSubmit()
   },
   {
-    page: (pages) => pages.enterDOB,
+    page: (pages) => pages.dateOfBirth,
     actions: async () => enterDateOfBirthAndSubmit()
   },
   {

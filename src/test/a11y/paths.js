@@ -9,7 +9,7 @@ const URLS = {
   I_LIVE_IN_SCOTLAND: `${BASE_URL}/in-scotland`,
   ENTER_NAME: `${BASE_URL}/enter-name`,
   ENTER_NINO: `${BASE_URL}/enter-nino`,
-  ENTER_DOB: `${BASE_URL}/enter-dob`,
+  ENTER_DOB: `${BASE_URL}/date-of-birth`,
   DO_YOU_HAVE_CHILDREN: `${BASE_URL}/do-you-have-children`,
   CHILDREN_DOB: `${BASE_URL}/children-dob`,
   ARE_YOU_PREGNANT: `${BASE_URL}/are-you-pregnant`,
