@@ -13,13 +13,13 @@ const {
 } = require('./common-steps')
 
 When(/^I complete the application with valid details, selecting to receive my confirmation code via text$/, async function () {
-  await enterDetailsUpToPage({ page: 'send code' })
+  await enterDetailsUpToPage({ page: pages.sendCode.getPageName() })
   await selectTextOnSendCode()
   await enterConfirmationCodeAndSubmit()
 })
 
 When(/^I complete the application with valid details, selecting to receive my confirmation code via email$/, async function () {
-  await enterDetailsUpToPage({ page: 'send code' })
+  await enterDetailsUpToPage({ page: pages.sendCode.getPageName() })
   await selectEmailOnSendCode()
   await enterConfirmationCodeAndSubmit()
 })
