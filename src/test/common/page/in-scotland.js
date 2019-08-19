@@ -8,15 +8,15 @@ const PAGE_TITLES = {
 }
 
 /**
- * Page object for I Live in Scotland page where the claimant is told they cannot apply if they live in Scotland.
+ * Page object for In Scotland page where the claimant is told they cannot apply if they live in Scotland.
  */
-class ILiveInScotland extends Page {
+class InScotland extends Page {
   async waitForPageLoad (lang = 'en') {
     return super.waitForPageWithTitle(PAGE_TITLES[lang])
   }
 
   getPath () {
-    return '/i-live-in-scotland'
+    return '/in-scotland'
   }
 
   getPageName () {
@@ -35,4 +35,4 @@ class ILiveInScotland extends Page {
   }
 }
 
-module.exports = ILiveInScotland
+module.exports = InScotland
