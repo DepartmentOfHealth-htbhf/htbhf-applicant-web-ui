@@ -32,9 +32,6 @@ jobs:
           name: test
           command: npm test
       - run:
-          name: deploy to dev
-          command: ./ci_scripts/ci_deploy.sh
-      - run:
           name: coverage
           command: npm run coverage
       - save_cache:
@@ -48,6 +45,14 @@ jobs:
           root: build
           paths:
             - reports/*
+  deploy-to-dev:
+    docker:
+      - image: circleci/node:10.16.0
+    steps:
+      - checkout
+      - run:
+          name: deploy to dev
+          command: ./ci_scripts/ci_deploy.sh
       - persist_to_workspace:
           root: bin
           paths:
@@ -98,15 +103,21 @@ workflows:
           filters:
             branches:
               ignore: gh-pages
-      - deploy-docs:
+      - deploy-to-dev:
           requires:
             - build
           filters:
             branches:
               only: master
+      - deploy-docs:
+          requires:
+            - deploy-to-dev
+          filters:
+            branches:
+              only: master
       - trigger-cd-build:
           requires:
-            - build
+            - deploy-to-dev
           filters:
             branches:
               only: master
