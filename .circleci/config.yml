@@ -59,6 +59,14 @@ jobs:
           at: build/reports/
       - attach_workspace:
           at: bin/
+      - restore-cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: npm install global
+          command: sudo npm install -g standard tape nyc
+      - run:
+          name: npm install
+          command: npm install
       - run:
           name: deploy to dev
           command: ./ci_scripts/ci_deploy.sh
