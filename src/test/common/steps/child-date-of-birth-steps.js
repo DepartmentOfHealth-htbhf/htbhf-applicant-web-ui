@@ -8,16 +8,16 @@ const { dateLastYear } = require('../../common/dates')
 const pages = require('./pages')
 
 Given(/^I enter the details of my child who is under four years old$/, async function () {
-  await pages.enterChildrenDOB.enterChild3OrUnderDetails('Joe')
+  await pages.childDateOfBirth.enterChild3OrUnderDetails('Joe')
 })
 
 Given(/^there are no Remove Child buttons visible$/, async function () {
-  const allRemoveButtons = await pages.enterChildrenDOB.findAllRemoveChildButtons()
+  const allRemoveButtons = await pages.childDateOfBirth.findAllRemoveChildButtons()
   expect(allRemoveButtons.length).to.be.equal(0)
 })
 
 Given(/^there is a Remove Button for both children's date of birth$/, async function () {
-  const allRemoveButtons = await pages.enterChildrenDOB.findAllRemoveChildButtons()
+  const allRemoveButtons = await pages.childDateOfBirth.findAllRemoveChildButtons()
   expect(allRemoveButtons.length).to.be.equal(2)
 
   const allRemoveButtonIds = allRemoveButtons.map(async (button) => button.getAttribute('id'))
@@ -31,7 +31,7 @@ When(/^I submit the details of my child who is under four years old$/, async fun
 })
 
 When(/^I click remove for the first child's date of birth$/, async function () {
-  await pages.enterChildrenDOB.clickRemoveButtonForChild(1)
+  await pages.childDateOfBirth.clickRemoveButtonForChild(1)
 })
 
 When(/^I submit the details of my child who is under four years old without a name$/, async function () {
@@ -44,7 +44,7 @@ When(/^I submit the details of my child who is under four years old with a very 
 
 When(/^I submit the details of my two children who are under four years old/, async function () {
   await enterTwoSetsOfChildren3OrUnderDetails()
-  await pages.enterChildrenDOB.submitForm()
+  await pages.childDateOfBirth.submitForm()
 })
 
 When(/^I enter the details of my two children who are under four years old/, async function () {
@@ -57,7 +57,7 @@ When(/^I submit the details of my ten children who are under four years old/, as
 
 When(/^I submit the details of my two children who are under four years both with very long names/, async function () {
   await enterTwoSetsOfChildren3OrUnderDetails(LONG_STRING, LONG_STRING)
-  await pages.enterChildrenDOB.submitForm()
+  await pages.childDateOfBirth.submitForm()
 })
 
 When(/^I do not enter my child's date of birth/, async function () {
@@ -65,7 +65,7 @@ When(/^I do not enter my child's date of birth/, async function () {
 })
 
 When(/^I select to add another child/, async function () {
-  await pages.enterChildrenDOB.clickAddAnotherChild()
+  await pages.childDateOfBirth.clickAddAnotherChild()
 })
 
 When(/^I enter a future date as my child's date of birth/, async function () {
@@ -73,11 +73,11 @@ When(/^I enter a future date as my child's date of birth/, async function () {
 })
 
 Then(/^I am shown the enter your childrens dates of birth page$/, async function () {
-  await pages.enterChildrenDOB.waitForPageLoad()
+  await pages.childDateOfBirth.waitForPageLoad()
 })
 
 Then(/^The back link points to the Enter your children’s dates of birth page$/, async function () {
-  await assertBackLinkPointsToPage(pages.enterChildrenDOB)
+  await assertBackLinkPointsToPage(pages.childDateOfBirth)
 })
 
 Then(/^I am informed that the first child must be under four$/, async function () {
@@ -103,9 +103,9 @@ Then(/^I am informed that I need to enter a shorter name$/, async function () {
 })
 
 Then(/^I only see the second child's date of birth$/, async function () {
-  const childDobDay = await pages.enterChildrenDOB.getChildDateOfBirthDay(1)
-  const childDobMonth = await pages.enterChildrenDOB.getChildDateOfBirthMonth(1)
-  const childDobYear = await pages.enterChildrenDOB.getChildDateOfBirthYear(1)
+  const childDobDay = await pages.childDateOfBirth.getChildDateOfBirthDay(1)
+  const childDobMonth = await pages.childDateOfBirth.getChildDateOfBirthMonth(1)
+  const childDobYear = await pages.childDateOfBirth.getChildDateOfBirthYear(1)
 
   // The second child will have the date incremented by 1 day
   const dateOfBirthForSecondChild = dateLastYear(1)
@@ -117,10 +117,10 @@ Then(/^I only see the second child's date of birth$/, async function () {
 
 async function assertNameTooLongErrorPresentForChild (index) {
   try {
-    await assertErrorHeaderTextPresent(pages.enterChildrenDOB)
+    await assertErrorHeaderTextPresent(pages.childDateOfBirth)
     await assertFieldErrorAndLinkTextPresentAndCorrect(
-      pages.enterChildrenDOB.getChildNameFieldErrorId(index),
-      pages.enterChildrenDOB.getChildNameErrorLinkCss(index),
+      pages.childDateOfBirth.getChildNameFieldErrorId(index),
+      pages.childDateOfBirth.getChildNameErrorLinkCss(index),
       'Enter a shorter name')
   } catch (error) {
     assert.fail(`Unexpected error caught trying to assert the too long name error present for child with index ${index} - ${error}`)
@@ -129,10 +129,10 @@ async function assertNameTooLongErrorPresentForChild (index) {
 
 async function assertDateOfBirthErrorPresentForChild (index) {
   try {
-    await assertErrorHeaderTextPresent(pages.enterChildrenDOB)
+    await assertErrorHeaderTextPresent(pages.childDateOfBirth)
     await assertFieldErrorAndLinkTextPresentAndCorrect(
-      pages.enterChildrenDOB.getChildDateOfBirthFieldErrorId(index),
-      pages.enterChildrenDOB.getChildDateOfBirthErrorLinkCss(index),
+      pages.childDateOfBirth.getChildDateOfBirthFieldErrorId(index),
+      pages.childDateOfBirth.getChildDateOfBirthErrorLinkCss(index),
       'Enter your child’s date of birth')
   } catch (error) {
     assert.fail(`Unexpected error caught trying to assert the date of birth error present for child with index ${index} - ${error}`)
@@ -141,10 +141,10 @@ async function assertDateOfBirthErrorPresentForChild (index) {
 
 async function assertChildUnder4ErrorPresentForChild (index) {
   try {
-    await assertErrorHeaderTextPresent(pages.enterChildrenDOB)
+    await assertErrorHeaderTextPresent(pages.childDateOfBirth)
     await assertFieldErrorAndLinkTextPresentAndCorrect(
-      pages.enterChildrenDOB.getChildDateOfBirthFieldErrorId(index),
-      pages.enterChildrenDOB.getChildDateOfBirthErrorLinkCss(index),
+      pages.childDateOfBirth.getChildDateOfBirthFieldErrorId(index),
+      pages.childDateOfBirth.getChildDateOfBirthErrorLinkCss(index),
       'You can only apply for children who are under 4 years old')
   } catch (error) {
     assert.fail(`Unexpected error caught trying to assert the date of birth error present for child with index ${index} - ${error}`)
@@ -153,9 +153,9 @@ async function assertChildUnder4ErrorPresentForChild (index) {
 
 async function enterTwoSetsOfChildren3OrUnderDetails (firstChildName = 'Joe', secondChildName = 'Joanne') {
   try {
-    await pages.enterChildrenDOB.enterChild3OrUnderDetails(firstChildName, 0)
-    await pages.enterChildrenDOB.clickAddAnotherChild()
-    await pages.enterChildrenDOB.enterChild3OrUnderDetails(secondChildName, 1)
+    await pages.childDateOfBirth.enterChild3OrUnderDetails(firstChildName, 0)
+    await pages.childDateOfBirth.clickAddAnotherChild()
+    await pages.childDateOfBirth.enterChild3OrUnderDetails(secondChildName, 1)
   } catch (error) {
     assert.fail(`Unexpected error caught trying to enter two sets of children details and submit the page - ${error}`)
   }
@@ -165,8 +165,8 @@ async function submitDateOfBirthInFuture () {
   try {
     const dateInFuture = new Date()
     dateInFuture.setFullYear(dateInFuture.getFullYear() + 5)
-    await pages.enterChildrenDOB.enterChild3OrUnderDateOfBirth(dateInFuture)
-    await pages.enterChildrenDOB.submitForm()
+    await pages.childDateOfBirth.enterChild3OrUnderDateOfBirth(dateInFuture)
+    await pages.childDateOfBirth.submitForm()
   } catch (error) {
     assert.fail(`Unexpected error caught trying to enter future date of birth and submit the page - ${error}`)
   }
@@ -177,15 +177,15 @@ async function submitTenSetsOfChildren3OrUnderDetails () {
     for (let childIndex = 1; childIndex <= 10; childIndex++) {
       await enterChildDetailsAndClickAddAnother(childIndex, (childIndex < 10))
     }
-    await pages.enterChildrenDOB.submitForm()
+    await pages.childDateOfBirth.submitForm()
   } catch (error) {
     assert.fail(`Unexpected error caught trying to enter ten sets of children details and submit the page - ${error}`)
   }
 }
 
 async function enterChildDetailsAndClickAddAnother (childIndex, shouldClickAddAnother) {
-  await pages.enterChildrenDOB.enterChild3OrUnderDetails(`Child${childIndex}`, childIndex)
+  await pages.childDateOfBirth.enterChild3OrUnderDetails(`Child${childIndex}`, childIndex)
   if (shouldClickAddAnother) {
-    await pages.enterChildrenDOB.clickAddAnotherChild()
+    await pages.childDateOfBirth.clickAddAnotherChild()
   }
 }

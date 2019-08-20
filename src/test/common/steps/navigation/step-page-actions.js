@@ -29,7 +29,7 @@ const STEP_PAGE_ACTIONS = [
     actions: async () => selectYesOnDoYouHaveChildrenPage()
   },
   {
-    page: (pages) => pages.enterChildrenDOB,
+    page: (pages) => pages.childDateOfBirth,
     actions: async () => submitChild3OrUnderDetails()
   },
   {

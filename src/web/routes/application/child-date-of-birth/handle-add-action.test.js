@@ -44,7 +44,7 @@ test('handleAddAction() increments the input count in session on add action', (t
   handleAddAction(req, res, next)
 
   t.deepEqual(req.session.children, expected, 'increments input count')
-  t.equal(redirect.calledWith('/children-dob'), true, 'calls redirect')
+  t.equal(redirect.calledWith('/child-date-of-birth'), true, 'calls redirect')
   t.equal(next.called, false, 'does not call next')
   t.end()
 })
@@ -81,7 +81,7 @@ test('handleAddAction() does nothing when not an add action', (t) => {
   handleAddAction(req, res, next)
 
   t.deepEqual(req.session.children, expected, 'does not mutate children')
-  t.equal(redirect.calledWith('/children-dob'), false, 'does not call redirect')
+  t.equal(redirect.calledWith('/child-date-of-birth'), false, 'does not call redirect')
   t.equal(next.called, true, 'calls next')
   t.end()
 })

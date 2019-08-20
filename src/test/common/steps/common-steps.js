@@ -148,8 +148,8 @@ async function selectYesOnDoYouHaveChildrenPage () {
 
 async function submitChild3OrUnderDetails (name = 'Joe') {
   try {
-    await pages.enterChildrenDOB.enterChild3OrUnderDetails(name)
-    await pages.enterChildrenDOB.submitForm()
+    await pages.childDateOfBirth.enterChild3OrUnderDetails(name)
+    await pages.childDateOfBirth.submitForm()
   } catch (error) {
     assert.fail(`Unexpected error caught trying to enter child details and submit the page - ${error}`)
   }
