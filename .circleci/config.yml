@@ -16,7 +16,7 @@ jobs:
       - checkout
       - add_ssh_keys:
           fingerprints:
-            - "9b:3f:1f:ef:4d:1c:a6:f7:8c:87:bf:ec:77:3e:00:71"
+            - "d5:78:74:e9:5c:24:0d:5e:be:f7:91:8a:5b:ba:1d:93"
       - run:
           name: start chrome
           command: google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
@@ -59,7 +59,7 @@ jobs:
       - checkout
       - add_ssh_keys:
           fingerprints:
-            - "9b:3f:1f:ef:4d:1c:a6:f7:8c:87:bf:ec:77:3e:00:71"
+            - "d5:78:74:e9:5c:24:0d:5e:be:f7:91:8a:5b:ba:1d:93"
       - attach_workspace:
           at: build/reports/
       - run:
