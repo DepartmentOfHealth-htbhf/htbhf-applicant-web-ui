@@ -5,12 +5,12 @@ jobs:
       - image: circleci/node:10.16.0-browsers
       - image: circleci/redis
     environment:
-      - PORT: 8080
-      - SESSION_SECRET: notsosecret
-      - BIN_DIR: ./bin
-      - WIREMOCK_PORT: 8090
-      - WIREMOCK_URL: http://localhost:8090
-      - USE_UNSECURE_COOKIE: true
+      PORT: 8080
+      SESSION_SECRET: notsosecret
+      BIN_DIR: ./bin
+      WIREMOCK_PORT: 8090
+      WIREMOCK_URL: http://localhost:8090
+      USE_UNSECURE_COOKIE: true
     steps:
       - checkout
       - add_ssh_keys:
@@ -48,8 +48,8 @@ jobs:
     docker:
       - image: circleci/node:10.16.0-browsers
     environment:
-      - SMOKE_TESTS: ./ci_scripts/smoke_tests.sh
-      - BIN_DIR: ./bin
+      SMOKE_TESTS: ./ci_scripts/smoke_tests.sh
+      BIN_DIR: ./bin
     steps:
       - checkout
       - add_ssh_keys:
