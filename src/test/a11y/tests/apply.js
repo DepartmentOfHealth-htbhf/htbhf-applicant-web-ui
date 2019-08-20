@@ -72,6 +72,14 @@ const apply = [
     toggle: 'ADDRESS_LOOKUP_ENABLED'
   },
   {
+    url: URLS['SELECT_ADDRESS'],
+    // POST empty form data as this page does not submit any data but still
+    // uses the application’s POST -> REDIRECT -> GET to move to the next step
+    // when user clicks “Enter address manually”
+    formData: () => ({}),
+    toggle: 'ADDRESS_LOOKUP_ENABLED'
+  },
+  {
     url: URLS['MANUAL_ADDRESS'],
     formData: () => ({
       'addressLine1': 'Flat B',
