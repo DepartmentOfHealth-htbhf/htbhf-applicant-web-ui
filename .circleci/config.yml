@@ -83,6 +83,11 @@ jobs:
           name: Deploy docs to gh-pages branch
           command: gh-pages --dist build/reports
       - run:
+          name: Set app version
+          command: |
+            echo 'APP_VERSION=$(sed -nE 's/^[ \\t]*"version": "([0-9]{1,}\.[0-9]{1,}\.[0-9x]{1,})",$/\1/p' package.json;)'
+            source $APP_VERSION
+      - run:
           name: ls bin/deployment-scripts/
           command: ls bin/deployment-scripts/
       - run:
