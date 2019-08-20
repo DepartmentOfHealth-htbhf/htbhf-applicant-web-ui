@@ -60,10 +60,10 @@ async function enterNinoAndSubmit (nino = VALID_ELIGIBLE_NINO) {
 
 async function enterDateOfBirthAndSubmit (day = DAY, month = MONTH, year = YEAR) {
   try {
-    await pages.enterDOB.dayInputField.enterValue(day)
-    await pages.enterDOB.monthInputField.enterValue(month)
-    await pages.enterDOB.yearInputField.enterValue(year)
-    await pages.enterDOB.submitForm()
+    await pages.dateOfBirth.dayInputField.enterValue(day)
+    await pages.dateOfBirth.monthInputField.enterValue(month)
+    await pages.dateOfBirth.yearInputField.enterValue(year)
+    await pages.dateOfBirth.submitForm()
   } catch (error) {
     assert.fail(`Unexpected error caught trying to enter the date of birth and submit the page - ${error}`)
   }
