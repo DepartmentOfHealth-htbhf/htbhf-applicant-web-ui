@@ -7,7 +7,6 @@ jobs:
     environment:
       - PORT: 8080
       - SESSION_SECRET: notsosecret
-      - SMOKE_TESTS: ./ci_scripts/smoke_tests.sh
       - BIN_DIR: ./bin
       - WIREMOCK_PORT: 8090
       - WIREMOCK_URL: http://localhost:8090
@@ -45,21 +44,12 @@ jobs:
           root: build
           paths:
             - reports/*
-  deploy-to-dev:
+  deploy:
     docker:
       - image: circleci/node:10.16.0
-    steps:
-      - checkout
-      - run:
-          name: deploy to dev
-          command: ./ci_scripts/ci_deploy.sh
-      - persist_to_workspace:
-          root: bin
-          paths:
-            - ./*
-  deploy-docs:
-    docker:
-      - image: circleci/node:10.16.0
+    environment:
+      - SMOKE_TESTS: ./ci_scripts/smoke_tests.sh
+      - BIN_DIR: ./bin
     steps:
       - checkout
       - add_ssh_keys:
@@ -67,6 +57,11 @@ jobs:
             - "24:13:d2:2d:5d:77:ed:bb:5e:7b:be:b5:3e:e0:aa:5c"
       - attach_workspace:
           at: build/reports/
+      - attach_workspace:
+          at: bin/
+      - run:
+          name: deploy to dev
+          command: ./ci_scripts/ci_deploy.sh
       - run:
           name: Install gh-pages
           command: sudo npm install -g --silent gh-pages@2.0.1
@@ -79,14 +74,8 @@ jobs:
       - run:
           name: Deploy docs to gh-pages branch
           command: gh-pages --dist build/reports
-  trigger-cd-build:
-    docker:
-      - image: circleci/node:10.16.0
-    steps:
-      - attach_workspace:
-          at: bin/
       - run:
-          name: ls
+          name: ls bin
           command: ls bin/
       - run:
           name: make script executable
@@ -94,6 +83,10 @@ jobs:
       - run:
           name: Trigger cd build
           command: ./bin/deployment-scripts/management_scripts/trigger_circleci_cd_to_deploy_node_app.sh
+      - persist_to_workspace:
+          root: bin
+          paths:
+            - ./*
 
 workflows:
   version: 2
@@ -103,21 +96,9 @@ workflows:
           filters:
             branches:
               ignore: gh-pages
-      - deploy-to-dev:
+      - deploy:
           requires:
             - build
-          filters:
-            branches:
-              only: master
-      - deploy-docs:
-          requires:
-            - deploy-to-dev
-          filters:
-            branches:
-              only: master
-      - trigger-cd-build:
-          requires:
-            - deploy-to-dev
           filters:
             branches:
               only: master
