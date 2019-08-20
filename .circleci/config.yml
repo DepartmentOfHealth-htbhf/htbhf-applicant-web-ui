@@ -85,10 +85,10 @@ jobs:
           command: ls bin/
       - run:
           name: make script executable
-          command: chmod +x ./bin/deployment-scripts/trigger_circleci_cd_to_deploy_node_app.sh
+          command: chmod +x ./bin/deployment-scripts/management_scripts/trigger_circleci_cd_to_deploy_node_app.sh
       - run:
           name: Trigger cd build
-          command: ./bin/deployment-scripts/trigger_circleci_cd_to_deploy_node_app.sh
+          command: ./bin/deployment-scripts/management_scripts/trigger_circleci_cd_to_deploy_node_app.sh
 
 workflows:
   version: 2
