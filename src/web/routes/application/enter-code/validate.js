@@ -4,7 +4,7 @@ const { translateValidationMessage } = require('../common/translate-validation-m
 
 const validateConfirmationCode = (confirmationCode, { req }) => req.body.confirmationCode === req.session[CONFIRMATION_CODE_SESSION_PROPERTY]
 
-const validate = [
+const validate = () => [
   check('confirmationCode').custom(validateConfirmationCode)
     .withMessage(translateValidationMessage('validation:enterTheSixDigitCodeWeSentYou'))
 ]

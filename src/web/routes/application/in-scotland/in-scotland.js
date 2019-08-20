@@ -8,7 +8,7 @@ const pageContent = ({ translate }) => ({
 
 const isNavigable = (session) => path(['claim', 'scotland'], session) === YES
 
-const behaviourForGet = (req, res, next) => {
+const behaviourForGet = () => (req, res, next) => {
   req.session.destroy()
   res.clearCookie('lang')
   next()

@@ -21,7 +21,7 @@ const contentSummary = (req) => ({
 
 const claimantHasChildren = claim => claim.doYouHaveChildren === YES
 
-const behaviourForPost = (req, res, next) => {
+const behaviourForPost = () => (req, res, next) => {
   if (req.body.doYouHaveChildren === NO) {
     req.session.children = null
   }

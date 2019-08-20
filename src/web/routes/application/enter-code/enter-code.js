@@ -25,12 +25,12 @@ const getConfirmationCodeDestination = (claim) => {
   throw new Error(`Expecting 'channelForCode' option to be either 'text' or 'email', instead was ${claim.channelForCode}`)
 }
 
-const behaviourForGet = (req, res, next) => {
+const behaviourForGet = () => (req, res, next) => {
   res.locals.confirmationCodeDestination = getConfirmationCodeDestination(req.session.claim)
   next()
 }
 
-const behaviourForPost = (req, reqs, next) => {
+const behaviourForPost = () => (req, res, next) => {
   if (validationResult(req).isEmpty()) {
     req.session[CONFIRMATION_CODE_ENTERED_SESSION_PROPERTY] = true
   }

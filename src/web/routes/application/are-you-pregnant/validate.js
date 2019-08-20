@@ -47,7 +47,7 @@ const validateExpectedDeliveryDate = (res) => (_, { req }) => {
 const callValidateExpectedDeliveryDate = (req, res, next) =>
   check('expectedDeliveryDate').custom(validateExpectedDeliveryDate(res))(req, res, next)
 
-const validate = [
+const validate = () => [
   validateIsYesOrNo('areYouPregnant', 'validation:selectYesOrNoAreYouPregnant'),
   callValidateExpectedDeliveryDate
 ]

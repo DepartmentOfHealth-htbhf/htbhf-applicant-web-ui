@@ -1,27 +1,34 @@
 const test = require('tape')
+const sinon = require('sinon')
 const { handleOptionalMiddleware } = require('./register-form-routes')
 
-test('handleOptionalMiddleware() should return the operation if defined', (t) => {
-  const operation = 'operation'
-  const fallback = 'fallback'
-  const result = handleOptionalMiddleware(operation, fallback)
+test('handleOptionalMiddleware() should call the operation if defined with correct arguments', (t) => {
+  const operation = sinon.spy()
+  const fallback = sinon.spy()
+  const args = ['first argument', 'second argument']
 
-  t.equal(result, operation, 'should return the operation if defined')
+  handleOptionalMiddleware(args)(operation, fallback)
+  t.deepEqual(operation.getCall(0).args, args, 'should call the operation if defined with correct arguments')
+  t.equal(fallback.called, false, 'does not call the fallback')
   t.end()
 })
 
-test('handleOptionalMiddleware() should return the fallback if operation not defined', (t) => {
+test('handleOptionalMiddleware() should call the fallback if operation not defined with correct arguments', (t) => {
   const operation = undefined
-  const fallback = 'fallback'
-  const result = handleOptionalMiddleware(operation, fallback)
+  const fallback = sinon.spy()
+  const args = ['first argument', 'second argument']
+  handleOptionalMiddleware(args)(operation, fallback)
 
-  t.equal(result, fallback, 'should return the fallback if operation not defined')
+  t.deepEqual(fallback.getCall(0).args, args, 'should call the fallback if operation not defined with correct arguments')
   t.end()
 })
 
 test('handleOptionalMiddleware() should return the default fallback if operation and fallback are not defined', (t) => {
-  const result = handleOptionalMiddleware()
+  const req = {}
+  const res = {}
+  const next = sinon.spy()
+  handleOptionalMiddleware()()(req, res, next)
 
-  t.equal(typeof result, 'function', 'should return the default fallback if operation and fallback are not defined')
+  t.equal(next.called, true, 'default fallback calls next()')
   t.end()
 })
