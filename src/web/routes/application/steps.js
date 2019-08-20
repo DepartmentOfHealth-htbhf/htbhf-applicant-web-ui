@@ -8,21 +8,23 @@ const { scotland } = require('./scotland')
 const { inScotland } = require('./in-scotland')
 const { emailAddress } = require('./email-address')
 const { doYouHaveChildren } = require('./do-you-have-children')
-const { childrenDob } = require('./children-dob')
+const { childDateOfBirth } = require('./child-date-of-birth')
 const { sendCode } = require('./send-code')
 const { enterCode } = require('./enter-code')
 const { postcode } = require('./postcode')
+const { selectAddress } = require('./select-address')
 
 const steps = [
   scotland,
   inScotland,
   dateOfBirth,
   doYouHaveChildren,
-  childrenDob,
+  childDateOfBirth,
   areYouPregnant,
   enterName,
   enterNino,
   postcode,
+  selectAddress,
   manualAddress,
   phoneNumber,
   emailAddress,
