@@ -85,7 +85,7 @@ jobs:
       - run:
           name: Set app version
           command: |
-            echo 'export APP_VERSION=$(sed -nE 's/^[ \\t]*"version": "([0-9]{1,}\.[0-9]{1,}\.[0-9x]{1,})",$/\1/p' package.json;)' >> $BASH_ENV
+            echo "export APP_VERSION=$(sed -nE 's/^[ \\t]*"version": "([0-9]{1,}\.[0-9]{1,}\.[0-9x]{1,})",$/\1/p' package.json;)" >> $BASH_ENV
             source $BASH_ENV
       - run:
           name: ls bin/deployment-scripts/
