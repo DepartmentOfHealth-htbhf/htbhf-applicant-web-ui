@@ -85,7 +85,7 @@ jobs:
           command: ls bin/
       - run:
           name: Trigger cd build
-          command: ./bin/deployment-scripts/trigger_circleci_cd_to_deploy_node_app.sh
+          command: chmod +x ./bin/deployment-scripts/trigger_circleci_cd_to_deploy_node_app.sh && ./bin/deployment-scripts/trigger_circleci_cd_to_deploy_node_app.sh
 
 workflows:
   version: 2
