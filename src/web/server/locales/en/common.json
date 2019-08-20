@@ -13,7 +13,7 @@
     "hint": "Use the name that’s on your official documents, such as passport, driving licence, or any benefit claims.",
     "firstNameLabel": "First or given name",
     "lastNameLabel": "Last or family name",
-    "summaryKey":  "Your name",
+    "summaryKey": "Your name",
     "explanation": "We need this to confirm your identity and eligibility. Your name will also appear on your prepaid card."
   },
   "dateOfBirth": {
@@ -67,7 +67,8 @@
     "formDescription": "If you claim any benefits you must use the same address registered with the benefits agency (DWP or HMRC).",
     "summaryKey": "Address",
     "explanation": "We need this to confirm your identity and eligibility. We'll send your prepaid card to this address.",
-    "hint": "Enter the first line of your address"
+    "hint": "Enter the first line of your address",
+    "addressNotFound": "We cannot find that address"
   },
   "postcode": {
     "title": "What’s your address?",
@@ -101,8 +102,7 @@
     "title": "We’re sending you a code",
     "heading": "We’re sending you a code",
     "hint": "Select how you would like to receive it",
-    "explanation": "We need this to confirm your identity and to prevent fraud.",
-    "change": "Change"
+    "explanation": "We need this to confirm your identity and to prevent fraud."
   },
   "enterCode": {
     "title": "Enter your code",
@@ -115,7 +115,6 @@
   "check": {
     "title": "Check your answers",
     "heading": "Check your answers",
-    "change": "Change",
     "aboutYou": "About you",
     "aboutYourChildren": "About your children",
     "name": "Name",
@@ -172,5 +171,6 @@
   "text": "Text",
   "email": "Email",
   "previous": "Previous",
-  "next": "Next"
+  "next": "Next",
+  "change": "Change"
 }

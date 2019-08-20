@@ -1,5 +1,4 @@
 {% extends "templates/form.njk" %}
-{% from "input/macro.njk" import govukInput %}
 {% from "fieldset/macro.njk" import govukFieldset %}
 {% from "inset-text/macro.njk" import govukInsetText %}
 {% from "macros/htbhf-form-description.njk" import htbhfFormDescription %}
@@ -14,19 +13,14 @@
         }
     }) %}
 
-    {{ htbhfFormDescription(formDescription) }}
+        {{ htbhfFormDescription(formDescription) }}
 
-    {{ govukInput({
-        label: {
-            text: postcodeLabel
-        },
-        classes: "govuk-input--width-10",
-        id: "postcode",
-        name: "postcode",
-        value: claim.postcode,
-        errorMessage: errors | getErrorForField('postcode'),
-        autocomplete: "off"
-    }) }}
+        <h2 class="govuk-heading-m">{{ postcodeLabel }}</h2>
+        <span class="govuk-body">
+            <strong class="govuk-!-margin-right-4">{{ claim.postcode | upper }}</strong>
+            <a class="govuk-link" href="/postcode">{{ change }}</a>
+        </span>
+        <h2 class="govuk-heading-m">{{ addressNotFound }}</h2>
 
     {% endcall %}
 

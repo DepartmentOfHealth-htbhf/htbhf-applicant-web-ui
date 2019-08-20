@@ -65,7 +65,8 @@
     "postcodeLabel": "Penatibus",
     "formDescription": "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     "summaryKey": "Aliquet",
-    "hint": "Consectetur adipiscing elit Sceela"
+    "hint": "Consectetur adipiscing elit Sceela",
+    "addressNotFound": "Urna condimentum mattis"
   },
   "postcode": {
     "title": "Urna condimentum mattis?",
@@ -99,8 +100,7 @@
     "title": "Risus sed vulputate odio",
     "heading": "Risus sed vulputate odio",
     "hint": "Consectetur adipiscing elit",
-    "explanation": "Lorem ipsum dolor sit amet.",
-    "change": "Consectetur"
+    "explanation": "Lorem ipsum dolor sit amet."
   },
   "enterCode": {
     "title": "Risus sed vulputate odio",
@@ -113,7 +113,6 @@
   "check": {
     "title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et consectetur adipiscing elit.",
     "heading": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    "change": "Consectetur",
     "aboutYou": "Ed vulputate",
     "aboutYourChildren": "Lorem ipsum dolor",
     "name": "Nom",
@@ -169,5 +168,6 @@
   "text": "Occaecat",
   "email": "Lobortis",
   "previous": "Preveo",
-  "next": "Sequentur"
+  "next": "Sequentur",
+  "change": "Consectetur",
 }
