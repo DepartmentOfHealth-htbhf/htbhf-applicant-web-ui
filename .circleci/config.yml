@@ -46,7 +46,7 @@ jobs:
             - reports/*
   deploy:
     docker:
-      - image: circleci/node:10.16.0
+      - image: circleci/node:10.16.0-browsers
     environment:
       - SMOKE_TESTS: ./ci_scripts/smoke_tests.sh
       - BIN_DIR: ./bin
@@ -61,6 +61,9 @@ jobs:
           at: bin/
       - restore-cache:
           key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: start chrome
+          command: google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
       - run:
           name: npm install global
           command: sudo npm install -g standard tape nyc
