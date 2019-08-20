@@ -1,5 +1,1 @@
-const { selectAddress } = require('./select-address')
-
-module.exports = {
-  selectAddress
-}
+module.exports = require('./select-address')
