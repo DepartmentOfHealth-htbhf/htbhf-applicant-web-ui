@@ -29,10 +29,7 @@ jobs:
           command: npm install
       - run:
           name: test
-          command: npm test
-      - run:
-          name: coverage
-          command: npm run coverage
+          command: npm run test:unit
       - save_cache:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
@@ -86,8 +83,8 @@ jobs:
           name: Deploy docs to gh-pages branch
           command: gh-pages --dist build/reports
       - run:
-          name: ls bin
-          command: ls bin/
+          name: ls bin/deployment-scripts/
+          command: ls bin/deployment-scripts/
       - run:
           name: make script executable
           command: chmod +x ./bin/deployment-scripts/management_scripts/trigger_circleci_cd_to_deploy_node_app.sh
