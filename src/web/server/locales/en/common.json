@@ -101,8 +101,7 @@
     "title": "We’re sending you a code",
     "heading": "We’re sending you a code",
     "hint": "Select how you would like to receive it",
-    "explanation": "We need this to confirm your identity and to prevent fraud.",
-    "change": "Change"
+    "explanation": "We need this to confirm your identity and to prevent fraud."
   },
   "enterCode": {
     "title": "Enter your code",
@@ -115,7 +114,6 @@
   "check": {
     "title": "Check your answers",
     "heading": "Check your answers",
-    "change": "Change",
     "aboutYou": "About you",
     "aboutYourChildren": "About your children",
     "name": "Name",
@@ -172,5 +170,6 @@
   "text": "Text",
   "email": "Email",
   "previous": "Previous",
-  "next": "Next"
+  "next": "Next",
+  "change": "Change"
 }
