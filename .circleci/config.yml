@@ -11,7 +11,6 @@ jobs:
       WIREMOCK_PORT: 8090
       WIREMOCK_URL: http://localhost:8090
       USE_UNSECURE_COOKIE: true
-      REPO_NAME: htbhf-applicant-web-ui
     steps:
       - checkout
       - add_ssh_keys:
@@ -48,6 +47,7 @@ jobs:
     environment:
       SMOKE_TESTS: ./ci_scripts/smoke_tests.sh
       BIN_DIR: ./bin
+      REPO_NAME: htbhf-applicant-web-ui
     steps:
       - checkout
       - add_ssh_keys:
