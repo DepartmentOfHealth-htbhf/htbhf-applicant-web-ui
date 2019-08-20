@@ -103,6 +103,7 @@ const apply = [
     url: URLS['ENTER_CODE'],
     formData: async (requestCookie) => {
       const confirmationCode = await get(SESSION_CONFIRMATION_CODE_URL, requestCookie)
+      console.log(`Retrieved confirmation code ${confirmationCode} from ${SESSION_CONFIRMATION_CODE_URL}`)
       return { confirmationCode }
     }
   },
