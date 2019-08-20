@@ -88,6 +88,15 @@ async function selectNoOnPregnancyPage () {
   }
 }
 
+async function enterPostcodeAndSubmit (postcode = '') {
+  try {
+    await pages.postcode.postcodeInputField.enterValue(postcode)
+    await pages.postcode.submitForm()
+  } catch (error) {
+    assert.fail(`Unexpected error caught trying to enter postcode and submit the page - ${error}`)
+  }
+}
+
 async function enterManualAddressAndSubmit (addressLine1 = ADDRESS_LINE_1, addressLine2 = ADDRESS_LINE_2, townOrCity = TOWN, county = COUNTY, postcode = POSTCODE) {
   try {
     await pages.manualAddress.line1InputField.enterValue(addressLine1)
@@ -255,5 +264,6 @@ module.exports = {
   selectEmailOnSendCode,
   enterConfirmationCodeAndSubmit,
   selectYesOnDoYouHaveChildrenPage,
-  submitChild3OrUnderDetails
+  submitChild3OrUnderDetails,
+  enterPostcodeAndSubmit
 }

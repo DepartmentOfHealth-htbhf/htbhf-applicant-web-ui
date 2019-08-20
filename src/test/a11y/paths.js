@@ -13,6 +13,7 @@ const URLS = {
   DO_YOU_HAVE_CHILDREN: `${BASE_URL}/do-you-have-children`,
   CHILDREN_DOB: `${BASE_URL}/children-dob`,
   ARE_YOU_PREGNANT: `${BASE_URL}/are-you-pregnant`,
+  POSTCODE: `${BASE_URL}/postcode`,
   MANUAL_ADDRESS: `${BASE_URL}/manual-address`,
   PHONE_NUMBER: `${BASE_URL}/phone-number`,
   EMAIL_ADDRESS: `${BASE_URL}/email-address`,

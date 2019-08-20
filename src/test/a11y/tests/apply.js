@@ -65,6 +65,13 @@ const apply = [
     })
   },
   {
+    url: URLS['POSTCODE'],
+    formData: () => ({
+      'postcode': 'AA1 1AA'
+    }),
+    toggle: 'ADDRESS_LOOKUP_ENABLED'
+  },
+  {
     url: URLS['MANUAL_ADDRESS'],
     formData: () => ({
       'addressLine1': 'Flat B',
