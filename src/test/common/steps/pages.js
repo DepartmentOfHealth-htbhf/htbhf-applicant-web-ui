@@ -19,7 +19,7 @@ const UnsuccessfulApplication = require('../page/unsuccessful-application')
 const TermsAndConditions = require('../page/terms-and-conditions')
 const DoYouHaveChildren = require('../page/do-you-have-children')
 const SendCode = require('../page/send-code')
-const EnterChildrenDOB = require('../page/enter-children-dob')
+const ChildDateOfBirth = require('../page/child-date-of-birth')
 const EnterCode = require('../page/enter-code')
 const Guidance = require('../page/guidance')
 const Postcode = require('../page/postcode')
@@ -62,7 +62,7 @@ class Pages {
     this.emailAddress = null
     this.doYouHaveChildren = null
     this.sendCode = null
-    this.enterChildrenDOB = null
+    this.childDateOfBirth = null
     this.enterCode = null
     this.url = URL
     this.allPages = null
@@ -96,7 +96,7 @@ class Pages {
     this.termsAndConditions = new TermsAndConditions(this.driver)
     this.doYouHaveChildren = new DoYouHaveChildren(this.driver)
     this.sendCode = new SendCode(this.driver)
-    this.enterChildrenDOB = new EnterChildrenDOB(this.driver)
+    this.childDateOfBirth = new ChildDateOfBirth(this.driver)
     this.enterCode = new EnterCode(this.driver)
     this.postcode = new Postcode(this.driver)
     // NOTE: The guidance page is not added to the list of allPages as it has its own navigation methods
@@ -104,7 +104,7 @@ class Pages {
     // NOTE: This map should contain all page objects, and not the Generic Page as this doesn't itself represent a page
     this.allPages = [this.enterName, this.enterNino, this.dateOfBirth, this.areYouPregnant, this.manualAddress, this.phoneNumber,
       this.check, this.confirm, this.cookies, this.privacyNotice, this.confirmUpdated, this.scotland, this.iLiveInScotland, this.emailAddress,
-      this.termsAndConditions, this.doYouHaveChildren, this.sendCode, this.enterChildrenDOB, this.enterCode, this.postcode]
+      this.termsAndConditions, this.doYouHaveChildren, this.sendCode, this.childDateOfBirth, this.enterCode, this.postcode]
     this.pageMap = this.allPages.reduce(addPageToMap, {})
   }
 

@@ -11,7 +11,7 @@ const pageContent = ({ translate }) => ({
   formDescription: translate('doYouHaveChildren.formDescription')
 })
 
-const next = req => req.session.claim.doYouHaveChildren === YES ? '/children-dob' : '/are-you-pregnant'
+const next = req => req.session.claim.doYouHaveChildren === YES ? '/child-date-of-birth' : '/are-you-pregnant'
 
 const contentSummary = (req) => ({
   list: 'aboutYourChildren',

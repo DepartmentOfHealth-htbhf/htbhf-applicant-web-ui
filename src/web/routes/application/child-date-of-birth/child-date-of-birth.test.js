@@ -1,6 +1,6 @@
 const test = require('tape')
 const sinon = require('sinon')
-const { behaviourForGet } = require('./children-dob')
+const { behaviourForGet } = require('./child-date-of-birth')
 
 const child = {
   'childDobName-1': 'Lisa',

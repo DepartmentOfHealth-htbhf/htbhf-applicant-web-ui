@@ -19,7 +19,7 @@ const getRemoveButtonIdForIndex = (index) => `remove-child-${index}`
 /**
  * Page object for the enter children's dates of birth page.
  */
-class EnterChildrenDOB extends SubmittablePage {
+class ChildDateOfBirth extends SubmittablePage {
   constructor (driver) {
     super(driver)
     this.childIndex = 1
@@ -30,7 +30,7 @@ class EnterChildrenDOB extends SubmittablePage {
   }
 
   getPath () {
-    return '/children-dob'
+    return '/child-date-of-birth'
   }
 
   getPageName () {
@@ -135,4 +135,4 @@ class EnterChildrenDOB extends SubmittablePage {
   }
 }
 
-module.exports = EnterChildrenDOB
+module.exports = ChildDateOfBirth
