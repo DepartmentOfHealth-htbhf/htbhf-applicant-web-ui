@@ -12,6 +12,7 @@ const { childDateOfBirth } = require('./child-date-of-birth')
 const { sendCode } = require('./send-code')
 const { enterCode } = require('./enter-code')
 const { postcode } = require('./postcode')
+const { selectAddress } = require('./select-address')
 
 const steps = [
   scotland,
@@ -23,6 +24,7 @@ const steps = [
   enterName,
   enterNino,
   postcode,
+  selectAddress,
   manualAddress,
   phoneNumber,
   emailAddress,

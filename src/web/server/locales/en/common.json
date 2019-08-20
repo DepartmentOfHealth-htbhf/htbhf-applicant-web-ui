@@ -13,7 +13,7 @@
     "hint": "Use the name that’s on your official documents, such as passport, driving licence, or any benefit claims.",
     "firstNameLabel": "First or given name",
     "lastNameLabel": "Last or family name",
-    "summaryKey":  "Your name",
+    "summaryKey": "Your name",
     "explanation": "We need this to confirm your identity and eligibility. Your name will also appear on your prepaid card."
   },
   "dateOfBirth": {
@@ -67,7 +67,8 @@
     "formDescription": "If you claim any benefits you must use the same address registered with the benefits agency (DWP or HMRC).",
     "summaryKey": "Address",
     "explanation": "We need this to confirm your identity and eligibility. We'll send your prepaid card to this address.",
-    "hint": "Enter the first line of your address"
+    "hint": "Enter the first line of your address",
+    "addressNotFound": "We cannot find that address"
   },
   "postcode": {
     "title": "What’s your address?",
