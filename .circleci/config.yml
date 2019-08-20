@@ -29,7 +29,10 @@ jobs:
           command: npm install
       - run:
           name: test
-          command: npm run test:unit
+          command: npm test
+      - run:
+          name: coverage
+          command: npm run coverage
       - save_cache:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
