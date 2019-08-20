@@ -14,7 +14,7 @@ const DATE_OF_BIRTH_FIELD_ERROR_ID = 'date-of-birth-error'
 /**
  * Page object for the 'enter date of birth' page.
  */
-class EnterDOB extends SubmittablePage {
+class DateOfBirth extends SubmittablePage {
   constructor (driver) {
     super(driver)
     this.dayInputField = new InputField('dateOfBirth-day', this)
@@ -22,7 +22,7 @@ class EnterDOB extends SubmittablePage {
     this.yearInputField = new InputField('dateOfBirth-year', this)
   }
   getPath () {
-    return '/enter-dob'
+    return '/date-of-birth'
   }
 
   getPageName () {
@@ -42,4 +42,4 @@ class EnterDOB extends SubmittablePage {
   }
 }
 
-module.exports = EnterDOB
+module.exports = DateOfBirth

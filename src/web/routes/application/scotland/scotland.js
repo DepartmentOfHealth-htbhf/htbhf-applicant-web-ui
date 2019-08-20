@@ -16,7 +16,7 @@ const pageContent = ({ translate }) => ({
 
 const claimantLivesInScotland = claim => claim.scotland === YES
 
-const next = req => claimantLivesInScotland(req.session.claim) ? '/in-scotland' : '/enter-dob'
+const next = req => claimantLivesInScotland(req.session.claim) ? '/in-scotland' : '/date-of-birth'
 
 const scotland = {
   path: '/scotland',
