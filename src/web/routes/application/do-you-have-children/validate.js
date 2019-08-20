@@ -1,6 +1,6 @@
 const { validateIsYesOrNo } = require('../common/validators')
 
-const validate = [
+const validate = () => [
   validateIsYesOrNo('doYouHaveChildren', 'validation:selectYesOrNoDoYouHaveChildren')
 ]
 

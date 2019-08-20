@@ -13,7 +13,7 @@ const validatePhoneNumber = (phoneNumber, { req }) => {
   throw new Error(req.t('validation:invalidPhoneNumber'))
 }
 
-const validate = [
+const validate = () => [
   check('phoneNumber').custom(validatePhoneNumber)
 ]
 

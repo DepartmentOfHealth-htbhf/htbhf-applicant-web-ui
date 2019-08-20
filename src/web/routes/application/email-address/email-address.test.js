@@ -43,7 +43,7 @@ test('behaviourForPost() resets confirmation code if the user updated their emai
     }
   }
 
-  behaviourForPost(req, {}, () => {})
+  behaviourForPost()(req, {}, () => {})
 
   t.equal(handleConfirmationCodeReset.called, true)
   handleConfirmationCodeReset.resetHistory()

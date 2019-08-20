@@ -6,7 +6,7 @@ function getPhoneNumber (phoneNumber) {
   return path(['number'], parsedNumber)
 }
 
-const sanitize = (req, res, next) => {
+const sanitize = () => (req, res, next) => {
   // Do not mutate the phone number as users will want to see it in the format they entered it on the check page
   // See https://design-system.service.gov.uk/patterns/telephone-numbers/
   req.body.formattedPhoneNumber = getPhoneNumber(req.body.phoneNumber)

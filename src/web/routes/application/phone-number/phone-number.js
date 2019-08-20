@@ -21,7 +21,7 @@ const phoneNumberHasBeenUpdated = req => req.body.phoneNumber !== req.session.cl
 
 const confirmationChannelIsText = req => getConfirmationCodeChannel(req) === TEXT
 
-const behaviourForPost = (req, res, next) => {
+const behaviourForPost = () => (req, res, next) => {
   if (confirmationChannelIsText(req) && phoneNumberHasBeenUpdated(req)) {
     handleConfirmationCodeReset(req)
   }

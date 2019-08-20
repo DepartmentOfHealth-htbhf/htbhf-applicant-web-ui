@@ -4,7 +4,7 @@ const { translateValidationMessage } = require('../common/translate-validation-m
 const FIRST_NAME_MAX_LENGTH = 500
 const LAST_NAME_MAX_LENGTH = 500
 
-const validate = [
+const validate = () => [
   check('firstName')
     .isLength({ max: FIRST_NAME_MAX_LENGTH })
     .withMessage(translateValidationMessage('validation:firstNameTooLong')),

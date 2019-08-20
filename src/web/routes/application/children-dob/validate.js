@@ -75,7 +75,7 @@ const callValidateChildrenNames = (req, res, next) =>
     .isLength({ max: CHILD_NAME_MAX_LENGTH })
     .withMessage(translateValidationMessage('validation:childNameTooLong'))(req, res, next)
 
-const validate = [
+const validate = () => [
   addDatesToBody,
   callValidateChildrenDatesOfBirth,
   callValidateChildrenNames

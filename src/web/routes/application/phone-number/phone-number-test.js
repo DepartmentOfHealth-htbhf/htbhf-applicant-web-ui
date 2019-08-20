@@ -42,7 +42,7 @@ test('behaviourForPost() resets confirmation code if the user updated their phon
     }
   }
 
-  behaviourForPost(req, {}, () => {})
+  behaviourForPost()(req, {}, () => {})
 
   t.equal(handleConfirmationCodeReset.called, true)
   handleConfirmationCodeReset.resetHistory()
@@ -62,7 +62,7 @@ test('behaviourForPost() does not reset confirmation code if the user updated th
     }
   }
 
-  behaviourForPost(req, {}, () => {})
+  behaviourForPost()(req, {}, () => {})
 
   t.equal(handleConfirmationCodeReset.called, false)
   handleConfirmationCodeReset.resetHistory()
@@ -82,7 +82,7 @@ test('behaviourForPost() does not reset confirmation code if the user has not up
     }
   }
 
-  behaviourForPost(req, {}, () => {})
+  behaviourForPost()(req, {}, () => {})
 
   t.equal(handleConfirmationCodeReset.called, false)
   handleConfirmationCodeReset.resetHistory()

@@ -2,7 +2,7 @@ const replaceMultipleSpacesWithOne = (value) => {
   return value.replace(/  +/g, ' ')
 }
 
-const sanitize = (req, res, next) => {
+const sanitize = () => (req, res, next) => {
   req.body.postcode = replaceMultipleSpacesWithOne(req.body.postcode)
   next()
 }

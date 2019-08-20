@@ -5,7 +5,7 @@ const { translateValidationMessage } = require('../common/translate-validation-m
 const EMAIL_ADDRESS_REGEX = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 const MAX_EMAIL_ADDRESS_LENGTH = 256
 
-const validate = [
+const validate = () => [
   check('emailAddress')
     .matches(EMAIL_ADDRESS_REGEX)
     .withMessage(translateValidationMessage('validation:invalidEmail')),
