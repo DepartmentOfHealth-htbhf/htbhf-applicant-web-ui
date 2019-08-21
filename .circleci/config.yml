@@ -85,7 +85,7 @@ jobs:
           command: git config user.name "ci-build"
       - run:
           name: Deploy docs to gh-pages branch
-          command: gh-pages --dist build/reports
+          command: gh-pages --dist build/reports --message "[ci skip]"
       - run:
           name: ls bin/deployment-scripts/
           command: ls bin/deployment-scripts/
