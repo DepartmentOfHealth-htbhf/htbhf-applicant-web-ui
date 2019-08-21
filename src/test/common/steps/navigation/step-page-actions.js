@@ -5,6 +5,7 @@ const {
   selectNoOnPregnancyPage,
   selectYesOnPregnancyPage,
   enterPostcodeAndSubmit,
+  clickEnterAddressManually,
   enterManualAddressAndSubmit,
   enterPhoneNumberAndSubmit,
   enterDoYouLiveInScotlandNoAndSubmit,
@@ -50,6 +51,11 @@ const STEP_PAGE_ACTIONS = [
   {
     page: (pages) => pages.postcode,
     actions: async () => enterPostcodeAndSubmit(),
+    toggle: 'ADDRESS_LOOKUP_ENABLED'
+  },
+  {
+    page: (pages) => pages.selectAddress,
+    actions: async () => clickEnterAddressManually(),
     toggle: 'ADDRESS_LOOKUP_ENABLED'
   },
   {
