@@ -51,6 +51,8 @@ jobs:
       SMOKE_TESTS: ./ci_scripts/smoke_tests.sh
       BIN_DIR: ./bin
       REPO_NAME: htbhf-applicant-web-ui
+      APP_NAME: apply-for-healthy-start
+      APP_PATH: .
     steps:
       - checkout
       - add_ssh_keys:
