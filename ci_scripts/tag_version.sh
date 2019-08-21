@@ -6,9 +6,9 @@
 set -e
 
 # if this is a pull request or branch (non-master) build, then just exit
-echo "TRAVIS_PULL_REQUEST=$TRAVIS_PULL_REQUEST, TRAVIS_BRANCH=$TRAVIS_BRANCH"
-if [[ "$TRAVIS_PULL_REQUEST" != "false"  || "$TRAVIS_BRANCH" != "master" ]]; then
-    echo "Not tagging pull request or branch build"
+echo "CIRCLE_BRANCH=$CIRCLE_BRANCH"
+if [[ "$CIRCLE_BRANCH" != "master" ]]; then
+    echo "Not tagging branch build"
     exit
 fi
 
@@ -33,13 +33,15 @@ git checkout master
 npm version ${NEW_VERSION} -m "Set version to %s [ci skip]"
 
 # push the new tag and updated master back to github
-git config --local user.email "travis@travis-ci.org"
-git config --local user.name "Travis CI"
+git config --local user.email "dhsc-htbhf-support@equalexperts.com"
+git config --local user.name "ci-build"
+
+GITHUB_REPO_SLUG=${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}
 
 NEW_VERSION=$(echo "v$NEW_VERSION")
 
 echo "Last 2 commits:"
 git log -n 2 --oneline
 
-echo "git push https://[SECRET]@github.com/${TRAVIS_REPO_SLUG}.git ${NEW_VERSION} master"
-git push https://${GH_WRITE_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git ${NEW_VERSION} master
+echo "git push https://[SECRET]@github.com/${GITHUB_REPO_SLUG}.git ${NEW_VERSION} master"
+git push https://${GH_WRITE_TOKEN}@github.com/${GITHUB_REPO_SLUG}.git ${NEW_VERSION} master
