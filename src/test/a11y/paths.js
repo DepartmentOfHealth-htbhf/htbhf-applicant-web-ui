@@ -14,6 +14,7 @@ const URLS = {
   CHILDREN_DOB: `${BASE_URL}/child-date-of-birth`,
   ARE_YOU_PREGNANT: `${BASE_URL}/are-you-pregnant`,
   POSTCODE: `${BASE_URL}/postcode`,
+  SELECT_ADDRESS: `${BASE_URL}/select-address`,
   MANUAL_ADDRESS: `${BASE_URL}/manual-address`,
   PHONE_NUMBER: `${BASE_URL}/phone-number`,
   EMAIL_ADDRESS: `${BASE_URL}/email-address`,
