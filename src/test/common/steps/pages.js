@@ -23,6 +23,7 @@ const ChildDateOfBirth = require('../page/child-date-of-birth')
 const EnterCode = require('../page/enter-code')
 const Guidance = require('../page/guidance')
 const Postcode = require('../page/postcode')
+const SelectAddress = require('../page/select-address')
 const { URL, DRIVER_MANAGER } = require('./test-startup-config')
 
 /**
@@ -68,6 +69,7 @@ class Pages {
     this.allPages = null
     this.guidance = null
     this.postcode = null
+    this.selectAddress = null
   }
 
   /**
@@ -99,12 +101,13 @@ class Pages {
     this.childDateOfBirth = new ChildDateOfBirth(this.driver)
     this.enterCode = new EnterCode(this.driver)
     this.postcode = new Postcode(this.driver)
+    this.selectAddress = new SelectAddress(this.driver)
     // NOTE: The guidance page is not added to the list of allPages as it has its own navigation methods
     this.guidance = new Guidance(this.driver)
     // NOTE: This map should contain all page objects, and not the Generic Page as this doesn't itself represent a page
     this.allPages = [this.name, this.enterNino, this.dateOfBirth, this.areYouPregnant, this.manualAddress, this.phoneNumber,
       this.check, this.confirm, this.cookies, this.privacyNotice, this.confirmUpdated, this.scotland, this.iLiveInScotland, this.emailAddress,
-      this.termsAndConditions, this.doYouHaveChildren, this.sendCode, this.childDateOfBirth, this.enterCode, this.postcode]
+      this.termsAndConditions, this.doYouHaveChildren, this.sendCode, this.childDateOfBirth, this.enterCode, this.postcode, this.selectAddress]
     this.pageMap = this.allPages.reduce(addPageToMap, {})
   }
 
