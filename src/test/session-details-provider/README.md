@@ -1,7 +1,7 @@
 # Session Details Provider
 
 `session-details-app.js` starts a node express server that connects to the same redis instance as the primary application,
-using the same session secret and session id cookie. 
+using the same session secret and session id cookie.
 Its purpose is to provide tests with access to the confirmation code used for two factor authentication,
 without those tests needing to actually receive the code via text or email.
 
@@ -10,7 +10,7 @@ without those tests needing to actually receive the code via text or email.
 cf push -f src/test/session-details-provider/session-details-manifest.yml \
     --var session_details_app_name=htbhf-session-details-staging \
     --var session_secret=ReplaceWithTheRealSessionSecret \
-    --var session_details_host_name=help-to-buy-healthy-foods-staging.london.cloudapps.digital
+    --var session_details_host_name=apply-for-healthy-start-staging.london.cloudapps.digital
 ```
 (It is deployed by the CD scripts during testing against the staging environment).
 
