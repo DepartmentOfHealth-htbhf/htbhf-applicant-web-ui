@@ -101,7 +101,7 @@ test('getRedisCredentials()', (t) => {
         'redis': [
           {
             credentials,
-            'instance_name': 'help-to-buy-healthy-foods-redis',
+            'instance_name': 'apply-for-healthy-start-redis',
             'label': 'redis'
           }
         ]

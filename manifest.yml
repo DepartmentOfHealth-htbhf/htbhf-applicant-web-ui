@@ -1,6 +1,6 @@
 ---
 applications:
-- name: help-to-buy-healthy-foods((app-suffix))
+- name: apply-for-healthy-start((app-suffix))
   memory: 1G
   command: node src/web
   env:
@@ -11,7 +11,7 @@ applications:
   buildpacks:
     - nodejs_buildpack
   services:
-    - help-to-buy-healthy-foods-redis
+    - apply-for-healthy-start-redis
     - logit-ssl-drain
     - variable-service
     - notify-variable-service
