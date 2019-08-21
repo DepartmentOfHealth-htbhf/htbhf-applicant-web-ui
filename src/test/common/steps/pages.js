@@ -1,4 +1,4 @@
-const EnterName = require('../page/enter-name')
+const Name = require('../page/name')
 const EnterNino = require('../page/enter-nino')
 const DateOfBirth = require('../page/date-of-birth')
 const AreYouPregnant = require('../page/are-you-pregnant')
@@ -41,7 +41,7 @@ class Pages {
   constructor () {
     this.driverManager = DRIVER_MANAGER
     this.driver = null
-    this.enterName = null
+    this.name = null
     this.enterNino = null
     this.dateOfBirth = null
     this.areYouPregnant = null
@@ -75,7 +75,7 @@ class Pages {
    */
   initialise () {
     this.driver = this.driverManager.initialise()
-    this.enterName = new EnterName(this.driver)
+    this.name = new Name(this.driver)
     this.enterNino = new EnterNino(this.driver)
     this.dateOfBirth = new DateOfBirth(this.driver)
     this.areYouPregnant = new AreYouPregnant(this.driver)
@@ -102,7 +102,7 @@ class Pages {
     // NOTE: The guidance page is not added to the list of allPages as it has its own navigation methods
     this.guidance = new Guidance(this.driver)
     // NOTE: This map should contain all page objects, and not the Generic Page as this doesn't itself represent a page
-    this.allPages = [this.enterName, this.enterNino, this.dateOfBirth, this.areYouPregnant, this.manualAddress, this.phoneNumber,
+    this.allPages = [this.name, this.enterNino, this.dateOfBirth, this.areYouPregnant, this.manualAddress, this.phoneNumber,
       this.check, this.confirm, this.cookies, this.privacyNotice, this.confirmUpdated, this.scotland, this.iLiveInScotland, this.emailAddress,
       this.termsAndConditions, this.doYouHaveChildren, this.sendCode, this.childDateOfBirth, this.enterCode, this.postcode]
     this.pageMap = this.allPages.reduce(addPageToMap, {})

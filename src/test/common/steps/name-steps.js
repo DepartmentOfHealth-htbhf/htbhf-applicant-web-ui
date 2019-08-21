@@ -27,49 +27,49 @@ When(/^I enter (.*) and (.*) values$/, async function (firstName, lastName) {
 })
 
 Then('I am informed that the first name is too long', async function () {
-  await assertErrorHeaderTextPresent(pages.enterName)
+  await assertErrorHeaderTextPresent(pages.name)
   await assertFirstNameErrorFieldAndLink('Enter a shorter first or given name')
 })
 
 Then(/^I see the invalid first name I entered in the textbox$/, async function () {
-  const enteredFirstName = await pages.enterName.firstNameInputField.getValue()
+  const enteredFirstName = await pages.name.firstNameInputField.getValue()
   expect(enteredFirstName).to.be.equal(LONG_STRING)
 })
 
 Then(/^I see the last name I entered in the textbox$/, async function () {
-  const enteredLastName = await pages.enterName.lastNameInputField.getValue()
+  const enteredLastName = await pages.name.lastNameInputField.getValue()
   expect(enteredLastName).to.be.equal(LONG_STRING)
 })
 
 Then('I am informed that the last name is too long', async function () {
-  await assertErrorHeaderTextPresent(pages.enterName)
+  await assertErrorHeaderTextPresent(pages.name)
   await assertLastNameErrorFieldAndLink('Enter a shorter last or family name')
 })
 
 Then('I am informed that a first name is required', async function () {
-  await assertErrorHeaderTextPresent(pages.enterName)
+  await assertErrorHeaderTextPresent(pages.name)
   await assertFirstNameErrorFieldAndLink('Enter your first or given name')
 })
 
 Then('I am informed that a last name is required', async function () {
-  await assertErrorHeaderTextPresent(pages.enterName)
+  await assertErrorHeaderTextPresent(pages.name)
   await assertLastNameErrorFieldAndLink('Enter your last or family name')
 })
 
 Then(/^I am shown the enter name page$/, async function () {
-  await pages.enterName.waitForPageLoad()
+  await pages.name.waitForPageLoad()
 })
 
 async function assertFirstNameErrorFieldAndLink (expectedErrorMessage) {
   await assertFieldErrorAndLinkTextPresentAndCorrect(
-    pages.enterName.firstNameInputField.getInputErrorId(),
-    pages.enterName.firstNameInputField.getInputErrorLinkCss(),
+    pages.name.firstNameInputField.getInputErrorId(),
+    pages.name.firstNameInputField.getInputErrorLinkCss(),
     expectedErrorMessage)
 }
 
 async function assertLastNameErrorFieldAndLink (expectedErrorMessage) {
   await assertFieldErrorAndLinkTextPresentAndCorrect(
-    pages.enterName.lastNameInputField.getInputErrorId(),
-    pages.enterName.lastNameInputField.getInputErrorLinkCss(),
+    pages.name.lastNameInputField.getInputErrorId(),
+    pages.name.lastNameInputField.getInputErrorLinkCss(),
     expectedErrorMessage)
 }

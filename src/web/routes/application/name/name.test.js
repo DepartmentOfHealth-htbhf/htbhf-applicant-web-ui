@@ -1,5 +1,5 @@
 const test = require('tape')
-const { contentSummary } = require('./enter-name')
+const { contentSummary } = require('./name')
 
 const req = {
   t: string => string,
@@ -15,7 +15,7 @@ test('Enter name contentSummary() should return content summary in correct forma
   const result = contentSummary(req)
 
   const expected = {
-    key: 'enterName.summaryKey',
+    key: 'name.summaryKey',
     value: 'Lisa Smith'
   }
 

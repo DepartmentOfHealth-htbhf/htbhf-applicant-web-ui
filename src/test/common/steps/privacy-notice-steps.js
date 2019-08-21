@@ -22,7 +22,7 @@ Then(/^the back link on the privacy-notice page links to the enter name page$/, 
   const href = await backLink.getAttribute('href')
 
   // using startsWith() instead of equals() so query parameters do not fail the test
-  const enterNameUrl = `${pages.url}${pages.enterName.getPath()}`
+  const enterNameUrl = `${pages.url}${pages.name.getPath()}`
   expect(href.startsWith(enterNameUrl)).to.equal(true)
 })
 

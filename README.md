@@ -32,7 +32,7 @@ To add a new form step to the application, create an object matching the followi
   pageContent : Object
 }
 ```
-See [enter-name](src/web/routes/application/enter-name/enter-name.js) for an example.
+See [name](src/web/routes/application/name/name.js) for an example.
 
 Then add the step to the [list of steps](src/web/routes/application/steps.js)
 
