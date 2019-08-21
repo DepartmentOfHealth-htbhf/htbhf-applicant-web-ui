@@ -11,7 +11,7 @@ const URLS = {
   ENTER_NINO: `${BASE_URL}/enter-nino`,
   ENTER_DOB: `${BASE_URL}/date-of-birth`,
   DO_YOU_HAVE_CHILDREN: `${BASE_URL}/do-you-have-children`,
-  CHILDREN_DOB: `${BASE_URL}/children-dob`,
+  CHILDREN_DOB: `${BASE_URL}/child-date-of-birth`,
   ARE_YOU_PREGNANT: `${BASE_URL}/are-you-pregnant`,
   POSTCODE: `${BASE_URL}/postcode`,
   SELECT_ADDRESS: `${BASE_URL}/select-address`,

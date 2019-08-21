@@ -1,12 +1,5 @@
 #!/bin/bash
 
-# if this is a pull request or branch (non-master) build, then just exit
-echo "TRAVIS_PULL_REQUEST=$TRAVIS_PULL_REQUEST, TRAVIS_BRANCH=$TRAVIS_BRANCH"
-if [[ "$TRAVIS_PULL_REQUEST" != "false"  || "$TRAVIS_BRANCH" != "master" ]]; then
-   echo "Not deploying pull request or branch build"
-   exit
-fi
-
 # ensure the variables required by this script are set
 check_variable_is_set(){
     if [[ -z ${!1} ]]; then
@@ -34,7 +27,6 @@ rm -rf DepartmentOfHealth-htbhf-htbhf-deployment-scripts-*
 rm deployment-scripts.zip
 
 export SCRIPT_DIR=${BIN_DIR}/deployment-scripts
-export APP_VERSION=$(sed -nE 's/^[ \\t]*"version": "([0-9]{1,}\.[0-9]{1,}\.[0-9x]{1,})",$/\1/p' package.json;)
 
 # run the deployment script
 /bin/bash ${SCRIPT_DIR}/deploy.sh

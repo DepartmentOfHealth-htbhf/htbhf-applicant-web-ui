@@ -14,7 +14,7 @@ const pageContent = ({ translate }) => ({
     aboutYou: translate('check.aboutYou'),
     aboutYourChildren: translate('check.aboutYourChildren')
   },
-  childrensDobHiddenText: translate('childrenDob.summaryKey'),
+  childrensDobHiddenText: translate('childDateOfBirth.summaryKey'),
   name: translate('check.name'),
   dateOfBirth: translate('check.dateOfBirth')
 })

@@ -8,17 +8,17 @@ const { handleAddAction } = require('./handle-add-action')
 const { PATH } = require('./constants')
 
 const pageContent = ({ translate }) => ({
-  title: translate('childrenDob.title'),
-  heading: translate('childrenDob.heading'),
-  hint: translate('childrenDob.hint', { exampleDate: getExampleDate({ yearOffset: -2 }) }),
+  title: translate('childDateOfBirth.title'),
+  heading: translate('childDateOfBirth.heading'),
+  hint: translate('childDateOfBirth.hint', { exampleDate: getExampleDate({ yearOffset: -2 }) }),
   buttonText: translate('buttons:continue'),
-  dayLabel: translate('childrenDob.dayLabel'),
-  monthLabel: translate('childrenDob.monthLabel'),
-  yearLabel: translate('childrenDob.yearLabel'),
-  explanation: translate('childrenDob.explanation'),
-  nameLabel: translate('childrenDob.nameLabel'),
-  dateOfBirth: translate('childrenDob.dateOfBirth'),
-  aboutYourChild: translate('childrenDob.aboutYourChild'),
+  dayLabel: translate('childDateOfBirth.dayLabel'),
+  monthLabel: translate('childDateOfBirth.monthLabel'),
+  yearLabel: translate('childDateOfBirth.yearLabel'),
+  explanation: translate('childDateOfBirth.explanation'),
+  nameLabel: translate('childDateOfBirth.nameLabel'),
+  dateOfBirth: translate('childDateOfBirth.dateOfBirth'),
+  aboutYourChild: translate('childDateOfBirth.aboutYourChild'),
   addChild: translate('buttons:addChild'),
   removeChild: translate('buttons:removeChild')
 })
@@ -37,9 +37,9 @@ const behaviourForPost = () => [
   handleRemoveAction
 ]
 
-const childrenDob = {
+const childDateOfBirth = {
   path: PATH,
-  template: 'children-dob',
+  template: 'child-date-of-birth',
   pageContent,
   isNavigable,
   behaviourForGet,
@@ -50,5 +50,5 @@ const childrenDob = {
 module.exports = {
   behaviourForGet,
   behaviourForPost,
-  childrenDob
+  childDateOfBirth
 }

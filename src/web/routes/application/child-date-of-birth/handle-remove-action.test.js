@@ -55,7 +55,7 @@ test('handleRemoveAction() removes child’s DOB from session on remove action',
   handleRemoveAction(req, res, next)
 
   t.deepEqual(req.session.children, expected, 'removes child’s DOB from session on remove action')
-  t.equal(redirect.calledWith('/children-dob'), true, 'redirects on remove action')
+  t.equal(redirect.calledWith('/child-date-of-birth'), true, 'redirects on remove action')
   t.equal(next.called, false, 'does not call next')
   t.end()
 })
@@ -95,7 +95,7 @@ test('handleRemoveAction() does nothing when no remove action', (t) => {
   handleRemoveAction(req, res, next)
 
   t.deepEqual(req.session.children, expected, 'does not mutate children')
-  t.equal(redirect.calledWith('/children-dob'), false, 'does not redirect')
+  t.equal(redirect.calledWith('/child-date-of-birth'), false, 'does not redirect')
   t.equal(next.called, true, 'calls next')
   t.end()
 })
@@ -132,7 +132,7 @@ test('handleRemoveAction() removes child’s DOB from session on remove action w
   handleRemoveAction(req, res, next)
 
   t.deepEqual(req.session.children, expected, 'removes child’s DOB from session on remove action')
-  t.equal(redirect.calledWith('/children-dob'), true, 'redirects on remove action')
+  t.equal(redirect.calledWith('/child-date-of-birth'), true, 'redirects on remove action')
   t.equal(next.called, false, 'does not call next')
   t.end()
 })
