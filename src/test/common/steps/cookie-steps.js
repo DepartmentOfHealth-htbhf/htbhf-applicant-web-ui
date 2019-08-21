@@ -24,7 +24,7 @@ Then(/^no back link is shown$/, async function () {
 })
 
 Then(/^the back link on the cookies page links to the enter name page$/, async function () {
-  await assertBackLinkPointsToPage(pages.enterName)
+  await assertBackLinkPointsToPage(pages.name)
 })
 
 async function checkAllCookiePageContentIsPresentAndCorrect () {

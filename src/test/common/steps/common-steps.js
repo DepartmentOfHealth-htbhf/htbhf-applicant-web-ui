@@ -41,9 +41,9 @@ async function enterDoYouLiveInScotlandNoAndSubmit () {
 
 async function enterNameAndSubmit (firstName = FIRST_NAME, lastName = LAST_NAME) {
   try {
-    await pages.enterName.firstNameInputField.enterValue(firstName)
-    await pages.enterName.lastNameInputField.enterValue(lastName)
-    await pages.enterName.submitForm()
+    await pages.name.firstNameInputField.enterValue(firstName)
+    await pages.name.lastNameInputField.enterValue(lastName)
+    await pages.name.submitForm()
   } catch (error) {
     assert.fail(`Unexpected error caught trying to enter the name and submit the page - ${error}`)
   }

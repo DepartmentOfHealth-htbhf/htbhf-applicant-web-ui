@@ -9,9 +9,9 @@ const PAGE_TITLES = {
 }
 
 /**
- * Page object for EnterName page where the name is entered.
+ * Page object for Name page where the name is entered.
  */
-class EnterName extends SubmittablePage {
+class Name extends SubmittablePage {
   constructor (driver) {
     super(driver)
     this.firstNameInputField = new InputField('first-name', this)
@@ -19,7 +19,7 @@ class EnterName extends SubmittablePage {
   }
 
   getPath () {
-    return '/enter-name'
+    return '/name'
   }
 
   getPageName () {
@@ -31,4 +31,4 @@ class EnterName extends SubmittablePage {
   }
 }
 
-module.exports = EnterName
+module.exports = Name

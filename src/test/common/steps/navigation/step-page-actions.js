@@ -40,7 +40,7 @@ const STEP_PAGE_ACTIONS = [
         : selectNoOnPregnancyPage()
   },
   {
-    page: (pages) => pages.enterName,
+    page: (pages) => pages.name,
     actions: async (actionOptions) => enterNameAndSubmit(actionOptions.firstName, actionOptions.lastName)
   },
   {

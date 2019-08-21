@@ -1,5 +1,5 @@
 const { enterNino } = require('./enter-nino')
-const { enterName } = require('./enter-name')
+const { name } = require('./name')
 const { dateOfBirth } = require('./date-of-birth')
 const { areYouPregnant } = require('./are-you-pregnant')
 const { manualAddress } = require('./manual-address')
@@ -21,7 +21,7 @@ const steps = [
   doYouHaveChildren,
   childDateOfBirth,
   areYouPregnant,
-  enterName,
+  name,
   enterNino,
   postcode,
   selectAddress,
