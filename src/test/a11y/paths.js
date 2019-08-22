@@ -18,7 +18,7 @@ const URLS = {
   MANUAL_ADDRESS: `${BASE_URL}/manual-address`,
   PHONE_NUMBER: `${BASE_URL}/phone-number`,
   EMAIL_ADDRESS: `${BASE_URL}/email-address`,
-  CHECK: `${BASE_URL}/check`,
+  CHECK_ANSWERS: `${BASE_URL}/check-answers`,
   SEND_CODE: `${BASE_URL}/send-code`,
   ENTER_CODE: `${BASE_URL}/enter-code`,
   TERMS_AND_CONDITIONS: `${BASE_URL}/terms-and-conditions`,

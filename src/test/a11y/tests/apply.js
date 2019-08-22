@@ -116,7 +116,7 @@ const apply = [
     }
   },
   {
-    url: URLS['CHECK']
+    url: URLS['CHECK_ANSWERS']
   },
   {
     url: URLS['TERMS_AND_CONDITIONS'],

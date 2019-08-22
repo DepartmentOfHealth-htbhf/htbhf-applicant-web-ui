@@ -1,12 +1,12 @@
 const { registerConfirmRoute } = require('./confirm')
-const { registerCheckRoutes } = require('./check')
+const { registerCheckAnswersRoutes } = require('./check-answers')
 const { registerTermsAndConditionsRoutes } = require('./terms-and-conditions')
 const { registerFormRoutes } = require('./register-form-routes')
 const { steps } = require('./steps')
 
 module.exports = {
   registerConfirmRoute,
-  registerCheckRoutes,
+  registerCheckAnswersRoutes,
   registerTermsAndConditionsRoutes,
   registerFormRoutes,
   steps

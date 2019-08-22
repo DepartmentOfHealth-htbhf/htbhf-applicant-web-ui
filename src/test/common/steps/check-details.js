@@ -27,7 +27,7 @@ const { assertBackLinkPointsToPage } = require('./common-assertions')
 
 When(/^I complete the application with valid details that contains malicious input$/, async function () {
   const actionOptions = { ...DEFAULT_ACTION_OPTIONS, firstName: '<script>window.alert(\'Boo\')</script>' }
-  await enterDetailsUpToPage({ page: pages.check.getPageName(), actionOptions })
+  await enterDetailsUpToPage({ page: pages.checkAnswers.getPageName(), actionOptions })
 })
 
 When(/^I complete the application with valid details for an applicant with no second line of address$/, async function () {
@@ -39,23 +39,23 @@ When(/^I complete the application with valid details for an applicant with no co
 })
 
 When(/^I choose to change my answer to are you pregnant$/, async function () {
-  await pages.check.clickChangeLinkFor('Are you pregnant?')
+  await pages.checkAnswers.clickChangeLinkFor('Are you pregnant?')
 })
 
 When(/^I choose to change my answer to Do you live in Scotland$/, async function () {
-  await pages.check.clickChangeLinkFor('Do you live in Scotland?')
+  await pages.checkAnswers.clickChangeLinkFor('Do you live in Scotland?')
 })
 
 When(/^I choose to change my answer to Do you have children$/, async function () {
-  await pages.check.clickChangeLinkFor('Children under 4 years old?')
+  await pages.checkAnswers.clickChangeLinkFor('Children under 4 years old?')
 })
 
 When(/^I choose to change my phone number$/, async function () {
-  await pages.check.clickChangeLinkFor('Mobile telephone number')
+  await pages.checkAnswers.clickChangeLinkFor('Mobile telephone number')
 })
 
 When(/^I choose to change my email address$/, async function () {
-  await pages.check.clickChangeLinkFor('Email address')
+  await pages.checkAnswers.clickChangeLinkFor('Email address')
 })
 
 Then(/^The back link on the check details page links to the email address page$/, async function () {
@@ -63,8 +63,8 @@ Then(/^The back link on the check details page links to the email address page$/
 })
 
 Then(/^the check details page contains all data entered for a pregnant woman$/, async function () {
-  const claimContents = await pages.check.getClaimSummaryListContents()
-  const childrenContents = await pages.check.getChildrenSummaryListContents()
+  const claimContents = await pages.checkAnswers.getClaimSummaryListContents()
+  const childrenContents = await pages.checkAnswers.getChildrenSummaryListContents()
   assertNameShown(claimContents)
   assertNinoShown(claimContents)
   assertDobShown(claimContents)
@@ -78,8 +78,8 @@ Then(/^the check details page contains all data entered for a pregnant woman$/, 
 })
 
 Then(/^the check details page contains all data entered for a woman who is not pregnant$/, async function () {
-  const claimContents = await pages.check.getClaimSummaryListContents()
-  const childrenContents = await pages.check.getChildrenSummaryListContents()
+  const claimContents = await pages.checkAnswers.getClaimSummaryListContents()
+  const childrenContents = await pages.checkAnswers.getChildrenSummaryListContents()
   assertNameShown(claimContents)
   assertNinoShown(claimContents)
   assertDobShown(claimContents)
@@ -105,11 +105,11 @@ Then(/^all page content is present on the check details page$/, async function (
 })
 
 Then(/^I am shown the check details page$/, async function () {
-  await pages.check.waitForPageLoad()
+  await pages.checkAnswers.waitForPageLoad()
 })
 
 Then(/^I am shown the check details page with correct page content$/, async function () {
-  await pages.check.waitForPageLoad()
+  await pages.checkAnswers.waitForPageLoad()
   await allPageContentIsCorrectOnCheckPage()
 })
 
@@ -119,12 +119,12 @@ Then(/^there are no children displayed$/, async function () {
 
 async function completeApplicationWithAddressDetails (addressLine1, addressLine2, townOrCity, county, postcode) {
   const actionOptions = { ...DEFAULT_ACTION_OPTIONS, addressLine1, addressLine2, townOrCity, county, postcode }
-  await enterDetailsUpToPage({ page: pages.check.getPageName(), actionOptions })
+  await enterDetailsUpToPage({ page: pages.checkAnswers.getPageName(), actionOptions })
 }
 
 async function assertCheckDetailsWithAddressForClaimantWithChildrenAndNotPregnant (fullAddress) {
-  const claimContents = await pages.check.getClaimSummaryListContents()
-  const childrenContents = await pages.check.getChildrenSummaryListContents()
+  const claimContents = await pages.checkAnswers.getClaimSummaryListContents()
+  const childrenContents = await pages.checkAnswers.getChildrenSummaryListContents()
   assertNameShown(claimContents)
   assertNinoShown(claimContents)
   assertDobShown(claimContents)
@@ -138,15 +138,15 @@ async function assertCheckDetailsWithAddressForClaimantWithChildrenAndNotPregnan
 }
 
 async function allPageContentIsCorrectOnCheckPage () {
-  const h1Text = await pages.check.getH1Text()
+  const h1Text = await pages.checkAnswers.getH1Text()
   expect(h1Text.toString().trim()).to.have.lengthOf.at.least(1, 'expected check page H1 text to not be empty')
-  const h2Text = await pages.check.getH2Text()
+  const h2Text = await pages.checkAnswers.getH2Text()
   expect(h2Text.toString().trim()).to.have.lengthOf.at.least(1, 'expected check page H2 text to not be empty')
-  const submitButtonText = await pages.check.getSubmitButtonText()
+  const submitButtonText = await pages.checkAnswers.getSubmitButtonText()
   expect(submitButtonText.toString().trim()).to.have.lengthOf.at.least(1, 'expected submit button text to not be empty')
-  const claimContents = await pages.check.getClaimSummaryListContents()
+  const claimContents = await pages.checkAnswers.getClaimSummaryListContents()
   assertHeaderAndChangeLinkShownForEachRow(claimContents)
-  const childrenContents = await pages.check.getChildrenSummaryListContents()
+  const childrenContents = await pages.checkAnswers.getChildrenSummaryListContents()
   assertHeaderTextShownForEachRow(childrenContents)
 }
 
@@ -218,7 +218,7 @@ function assertDoYouHaveChildrenIsShown (contents, expectedValue) {
 }
 
 async function assertChildrensDatesOfBirthChangeLinkIsShown () {
-  const changeLinks = await pages.check.getChangeLinksFor('Children’s date of birth')
+  const changeLinks = await pages.checkAnswers.getChangeLinksFor('Children’s date of birth')
   expect(changeLinks.length).to.be.equal(1)
 }
 
@@ -232,7 +232,7 @@ async function assertChildrensDatesOfBirthIsShown (contents, expectedValues) {
 }
 
 async function assertChildrensDatesOfBirthIsNotShown () {
-  const childrenSummary = await pages.check.findAllById('children-summary')
+  const childrenSummary = await pages.checkAnswers.findAllById('children-summary')
   expect(childrenSummary.length).to.be.equal(0)
 }
 

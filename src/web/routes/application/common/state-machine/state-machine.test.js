@@ -1,6 +1,6 @@
 const test = require('tape')
 const { stateMachine, states, actions, isPathAllowed } = require('./state-machine')
-const { CHECK_URL, TERMS_AND_CONDITIONS_URL, CONFIRM_URL } = require('../../common/constants')
+const { CHECK_ANSWERS_URL, TERMS_AND_CONDITIONS_URL, CONFIRM_URL } = require('../../common/constants')
 
 const { GET_NEXT_PATH, INVALIDATE_REVIEW } = actions
 
@@ -32,15 +32,15 @@ test(`Dispatching ${GET_NEXT_PATH} should return next navigable path when state 
   t.end()
 })
 
-test(`Dispatching ${GET_NEXT_PATH} should return check path when state of ${states.IN_REVIEW} defined in session`, async (t) => {
+test(`Dispatching ${GET_NEXT_PATH} should return ${CHECK_ANSWERS_URL} path when state of ${states.IN_REVIEW} defined in session`, async (t) => {
   const req = { method: 'POST', session: { state: states.IN_REVIEW }, path: '/first' }
 
-  t.equal(stateMachine.dispatch(GET_NEXT_PATH, req, steps), CHECK_URL)
+  t.equal(stateMachine.dispatch(GET_NEXT_PATH, req, steps), CHECK_ANSWERS_URL)
   t.end()
 })
 
-test(`Dispatching ${GET_NEXT_PATH} should return /terms-and-conditions when state of ${states.IN_REVIEW} and current path is /check`, async (t) => {
-  const req = { method: 'POST', session: { state: states.IN_REVIEW }, path: CHECK_URL }
+test(`Dispatching ${GET_NEXT_PATH} should return /terms-and-conditions when state of ${states.IN_REVIEW} and current path is ${CHECK_ANSWERS_URL}`, async (t) => {
+  const req = { method: 'POST', session: { state: states.IN_REVIEW }, path: CHECK_ANSWERS_URL }
 
   t.equal(stateMachine.dispatch(GET_NEXT_PATH, req, steps), TERMS_AND_CONDITIONS_URL)
   t.end()

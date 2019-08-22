@@ -7,7 +7,7 @@ const {
 
 When(/^An error occurs after clicking the submit button$/, async function () {
   await setupErrorWiremockClaimMapping()
-  await pages.check.submitForm()
+  await pages.checkAnswers.submitForm()
 })
 
 Then(/^I am shown the Server Error page$/, async function () {

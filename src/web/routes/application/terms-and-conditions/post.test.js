@@ -2,7 +2,7 @@ const test = require('tape')
 const sinon = require('sinon')
 const proxyquire = require('proxyquire')
 const { states } = require('../common/state-machine')
-const { CHECK_URL, CONFIRM_URL, ELIGIBLE } = require('../common/constants')
+const { CHECK_ANSWERS_URL, CONFIRM_URL, ELIGIBLE } = require('../common/constants')
 
 const post = sinon.stub()
 
@@ -106,7 +106,7 @@ test(`successful post sets next allowed step to ${CONFIRM_URL} and returned fiel
   const redirect = sinon.spy()
   const render = sinon.spy()
   const req = {
-    path: CHECK_URL,
+    path: CHECK_ANSWERS_URL,
     headers: [],
     sessionID: '123',
     claim: {},
