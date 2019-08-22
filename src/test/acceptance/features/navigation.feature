@@ -10,7 +10,7 @@ Feature: Application process navigation is controlled
     Examples:
       | page                                  |
       | enter name                            |
-      | enter national insurance              |
+      | enter national insurance number       |
       | enter date of birth                   |
 
   @RequiresWiremock
@@ -47,7 +47,7 @@ Feature: Application process navigation is controlled
     Examples:
       | page                                  |
       | enter name                            |
-      | enter national insurance              |
+      | enter national insurance number       |
       | enter date of birth                   |
 
   Scenario: Navigation to I live in Scotland from the check details page is not allowed
