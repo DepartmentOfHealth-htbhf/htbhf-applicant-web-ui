@@ -59,7 +59,7 @@ const apply = [
     })
   },
   {
-    url: URLS['ENTER_NINO'],
+    url: URLS['NATIONAL_INSURANCE_NUMBER'],
     formData: () => ({
       nino: VALID_ELIGIBLE_NINO
     })

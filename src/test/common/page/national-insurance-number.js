@@ -9,9 +9,9 @@ const PAGE_TITLES = {
 }
 
 /**
- * Page object for EnterNino page where the national insurance number is entered.
+ * Page object for the page where the national insurance number is entered.
  */
-class EnterNino extends SubmittablePage {
+class NationalInsuranceNumber extends SubmittablePage {
   constructor (driver) {
     super(driver)
     this.inputField = new InputField('nino', this)
@@ -22,12 +22,12 @@ class EnterNino extends SubmittablePage {
   }
 
   getPath () {
-    return '/enter-nino'
+    return '/national-insurance-number'
   }
 
   getPageName () {
-    return 'enter national insurance'
+    return 'enter national insurance number'
   }
 }
 
-module.exports = EnterNino
+module.exports = NationalInsuranceNumber
