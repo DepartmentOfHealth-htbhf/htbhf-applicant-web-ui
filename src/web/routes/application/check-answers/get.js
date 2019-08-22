@@ -4,19 +4,19 @@ const { getGroupedRowData } = require('./get-row-data')
 const { getChildrensDatesOfBirthRows } = require('./get-childrens-dates-of-birth-rows')
 
 const pageContent = ({ translate }) => ({
-  title: translate('check.title'),
-  heading: translate('check.heading'),
-  sendApplicationHeader: translate('check.sendApplicationHeader'),
-  sendApplicationText: translate('check.sendApplicationText'),
+  title: translate('checkAnswers.title'),
+  heading: translate('checkAnswers.heading'),
+  sendApplicationHeader: translate('checkAnswers.sendApplicationHeader'),
+  sendApplicationText: translate('checkAnswers.sendApplicationText'),
   buttonText: translate('buttons:continue'),
   changeText: translate('change'),
   summaryListHeadings: {
-    aboutYou: translate('check.aboutYou'),
-    aboutYourChildren: translate('check.aboutYourChildren')
+    aboutYou: translate('checkAnswers.aboutYou'),
+    aboutYourChildren: translate('checkAnswers.aboutYourChildren')
   },
   childrensDobHiddenText: translate('childDateOfBirth.summaryKey'),
-  name: translate('check.name'),
-  dateOfBirth: translate('check.dateOfBirth')
+  name: translate('checkAnswers.name'),
+  dateOfBirth: translate('checkAnswers.dateOfBirth')
 })
 
 // a step is navigable if it hasn't defined an isNavigable function.
@@ -30,7 +30,7 @@ const getLastNavigablePath = (steps, req) => {
     : getPreviousPath(steps, lastStep, req.session)
 }
 
-const getCheck = (steps) => (req, res) => {
+const getCheckAnswers = (steps) => (req, res) => {
   const { children } = req.session
   const localisation = pageContent({ translate: req.t })
   const getLocalisedChildrensDatesOfBirthRows = getChildrensDatesOfBirthRows(localisation)
@@ -38,7 +38,7 @@ const getCheck = (steps) => (req, res) => {
   stateMachine.setState(states.IN_REVIEW, req)
   req.session.nextAllowedStep = stateMachine.dispatch(actions.GET_NEXT_PATH, req, steps)
 
-  res.render('check', {
+  res.render('check-answers', {
     ...localisation,
     claimSummaryLists: getGroupedRowData(req, steps),
     childrensDatesOfBirthRows: children ? getLocalisedChildrensDatesOfBirthRows(children) : [],
@@ -47,6 +47,6 @@ const getCheck = (steps) => (req, res) => {
 }
 
 module.exports = {
-  getCheck,
+  getCheckAnswers,
   getLastNavigablePath
 }

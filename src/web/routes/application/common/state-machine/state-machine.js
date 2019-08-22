@@ -1,6 +1,6 @@
 const { equals, isNil } = require('ramda')
 const { getNextForStep } = require('./get-next-for-step')
-const { CHECK_URL, TERMS_AND_CONDITIONS_URL, CONFIRM_URL } = require('../constants')
+const { CHECK_ANSWERS_URL, TERMS_AND_CONDITIONS_URL, CONFIRM_URL } = require('../constants')
 const { logger } = require('../../../../logger')
 
 const states = {
@@ -19,7 +19,7 @@ const getStepForPath = (path, steps) => steps.find(step => step.path === path)
 
 /**
  * Next path is navigable if the next step does not exist, if it doesn't define an isNavigable function, or that function returns true.
- * E.g. if the current step is the end of the 'in-progress' journey, the next path will be /check. There is no step matching /check, so we assume it is navigable.
+ * E.g. if the current step is the end of the 'in-progress' journey, the next path will be /check-answers. There is no step matching /check-answers, so we assume it is navigable.
  */
 const isNextPathNavigable = (nextStep, req) => isNil(nextStep) || isNil(nextStep.isNavigable) || nextStep.isNavigable(req.session)
 
@@ -50,7 +50,7 @@ const stateMachine = {
     getNextAllowedPath: (req) => req.session.nextAllowedStep
   },
   [states.IN_REVIEW]: {
-    getNextPath: (req) => req.path === CHECK_URL ? TERMS_AND_CONDITIONS_URL : CHECK_URL,
+    getNextPath: (req) => req.path === CHECK_ANSWERS_URL ? TERMS_AND_CONDITIONS_URL : CHECK_ANSWERS_URL,
     isPathAllowed: (req, sequence) => isPathAllowed(sequence, req.session.nextAllowedStep, req.path),
     getNextAllowedPath: (req) => req.session.nextAllowedStep,
     invalidateReview: (req) => stateMachine.setState(states.IN_PROGRESS, req)

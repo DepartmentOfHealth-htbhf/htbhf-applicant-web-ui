@@ -80,7 +80,7 @@ const STEP_PAGE_ACTIONS = [
     actions: async () => enterConfirmationCodeAndSubmit()
   },
   {
-    page: (pages) => pages.check
+    page: (pages) => pages.checkAnswers
   }
 ]
 

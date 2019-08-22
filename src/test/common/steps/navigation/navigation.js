@@ -40,7 +40,7 @@ const enterDetailsUpToPage = async ({ page, stepActions = STEP_PAGE_ACTIONS, act
 }
 
 const enterDetailsUpToCheckDetailsPage = async (actionOptions) => {
-  await enterDetailsUpToPage({ page: pages.check.getPageName(), actionOptions })
+  await enterDetailsUpToPage({ page: pages.checkAnswers.getPageName(), actionOptions })
 }
 
 const enterDetailsUpToCheckDetailsPageForAPregnantWoman = async () => {

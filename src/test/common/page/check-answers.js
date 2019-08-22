@@ -2,7 +2,7 @@
 
 const { isNil } = require('ramda')
 const SubmittablePage = require('./submittable-page')
-const CHECK_PAGE_TITLE = 'GOV.UK - Check your answers'
+const CHECK_ANSWERS_PAGE_TITLE = 'GOV.UK - Check your answers'
 const GOV_LIST_ROW_CLASSNAME = '.govuk-summary-list__row'
 const GOV_LIST_HEADER_CLASSNAME = 'govuk-summary-list__key'
 const GOV_LIST_VALUE_CLASSNAME = 'govuk-summary-list__value'
@@ -13,11 +13,11 @@ const CLAIM_SUMMARY_PARENT_ID = '#claim-summary'
 const CHILDREN_SUMMARY_PARENT_ID = '#children-summary'
 
 /**
- * Page object for the page where the customer can check their details before submitting.
+ * Page object for the page where the customer can check their answers before submitting.
  */
-class Check extends SubmittablePage {
+class CheckAnswers extends SubmittablePage {
   getPath () {
-    return '/check'
+    return '/check-answers'
   }
 
   getPageName () {
@@ -25,7 +25,7 @@ class Check extends SubmittablePage {
   }
 
   async waitForPageLoad () {
-    return super.waitForPageWithTitle(CHECK_PAGE_TITLE)
+    return super.waitForPageWithTitle(CHECK_ANSWERS_PAGE_TITLE)
   }
 
   async getContentsOfSummaryListsByParentId (parentId) {
@@ -100,4 +100,4 @@ class Check extends SubmittablePage {
   }
 }
 
-module.exports = Check
+module.exports = CheckAnswers

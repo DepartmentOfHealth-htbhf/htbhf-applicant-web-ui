@@ -1,6 +1,6 @@
 const test = require('tape')
 const { getNextPathFromSteps, getNextForStep } = require('./get-next-for-step')
-const { CHECK_URL } = require('../constants')
+const { CHECK_ANSWERS_URL } = require('../constants')
 
 const step1 = {
   path: '/first'
@@ -22,9 +22,9 @@ test('getNextPathFromSteps() gets the path for the next step in sequence of step
   t.end()
 })
 
-test(`getNextPathFromSteps() returns ${CHECK_URL} for final step`, (t) => {
+test(`getNextPathFromSteps() returns ${CHECK_ANSWERS_URL} for final step`, (t) => {
   const result = getNextPathFromSteps(steps, step3)
-  t.equal(result, CHECK_URL)
+  t.equal(result, CHECK_ANSWERS_URL)
   t.end()
 })
 

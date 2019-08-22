@@ -1,5 +1,5 @@
 const { stateMachine, states } = require('../common/state-machine')
-const { CHECK_URL } = require('../common/constants')
+const { CHECK_ANSWERS_URL } = require('../common/constants')
 
 const pageContent = ({ translate }) => ({
   title: translate('terms-and-conditions.title'),
@@ -12,7 +12,7 @@ function render (res, req) {
   res.render('terms-and-conditions', {
     ...pageContent({ translate: req.t }),
     csrfToken: req.csrfToken(),
-    previous: CHECK_URL
+    previous: CHECK_ANSWERS_URL
   })
 }
 

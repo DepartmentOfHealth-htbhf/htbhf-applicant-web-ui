@@ -1,5 +1,5 @@
 const { compose, equals, prop } = require('ramda')
-const { CHECK_URL } = require('../constants')
+const { CHECK_ANSWERS_URL } = require('../constants')
 
 const isMatchingPath = path => compose(equals(path), prop('path'))
 
@@ -10,7 +10,7 @@ const getPathFromNextStep = (steps, index) => prop('path', steps[index + 1])
 const getNextPathFromSteps = (steps, step) => {
   const currentPath = step.path
   const index = steps.findIndex(isMatchingPath(currentPath))
-  return isLastStep(steps, index) ? CHECK_URL : getPathFromNextStep(steps, index)
+  return isLastStep(steps, index) ? CHECK_ANSWERS_URL : getPathFromNextStep(steps, index)
 }
 
 const getNextForStep = (req, step, steps) => {

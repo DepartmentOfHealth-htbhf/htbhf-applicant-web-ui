@@ -9,7 +9,7 @@ const { registerSteps } = require('./register-steps')
 
 const {
   registerConfirmRoute,
-  registerCheckRoutes,
+  registerCheckAnswersRoutes,
   registerTermsAndConditionsRoutes,
   registerFormRoutes,
   steps
@@ -34,7 +34,7 @@ const registerRoutes = (config, app) => {
     const csrfProtection = csrf()
 
     registerFormRoutes(config, csrfProtection, registeredSteps, app)
-    registerCheckRoutes(registeredSteps, config, app)
+    registerCheckAnswersRoutes(registeredSteps, config, app)
     registerTermsAndConditionsRoutes(csrfProtection, registeredSteps, config, app)
     registerConfirmRoute(config, registeredSteps, app)
     registerCookiesRoute(app)
