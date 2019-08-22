@@ -8,7 +8,7 @@ const URLS = {
   DO_YOU_LIVE_IN_SCOTLAND: `${BASE_URL}/scotland`,
   I_LIVE_IN_SCOTLAND: `${BASE_URL}/in-scotland`,
   ENTER_NAME: `${BASE_URL}/name`,
-  ENTER_NINO: `${BASE_URL}/enter-nino`,
+  NATIONAL_INSURANCE_NUMBER: `${BASE_URL}/national-insurance-number`,
   ENTER_DOB: `${BASE_URL}/date-of-birth`,
   DO_YOU_HAVE_CHILDREN: `${BASE_URL}/do-you-have-children`,
   CHILDREN_DOB: `${BASE_URL}/child-date-of-birth`,

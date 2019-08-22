@@ -51,8 +51,8 @@ async function enterNameAndSubmit (firstName = FIRST_NAME, lastName = LAST_NAME)
 
 async function enterNinoAndSubmit (nino = VALID_ELIGIBLE_NINO) {
   try {
-    await pages.enterNino.inputField.enterValue(nino)
-    await pages.enterNino.submitForm()
+    await pages.nationalInsuranceNumber.inputField.enterValue(nino)
+    await pages.nationalInsuranceNumber.submitForm()
   } catch (error) {
     assert.fail(`Unexpected error caught trying to enter the national insurance number and submit the page - ${error}`)
   }

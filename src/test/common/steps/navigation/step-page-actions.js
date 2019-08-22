@@ -45,7 +45,7 @@ const STEP_PAGE_ACTIONS = [
     actions: async (actionOptions) => enterNameAndSubmit(actionOptions.firstName, actionOptions.lastName)
   },
   {
-    page: (pages) => pages.enterNino,
+    page: (pages) => pages.nationalInsuranceNumber,
     actions: async () => enterNinoAndSubmit()
   },
   {
