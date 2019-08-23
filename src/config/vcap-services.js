@@ -42,9 +42,9 @@ const getVCAPServiceNotifyVariable = (name, defaultValue = '') =>
     ? getServiceCredentials('notify-variable-service')[name]
     : process.env[name] || defaultValue
 
-const getVCAPServiceAddressLookupVariable = (name, defaultValue = '') =>
+const getVCAPServiceOSPlacesVariable = (name, defaultValue = '') =>
   process.env.VCAP_SERVICES
-    ? getServiceCredentials('address-lookup-variable-service')[name]
+    ? getServiceCredentials('os-places-variable-service')[name]
     : process.env[name] || defaultValue
 
 module.exports = {
@@ -52,5 +52,5 @@ module.exports = {
   getServiceCredentials,
   getVCAPServicesVariable,
   getVCAPServiceNotifyVariable,
-  getVCAPServiceAddressLookupVariable
+  getVCAPServiceOSPlacesVariable
 }
