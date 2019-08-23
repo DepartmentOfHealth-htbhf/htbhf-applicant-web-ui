@@ -15,3 +15,4 @@ applications:
     - logit-ssl-drain
     - variable-service
     - notify-variable-service
+    - os-places-variable-service
