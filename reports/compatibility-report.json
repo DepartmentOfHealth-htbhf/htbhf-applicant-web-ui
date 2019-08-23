@@ -24,7 +24,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 17000000
+              "duration": 18000000
             }
           },
           {
@@ -37,7 +37,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 493000000
+              "duration": 463000000
             }
           },
           {
@@ -50,20 +50,20 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2941000000
+              "duration": 2748000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
             "line": 9,
-            "name": "I am shown the check details page with correct page content",
+            "name": "I am shown the check answers page with correct page content",
             "match": {
-              "location": "src/test/common/steps/check-details.js:111"
+              "location": "src/test/common/steps/check-answers.js:111"
             },
             "result": {
               "status": "passed",
-              "duration": 1371000000
+              "duration": 1282000000
             }
           },
           {
@@ -76,7 +76,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 206000000
+              "duration": 228000000
             }
           },
           {
@@ -89,7 +89,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 65000000
+              "duration": 69000000
             }
           },
           {
@@ -102,7 +102,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 31000000
+              "duration": 34000000
             }
           },
           {
