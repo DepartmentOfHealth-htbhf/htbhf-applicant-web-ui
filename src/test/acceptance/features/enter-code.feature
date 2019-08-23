@@ -8,7 +8,7 @@ Feature: Enter confirmation code
 
   Scenario: Enter my confirmation code
     When I enter my confirmation code
-    Then I am shown the check details page
+    Then I am shown the check answers page
 
   Scenario: Do not enter a confirmation code
     When I do not enter a confirmation code

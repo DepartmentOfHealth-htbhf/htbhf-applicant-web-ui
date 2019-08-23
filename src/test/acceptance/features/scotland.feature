@@ -27,8 +27,8 @@ Feature: Do you live in Scotland?
     And I am informed that I cannot apply and should use the Scottish scheme
     And my session has been destroyed
 
-  Scenario: I can change my answer to yes for 'Do you live in Scotland?' from the check details page
-    Given I am on the check details page having entered valid details for a pregnant woman
+  Scenario: I can change my answer to yes for 'Do you live in Scotland?' from the check answers page
+    Given I am on the check answers page having entered valid details for a pregnant woman
     When I choose to change my answer to Do you live in Scotland
     And I select the Yes option on the do you live in Scotland page
     And I click continue

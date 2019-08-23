@@ -58,11 +58,11 @@ When(/^I choose to change my email address$/, async function () {
   await pages.checkAnswers.clickChangeLinkFor('Email address')
 })
 
-Then(/^The back link on the check details page links to the email address page$/, async function () {
+Then(/^The back link on the check answers page links to the email address page$/, async function () {
   await assertBackLinkPointsToPage(pages.emailAddress)
 })
 
-Then(/^the check details page contains all data entered for a pregnant woman$/, async function () {
+Then(/^the check answers page contains all data entered for a pregnant woman$/, async function () {
   const claimContents = await pages.checkAnswers.getClaimSummaryListContents()
   const childrenContents = await pages.checkAnswers.getChildrenSummaryListContents()
   assertNameShown(claimContents)
@@ -77,7 +77,7 @@ Then(/^the check details page contains all data entered for a pregnant woman$/, 
   assertChildrensDatesOfBirthIsShown(childrenContents, CHILDRENS_DATES_OF_BIRTH)
 })
 
-Then(/^the check details page contains all data entered for a woman who is not pregnant$/, async function () {
+Then(/^the check answers page contains all data entered for a woman who is not pregnant$/, async function () {
   const claimContents = await pages.checkAnswers.getClaimSummaryListContents()
   const childrenContents = await pages.checkAnswers.getChildrenSummaryListContents()
   assertNameShown(claimContents)
@@ -92,23 +92,23 @@ Then(/^the check details page contains all data entered for a woman who is not p
   assertChildrensDatesOfBirthIsShown(childrenContents, CHILDRENS_DATES_OF_BIRTH)
 })
 
-Then(/^the check details page contains all data entered for an applicant with no second line of address$/, async function () {
-  await assertCheckDetailsWithAddressForClaimantWithChildrenAndNotPregnant(FULL_ADDRESS_NO_LINE_2)
+Then(/^the check answers page contains all data entered for an applicant with no second line of address$/, async function () {
+  await assertCheckAnswersWithAddressForClaimantWithChildrenAndNotPregnant(FULL_ADDRESS_NO_LINE_2)
 })
 
-Then(/^the check details page contains all data entered for an applicant with no county$/, async function () {
-  await assertCheckDetailsWithAddressForClaimantWithChildrenAndNotPregnant(FULL_ADDRESS_NO_COUNTY)
+Then(/^the check answers page contains all data entered for an applicant with no county$/, async function () {
+  await assertCheckAnswersWithAddressForClaimantWithChildrenAndNotPregnant(FULL_ADDRESS_NO_COUNTY)
 })
 
-Then(/^all page content is present on the check details page$/, async function () {
+Then(/^all page content is present on the check answers page$/, async function () {
   await allPageContentIsCorrectOnCheckPage()
 })
 
-Then(/^I am shown the check details page$/, async function () {
+Then(/^I am shown the check answers page$/, async function () {
   await pages.checkAnswers.waitForPageLoad()
 })
 
-Then(/^I am shown the check details page with correct page content$/, async function () {
+Then(/^I am shown the check answers page with correct page content$/, async function () {
   await pages.checkAnswers.waitForPageLoad()
   await allPageContentIsCorrectOnCheckPage()
 })
@@ -122,7 +122,7 @@ async function completeApplicationWithAddressDetails (addressLine1, addressLine2
   await enterDetailsUpToPage({ page: pages.checkAnswers.getPageName(), actionOptions })
 }
 
-async function assertCheckDetailsWithAddressForClaimantWithChildrenAndNotPregnant (fullAddress) {
+async function assertCheckAnswersWithAddressForClaimantWithChildrenAndNotPregnant (fullAddress) {
   const claimContents = await pages.checkAnswers.getClaimSummaryListContents()
   const childrenContents = await pages.checkAnswers.getChildrenSummaryListContents()
   assertNameShown(claimContents)

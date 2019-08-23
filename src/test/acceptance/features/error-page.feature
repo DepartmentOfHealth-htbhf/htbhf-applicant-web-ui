@@ -5,7 +5,7 @@ Feature: Server Error page
 
   @RequiresWiremock
   Scenario: An error in the application displays the Server Error page
-    Given I have entered my details up to the check details page
+    Given I have entered my details up to the check answers page
     And I accept the terms and conditions
     When An error occurs after clicking the submit button
     Then I am shown the Server Error page
