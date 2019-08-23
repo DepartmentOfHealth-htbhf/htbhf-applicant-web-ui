@@ -37,11 +37,11 @@ Feature: Application process navigation is controlled
     Examples:
       | application page    | navigation page |
       | enter name          | address         |
-      | enter date of birth | check details   |
+      | enter date of birth | check answers   |
       | are you pregnant    | confirmation    |
 
   Scenario Outline: Navigation to previous navigable steps in an unsubmitted application flow is allowed
-    Given I have entered my details up to the check details page
+    Given I have entered my details up to the check answers page
     When I navigate to the <page> page
     Then I am shown the <page> page
     Examples:
@@ -50,17 +50,17 @@ Feature: Application process navigation is controlled
       | enter national insurance number       |
       | enter date of birth                   |
 
-  Scenario: Navigation to I live in Scotland from the check details page is not allowed
-    Given I have entered my details up to the check details page
+  Scenario: Navigation to I live in Scotland from the check answers page is not allowed
+    Given I have entered my details up to the check answers page
     When I navigate to the I live in Scotland page
     Then I am shown the terms and conditions page
 
   Scenario: Navigation to send code is not allowed after the confirmation code has been sent
-    Given I have entered my details up to the check details page
+    Given I have entered my details up to the check answers page
     When I go directly to the send code page
     Then I am shown the terms and conditions page
 
   Scenario: Navigation to enter code is not allowed after the confirmation code has been sent
-    Given I have entered my details up to the check details page
+    Given I have entered my details up to the check answers page
     When I go directly to the enter code page
     Then I am shown the terms and conditions page

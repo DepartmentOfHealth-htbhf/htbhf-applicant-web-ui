@@ -39,28 +39,28 @@ const enterDetailsUpToPage = async ({ page, stepActions = STEP_PAGE_ACTIONS, act
   }
 }
 
-const enterDetailsUpToCheckDetailsPage = async (actionOptions) => {
+const enterDetailsUpToCheckAnswersPage = async (actionOptions) => {
   await enterDetailsUpToPage({ page: pages.checkAnswers.getPageName(), actionOptions })
 }
 
-const enterDetailsUpToCheckDetailsPageForAPregnantWoman = async () => {
+const enterDetailsUpToCheckAnswersPageForAPregnantWoman = async () => {
   const actionOptions = {
     ...DEFAULT_ACTION_OPTIONS,
     isClaimantPregnant: true
   }
-  await enterDetailsUpToCheckDetailsPage(actionOptions)
+  await enterDetailsUpToCheckAnswersPage(actionOptions)
 }
 
-const enterDetailsUpToCheckDetailsPageForANotPregnantWoman = async () => {
+const enterDetailsUpToCheckAnswersPageForANotPregnantWoman = async () => {
   const actionOptions = {
     ...DEFAULT_ACTION_OPTIONS,
     isClaimantPregnant: false
   }
-  await enterDetailsUpToCheckDetailsPage(actionOptions)
+  await enterDetailsUpToCheckAnswersPage(actionOptions)
 }
 
 module.exports = {
-  enterDetailsUpToCheckDetailsPageForAPregnantWoman,
-  enterDetailsUpToCheckDetailsPageForANotPregnantWoman,
+  enterDetailsUpToCheckAnswersPageForAPregnantWoman,
+  enterDetailsUpToCheckAnswersPageForANotPregnantWoman,
   enterDetailsUpToPage
 }

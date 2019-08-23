@@ -21,7 +21,7 @@ class CheckAnswers extends SubmittablePage {
   }
 
   getPageName () {
-    return 'check details'
+    return 'check answers'
   }
 
   async waitForPageLoad () {
