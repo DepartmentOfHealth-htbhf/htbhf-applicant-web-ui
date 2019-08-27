@@ -88,7 +88,7 @@ async function selectNoOnPregnancyPage () {
   }
 }
 
-async function enterPostcodeAndSubmit (postcode = '') {
+async function enterPostcodeAndSubmit (postcode = POSTCODE) {
   try {
     await pages.postcode.postcodeInputField.enterValue(postcode)
     await pages.postcode.submitForm()
