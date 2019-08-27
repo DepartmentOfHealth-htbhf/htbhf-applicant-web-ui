@@ -12,5 +12,6 @@ module.exports = {
   OVERVIEW_URL: '/',
   APP_VERSION: process.env.APP_VERSION || 'unknown',
   NOTIFY_API_KEY: getVCAPServiceNotifyVariable('NOTIFY_API_KEY', process.env.NOTIFY_API_KEY),
-  OS_PLACES_API_KEY: getVCAPServiceOSPlacesVariable('OS_PLACES_API_KEY', process.env.OS_PLACES_API_KEY)
+  OS_PLACES_API_KEY: getVCAPServiceOSPlacesVariable('OS_PLACES_API_KEY', process.env.OS_PLACES_API_KEY),
+  OS_PLACES_URI: getVCAPServiceOSPlacesVariable('OS_PLACES_URI', process.env.OS_PLACES_URI)
 }
