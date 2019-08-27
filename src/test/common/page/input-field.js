@@ -17,6 +17,7 @@ class InputField {
 
   async enterValue (value) {
     const input = await this.getElement()
+    await input.clear()
     return input.sendKeys(value)
   }
 
