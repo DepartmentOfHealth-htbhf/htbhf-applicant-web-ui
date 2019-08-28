@@ -26,6 +26,10 @@ class SelectAddress extends SubmittablePage {
   async getAddressNotFoundElement () {
     return this.findByXPath('//h2[contains(text(), \'We cannot find that address\')]')
   }
+
+  async getAddressOptions () {
+    return this.findAllByCSS('#address-results > option')
+  }
 }
 
 module.exports = SelectAddress
