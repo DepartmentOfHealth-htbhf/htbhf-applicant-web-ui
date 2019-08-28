@@ -22,6 +22,10 @@ class SelectAddress extends SubmittablePage {
   async waitForPageLoad (lang = 'en') {
     return super.waitForPageWithTitle(PAGE_TITLES[lang])
   }
+
+  async getAddressNotFoundElement () {
+    return this.findByXPath('//h2[contains(text(), \'We cannot find that address\')]')
+  }
 }
 
 module.exports = SelectAddress
