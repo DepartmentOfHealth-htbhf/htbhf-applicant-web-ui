@@ -17,15 +17,6 @@ Then(/^all page content is present on the privacy-notice page$/, async function 
   await checkPrivacyNoticePageContentIsPresentAndCorrect()
 })
 
-Then(/^the back link on the privacy-notice page links to the enter name page$/, async function () {
-  const backLink = await pages.privacyNotice.getBackLink()
-  const href = await backLink.getAttribute('href')
-
-  // using startsWith() instead of equals() so query parameters do not fail the test
-  const enterNameUrl = `${pages.url}${pages.name.getPath()}`
-  expect(href.startsWith(enterNameUrl)).to.equal(true)
-})
-
 async function checkPrivacyNoticePageContentIsPresentAndCorrect () {
   const h1Text = await pages.privacyNotice.getH1Text()
   expect(h1Text.toString().trim()).to.be.equal('Privacy notice', 'expected privacy-notice page H1 text to be correct')
