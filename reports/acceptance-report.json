@@ -24,7 +24,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 14000000
+              "duration": 17000000
             }
           },
           {
@@ -37,7 +37,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1538000000
+              "duration": 1820000000
             }
           },
           {
@@ -50,7 +50,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 29000000
+              "duration": 33000000
             }
           },
           {
@@ -82,7 +82,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1000000
+              "duration": 2000000
             }
           },
           {
@@ -95,7 +95,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1341000000
+              "duration": 1594000000
             }
           },
           {
@@ -108,7 +108,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 37000000
+              "duration": 40000000
             }
           },
           {
@@ -118,7 +118,8 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           }
         ]
@@ -152,7 +153,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1440000000
+              "duration": 1690000000
             }
           },
           {
@@ -161,7 +162,7 @@
             "line": 16,
             "name": "I do not select an option",
             "match": {
-              "location": "src/test/common/steps/common-steps.js:248"
+              "location": "src/test/common/steps/common-steps.js:249"
             },
             "result": {
               "status": "passed"
@@ -173,11 +174,11 @@
             "line": 17,
             "name": "I click continue",
             "match": {
-              "location": "src/test/common/steps/common-steps.js:252"
+              "location": "src/test/common/steps/common-steps.js:253"
             },
             "result": {
               "status": "passed",
-              "duration": 60000000
+              "duration": 74000000
             }
           },
           {
@@ -190,7 +191,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 105000000
+              "duration": 130000000
             }
           },
           {
@@ -221,7 +222,8 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           },
           {
@@ -234,7 +236,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1316000000
+              "duration": 1650000000
             }
           },
           {
@@ -247,7 +249,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 53000000
+              "duration": 68000000
             }
           },
           {
@@ -256,11 +258,11 @@
             "line": 22,
             "name": "I click continue",
             "match": {
-              "location": "src/test/common/steps/common-steps.js:252"
+              "location": "src/test/common/steps/common-steps.js:253"
             },
             "result": {
               "status": "passed",
-              "duration": 95000000
+              "duration": 126000000
             }
           },
           {
@@ -273,7 +275,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2000000
+              "duration": 3000000
             }
           },
           {
@@ -283,7 +285,8 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           }
         ]
@@ -317,7 +320,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1333000000
+              "duration": 1680000000
             }
           },
           {
@@ -330,7 +333,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 60000000
+              "duration": 76000000
             }
           },
           {
@@ -343,7 +346,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 11000000
+              "duration": 12000000
             }
           },
           {
@@ -374,7 +377,8 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 2000000
             }
           },
           {
@@ -387,7 +391,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1352000000
+              "duration": 1630000000
             }
           },
           {
@@ -400,7 +404,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 55000000
+              "duration": 67000000
             }
           },
           {
@@ -413,7 +417,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 168000000
+              "duration": 228000000
             }
           },
           {
@@ -422,11 +426,11 @@
             "line": 32,
             "name": "I click continue",
             "match": {
-              "location": "src/test/common/steps/common-steps.js:252"
+              "location": "src/test/common/steps/common-steps.js:253"
             },
             "result": {
               "status": "passed",
-              "duration": 104000000
+              "duration": 121000000
             }
           },
           {
@@ -439,7 +443,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2000000
+              "duration": 3000000
             }
           },
           {
@@ -449,8 +453,7 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
@@ -484,7 +487,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1367000000
+              "duration": 1617000000
             }
           },
           {
@@ -497,7 +500,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 59000000
+              "duration": 72000000
             }
           },
           {
@@ -506,11 +509,11 @@
             "line": 37,
             "name": "I click continue",
             "match": {
-              "location": "src/test/common/steps/common-steps.js:252"
+              "location": "src/test/common/steps/common-steps.js:253"
             },
             "result": {
               "status": "passed",
-              "duration": 65000000
+              "duration": 90000000
             }
           },
           {
@@ -523,7 +526,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 109000000
+              "duration": 132000000
             }
           },
           {
@@ -567,7 +570,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1346000000
+              "duration": 1689000000
             }
           },
           {
@@ -580,7 +583,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 61000000
+              "duration": 79000000
             }
           },
           {
@@ -593,7 +596,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 161000000
+              "duration": 221000000
             }
           },
           {
@@ -606,7 +609,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 62000000
+              "duration": 75000000
             }
           },
           {
@@ -616,7 +619,8 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           }
         ]
@@ -636,7 +640,8 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           },
           {
@@ -649,7 +654,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1329000000
+              "duration": 1583000000
             }
           },
           {
@@ -662,7 +667,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 57000000
+              "duration": 70000000
             }
           },
           {
@@ -675,7 +680,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 167000000
+              "duration": 202000000
             }
           },
           {
@@ -684,11 +689,11 @@
             "line": 48,
             "name": "I click continue",
             "match": {
-              "location": "src/test/common/steps/common-steps.js:252"
+              "location": "src/test/common/steps/common-steps.js:253"
             },
             "result": {
               "status": "passed",
-              "duration": 64000000
+              "duration": 68000000
             }
           },
           {
@@ -701,7 +706,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 106000000
+              "duration": 122000000
             }
           },
           {
@@ -711,7 +716,8 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           }
         ]
@@ -745,7 +751,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1369000000
+              "duration": 1682000000
             }
           },
           {
@@ -758,7 +764,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 57000000
+              "duration": 70000000
             }
           },
           {
@@ -771,7 +777,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 167000000
+              "duration": 201000000
             }
           },
           {
@@ -780,11 +786,11 @@
             "line": 54,
             "name": "I click continue",
             "match": {
-              "location": "src/test/common/steps/common-steps.js:252"
+              "location": "src/test/common/steps/common-steps.js:253"
             },
             "result": {
               "status": "passed",
-              "duration": 66000000
+              "duration": 68000000
             }
           },
           {
@@ -797,7 +803,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 108000000
+              "duration": 133000000
             }
           },
           {
@@ -807,7 +813,8 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           }
         ]
@@ -852,7 +859,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3116000000
+              "duration": 3773000000
             }
           },
           {
@@ -865,7 +872,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 64000000
+              "duration": 69000000
             }
           },
           {
@@ -878,7 +885,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 53000000
+              "duration": 74000000
             }
           },
           {
@@ -887,11 +894,11 @@
             "line": 12,
             "name": "I click continue",
             "match": {
-              "location": "src/test/common/steps/common-steps.js:252"
+              "location": "src/test/common/steps/common-steps.js:253"
             },
             "result": {
               "status": "passed",
-              "duration": 111000000
+              "duration": 123000000
             }
           },
           {
@@ -904,7 +911,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2000000
+              "duration": 3000000
             }
           },
           {
@@ -914,8 +921,7 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
@@ -949,7 +955,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3110000000
+              "duration": 4120000000
             }
           },
           {
@@ -962,7 +968,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 54000000
+              "duration": 105000000
             }
           },
           {
@@ -975,7 +981,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 56000000
+              "duration": 98000000
             }
           },
           {
@@ -984,11 +990,11 @@
             "line": 18,
             "name": "I click continue",
             "match": {
-              "location": "src/test/common/steps/common-steps.js:252"
+              "location": "src/test/common/steps/common-steps.js:253"
             },
             "result": {
               "status": "passed",
-              "duration": 102000000
+              "duration": 139000000
             }
           },
           {
@@ -1001,7 +1007,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2000000
+              "duration": 4000000
             }
           },
           {
@@ -1014,7 +1020,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 10000000
+              "duration": 13000000
             }
           },
           {
@@ -1024,7 +1030,8 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           }
         ]
@@ -1069,7 +1076,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 337000000
+              "duration": 440000000
             }
           },
           {
@@ -1082,7 +1089,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2875000000
+              "duration": 4152000000
             }
           },
           {
@@ -1095,7 +1102,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2000000
+              "duration": 5000000
             }
           },
           {
@@ -1108,7 +1115,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1207000000
+              "duration": 1665000000
             }
           },
           {
@@ -1121,7 +1128,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 975000000
+              "duration": 1465000000
             }
           },
           {
@@ -1151,7 +1158,8 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           },
           {
@@ -1164,7 +1172,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 454000000
+              "duration": 434000000
             }
           },
           {
@@ -1177,7 +1185,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2658000000
+              "duration": 3844000000
             }
           },
           {
@@ -1203,7 +1211,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1004000000
+              "duration": 1468000000
             }
           },
           {
@@ -1213,7 +1221,8 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           }
         ]
@@ -1247,7 +1256,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 349000000
+              "duration": 426000000
             }
           },
           {
@@ -1260,7 +1269,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2640000000
+              "duration": 3343000000
             }
           },
           {
@@ -1273,7 +1282,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1000000
+              "duration": 2000000
             }
           },
           {
@@ -1286,7 +1295,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1028000000
+              "duration": 1315000000
             }
           },
           {
@@ -1296,7 +1305,8 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           }
         ]
@@ -1330,7 +1340,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 329000000
+              "duration": 401000000
             }
           },
           {
@@ -1343,7 +1353,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2675000000
+              "duration": 3598000000
             }
           },
           {
@@ -1356,7 +1366,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1000000
+              "duration": 3000000
             }
           },
           {
@@ -1369,7 +1379,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1010000000
+              "duration": 1370000000
             }
           },
           {
@@ -1379,7 +1389,8 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           }
         ]
@@ -1413,7 +1424,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3210000000
+              "duration": 3984000000
             }
           },
           {
@@ -1426,7 +1437,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 71000000
+              "duration": 73000000
             }
           },
           {
@@ -1439,7 +1450,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 54000000
+              "duration": 74000000
             }
           },
           {
@@ -1448,11 +1459,11 @@
             "line": 35,
             "name": "I click continue",
             "match": {
-              "location": "src/test/common/steps/common-steps.js:252"
+              "location": "src/test/common/steps/common-steps.js:253"
             },
             "result": {
               "status": "passed",
-              "duration": 101000000
+              "duration": 113000000
             }
           },
           {
@@ -1478,7 +1489,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1013000000
+              "duration": 1337000000
             }
           },
           {
@@ -1488,7 +1499,8 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           }
         ]
@@ -1508,7 +1520,8 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           },
           {
@@ -1521,7 +1534,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 332000000
+              "duration": 380000000
             }
           },
           {
@@ -1534,7 +1547,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2712000000
+              "duration": 3179000000
             }
           },
           {
@@ -1577,7 +1590,8 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           },
           {
@@ -1590,7 +1604,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2944000000
+              "duration": 3499000000
             }
           },
           {
@@ -1603,7 +1617,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 34000000
+              "duration": 39000000
             }
           },
           {
@@ -1613,8 +1627,7 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
@@ -1645,7 +1658,8 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           },
           {
@@ -1658,7 +1672,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1263000000
+              "duration": 1158000000
             }
           },
           {
@@ -1671,7 +1685,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 318000000
+              "duration": 411000000
             }
           },
           {
@@ -1684,7 +1698,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2000000
+              "duration": 3000000
             }
           },
           {
@@ -1697,7 +1711,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 32000000
+              "duration": 42000000
             }
           },
           {
@@ -1729,7 +1743,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1000000
+              "duration": 2000000
             }
           },
           {
@@ -1742,7 +1756,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 996000000
+              "duration": 1233000000
             }
           },
           {
@@ -1755,7 +1769,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 227000000
+              "duration": 306000000
             }
           },
           {
@@ -1768,7 +1782,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 10000000
+              "duration": 13000000
             }
           },
           {
@@ -1777,11 +1791,11 @@
             "line": 17,
             "name": "I click continue",
             "match": {
-              "location": "src/test/common/steps/common-steps.js:252"
+              "location": "src/test/common/steps/common-steps.js:253"
             },
             "result": {
               "status": "passed",
-              "duration": 100000000
+              "duration": 131000000
             }
           },
           {
@@ -1794,7 +1808,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2000000
+              "duration": 3000000
             }
           },
           {
@@ -1804,7 +1818,8 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           }
         ]
@@ -1824,7 +1839,8 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           },
           {
@@ -1837,7 +1853,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1024000000
+              "duration": 1229000000
             }
           },
           {
@@ -1850,7 +1866,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 588000000
+              "duration": 654000000
             }
           },
           {
@@ -1863,7 +1879,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 26000000
+              "duration": 30000000
             }
           },
           {
@@ -1872,11 +1888,11 @@
             "line": 23,
             "name": "I click continue",
             "match": {
-              "location": "src/test/common/steps/common-steps.js:252"
+              "location": "src/test/common/steps/common-steps.js:253"
             },
             "result": {
               "status": "passed",
-              "duration": 100000000
+              "duration": 117000000
             }
           },
           {
@@ -1889,7 +1905,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2000000
+              "duration": 3000000
             }
           },
           {
@@ -1899,8 +1915,7 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
@@ -1933,7 +1948,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1220000000
+              "duration": 1189000000
             }
           },
           {
@@ -1946,7 +1961,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 586000000
+              "duration": 688000000
             }
           },
           {
@@ -1972,7 +1987,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 60000000
+              "duration": 69000000
             }
           },
           {
@@ -2015,7 +2030,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1337000000
+              "duration": 1159000000
             }
           },
           {
@@ -2028,7 +2043,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3479000000
+              "duration": 3942000000
             }
           },
           {
@@ -2041,7 +2056,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3000000
+              "duration": 2000000
             }
           },
           {
@@ -2086,7 +2101,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1128000000
+              "duration": 1182000000
             }
           },
           {
@@ -2099,7 +2114,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 332000000
+              "duration": 379000000
             }
           },
           {
@@ -2112,7 +2127,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2000000
+              "duration": 5000000
             }
           },
           {
@@ -2143,8 +2158,7 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           },
           {
@@ -2157,7 +2171,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1195000000
+              "duration": 1222000000
             }
           },
           {
@@ -2178,11 +2192,11 @@
             "line": 41,
             "name": "I click continue",
             "match": {
-              "location": "src/test/common/steps/common-steps.js:252"
+              "location": "src/test/common/steps/common-steps.js:253"
             },
             "result": {
               "status": "passed",
-              "duration": 57000000
+              "duration": 72000000
             }
           },
           {
@@ -2195,7 +2209,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 101000000
+              "duration": 121000000
             }
           },
           {
@@ -2225,8 +2239,7 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           },
           {
@@ -2239,7 +2252,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1142000000
+              "duration": 1206000000
             }
           },
           {
@@ -2252,7 +2265,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 226000000
+              "duration": 273000000
             }
           },
           {
@@ -2261,11 +2274,11 @@
             "line": 46,
             "name": "I click continue",
             "match": {
-              "location": "src/test/common/steps/common-steps.js:252"
+              "location": "src/test/common/steps/common-steps.js:253"
             },
             "result": {
               "status": "passed",
-              "duration": 62000000
+              "duration": 80000000
             }
           },
           {
@@ -2278,7 +2291,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 100000000
+              "duration": 125000000
             }
           },
           {
@@ -2288,8 +2301,7 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
@@ -2309,7 +2321,8 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           },
           {
@@ -2322,7 +2335,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1131000000
+              "duration": 1221000000
             }
           },
           {
@@ -2335,7 +2348,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 108000000
+              "duration": 126000000
             }
           },
           {
@@ -2344,11 +2357,11 @@
             "line": 51,
             "name": "I click continue",
             "match": {
-              "location": "src/test/common/steps/common-steps.js:252"
+              "location": "src/test/common/steps/common-steps.js:253"
             },
             "result": {
               "status": "passed",
-              "duration": 59000000
+              "duration": 80000000
             }
           },
           {
@@ -2361,7 +2374,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 205000000
+              "duration": 258000000
             }
           },
           {
@@ -2392,7 +2405,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1000000
+              "duration": 2000000
             }
           },
           {
@@ -2405,7 +2418,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1367000000
+              "duration": 1216000000
             }
           },
           {
@@ -2418,7 +2431,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1075000000
+              "duration": 1333000000
             }
           },
           {
@@ -2431,7 +2444,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 104000000
+              "duration": 129000000
             }
           },
           {
@@ -2475,7 +2488,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1088000000
+              "duration": 1227000000
             }
           },
           {
@@ -2488,7 +2501,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2080000000
+              "duration": 2796000000
             }
           },
           {
@@ -2501,7 +2514,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 225000000
+              "duration": 242000000
             }
           },
           {
@@ -2511,8 +2524,7 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
@@ -2562,7 +2574,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 354000000
+              "duration": 412000000
             }
           },
           {
@@ -2575,7 +2587,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3240000000
+              "duration": 3834000000
             }
           },
           {
@@ -2588,7 +2600,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 6000000
+              "duration": 8000000
             }
           },
           {
@@ -2601,7 +2613,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 93000000
+              "duration": 68000000
             }
           },
           {
@@ -2614,7 +2626,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 27000000
+              "duration": 34000000
             }
           },
           {
@@ -2627,7 +2639,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 42000000
+              "duration": 25000000
             }
           },
           {
@@ -2676,7 +2688,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 337000000
+              "duration": 381000000
             }
           },
           {
@@ -2689,7 +2701,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3135000000
+              "duration": 3762000000
             }
           },
           {
@@ -2702,7 +2714,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 6000000
+              "duration": 7000000
             }
           },
           {
@@ -2715,7 +2727,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 54000000
+              "duration": 69000000
             }
           },
           {
@@ -2728,7 +2740,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 28000000
+              "duration": 31000000
             }
           },
           {
@@ -2783,7 +2795,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 360000000
+              "duration": 414000000
             }
           },
           {
@@ -2796,7 +2808,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2767000000
+              "duration": 3289000000
             }
           },
           {
@@ -2809,7 +2821,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 64000000
+              "duration": 74000000
             }
           },
           {
@@ -2822,7 +2834,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 177000000
+              "duration": 224000000
             }
           },
           {
@@ -2835,7 +2847,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 457000000
+              "duration": 538000000
             }
           },
           {
@@ -2845,7 +2857,8 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           }
         ]
@@ -2865,7 +2878,8 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           },
           {
@@ -2878,7 +2892,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 346000000
+              "duration": 396000000
             }
           },
           {
@@ -2891,7 +2905,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2779000000
+              "duration": 3219000000
             }
           },
           {
@@ -2904,7 +2918,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 55000000
+              "duration": 64000000
             }
           },
           {
@@ -2917,7 +2931,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 206000000
+              "duration": 228000000
             }
           },
           {
@@ -2930,7 +2944,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 360000000
+              "duration": 415000000
             }
           },
           {
@@ -2957,93 +2971,9 @@
     "uri": "src/test/acceptance/features/cookies.feature",
     "elements": [
       {
-        "id": "cookies-page;the-cookies-page-is-accessible-via-a-link-on-an-application-page-and-the-back-link-is-shown",
-        "keyword": "Scenario",
-        "line": 6,
-        "name": "The Cookies page is accessible via a link on an application page and the back link is shown",
-        "tags": [],
-        "type": "scenario",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 7,
-            "name": "I have entered my details up to the enter name page",
-            "match": {
-              "location": "src/test/common/steps/navigation/steps.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1599000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 8,
-            "name": "I click on the cookies link",
-            "match": {
-              "location": "src/test/common/steps/cookie-steps.js:9"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 88000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 9,
-            "name": "the cookies page is shown",
-            "match": {
-              "location": "src/test/common/steps/cookie-steps.js:13"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 2000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 10,
-            "name": "the back link on the cookies page links to the enter name page",
-            "match": {
-              "location": "src/test/common/steps/cookie-steps.js:26"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 34000000
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:19"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1000000
-            }
-          }
-        ]
-      },
-      {
         "id": "cookies-page;the-back-link-on-the-cookies-page-is-not-shown-if-we-navigate-to-it-directly",
         "keyword": "Scenario",
-        "line": 12,
+        "line": 6,
         "name": "The back link on the Cookies page is not shown if we navigate to it directly",
         "tags": [],
         "type": "scenario",
@@ -3055,47 +2985,46 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 13,
+            "line": 7,
             "name": "I navigate to the cookies page",
             "match": {
               "location": "src/test/common/steps/navigation/steps.js:20"
             },
             "result": {
               "status": "passed",
-              "duration": 366000000
+              "duration": 397000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 14,
+            "line": 8,
             "name": "the cookies page is shown",
             "match": {
-              "location": "src/test/common/steps/cookie-steps.js:13"
+              "location": "src/test/common/steps/cookie-steps.js:12"
             },
             "result": {
               "status": "passed",
-              "duration": 3000000
+              "duration": 4000000
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 15,
+            "line": 9,
             "name": "no back link is shown",
             "match": {
-              "location": "src/test/common/steps/cookie-steps.js:21"
+              "location": "src/test/common/steps/cookie-steps.js:20"
             },
             "result": {
               "status": "passed",
-              "duration": 5186000000
+              "duration": 5202000000
             }
           },
           {
@@ -3105,7 +3034,8 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           }
         ]
@@ -3136,7 +3066,8 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           },
           {
@@ -3149,7 +3080,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 567000000
+              "duration": 657000000
             }
           },
           {
@@ -3162,7 +3093,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 220000000
+              "duration": 256000000
             }
           },
           {
@@ -3175,7 +3106,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 107000000
+              "duration": 123000000
             }
           },
           {
@@ -3219,7 +3150,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 588000000
+              "duration": 665000000
             }
           },
           {
@@ -3232,7 +3163,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 227000000
+              "duration": 253000000
             }
           },
           {
@@ -3245,7 +3176,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 103000000
+              "duration": 119000000
             }
           },
           {
@@ -3255,7 +3186,8 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           }
         ]
@@ -3275,8 +3207,7 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           },
           {
@@ -3289,7 +3220,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 916000000
+              "duration": 659000000
             }
           },
           {
@@ -3302,7 +3233,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 240000000
+              "duration": 253000000
             }
           },
           {
@@ -3315,7 +3246,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 103000000
+              "duration": 119000000
             }
           },
           {
@@ -3359,7 +3290,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 574000000
+              "duration": 657000000
             }
           },
           {
@@ -3372,7 +3303,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 242000000
+              "duration": 272000000
             }
           },
           {
@@ -3385,7 +3316,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 110000000
+              "duration": 124000000
             }
           },
           {
@@ -3395,8 +3326,7 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
@@ -3430,7 +3360,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 578000000
+              "duration": 683000000
             }
           },
           {
@@ -3443,7 +3373,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 231000000
+              "duration": 268000000
             }
           },
           {
@@ -3456,7 +3386,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 108000000
+              "duration": 130000000
             }
           },
           {
@@ -3486,8 +3416,7 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           },
           {
@@ -3500,7 +3429,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 605000000
+              "duration": 668000000
             }
           },
           {
@@ -3513,7 +3442,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 278000000
+              "duration": 326000000
             }
           },
           {
@@ -3536,7 +3465,8 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           }
         ]
@@ -3556,7 +3486,8 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           },
           {
@@ -3569,7 +3500,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 709000000
+              "duration": 635000000
             }
           },
           {
@@ -3582,7 +3513,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 272000000
+              "duration": 308000000
             }
           },
           {
@@ -3605,8 +3536,7 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
@@ -3640,7 +3570,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 701000000
+              "duration": 650000000
             }
           },
           {
@@ -3653,7 +3583,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 256000000
+              "duration": 292000000
             }
           },
           {
@@ -3676,7 +3606,8 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           }
         ]
@@ -3721,7 +3652,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 914000000
+              "duration": 984000000
             }
           },
           {
@@ -3734,7 +3665,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 30000000
+              "duration": 34000000
             }
           },
           {
@@ -3787,7 +3718,7 @@
             "line": 13,
             "name": "I do not select an option",
             "match": {
-              "location": "src/test/common/steps/common-steps.js:248"
+              "location": "src/test/common/steps/common-steps.js:249"
             },
             "result": {
               "status": "passed"
@@ -3799,11 +3730,11 @@
             "line": 14,
             "name": "I click continue",
             "match": {
-              "location": "src/test/common/steps/common-steps.js:252"
+              "location": "src/test/common/steps/common-steps.js:253"
             },
             "result": {
               "status": "passed",
-              "duration": 58000000
+              "duration": 64000000
             }
           },
           {
@@ -3816,7 +3747,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 106000000
+              "duration": 150000000
             }
           },
           {
@@ -3860,7 +3791,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 864000000
+              "duration": 1008000000
             }
           },
           {
@@ -3873,7 +3804,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 57000000
+              "duration": 64000000
             }
           },
           {
@@ -3882,11 +3813,11 @@
             "line": 19,
             "name": "I click continue",
             "match": {
-              "location": "src/test/common/steps/common-steps.js:252"
+              "location": "src/test/common/steps/common-steps.js:253"
             },
             "result": {
               "status": "passed",
-              "duration": 112000000
+              "duration": 110000000
             }
           },
           {
@@ -3909,7 +3840,8 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           }
         ]
@@ -3930,7 +3862,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1000000
+              "duration": 3000000
             }
           },
           {
@@ -3943,7 +3875,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 901000000
+              "duration": 916000000
             }
           },
           {
@@ -3956,7 +3888,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 68000000
+              "duration": 72000000
             }
           },
           {
@@ -3965,11 +3897,11 @@
             "line": 24,
             "name": "I click continue",
             "match": {
-              "location": "src/test/common/steps/common-steps.js:252"
+              "location": "src/test/common/steps/common-steps.js:253"
             },
             "result": {
               "status": "passed",
-              "duration": 108000000
+              "duration": 107000000
             }
           },
           {
@@ -3982,7 +3914,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2000000
+              "duration": 3000000
             }
           },
           {
@@ -3992,8 +3924,7 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
@@ -4013,8 +3944,7 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           },
           {
@@ -4027,7 +3957,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 864000000
+              "duration": 939000000
             }
           },
           {
@@ -4040,7 +3970,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 162000000
+              "duration": 169000000
             }
           },
           {
@@ -4066,7 +3996,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 34000000
+              "duration": 36000000
             }
           },
           {
@@ -4121,7 +4051,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2515000000
+              "duration": 2895000000
             }
           },
           {
@@ -4134,7 +4064,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 163000000
+              "duration": 197000000
             }
           },
           {
@@ -4157,7 +4087,8 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           }
         ]
@@ -4177,7 +4108,8 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           },
           {
@@ -4190,7 +4122,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2582000000
+              "duration": 2829000000
             }
           },
           {
@@ -4203,7 +4135,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 114000000
+              "duration": 142000000
             }
           },
           {
@@ -4216,7 +4148,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 78000000
+              "duration": 85000000
             }
           },
           {
@@ -4226,8 +4158,7 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
@@ -4247,8 +4178,7 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           },
           {
@@ -4261,7 +4191,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2506000000
+              "duration": 2890000000
             }
           },
           {
@@ -4274,7 +4204,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 460000000
+              "duration": 631000000
             }
           },
           {
@@ -4287,7 +4217,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 80000000
+              "duration": 97000000
             }
           },
           {
@@ -4297,8 +4227,7 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
@@ -4332,7 +4261,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2494000000
+              "duration": 2875000000
             }
           },
           {
@@ -4345,7 +4274,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 140000000
+              "duration": 156000000
             }
           },
           {
@@ -4358,7 +4287,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 81000000
+              "duration": 94000000
             }
           },
           {
@@ -4371,7 +4300,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 22000000
+              "duration": 24000000
             }
           },
           {
@@ -4402,7 +4331,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 26000000
+              "duration": 1000000
             }
           },
           {
@@ -4415,7 +4344,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2764000000
+              "duration": 2868000000
             }
           },
           {
@@ -4428,7 +4357,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 136000000
+              "duration": 168000000
             }
           },
           {
@@ -4441,7 +4370,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 75000000
+              "duration": 92000000
             }
           },
           {
@@ -4454,7 +4383,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 19000000
+              "duration": 23000000
             }
           },
           {
@@ -4464,7 +4393,8 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           }
         ]
@@ -4485,7 +4415,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1000000
+              "duration": 249000000
             }
           },
           {
@@ -4498,7 +4428,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2527000000
+              "duration": 2793000000
             }
           },
           {
@@ -4511,7 +4441,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 125000000
+              "duration": 145000000
             }
           },
           {
@@ -4524,7 +4454,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 78000000
+              "duration": 87000000
             }
           },
           {
@@ -4537,7 +4467,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 20000000
+              "duration": 25000000
             }
           },
           {
@@ -4547,7 +4477,8 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           }
         ]
@@ -4578,7 +4509,8 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           },
           {
@@ -4591,7 +4523,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2875000000
+              "duration": 3206000000
             }
           },
           {
@@ -4604,7 +4536,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 227000000
+              "duration": 233000000
             }
           },
           {
@@ -4662,7 +4594,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2871000000
+              "duration": 3130000000
             }
           },
           {
@@ -4675,7 +4607,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 179000000
+              "duration": 191000000
             }
           },
           {
@@ -4688,7 +4620,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 76000000
+              "duration": 81000000
             }
           },
           {
@@ -4718,8 +4650,7 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           },
           {
@@ -4732,7 +4663,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2921000000
+              "duration": 3209000000
             }
           },
           {
@@ -4745,7 +4676,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 29000000
+              "duration": 30000000
             }
           },
           {
@@ -4755,8 +4686,7 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
@@ -4776,8 +4706,7 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           },
           {
@@ -4790,7 +4719,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2769000000
+              "duration": 3152000000
             }
           },
           {
@@ -4803,7 +4732,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 196000000
+              "duration": 227000000
             }
           },
           {
@@ -4816,7 +4745,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 76000000
+              "duration": 89000000
             }
           },
           {
@@ -4857,8 +4786,7 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           },
           {
@@ -4871,7 +4799,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1764000000
+              "duration": 1945000000
             }
           },
           {
@@ -4884,7 +4812,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 158000000
+              "duration": 184000000
             }
           },
           {
@@ -4897,7 +4825,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2000000
+              "duration": 3000000
             }
           },
           {
@@ -4907,7 +4835,8 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           }
         ]
@@ -4927,7 +4856,8 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           },
           {
@@ -4940,7 +4870,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1802000000
+              "duration": 1998000000
             }
           },
           {
@@ -4953,7 +4883,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 114000000
+              "duration": 129000000
             }
           },
           {
@@ -4966,7 +4896,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 76000000
+              "duration": 93000000
             }
           },
           {
@@ -5010,7 +4940,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1748000000
+              "duration": 1974000000
             }
           },
           {
@@ -5023,7 +4953,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 116000000
+              "duration": 140000000
             }
           },
           {
@@ -5036,7 +4966,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 81000000
+              "duration": 92000000
             }
           },
           {
@@ -5049,7 +4979,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 20000000
+              "duration": 22000000
             }
           },
           {
@@ -5093,7 +5023,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1741000000
+              "duration": 1963000000
             }
           },
           {
@@ -5106,7 +5036,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 141000000
+              "duration": 142000000
             }
           },
           {
@@ -5119,7 +5049,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 78000000
+              "duration": 89000000
             }
           },
           {
@@ -5132,7 +5062,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 20000000
+              "duration": 23000000
             }
           },
           {
@@ -5162,7 +5092,8 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           },
           {
@@ -5175,7 +5106,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1711000000
+              "duration": 1943000000
             }
           },
           {
@@ -5188,7 +5119,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 156000000
+              "duration": 169000000
             }
           },
           {
@@ -5201,7 +5132,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 84000000
+              "duration": 92000000
             }
           },
           {
@@ -5214,7 +5145,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 23000000
+              "duration": 25000000
             }
           },
           {
@@ -5273,7 +5204,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2985000000
+              "duration": 3611000000
             }
           },
           {
@@ -5286,7 +5217,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 120000000
+              "duration": 148000000
             }
           },
           {
@@ -5299,7 +5230,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 89000000
+              "duration": 598000000
             }
           },
           {
@@ -5312,7 +5243,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 8000000
+              "duration": 7000000
             }
           },
           {
@@ -5323,6 +5254,254 @@
             },
             "result": {
               "status": "passed"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "description": "  In order to facilitate the beta Apply for Healthy Start programme\n  As a potential claimant\n  I want to see the features that I need on every page",
+    "keyword": "Feature",
+    "name": "Tests for features available to all pages",
+    "line": 1,
+    "id": "tests-for-features-available-to-all-pages",
+    "tags": [],
+    "uri": "src/test/acceptance/features/general-page.feature",
+    "elements": [
+      {
+        "id": "tests-for-features-available-to-all-pages;the-privacy-notice-page-is-accessible-via-a-link-on-an-application-page-and-the-back-link-is-shown",
+        "keyword": "Scenario",
+        "line": 9,
+        "name": "The Privacy notice page is accessible via a link on an application page and the back link is shown",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "match": {
+              "location": "src/test/common/steps/hooks.js:7"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I have entered my details up to the do you live in Scotland page",
+            "match": {
+              "location": "src/test/common/steps/navigation/steps.js:7"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 492000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 10,
+            "name": "I click on the privacy-notice link",
+            "match": {
+              "location": "src/test/common/steps/privacy-notice-steps.js:8"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 102000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 11,
+            "name": "the privacy-notice page is shown",
+            "match": {
+              "location": "src/test/common/steps/privacy-notice-steps.js:12"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 12,
+            "name": "the back link on the page links to the do you live in Scotland page",
+            "match": {
+              "location": "src/test/common/steps/common-steps.js:269"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 42000000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "src/test/common/steps/hooks.js:19"
+            },
+            "result": {
+              "status": "passed"
+            }
+          }
+        ]
+      },
+      {
+        "id": "tests-for-features-available-to-all-pages;the-cookies-page-is-accessible-via-a-link-on-an-application-page-and-the-back-link-is-shown",
+        "keyword": "Scenario",
+        "line": 14,
+        "name": "The Cookies page is accessible via a link on an application page and the back link is shown",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "match": {
+              "location": "src/test/common/steps/hooks.js:7"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I have entered my details up to the do you live in Scotland page",
+            "match": {
+              "location": "src/test/common/steps/navigation/steps.js:7"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 527000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 15,
+            "name": "I click on the cookies link",
+            "match": {
+              "location": "src/test/common/steps/cookie-steps.js:8"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 82000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 16,
+            "name": "the cookies page is shown",
+            "match": {
+              "location": "src/test/common/steps/cookie-steps.js:12"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 17,
+            "name": "the back link on the page links to the do you live in Scotland page",
+            "match": {
+              "location": "src/test/common/steps/common-steps.js:269"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 41000000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "src/test/common/steps/hooks.js:19"
+            },
+            "result": {
+              "status": "passed"
+            }
+          }
+        ]
+      },
+      {
+        "id": "tests-for-features-available-to-all-pages;the-beta-banner-is-shown-and-has-the-correct-survey-link",
+        "keyword": "Scenario",
+        "line": 19,
+        "name": "The Beta banner is shown and has the correct survey link",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "match": {
+              "location": "src/test/common/steps/hooks.js:7"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I have entered my details up to the do you live in Scotland page",
+            "match": {
+              "location": "src/test/common/steps/navigation/steps.js:7"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 536000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 20,
+            "name": "the beta banner is shown",
+            "match": {
+              "location": "src/test/common/steps/common-steps.js:257"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 32000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 21,
+            "name": "the beta banner has the correct survey link",
+            "match": {
+              "location": "src/test/common/steps/common-steps.js:263"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 37000000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "src/test/common/steps/hooks.js:19"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1000000
             }
           }
         ]
@@ -5367,7 +5546,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 352000000
+              "duration": 362000000
             }
           },
           {
@@ -5380,7 +5559,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 174000000
+              "duration": 192000000
             }
           },
           {
@@ -5424,7 +5603,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 317000000
+              "duration": 377000000
             }
           },
           {
@@ -5437,7 +5616,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 181000000
+              "duration": 202000000
             }
           },
           {
@@ -5481,7 +5660,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 323000000
+              "duration": 359000000
             }
           },
           {
@@ -5494,7 +5673,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 183000000
+              "duration": 202000000
             }
           },
           {
@@ -5537,7 +5716,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 322000000
+              "duration": 376000000
             }
           },
           {
@@ -5550,7 +5729,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 195000000
+              "duration": 211000000
             }
           },
           {
@@ -5594,7 +5773,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 348000000
+              "duration": 394000000
             }
           },
           {
@@ -5607,7 +5786,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 184000000
+              "duration": 218000000
             }
           },
           {
@@ -5637,7 +5816,8 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           },
           {
@@ -5650,7 +5830,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 339000000
+              "duration": 399000000
             }
           },
           {
@@ -5663,7 +5843,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 197000000
+              "duration": 210000000
             }
           },
           {
@@ -5707,7 +5887,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 336000000
+              "duration": 385000000
             }
           },
           {
@@ -5720,7 +5900,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 171000000
+              "duration": 199000000
             }
           },
           {
@@ -5775,7 +5955,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1958000000
+              "duration": 2234000000
             }
           },
           {
@@ -5788,7 +5968,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 445000000
+              "duration": 523000000
             }
           },
           {
@@ -5801,7 +5981,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2000000
+              "duration": 6000000
             }
           },
           {
@@ -5846,7 +6026,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1945000000
+              "duration": 2285000000
             }
           },
           {
@@ -5859,7 +6039,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 418000000
+              "duration": 538000000
             }
           },
           {
@@ -5872,7 +6052,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3000000
+              "duration": 4000000
             }
           },
           {
@@ -5882,7 +6062,8 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           }
         ]
@@ -5902,7 +6083,8 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           },
           {
@@ -5915,7 +6097,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1954000000
+              "duration": 2294000000
             }
           },
           {
@@ -5928,7 +6110,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 425000000
+              "duration": 518000000
             }
           },
           {
@@ -5941,7 +6123,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2000000
+              "duration": 3000000
             }
           },
           {
@@ -5985,7 +6167,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1928000000
+              "duration": 2335000000
             }
           },
           {
@@ -5998,7 +6180,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 419000000
+              "duration": 489000000
             }
           },
           {
@@ -6041,7 +6223,8 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           },
           {
@@ -6054,7 +6237,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1958000000
+              "duration": 2399000000
             }
           },
           {
@@ -6067,7 +6250,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 413000000
+              "duration": 563000000
             }
           },
           {
@@ -6080,7 +6263,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2000000
+              "duration": 3000000
             }
           },
           {
@@ -6124,7 +6307,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1946000000
+              "duration": 2409000000
             }
           },
           {
@@ -6137,7 +6320,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 412000000
+              "duration": 511000000
             }
           },
           {
@@ -6150,7 +6333,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 105000000
+              "duration": 155000000
             }
           },
           {
@@ -6195,7 +6378,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1932000000
+              "duration": 2215000000
             }
           },
           {
@@ -6208,7 +6391,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 376000000
+              "duration": 431000000
             }
           },
           {
@@ -6221,7 +6404,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 108000000
+              "duration": 130000000
             }
           },
           {
@@ -6231,8 +6414,7 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
@@ -6252,8 +6434,7 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           },
           {
@@ -6266,7 +6447,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2031000000
+              "duration": 2208000000
             }
           },
           {
@@ -6279,7 +6460,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 380000000
+              "duration": 458000000
             }
           },
           {
@@ -6292,7 +6473,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 110000000
+              "duration": 134000000
             }
           },
           {
@@ -6335,7 +6516,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2003000000
+              "duration": 2256000000
             }
           },
           {
@@ -6348,7 +6529,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 349000000
+              "duration": 405000000
             }
           },
           {
@@ -6361,7 +6542,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 298000000
+              "duration": 326000000
             }
           },
           {
@@ -6406,7 +6587,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2276000000
+              "duration": 2292000000
             }
           },
           {
@@ -6419,7 +6600,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 395000000
+              "duration": 464000000
             }
           },
           {
@@ -6432,7 +6613,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 138000000
+              "duration": 126000000
             }
           },
           {
@@ -6442,7 +6623,8 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           }
         ]
@@ -6476,7 +6658,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2127000000
+              "duration": 2479000000
             }
           },
           {
@@ -6489,7 +6671,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 380000000
+              "duration": 442000000
             }
           },
           {
@@ -6502,7 +6684,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 108000000
+              "duration": 117000000
             }
           },
           {
@@ -6545,7 +6727,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2142000000
+              "duration": 2219000000
             }
           },
           {
@@ -6558,7 +6740,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1213000000
+              "duration": 1535000000
             }
           },
           {
@@ -6571,7 +6753,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 116000000
+              "duration": 125000000
             }
           },
           {
@@ -6616,7 +6798,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2085000000
+              "duration": 2220000000
             }
           },
           {
@@ -6629,7 +6811,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1230000000
+              "duration": 1380000000
             }
           },
           {
@@ -6642,7 +6824,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 106000000
+              "duration": 128000000
             }
           },
           {
@@ -6652,7 +6834,8 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           }
         ]
@@ -6686,7 +6869,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2069000000
+              "duration": 2225000000
             }
           },
           {
@@ -6699,7 +6882,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1088000000
+              "duration": 1489000000
             }
           },
           {
@@ -6712,7 +6895,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 106000000
+              "duration": 130000000
             }
           },
           {
@@ -6756,7 +6939,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2132000000
+              "duration": 2279000000
             }
           },
           {
@@ -6769,7 +6952,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1726000000
+              "duration": 2481000000
             }
           },
           {
@@ -6782,7 +6965,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 113000000
+              "duration": 144000000
             }
           },
           {
@@ -6792,7 +6975,8 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           }
         ]
@@ -6837,7 +7021,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1610000000
+              "duration": 1768000000
             }
           },
           {
@@ -6850,7 +7034,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 871000000
+              "duration": 1278000000
             }
           },
           {
@@ -6863,7 +7047,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 107000000
+              "duration": 136000000
             }
           },
           {
@@ -6876,7 +7060,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 20000000
+              "duration": 27000000
             }
           },
           {
@@ -6906,7 +7090,8 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           },
           {
@@ -6919,7 +7104,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1596000000
+              "duration": 1782000000
             }
           },
           {
@@ -6932,7 +7117,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 910000000
+              "duration": 1198000000
             }
           },
           {
@@ -6945,7 +7130,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 110000000
+              "duration": 116000000
             }
           },
           {
@@ -6958,7 +7143,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 20000000
+              "duration": 25000000
             }
           },
           {
@@ -7003,7 +7188,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1615000000
+              "duration": 1750000000
             }
           },
           {
@@ -7016,7 +7201,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 199000000
+              "duration": 204000000
             }
           },
           {
@@ -7029,7 +7214,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 112000000
+              "duration": 128000000
             }
           },
           {
@@ -7039,7 +7224,8 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           }
         ]
@@ -7073,7 +7259,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1549000000
+              "duration": 1778000000
             }
           },
           {
@@ -7086,7 +7272,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 169000000
+              "duration": 210000000
             }
           },
           {
@@ -7099,7 +7285,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 114000000
+              "duration": 119000000
             }
           },
           {
@@ -7109,8 +7295,7 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
@@ -7144,7 +7329,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1575000000
+              "duration": 1837000000
             }
           },
           {
@@ -7157,7 +7342,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 286000000
+              "duration": 320000000
             }
           },
           {
@@ -7170,7 +7355,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2000000
+              "duration": 4000000
             }
           },
           {
@@ -7200,8 +7385,7 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           },
           {
@@ -7214,7 +7398,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1701000000
+              "duration": 1805000000
             }
           },
           {
@@ -7227,7 +7411,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 317000000
+              "duration": 265000000
             }
           },
           {
@@ -7240,7 +7424,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 8000000
+              "duration": 3000000
             }
           },
           {
@@ -7250,7 +7434,8 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           }
         ]
@@ -7284,7 +7469,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2120000000
+              "duration": 1712000000
             }
           },
           {
@@ -7297,7 +7482,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 409000000
+              "duration": 255000000
             }
           },
           {
@@ -7310,7 +7495,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 5000000
+              "duration": 2000000
             }
           },
           {
@@ -7354,7 +7539,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1901000000
+              "duration": 1721000000
             }
           },
           {
@@ -7367,7 +7552,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 272000000
+              "duration": 258000000
             }
           },
           {
@@ -7434,7 +7619,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 611000000
+              "duration": 397000000
             }
           },
           {
@@ -7447,7 +7632,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 26000000
+              "duration": 27000000
             }
           },
           {
@@ -7504,7 +7689,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 602000000
+              "duration": 422000000
             }
           },
           {
@@ -7517,7 +7702,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 64000000
+              "duration": 67000000
             }
           },
           {
@@ -7530,7 +7715,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3000000
+              "duration": 2000000
             }
           },
           {
@@ -7560,7 +7745,8 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           },
           {
@@ -7573,7 +7759,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 499000000
+              "duration": 400000000
             }
           },
           {
@@ -7586,7 +7772,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 34000000
+              "duration": 72000000
             }
           },
           {
@@ -7599,7 +7785,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2000000
+              "duration": 3000000
             }
           },
           {
@@ -7649,7 +7835,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3985000000
+              "duration": 4029000000
             }
           },
           {
@@ -7662,7 +7848,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 62000000
+              "duration": 57000000
             }
           },
           {
@@ -7685,7 +7871,8 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           }
         ]
@@ -7724,7 +7911,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3904000000
+              "duration": 4147000000
             }
           },
           {
@@ -7737,7 +7924,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 66000000
+              "duration": 70000000
             }
           },
           {
@@ -7750,7 +7937,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 25000000
+              "duration": 29000000
             }
           },
           {
@@ -7785,7 +7972,8 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           },
           {
@@ -7798,7 +7986,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3776000000
+              "duration": 4022000000
             }
           },
           {
@@ -7811,7 +7999,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 59000000
+              "duration": 65000000
             }
           },
           {
@@ -7824,7 +8012,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 21000000
+              "duration": 29000000
             }
           },
           {
@@ -7834,8 +8022,7 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
@@ -7874,7 +8061,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3758000000
+              "duration": 4153000000
             }
           },
           {
@@ -7887,7 +8074,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 70000000
+              "duration": 64000000
             }
           },
           {
@@ -7900,7 +8087,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 23000000
+              "duration": 30000000
             }
           },
           {
@@ -7910,8 +8097,7 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
@@ -7931,8 +8117,7 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           },
           {
@@ -7945,7 +8130,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1665000000
+              "duration": 1851000000
             }
           },
           {
@@ -7958,7 +8143,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 60000000
+              "duration": 65000000
             }
           },
           {
@@ -8015,7 +8200,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 618000000
+              "duration": 689000000
             }
           },
           {
@@ -8028,7 +8213,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 60000000
+              "duration": 73000000
             }
           },
           {
@@ -8041,7 +8226,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2000000
+              "duration": 3000000
             }
           },
           {
@@ -8071,7 +8256,8 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           },
           {
@@ -8084,7 +8270,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1473000000
+              "duration": 1577000000
             }
           },
           {
@@ -8140,8 +8326,7 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           },
           {
@@ -8154,7 +8339,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3701000000
+              "duration": 3537000000
             }
           },
           {
@@ -8167,7 +8352,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 61000000
+              "duration": 60000000
             }
           },
           {
@@ -8190,8 +8375,7 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
@@ -8211,7 +8395,8 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           },
           {
@@ -8224,7 +8409,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3231000000
+              "duration": 3515000000
             }
           },
           {
@@ -8237,7 +8422,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 62000000
+              "duration": 59000000
             }
           },
           {
@@ -8250,7 +8435,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3000000
+              "duration": 2000000
             }
           },
           {
@@ -8260,7 +8445,8 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           }
         ]
@@ -8294,7 +8480,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3419000000
+              "duration": 3646000000
             }
           },
           {
@@ -8307,7 +8493,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 57000000
+              "duration": 65000000
             }
           },
           {
@@ -8320,7 +8506,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2000000
+              "duration": 3000000
             }
           },
           {
@@ -8351,7 +8537,8 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           },
           {
@@ -8364,7 +8551,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3237000000
+              "duration": 3911000000
             }
           },
           {
@@ -8377,7 +8564,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 62000000
+              "duration": 85000000
             }
           },
           {
@@ -8434,7 +8621,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3195000000
+              "duration": 3896000000
             }
           },
           {
@@ -8447,7 +8634,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 67000000
+              "duration": 71000000
             }
           },
           {
@@ -8460,7 +8647,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2000000
+              "duration": 3000000
             }
           },
           {
@@ -8505,7 +8692,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3381000000
+              "duration": 3735000000
             }
           },
           {
@@ -8518,7 +8705,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 62000000
+              "duration": 74000000
             }
           },
           {
@@ -8531,7 +8718,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2000000
+              "duration": 3000000
             }
           },
           {
@@ -8586,7 +8773,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 341000000
+              "duration": 429000000
             }
           },
           {
@@ -8599,7 +8786,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 32000000
+              "duration": 36000000
             }
           },
           {
@@ -8654,7 +8841,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2573000000
+              "duration": 2831000000
             }
           },
           {
@@ -8667,7 +8854,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 190000000
+              "duration": 196000000
             }
           },
           {
@@ -8690,7 +8877,8 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           }
         ]
@@ -8724,7 +8912,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2405000000
+              "duration": 2832000000
             }
           },
           {
@@ -8737,7 +8925,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 182000000
+              "duration": 227000000
             }
           },
           {
@@ -8750,7 +8938,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2000000
+              "duration": 3000000
             }
           },
           {
@@ -8760,8 +8948,7 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
@@ -8795,7 +8982,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2514000000
+              "duration": 2830000000
             }
           },
           {
@@ -8808,7 +8995,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 182000000
+              "duration": 202000000
             }
           },
           {
@@ -8851,7 +9038,8 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           },
           {
@@ -8864,7 +9052,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2445000000
+              "duration": 2814000000
             }
           },
           {
@@ -8877,7 +9065,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 145000000
+              "duration": 153000000
             }
           },
           {
@@ -8890,7 +9078,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 118000000
+              "duration": 150000000
             }
           },
           {
@@ -8900,7 +9088,8 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           }
         ]
@@ -8934,7 +9123,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2354000000
+              "duration": 2905000000
             }
           },
           {
@@ -8947,7 +9136,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 120000000
+              "duration": 141000000
             }
           },
           {
@@ -8960,7 +9149,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 110000000
+              "duration": 123000000
             }
           },
           {
@@ -8973,7 +9162,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 20000000
+              "duration": 25000000
             }
           },
           {
@@ -8983,8 +9172,7 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
@@ -9004,8 +9192,7 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           },
           {
@@ -9018,7 +9205,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2378000000
+              "duration": 2952000000
             }
           },
           {
@@ -9031,7 +9218,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 139000000
+              "duration": 160000000
             }
           },
           {
@@ -9044,7 +9231,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 111000000
+              "duration": 137000000
             }
           },
           {
@@ -9057,7 +9244,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 22000000
+              "duration": 27000000
             }
           },
           {
@@ -9101,7 +9288,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2363000000
+              "duration": 2810000000
             }
           },
           {
@@ -9114,7 +9301,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 139000000
+              "duration": 158000000
             }
           },
           {
@@ -9127,7 +9314,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 130000000
+              "duration": 144000000
             }
           },
           {
@@ -9140,7 +9327,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 26000000
+              "duration": 25000000
             }
           },
           {
@@ -9150,7 +9337,8 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           }
         ]
@@ -9167,92 +9355,9 @@
     "uri": "src/test/acceptance/features/privacy-notice.feature",
     "elements": [
       {
-        "id": "privacy-notice-page;the-privacy-notice-page-is-accessible-via-a-link-on-an-application-page-and-the-back-link-is-shown",
-        "keyword": "Scenario",
-        "line": 6,
-        "name": "The Privacy notice page is accessible via a link on an application page and the back link is shown",
-        "tags": [],
-        "type": "scenario",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 7,
-            "name": "I have entered my details up to the enter name page",
-            "match": {
-              "location": "src/test/common/steps/navigation/steps.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1522000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 8,
-            "name": "I click on the privacy-notice link",
-            "match": {
-              "location": "src/test/common/steps/privacy-notice-steps.js:8"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 74000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 9,
-            "name": "the privacy-notice page is shown",
-            "match": {
-              "location": "src/test/common/steps/privacy-notice-steps.js:12"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 2000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 10,
-            "name": "the back link on the privacy-notice page links to the enter name page",
-            "match": {
-              "location": "src/test/common/steps/privacy-notice-steps.js:20"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 27000000
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:19"
-            },
-            "result": {
-              "status": "passed"
-            }
-          }
-        ]
-      },
-      {
         "id": "privacy-notice-page;the-back-link-on-the-privacy-notice-page-is-not-shown-if-we-navigate-to-it-directly",
         "keyword": "Scenario",
-        "line": 12,
+        "line": 6,
         "name": "The back link on the Privacy notice page is not shown if we navigate to it directly",
         "tags": [],
         "type": "scenario",
@@ -9270,40 +9375,40 @@
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 13,
+            "line": 7,
             "name": "I navigate to the privacy-notice page",
             "match": {
               "location": "src/test/common/steps/navigation/steps.js:20"
             },
             "result": {
               "status": "passed",
-              "duration": 711000000
+              "duration": 372000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 14,
+            "line": 8,
             "name": "the privacy-notice page is shown",
             "match": {
               "location": "src/test/common/steps/privacy-notice-steps.js:12"
             },
             "result": {
               "status": "passed",
-              "duration": 3000000
+              "duration": 4000000
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 15,
+            "line": 9,
             "name": "no back link is shown",
             "match": {
-              "location": "src/test/common/steps/cookie-steps.js:21"
+              "location": "src/test/common/steps/cookie-steps.js:20"
             },
             "result": {
               "status": "passed",
-              "duration": 5188000000
+              "duration": 5002000000
             }
           },
           {
@@ -9358,7 +9463,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 445000000
+              "duration": 489000000
             }
           },
           {
@@ -9371,7 +9476,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 29000000
+              "duration": 36000000
             }
           },
           {
@@ -9381,7 +9486,8 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           }
         ]
@@ -9401,7 +9507,8 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           },
           {
@@ -9414,7 +9521,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 420000000
+              "duration": 514000000
             }
           },
           {
@@ -9423,7 +9530,7 @@
             "line": 13,
             "name": "I do not select an option",
             "match": {
-              "location": "src/test/common/steps/common-steps.js:248"
+              "location": "src/test/common/steps/common-steps.js:249"
             },
             "result": {
               "status": "passed"
@@ -9435,11 +9542,11 @@
             "line": 14,
             "name": "I click continue",
             "match": {
-              "location": "src/test/common/steps/common-steps.js:252"
+              "location": "src/test/common/steps/common-steps.js:253"
             },
             "result": {
               "status": "passed",
-              "duration": 74000000
+              "duration": 87000000
             }
           },
           {
@@ -9452,7 +9559,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 104000000
+              "duration": 150000000
             }
           },
           {
@@ -9462,8 +9569,7 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
@@ -9497,7 +9603,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 405000000
+              "duration": 512000000
             }
           },
           {
@@ -9510,7 +9616,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 70000000
+              "duration": 102000000
             }
           },
           {
@@ -9519,11 +9625,11 @@
             "line": 19,
             "name": "I click continue",
             "match": {
-              "location": "src/test/common/steps/common-steps.js:252"
+              "location": "src/test/common/steps/common-steps.js:253"
             },
             "result": {
               "status": "passed",
-              "duration": 103000000
+              "duration": 142000000
             }
           },
           {
@@ -9536,7 +9642,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2000000
+              "duration": 5000000
             }
           },
           {
@@ -9549,7 +9655,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 23000000
+              "duration": 39000000
             }
           },
           {
@@ -9559,8 +9665,7 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
@@ -9580,7 +9685,8 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           },
           {
@@ -9593,7 +9699,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 407000000
+              "duration": 576000000
             }
           },
           {
@@ -9606,7 +9712,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 64000000
+              "duration": 99000000
             }
           },
           {
@@ -9615,11 +9721,11 @@
             "line": 25,
             "name": "I click continue",
             "match": {
-              "location": "src/test/common/steps/common-steps.js:252"
+              "location": "src/test/common/steps/common-steps.js:253"
             },
             "result": {
               "status": "passed",
-              "duration": 119000000
+              "duration": 129000000
             }
           },
           {
@@ -9632,7 +9738,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2000000
+              "duration": 3000000
             }
           },
           {
@@ -9645,7 +9751,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 57000000
+              "duration": 99000000
             }
           },
           {
@@ -9658,7 +9764,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 28000000
+              "duration": 66000000
             }
           },
           {
@@ -9688,7 +9794,8 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           },
           {
@@ -9701,7 +9808,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 425000000
+              "duration": 557000000
             }
           },
           {
@@ -9714,7 +9821,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2939000000
+              "duration": 4415000000
             }
           },
           {
@@ -9727,7 +9834,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 68000000
+              "duration": 117000000
             }
           },
           {
@@ -9740,7 +9847,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 57000000
+              "duration": 98000000
             }
           },
           {
@@ -9749,11 +9856,11 @@
             "line": 34,
             "name": "I click continue",
             "match": {
-              "location": "src/test/common/steps/common-steps.js:252"
+              "location": "src/test/common/steps/common-steps.js:253"
             },
             "result": {
               "status": "passed",
-              "duration": 101000000
+              "duration": 138000000
             }
           },
           {
@@ -9766,7 +9873,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2000000
+              "duration": 6000000
             }
           },
           {
@@ -9779,7 +9886,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 31000000
+              "duration": 45000000
             }
           },
           {
@@ -9789,8 +9896,7 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
@@ -9835,7 +9941,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2904000000
+              "duration": 3612000000
             }
           },
           {
@@ -9848,7 +9954,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 161000000
+              "duration": 183000000
             }
           },
           {
@@ -9861,7 +9967,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 31000000
+              "duration": 40000000
             }
           },
           {
@@ -9874,7 +9980,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 32000000
+              "duration": 39000000
             }
           },
           {
@@ -9918,7 +10024,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3008000000
+              "duration": 3595000000
             }
           },
           {
@@ -9927,7 +10033,7 @@
             "line": 15,
             "name": "I do not select an option",
             "match": {
-              "location": "src/test/common/steps/common-steps.js:248"
+              "location": "src/test/common/steps/common-steps.js:249"
             },
             "result": {
               "status": "passed"
@@ -9939,11 +10045,11 @@
             "line": 16,
             "name": "I click continue",
             "match": {
-              "location": "src/test/common/steps/common-steps.js:252"
+              "location": "src/test/common/steps/common-steps.js:253"
             },
             "result": {
               "status": "passed",
-              "duration": 69000000
+              "duration": 88000000
             }
           },
           {
@@ -9956,7 +10062,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 121000000
+              "duration": 142000000
             }
           },
           {
@@ -10000,7 +10106,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2851000000
+              "duration": 3161000000
             }
           },
           {
@@ -10013,7 +10119,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 73000000
+              "duration": 77000000
             }
           },
           {
@@ -10022,11 +10128,11 @@
             "line": 21,
             "name": "I click continue",
             "match": {
-              "location": "src/test/common/steps/common-steps.js:252"
+              "location": "src/test/common/steps/common-steps.js:253"
             },
             "result": {
               "status": "passed",
-              "duration": 68000000
+              "duration": 66000000
             }
           },
           {
@@ -10039,7 +10145,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2000000
+              "duration": 4000000
             }
           },
           {
@@ -10049,7 +10155,8 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           }
         ]
@@ -10082,7 +10189,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2760000000
+              "duration": 3096000000
             }
           },
           {
@@ -10095,7 +10202,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 67000000
+              "duration": 69000000
             }
           },
           {
@@ -10104,11 +10211,11 @@
             "line": 26,
             "name": "I click continue",
             "match": {
-              "location": "src/test/common/steps/common-steps.js:252"
+              "location": "src/test/common/steps/common-steps.js:253"
             },
             "result": {
               "status": "passed",
-              "duration": 70000000
+              "duration": 75000000
             }
           },
           {
@@ -10131,8 +10238,7 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
@@ -10177,7 +10283,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3287000000
+              "duration": 3798000000
             }
           },
           {
@@ -10190,7 +10296,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 127000000
+              "duration": 148000000
             }
           },
           {
@@ -10203,7 +10309,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 110000000
+              "duration": 138000000
             }
           },
           {
@@ -10263,7 +10369,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 361000000
+              "duration": 386000000
             }
           },
           {
@@ -10276,7 +10382,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3439000000
+              "duration": 4144000000
             }
           },
           {
@@ -10289,7 +10395,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 6000000
+              "duration": 8000000
             }
           },
           {
@@ -10302,7 +10408,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 44000000
+              "duration": 50000000
             }
           },
           {
@@ -10352,7 +10458,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 333000000
+              "duration": 403000000
             }
           },
           {
@@ -10365,7 +10471,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3546000000
+              "duration": 3718000000
             }
           },
           {
@@ -10378,7 +10484,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 7000000
+              "duration": 6000000
             }
           },
           {
@@ -10391,7 +10497,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 37000000
+              "duration": 38000000
             }
           },
           {
@@ -10401,7 +10507,8 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           }
         ]
@@ -10440,7 +10547,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 400000000
+              "duration": 377000000
             }
           },
           {
@@ -10453,7 +10560,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3481000000
+              "duration": 3719000000
             }
           },
           {
@@ -10479,7 +10586,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 34000000
+              "duration": 38000000
             }
           },
           {
@@ -10489,7 +10596,8 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           }
         ]
@@ -10514,7 +10622,8 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           },
           {
@@ -10527,7 +10636,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 343000000
+              "duration": 383000000
             }
           },
           {
@@ -10540,7 +10649,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3212000000
+              "duration": 3723000000
             }
           },
           {
@@ -10553,7 +10662,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 4000000
+              "duration": 10000000
             }
           },
           {
@@ -10566,7 +10675,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 33000000
+              "duration": 43000000
             }
           },
           {
@@ -10576,7 +10685,8 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           }
         ]
@@ -10601,7 +10711,8 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           },
           {
@@ -10614,7 +10725,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 332000000
+              "duration": 405000000
             }
           },
           {
@@ -10627,7 +10738,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3393000000
+              "duration": 3720000000
             }
           },
           {
@@ -10640,7 +10751,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 7000000
+              "duration": 6000000
             }
           },
           {
@@ -10653,7 +10764,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 36000000
+              "duration": 44000000
             }
           },
           {
