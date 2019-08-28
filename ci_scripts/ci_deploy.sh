@@ -28,5 +28,8 @@ rm deployment-scripts.zip
 
 export SCRIPT_DIR=${BIN_DIR}/deployment-scripts
 
+# define the space to deploy to
+export CF_SPACE=development
+
 # run the deployment script
 /bin/bash ${SCRIPT_DIR}/deploy.sh
