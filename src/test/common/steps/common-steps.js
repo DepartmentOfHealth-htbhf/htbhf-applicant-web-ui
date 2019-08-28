@@ -1,9 +1,10 @@
-const { assert } = require('chai')
-const { When } = require('cucumber')
+const { assert, expect } = require('chai')
+const { When, Then } = require('cucumber')
 const { path } = require('ramda')
 
 const pages = require('./pages')
 const { setupSuccessfulWiremockClaimMappingWithStatus, deleteAllWiremockMappings, setupSuccessfulWiremockUpdatedClaimMapping, getOutboundRequestsToUrl } = require('../wiremock')
+const { assertBackLinkPointsToPage } = require('./common-assertions')
 const { get } = require('./../request')
 const TESTS = process.env.TESTS
 const COMPATIBILITY_TESTS = 'compatibility'
@@ -251,6 +252,22 @@ When(/^I do not select an option$/, function () {
 
 When(/^I click continue$/, async function () {
   await pages.genericPage.submitForm()
+})
+
+Then(/^the beta banner is shown$/, async function () {
+  const banner = await pages.genericPage.getBetaBanner()
+  const bannerText = await banner.getText()
+  expect(bannerText).to.be.equal('This is a new service – your feedback will help us improve it.')
+})
+
+Then(/^the beta banner has the correct survey link$/, async function () {
+  const feedbackLink = await pages.genericPage.getBetaBannerFeedbackLink()
+  const feedbackUrl = await feedbackLink.getAttribute('href')
+  expect(feedbackUrl).to.be.equal('https://www.smartsurvey.co.uk/s/apply-for-healthy-start-feedback/')
+})
+
+Then(/^the back link on the page links to the do you live in Scotland page$/, async function () {
+  await assertBackLinkPointsToPage(pages.scotland)
 })
 
 module.exports = {

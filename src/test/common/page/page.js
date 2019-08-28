@@ -183,6 +183,15 @@ class Page {
     return this.isElementWithClassPresent(BACK_LINK_CLASSNAME)
   }
 
+  async getBetaBanner () {
+    return this.findByClassName('govuk-phase-banner__text')
+  }
+
+  async getBetaBannerFeedbackLink () {
+    const banner = await this.getBetaBanner()
+    return banner.findElement(webdriver.By.className('govuk-link'))
+  }
+
   /**
    * Gets the visible text from a field error element. i.e. an element with class 'govuk-error-message'
    */
