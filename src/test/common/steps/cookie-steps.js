@@ -1,6 +1,5 @@
 const { When, Then } = require('cucumber')
 const { expect } = require('chai')
-const { assertBackLinkPointsToPage } = require('./common-assertions')
 
 const pages = require('./pages')
 
@@ -21,10 +20,6 @@ Then(/^all page content is present on the cookies page$/, async function () {
 Then(/^no back link is shown$/, async function () {
   const backLinkPresent = await pages.cookies.isBackLinkPresent()
   expect(backLinkPresent).to.equal(false)
-})
-
-Then(/^the back link on the cookies page links to the enter name page$/, async function () {
-  await assertBackLinkPointsToPage(pages.name)
 })
 
 async function checkAllCookiePageContentIsPresentAndCorrect () {
