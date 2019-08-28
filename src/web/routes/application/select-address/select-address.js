@@ -4,16 +4,23 @@ const pageContent = ({ translate }) => ({
   formDescription: translate('address.formDescription'),
   postcodeLabel: translate('address.postcodeLabel'),
   addressNotFound: translate('address.addressNotFound'),
-  buttonText: translate('buttons:enterManualAddress'),
+  enterManualAddress: translate('buttons:enterManualAddress'),
   explanation: translate('address.explanation'),
-  change: translate('change')
+  change: translate('change'),
+  continue: translate('buttons:continue')
 })
+
+const behaviourForGet = () => async (req, res, next) => {
+  res.locals.postcodeLookupResults = req.session.postcodeLookupResults
+  next()
+}
 
 const selectAddress = {
   path: '/select-address',
   template: 'select-address',
   pageContent,
-  toggle: 'ADDRESS_LOOKUP_ENABLED'
+  toggle: 'ADDRESS_LOOKUP_ENABLED',
+  behaviourForGet
 }
 
 module.exports = {

@@ -3,6 +3,8 @@
 {% from "inset-text/macro.njk" import govukInsetText %}
 {% from "macros/htbhf-form-description.njk" import htbhfFormDescription %}
 
+{% set buttonText = enterManualAddress if (postcodeLookupResults | length === 0) else continue %}
+
 {% block formContent %}
 
     {% call govukFieldset({
@@ -20,7 +22,10 @@
             <strong class="govuk-!-margin-right-4">{{ claim.postcode | upper }}</strong>
             <a class="govuk-link" href="/postcode">{{ change }}</a>
         </span>
-        <h2 class="govuk-heading-m">{{ addressNotFound }}</h2>
+
+        {%  if postcodeLookupResults | length === 0 %}
+            <h2 class="govuk-heading-m">{{ addressNotFound }}</h2>
+        {% endif %}
 
     {% endcall %}
 
