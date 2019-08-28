@@ -10,8 +10,13 @@ const pageContent = ({ translate }) => ({
   continue: translate('buttons:continue')
 })
 
+const buildAddressOption = result => ({
+  value: result.ADDRESS,
+  text: result.ADDRESS
+})
+
 const behaviourForGet = () => async (req, res, next) => {
-  res.locals.postcodeLookupResults = req.session.postcodeLookupResults
+  res.locals.addresses = req.session.postcodeLookupResults.map(buildAddressOption)
   next()
 }
 
@@ -24,5 +29,6 @@ const selectAddress = {
 }
 
 module.exports = {
+  behaviourForGet,
   selectAddress
 }
