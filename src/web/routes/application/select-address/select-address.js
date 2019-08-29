@@ -7,11 +7,17 @@ const pageContent = ({ translate }) => ({
   enterManualAddress: translate('buttons:enterManualAddress'),
   explanation: translate('address.explanation'),
   change: translate('change'),
-  continue: translate('buttons:continue')
+  continue: translate('buttons:continue'),
+  selectAddressLabel: translate('address.selectAddressLabel')
+})
+
+const buildAddressOption = result => ({
+  value: result.ADDRESS,
+  text: result.ADDRESS
 })
 
 const behaviourForGet = () => async (req, res, next) => {
-  res.locals.postcodeLookupResults = req.session.postcodeLookupResults
+  res.locals.addresses = req.session.postcodeLookupResults.map(buildAddressOption)
   next()
 }
 
@@ -24,5 +30,6 @@ const selectAddress = {
 }
 
 module.exports = {
+  behaviourForGet,
   selectAddress
 }
