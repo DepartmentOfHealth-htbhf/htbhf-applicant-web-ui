@@ -38,6 +38,7 @@ const CLAIM_WITHOUT_EXPECTED_DELIVERY_DATE = {
   addressLine1: 'Flat b',
   addressLine2: '221 Baker street',
   townOrCity: 'London',
+  county: 'Greater London',
   postcode: 'aa1 1ab',
   phoneNumber: '07700 900645',
   formattedPhoneNumber: '+447700900645',
@@ -60,6 +61,7 @@ const CLAIM_WITH_EXPECTED_DELIVERY_DATE = {
   addressLine1: 'Flat b',
   addressLine2: '221 Baker street',
   townOrCity: 'London',
+  county: 'Greater London',
   postcode: 'aa1 1ab',
   phoneNumber: '07700 900645',
   formattedPhoneNumber: '+447700900645',
@@ -100,6 +102,7 @@ test('create claim body', (t) => {
         addressLine1: 'Flat b',
         addressLine2: '221 Baker street',
         townOrCity: 'London',
+        county: 'Greater London',
         postcode: 'aa1 1ab'
       },
       expectedDeliveryDate: '2019-03-01',
@@ -138,6 +141,7 @@ test('create claim body without expectedDeliveryDate when not pregnant', (t) => 
         addressLine1: 'Flat b',
         addressLine2: '221 Baker street',
         townOrCity: 'London',
+        county: 'Greater London',
         postcode: 'aa1 1ab'
       },
       expectedDeliveryDate: null,

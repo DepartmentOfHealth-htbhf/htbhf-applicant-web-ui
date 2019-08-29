@@ -39,6 +39,7 @@ const createClaim = (claim, children) => ({
     addressLine1: claim.addressLine1,
     addressLine2: claim.addressLine2,
     townOrCity: claim.townOrCity,
+    county: claim.county,
     postcode: claim.postcode
   },
   expectedDeliveryDate: createExpectedDeliveryDate(claim),
