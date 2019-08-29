@@ -18,11 +18,11 @@
 
   {{ htbhfFormDescription(formDescription) }}
 
-  <h2 class="govuk-heading-m">{{ postcodeLabel }}</h2>
-  <span class="govuk-body">
+  <h2 class="govuk-heading-m govuk-!-margin-bottom-2">{{ postcodeLabel }}</h2>
+  <div class="govuk-body govuk-!-margin-bottom-6">
     <strong class="govuk-!-margin-right-4">{{ claim.postcode | upper }}</strong>
     <a class="govuk-link" href="/postcode">{{ change }}</a>
-  </span>
+  </div>
 
   {% if addresses | length === 0 %}
     <h2 class="govuk-heading-m">{{ addressNotFound }}</h2>
@@ -31,7 +31,7 @@
       id: "address-results",
       name: "address-results",
       label: {
-        text: "Select an address"
+        html: '<span class="govuk-heading-m govuk-!-margin-bottom-2">' + selectAddressLabel + '</span>'
       },
       items: addresses
     }) }}
