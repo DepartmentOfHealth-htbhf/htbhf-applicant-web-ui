@@ -3,7 +3,7 @@ const sinon = require('sinon')
 const proxyquire = require('proxyquire')
 
 const { TEXT, EMAIL } = require('../common/constants')
-const { contentSummary } = require('./phone-number')
+const { contentSummary, requestBody } = require('./phone-number')
 
 const handleConfirmationCodeReset = sinon.spy()
 
@@ -86,5 +86,25 @@ test('behaviourForPost() does not reset confirmation code if the user has not up
 
   t.equal(handleConfirmationCodeReset.called, false)
   handleConfirmationCodeReset.resetHistory()
+  t.end()
+})
+
+test('requestBody() returns request body in correct format', (t) => {
+  const req = {
+    session: {
+      claim: {
+        phoneNumber: '07700 900645',
+        formattedPhoneNumber: '+447700900645'
+      }
+    }
+  }
+
+  const result = requestBody(req.session)
+
+  const expected = {
+    phoneNumber: '+447700900645'
+  }
+
+  t.deepEqual(result, expected, 'returns request body in correct format')
   t.end()
 })
