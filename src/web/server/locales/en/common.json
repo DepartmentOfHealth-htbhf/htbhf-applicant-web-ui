@@ -68,7 +68,8 @@
     "summaryKey": "Address",
     "explanation": "We need this to confirm your identity and eligibility. We'll send your prepaid card to this address.",
     "hint": "Enter the first line of your address",
-    "addressNotFound": "We cannot find that address"
+    "addressNotFound": "We cannot find that address",
+    "selectAddressLabel": "Select an address"
   },
   "postcode": {
     "title": "What’s your address?",

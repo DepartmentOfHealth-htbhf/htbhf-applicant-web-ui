@@ -13,3 +13,11 @@ Feature: Select address
       Then I am shown the select address page
       And I am informed that no addresses were found for my postcode
       And I am shown a button to enter my address manually
+
+    # TODO DW HTBHF-2037 include test once address lookup is enabled
+    @ignore
+    Scenario: Entering a postcode shows a list of matching addresses
+      When I enter a postcode
+      Then I am shown the select address page
+      And I am shown a list of addresses
+      And I am shown a continue button
