@@ -8,39 +8,39 @@
 
 {% block formContent %}
 
-  {% call govukFieldset({
-    legend: {
-      text: heading,
-      classes: "govuk-fieldset__legend--xl",
-      isPageHeading: true
-    }
-  }) %}
+    {% call govukFieldset({
+        legend: {
+            text: heading,
+            classes: "govuk-fieldset__legend--xl",
+            isPageHeading: true
+        }
+    }) %}
 
-  {{ htbhfFormDescription(formDescription) }}
+        {{ htbhfFormDescription(formDescription) }}
 
-  <h2 class="govuk-heading-m govuk-!-margin-bottom-2">{{ postcodeLabel }}</h2>
-  <div class="govuk-body govuk-!-margin-bottom-6">
-    <strong class="govuk-!-margin-right-4">{{ claim.postcode | upper }}</strong>
-    <a class="govuk-link" href="/postcode">{{ change }}</a>
-  </div>
+        <h2 class="govuk-heading-m govuk-!-margin-bottom-2">{{ postcodeLabel }}</h2>
+        <div class="govuk-body govuk-!-margin-bottom-6">
+            <strong class="govuk-!-margin-right-4">{{ claim.postcode | upper }}</strong>
+            <a class="govuk-link" href="/postcode">{{ change }}</a>
+        </div>
 
-  {% if addresses | length === 0 %}
-    <h2 class="govuk-heading-m">{{ addressNotFound }}</h2>
-  {% else %}
-    {{ govukSelect({
-      id: "address-results",
-      name: "address-results",
-      label: {
-        html: '<span class="govuk-heading-m govuk-!-margin-bottom-2">' + selectAddressLabel + '</span>'
-      },
-      items: addresses
+        {% if addresses | length === 0 %}
+            <h2 class="govuk-heading-m">{{ addressNotFound }}</h2>
+        {% else %}
+            {{ govukSelect({
+                id: "address-results",
+                name: "address-results",
+                label: {
+                    html: '<span class="govuk-heading-m govuk-!-margin-bottom-2">' + selectAddressLabel + '</span>'
+                },
+                items: addresses
+            }) }}
+        {% endif %}
+
+    {% endcall %}
+
+    {{ govukInsetText({
+        text: explanation
     }) }}
-  {% endif %}
-
-  {% endcall %}
-
-  {{ govukInsetText({
-    text: explanation
-  }) }}
 
 {% endblock %}
