@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-expressions */
 const { When, Then } = require('cucumber')
 const { expect } = require('chai')
+const Promise = require('bluebird')
 
 const pages = require('./pages')
 const { enterPostcodeAndSubmit } = require('./common-steps')
@@ -36,6 +37,10 @@ Then(/^I am shown a button to enter my address manually$/, async function () {
 Then(/^I am shown a list of addresses$/, async function () {
   const addressOptions = await pages.selectAddress.getAddressOptions()
   expect(addressOptions.length).to.be.equal(11)
+  await Promise.each(addressOptions, async addressOption => {
+    const address = await addressOption.getText()
+    expect(address.includes(POSTCODE)).to.be.true
+  })
 })
 
 Then(/^I am shown a continue button$/, async function () {

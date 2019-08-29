@@ -73,7 +73,7 @@ const createPostcodeLookupWithResultsMapping = (postcode) => {
             'DPA': {
               'UPRN': '83001911',
               'UDPRN': '10668218',
-              'ADDRESS': '1, BIRKS, SLAITHWAITE, HUDDERSFIELD, HD7 5UZ',
+              'ADDRESS': `1, BIRKS, SLAITHWAITE, HUDDERSFIELD, ${postcode}`,
               'BUILDING_NUMBER': '1',
               'THOROUGHFARE_NAME': 'BIRKS',
               'DEPENDENT_LOCALITY': 'SLAITHWAITE',
@@ -106,7 +106,7 @@ const createPostcodeLookupWithResultsMapping = (postcode) => {
             'DPA': {
               'UPRN': '83001912',
               'UDPRN': '10668223',
-              'ADDRESS': '2, BIRKS, SLAITHWAITE, HUDDERSFIELD, HD7 5UZ',
+              'ADDRESS': `2, BIRKS, SLAITHWAITE, HUDDERSFIELD, ${postcode}`,
               'BUILDING_NUMBER': '2',
               'THOROUGHFARE_NAME': 'BIRKS',
               'DEPENDENT_LOCALITY': 'SLAITHWAITE',
@@ -138,7 +138,7 @@ const createPostcodeLookupWithResultsMapping = (postcode) => {
             'DPA': {
               'UPRN': '83002107',
               'UDPRN': '10668224',
-              'ADDRESS': '2, COCKLEY COTE, SLAITHWAITE, HUDDERSFIELD, HD7 5UZ',
+              'ADDRESS': `2, COCKLEY COTE, SLAITHWAITE, HUDDERSFIELD, ${postcode}`,
               'BUILDING_NUMBER': '2',
               'THOROUGHFARE_NAME': 'COCKLEY COTE',
               'DEPENDENT_LOCALITY': 'SLAITHWAITE',
@@ -171,7 +171,7 @@ const createPostcodeLookupWithResultsMapping = (postcode) => {
             'DPA': {
               'UPRN': '83002108',
               'UDPRN': '10668226',
-              'ADDRESS': '3, COCKLEY COTE, SLAITHWAITE, HUDDERSFIELD, HD7 5UZ',
+              'ADDRESS': `3, COCKLEY COTE, SLAITHWAITE, HUDDERSFIELD, ${postcode}`,
               'BUILDING_NUMBER': '3',
               'THOROUGHFARE_NAME': 'COCKLEY COTE',
               'DEPENDENT_LOCALITY': 'SLAITHWAITE',
@@ -204,7 +204,7 @@ const createPostcodeLookupWithResultsMapping = (postcode) => {
             'DPA': {
               'UPRN': '83221668',
               'UDPRN': '10668197',
-              'ADDRESS': 'GOAT HILL FARM, 2, GOAT HILL, SLAITHWAITE, HUDDERSFIELD, HD7 5UZ',
+              'ADDRESS': `GOAT HILL FARM, 2, GOAT HILL, SLAITHWAITE, HUDDERSFIELD, ${postcode}`,
               'ORGANISATION_NAME': 'GOAT HILL FARM',
               'BUILDING_NUMBER': '2',
               'THOROUGHFARE_NAME': 'GOAT HILL',
@@ -237,7 +237,7 @@ const createPostcodeLookupWithResultsMapping = (postcode) => {
             'DPA': {
               'UPRN': '83002148',
               'UDPRN': '10668219',
-              'ADDRESS': '1, LAUNDS, SLAITHWAITE, HUDDERSFIELD, HD7 5UZ',
+              'ADDRESS': `1, LAUNDS, SLAITHWAITE, HUDDERSFIELD, ${postcode}`,
               'BUILDING_NUMBER': '1',
               'THOROUGHFARE_NAME': 'LAUNDS',
               'DEPENDENT_LOCALITY': 'SLAITHWAITE',
@@ -269,7 +269,7 @@ const createPostcodeLookupWithResultsMapping = (postcode) => {
             'DPA': {
               'UPRN': '83002149',
               'UDPRN': '10668225',
-              'ADDRESS': '2, LAUNDS, SLAITHWAITE, HUDDERSFIELD, HD7 5UZ',
+              'ADDRESS': `2, LAUNDS, SLAITHWAITE, HUDDERSFIELD, ${postcode}`,
               'BUILDING_NUMBER': '2',
               'THOROUGHFARE_NAME': 'LAUNDS',
               'DEPENDENT_LOCALITY': 'SLAITHWAITE',
@@ -301,7 +301,7 @@ const createPostcodeLookupWithResultsMapping = (postcode) => {
             'DPA': {
               'UPRN': '83185427',
               'UDPRN': '50645330',
-              'ADDRESS': 'PHILIP SUNLEY TRANSPORT LTD, LOWER LAUND FARM, LOWER LAUNDS, SLAITHWAITE, HUDDERSFIELD, HD7 5UZ',
+              'ADDRESS': `PHILIP SUNLEY TRANSPORT LTD, LOWER LAUND FARM, LOWER LAUNDS, SLAITHWAITE, HUDDERSFIELD, ${postcode}`,
               'ORGANISATION_NAME': 'PHILIP SUNLEY TRANSPORT LTD',
               'BUILDING_NAME': 'LOWER LAUND FARM',
               'THOROUGHFARE_NAME': 'LOWER LAUNDS',
@@ -334,7 +334,7 @@ const createPostcodeLookupWithResultsMapping = (postcode) => {
             'DPA': {
               'UPRN': '83185424',
               'UDPRN': '10668211',
-              'ADDRESS': 'OWLERS CLOUGH, LOWER LAUNDS, SLAITHWAITE, HUDDERSFIELD, HD7 5UZ',
+              'ADDRESS': `OWLERS CLOUGH, LOWER LAUNDS, SLAITHWAITE, HUDDERSFIELD, ${postcode}`,
               'BUILDING_NAME': 'OWLERS CLOUGH',
               'THOROUGHFARE_NAME': 'LOWER LAUNDS',
               'DEPENDENT_LOCALITY': 'SLAITHWAITE',
@@ -366,7 +366,7 @@ const createPostcodeLookupWithResultsMapping = (postcode) => {
             'DPA': {
               'UPRN': '83185428',
               'UDPRN': '10668217',
-              'ADDRESS': '1, LOWER WORTSHILL, SLAITHWAITE, HUDDERSFIELD, HD7 5UZ',
+              'ADDRESS': `1, LOWER WORTSHILL, SLAITHWAITE, HUDDERSFIELD, ${postcode}`,
               'BUILDING_NUMBER': '1',
               'THOROUGHFARE_NAME': 'LOWER WORTSHILL',
               'DEPENDENT_LOCALITY': 'SLAITHWAITE',
@@ -398,7 +398,7 @@ const createPostcodeLookupWithResultsMapping = (postcode) => {
             'DPA': {
               'UPRN': '83185422',
               'UDPRN': '10668227',
-              'ADDRESS': '3, LOWER WORTSHILL, SLAITHWAITE, HUDDERSFIELD, HD7 5UZ',
+              'ADDRESS': `3, LOWER WORTSHILL, SLAITHWAITE, HUDDERSFIELD, ${postcode}`,
               'BUILDING_NUMBER': '3',
               'THOROUGHFARE_NAME': 'LOWER WORTSHILL',
               'DEPENDENT_LOCALITY': 'SLAITHWAITE',
