@@ -14,7 +14,7 @@ const { render } = require('./get')
 
 const handleErrorResponse = (body, response) => {
   if (isErrorStatusCode(response.statusCode)) {
-    throw new Error(`Error posting to claimant service: ${JSON.stringify(body)}`)
+    throw new Error(JSON.stringify(body))
   }
 
   return response

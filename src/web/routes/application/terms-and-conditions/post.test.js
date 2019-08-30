@@ -39,7 +39,7 @@ test('handleErrorResponse() throws an error for error statusCode', (t) => {
   const body = { message: 'There was a problem' }
   const response = { statusCode: 500 }
   const result = handleErrorResponse.bind(null, body, response)
-  t.throws(result, /Error posting to claimant service: {"message":"There was a problem"}/, 'throws an error for error statusCode')
+  t.throws(result, /{"message":"There was a problem"}/, 'throws an error for error statusCode')
   t.end()
 })
 
