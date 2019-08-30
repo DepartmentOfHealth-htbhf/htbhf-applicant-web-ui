@@ -6,7 +6,7 @@ const { CHECK_ANSWERS_URL, CONFIRM_URL, ELIGIBLE } = require('../common/constant
 
 const post = sinon.stub()
 
-const { transformResponse, postTermsAndConditions } = proxyquire('./post', {
+const { handleErrorResponse, postTermsAndConditions } = proxyquire('./post', {
   'request-promise': { post },
   './create-request-body': {
     createRequestBody: () => {}
@@ -19,27 +19,27 @@ const config = {
   }
 }
 
-test('transformResponse() returns response for successful statusCode', (t) => {
+test('handleErrorResponse() returns response for successful statusCode', (t) => {
   const body = {}
   const response = { statusCode: 200 }
-  const result = transformResponse(body, response)
+  const result = handleErrorResponse(body, response)
   t.equal(result, response, 'returns response for successful statusCode')
   t.end()
 })
 
-test('transformResponse() returns response for not found statusCode', (t) => {
+test('handleErrorResponse() returns response for not found statusCode', (t) => {
   const body = {}
   const response = { statusCode: 404 }
-  const result = transformResponse(body, response)
+  const result = handleErrorResponse(body, response)
   t.equal(result, response, 'returns response for not found statusCode')
   t.end()
 })
 
-test('transformResponse() throws an error for error statusCode', (t) => {
-  const body = {}
+test('handleErrorResponse() throws an error for error statusCode', (t) => {
+  const body = { message: 'There was a problem' }
   const response = { statusCode: 500 }
-  const result = transformResponse.bind(null, body, response)
-  t.throws(result, /Error posting to claimant service/, 'throws an error for error statusCode')
+  const result = handleErrorResponse.bind(null, body, response)
+  t.throws(result, /Error posting to claimant service: {"message":"There was a problem"}/, 'throws an error for error statusCode')
   t.end()
 })
 

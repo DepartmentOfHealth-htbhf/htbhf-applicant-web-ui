@@ -12,9 +12,9 @@ const { isErrorStatusCode } = require('./predicates')
 const { CLAIMS_ENDPOINT, NO_ELIGIBILITY_STATUS_MESSAGE } = require('./constants')
 const { render } = require('./get')
 
-const transformResponse = (body, response) => {
+const handleErrorResponse = (body, response) => {
   if (isErrorStatusCode(response.statusCode)) {
-    throw new Error('Error posting to claimant service')
+    throw new Error(`Error posting to claimant service: ${JSON.stringify(body)}`)
   }
 
   return response
@@ -40,7 +40,7 @@ const postTermsAndConditions = (steps, config) => (req, res, next) => {
     },
     body: createRequestBody(config, req),
     simple: false,
-    transform: transformResponse
+    transform: handleErrorResponse
   })
     .then(
       (response) => {
@@ -74,6 +74,6 @@ const postTermsAndConditions = (steps, config) => (req, res, next) => {
 }
 
 module.exports = {
-  transformResponse,
+  handleErrorResponse,
   postTermsAndConditions
 }
