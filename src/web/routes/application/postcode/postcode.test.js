@@ -7,7 +7,7 @@ const request = sinon.stub()
 const { behaviourForPost } = proxyquire('./postcode', { 'request-promise': request })
 const config = { environment: { OS_PLACES_API_KEY: '123' } }
 
-test('behaviourForPost() handles succesful address lookup', async (t) => {
+test('behaviourForPost() handles successful address lookup', async (t) => {
   const req = { body: { postcode: 'BS7 8EE' }, session: {} }
   const res = {}
   const next = sinon.spy()
@@ -40,6 +40,17 @@ test('behaviourForPost() handles succesful address lookup', async (t) => {
       POST_TOWN: 'PLYMOUTH',
       POSTCODE: 'PL7 1RF',
       LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'CITY OF PLYMOUTH'
+    }, {
+      ADDRESS: 'GOAT HILL FARM, 2, TROLL BRIDGE, GOAT HILL, SLAITHWAITE, SLAITH, HUDDERSFIELD, HD7 5UZ',
+      ORGANISATION_NAME: 'GOAT HILL FARM',
+      BUILDING_NUMBER: '2',
+      THOROUGHFARE_NAME: 'GOAT HILL',
+      DEPENDENT_THOROUGHFARE_NAME: 'TROLL BRIDGE',
+      DOUBLE_DEPENDENT_LOCALITY: 'SLAITHWAITE',
+      DEPENDENT_LOCALITY: 'SLAITH',
+      POST_TOWN: 'HUDDERSFIELD',
+      POSTCODE: 'HD7 5UZ',
+      LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'KIRKLEES'
     }
   ]
 
