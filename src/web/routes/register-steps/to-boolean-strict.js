@@ -1,4 +1,4 @@
-const { isUndefined } = require('./predicates')
+const { isUndefined } = require('../../../common/predicates')
 
 const toBooleanStrict = value => {
   if (isUndefined(value)) {

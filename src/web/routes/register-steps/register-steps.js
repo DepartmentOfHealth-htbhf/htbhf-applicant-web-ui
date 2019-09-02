@@ -1,4 +1,4 @@
-const { isUndefined, isString } = require('./predicates')
+const { isUndefined, isString } = require('../../../common/predicates')
 const { toBooleanStrict } = require('./to-boolean-strict')
 const { logger } = require('../../logger')
 
