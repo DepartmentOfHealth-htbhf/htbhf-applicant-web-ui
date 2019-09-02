@@ -2,6 +2,7 @@ const test = require('tape')
 const sinon = require('sinon')
 const proxyquire = require('proxyquire')
 const TEST_FIXTURES = require('./test-fixtures.json')
+const { standardisePostcode } = require('./postcode')
 
 const request = sinon.stub()
 const { behaviourForPost } = proxyquire('./postcode', { 'request-promise': request })
@@ -88,5 +89,13 @@ test('behaviourForPost() handles address lookup error', async (t) => {
   }
 
   next.resetHistory()
+  t.end()
+})
+
+test('standardisePostcode() standardises the postcode', (t) => {
+  t.equal(standardisePostcode('AB1 1AB'), 'AB11AB', 'should removes space from postcode')
+  t.equal(standardisePostcode('AB1      1AB'), 'AB11AB', 'should remove multiple spaces from postcode')
+  t.equal(standardisePostcode('   AB1 1AB '), 'AB11AB', 'should remove spaces from around postcode')
+  t.equal(standardisePostcode('ab11ab'), 'AB11AB', 'should upper case postcode')
   t.end()
 })
