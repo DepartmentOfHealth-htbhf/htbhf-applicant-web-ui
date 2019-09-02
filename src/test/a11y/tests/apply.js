@@ -65,9 +65,19 @@ const apply = [
     })
   },
   {
+    url: URLS['MANUAL_ADDRESS'],
+    formData: () => ({
+      'addressLine1': 'Flat B',
+      'addressLine2': 'Baker Street',
+      'townOrCity': 'London',
+      'county': 'Greater London',
+      'postcode': 'AA1 1AA'
+    })
+  },
+  {
     url: URLS['POSTCODE'],
     formData: () => ({
-      'postcode': 'AA1 1AA'
+      'postcode': 'BS1 1AA'
     }),
     toggle: 'ADDRESS_LOOKUP_ENABLED'
   },
@@ -78,16 +88,6 @@ const apply = [
     // when user clicks “Enter address manually”
     formData: () => ({}),
     toggle: 'ADDRESS_LOOKUP_ENABLED'
-  },
-  {
-    url: URLS['MANUAL_ADDRESS'],
-    formData: () => ({
-      'addressLine1': 'Flat B',
-      'addressLine2': 'Baker Street',
-      'townOrCity': 'London',
-      'county': 'Greater London',
-      'postcode': 'AA1 1AA'
-    })
   },
   {
     url: URLS['PHONE_NUMBER'],

@@ -49,6 +49,11 @@ const STEP_PAGE_ACTIONS = [
     actions: async () => enterNinoAndSubmit()
   },
   {
+    page: (pages) => pages.manualAddress,
+    actions: async (actionOptions) =>
+      enterManualAddressAndSubmit(actionOptions.addressLine1, actionOptions.addressLine2, actionOptions.townOrCity, actionOptions.county, actionOptions.postcode)
+  },
+  {
     page: (pages) => pages.postcode,
     actions: async () => enterPostcodeAndSubmit(),
     toggle: 'ADDRESS_LOOKUP_ENABLED'
@@ -57,11 +62,6 @@ const STEP_PAGE_ACTIONS = [
     page: (pages) => pages.selectAddress,
     actions: async () => clickEnterAddressManually(),
     toggle: 'ADDRESS_LOOKUP_ENABLED'
-  },
-  {
-    page: (pages) => pages.manualAddress,
-    actions: async (actionOptions) =>
-      enterManualAddressAndSubmit(actionOptions.addressLine1, actionOptions.addressLine2, actionOptions.townOrCity, actionOptions.county, actionOptions.postcode)
   },
   {
     page: (pages) => pages.phoneNumber,
