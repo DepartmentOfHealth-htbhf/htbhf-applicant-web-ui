@@ -1,9 +1,10 @@
 /* no-process-exit */
 'use strict'
 
-const { setupSuccessfulWiremockClaimMapping, deleteAllWiremockMappings } = require('../common/wiremock')
+const { setupSuccessfulWiremockClaimMapping, deleteAllWiremockMappings, setupPostcodeLookupWithResults } = require('../common/wiremock')
 const { runAllTests } = require('./test-suite')
 const { TEST_SUITE } = require('./tests')
+const { POSTCODE } = require('../common/steps/constants')
 
 /*
   Runs the accessibility test suite, having set up wiremock to mock the claim service.
@@ -11,6 +12,7 @@ const { TEST_SUITE } = require('./tests')
 const runTestSuite = async (testSuite) => {
   try {
     await setupSuccessfulWiremockClaimMapping()
+    await setupPostcodeLookupWithResults(POSTCODE)
     await runAllTests(testSuite)
   } catch (error) {
     console.log(error)

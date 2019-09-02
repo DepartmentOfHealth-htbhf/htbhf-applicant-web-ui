@@ -1,6 +1,6 @@
 const { get } = require('../../common/request')
 const { dateIn3Months, dateLastYear } = require('../../common/dates')
-const { VALID_ELIGIBLE_NINO, PHONE_NUMBER, EMAIL_ADDRESS, TEXT } = require('../../common/steps/constants')
+const { VALID_ELIGIBLE_NINO, PHONE_NUMBER, EMAIL_ADDRESS, TEXT, POSTCODE } = require('../../common/steps/constants')
 const { SESSION_CONFIRMATION_CODE_URL } = require('../../common/config')
 const { URLS } = require('../paths')
 
@@ -67,7 +67,7 @@ const apply = [
   {
     url: URLS['POSTCODE'],
     formData: () => ({
-      'postcode': 'AA1 1AA'
+      'postcode': POSTCODE
     }),
     toggle: 'ADDRESS_LOOKUP_ENABLED'
   },
