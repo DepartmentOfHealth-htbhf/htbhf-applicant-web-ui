@@ -43,6 +43,12 @@ Then(/^I am shown a list of addresses$/, async function () {
   })
 })
 
+Then(/^I am shown an address not listed link$/, async function () {
+  const addressNotListedLink = await pages.selectAddress.getAddressNotListedLink()
+  const href = await addressNotListedLink.getAttribute('href')
+  expect(href).to.be.equal(`${pages.url}${pages.manualAddress.getPath()}`)
+})
+
 Then(/^I am shown a continue button$/, async function () {
   const buttonText = await pages.selectAddress.getSubmitButtonText()
   expect(buttonText).to.be.equal('Continue')
