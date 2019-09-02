@@ -16,6 +16,9 @@ const {
   enterConfirmationCodeAndSubmit
 } = require('../common-steps')
 
+const { POSTCODE } = require('../constants')
+const { setupPostcodeLookupWithResults } = require('../../wiremock/postcode-lookup')
+
 const STEP_PAGE_ACTIONS = [
   {
     page: (pages) => pages.scotland,
@@ -50,7 +53,10 @@ const STEP_PAGE_ACTIONS = [
   },
   {
     page: (pages) => pages.postcode,
-    actions: async () => enterPostcodeAndSubmit(),
+    actions: async () => {
+      await setupPostcodeLookupWithResults(POSTCODE)
+      await enterPostcodeAndSubmit()
+    },
     toggle: 'ADDRESS_LOOKUP_ENABLED'
   },
   {
