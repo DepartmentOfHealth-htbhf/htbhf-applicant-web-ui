@@ -8,7 +8,8 @@ const pageContent = ({ translate }) => ({
   explanation: translate('address.explanation'),
   change: translate('change'),
   continue: translate('buttons:continue'),
-  selectAddressLabel: translate('address.selectAddressLabel')
+  selectAddressLabel: translate('address.selectAddressLabel'),
+  addressNotListed: translate('address.addressNotListed')
 })
 
 const buildAddressOption = result => ({
