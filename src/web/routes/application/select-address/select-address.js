@@ -8,7 +8,8 @@ const pageContent = ({ translate }) => ({
   explanation: translate('address.explanation'),
   change: translate('change'),
   continue: translate('buttons:continue'),
-  selectAddressLabel: translate('address.selectAddressLabel')
+  selectAddressLabel: translate('address.selectAddressLabel'),
+  addressNotListed: translate('address.addressNotListed')
 })
 
 const buildAddressOption = result => ({
@@ -18,6 +19,8 @@ const buildAddressOption = result => ({
 
 const behaviourForGet = () => async (req, res, next) => {
   res.locals.addresses = req.session.postcodeLookupResults.map(buildAddressOption)
+  // Manual address is further in the flow than select-address, therefore this line is needed to prevent the state machine from redirecting the user back to select-address.
+  req.session.nextAllowedStep = '/manual-address'
   next()
 }
 
