@@ -30,6 +30,10 @@ class SelectAddress extends SubmittablePage {
   async getAddressOptions () {
     return this.findAllByCSS('#address-results > option')
   }
+
+  async getAddressNotListedLink () {
+    return this.findByXPath('//a[contains(text(), \'My address is not listed\')]')
+  }
 }
 
 module.exports = SelectAddress
