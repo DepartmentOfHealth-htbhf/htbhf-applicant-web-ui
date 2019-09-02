@@ -1,5 +1,4 @@
 const { props, propOr, pickAll, compose, map, join, filter, not, isEmpty, split, head, tail, defaultTo } = require('ramda')
-const { THOROUGHFARE_PROPS, BUILDING_NAME_PROPS, LOCALITY_PROPS, DELIMITER } = require('./constants')
 const { OS_PLACES_ADDRESS_KEYS } = require('../common/constants')
 
 /**
@@ -16,15 +15,17 @@ const { OS_PLACES_ADDRESS_KEYS } = require('../common/constants')
  * 4. Convert a multipart address into two parts by joining all parts except the first with a comma
  */
 
+const DELIMITER = ', '
+
 const isNotEmpty = compose(not, isEmpty)
 
 const joinAddressFields = addressKeys => compose(join(DELIMITER), filter(isNotEmpty), props(addressKeys))
 
-const constructThoroughfare = joinAddressFields(THOROUGHFARE_PROPS)
+const constructThoroughfare = joinAddressFields(['DEPENDENT_THOROUGHFARE_NAME', 'THOROUGHFARE_NAME'])
 
-const constructBuildingName = joinAddressFields(BUILDING_NAME_PROPS)
+const constructBuildingName = joinAddressFields(['SUB_BUILDING_NAME', 'BUILDING_NAME'])
 
-const constructLocality = joinAddressFields(LOCALITY_PROPS)
+const constructLocality = joinAddressFields(['DOUBLE_DEPENDENT_LOCALITY', 'DEPENDENT_LOCALITY'])
 
 const constructNumberAndStreet = addressFields => `${propOr('', 'BUILDING_NUMBER', addressFields)} ${constructThoroughfare(addressFields)}`.trim()
 
@@ -47,14 +48,14 @@ const constructTwoPartAddress = addressParts => [head(addressParts), joinTail(ad
 
 const getAddressParts = compose(filter(isNotEmpty), constructAddressParts, normaliseAddressFields)
 
-const getTwoLineAddressParts = compose(constructTwoPartAddress, parseSinglePartAddress, getAddressParts)
+const buildAddressLineOneAndTwo = compose(constructTwoPartAddress, parseSinglePartAddress, getAddressParts)
 
 const transformAddress = addressFields => {
-  const twoPartAddress = getTwoLineAddressParts(addressFields)
+  const addressLineOneAndTwo = buildAddressLineOneAndTwo(addressFields)
 
   return {
-    addressLine1: twoPartAddress[0],
-    addressLine2: twoPartAddress[1],
+    addressLine1: addressLineOneAndTwo[0],
+    addressLine2: addressLineOneAndTwo[1],
     townOrCity: addressFields.POST_TOWN,
     county: addressFields.LOCAL_CUSTODIAN_CODE_DESCRIPTION,
     postcode: addressFields.POSTCODE
