@@ -1,6 +1,6 @@
 const test = require('tape')
 const sinon = require('sinon')
-const { behaviourForGet, behaviourForPost } = require('./select-address')
+const { behaviourForGet, behaviourForPost, findAddress } = require('./select-address')
 
 const POSTCODE_LOOKUP_RESULTS = [
   {
@@ -109,5 +109,58 @@ test('behaviourForPost() adds transformed address to claim', (t) => {
 
   t.deepEqual(req.session.claim, expectedClaim, 'Expected the claim to be appended with the transformed address.')
   t.equal(next.called, true, 'calls next()')
+  t.end()
+})
+
+test('findAddress finds the address matching the selected address passed in', (t) => {
+  const postcodeLookupResults = [
+    {
+      ADDRESS: 'ALAN JEFFERY ENGINEERING, 1, VALLEY ROAD, PLYMOUTH, PL7 1RF',
+      ORGANISATION_NAME: 'ALAN JEFFERY ENGINEERING',
+      BUILDING_NUMBER: '1',
+      THOROUGHFARE_NAME: 'VALLEY ROAD',
+      DEPENDENT_THOROUGHFARE_NAME: 'UPPER VALLEY ROAD',
+      POST_TOWN: 'PLYMOUTH',
+      POSTCODE: 'PL7 1RF',
+      LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'CITY OF PLYMOUTH'
+    }, {
+      ADDRESS: 'DULUX DECORATOR CENTRE, 2, VALLEY ROAD, PLYMOUTH, PL7 1RF',
+      ORGANISATION_NAME: 'DULUX DECORATOR CENTRE',
+      BUILDING_NUMBER: '2',
+      THOROUGHFARE_NAME: 'VALLEY ROAD',
+      DEPENDENT_THOROUGHFARE_NAME: 'UPPER VALLEY ROAD',
+      POST_TOWN: 'PLYMOUTH',
+      POSTCODE: 'PL7 1RF',
+      LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'CITY OF PLYMOUTH'
+    }
+  ]
+  const selectedAddress = 'ALAN JEFFERY ENGINEERING, 1, VALLEY ROAD, PLYMOUTH, PL7 1RF'
+
+  const expectedAddress = {
+    ADDRESS: 'ALAN JEFFERY ENGINEERING, 1, VALLEY ROAD, PLYMOUTH, PL7 1RF',
+    ORGANISATION_NAME: 'ALAN JEFFERY ENGINEERING',
+    BUILDING_NUMBER: '1',
+    THOROUGHFARE_NAME: 'VALLEY ROAD',
+    DEPENDENT_THOROUGHFARE_NAME: 'UPPER VALLEY ROAD',
+    POST_TOWN: 'PLYMOUTH',
+    POSTCODE: 'PL7 1RF',
+    LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'CITY OF PLYMOUTH'
+  }
+
+  const address = findAddress(selectedAddress, postcodeLookupResults)
+
+  t.deepEqual(address, expectedAddress, 'Expected to find address')
+  t.end()
+})
+
+test('findAddress throws an error when the address is not found', (t) => {
+  const postcodeLookupResults = []
+  const selectedAddress = 'ALAN JEFFERY ENGINEERING, 1, VALLEY ROAD, PLYMOUTH, PL7 1RF'
+
+  t.throws(
+    findAddress.bind(null, selectedAddress, postcodeLookupResults),
+    'Unable to find selected address in list of postcode lookup results',
+    'Should throw an error when no address is found'
+  )
   t.end()
 })

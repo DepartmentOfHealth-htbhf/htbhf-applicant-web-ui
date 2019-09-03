@@ -26,8 +26,18 @@ const behaviourForGet = () => (req, res, next) => {
   next()
 }
 
+const findAddress = (selectedAddress, postcodeLookupResults) => {
+  const address = postcodeLookupResults.find(result => result.ADDRESS === selectedAddress)
+
+  if (!address) {
+    throw new Error('Unable to find selected address in list of postcode lookup results')
+  }
+
+  return address
+}
+
 const behaviourForPost = () => (req, res, next) => {
-  const address = req.session.postcodeLookupResults.find(result => result.ADDRESS === req.body.selectedAddress)
+  const address = findAddress(req.body.selectedAddress, req.session.postcodeLookupResults)
   req.session.claim = {
     ...req.session.claim,
     ...transformAddress(address)
@@ -47,5 +57,6 @@ const selectAddress = {
 module.exports = {
   behaviourForGet,
   selectAddress,
-  behaviourForPost
+  behaviourForPost,
+  findAddress
 }
