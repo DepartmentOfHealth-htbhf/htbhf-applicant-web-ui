@@ -36,7 +36,8 @@ const POSTCODE_LOOKUP_RESULTS = [
 test('behaviourForGet() adds addresses to res.locals', (t) => {
   const req = {
     session: {
-      postcodeLookupResults: POSTCODE_LOOKUP_RESULTS
+      postcodeLookupResults: POSTCODE_LOOKUP_RESULTS,
+      claim: {}
     }
   }
   const res = { locals: {} }
@@ -108,6 +109,46 @@ test('behaviourForPost() adds transformed address to claim', (t) => {
   behaviourForPost()(req, res, next)
 
   t.deepEqual(req.session.claim, expectedClaim, 'Expected the claim to be appended with the transformed address.')
+  t.equal(next.called, true, 'calls next()')
+  t.end()
+})
+
+test('behaviourForPost calls next if no address is selected', (t) => {
+  const req = {
+    session: {
+      claim: {
+        nino: 'QQ123456C'
+      },
+      postcodeLookupResults: [
+        {
+          ADDRESS: 'ALAN JEFFERY ENGINEERING, 1, VALLEY ROAD, PLYMOUTH, PL7 1RF',
+          ORGANISATION_NAME: 'ALAN JEFFERY ENGINEERING',
+          BUILDING_NUMBER: '1',
+          THOROUGHFARE_NAME: 'VALLEY ROAD',
+          DEPENDENT_THOROUGHFARE_NAME: 'UPPER VALLEY ROAD',
+          POST_TOWN: 'PLYMOUTH',
+          POSTCODE: 'PL7 1RF',
+          LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'CITY OF PLYMOUTH'
+        }, {
+          ADDRESS: 'DULUX DECORATOR CENTRE, 2, VALLEY ROAD, PLYMOUTH, PL7 1RF',
+          ORGANISATION_NAME: 'DULUX DECORATOR CENTRE',
+          BUILDING_NUMBER: '2',
+          THOROUGHFARE_NAME: 'VALLEY ROAD',
+          DEPENDENT_THOROUGHFARE_NAME: 'UPPER VALLEY ROAD',
+          POST_TOWN: 'PLYMOUTH',
+          POSTCODE: 'PL7 1RF',
+          LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'CITY OF PLYMOUTH'
+        }
+      ]
+    },
+    body: {
+    }
+  }
+  const res = {}
+  const next = sinon.spy()
+
+  behaviourForPost()(req, res, next)
+
   t.equal(next.called, true, 'calls next()')
   t.end()
 })

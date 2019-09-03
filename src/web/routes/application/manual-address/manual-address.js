@@ -1,4 +1,4 @@
-const { join, filter, compose } = require('ramda')
+const { join, filter, compose, isNil } = require('ramda')
 const { validate } = require('./validate')
 const { sanitize } = require('./sanitize')
 const { notIsNilOrEmpty } = require('../../../../common/predicates')
@@ -32,13 +32,18 @@ const contentSummary = (req) => ({
   ])
 })
 
+const isNavigable = (session) => {
+  return isNil(session.claim.selectedAddress)
+}
+
 const manualAddress = {
   path: '/manual-address',
   template: 'manual-address',
   pageContent,
   validate,
   sanitize,
-  contentSummary
+  contentSummary,
+  isNavigable
 }
 
 module.exports = {
