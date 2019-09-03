@@ -6,13 +6,16 @@ const OS_PLACES_API_PATH = '/places/v1/addresses/postcode'
 
 const REQUEST_TIMEOUT = 5000
 
+const standardisePostcode = (postcode) => postcode.toUpperCase().replace(/\s/g, '')
+
 const behaviourForPost = (config) => async (req, res, next) => {
   const { OS_PLACES_URI, OS_PLACES_API_KEY } = config.environment
   const { postcode } = req.body
+  const standardisedPostcode = standardisePostcode(postcode)
 
   try {
     const addressLookupResults = await request({
-      uri: `${OS_PLACES_URI}${OS_PLACES_API_PATH}?postcode=${postcode}&key=${OS_PLACES_API_KEY}`,
+      uri: `${OS_PLACES_URI}${OS_PLACES_API_PATH}?postcode=${standardisedPostcode}&key=${OS_PLACES_API_KEY}`,
       json: true,
       timeout: REQUEST_TIMEOUT
     })
@@ -46,5 +49,6 @@ const postcode = {
 
 module.exports = {
   postcode,
-  behaviourForPost
+  behaviourForPost,
+  standardisePostcode
 }
