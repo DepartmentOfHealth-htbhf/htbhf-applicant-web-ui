@@ -34,6 +34,11 @@ class SelectAddress extends SubmittablePage {
   async getAddressNotListedLink () {
     return this.findByXPath('//a[contains(text(), \'My address is not listed\')]')
   }
+
+  async clickAddressNotListedLink () {
+    const addressNotListedLink = await this.getAddressNotListedLink()
+    await addressNotListedLink.click()
+  }
 }
 
 module.exports = SelectAddress

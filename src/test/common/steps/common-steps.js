@@ -98,9 +98,9 @@ async function enterPostcodeAndSubmit (postcode = POSTCODE) {
   }
 }
 
-async function clickEnterAddressManually () {
+async function clickAddressNotListedLink () {
   try {
-    await pages.selectAddress.submitForm()
+    await pages.selectAddress.clickAddressNotListedLink()
   } catch (error) {
     assert.fail(`Unexpected error caught trying to click enter address manually - ${error}`)
   }
@@ -276,7 +276,7 @@ module.exports = {
   enterNinoAndSubmit,
   selectNoOnPregnancyPage,
   selectYesOnPregnancyPage,
-  clickEnterAddressManually,
+  clickAddressNotListedLink,
   enterManualAddressAndSubmit,
   enterPhoneNumberAndSubmit,
   setupWiremockMappingsWithStatus,

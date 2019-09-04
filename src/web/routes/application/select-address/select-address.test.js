@@ -33,10 +33,13 @@ const POSTCODE_LOOKUP_RESULTS = [
   }
 ]
 
-test('behaviourForGet() adds addresses to res.locals', (t) => {
+test('behaviourForGet() adds addresses to res.locals and resets the address', (t) => {
   const req = {
     session: {
-      postcodeLookupResults: POSTCODE_LOOKUP_RESULTS
+      postcodeLookupResults: POSTCODE_LOOKUP_RESULTS,
+      claim: {
+        selectedAddress: 'ALAN JEFFERY ENGINEERING, 1, VALLEY ROAD, PLYMOUTH, PL7 1RF'
+      }
     }
   }
   const res = { locals: {} }
@@ -56,6 +59,7 @@ test('behaviourForGet() adds addresses to res.locals', (t) => {
 
   behaviourForGet()(req, res, next)
 
+  t.equal(req.session.claim.selectAddress, undefined, 'should reset the selected address')
   t.deepEqual(res.locals.addresses, expected, 'adds addresses to res.locals')
   t.equal(next.called, true, 'calls next()')
   t.end()
@@ -112,6 +116,46 @@ test('behaviourForPost() adds transformed address to claim', (t) => {
   t.end()
 })
 
+test('behaviourForPost calls next if no address is selected', (t) => {
+  const req = {
+    session: {
+      claim: {
+        nino: 'QQ123456C'
+      },
+      postcodeLookupResults: [
+        {
+          ADDRESS: 'ALAN JEFFERY ENGINEERING, 1, VALLEY ROAD, PLYMOUTH, PL7 1RF',
+          ORGANISATION_NAME: 'ALAN JEFFERY ENGINEERING',
+          BUILDING_NUMBER: '1',
+          THOROUGHFARE_NAME: 'VALLEY ROAD',
+          DEPENDENT_THOROUGHFARE_NAME: 'UPPER VALLEY ROAD',
+          POST_TOWN: 'PLYMOUTH',
+          POSTCODE: 'PL7 1RF',
+          LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'CITY OF PLYMOUTH'
+        }, {
+          ADDRESS: 'DULUX DECORATOR CENTRE, 2, VALLEY ROAD, PLYMOUTH, PL7 1RF',
+          ORGANISATION_NAME: 'DULUX DECORATOR CENTRE',
+          BUILDING_NUMBER: '2',
+          THOROUGHFARE_NAME: 'VALLEY ROAD',
+          DEPENDENT_THOROUGHFARE_NAME: 'UPPER VALLEY ROAD',
+          POST_TOWN: 'PLYMOUTH',
+          POSTCODE: 'PL7 1RF',
+          LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'CITY OF PLYMOUTH'
+        }
+      ]
+    },
+    body: {
+    }
+  }
+  const res = {}
+  const next = sinon.spy()
+
+  behaviourForPost()(req, res, next)
+
+  t.equal(next.called, true, 'calls next()')
+  t.end()
+})
+
 test('findAddress finds the address matching the selected address passed in', (t) => {
   const postcodeLookupResults = [
     {
@@ -159,7 +203,7 @@ test('findAddress throws an error when the address is not found', (t) => {
 
   t.throws(
     findAddress.bind(null, selectedAddress, postcodeLookupResults),
-    'Unable to find selected address in list of postcode lookup results',
+    /Unable to find selected address in list of postcode lookup results/,
     'Should throw an error when no address is found'
   )
   t.end()

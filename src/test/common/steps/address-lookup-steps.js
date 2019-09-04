@@ -8,7 +8,7 @@ const { enterPostcodeAndSubmit } = require('./common-steps')
 const { setupPostcodeLookupWithNoResults, setupPostcodeLookupWithResults } = require('../wiremock')
 const { POSTCODE } = require('./constants')
 
-const POSTCODE_WITH_NO_RESULTS = 'BS1 1AA'
+const POSTCODE_WITH_NO_RESULTS = 'BS11AA'
 
 When(/^I enter a postcode with no search results$/, async function () {
   await setupPostcodeLookupWithNoResults(POSTCODE_WITH_NO_RESULTS)
