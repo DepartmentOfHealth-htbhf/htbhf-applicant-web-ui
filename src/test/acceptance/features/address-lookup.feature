@@ -35,4 +35,4 @@ Feature: Select address
   Scenario: Clicking the address not listed link shows the manual address page
     Given I have entered my details up to the select address page
     When I click the address not listed link
-    Then I am shown the address page
+    Then I am shown the manual-address page

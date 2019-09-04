@@ -4,7 +4,7 @@ Feature: Address
   I want to enter my address manually
 
   Background:
-    Given I have entered my details up to the address page
+    Given I have entered my details up to the manual-address page
 
   Scenario Outline: Enter a valid address with all fields entered
     When I enter an address with postcode <postcode>
