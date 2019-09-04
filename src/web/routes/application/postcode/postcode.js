@@ -1,6 +1,7 @@
 const request = require('request-promise')
 const { wrapError } = require('../common/formatters')
 const { transformOsPlacesApiResponse } = require('./adapters')
+const { logger } = require('../../../logger')
 
 const OS_PLACES_API_PATH = '/places/v1/addresses/postcode'
 
@@ -24,7 +25,7 @@ const auditPostcodeLookup = (config, req, outcome, numberOfResults) => {
     uri: buildGoogleAnalyticsFullUri(gaBaseUrl, gaTrackingId, outcome, ipAddress, numberOfResults, sessionId),
     json: true,
     timeout: REQUEST_TIMEOUT
-  })
+  }).catch(reason => logger.error('Failed to call Google Analytics to audit postcode: ', reason))
 }
 
 const behaviourForPost = (config) => async (req, res, next) => {
