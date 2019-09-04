@@ -32,9 +32,7 @@ const contentSummary = (req) => ({
   ])
 })
 
-const isNavigable = (session) => {
-  return isNil(path(['claim', 'selectedAddress'], session))
-}
+const isNavigable = compose(isNil, path(['claim', 'selectedAddress']))
 
 const manualAddress = {
   path: '/manual-address',

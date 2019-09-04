@@ -74,10 +74,10 @@ test('Address contentSummary() should return content summary in correct format w
   t.end()
 })
 
-test('isNavigable() returns true when there`s no session', (t) => {
+test('isNavigable() returns true when there is no session', (t) => {
   const result = isNavigable(undefined)
 
-  t.equal(result, true, 'Should return true when there`s no session')
+  t.equal(result, true, 'Should return true when there is no session')
   t.end()
 })
 
@@ -88,7 +88,7 @@ test('isNavigable() returns true when there is no selected address', (t) => {
 
   const result = isNavigable(session)
 
-  t.equal(result, true, 'Should return true when there`s no session')
+  t.equal(result, true, 'Should return true when there is no session')
   t.end()
 })
 
@@ -101,6 +101,6 @@ test('isNavigable() returns false when there is a selected address', (t) => {
 
   const result = isNavigable(session)
 
-  t.equal(result, false, 'Should return true when there`s no session')
+  t.equal(result, false, 'Should return true when there is no session')
   t.end()
 })
