@@ -19,9 +19,14 @@ const buildAddressOption = result => ({
   text: result.ADDRESS
 })
 
+const resetAddressState = (req) => {
+  if (req.session.claim.selectedAddress) {
+    delete req.session.claim.selectedAddress
+  }
+}
+
 const behaviourForGet = () => (req, res, next) => {
-  // reset this value as this is used to determine whether or not to skip the manual address page
-  delete req.session.claim.selectedAddress
+  resetAddressState(req)
   res.locals.addresses = req.session.postcodeLookupResults.map(buildAddressOption)
   // Manual address is further in the flow than select-address, therefore this line is needed to prevent the state machine from redirecting the user back to select-address.
   req.session.nextAllowedStep = '/manual-address'

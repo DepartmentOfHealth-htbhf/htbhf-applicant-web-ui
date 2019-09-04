@@ -33,11 +33,13 @@ const POSTCODE_LOOKUP_RESULTS = [
   }
 ]
 
-test('behaviourForGet() adds addresses to res.locals', (t) => {
+test('behaviourForGet() adds addresses to res.locals and resets the address', (t) => {
   const req = {
     session: {
       postcodeLookupResults: POSTCODE_LOOKUP_RESULTS,
-      claim: {}
+      claim: {
+        selectedAddress: 'ALAN JEFFERY ENGINEERING, 1, VALLEY ROAD, PLYMOUTH, PL7 1RF'
+      }
     }
   }
   const res = { locals: {} }
@@ -57,6 +59,7 @@ test('behaviourForGet() adds addresses to res.locals', (t) => {
 
   behaviourForGet()(req, res, next)
 
+  t.equal(req.session.claim.selectAddress, undefined, 'should reset the selected address')
   t.deepEqual(res.locals.addresses, expected, 'adds addresses to res.locals')
   t.equal(next.called, true, 'calls next()')
   t.end()
@@ -200,7 +203,7 @@ test('findAddress throws an error when the address is not found', (t) => {
 
   t.throws(
     findAddress.bind(null, selectedAddress, postcodeLookupResults),
-    `Unable to find ${selectedAddress} in list of addresses: ${postcodeLookupResults}`,
+    /Unable to find selected address in list of postcode lookup results/,
     'Should throw an error when no address is found'
   )
   t.end()
