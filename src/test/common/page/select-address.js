@@ -35,6 +35,10 @@ class SelectAddress extends SubmittablePage {
     return this.findByXPath('//a[contains(text(), \'My address is not listed\')]')
   }
 
+  async getChangePostcodeLink () {
+    return this.findByXPath('//a[contains(text(), \'Change\')]')
+  }
+
   async clickAddressNotListedLink () {
     const addressNotListedLink = await this.getAddressNotListedLink()
     await addressNotListedLink.click()

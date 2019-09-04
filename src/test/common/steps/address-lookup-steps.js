@@ -10,7 +10,7 @@ const { POSTCODE } = require('./constants')
 
 const POSTCODE_WITH_NO_RESULTS = 'BS11AA'
 
-When(/^I enter a postcode with no search results$/, async function () {
+When(/^I enter a postcode that returns no search results$/, async function () {
   await setupPostcodeLookupWithNoResults(POSTCODE_WITH_NO_RESULTS)
   await enterPostcodeAndSubmit(POSTCODE_WITH_NO_RESULTS)
 })
@@ -18,6 +18,16 @@ When(/^I enter a postcode with no search results$/, async function () {
 When(/^I enter a postcode$/, async function () {
   await setupPostcodeLookupWithResults(POSTCODE)
   await enterPostcodeAndSubmit(POSTCODE)
+})
+
+When(/^I select an address$/, async function () {
+  const addressOptions = await pages.selectAddress.getAddressOptions()
+  const option = addressOptions[0]
+  await option.click()
+})
+
+When(/^I click the address not listed link$/, async function () {
+  await pages.selectAddress.clickAddressNotListedLink()
 })
 
 Then(/^I am shown the select address page$/, async function () {
@@ -47,6 +57,12 @@ Then(/^I am shown an address not listed link$/, async function () {
   const addressNotListedLink = await pages.selectAddress.getAddressNotListedLink()
   const href = await addressNotListedLink.getAttribute('href')
   expect(href).to.be.equal(`${pages.url}${pages.manualAddress.getPath()}`)
+})
+
+Then(/^I am shown a link to change my postcode$/, async function () {
+  const changePostcodeLink = await pages.selectAddress.getChangePostcodeLink()
+  const href = await changePostcodeLink.getAttribute('href')
+  expect(href).to.be.equal(`${pages.url}${pages.postcode.getPath()}`)
 })
 
 Then(/^I am shown a continue button$/, async function () {
