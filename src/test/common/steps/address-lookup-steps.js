@@ -20,6 +20,16 @@ When(/^I enter a postcode$/, async function () {
   await enterPostcodeAndSubmit(POSTCODE)
 })
 
+When(/^I select an address$/, async function () {
+  const addressOptions = await pages.selectAddress.getAddressOptions()
+  const option = addressOptions[0]
+  await option.click()
+})
+
+When(/^I click the address not listed link$/, async function () {
+  await pages.selectAddress.clickAddressNotListedLink()
+})
+
 Then(/^I am shown the select address page$/, async function () {
   await pages.selectAddress.waitForPageLoad()
 })
