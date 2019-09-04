@@ -25,7 +25,7 @@ class ManualAddress extends SubmittablePage {
   }
 
   getPageName () {
-    return 'address'
+    return 'manual address'
   }
 
   async waitForPageLoad (lang = 'en') {
