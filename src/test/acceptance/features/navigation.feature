@@ -36,7 +36,7 @@ Feature: Application process navigation is controlled
     Then I am shown the <application page> page
     Examples:
       | application page    | navigation page |
-      | enter name          | manual-address         |
+      | enter name          | manual address         |
       | enter date of birth | check answers   |
       | are you pregnant    | confirmation    |
 
