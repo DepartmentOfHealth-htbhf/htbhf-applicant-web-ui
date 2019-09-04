@@ -8,6 +8,7 @@ applications:
     CLAIMANT_SERVICE_URL: http://htbhf-claimant-service((space-suffix)).apps.internal:8080
     NODE_ENV: production
     APP_VERSION: ((app-version))
+    GOOGLE_ANALYTICS_URI: https://www.google-analytics.com/collect
   buildpacks:
     - nodejs_buildpack
   services:

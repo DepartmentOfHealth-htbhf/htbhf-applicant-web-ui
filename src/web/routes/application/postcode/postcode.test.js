@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const test = require('tape')
 const sinon = require('sinon')
 const proxyquire = require('proxyquire')
@@ -6,10 +8,14 @@ const { standardisePostcode } = require('./postcode')
 
 const request = sinon.stub()
 const { behaviourForPost } = proxyquire('./postcode', { 'request-promise': request })
-const config = { environment: { OS_PLACES_API_KEY: '123' } }
+const config = { environment: { OS_PLACES_API_KEY: '123', GA_TRACKING_ID: 'UA-133839203-1', GOOGLE_ANALYTICS_URI: 'http://localhost:8150/collect' } }
 
 test('behaviourForPost() handles successful address lookup', async (t) => {
-  const req = { body: { postcode: 'BS7 8EE' }, session: {} }
+  const req = {
+    headers: { 'x-forwarded-for': '100.200.0.45' },
+    body: { postcode: 'BS7 8EE' },
+    session: { id: 'skdjfhs-sdfnks-sdfhbsd' }
+  }
   const res = {}
   const next = sinon.spy()
 
@@ -55,12 +61,19 @@ test('behaviourForPost() handles successful address lookup', async (t) => {
     }
   ]
 
-  request.returns(Promise.resolve(TEST_FIXTURES))
+  request.onFirstCall().resolves(TEST_FIXTURES).onSecondCall().resolves()
+
+  const expectedGoogleAnalyticsRequestArgs = {
+    uri: 'http://localhost:8150/collect?v=1&tid=UA-133839203-1&t=event&cid=skdjfhs-sdfnks-sdfhbsd&ec=AddressLookup&ea=SuccessfulLookup&el=100.200.0.45&ev=44',
+    json: true,
+    timeout: 5000
+  }
 
   try {
     await behaviourForPost(config)(req, res, next)
 
     t.deepEqual(req.session.postcodeLookupResults, expectedAdresses, 'adds postcode lookup results to session')
+    t.deepEqual(request.getCall(1).args[0], expectedGoogleAnalyticsRequestArgs, 'should make request to Google Analytcis with correct parameters')
     t.equal(next.called, true, 'calls next()')
   } catch (error) {
     // Explicitly fail the test with the message from the error
@@ -68,27 +81,40 @@ test('behaviourForPost() handles successful address lookup', async (t) => {
   }
 
   next.resetHistory()
+  request.reset()
   t.end()
 })
 
 test('behaviourForPost() handles address lookup error', async (t) => {
-  const req = { body: { postcode: 'BS7 8EE' }, session: {} }
+  const req = {
+    headers: { 'x-forwarded-for': '100.200.0.45' },
+    body: { postcode: 'BS7 8EE' },
+    session: { id: 'skdjfhs-sdfnks-sdfhbsd' }
+  }
   const res = {}
   const next = sinon.spy()
 
-  request.returns(Promise.reject(new Error('error')))
+  request.onFirstCall().rejects(new Error('error')).onSecondCall().resolves()
+
+  const expectedGoogleAnalyticsRequestArgs = {
+    uri: 'http://localhost:8150/collect?v=1&tid=UA-133839203-1&t=event&cid=skdjfhs-sdfnks-sdfhbsd&ec=AddressLookup&ea=FailedLookup&el=100.200.0.45&ev=0',
+    json: true,
+    timeout: 5000
+  }
 
   try {
     await behaviourForPost(config)(req, res, next)
 
     t.deepEqual(req.session.postcodeLookupResults, undefined, 'does not add postcode lookup results to session')
     t.equal(next.calledWith(sinon.match.instanceOf(Error)), true, 'calls next() with error')
+    t.deepEqual(request.getCall(1).args[0], expectedGoogleAnalyticsRequestArgs, 'should make request to Google Analytics with correct parameters')
   } catch (error) {
     // Explicitly fail the test with the message from the error
     t.fail(error)
   }
 
   next.resetHistory()
+  request.reset()
   t.end()
 })
 
