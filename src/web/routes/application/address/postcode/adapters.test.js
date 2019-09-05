@@ -12,7 +12,15 @@ test('toTitleCase() should uppercase the first letter of every word', (t) => {
 })
 
 test('convertCase() should convert the case of the address to title case', (t) => {
-  const result = convertCase(TEST_FIXTURES.results[4].DPA)
+  const original = {
+    ADDRESS: '10A, MAYFIELD AVENUE, WESTON-SUPER-MARE, BS22 6AA',
+    BUILDING_NAME: '10A',
+    THOROUGHFARE_NAME: 'MAYFIELD AVENUE',
+    POST_TOWN: 'WESTON-SUPER-MARE',
+    POSTCODE: 'BS22 6AA',
+    LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'NORTH SOMERSET'
+  }
+  const result = convertCase(original)
 
   const expected = {
     ADDRESS: '10a, Mayfield Avenue, Weston-Super-Mare',

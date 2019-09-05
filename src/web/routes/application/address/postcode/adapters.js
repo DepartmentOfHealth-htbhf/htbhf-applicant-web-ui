@@ -1,22 +1,21 @@
 const { compose, map, pick, prop, propOr } = require('ramda')
+const { isString } = require('../../../../../common/predicates')
 const { OS_PLACES_ADDRESS_KEYS } = require('../constants')
 
 const RESULTS_PROP = 'results'
 const DELIVERY_POINT_ADDRESS_PROP = 'DPA'
-const OS_PLACES_TITLE_CASE_KEYS = OS_PLACES_ADDRESS_KEYS.filter(key => !['ADDRESS', 'POSTCODE'].includes(key))
 
 const toTitleCase = (str) => {
-  return str.replace(
+  return !isString(str) ? str : str.replace(
     /\b\w+/g,
     function (txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase() }
   )
 }
 
 const convertCase = (address) => {
-  const titleCase = compose(map(toTitleCase), pick(OS_PLACES_TITLE_CASE_KEYS))(address)
-  const postcode = address.POSTCODE
-  titleCase['ADDRESS'] = toTitleCase(address.ADDRESS.replace(`, ${postcode}`, ''))
-  titleCase['POSTCODE'] = postcode
+  const titleCase = map(toTitleCase, address)
+  titleCase.ADDRESS = toTitleCase(address.ADDRESS.replace(`, ${address.POSTCODE}`, ''))
+  titleCase.POSTCODE = address.POSTCODE
   return titleCase
 }
 
