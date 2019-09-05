@@ -30,6 +30,16 @@ test('getRowData should return an array of objects combining path with row data'
   t.end()
 })
 
+test('getRowData should return null when contentSummary() returns null', (t) => {
+  const step = {
+    contentSummary: () => null
+  }
+  const req = {}
+
+  t.equal(getRowData(req)(step), null, 'should return null')
+  t.end()
+})
+
 test('getFlattenedRowData returns flattened row data', (t) => {
   const step1 = {
     contentSummary: () => ([{ keyA: 'myKey1', valueA: 'myValue1' }, { keyB: 'myKey3', valueB: 'myValue3' }]),
