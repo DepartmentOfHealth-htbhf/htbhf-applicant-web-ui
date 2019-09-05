@@ -15,6 +15,7 @@ const stepActionsWithoutManualAddress = (stepPageActions) => stepPageActions.fil
 
 Given(/^I have entered my details up to the check details page and selected an address$/, async function () {
   const actionOptions = { ...DEFAULT_ACTION_OPTIONS, selectAddress: true }
+  // manual address page is skipped when the user selects an address
   const stepActions = stepActionsWithoutManualAddress(STEP_PAGE_ACTIONS)
   await enterDetailsUpToPage({ page: pages.checkAnswers.getPageName(), actionOptions, stepActions })
 })
