@@ -1,7 +1,7 @@
 const { join, filter, compose, isNil, path } = require('ramda')
 const { validate } = require('./validate')
 const { sanitize } = require('./sanitize')
-const { notIsNilOrEmpty } = require('../../../../common/predicates')
+const { notIsNilOrEmpty } = require('../../../../../common/predicates')
 
 const pageContent = ({ translate }) => ({
   title: translate('address.title'),

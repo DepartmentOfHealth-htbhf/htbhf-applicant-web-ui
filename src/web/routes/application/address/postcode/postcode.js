@@ -1,7 +1,7 @@
 const request = require('request-promise')
-const { wrapError } = require('../common/formatters')
+const { wrapError } = require('../../common/formatters')
 const { transformOsPlacesApiResponse } = require('./adapters')
-const { logger } = require('../../../logger')
+const { logger } = require('../../../../logger')
 
 const OS_PLACES_API_PATH = '/places/v1/addresses/postcode'
 

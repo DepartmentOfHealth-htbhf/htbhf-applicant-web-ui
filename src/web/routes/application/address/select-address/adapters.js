@@ -1,5 +1,5 @@
 const { props, propOr, pickAll, compose, map, join, filter, not, isEmpty, split, head, tail, defaultTo } = require('ramda')
-const { OS_PLACES_ADDRESS_KEYS } = require('../common/constants')
+const { OS_PLACES_ADDRESS_KEYS } = require('../constants')
 
 /**
  * Map address returned from OS places API to format required by claimant service
