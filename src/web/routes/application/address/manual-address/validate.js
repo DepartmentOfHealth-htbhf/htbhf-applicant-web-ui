@@ -1,5 +1,5 @@
 const { check } = require('express-validator')
-const { translateValidationMessage } = require('../common/translate-validation-message')
+const { translateValidationMessage } = require('../../common/translate-validation-message')
 
 /*
  * Regex for matching UK postcodes matching BS7666 format.

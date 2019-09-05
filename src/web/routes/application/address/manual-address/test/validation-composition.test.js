@@ -1,7 +1,7 @@
 const test = require('tape')
 const { assocPath } = require('ramda')
 
-const { applyExpressValidation } = require('../../common/test/apply-express-validation')
+const { applyExpressValidation } = require('../../../common/test/apply-express-validation')
 const { validate } = require('../validate')
 
 // Create a string 501 characters long
