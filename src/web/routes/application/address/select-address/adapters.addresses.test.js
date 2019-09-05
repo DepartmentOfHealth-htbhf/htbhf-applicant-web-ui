@@ -191,3 +191,25 @@ test('transformAddress() builds address H', (t) => {
   t.deepEqual(result, expected, 'builds address H')
   t.end()
 })
+
+test('transformAddress() builds address I', (t) => {
+  const address = {
+    BUILDING_NAME: '10A',
+    THOROUGHFARE_NAME: 'MAYFIELD AVENUE',
+    POST_TOWN: 'WESTON-SUPER-MARE',
+    POSTCODE: 'BS22 6AA',
+    LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'NORTH SOMERSET'
+  }
+
+  const expected = {
+    addressLine1: '10A MAYFIELD AVENUE',
+    addressLine2: '',
+    townOrCity: 'WESTON-SUPER-MARE',
+    county: 'NORTH SOMERSET',
+    postcode: 'BS22 6AA'
+  }
+
+  const result = transformAddress(address)
+  t.deepEqual(result, expected, 'builds address I')
+  t.end()
+})
