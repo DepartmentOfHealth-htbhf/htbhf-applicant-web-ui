@@ -58,11 +58,7 @@ const behaviourForPost = () => (req, res, next) => {
   next()
 }
 
-const contentSummary = (req) => {
-  if (path(['session', 'claim', 'selectedAddress'], req)) {
-    return addressContentSummary(req)
-  }
-}
+const contentSummary = req => path(['session', 'claim', 'selectedAddress'], req) ? addressContentSummary(req) : null
 
 const selectAddress = {
   path: '/select-address',

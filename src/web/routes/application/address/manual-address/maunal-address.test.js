@@ -62,12 +62,12 @@ test('Address contentSummary() should return content summary in correct format w
   t.end()
 })
 
-test('Address contentSummary() is undefined when there is a selected address on the session', (t) => {
+test('Address contentSummary() is null when there is a selected address on the session', (t) => {
   const testReq = assocPath(['session', 'claim', 'selectedAddress'], 'test address', req)
 
   const result = contentSummary(testReq)
 
-  t.equal(result, undefined, 'should return null when there is a selected address on the session')
+  t.equal(result, null, 'should return null when there is a selected address on the session')
   t.end()
 })
 

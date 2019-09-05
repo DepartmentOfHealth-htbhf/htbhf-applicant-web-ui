@@ -18,11 +18,7 @@ const pageContent = ({ translate }) => ({
   hint: translate('address.hint')
 })
 
-const contentSummary = (req) => {
-  if (isNavigable(req.session)) {
-    return addressContentSummary(req)
-  }
-}
+const contentSummary = req => isNavigable(req.session) ? addressContentSummary(req) : null
 
 const isNavigable = compose(isNil, path(['claim', 'selectedAddress']))
 

@@ -235,13 +235,13 @@ test('Address contentSummary() should return content summary in correct format w
   t.end()
 })
 
-test('Address contentSummary() should return undefined when there is no selected address on the session', (t) => {
+test('Address contentSummary() should return null when there is no selected address on the session', (t) => {
   const req = {
     claim: {}
   }
 
   const result = contentSummary(req)
 
-  t.deepEqual(result, undefined, 'should return undefined when there is no selected address on the session')
+  t.deepEqual(result, null, 'should return null when there is no selected address on the session')
   t.end()
 })
