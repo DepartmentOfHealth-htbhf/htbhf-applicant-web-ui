@@ -5,7 +5,7 @@ const Promise = require('bluebird')
 
 const pages = require('./pages')
 const { enterDetailsUpToPage, DEFAULT_ACTION_OPTIONS, STEP_PAGE_ACTIONS } = require('./navigation')
-const { enterPostcodeAndSubmit, selectFirstAddressAndSubmit } = require('./common-steps')
+const { enterPostcodeAndSubmit, selectFirstAddress } = require('./common-steps')
 const { setupPostcodeLookupWithNoResults, setupPostcodeLookupWithResults } = require('../wiremock')
 const { POSTCODE } = require('./constants')
 
@@ -30,7 +30,7 @@ When(/^I enter a postcode$/, async function () {
 })
 
 When(/^I select an address$/, async function () {
-  await selectFirstAddressAndSubmit()
+  await selectFirstAddress()
 })
 
 When(/^I click the address not listed link$/, async function () {

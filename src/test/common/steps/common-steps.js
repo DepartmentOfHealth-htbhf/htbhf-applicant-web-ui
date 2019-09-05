@@ -106,10 +106,14 @@ async function clickAddressNotListedLink () {
   }
 }
 
-async function selectFirstAddressAndSubmit () {
+async function selectFirstAddress () {
   const addressOptions = await pages.selectAddress.getAddressOptions()
   const option = addressOptions[0]
   await option.click()
+}
+
+async function selectFirstAddressAndSubmit () {
+  await selectFirstAddress()
   await pages.selectAddress.submitForm()
 }
 
@@ -299,5 +303,6 @@ module.exports = {
   selectYesOnDoYouHaveChildrenPage,
   submitChild3OrUnderDetails,
   enterPostcodeAndSubmit,
-  selectFirstAddressAndSubmit
+  selectFirstAddressAndSubmit,
+  selectFirstAddress
 }

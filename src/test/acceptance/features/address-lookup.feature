@@ -39,7 +39,7 @@ Feature: Select address
     Then I am shown the manual address page
 
   # TODO DW HTBHF-2037 include test once address lookup is enabled
-#  @ignore
+  @ignore
   Scenario: Changing details for a selected address takes me to the postcode page
     Given I have entered my details up to the check details page and selected an address
     When I choose to change my address
