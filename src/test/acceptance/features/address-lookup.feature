@@ -40,7 +40,7 @@ Feature: Select address
 
   # TODO DW HTBHF-2037 include test once address lookup is enabled
   @ignore
-  Scenario: Changing details for a selected address takes me to the postcode page
+  Scenario: Changing details for a selected address takes me to the select address page
     Given I have entered my details up to the check details page and selected an address
     When I choose to change my address
     Then I am shown the select address page
