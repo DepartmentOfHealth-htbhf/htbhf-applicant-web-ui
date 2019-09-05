@@ -4,6 +4,9 @@ const webdriver = require('selenium-webdriver')
 const SubmittablePageWithRadioButtons = require('./submittable-page-with-radio-buttons')
 const InputField = require('./input-field')
 
+const { expectedClaim } = require('../expected-claim')
+const { toDateString } = require('../../../web/routes/application/common/formatters')
+
 const PAGE_TITLES = {
   en: 'GOV.UK - Are you pregnant?',
   cy: 'GOV.UK - Eget felis eget nunc lobortis mattis?'
@@ -40,6 +43,7 @@ class AreYouPregnant extends SubmittablePageWithRadioButtons {
     await this.dayInputField.enterValue(day)
     await this.monthInputField.enterValue(month)
     await this.yearInputField.enterValue(year)
+    expectedClaim.expectedDeliveryDate = toDateString(day, month, year)
   }
 
   async enterExpectedDeliveryDate ({ incrementMonth = 0 } = {}) {

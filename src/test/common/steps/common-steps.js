@@ -2,6 +2,10 @@ const { assert, expect } = require('chai')
 const { When, Then } = require('cucumber')
 const { path } = require('ramda')
 
+const { expectedClaim } = require('../expected-claim')
+const { toDateString } = require('../../../web/routes/application/common/formatters')
+const { getPhoneNumber } = require('../../../web/routes/application/phone-number/sanitize')
+
 const pages = require('./pages')
 const { setupSuccessfulWiremockClaimMappingWithStatus, deleteAllWiremockMappings, setupSuccessfulWiremockUpdatedClaimMapping, getOutboundRequestsToUrl } = require('../wiremock')
 const { assertBackLinkPointsToPage } = require('./common-assertions')
@@ -42,6 +46,8 @@ async function enterDoYouLiveInScotlandNoAndSubmit () {
 
 async function enterNameAndSubmit (firstName = FIRST_NAME, lastName = LAST_NAME) {
   try {
+    expectedClaim.firstName = firstName
+    expectedClaim.lastName = lastName
     await pages.name.firstNameInputField.enterValue(firstName)
     await pages.name.lastNameInputField.enterValue(lastName)
     await pages.name.submitForm()
@@ -52,6 +58,7 @@ async function enterNameAndSubmit (firstName = FIRST_NAME, lastName = LAST_NAME)
 
 async function enterNinoAndSubmit (nino = VALID_ELIGIBLE_NINO) {
   try {
+    expectedClaim.nino = nino
     await pages.nationalInsuranceNumber.inputField.enterValue(nino)
     await pages.nationalInsuranceNumber.submitForm()
   } catch (error) {
@@ -61,6 +68,7 @@ async function enterNinoAndSubmit (nino = VALID_ELIGIBLE_NINO) {
 
 async function enterDateOfBirthAndSubmit (day = DAY, month = MONTH, year = YEAR) {
   try {
+    expectedClaim.dateOfBirth = toDateString(day, month, year)
     await pages.dateOfBirth.dayInputField.enterValue(day)
     await pages.dateOfBirth.monthInputField.enterValue(month)
     await pages.dateOfBirth.yearInputField.enterValue(year)
@@ -114,6 +122,7 @@ async function enterManualAddressAndSubmit (addressLine1 = ADDRESS_LINE_1, addre
     await pages.manualAddress.countyField.enterValue(county)
     await pages.manualAddress.postcodeInputField.enterValue(postcode)
     await pages.manualAddress.submitForm()
+    expectedClaim.address = { addressLine1, addressLine2, townOrCity, county, postcode }
   } catch (error) {
     assert.fail(`Unexpected error caught trying to enter address and submit the page - ${error}`)
   }
@@ -123,6 +132,7 @@ async function enterPhoneNumberAndSubmit (phoneNumber = PHONE_NUMBER) {
   try {
     await pages.phoneNumber.inputField.enterValue(phoneNumber)
     await pages.phoneNumber.submitForm()
+    expectedClaim.phoneNumber = getPhoneNumber(phoneNumber)
   } catch (error) {
     assert.fail(`Unexpected error caught trying to enter phone number and submit the page - ${error}`)
   }
@@ -132,6 +142,7 @@ async function enterEmailAddressAndSubmit (emailAddress = EMAIL_ADDRESS) {
   try {
     await pages.emailAddress.inputField.enterValue(emailAddress)
     await pages.emailAddress.submitForm()
+    expectedClaim.emailAddress = emailAddress
   } catch (error) {
     assert.fail(`Unexpected error caught trying to enter phone number and submit the page - ${error}`)
   }

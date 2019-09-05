@@ -3,6 +3,7 @@ const { expect } = require('chai')
 
 const pages = require('./pages')
 const { deleteWiremockMappings, getBodyOfLastRequestToClaimService } = require('./common-steps')
+const { expectedClaim } = require('../expected-claim')
 
 Then(/^all page content is present on the confirm details page$/, async function () {
   await checkAllPageContentIsPresentAndCorrect()
@@ -39,6 +40,7 @@ Then(/^my claim is sent to the back end$/, async function () {
   expect(body).to.have.property('claimant')
   expect(body).to.have.property('deviceFingerprint')
   expect(body).to.have.property('webUIVersion')
+  expect(body.claimant).to.deep.equal(expectedClaim)
 })
 
 async function checkAllPageContentIsPresentAndCorrect () {
