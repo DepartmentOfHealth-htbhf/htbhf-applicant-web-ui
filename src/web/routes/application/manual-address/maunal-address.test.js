@@ -1,6 +1,6 @@
 const test = require('tape')
 const { assocPath } = require('ramda')
-const { contentSummary } = require('./manual-address')
+const { contentSummary, isNavigable } = require('./manual-address')
 
 const req = {
   t: string => string,
@@ -71,5 +71,36 @@ test('Address contentSummary() should return content summary in correct format w
   }
 
   t.deepEqual(result, expected, 'should return content summary in correct format with address line 2 undefined')
+  t.end()
+})
+
+test('isNavigable() returns true when there is no session', (t) => {
+  const result = isNavigable(undefined)
+
+  t.equal(result, true, 'Should return true when there is no session')
+  t.end()
+})
+
+test('isNavigable() returns true when there is no selected address', (t) => {
+  const session = {
+    claim: {}
+  }
+
+  const result = isNavigable(session)
+
+  t.equal(result, true, 'Should return true when there is no session')
+  t.end()
+})
+
+test('isNavigable() returns false when there is a selected address', (t) => {
+  const session = {
+    claim: {
+      selectedAddress: 'ALAN JEFFERY ENGINEERING, 1, VALLEY ROAD, PLYMOUTH, PL7 1RF'
+    }
+  }
+
+  const result = isNavigable(session)
+
+  t.equal(result, false, 'Should return true when there is no session')
   t.end()
 })
