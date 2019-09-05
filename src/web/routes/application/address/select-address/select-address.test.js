@@ -1,6 +1,6 @@
 const test = require('tape')
 const sinon = require('sinon')
-const { behaviourForGet, behaviourForPost, findAddress } = require('./select-address')
+const { behaviourForGet, behaviourForPost, findAddress, contentSummary } = require('./select-address')
 
 const POSTCODE_LOOKUP_RESULTS = [
   {
@@ -206,5 +206,42 @@ test('findAddress throws an error when the address is not found', (t) => {
     /Unable to find selected address in list of postcode lookup results/,
     'Should throw an error when no address is found'
   )
+  t.end()
+})
+
+test('Address contentSummary() should return content summary in correct format when there is a selected address on the session', (t) => {
+  const req = {
+    t: string => string,
+    session: {
+      claim: {
+        addressLine1: 'Flat b',
+        addressLine2: '221 Baker street',
+        townOrCity: 'London',
+        county: 'Devon',
+        postcode: 'aa1 1ab',
+        selectedAddress: 'Flat b, 221 Baker Street, London, Devon, aa1 1ab'
+      }
+    }
+  }
+
+  const result = contentSummary(req)
+
+  const expected = {
+    key: 'address.summaryKey',
+    value: 'Flat b\n221 Baker street\nLondon\nDevon\naa1 1ab'
+  }
+
+  t.deepEqual(result, expected, 'should return content summary in correct format when there is a selected address on the session')
+  t.end()
+})
+
+test('Address contentSummary() should return undefined when there is no selected address on the session', (t) => {
+  const req = {
+    claim: {}
+  }
+
+  const result = contentSummary(req)
+
+  t.deepEqual(result, undefined, 'should return undefined when there is no selected address on the session')
   t.end()
 })

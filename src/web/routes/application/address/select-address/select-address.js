@@ -1,4 +1,7 @@
+const { path } = require('ramda')
 const { transformAddress } = require('./adapters')
+
+const { addressContentSummary } = require('../content-summary')
 
 const pageContent = ({ translate }) => ({
   title: translate('address.title'),
@@ -55,18 +58,26 @@ const behaviourForPost = () => (req, res, next) => {
   next()
 }
 
+const contentSummary = (req) => {
+  if (path(['session', 'claim', 'selectedAddress'], req)) {
+    return addressContentSummary(req)
+  }
+}
+
 const selectAddress = {
   path: '/select-address',
   template: 'select-address',
   pageContent,
   toggle: 'ADDRESS_LOOKUP_ENABLED',
   behaviourForGet,
-  behaviourForPost
+  behaviourForPost,
+  contentSummary
 }
 
 module.exports = {
   behaviourForGet,
   selectAddress,
   behaviourForPost,
-  findAddress
+  findAddress,
+  contentSummary
 }

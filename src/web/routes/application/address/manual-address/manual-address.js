@@ -1,7 +1,7 @@
-const { join, filter, compose, isNil, path } = require('ramda')
+const { addressContentSummary } = require('../content-summary')
+const { compose, isNil, path } = require('ramda')
 const { validate } = require('./validate')
 const { sanitize } = require('./sanitize')
-const { notIsNilOrEmpty } = require('../../../../../common/predicates')
 
 const pageContent = ({ translate }) => ({
   title: translate('address.title'),
@@ -18,19 +18,11 @@ const pageContent = ({ translate }) => ({
   hint: translate('address.hint')
 })
 
-const newLineChar = '\n'
-const toMultiLineString = compose(join(newLineChar), filter(notIsNilOrEmpty))
-
-const contentSummary = (req) => ({
-  key: req.t('address.summaryKey'),
-  value: toMultiLineString([
-    req.session.claim.addressLine1,
-    req.session.claim.addressLine2,
-    req.session.claim.townOrCity,
-    req.session.claim.county,
-    req.session.claim.postcode
-  ])
-})
+const contentSummary = (req) => {
+  if (isNavigable(req.session)) {
+    return addressContentSummary(req)
+  }
+}
 
 const isNavigable = compose(isNil, path(['claim', 'selectedAddress']))
 
