@@ -58,6 +58,10 @@ When(/^I choose to change my email address$/, async function () {
   await pages.checkAnswers.clickChangeLinkFor('Email address')
 })
 
+When(/^I choose to change my address$/, async function () {
+  await pages.checkAnswers.clickChangeLinkFor('Address')
+})
+
 Then(/^The back link on the check answers page links to the email address page$/, async function () {
   await assertBackLinkPointsToPage(pages.emailAddress)
 })

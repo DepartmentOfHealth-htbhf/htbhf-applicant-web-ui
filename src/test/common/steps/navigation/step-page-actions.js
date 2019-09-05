@@ -13,7 +13,8 @@ const {
   selectYesOnDoYouHaveChildrenPage,
   submitChild3OrUnderDetails,
   selectTextOnSendCode,
-  enterConfirmationCodeAndSubmit
+  enterConfirmationCodeAndSubmit,
+  selectFirstAddressAndSubmit
 } = require('../common-steps')
 
 const { POSTCODE } = require('../constants')
@@ -61,7 +62,11 @@ const STEP_PAGE_ACTIONS = [
   },
   {
     page: (pages) => pages.selectAddress,
-    actions: async () => clickAddressNotListedLink(),
+    actions: async (actionOptions) => {
+      return actionOptions.selectAddress
+        ? selectFirstAddressAndSubmit()
+        : clickAddressNotListedLink()
+    },
     toggle: 'ADDRESS_LOOKUP_ENABLED'
   },
   {

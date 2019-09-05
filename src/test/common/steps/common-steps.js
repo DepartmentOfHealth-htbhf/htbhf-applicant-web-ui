@@ -106,6 +106,13 @@ async function clickAddressNotListedLink () {
   }
 }
 
+async function selectFirstAddressAndSubmit () {
+  const addressOptions = await pages.selectAddress.getAddressOptions()
+  const option = addressOptions[0]
+  await option.click()
+  await pages.selectAddress.submitForm()
+}
+
 async function enterManualAddressAndSubmit (addressLine1 = ADDRESS_LINE_1, addressLine2 = ADDRESS_LINE_2, townOrCity = TOWN, county = COUNTY, postcode = POSTCODE) {
   try {
     await pages.manualAddress.line1InputField.enterValue(addressLine1)
@@ -291,5 +298,6 @@ module.exports = {
   enterConfirmationCodeAndSubmit,
   selectYesOnDoYouHaveChildrenPage,
   submitChild3OrUnderDetails,
-  enterPostcodeAndSubmit
+  enterPostcodeAndSubmit,
+  selectFirstAddressAndSubmit
 }
