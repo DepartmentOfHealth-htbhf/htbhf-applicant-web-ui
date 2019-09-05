@@ -1,5 +1,5 @@
 const { compose, map, pick, prop, propOr } = require('ramda')
-const { OS_PLACES_ADDRESS_KEYS } = require('../common/constants')
+const { OS_PLACES_ADDRESS_KEYS } = require('../constants')
 
 const RESULTS_PROP = 'results'
 
