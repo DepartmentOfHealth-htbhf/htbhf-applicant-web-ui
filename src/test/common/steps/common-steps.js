@@ -46,11 +46,11 @@ async function enterDoYouLiveInScotlandNoAndSubmit () {
 
 async function enterNameAndSubmit (firstName = FIRST_NAME, lastName = LAST_NAME) {
   try {
-    expectedClaim.firstName = firstName
-    expectedClaim.lastName = lastName
     await pages.name.firstNameInputField.enterValue(firstName)
     await pages.name.lastNameInputField.enterValue(lastName)
     await pages.name.submitForm()
+    expectedClaim.setProperty('firstName', firstName)
+    expectedClaim.setProperty('lastName', lastName)
   } catch (error) {
     assert.fail(`Unexpected error caught trying to enter the name and submit the page - ${error}`)
   }
@@ -58,9 +58,9 @@ async function enterNameAndSubmit (firstName = FIRST_NAME, lastName = LAST_NAME)
 
 async function enterNinoAndSubmit (nino = VALID_ELIGIBLE_NINO) {
   try {
-    expectedClaim.nino = nino
     await pages.nationalInsuranceNumber.inputField.enterValue(nino)
     await pages.nationalInsuranceNumber.submitForm()
+    expectedClaim.setProperty('nino', nino)
   } catch (error) {
     assert.fail(`Unexpected error caught trying to enter the national insurance number and submit the page - ${error}`)
   }
@@ -68,11 +68,11 @@ async function enterNinoAndSubmit (nino = VALID_ELIGIBLE_NINO) {
 
 async function enterDateOfBirthAndSubmit (day = DAY, month = MONTH, year = YEAR) {
   try {
-    expectedClaim.dateOfBirth = toDateString(day, month, year)
     await pages.dateOfBirth.dayInputField.enterValue(day)
     await pages.dateOfBirth.monthInputField.enterValue(month)
     await pages.dateOfBirth.yearInputField.enterValue(year)
     await pages.dateOfBirth.submitForm()
+    expectedClaim.setProperty('dateOfBirth', toDateString(day, month, year))
   } catch (error) {
     assert.fail(`Unexpected error caught trying to enter the date of birth and submit the page - ${error}`)
   }
@@ -122,7 +122,7 @@ async function enterManualAddressAndSubmit (addressLine1 = ADDRESS_LINE_1, addre
     await pages.manualAddress.countyField.enterValue(county)
     await pages.manualAddress.postcodeInputField.enterValue(postcode)
     await pages.manualAddress.submitForm()
-    expectedClaim.address = { addressLine1, addressLine2, townOrCity, county, postcode }
+    expectedClaim.setProperty('address', { addressLine1, addressLine2, townOrCity, county, postcode })
   } catch (error) {
     assert.fail(`Unexpected error caught trying to enter address and submit the page - ${error}`)
   }
@@ -132,7 +132,7 @@ async function enterPhoneNumberAndSubmit (phoneNumber = PHONE_NUMBER) {
   try {
     await pages.phoneNumber.inputField.enterValue(phoneNumber)
     await pages.phoneNumber.submitForm()
-    expectedClaim.phoneNumber = getPhoneNumber(phoneNumber)
+    expectedClaim.setProperty('phoneNumber', getPhoneNumber(phoneNumber))
   } catch (error) {
     assert.fail(`Unexpected error caught trying to enter phone number and submit the page - ${error}`)
   }
@@ -142,7 +142,7 @@ async function enterEmailAddressAndSubmit (emailAddress = EMAIL_ADDRESS) {
   try {
     await pages.emailAddress.inputField.enterValue(emailAddress)
     await pages.emailAddress.submitForm()
-    expectedClaim.emailAddress = emailAddress
+    expectedClaim.setProperty('emailAddress', emailAddress)
   } catch (error) {
     assert.fail(`Unexpected error caught trying to enter phone number and submit the page - ${error}`)
   }

@@ -43,7 +43,7 @@ class AreYouPregnant extends SubmittablePageWithRadioButtons {
     await this.dayInputField.enterValue(day)
     await this.monthInputField.enterValue(month)
     await this.yearInputField.enterValue(year)
-    expectedClaim.expectedDeliveryDate = toDateString(day, month, year)
+    expectedClaim.setProperty('expectedDeliveryDate', toDateString(day, month, year))
   }
 
   async enterExpectedDeliveryDate ({ incrementMonth = 0 } = {}) {

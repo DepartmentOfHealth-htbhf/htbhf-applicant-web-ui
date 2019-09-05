@@ -6,7 +6,7 @@ const { DEFAULT_ACTION_OPTIONS } = require('./default-action-options')
 const pages = require('../pages')
 const { isStepEnabled } = require('../../../../web/routes/register-steps')
 const { features } = require('../../../../config')
-const { resetExpectedClaim } = require('../../expected-claim')
+const { expectedClaim } = require('../../expected-claim')
 
 const getPageIndex = (stepActions, pageName, pages) => stepActions.findIndex(pageAction => pageAction.page(pages).getPageName() === pageName)
 
@@ -31,7 +31,7 @@ const runPageActions = (actionOptions) => async (step, index, arrayLength) => {
 
 const enterDetailsUpToPage = async ({ page, stepActions = STEP_PAGE_ACTIONS, actionOptions = DEFAULT_ACTION_OPTIONS }) => {
   try {
-    resetExpectedClaim()
+    expectedClaim.reset()
     await pages.guidance.openApplyPage(pages.url)
     await pages.guidance.clickStartButton()
     await Promise.each(getStepsUpToPage(page, stepActions), runPageActions(actionOptions))

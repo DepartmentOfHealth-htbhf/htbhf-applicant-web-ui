@@ -1,24 +1,28 @@
 const { isNil } = require('ramda')
 
-const expectedClaim = {}
-
-const resetExpectedClaim = () => {
-  for (let variableKey in expectedClaim) {
-    if (expectedClaim.hasOwnProperty(variableKey)) {
-      delete expectedClaim[variableKey]
+class ExpectedClaim {
+  constructor () {
+    this.claim = {}
+  }
+  reset () {
+    this.claim = {}
+  }
+  addChild (dob) {
+    if (isNil(this.claim.childrenDob)) {
+      this.claim.childrenDob = []
     }
+    this.claim.childrenDob.push(dob)
+  }
+  setProperty (propName, propValue) {
+    this.claim[propName] = propValue
+  }
+  getBody () {
+    return JSON.parse(JSON.stringify(this.claim))
   }
 }
 
-const addChildToExpectedClaim = (dob) => {
-  if (isNil(expectedClaim.childrenDob)) {
-    expectedClaim.childrenDob = []
-  }
-  expectedClaim.childrenDob.push(dob)
-}
+const expectedClaim = new ExpectedClaim()
 
 module.exports = {
-  expectedClaim,
-  resetExpectedClaim,
-  addChildToExpectedClaim
+  expectedClaim
 }

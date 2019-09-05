@@ -40,7 +40,7 @@ Then(/^my claim is sent to the back end$/, async function () {
   expect(body).to.have.property('claimant')
   expect(body).to.have.property('deviceFingerprint')
   expect(body).to.have.property('webUIVersion')
-  expect(body.claimant).to.deep.equal(expectedClaim)
+  expect(body.claimant).to.deep.equal(expectedClaim.getBody())
 })
 
 async function checkAllPageContentIsPresentAndCorrect () {

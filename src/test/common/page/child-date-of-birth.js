@@ -5,7 +5,7 @@ const InputField = require('./input-field')
 
 const { dateLastYear } = require('../../common/dates')
 
-const { addChildToExpectedClaim } = require('../expected-claim')
+const { expectedClaim } = require('../expected-claim')
 const { toDateString } = require('../../../web/routes/application/common/formatters')
 
 const PAGE_TITLES = {
@@ -56,7 +56,7 @@ class ChildDateOfBirth extends SubmittablePage {
     await this.enterDay(dateOfBirth.getDate())
     await this.enterMonth(dateOfBirth.getMonth() + 1)
     await this.enterYear(dateOfBirth.getFullYear())
-    addChildToExpectedClaim(toDateString(dateOfBirth.getDate(), dateOfBirth.getMonth() + 1, dateOfBirth.getFullYear()))
+    expectedClaim.addChild(toDateString(dateOfBirth.getDate(), dateOfBirth.getMonth() + 1, dateOfBirth.getFullYear()))
   }
 
   async enterChildName (name) {
