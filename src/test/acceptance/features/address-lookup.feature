@@ -43,4 +43,4 @@ Feature: Select address
   Scenario: Changing details for a selected address takes me to the postcode page
     Given I have entered my details up to the check details page and selected an address
     When I choose to change my address
-    Then I am shown the postcode page
+    Then I am shown the select address page
