@@ -42,6 +42,7 @@ download_acceptance_tests(){
 run_acceptance_tests() {
     check_variable_is_set SESSION_DETAILS_PORT "The port (on localhost) on which the session details app is running."
     check_variable_is_set ACCEPTANCE_TESTS_DIR
+    # convert features.json into a set of cucumber tags - ' and not @FEATURE_NAME' for each FEATURE_NAME_ENABLED=false
     TAGS=$(cat ${WORKING_DIR}/features.json | grep false | sed 's/": false//g' | sed 's/"/ and not @/g' | sed "s/,//g" | sed "s/_ENABLED//g" | tr '\n' ' ')
     ${ACCEPTANCE_TESTS_DIR}/ci_scripts/download_chromedriver.sh
     export SESSION_DETAILS_URL="http://localhost:${SESSION_DETAILS_PORT}/session-details/confirmation-code"

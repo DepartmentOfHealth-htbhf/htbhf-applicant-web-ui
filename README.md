@@ -11,6 +11,9 @@ The environment variable `NOTIFY_API_KEY` is required, locally in your `.env` fi
 
 Locally the app uses [`dotenv`](https://www.npmjs.com/package/dotenv) to set environment variables. The easiest way to get started locally is to duplicate `sample.env` and rename to `.env`. `dotenv` will use the `.env` file to set environemt varaiables. It is important that `.env` is never commited to the code repository as it may contain sensitive data.
 
+## Requirements
+You will need Node and NPM installed to run the application, and Java installed to run the acceptance tests.
+
 ## User interface
 
 ### Design patterns
