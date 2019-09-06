@@ -11,10 +11,10 @@ const getPageIndex = (stepActions, pageName, pages) => stepActions.findIndex(pag
 
 // Uses isStepEnabled to enable / disable page navigation by the toggle specified
 // To be concise “features” is referenced directly rather than being an argument
-const getStepsUpToPage = (page, stepActions) => {
-  const pageIndex = getPageIndex(stepActions, page, pages)
+const getStepsUpToPage = (pageName, stepActions) => {
+  const pageIndex = getPageIndex(stepActions, pageName, pages)
   if (pageIndex === -1) {
-    throw new Error(`Unable to find page ${page}`)
+    throw new Error(`Unable to find page ${pageName}`)
   }
   return stepActions.slice(0, pageIndex + 1).filter(isStepEnabled(features))
 }
@@ -28,19 +28,19 @@ const runPageActions = (actionOptions) => async (step, index, arrayLength) => {
   }
 }
 
-const enterDetailsUpToPage = async ({ page, stepActions = STEP_PAGE_ACTIONS, actionOptions = DEFAULT_ACTION_OPTIONS }) => {
+const enterDetailsUpToPage = async ({ pageName, stepActions = STEP_PAGE_ACTIONS, actionOptions = DEFAULT_ACTION_OPTIONS }) => {
   try {
     await pages.guidance.openApplyPage(pages.url)
     await pages.guidance.clickStartButton()
-    await Promise.each(getStepsUpToPage(page, stepActions), runPageActions(actionOptions))
+    await Promise.each(getStepsUpToPage(pageName, stepActions), runPageActions(actionOptions))
   } catch (error) {
-    assert.fail(`Unexpected error caught trying to enter details up to page ${page} - ${error}`)
+    assert.fail(`Unexpected error caught trying to enter details up to page ${pageName} - ${error}`)
     throw new Error(error)
   }
 }
 
 const enterDetailsUpToCheckAnswersPage = async (actionOptions) => {
-  await enterDetailsUpToPage({ page: pages.checkAnswers.getPageName(), actionOptions })
+  await enterDetailsUpToPage({ pageName: pages.checkAnswers.getPageName(), actionOptions })
 }
 
 const enterDetailsUpToCheckAnswersPageForAPregnantWoman = async () => {
