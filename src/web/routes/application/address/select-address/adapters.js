@@ -29,6 +29,19 @@ const constructLocality = joinAddressFields(['DOUBLE_DEPENDENT_LOCALITY', 'DEPEN
 
 const constructNumberAndStreet = addressFields => `${propOr('', 'BUILDING_NUMBER', addressFields)} ${constructThoroughfare(addressFields)}`.trim()
 
+const isNumberFollowedByLetter = str => str.match(/^\d+[a-zA-Z]$/)
+
+const convertNumericBuildingName = addressFields => {
+  if (isNumberFollowedByLetter(addressFields.BUILDING_NAME) && isEmpty(addressFields.BUILDING_NUMBER)) {
+    return {
+      ...addressFields,
+      BUILDING_NUMBER: addressFields.BUILDING_NAME,
+      BUILDING_NAME: ''
+    }
+  }
+  return addressFields
+}
+
 const constructAddressParts = addressFields => [
   addressFields.ORGANISATION_NAME,
   constructBuildingName(addressFields),
@@ -46,7 +59,7 @@ const joinTail = compose(join(DELIMITER), tail)
 
 const constructTwoPartAddress = addressParts => [head(addressParts), joinTail(addressParts)]
 
-const getAddressParts = compose(filter(isNotEmpty), constructAddressParts, normaliseAddressFields)
+const getAddressParts = compose(filter(isNotEmpty), constructAddressParts, convertNumericBuildingName, normaliseAddressFields)
 
 const buildAddressLineOneAndTwo = compose(constructTwoPartAddress, parseSinglePartAddress, getAddressParts)
 
@@ -65,6 +78,7 @@ const transformAddress = addressFields => {
 module.exports = {
   transformAddress,
   normaliseAddressFields,
+  convertNumericBuildingName,
   constructAddressParts,
   joinAddressFields,
   constructThoroughfare,

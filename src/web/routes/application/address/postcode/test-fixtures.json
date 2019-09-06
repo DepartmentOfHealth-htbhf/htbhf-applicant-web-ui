@@ -141,5 +141,34 @@
       "MATCH" : 1.0,
       "MATCH_DESCRIPTION" : "EXACT"
     }
+  }, {
+    "DPA" : {
+      "UPRN" : "24026605",
+      "UDPRN" : "2916679",
+      "ADDRESS" : "10A, MAYFIELD AVENUE, WESTON-SUPER-MARE, BS22 6AA",
+      "BUILDING_NAME" : "10A",
+      "THOROUGHFARE_NAME" : "MAYFIELD AVENUE",
+      "POST_TOWN" : "WESTON-SUPER-MARE",
+      "POSTCODE" : "BS22 6AA",
+      "RPC" : "1",
+      "X_COORDINATE" : 335143.16,
+      "Y_COORDINATE" : 162229.66,
+      "STATUS" : "APPROVED",
+      "LOGICAL_STATUS_CODE" : "1",
+      "CLASSIFICATION_CODE" : "RD03",
+      "CLASSIFICATION_CODE_DESCRIPTION" : "Semi-Detached",
+      "LOCAL_CUSTODIAN_CODE" : 121,
+      "LOCAL_CUSTODIAN_CODE_DESCRIPTION" : "NORTH SOMERSET",
+      "POSTAL_ADDRESS_CODE" : "D",
+      "POSTAL_ADDRESS_CODE_DESCRIPTION" : "A record which is linked to PAF",
+      "BLPU_STATE_CODE" : null,
+      "BLPU_STATE_CODE_DESCRIPTION" : "Unknown/Not applicable",
+      "TOPOGRAPHY_LAYER_TOID" : "osgb1000027685048",
+      "LAST_UPDATE_DATE" : "11/01/2019",
+      "ENTRY_DATE" : "26/11/2000",
+      "LANGUAGE" : "EN",
+      "MATCH" : 1.0,
+      "MATCH_DESCRIPTION" : "EXACT"
+    }
   } ]
 }
