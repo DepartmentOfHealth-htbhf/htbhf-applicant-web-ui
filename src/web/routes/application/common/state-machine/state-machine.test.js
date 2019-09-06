@@ -1,6 +1,14 @@
 const test = require('tape')
-const { stateMachine, states, actions, isPathAllowed } = require('./state-machine')
+const proxyquire = require('proxyquire')
+const sinon = require('sinon')
+
 const { CHECK_ANSWERS_URL, TERMS_AND_CONDITIONS_URL, CONFIRM_URL } = require('../../common/constants')
+const info = sinon.spy()
+const logger = { info }
+
+const { stateMachine, states, actions, isPathAllowed } = proxyquire('./state-machine', {
+  '../../../../logger': { logger }
+})
 
 const { GET_NEXT_PATH, INVALIDATE_REVIEW } = actions
 
@@ -94,5 +102,34 @@ test(`Dispatching ${INVALIDATE_REVIEW} should not update state when session.stat
     t.equal(req.session.state, state, `does not update state for ${state}`)
   })
 
+  t.end()
+})
+
+test('setState does not log a change in state if the new state is the same as the current state', (t) => {
+  info.resetHistory()
+  const req = {
+    session: {
+      state: states.IN_PROGRESS
+    }
+  }
+
+  stateMachine.setState(states.IN_PROGRESS, req)
+
+  t.equal(info.called, false, 'Should not log a change in state')
+  t.end()
+})
+
+test('setState sets the state if the new state is different from the current state', (t) => {
+  info.resetHistory()
+  const req = {
+    session: {
+      state: states.IN_PROGRESS
+    }
+  }
+
+  stateMachine.setState(states.COMPLETED, req)
+
+  t.equal(req.session.state, states.COMPLETED, 'Should set state')
+  t.equal(info.called, true, 'Should log a change in state')
   t.end()
 })
