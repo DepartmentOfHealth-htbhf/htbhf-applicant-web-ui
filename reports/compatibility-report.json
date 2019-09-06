@@ -24,7 +24,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 15000000
+              "duration": 18000000
             }
           },
           {
@@ -37,7 +37,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 428000000
+              "duration": 491000000
             }
           },
           {
@@ -50,7 +50,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2939000000
+              "duration": 3199000000
             }
           },
           {
@@ -59,11 +59,11 @@
             "line": 9,
             "name": "I am shown the check answers page with correct page content",
             "match": {
-              "location": "src/test/common/steps/check-answers.js:111"
+              "location": "src/test/common/steps/check-answers.js:115"
             },
             "result": {
               "status": "passed",
-              "duration": 1199000000
+              "duration": 1331000000
             }
           },
           {
@@ -76,7 +76,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 224000000
+              "duration": 236000000
             }
           },
           {
@@ -89,7 +89,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 60000000
+              "duration": 59000000
             }
           },
           {
@@ -112,8 +112,7 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
