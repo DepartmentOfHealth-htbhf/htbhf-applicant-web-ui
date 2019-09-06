@@ -1,6 +1,7 @@
 const test = require('tape')
 const {
   normaliseAddressFields,
+  convertNumericBuildingName,
   constructAddressParts,
   joinAddressFields,
   constructThoroughfare,
@@ -83,6 +84,42 @@ test('constructBuildingName() correctly constructs building name', (t) => {
   const result = constructBuildingName(fields)
 
   t.equal(result, expected, 'correctly constructs building name')
+  t.end()
+})
+
+test('convertNumericBuildingName() converts building name of format 10A into building number', (t) => {
+  const fields = {
+    ADDRESS: '10A FLEET STREET, LIVERPOOL, L1 4AR',
+    BUILDING_NAME: '10A',
+    BUILDING_NUMBER: ''
+  }
+
+  const expected = {
+    ADDRESS: '10A FLEET STREET, LIVERPOOL, L1 4AR',
+    BUILDING_NAME: '',
+    BUILDING_NUMBER: '10A'
+  }
+  const result = convertNumericBuildingName(fields)
+
+  t.deepEquals(result, expected, 'correctly constructs building name')
+  t.end()
+})
+
+test('convertNumericBuildingName() does not convert building names not of the form 10A', (t) => {
+  const fields = {
+    ADDRESS: '101A ELECTRICITY HOUSE, FLEET STREET, LIVERPOOL, L1 4AR',
+    BUILDING_NAME: '101A ELECTRICITY HOUSE',
+    BUILDING_NUMBER: ''
+  }
+
+  const expected = {
+    ADDRESS: '101A ELECTRICITY HOUSE, FLEET STREET, LIVERPOOL, L1 4AR',
+    BUILDING_NAME: '101A ELECTRICITY HOUSE',
+    BUILDING_NUMBER: ''
+  }
+  const result = convertNumericBuildingName(fields)
+
+  t.deepEquals(result, expected, 'correctly constructs building name')
   t.end()
 })
 
