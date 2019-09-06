@@ -1,4 +1,6 @@
 'use strict'
+const { VALID_PREGNANCY_MONTH_INCREMENT } = require('../steps/constants')
+
 const webdriver = require('selenium-webdriver')
 
 const SubmittablePageWithRadioButtons = require('./submittable-page-with-radio-buttons')
@@ -49,7 +51,7 @@ class AreYouPregnant extends SubmittablePageWithRadioButtons {
   }
 
   async enterValidExpectedDeliveryDate () {
-    await this.enterExpectedDeliveryDate({ incrementMonth: 6 })
+    await this.enterExpectedDeliveryDate({ incrementMonth: VALID_PREGNANCY_MONTH_INCREMENT })
   }
 
   async enterExpectedDeliveryDateTooFarInThePast () {
