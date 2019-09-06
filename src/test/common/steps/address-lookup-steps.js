@@ -1,14 +1,24 @@
 /* eslint-disable no-unused-expressions */
-const { When, Then } = require('cucumber')
+const { Given, When, Then } = require('cucumber')
 const { expect } = require('chai')
 const Promise = require('bluebird')
 
 const pages = require('./pages')
-const { enterPostcodeAndSubmit } = require('./common-steps')
+const { enterDetailsUpToPage, DEFAULT_ACTION_OPTIONS, STEP_PAGE_ACTIONS } = require('./navigation')
+const { enterPostcodeAndSubmit, selectFirstAddress } = require('./common-steps')
 const { setupPostcodeLookupWithNoResults, setupPostcodeLookupWithResults } = require('../wiremock')
 const { POSTCODE } = require('./constants')
 
 const POSTCODE_WITH_NO_RESULTS = 'BS11AA'
+
+const stepActionsWithoutManualAddress = (stepPageActions) => stepPageActions.filter(pageAction => pageAction.page(pages) !== pages.manualAddress)
+
+Given(/^I have entered my details up to the check details page and selected an address$/, async function () {
+  const actionOptions = { ...DEFAULT_ACTION_OPTIONS, selectAddress: true }
+  // manual address page is skipped when the user selects an address
+  const stepActions = stepActionsWithoutManualAddress(STEP_PAGE_ACTIONS)
+  await enterDetailsUpToPage({ page: pages.checkAnswers.getPageName(), actionOptions, stepActions })
+})
 
 When(/^I enter a postcode that returns no search results$/, async function () {
   await setupPostcodeLookupWithNoResults(POSTCODE_WITH_NO_RESULTS)
@@ -21,9 +31,7 @@ When(/^I enter a postcode$/, async function () {
 })
 
 When(/^I select an address$/, async function () {
-  const addressOptions = await pages.selectAddress.getAddressOptions()
-  const option = addressOptions[0]
-  await option.click()
+  await selectFirstAddress()
 })
 
 When(/^I click the address not listed link$/, async function () {
@@ -68,4 +76,8 @@ Then(/^I am shown a link to change my postcode$/, async function () {
 Then(/^I am shown a continue button$/, async function () {
   const buttonText = await pages.selectAddress.getSubmitButtonText()
   expect(buttonText).to.be.equal('Continue')
+})
+
+Then(/^I am shown the postcode page$/, async function () {
+  await pages.postcode.waitForPageLoad()
 })
