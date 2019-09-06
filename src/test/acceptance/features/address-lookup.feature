@@ -44,3 +44,20 @@ Feature: Select address
     Given I have entered my details up to the check details page and selected an address
     When I choose to change my address
     Then I am shown the select address page
+
+  # TODO DW HTBHF-2037 include test once address lookup is enabled
+  @ignore
+  Scenario: Entering a new postcode when I have selected to change my address takes me to the select address page
+    Given I have entered my details up to the check details page and selected an address
+    When I choose to change my address
+    And I click the change postcode link
+    And I enter a postcode
+    Then I am shown the select address page
+
+  # TODO DW HTBHF-2037 include test once address lookup is enabled
+  @ignore
+  Scenario: Clicking the address not listed link when I have selected to change my answer for select address takes me to the manual address page
+    Given I have entered my details up to the check details page and selected an address
+    When I choose to change my address
+    And I click the address not listed link
+    Then I am shown the manual address page

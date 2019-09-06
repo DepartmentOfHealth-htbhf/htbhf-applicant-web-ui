@@ -38,6 +38,10 @@ When(/^I click the address not listed link$/, async function () {
   await pages.selectAddress.clickAddressNotListedLink()
 })
 
+When(/^I click the change postcode link$/, async function () {
+  await pages.selectAddress.clickChangePostcodeLink()
+})
+
 Then(/^I am shown the select address page$/, async function () {
   await pages.selectAddress.waitForPageLoad()
 })
