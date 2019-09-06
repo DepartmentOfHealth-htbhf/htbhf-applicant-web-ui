@@ -66,8 +66,10 @@ const stateMachine = {
   },
 
   setState: (state, req) => {
-    logger.info(`State set to ${state}`, { req })
-    req.session.state = state
+    if (stateMachine.getState(req) !== state) {
+      logger.info(`State set to ${state}`, { req })
+      req.session.state = state
+    }
   },
 
   dispatch: (actionType, req, ...args) => {
