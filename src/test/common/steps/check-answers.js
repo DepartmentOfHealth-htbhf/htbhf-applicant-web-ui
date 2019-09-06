@@ -27,7 +27,7 @@ const { assertBackLinkPointsToPage } = require('./common-assertions')
 
 When(/^I complete the application with valid details that contains malicious input$/, async function () {
   const actionOptions = { ...DEFAULT_ACTION_OPTIONS, firstName: '<script>window.alert(\'Boo\')</script>' }
-  await enterDetailsUpToPage({ page: pages.checkAnswers.getPageName(), actionOptions })
+  await enterDetailsUpToPage({ pageName: pages.checkAnswers.getPageName(), actionOptions })
 })
 
 When(/^I complete the application with valid details for an applicant with no second line of address$/, async function () {
@@ -123,7 +123,7 @@ Then(/^there are no children displayed$/, async function () {
 
 async function completeApplicationWithAddressDetails (addressLine1, addressLine2, townOrCity, county, postcode) {
   const actionOptions = { ...DEFAULT_ACTION_OPTIONS, addressLine1, addressLine2, townOrCity, county, postcode }
-  await enterDetailsUpToPage({ page: pages.checkAnswers.getPageName(), actionOptions })
+  await enterDetailsUpToPage({ pageName: pages.checkAnswers.getPageName(), actionOptions })
 }
 
 async function assertCheckAnswersWithAddressForClaimantWithChildrenAndNotPregnant (fullAddress) {
