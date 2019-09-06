@@ -5,6 +5,9 @@ if [ -z "$BIN_DIR" ]; then
   export BIN_DIR=${WORKING_DIR}/bin
 fi
 
+echo "WORKING_DIR=${WORKING_DIR}"
+echo "BIN_DIR=${BIN_DIR}"
+
 mkdir -p "${BIN_DIR}"
 
 export FEATURE_TOGGLES=$(cat "${WORKING_DIR}"/features.json)
@@ -22,6 +25,7 @@ check_variable_is_set(){
 download_acceptance_tests(){
     check_variable_is_set ACCEPTANCE_TESTS_VERSION "The version of the acceptance tests to run. This should be set in test_versions.properties."
     export ACCEPTANCE_TESTS_DIR=${BIN_DIR}/htbhf-acceptance-tests
+    mkdir -p "${ACCEPTANCE_TESTS_DIR}"
     if [[ ! -e ${ACCEPTANCE_TESTS_DIR}/version_${ACCEPTANCE_TESTS_VERSION}.info ]]; then
       echo "Downloading acceptance tests version ${ACCEPTANCE_TESTS_VERSION}"
       rm -rf ${ACCEPTANCE_TESTS_DIR}
@@ -45,6 +49,13 @@ run_acceptance_tests() {
     ./gradlew -Dcucumber.options="--tags 'not @Ignore ${TAGS}'" clean build
     RESULT=$?
     cd ${WORKING_DIR}
+    # copy the reports to build/reports
+    REPORTS_DIR="${WORKING_DIR}/build/reports"
+    mkdir -p "${REPORTS_DIR}"
+    mv "${ACCEPTANCE_TESTS_DIR}/build/reports/tests/test" "${REPORTS_DIR}/htbhf-acceptance-tests"
+    if [[ "$RESULT" != "0" ]]; then
+      cat "${REPORTS_DIR}/htbhf-acceptance-tests/classes/uk.gov.dhsc.htbhf.RunAcceptanceTests.html"
+    fi
     return $RESULT
 }
 
