@@ -4,11 +4,11 @@ const { assert } = require('chai')
 const pages = require('../pages')
 const { enterDetailsUpToPage } = require('./navigation')
 
-Given(/^I have entered my details up to the (.*) page$/, async function (page) {
+Given(/^I have entered my details up to the (.*) page$/, async function (pageName) {
   try {
-    await enterDetailsUpToPage({ page })
+    await enterDetailsUpToPage({ pageName })
   } catch (error) {
-    assert.fail(`Unexpected error caught trying to enter details up to page ${page} - ${error}`)
+    assert.fail(`Unexpected error caught trying to enter details up to page ${pageName} - ${error}`)
     throw new Error(error)
   }
 })
@@ -17,9 +17,9 @@ Given(/^I am starting a new application$/, async function () {
   await pages.guidance.openApplyPage(pages.url)
 })
 
-When(/^I navigate to the (.*) page$/, async function (page) {
+When(/^I navigate to the (.*) page$/, async function (pageName) {
   try {
-    await pages.openPageDirect(page)
+    await pages.openPageDirect(pageName)
   } catch (error) {
     throw new Error('Unexpected error caught navigating to page: ' + error)
   }
