@@ -61,13 +61,6 @@ Unit tests can be started with the command `npm run test:unit`. The application 
 
 Files containing unit tests in files must use the naming convention `*.test.js`.
 
-### Acceptance
-The acceptance tests are defined within Gherkin feature files and run via Cucumber-JS. They can be found
-in the `src/test/acceptance/features` directory and can be run via `npm run test:acceptance`.
-The `pages.js` is setup to define anything that can be reused between the various step files, specifically
-the page objects and the Selenium web driver. The page object model that has been implemented in the
-`common/page` directory is specifically set out to be shared between the acceptance and smoke tests.
-
 ### Smoke
 The smoke tests can be found in the `src/test/smoke` directory and contain a very small set of tests
 that are run to prove an environment is "up" and nothing more. They use the same page model as the acceptance
@@ -75,29 +68,22 @@ tests and can be run via `npm run test:smoke`. To run these tests against a loca
 purposes, you simply need to set the environment variable `APP_HOST=http://localhost:8080` and it will run
 against your local running instance.
 
-### Compatibility tests
+### Acceptance, Compatibility & Performance
+Acceptance & compatibility tests are provided by a separate repository - htbhf-acceptance-tests. 
+Performance tests are provided by htbhf-performance-tests.
+The versions of these projects compatible with the current web-ui are defined in `test_versions.properties`.
 
-The application is configured to run compatibility tests using Selenium and [Browserstack Automate](https://www.browserstack.com/automate).
-`npm-run-all` is used to trigger tests on multiple browsers concurrently. The compatibility tests can be started with the command `npm run test:compatibility`.
-
-Operating system and browser combinations for the compatibility tests are based on the [GOV.UK guidelines](https://www.gov.uk/service-manual/technology/designing-for-different-browsers-and-devices).
-
-See `sample.env` for a list of the environment variables that need to be set for these tests to run.
-
-#### Testing locally against Safari
-
-Should you need to run the compatibility tests locally against Safari for debugging purposes, then the following
-page is a great reference on how to get the `safaridriver` setup:
-https://developer.apple.com/documentation/webkit/testing_with_webdriver_in_safari
-To change from the default Chrome headless for local testing, go to the `driver-manager.js` file and change the
-driver setup to simply be:
-
+For running local tests you can create a `local_acceptance_tests.properties` file to specify the version of chromedriver
+and the location of a local copy of the acceptance tests:
 ```
-    this.driver = new webdriver.Builder()
-      .forBrowser('safari')
-      .build()
+CHROMEDRIVER_VERSION=76.0.3809.68
+# if you're not using chromedriver_linux64, also specify CHROMEDRIVER_URL:
+CHROMEDRIVER_URL=https://chromedriver.storage.googleapis.com/76.0.3809.68/chromedriver_linux64.zip
+# if you want to use a local copy of the acceptance tests:
+USE_LOCAL_ACCEPTANCE_TESTS=true
+ACCEPTANCE_TESTS_DIR=../htbhf-acceptance-tests
 ```
-Then to run the tests locally, just use the `npm run test:compatibility:local` target.
+Bear in mind that the CI build will always run the version of the acceptance tests specified in `test_versions.properties`.
 
 ## GOV.UK Notify
 The application requires users to enter a confirmation code that has been sent to their email address
