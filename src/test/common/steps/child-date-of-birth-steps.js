@@ -2,13 +2,13 @@ const { Given, When, Then } = require('cucumber')
 const { assert, expect } = require('chai')
 const { assertBackLinkPointsToPage, assertErrorHeaderTextPresent, assertFieldErrorAndLinkTextPresentAndCorrect } = require('./common-assertions')
 const { submitChild3OrUnderDetails } = require('./common-steps')
-const { LONG_STRING } = require('./constants')
+const { LONG_STRING, CHILD_NAME } = require('./constants')
 const { dateLastYear } = require('../../common/dates')
 
 const pages = require('./pages')
 
 Given(/^I enter the details of my child who is under four years old$/, async function () {
-  await pages.childDateOfBirth.enterChild3OrUnderDetails('Joe')
+  await pages.childDateOfBirth.enterChild3OrUnderDetails(CHILD_NAME)
 })
 
 Given(/^there are no Remove Child buttons visible$/, async function () {
