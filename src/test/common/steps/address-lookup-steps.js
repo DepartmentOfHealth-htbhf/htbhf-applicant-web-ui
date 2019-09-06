@@ -13,11 +13,11 @@ const POSTCODE_WITH_NO_RESULTS = 'BS11AA'
 
 const stepActionsWithoutManualAddress = (stepPageActions) => stepPageActions.filter(pageAction => pageAction.page(pages) !== pages.manualAddress)
 
-Given(/^I have entered my details up to the check details page and selected an address$/, async function () {
+Given(/^I have entered my details up to the check answers page and selected an address$/, async function () {
   const actionOptions = { ...DEFAULT_ACTION_OPTIONS, selectAddress: true }
   // manual address page is skipped when the user selects an address
   const stepActions = stepActionsWithoutManualAddress(STEP_PAGE_ACTIONS)
-  await enterDetailsUpToPage({ page: pages.checkAnswers.getPageName(), actionOptions, stepActions })
+  await enterDetailsUpToPage({ pageName: pages.checkAnswers.getPageName(), actionOptions, stepActions })
 })
 
 When(/^I enter a postcode that returns no search results$/, async function () {
