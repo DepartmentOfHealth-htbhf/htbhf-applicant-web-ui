@@ -27,6 +27,10 @@ class SelectAddress extends SubmittablePage {
     return this.findByXPath('//h2[contains(text(), \'We cannot find that address\')]')
   }
 
+  async getPostcodeLookupNotWorkingElement () {
+    return this.findByXPath('//h2[contains(text(), \'There’s a problem with the postcode finder\')]')
+  }
+
   async getAddressOptions () {
     return this.findAllByCSS('#address-results > option')
   }

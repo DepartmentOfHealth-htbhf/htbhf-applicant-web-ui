@@ -439,7 +439,47 @@ const createPostcodeLookupWithResultsMapping = (postcode) => {
   })
 }
 
+const createPostcodeLookupWithErrorResponseMapping = () => {
+  return JSON.stringify({
+    'request': {
+      'method': 'GET',
+      'urlPath': '/places/v1/addresses/postcode',
+      'queryParameters': {
+        'postcode': {
+          'matches': '.*'
+        },
+        'key': {
+          'matches': '.*'
+        }
+      }
+    },
+    'response': {
+      'status': 400,
+      'jsonBody': {
+        'header': {
+          'offset': 0,
+          'totalresults': 0,
+          'format': 'JSON',
+          'dataset': 'DPA',
+          'lr': 'EN,CY',
+          'maxresults': 100,
+          'epoch': '69',
+          'output_srs': 'EPSG:27700'
+        }
+      },
+      'headers': {
+        'Date': 'Fri, 23 Aug 2019 11:04:02 GMT',
+        'Content-Type': 'application/json;charset=UTF-8',
+        'Connection': 'keep-alive',
+        'tx_id': '1566558242864:864',
+        'status': 'bad_request'
+      }
+    }
+  })
+}
+
 module.exports = {
   createPostcodeLookupWithNoResultsMapping,
-  createPostcodeLookupWithResultsMapping
+  createPostcodeLookupWithResultsMapping,
+  createPostcodeLookupWithErrorResponseMapping
 }
