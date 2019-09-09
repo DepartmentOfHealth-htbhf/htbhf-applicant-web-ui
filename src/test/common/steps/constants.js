@@ -63,12 +63,15 @@ const FULL_ADDRESS = `${ADDRESS_LINE_1}\n${ADDRESS_LINE_2}\n${TOWN}\n${COUNTY}\n
 const FULL_ADDRESS_NO_LINE_2 = `${ADDRESS_LINE_1}\n${TOWN}\n${COUNTY}\n${POSTCODE}`
 const FULL_ADDRESS_NO_COUNTY = `${ADDRESS_LINE_1}\n${ADDRESS_LINE_2}\n${TOWN}\n${POSTCODE}`
 const PHONE_NUMBER = '07123456789'
+const FORMATTED_PHONE_NUMBER = '+447123456789'
 const PHONE_NUMBER_2 = '07111111111'
 const EMAIL_ADDRESS = 'test@email.com'
 const EMAIL_ADDRESS_2 = 'different-email-address@email.com'
+const CHILD_NAME = 'Joe'
+const VALID_PREGNANCY_MONTH_INCREMENT = 6
 
 const CHILDRENS_DATES_OF_BIRTH = [
-  { header: 'Name', value: 'Joe' },
+  { header: 'Name', value: CHILD_NAME },
   { header: 'Date of birth', value: formatDateForDisplayFromDate(dateLastYear()) }
 ]
 
@@ -94,6 +97,7 @@ module.exports = {
   FULL_ADDRESS_NO_LINE_2,
   FULL_ADDRESS_NO_COUNTY,
   PHONE_NUMBER,
+  FORMATTED_PHONE_NUMBER,
   PHONE_NUMBER_2,
   EMAIL_ADDRESS,
   EMAIL_ADDRESS_2,
@@ -101,5 +105,7 @@ module.exports = {
   EMAIL_LABEL,
   TEXT,
   EMAIL,
-  CHILDRENS_DATES_OF_BIRTH
+  CHILDRENS_DATES_OF_BIRTH,
+  CHILD_NAME,
+  VALID_PREGNANCY_MONTH_INCREMENT
 }

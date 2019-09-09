@@ -1,8 +1,53 @@
-const { Then } = require('cucumber')
+const { Given, Then } = require('cucumber')
 const { expect } = require('chai')
 
 const pages = require('./pages')
 const { deleteWiremockMappings, getBodyOfLastRequestToClaimService } = require('./common-steps')
+const { toDateString } = require('../../../web/routes/application/common/formatters')
+const { dateLastYear } = require('../../common/dates')
+
+const expectedClaim = { body: {} }
+
+const {
+  VALID_ELIGIBLE_NINO,
+  FIRST_NAME,
+  LAST_NAME,
+  DAY,
+  MONTH,
+  YEAR,
+  ADDRESS_LINE_1,
+  ADDRESS_LINE_2,
+  TOWN,
+  COUNTY,
+  POSTCODE,
+  FORMATTED_PHONE_NUMBER,
+  EMAIL_ADDRESS,
+  VALID_PREGNANCY_MONTH_INCREMENT
+} = require('./constants')
+
+Given(/^I prepare an application with valid details$/, function () {
+  const dueDate = new Date()
+  dueDate.setMonth(dueDate.getMonth() + VALID_PREGNANCY_MONTH_INCREMENT)
+  const childDob = dateLastYear()
+  expectedClaim.body = {
+    firstName: FIRST_NAME,
+    lastName: LAST_NAME,
+    nino: VALID_ELIGIBLE_NINO,
+    dateOfBirth: toDateString(DAY, MONTH, YEAR),
+    address: {
+      addressLine1: ADDRESS_LINE_1,
+      addressLine2: ADDRESS_LINE_2,
+      townOrCity: TOWN,
+      county: COUNTY,
+      postcode: POSTCODE
+    },
+    expectedDeliveryDate: toDateString(dueDate.getDate(), dueDate.getMonth() + 1, dueDate.getFullYear()),
+    phoneNumber: FORMATTED_PHONE_NUMBER,
+    emailAddress: EMAIL_ADDRESS,
+    childrenDob: [toDateString(childDob.getDate(), childDob.getMonth() + 1, childDob.getFullYear())]
+
+  }
+})
 
 Then(/^all page content is present on the confirm details page$/, async function () {
   await checkAllPageContentIsPresentAndCorrect()
@@ -39,6 +84,7 @@ Then(/^my claim is sent to the back end$/, async function () {
   expect(body).to.have.property('claimant')
   expect(body).to.have.property('deviceFingerprint')
   expect(body).to.have.property('webUIVersion')
+  expect(body.claimant).to.deep.equal(expectedClaim.body)
 })
 
 async function checkAllPageContentIsPresentAndCorrect () {

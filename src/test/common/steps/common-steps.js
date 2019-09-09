@@ -26,7 +26,8 @@ const {
   POSTCODE,
   CLAIMS_ENDPOINT,
   PHONE_NUMBER,
-  EMAIL_ADDRESS
+  EMAIL_ADDRESS,
+  CHILD_NAME
 } = require('./constants')
 
 const { SESSION_CONFIRMATION_CODE_URL } = require('./../../common/config')
@@ -166,7 +167,7 @@ async function selectYesOnDoYouHaveChildrenPage () {
   }
 }
 
-async function submitChild3OrUnderDetails (name = 'Joe') {
+async function submitChild3OrUnderDetails (name = CHILD_NAME) {
   try {
     await pages.childDateOfBirth.enterChild3OrUnderDetails(name)
     await pages.childDateOfBirth.submitForm()

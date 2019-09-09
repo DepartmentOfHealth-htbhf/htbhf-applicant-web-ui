@@ -6,6 +6,7 @@ Feature: Confirm application
   @RequiresWiremock
   Scenario: Valid application progresses to the confirmation page
     Given I am on the first page of the application
+    And I prepare an application with valid details
     When I submit an application with valid details
     Then I am shown the confirm details page
     And all page content is present on the confirm details page
