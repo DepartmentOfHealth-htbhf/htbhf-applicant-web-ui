@@ -6,12 +6,24 @@ const Promise = require('bluebird')
 const pages = require('./pages')
 const { enterDetailsUpToPage, DEFAULT_ACTION_OPTIONS, STEP_PAGE_ACTIONS } = require('./navigation')
 const { enterPostcodeAndSubmit, selectFirstAddress } = require('./common-steps')
-const { setupPostcodeLookupWithNoResults, setupPostcodeLookupWithResults } = require('../wiremock')
+const { setupPostcodeLookupWithNoResults, setupPostcodeLookupWithResults, createPostcodeLookupWithResultsMapping } = require('../wiremock')
 const { POSTCODE } = require('./constants')
 
 const POSTCODE_WITH_NO_RESULTS = 'BS11AA'
 
 const stepActionsWithoutManualAddress = (stepPageActions) => stepPageActions.filter(pageAction => pageAction.page(pages) !== pages.manualAddress)
+
+const assertAddressOptionTextMatchesResult = (results) => async (option, index) => {
+  const address = results[index].DPA.ADDRESS.toLowerCase()
+  const optionText = await option.getText()
+  expect(address.includes(optionText.toLowerCase())).to.be.true
+}
+
+const verifyAddressOptionsText = async (postcode, options) => {
+  const mockApiResponse = JSON.parse(createPostcodeLookupWithResultsMapping(postcode))
+  const { results } = mockApiResponse.response.jsonBody
+  await Promise.each(options, assertAddressOptionTextMatchesResult(results))
+}
 
 Given(/^I have entered my details up to the check answers page and selected an address$/, async function () {
   const actionOptions = { ...DEFAULT_ACTION_OPTIONS, selectAddress: true }
@@ -59,10 +71,7 @@ Then(/^I am shown a button to enter my address manually$/, async function () {
 Then(/^I am shown a list of addresses$/, async function () {
   const addressOptions = await pages.selectAddress.getAddressOptions()
   expect(addressOptions.length).to.be.equal(11)
-  await Promise.each(addressOptions, async addressOption => {
-    const address = await addressOption.getText()
-    expect(address.includes(POSTCODE)).to.be.true
-  })
+  await verifyAddressOptionsText(POSTCODE, addressOptions)
 })
 
 Then(/^I am shown an address not listed link$/, async function () {
