@@ -10,7 +10,8 @@ const {
   setupPostcodeLookupWithNoResults,
   setupPostcodeLookupWithResults,
   createPostcodeLookupWithResultsMapping,
-  setupPostcodeLookupWithErrorResponse
+  setupPostcodeLookupWithErrorResponse,
+  setupPostcodeLookupWithConnectionReset
 } = require('../wiremock')
 const { POSTCODE } = require('./constants')
 
@@ -39,6 +40,10 @@ Given(/^I have entered my details up to the check answers page and selected an a
 
 Given(/^OS places returns an error response$/, async function () {
   await setupPostcodeLookupWithErrorResponse()
+})
+
+Given(/^OS places resets the connection$/, async function () {
+  await setupPostcodeLookupWithConnectionReset()
 })
 
 When(/^I enter a postcode that returns no search results$/, async function () {
@@ -112,7 +117,7 @@ Then(/^I am shown the postcode page$/, async function () {
   await pages.postcode.waitForPageLoad()
 })
 
-Then(/^I am informed that there's a problem with the postcode finder$/, async function () {
+Then(/^I am informed that there's a problem with the address lookup$/, async function () {
   const postcodeLookupNotWorkingElement = await pages.selectAddress.getPostcodeLookupNotWorkingElement()
   expect(await postcodeLookupNotWorkingElement.isDisplayed()).to.be.true
 })
