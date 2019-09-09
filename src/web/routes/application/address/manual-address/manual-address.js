@@ -1,7 +1,7 @@
 const { addressContentSummary } = require('../content-summary')
 const { compose, isNil, path } = require('ramda')
 const { validate } = require('./validate')
-const { sanitize } = require('./sanitize')
+const { sanitize } = require('../sanitize')
 
 const pageContent = ({ translate }) => ({
   title: translate('address.title'),
