@@ -43,6 +43,11 @@ class SelectAddress extends SubmittablePage {
     const addressNotListedLink = await this.getAddressNotListedLink()
     await addressNotListedLink.click()
   }
+
+  async clickChangePostcodeLink () {
+    const changePostcodeLink = await this.getChangePostcodeLink()
+    await changePostcodeLink.click()
+  }
 }
 
 module.exports = SelectAddress

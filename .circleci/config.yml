@@ -2,12 +2,11 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:10.16.0-browsers
+      - image: circleci/openjdk:11.0.4-jdk-stretch-node-browsers
       - image: circleci/redis
     environment:
       PORT: 8080
       SESSION_SECRET: notsosecret
-      BIN_DIR: ./bin
       WIREMOCK_PORT: 8090
       WIREMOCK_URL: http://localhost:8090
       USE_UNSECURE_COOKIE: true
@@ -21,6 +20,8 @@ jobs:
           command: google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
       - restore-cache:
           key: dependency-cache-{{ checksum "package.json" }}
+      - restore-cache:
+          key: bin-cache-{{ checksum "test_versions.properties" }}
       - run:
           name: npm install global
           command: sudo npm install -g standard tape nyc
@@ -37,6 +38,10 @@ jobs:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
             - ./node_modules
+      - save_cache:
+          key: bin-cache-{{ checksum "test_versions.properties" }}
+          paths:
+            - ./bin
       - run:
           name: copy docs
           command: mkdir -p build/reports && cp src/documentation/gh-pages/index.html build/reports/ && ls build/reports/

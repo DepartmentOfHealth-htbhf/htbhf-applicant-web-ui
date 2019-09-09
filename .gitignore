@@ -43,6 +43,9 @@ test/screenshots
 bin
 build
 
+# local definition of acceptance tests
+/local_acceptance_tests.properties
+
 # Acceptance and Smoke Test Reports
 src/documentation/gh-pages/acceptance-report.html
 src/documentation/gh-pages/smoke-report.html
