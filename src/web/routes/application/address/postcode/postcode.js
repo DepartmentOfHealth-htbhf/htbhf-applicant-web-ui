@@ -2,6 +2,7 @@ const request = require('request-promise')
 const { wrapError } = require('../../common/formatters')
 const { transformOsPlacesApiResponse } = require('./adapters')
 const { logger } = require('../../../../logger')
+const { stateMachine, states } = require('../../common/state-machine')
 
 const OS_PLACES_API_PATH = '/places/v1/addresses/postcode'
 
@@ -52,6 +53,11 @@ const behaviourForPost = (config) => async (req, res, next) => {
   }
 }
 
+const behaviourForGet = () => (req, res, next) => {
+  stateMachine.setState(states.IN_PROGRESS, req)
+  next()
+}
+
 const pageContent = ({ translate }) => ({
   title: translate('postcode.title'),
   heading: translate('postcode.heading'),
@@ -66,12 +72,14 @@ const postcode = {
   template: 'postcode',
   pageContent,
   behaviourForPost,
+  behaviourForGet,
   toggle: 'ADDRESS_LOOKUP_ENABLED'
 }
 
 module.exports = {
   postcode,
   behaviourForPost,
+  behaviourForGet,
   standardisePostcode,
   auditSuccessfulPostcodeLookup,
   auditFailedPostcodeLookup
