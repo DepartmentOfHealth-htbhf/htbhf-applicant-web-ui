@@ -478,8 +478,29 @@ const createPostcodeLookupWithErrorResponseMapping = () => {
   })
 }
 
+const createPostcodeLookupWithConnectionResetMapping = () => {
+  return JSON.stringify({
+    'request': {
+      'method': 'GET',
+      'urlPath': '/places/v1/addresses/postcode',
+      'queryParameters': {
+        'postcode': {
+          'matches': '.*'
+        },
+        'key': {
+          'matches': '.*'
+        }
+      }
+    },
+    'response': {
+      'fault': 'CONNECTION_RESET_BY_PEER'
+    }
+  })
+}
+
 module.exports = {
   createPostcodeLookupWithNoResultsMapping,
   createPostcodeLookupWithResultsMapping,
-  createPostcodeLookupWithErrorResponseMapping
+  createPostcodeLookupWithErrorResponseMapping,
+  createPostcodeLookupWithConnectionResetMapping
 }

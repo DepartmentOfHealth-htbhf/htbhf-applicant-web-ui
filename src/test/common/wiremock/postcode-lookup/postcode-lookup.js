@@ -4,7 +4,8 @@ const { WIREMOCK_MAPPING_URL } = require('../paths')
 const {
   createPostcodeLookupWithNoResultsMapping,
   createPostcodeLookupWithResultsMapping,
-  createPostcodeLookupWithErrorResponseMapping
+  createPostcodeLookupWithErrorResponseMapping,
+  createPostcodeLookupWithConnectionResetMapping
 } = require('./mappings')
 
 async function setupPostcodeLookupWithNoResults (postcode) {
@@ -19,8 +20,13 @@ async function setupPostcodeLookupWithErrorResponse () {
   await postJsonData(WIREMOCK_MAPPING_URL, createPostcodeLookupWithErrorResponseMapping())
 }
 
+async function setupPostcodeLookupWithConnectionReset () {
+  await postJsonData(WIREMOCK_MAPPING_URL, createPostcodeLookupWithConnectionResetMapping())
+}
+
 module.exports = {
   setupPostcodeLookupWithNoResults,
   setupPostcodeLookupWithResults,
-  setupPostcodeLookupWithErrorResponse
+  setupPostcodeLookupWithErrorResponse,
+  setupPostcodeLookupWithConnectionReset
 }
