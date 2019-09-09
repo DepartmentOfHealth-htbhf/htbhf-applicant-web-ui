@@ -1,6 +1,7 @@
 const test = require('tape')
 const safeRegex = require('safe-regex')
-const { UK_POSTCODE_PATTERN } = require('../validate')
+
+const { UK_POSTCODE_PATTERN } = require('./constants')
 
 test('invalid postcode does not match regex', (t) => {
   const invalidPostcodes = [
