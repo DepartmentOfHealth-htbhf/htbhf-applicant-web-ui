@@ -14,7 +14,8 @@ const pageContent = ({ translate }) => ({
   change: translate('change'),
   continue: translate('buttons:continue'),
   selectAddressLabel: translate('address.selectAddressLabel'),
-  addressNotListed: translate('address.addressNotListed')
+  addressNotListed: translate('address.addressNotListed'),
+  errorWithPostcodeLookup: translate('address.errorWithPostcodeLookup')
 })
 
 const buildAddressOption = result => ({
@@ -30,9 +31,12 @@ const resetAddressState = (req) => {
 
 const behaviourForGet = () => (req, res, next) => {
   resetAddressState(req)
-  res.locals.addresses = req.session.postcodeLookupResults.map(buildAddressOption)
-  // Manual address is further in the flow than select-address, therefore this line is needed to prevent the state machine from redirecting the user back to select-address.
-  req.session.nextAllowedStep = '/manual-address'
+  res.locals.postcodeLookupError = req.session.postcodeLookupError
+  if (!res.locals.postcodeLookupError) {
+    res.locals.addresses = req.session.postcodeLookupResults.map(buildAddressOption)
+    // Manual address is further in the flow than select-address, therefore this line is needed to prevent the state machine from redirecting the user back to select-address.
+    req.session.nextAllowedStep = '/manual-address'
+  }
   next()
 }
 

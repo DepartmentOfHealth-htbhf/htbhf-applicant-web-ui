@@ -24,7 +24,9 @@
             <a class="govuk-link" href="/postcode">{{ change }}</a>
         </div>
 
-        {% if addresses | length === 0 %}
+        {% if postcodeLookupError %}
+            <h2 class="govuk-heading-m">{{ errorWithPostcodeLookup }}</h2>
+        {% elif addresses | length === 0 %}
             <h2 class="govuk-heading-m">{{ addressNotFound }}</h2>
         {% else %}
             {{ govukSelect({

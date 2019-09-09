@@ -7,11 +7,15 @@ const TEST_FIXTURES = require('./test-fixtures.json')
 const { standardisePostcode } = require('./postcode')
 const { states } = require('../../common/state-machine')
 
+const errorSpy = sinon.spy()
+const logger = { error: errorSpy }
 const request = sinon.stub()
 const validationResult = sinon.stub()
+
 const { behaviourForPost, behaviourForGet } = proxyquire(
-  './postcode', { 'request-promise': request },
+  './postcode', { 'request-promise': request, '../../../../logger': { logger } },
   './express-validator', { 'validationResult': validationResult })
+
 const config = { environment: { OS_PLACES_API_KEY: '123', GA_TRACKING_ID: 'UA-133839203-1', GOOGLE_ANALYTICS_URI: 'http://localhost:8150/collect' } }
 
 test('behaviourForPost() handles successful address lookup', async (t) => {
@@ -97,6 +101,7 @@ test('behaviourForPost() handles successful address lookup', async (t) => {
 })
 
 test('behaviourForPost() handles address lookup error', async (t) => {
+  errorSpy.resetHistory()
   const req = {
     headers: { 'x-forwarded-for': '100.200.0.45' },
     body: { postcode: 'BS7 8EE' },
@@ -117,7 +122,9 @@ test('behaviourForPost() handles address lookup error', async (t) => {
     await behaviourForPost(config)(req, res, next)
 
     t.deepEqual(req.session.postcodeLookupResults, undefined, 'does not add postcode lookup results to session')
-    t.equal(next.calledWith(sinon.match.instanceOf(Error)), true, 'calls next() with error')
+    t.equal(req.session.postcodeLookupError, true, 'sets postcode lookup error on session')
+    t.equal(next.called, true, 'calls next()')
+    t.equal(errorSpy.called, true, 'logs an error')
     t.deepEqual(request.getCall(1).args[0], expectedGoogleAnalyticsRequestArgs, 'should make request to Google Analytics with correct parameters')
   } catch (error) {
     // Explicitly fail the test with the message from the error
