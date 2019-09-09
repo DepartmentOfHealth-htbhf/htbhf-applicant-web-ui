@@ -5,9 +5,10 @@ const sinon = require('sinon')
 const proxyquire = require('proxyquire')
 const TEST_FIXTURES = require('./test-fixtures.json')
 const { standardisePostcode } = require('./postcode')
+const { states } = require('../../common/state-machine')
 
 const request = sinon.stub()
-const { behaviourForPost } = proxyquire('./postcode', { 'request-promise': request })
+const { behaviourForPost, behaviourForGet } = proxyquire('./postcode', { 'request-promise': request })
 const config = { environment: { OS_PLACES_API_KEY: '123', GA_TRACKING_ID: 'UA-133839203-1', GOOGLE_ANALYTICS_URI: 'http://localhost:8150/collect' } }
 
 test('behaviourForPost() handles successful address lookup', async (t) => {
@@ -130,5 +131,22 @@ test('standardisePostcode() standardises the postcode', (t) => {
   t.equal(standardisePostcode('AB1      1AB'), 'AB11AB', 'should remove multiple spaces from postcode')
   t.equal(standardisePostcode('   AB1 1AB '), 'AB11AB', 'should remove spaces from around postcode')
   t.equal(standardisePostcode('ab11ab'), 'AB11AB', 'should upper case postcode')
+  t.end()
+})
+
+test(`behaviourForGet() sets state to ${states.IN_PROGRESS}`, (t) => {
+  const req = {
+    session: {
+      state: states.IN_REVIEW
+    }
+  }
+
+  const res = {}
+  const next = sinon.spy()
+
+  behaviourForGet()(req, res, next)
+
+  t.equal(next.called, true, 'calls next()')
+  t.equal(req.session.state, states.IN_PROGRESS, `updates state to ${states.IN_PROGRESS}`)
   t.end()
 })
