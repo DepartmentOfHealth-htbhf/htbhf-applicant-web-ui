@@ -1,1 +1,4 @@
-module.exports = require('./postcode-lookup')
+module.exports = {
+  ...require('./postcode-lookup'),
+  ...require('./mappings')
+}
