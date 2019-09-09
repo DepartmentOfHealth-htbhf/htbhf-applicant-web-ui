@@ -8,7 +8,10 @@ const { standardisePostcode } = require('./postcode')
 const { states } = require('../../common/state-machine')
 
 const request = sinon.stub()
-const { behaviourForPost, behaviourForGet } = proxyquire('./postcode', { 'request-promise': request })
+const validationResult = sinon.stub()
+const { behaviourForPost, behaviourForGet } = proxyquire(
+  './postcode', { 'request-promise': request },
+  './express-validator', { 'validationResult': validationResult })
 const config = { environment: { OS_PLACES_API_KEY: '123', GA_TRACKING_ID: 'UA-133839203-1', GOOGLE_ANALYTICS_URI: 'http://localhost:8150/collect' } }
 
 test('behaviourForPost() handles successful address lookup', async (t) => {
@@ -123,6 +126,19 @@ test('behaviourForPost() handles address lookup error', async (t) => {
 
   next.resetHistory()
   request.reset()
+  t.end()
+})
+
+test('behaviourForPost() does not call os places when there are validation errors', (t) => {
+  const req = {}
+  const res = {}
+  const next = () => {}
+  request.reset()
+  validationResult.returns(['error'])
+
+  behaviourForPost(req, res, next)
+
+  t.equal(request.called, false, 'should not call os places')
   t.end()
 })
 

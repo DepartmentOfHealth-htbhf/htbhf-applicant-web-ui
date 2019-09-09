@@ -25,9 +25,13 @@ When(/^I enter a postcode that returns no search results$/, async function () {
   await enterPostcodeAndSubmit(POSTCODE_WITH_NO_RESULTS)
 })
 
-When(/^I enter a postcode$/, async function () {
+When(/^I enter a postcode that returns search results$/, async function () {
   await setupPostcodeLookupWithResults(POSTCODE)
   await enterPostcodeAndSubmit(POSTCODE)
+})
+
+When(/^I enter (.*) as my postcode$/, async function (postcode) {
+  await enterPostcodeAndSubmit(postcode)
 })
 
 When(/^I select an address$/, async function () {

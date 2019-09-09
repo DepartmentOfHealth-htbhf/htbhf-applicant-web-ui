@@ -1,8 +1,12 @@
 const request = require('request-promise')
+const { validationResult } = require('express-validator')
+
 const { wrapError } = require('../../common/formatters')
 const { transformOsPlacesApiResponse } = require('./adapters')
 const { logger } = require('../../../../logger')
 const { stateMachine, states } = require('../../common/state-machine')
+const { validate } = require('./validate')
+const { sanitize } = require('../sanitize')
 
 const OS_PLACES_API_PATH = '/places/v1/addresses/postcode'
 
@@ -30,6 +34,10 @@ const auditPostcodeLookup = (config, req, outcome, numberOfResults) => {
 }
 
 const behaviourForPost = (config) => async (req, res, next) => {
+  if (!validationResult(req).isEmpty()) {
+    return next()
+  }
+
   const { OS_PLACES_URI, OS_PLACES_API_KEY } = config.environment
   const { postcode } = req.body
   const standardisedPostcode = standardisePostcode(postcode)
@@ -73,7 +81,9 @@ const postcode = {
   pageContent,
   behaviourForPost,
   behaviourForGet,
-  toggle: 'ADDRESS_LOOKUP_ENABLED'
+  toggle: 'ADDRESS_LOOKUP_ENABLED',
+  validate,
+  sanitize
 }
 
 module.exports = {

@@ -17,7 +17,7 @@ Feature: Select address
   @ignore
   Scenario: Entering a postcode shows a list of matching addresses
     Given I have entered my details up to the postcode page
-    When I enter a postcode
+    When I enter a postcode that returns search results
     Then I am shown the select address page
     And I am shown a list of addresses
     And I am shown an address not listed link
@@ -51,7 +51,7 @@ Feature: Select address
     Given I have entered my details up to the check answers page and selected an address
     When I choose to change my address
     And I click the change postcode link
-    And I enter a postcode
+    And I enter a postcode that returns search results
     Then I am shown the select address page
 
   # TODO DW HTBHF-2037 include test once address lookup is enabled
@@ -61,3 +61,16 @@ Feature: Select address
     When I choose to change my address
     And I click the address not listed link
     Then I am shown the manual address page
+
+  # TODO DW HTBHF-2037 include test once address lookup is enabled
+  @ignore
+  Scenario Outline: Enter an invalid postcode on the postcode lookup page
+    Given I have entered my details up to the postcode page
+    When I enter <postcode> as my postcode
+    Then I am informed that the postcode is in the wrong format
+
+    Examples:
+      | postcode |
+      | AA1122BB |
+      | A        |
+      | 11AA21   |
