@@ -2,6 +2,7 @@ const { addressContentSummary } = require('../content-summary')
 const { compose, isNil, path } = require('ramda')
 const { validate } = require('./validate')
 const { sanitize } = require('../sanitize')
+const { requestBody } = require('../request-body')
 
 const pageContent = ({ translate }) => ({
   title: translate('address.title'),
@@ -22,16 +23,6 @@ const contentSummary = req => isNavigable(req.session) ? addressContentSummary(r
 
 const isNavigable = compose(isNil, path(['claim', 'selectedAddress']))
 
-const requestBody = (session) => ({
-  address: {
-    addressLine1: session.claim.addressLine1,
-    addressLine2: session.claim.addressLine2,
-    townOrCity: session.claim.townOrCity,
-    county: session.claim.county,
-    postcode: session.claim.postcode
-  }
-})
-
 const manualAddress = {
   path: '/manual-address',
   template: 'manual-address',
@@ -46,6 +37,5 @@ const manualAddress = {
 module.exports = {
   contentSummary,
   manualAddress,
-  isNavigable,
-  requestBody
+  isNavigable
 }

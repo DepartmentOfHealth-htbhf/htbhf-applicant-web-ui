@@ -1,6 +1,6 @@
 const test = require('tape')
 const { assocPath } = require('ramda')
-const { contentSummary, isNavigable, requestBody } = require('./manual-address')
+const { contentSummary, isNavigable } = require('./manual-address')
 
 const req = {
   t: string => string,
@@ -111,22 +111,5 @@ test('isNavigable() returns false when there is a selected address', (t) => {
   const result = isNavigable(session)
 
   t.equal(result, false, 'Should return true when there is no session')
-  t.end()
-})
-
-test('requestBody() returns request body in correct format', (t) => {
-  const result = requestBody(req.session)
-
-  const expected = {
-    address: {
-      addressLine1: 'Flat b',
-      addressLine2: '221 Baker street',
-      townOrCity: 'London',
-      county: 'Devon',
-      postcode: 'aa1 1ab'
-    }
-  }
-
-  t.deepEqual(result, expected, 'returns request body in correct format')
   t.end()
 })
