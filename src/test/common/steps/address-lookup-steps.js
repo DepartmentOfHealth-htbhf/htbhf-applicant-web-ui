@@ -93,7 +93,7 @@ Then(/^I am shown a button to enter my address manually$/, async function () {
 Then(/^I am shown a link to enter my address manually$/, async function () {
   const manualAddressLink = await pages.selectAddress.getManualAddressLink()
   const href = await manualAddressLink.getAttribute('href')
-  expect(href).to.be.equal(pages.manualAddress.getPath())
+  expect(href).to.be.equal(pages.url + pages.manualAddress.getPath())
 })
 
 Then(/^I am shown a list of addresses$/, async function () {

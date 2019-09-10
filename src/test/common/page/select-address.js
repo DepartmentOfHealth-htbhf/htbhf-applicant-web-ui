@@ -54,7 +54,7 @@ class SelectAddress extends SubmittablePage {
   }
 
   async getManualAddressLink () {
-    return this.findByXPath('//a[contains(text(), \'Enter your address manually\')]')
+    return this.findByXPath('//a[contains(text(), \'Enter address manually\')]')
   }
 }
 
