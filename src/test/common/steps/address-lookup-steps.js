@@ -90,6 +90,12 @@ Then(/^I am shown a button to enter my address manually$/, async function () {
   expect(buttonText).to.be.equal('Enter address manually')
 })
 
+Then(/^I am shown a link to enter my address manually$/, async function () {
+  const manualAddressLink = await pages.selectAddress.getManualAddressLink()
+  const href = await manualAddressLink.getAttribute('href')
+  expect(href).to.be.equal(pages.manualAddress.getPath())
+})
+
 Then(/^I am shown a list of addresses$/, async function () {
   const addressOptions = await pages.selectAddress.getAddressOptions()
   expect(addressOptions.length).to.be.equal(11)

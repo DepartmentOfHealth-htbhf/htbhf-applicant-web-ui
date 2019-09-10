@@ -83,8 +83,7 @@ Feature: Select address
     When I enter my postcode
     Then I am shown the select address page
     And I am informed that there's a problem with the address lookup
-    And I am shown a link to change my postcode
-    And I am shown a button to enter my address manually
+    And I am shown a link to enter my address manually
 
   # TODO DW HTBHF-2037 include test once address lookup is enabled
   @ignore
@@ -94,5 +93,4 @@ Feature: Select address
     When I enter my postcode
     Then I am shown the select address page
     And I am informed that there's a problem with the address lookup
-    And I am shown a link to change my postcode
-    And I am shown a button to enter my address manually
+    And I am shown a link to enter my address manually
