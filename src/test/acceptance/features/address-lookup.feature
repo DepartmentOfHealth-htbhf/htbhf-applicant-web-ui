@@ -74,3 +74,23 @@ Feature: Select address
       | AA1122BB |
       | A        |
       | 11AA21   |
+
+  # TODO DW HTBHF-2037 include test once address lookup is enabled
+  @ignore
+  Scenario: I am shown an error response when a bad response is returned from os places and I can then enter my address manually
+    Given I have entered my details up to the postcode page
+    And OS places returns an error response
+    When I enter my postcode
+    Then I am shown the select address page
+    And I am informed that there's a problem with the address lookup
+    And I am shown a link to enter my address manually
+
+  # TODO DW HTBHF-2037 include test once address lookup is enabled
+  @ignore
+  Scenario: I am shown an error response when there are connection issues with os places and I can then enter my address manually
+    Given I have entered my details up to the postcode page
+    And OS places resets the connection
+    When I enter my postcode
+    Then I am shown the select address page
+    And I am informed that there's a problem with the address lookup
+    And I am shown a link to enter my address manually

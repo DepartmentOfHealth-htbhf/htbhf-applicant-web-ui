@@ -6,7 +6,13 @@ const Promise = require('bluebird')
 const pages = require('./pages')
 const { enterDetailsUpToPage, DEFAULT_ACTION_OPTIONS, STEP_PAGE_ACTIONS } = require('./navigation')
 const { enterPostcodeAndSubmit, selectFirstAddress } = require('./common-steps')
-const { setupPostcodeLookupWithNoResults, setupPostcodeLookupWithResults, createPostcodeLookupWithResultsMapping } = require('../wiremock')
+const {
+  setupPostcodeLookupWithNoResults,
+  setupPostcodeLookupWithResults,
+  createPostcodeLookupWithResultsMapping,
+  setupPostcodeLookupWithErrorResponse,
+  setupPostcodeLookupWithConnectionReset
+} = require('../wiremock')
 const { POSTCODE } = require('./constants')
 
 const POSTCODE_WITH_NO_RESULTS = 'BS11AA'
@@ -32,6 +38,14 @@ Given(/^I have entered my details up to the check answers page and selected an a
   await enterDetailsUpToPage({ pageName: pages.checkAnswers.getPageName(), actionOptions, stepActions })
 })
 
+Given(/^OS places returns an error response$/, async function () {
+  await setupPostcodeLookupWithErrorResponse()
+})
+
+Given(/^OS places resets the connection$/, async function () {
+  await setupPostcodeLookupWithConnectionReset()
+})
+
 When(/^I enter a postcode that returns no search results$/, async function () {
   await setupPostcodeLookupWithNoResults(POSTCODE_WITH_NO_RESULTS)
   await enterPostcodeAndSubmit(POSTCODE_WITH_NO_RESULTS)
@@ -44,6 +58,10 @@ When(/^I enter a postcode that returns search results$/, async function () {
 
 When(/^I enter (.*) as my postcode$/, async function (postcode) {
   await enterPostcodeAndSubmit(postcode)
+})
+
+When(/^I enter my postcode$/, async function () {
+  await enterPostcodeAndSubmit(POSTCODE)
 })
 
 When(/^I select an address$/, async function () {
@@ -72,6 +90,12 @@ Then(/^I am shown a button to enter my address manually$/, async function () {
   expect(buttonText).to.be.equal('Enter address manually')
 })
 
+Then(/^I am shown a link to enter my address manually$/, async function () {
+  const manualAddressLink = await pages.selectAddress.getManualAddressLink()
+  const href = await manualAddressLink.getAttribute('href')
+  expect(href).to.be.equal(pages.manualAddress.getPath())
+})
+
 Then(/^I am shown a list of addresses$/, async function () {
   const addressOptions = await pages.selectAddress.getAddressOptions()
   expect(addressOptions.length).to.be.equal(11)
@@ -97,4 +121,9 @@ Then(/^I am shown a continue button$/, async function () {
 
 Then(/^I am shown the postcode page$/, async function () {
   await pages.postcode.waitForPageLoad()
+})
+
+Then(/^I am informed that there's a problem with the address lookup$/, async function () {
+  const postcodeLookupNotWorkingElement = await pages.selectAddress.getPostcodeLookupNotWorkingElement()
+  expect(await postcodeLookupNotWorkingElement.isDisplayed()).to.be.true
 })
