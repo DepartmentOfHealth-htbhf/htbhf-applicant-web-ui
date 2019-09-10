@@ -1,6 +1,6 @@
 const { stateMachine, states, actions } = require('../common/state-machine')
 const { getPreviousPath } = require('../common/get-previous-path')
-const { getGroupedRowData } = require('./get-row-data')
+const { getSummaryListsForSteps } = require('./get-row-data')
 const { getChildrensDatesOfBirthRows } = require('./get-childrens-dates-of-birth-rows')
 
 const pageContent = ({ translate }) => ({
@@ -40,7 +40,7 @@ const getCheckAnswers = (steps) => (req, res) => {
 
   res.render('check-answers', {
     ...localisation,
-    claimSummaryLists: getGroupedRowData(req, steps),
+    claimSummaryLists: getSummaryListsForSteps({ req, steps }),
     childrensDatesOfBirthRows: children ? getLocalisedChildrensDatesOfBirthRows(children) : [],
     previous: getLastNavigablePath(steps, req)
   })

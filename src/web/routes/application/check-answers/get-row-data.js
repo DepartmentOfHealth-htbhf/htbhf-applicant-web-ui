@@ -1,36 +1,31 @@
-const { pipe, map, filter, flatten, isNil, groupBy, pathOr, assoc } = require('ramda')
+const { assoc, compose, filter, flatten, isNil, groupBy, propOr } = require('ramda')
 const { notIsNil } = require('../../../../common/predicates')
 const { DEFAULT_LIST, SUMMARY_LIST_KEY } = require('./constants')
 
-const SUMMARY_LIST_PATH = [SUMMARY_LIST_KEY]
-
-const getFlattenedRowData = (req) => pipe(map(getRowData(req)), filter(notIsNil), flatten)
-
-const applyPathToRow = (step, result) => {
-  const assocStepPath = assoc('path', step.path)
-  return Array.isArray(result) ? result.map(assocStepPath) : assocStepPath(result)
+const assocPathWithContentSummary = (path, summary) => {
+  const assocPathProp = assoc('path', path)
+  return Array.isArray(summary) ? summary.map(assocPathProp) : assocPathProp(summary)
 }
 
-const getRowData = (req) => (step) => {
-  if (isNil(step.contentSummary)) {
-    return null
-  }
-  const result = step.contentSummary(req)
-  return isNil(result) ? null : applyPathToRow(step, result)
+const getContentSummary = (req) => (step) => {
+  const summary = isNil(step.contentSummary) ? null : step.contentSummary(req)
+  return isNil(summary) ? null : assocPathWithContentSummary(step.path, summary)
 }
 
-const listPath = pathOr(DEFAULT_LIST, SUMMARY_LIST_PATH)
+const getSummaryListRows = ({ req, steps }) => steps.map(getContentSummary(req))
 
-const groupRowData = groupBy(listPath)
+const normaliseRows = compose(flatten, filter(notIsNil))
 
-const getGroupedRowData = (req, steps) => {
-  const flattened = getFlattenedRowData(req)(steps)
-  return groupRowData(flattened)
-}
+const listProp = propOr(DEFAULT_LIST, SUMMARY_LIST_KEY)
+
+const groupByList = groupBy(listProp)
+
+const getSummaryListsForSteps = compose(groupByList, normaliseRows, getSummaryListRows)
 
 module.exports = {
-  getRowData,
-  getFlattenedRowData,
-  groupRowData,
-  getGroupedRowData
+  getContentSummary,
+  getSummaryListRows,
+  normaliseRows,
+  groupByList,
+  getSummaryListsForSteps
 }
