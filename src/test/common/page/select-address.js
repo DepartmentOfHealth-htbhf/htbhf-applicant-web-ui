@@ -28,7 +28,7 @@ class SelectAddress extends SubmittablePage {
   }
 
   async getPostcodeLookupNotWorkingElement () {
-    return this.findByXPath('//h2[contains(text(), \'There’s a problem with the postcode finder\')]')
+    return this.findByXPath('//h1[contains(text(), \'There’s a problem with the postcode finder\')]')
   }
 
   async getAddressOptions () {
@@ -51,6 +51,10 @@ class SelectAddress extends SubmittablePage {
   async clickChangePostcodeLink () {
     const changePostcodeLink = await this.getChangePostcodeLink()
     await changePostcodeLink.click()
+  }
+
+  async getManualAddressLink () {
+    return this.findByXPath('//a[contains(text(), \'Enter address manually\')]')
   }
 }
 

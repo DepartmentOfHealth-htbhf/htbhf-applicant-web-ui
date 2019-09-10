@@ -59,7 +59,14 @@ const behaviourForPost = (config) => async (req, res, next) => {
   }
 }
 
+const resetPostcodeLookupError = (req) => {
+  if (req.session.postcodeLookupError) {
+    delete req.session.postcodeLookupError
+  }
+}
+
 const behaviourForGet = () => (req, res, next) => {
+  resetPostcodeLookupError(req)
   stateMachine.setState(states.IN_PROGRESS, req)
   next()
 }

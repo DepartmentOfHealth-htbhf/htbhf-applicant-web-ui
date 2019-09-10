@@ -157,10 +157,11 @@ test('standardisePostcode() standardises the postcode', (t) => {
   t.end()
 })
 
-test(`behaviourForGet() sets state to ${states.IN_PROGRESS}`, (t) => {
+test(`behaviourForGet() sets state to ${states.IN_PROGRESS} and resets postcodeLookupError`, (t) => {
   const req = {
     session: {
-      state: states.IN_REVIEW
+      state: states.IN_REVIEW,
+      postcodeLookupError: true
     }
   }
 
@@ -171,5 +172,6 @@ test(`behaviourForGet() sets state to ${states.IN_PROGRESS}`, (t) => {
 
   t.equal(next.called, true, 'calls next()')
   t.equal(req.session.state, states.IN_PROGRESS, `updates state to ${states.IN_PROGRESS}`)
+  t.equal(req.session.postcodeLookupError, undefined, 'resets postcodeLookupError')
   t.end()
 })

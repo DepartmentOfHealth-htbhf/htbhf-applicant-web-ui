@@ -34,9 +34,9 @@ const behaviourForGet = () => (req, res, next) => {
   res.locals.postcodeLookupError = req.session.postcodeLookupError
   if (!res.locals.postcodeLookupError) {
     res.locals.addresses = req.session.postcodeLookupResults.map(buildAddressOption)
-    // Manual address is further in the flow than select-address, therefore this line is needed to prevent the state machine from redirecting the user back to select-address.
-    req.session.nextAllowedStep = '/manual-address'
   }
+  // Manual address is further in the flow than select-address, therefore this line is needed to prevent the state machine from redirecting the user back to select-address.
+  req.session.nextAllowedStep = '/manual-address'
   next()
 }
 

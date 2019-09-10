@@ -61,6 +61,7 @@ test('behaviourForGet() adds addresses to res.locals and resets the address', (t
   behaviourForGet()(req, res, next)
 
   t.equal(req.session.claim.selectAddress, undefined, 'should reset the selected address')
+  t.equal(req.session.nextAllowedStep, '/manual-address', 'next allowed step should be manual address')
   t.deepEqual(res.locals.addresses, expected, 'adds addresses to res.locals')
   t.equal(res.locals.postcodeLookupError, false, 'sets res.locals.postcodeLookupError')
   t.equal(next.called, true, 'calls next()')
@@ -80,6 +81,7 @@ test('behaviourForGet() handles postcodeLookupErrors', (t) => {
   behaviourForGet()(req, res, next)
 
   t.equal(res.locals.postcodeLookupError, true, 'should set res.locals.postcodeLookupError to value on session')
+  t.equal(req.session.nextAllowedStep, '/manual-address', 'next allowed step should be manual address')
   t.end()
 })
 

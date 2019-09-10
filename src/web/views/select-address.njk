@@ -1,50 +1,5 @@
-{% extends "templates/form.njk" %}
-{% from "fieldset/macro.njk" import govukFieldset %}
-{% from "inset-text/macro.njk" import govukInsetText %}
-{% from "select/macro.njk" import govukSelect %}
-{% from "macros/htbhf-form-description.njk" import htbhfFormDescription %}
-
-{% set buttonText = enterManualAddress if (addresses | length === 0) else continue %}
-
-{% block formContent %}
-
-    {% call govukFieldset({
-        legend: {
-            text: heading,
-            classes: "govuk-fieldset__legend--xl",
-            isPageHeading: true
-        }
-    }) %}
-
-        {{ htbhfFormDescription(formDescription) }}
-
-        <h2 class="govuk-heading-m govuk-!-margin-bottom-2">{{ postcodeLabel }}</h2>
-        <div class="govuk-body govuk-!-margin-bottom-6">
-            <strong class="govuk-!-margin-right-4">{{ claim.postcode | upper }}</strong>
-            <a class="govuk-link" href="/postcode">{{ change }}</a>
-        </div>
-
-        {% if postcodeLookupError %}
-            <h2 class="govuk-heading-m">{{ errorWithPostcodeLookup }}</h2>
-        {% elif addresses | length === 0 %}
-            <h2 class="govuk-heading-m">{{ addressNotFound }}</h2>
-        {% else %}
-            {{ govukSelect({
-                id: "address-results",
-                name: "selectedAddress",
-                label: {
-                    html: '<span class="govuk-heading-m govuk-!-margin-bottom-2">' + selectAddressLabel + '</span>'
-                },
-                items: addresses
-            }) }}
-
-            <a class="govuk-link govuk-!-font-size-19" href="/manual-address">{{ addressNotListed }}</a>
-        {% endif %}
-
-    {% endcall %}
-
-    {{ govukInsetText({
-        text: explanation
-    }) }}
-
-{% endblock %}
+{% if postcodeLookupError %}
+    {% include "postcode-lookup-error.njk" %}
+{%  else %}
+    {% include "select-address-form.njk" %}
+{% endif %}
