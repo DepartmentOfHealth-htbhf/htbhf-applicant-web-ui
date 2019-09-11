@@ -28,6 +28,7 @@ echo "PACKAGE_VERSION=$PACKAGE_VERSION, GIT_VERSION=$GIT_VERSION, NEW_VERSION=$N
 
 # we're currently in a detached head - checkout master so we can push our new version back
 git checkout master
+git pull
 
 # tell npm to update the version and create a tag
 npm version ${NEW_VERSION} -m "Set version to %s [ci skip]"
