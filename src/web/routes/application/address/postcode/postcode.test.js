@@ -124,7 +124,7 @@ test('behaviourForPost() handles address lookup error', async (t) => {
     t.deepEqual(req.session.postcodeLookupResults, undefined, 'does not add postcode lookup results to session')
     t.equal(req.session.postcodeLookupError, true, 'sets postcode lookup error on session')
     t.equal(next.called, true, 'calls next()')
-    t.deepEqual(errorSpy.getCall(0).args[0], 'Error looking up address for postcode: Error: error', 'logs an error')
+    t.equal(errorSpy.getCall(0).args[0], 'Error looking up address for postcode: Error: error', 'logs an error')
     t.deepEqual(request.getCall(1).args[0], expectedGoogleAnalyticsRequestArgs, 'should make request to Google Analytics with correct parameters')
   } catch (error) {
     // Explicitly fail the test with the message from the error
