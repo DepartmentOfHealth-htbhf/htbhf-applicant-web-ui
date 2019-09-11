@@ -10,7 +10,7 @@ const { states } = require('../../common/state-machine')
 const errorSpy = sinon.spy()
 const logger = { error: errorSpy }
 const request = sinon.stub()
-const isEmpty = sinon.stub().returns(true)
+const isEmpty = sinon.stub()
 const validationResult = () => ({ isEmpty })
 
 const { behaviourForPost, behaviourForGet } = proxyquire(
@@ -23,7 +23,17 @@ const { behaviourForPost, behaviourForGet } = proxyquire(
 
 const config = { environment: { OS_PLACES_API_KEY: '123', GA_TRACKING_ID: 'UA-133839203-1', GOOGLE_ANALYTICS_URI: 'http://localhost:8150/collect' } }
 
+const resetStubs = () => {
+  request.reset()
+  isEmpty.reset()
+  errorSpy.resetHistory()
+}
+
 test('behaviourForPost() handles successful address lookup', async (t) => {
+  // Set return values for stubs
+  isEmpty.returns(true)
+  request.onFirstCall().resolves(TEST_FIXTURES).onSecondCall().resolves()
+
   const req = {
     headers: { 'x-forwarded-for': '100.200.0.45' },
     body: { postcode: 'BS7 8EE' },
@@ -81,8 +91,6 @@ test('behaviourForPost() handles successful address lookup', async (t) => {
     }
   ]
 
-  request.onFirstCall().resolves(TEST_FIXTURES).onSecondCall().resolves()
-
   const expectedGoogleAnalyticsRequestArgs = {
     uri: 'http://localhost:8150/collect?v=1&tid=UA-133839203-1&t=event&cid=skdjfhs-sdfnks-sdfhbsd&ec=AddressLookup&ea=SuccessfulLookup&el=100.200.0.45&ev=44',
     json: true,
@@ -100,13 +108,15 @@ test('behaviourForPost() handles successful address lookup', async (t) => {
     t.fail(error)
   }
 
-  next.resetHistory()
-  request.reset()
+  resetStubs()
   t.end()
 })
 
 test('behaviourForPost() handles address lookup error', async (t) => {
-  errorSpy.resetHistory()
+  // Set return values for stubs
+  isEmpty.returns(true)
+  request.onFirstCall().rejects(new Error('error')).onSecondCall().resolves()
+
   const req = {
     headers: { 'x-forwarded-for': '100.200.0.45' },
     body: { postcode: 'BS7 8EE' },
@@ -114,8 +124,6 @@ test('behaviourForPost() handles address lookup error', async (t) => {
   }
   const res = {}
   const next = sinon.spy()
-
-  request.onFirstCall().rejects(new Error('error')).onSecondCall().resolves()
 
   const expectedGoogleAnalyticsRequestArgs = {
     uri: 'http://localhost:8150/collect?v=1&tid=UA-133839203-1&t=event&cid=skdjfhs-sdfnks-sdfhbsd&ec=AddressLookup&ea=FailedLookup&el=100.200.0.45&ev=0',
@@ -136,24 +144,31 @@ test('behaviourForPost() handles address lookup error', async (t) => {
     t.fail(error)
   }
 
-  next.resetHistory()
-  request.reset()
+  resetStubs()
   t.end()
 })
 
 test('behaviourForPost() does not call os places when there are validation errors', async (t) => {
+  // Set return values for stubs
+  isEmpty.returns(false)
+
   const req = {}
   const res = {}
   const next = () => {}
-  request.reset()
-  isEmpty.returns(false)
 
   await behaviourForPost(config)(req, res, next)
   t.equal(request.called, false, 'should not call os places')
+  resetStubs()
   t.end()
 })
 
 test('behaviourForPost() handles 400 response from OS places API', async (t) => {
+  // Set return values for stubs
+  const osPlacesError = new Error('Os places error')
+  osPlacesError.statusCode = 400
+  request.onFirstCall().rejects(osPlacesError).onSecondCall().resolves()
+  isEmpty.returns(true)
+
   const req = {
     headers: { 'x-forwarded-for': '100.200.0.45' },
     body: { postcode: 'BS14TM' },
@@ -168,11 +183,6 @@ test('behaviourForPost() handles 400 response from OS places API', async (t) => 
     timeout: 5000
   }
 
-  const osPlacesError = new Error('Os places error')
-  osPlacesError.statusCode = 400
-
-  request.onFirstCall().rejects(osPlacesError).onSecondCall().resolves()
-
   await behaviourForPost(config)(req, res, next)
 
   t.deepEqual(req.session.postcodeLookupResults, [], 'adds empty postcode lookup results to session')
@@ -180,8 +190,7 @@ test('behaviourForPost() handles 400 response from OS places API', async (t) => 
   t.deepEqual(request.getCall(1).args[0], expectedGoogleAnalyticsRequestArgs, 'should make request to Google Analytics with correct parameters')
   t.equal(next.called, true, 'calls next()')
 
-  next.resetHistory()
-  request.reset()
+  resetStubs()
   t.end()
 })
 
