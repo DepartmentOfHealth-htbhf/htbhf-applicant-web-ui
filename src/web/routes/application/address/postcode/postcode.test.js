@@ -12,12 +12,16 @@ const logger = { error: errorSpy }
 const request = sinon.stub()
 const isEmpty = sinon.stub()
 const validationResult = () => ({ isEmpty })
+const auditSuccessfulPostcodeLookup = sinon.stub()
+const auditFailedPostcodeLookup = sinon.stub()
+const auditInvalidPostcodeLookup = sinon.stub()
 
 const { behaviourForPost, behaviourForGet } = proxyquire(
   './postcode', {
     'request-promise': request,
     'express-validator': { validationResult },
-    '../../../../logger': { logger }
+    '../../../../logger': { logger },
+    './os-places': { auditSuccessfulPostcodeLookup, auditFailedPostcodeLookup, auditInvalidPostcodeLookup }
   }
 )
 
@@ -32,7 +36,7 @@ const resetStubs = () => {
 test('behaviourForPost() handles successful address lookup', async (t) => {
   // Set return values for stubs
   isEmpty.returns(true)
-  request.onFirstCall().resolves(TEST_FIXTURES).onSecondCall().resolves()
+  request.resolves(TEST_FIXTURES)
 
   const req = {
     headers: { 'x-forwarded-for': '100.200.0.45' },
@@ -42,7 +46,7 @@ test('behaviourForPost() handles successful address lookup', async (t) => {
   const res = {}
   const next = sinon.spy()
 
-  const expectedAdresses = [
+  const expectedAddresses = [
     {
       ADDRESS: 'Alan Jeffery Engineering, 1, Valley Road, Plymouth',
       ORGANISATION_NAME: 'Alan Jeffery Engineering',
@@ -91,22 +95,11 @@ test('behaviourForPost() handles successful address lookup', async (t) => {
     }
   ]
 
-  const expectedGoogleAnalyticsRequestArgs = {
-    uri: 'http://localhost:8150/collect?v=1&tid=UA-133839203-1&t=event&cid=skdjfhs-sdfnks-sdfhbsd&ec=AddressLookup&ea=SuccessfulLookup&el=100.200.0.45&ev=44',
-    json: true,
-    timeout: 5000
-  }
+  await behaviourForPost(config)(req, res, next)
 
-  try {
-    await behaviourForPost(config)(req, res, next)
-
-    t.deepEqual(req.session.postcodeLookupResults, expectedAdresses, 'adds postcode lookup results to session')
-    t.deepEqual(request.getCall(1).args[0], expectedGoogleAnalyticsRequestArgs, 'should make request to Google Analytcis with correct parameters')
-    t.equal(next.called, true, 'calls next()')
-  } catch (error) {
-    // Explicitly fail the test with the message from the error
-    t.fail(error)
-  }
+  t.deepEqual(req.session.postcodeLookupResults, expectedAddresses, 'adds postcode lookup results to session')
+  t.deepEqual(auditSuccessfulPostcodeLookup.getCall(0).args, [config, req, 44], 'should audit successful postcode with correct parameters')
+  t.equal(next.called, true, 'calls next()')
 
   resetStubs()
   t.end()
@@ -115,7 +108,7 @@ test('behaviourForPost() handles successful address lookup', async (t) => {
 test('behaviourForPost() handles address lookup error', async (t) => {
   // Set return values for stubs
   isEmpty.returns(true)
-  request.onFirstCall().rejects(new Error('error')).onSecondCall().resolves()
+  request.rejects(new Error('error'))
 
   const req = {
     headers: { 'x-forwarded-for': '100.200.0.45' },
@@ -125,24 +118,13 @@ test('behaviourForPost() handles address lookup error', async (t) => {
   const res = {}
   const next = sinon.spy()
 
-  const expectedGoogleAnalyticsRequestArgs = {
-    uri: 'http://localhost:8150/collect?v=1&tid=UA-133839203-1&t=event&cid=skdjfhs-sdfnks-sdfhbsd&ec=AddressLookup&ea=FailedLookup&el=100.200.0.45&ev=0',
-    json: true,
-    timeout: 5000
-  }
+  await behaviourForPost(config)(req, res, next)
 
-  try {
-    await behaviourForPost(config)(req, res, next)
-
-    t.deepEqual(req.session.postcodeLookupResults, undefined, 'does not add postcode lookup results to session')
-    t.equal(req.session.postcodeLookupError, true, 'sets postcode lookup error on session')
-    t.equal(next.called, true, 'calls next()')
-    t.equal(errorSpy.getCall(0).args[0], 'Error looking up address for postcode: Error: error', 'logs an error')
-    t.deepEqual(request.getCall(1).args[0], expectedGoogleAnalyticsRequestArgs, 'should make request to Google Analytics with correct parameters')
-  } catch (error) {
-    // Explicitly fail the test with the message from the error
-    t.fail(error)
-  }
+  t.deepEqual(req.session.postcodeLookupResults, undefined, 'does not add postcode lookup results to session')
+  t.equal(req.session.postcodeLookupError, true, 'sets postcode lookup error on session')
+  t.equal(next.called, true, 'calls next()')
+  t.equal(errorSpy.getCall(0).args[0], 'Error looking up address for postcode: Error: error', 'logs an error')
+  t.deepEqual(auditFailedPostcodeLookup.getCall(0).args, [config, req], 'should audit failed postcode with correct parameters')
 
   resetStubs()
   t.end()
@@ -166,7 +148,7 @@ test('behaviourForPost() handles 400 response from OS places API', async (t) => 
   // Set return values for stubs
   const osPlacesError = new Error('Os places error')
   osPlacesError.statusCode = 400
-  request.onFirstCall().rejects(osPlacesError).onSecondCall().resolves()
+  request.rejects(osPlacesError)
   isEmpty.returns(true)
 
   const req = {
@@ -177,17 +159,11 @@ test('behaviourForPost() handles 400 response from OS places API', async (t) => 
   const res = {}
   const next = sinon.spy()
 
-  const expectedGoogleAnalyticsRequestArgs = {
-    uri: 'http://localhost:8150/collect?v=1&tid=UA-133839203-1&t=event&cid=skdjfhs-sdfnks-sdfhbsd&ec=AddressLookup&ea=InvalidPostcode&el=100.200.0.45&ev=0',
-    json: true,
-    timeout: 5000
-  }
-
   await behaviourForPost(config)(req, res, next)
 
   t.deepEqual(req.session.postcodeLookupResults, [], 'adds empty postcode lookup results to session')
   t.equal(req.session.postcodeLookupError, undefined, 'does not set postcode lookup error on session')
-  t.deepEqual(request.getCall(1).args[0], expectedGoogleAnalyticsRequestArgs, 'should make request to Google Analytics with correct parameters')
+  t.deepEqual(auditInvalidPostcodeLookup.getCall(0).args, [config, req], 'should audit invalid postcode with correct parameters')
   t.equal(next.called, true, 'calls next()')
 
   resetStubs()
