@@ -3,6 +3,20 @@ const request = require('request-promise')
 const { logger } = require('../../../../logger')
 
 const REQUEST_TIMEOUT = 5000
+const OS_PLACES_API_PATH = '/places/v1/addresses/postcode'
+
+const standardisePostcode = (postcode) => postcode.toUpperCase().replace(/\s/g, '')
+
+const getAddressLookupResults = async (config, postcode) => {
+  const { OS_PLACES_URI, OS_PLACES_API_KEY } = config.environment
+  const standardisedPostcode = standardisePostcode(postcode)
+
+  return request({
+    uri: `${OS_PLACES_URI}${OS_PLACES_API_PATH}?postcode=${standardisedPostcode}&key=${OS_PLACES_API_KEY}`,
+    json: true,
+    timeout: REQUEST_TIMEOUT
+  })
+}
 
 const buildGoogleAnalyticsFullUri = (gaBaseUrl, trackingId, result, ipAddress, numberOfResults, sessionId) =>
   `${gaBaseUrl}?v=1&tid=${trackingId}&t=event&cid=${sessionId}&ec=AddressLookup&ea=${result}&el=${ipAddress}&ev=${numberOfResults}`
@@ -30,5 +44,7 @@ const auditPostcodeLookup = (config, req, outcome, numberOfResults) => {
 module.exports = {
   auditSuccessfulPostcodeLookup,
   auditFailedPostcodeLookup,
-  auditInvalidPostcodeLookup
+  auditInvalidPostcodeLookup,
+  getAddressLookupResults,
+  standardisePostcode
 }
