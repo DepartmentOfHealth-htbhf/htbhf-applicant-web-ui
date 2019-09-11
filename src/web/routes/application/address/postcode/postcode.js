@@ -53,7 +53,7 @@ const behaviourForPost = (config) => async (req, res, next) => {
     return next()
   } catch (error) {
     auditFailedPostcodeLookup(config, req)
-    logger.error('Error looking up address for postcode: ', JSON.stringify(error))
+    logger.error(`Error looking up address for postcode: ${error}`)
     req.session.postcodeLookupError = true
     return next()
   }
