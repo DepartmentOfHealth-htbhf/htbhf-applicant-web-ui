@@ -20,7 +20,7 @@ const auditSuccessfulPostcodeLookup = (config, req, numberOfResults) => auditPos
 
 const auditFailedPostcodeLookup = (config, req) => auditPostcodeLookup(config, req, 'FailedLookup', 0)
 
-const auditInvalidPostcodeLookup = (config, req) => auditPostcodeLookup(config, req, 'InvalidLookup', 0)
+const auditInvalidPostcodeLookup = (config, req) => auditPostcodeLookup(config, req, 'InvalidPostcode', 0)
 
 const auditPostcodeLookup = (config, req, outcome, numberOfResults) => {
   const sessionId = req.session.id

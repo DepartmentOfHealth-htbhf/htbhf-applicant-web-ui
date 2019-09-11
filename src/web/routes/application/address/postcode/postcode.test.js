@@ -178,7 +178,7 @@ test('behaviourForPost() handles 400 response from OS places API', async (t) => 
   const next = sinon.spy()
 
   const expectedGoogleAnalyticsRequestArgs = {
-    uri: 'http://localhost:8150/collect?v=1&tid=UA-133839203-1&t=event&cid=skdjfhs-sdfnks-sdfhbsd&ec=AddressLookup&ea=InvalidLookup&el=100.200.0.45&ev=0',
+    uri: 'http://localhost:8150/collect?v=1&tid=UA-133839203-1&t=event&cid=skdjfhs-sdfnks-sdfhbsd&ec=AddressLookup&ea=InvalidPostcode&el=100.200.0.45&ev=0',
     json: true,
     timeout: 5000
   }
