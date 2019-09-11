@@ -1,7 +1,6 @@
 const request = require('request-promise')
 const { validationResult } = require('express-validator')
 
-const { wrapError } = require('../../common/formatters')
 const { transformOsPlacesApiResponse } = require('./adapters')
 const { logger } = require('../../../../logger')
 const { stateMachine, states } = require('../../common/state-machine')
@@ -54,14 +53,20 @@ const behaviourForPost = (config) => async (req, res, next) => {
     return next()
   } catch (error) {
     auditFailedPostcodeLookup(config, req)
-    return next(wrapError({
-      cause: error,
-      message: 'Error looking up address for postcode'
-    }))
+    logger.error(`Error looking up address for postcode: ${error}`)
+    req.session.postcodeLookupError = true
+    return next()
+  }
+}
+
+const resetPostcodeLookupError = (req) => {
+  if (req.session.postcodeLookupError) {
+    delete req.session.postcodeLookupError
   }
 }
 
 const behaviourForGet = () => (req, res, next) => {
+  resetPostcodeLookupError(req)
   stateMachine.setState(states.IN_PROGRESS, req)
   next()
 }
