@@ -1,0 +1,6 @@
+{% extends "templates/page.njk" %}
+
+{% block pageContent %}
+    <h1 class="govuk-heading-l">{{ errorWithPostcodeLookup }}</h1>
+    <a class="govuk-link govuk-!-font-size-19" href="/manual-address">{{ enterManualAddress }}</a>
+{% endblock %}

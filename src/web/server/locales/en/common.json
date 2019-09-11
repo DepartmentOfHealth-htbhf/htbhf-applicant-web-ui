@@ -70,7 +70,8 @@
     "hint": "Enter the first line of your address",
     "addressNotFound": "We cannot find that address",
     "selectAddressLabel": "Select an address",
-    "addressNotListed": "My address is not listed"
+    "addressNotListed": "My address is not listed",
+    "errorWithPostcodeLookup": "There’s a problem with the postcode finder"
   },
   "postcode": {
     "title": "What’s your address?",
