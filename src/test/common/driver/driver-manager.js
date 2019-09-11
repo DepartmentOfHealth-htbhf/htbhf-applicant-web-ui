@@ -15,7 +15,7 @@ class DriverManager {
     if (HEADLESS_BROWSER_TESTS === 'true') {
       this.driver = new webdriver.Builder()
         .forBrowser(TEST_BROWSER)
-        .setChromeOptions(new chrome.Options().headless().windowSize(SCREEN_RESOLUTION))
+        .setChromeOptions(new chrome.Options().addArguments('--no-sandbox', '--disable-dev-shm-usage').headless().windowSize(SCREEN_RESOLUTION))
         .setFirefoxOptions(new firefox.Options().headless().windowSize(SCREEN_RESOLUTION))
         .build()
     } else {
