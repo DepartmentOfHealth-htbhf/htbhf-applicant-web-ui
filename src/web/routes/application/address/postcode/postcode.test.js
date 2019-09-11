@@ -153,6 +153,38 @@ test('behaviourForPost() does not call os places when there are validation error
   t.end()
 })
 
+test('behaviourForPost() handles 400 response from OS places API', async (t) => {
+  const req = {
+    headers: { 'x-forwarded-for': '100.200.0.45' },
+    body: { postcode: 'BS14TM' },
+    session: { id: 'skdjfhs-sdfnks-sdfhbsd' }
+  }
+  const res = {}
+  const next = sinon.spy()
+
+  const expectedGoogleAnalyticsRequestArgs = {
+    uri: 'http://localhost:8150/collect?v=1&tid=UA-133839203-1&t=event&cid=skdjfhs-sdfnks-sdfhbsd&ec=AddressLookup&ea=InvalidLookup&el=100.200.0.45&ev=0',
+    json: true,
+    timeout: 5000
+  }
+
+  const osPlacesError = new Error('Os places error')
+  osPlacesError.statusCode = 400
+
+  request.onFirstCall().rejects(osPlacesError).onSecondCall().resolves()
+
+  await behaviourForPost(config)(req, res, next)
+
+  t.deepEqual(req.session.postcodeLookupResults, [], 'adds empty postcode lookup results to session')
+  t.equal(req.session.postcodeLookupError, undefined, 'does not set postcode lookup error on session')
+  t.deepEqual(request.getCall(1).args[0], expectedGoogleAnalyticsRequestArgs, 'should make request to Google Analytics with correct parameters')
+  t.equal(next.called, true, 'calls next()')
+
+  next.resetHistory()
+  request.reset()
+  t.end()
+})
+
 test('standardisePostcode() standardises the postcode', (t) => {
   t.equal(standardisePostcode('AB1 1AB'), 'AB11AB', 'should removes space from postcode')
   t.equal(standardisePostcode('AB1      1AB'), 'AB11AB', 'should remove multiple spaces from postcode')
