@@ -10,11 +10,16 @@ const { states } = require('../../common/state-machine')
 const errorSpy = sinon.spy()
 const logger = { error: errorSpy }
 const request = sinon.stub()
-const validationResult = sinon.stub()
+const isEmpty = sinon.stub().returns(true)
+const validationResult = () => ({ isEmpty })
 
 const { behaviourForPost, behaviourForGet } = proxyquire(
-  './postcode', { 'request-promise': request, '../../../../logger': { logger } },
-  './express-validator', { 'validationResult': validationResult })
+  './postcode', {
+    'request-promise': request,
+    'express-validator': { validationResult },
+    '../../../../logger': { logger }
+  }
+)
 
 const config = { environment: { OS_PLACES_API_KEY: '123', GA_TRACKING_ID: 'UA-133839203-1', GOOGLE_ANALYTICS_URI: 'http://localhost:8150/collect' } }
 
@@ -136,15 +141,14 @@ test('behaviourForPost() handles address lookup error', async (t) => {
   t.end()
 })
 
-test('behaviourForPost() does not call os places when there are validation errors', (t) => {
+test('behaviourForPost() does not call os places when there are validation errors', async (t) => {
   const req = {}
   const res = {}
   const next = () => {}
   request.reset()
-  validationResult.returns(['error'])
+  isEmpty.returns(false)
 
-  behaviourForPost(req, res, next)
-
+  await behaviourForPost(config)(req, res, next)
   t.equal(request.called, false, 'should not call os places')
   t.end()
 })
