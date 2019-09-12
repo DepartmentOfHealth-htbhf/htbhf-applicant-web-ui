@@ -9,6 +9,7 @@ applications:
     NODE_ENV: production
     APP_VERSION: ((app-version))
     GOOGLE_ANALYTICS_URI: https://www.google-analytics.com/collect
+    OPTIMIZE_MEMORY: true
   buildpacks:
     - nodejs_buildpack
   services:
