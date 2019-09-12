@@ -34,6 +34,17 @@ Feature: Address
       | A        |
       | 11AA21   |
 
+  Scenario Outline: Entering a postcode from the Channel Islands or Isle of Man shows an error
+    When I enter an address with postcode <postcode>
+    Then I am informed that you can only apply if I live in England, Wales or Northern Ireland
+
+    Examples:
+      | postcode |
+      | GY1 1WR  |
+      | JE3 1FU  |
+      | IM1 3LY  |
+
+
   Scenario: Do not enter in any address fields
     When I do not enter in any address fields
     Then I am informed that I need to enter an address on the 'address line 1', 'town or city' and 'postcode' fields

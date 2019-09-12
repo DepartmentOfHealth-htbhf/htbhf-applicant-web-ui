@@ -1,7 +1,7 @@
 const test = require('tape')
 const safeRegex = require('safe-regex')
 
-const { UK_POSTCODE_PATTERN } = require('./constants')
+const { UK_POSTCODE_PATTERN, CHANNEL_ISLANDS_AND_IOM_POSTCODE_PATTERN } = require('./constants')
 
 test('invalid postcode does not match regex', (t) => {
   const invalidPostcodes = [
@@ -44,5 +44,47 @@ test('valid postcode matches regex', (t) => {
 
 test('postcode regex is secure', (t) => {
   t.equal(safeRegex(UK_POSTCODE_PATTERN), true)
+  t.end()
+})
+
+test('channel island and iom postcode regex is secure', (t) => {
+  t.equal(safeRegex(CHANNEL_ISLANDS_AND_IOM_POSTCODE_PATTERN), true)
+  t.end()
+})
+
+test('channel island and iom postcode regex matches channel island and iom postcodes', (t) => {
+  const channelIslandAndIOMPostcodes = [
+    'GY1 1WR',
+    'JE3 1FU',
+    'IM1 3LY',
+    'Gy1 1wr',
+    'je311fu',
+    'im13ly'
+  ]
+
+  channelIslandAndIOMPostcodes.forEach(postcode => {
+    const match = CHANNEL_ISLANDS_AND_IOM_POSTCODE_PATTERN.test(postcode)
+    t.equal(match, true)
+  })
+
+  t.end()
+})
+
+test('channel island and iom postcode regex does not match UK postcodes', (t) => {
+  const ukPostcodes = [
+    'EC11BB',
+    'W1A0AX',
+    'M11AE',
+    'B338TH',
+    'CR26XH',
+    'DN551PT',
+    'DN55 1PT'
+  ]
+
+  ukPostcodes.forEach(postcode => {
+    const match = CHANNEL_ISLANDS_AND_IOM_POSTCODE_PATTERN.test(postcode)
+    t.equal(match, false)
+  })
+
   t.end()
 })
