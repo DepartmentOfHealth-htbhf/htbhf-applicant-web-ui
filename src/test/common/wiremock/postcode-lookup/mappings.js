@@ -454,7 +454,7 @@ const createPostcodeLookupWithErrorResponseMapping = () => {
       }
     },
     'response': {
-      'status': 400,
+      'status': 500,
       'jsonBody': {
         'header': {
           'offset': 0,
