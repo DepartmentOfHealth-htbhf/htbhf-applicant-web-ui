@@ -20,6 +20,8 @@ const auditSuccessfulPostcodeLookup = (config, req, numberOfResults) => auditPos
 
 const auditFailedPostcodeLookup = (config, req) => auditPostcodeLookup(config, req, 'FailedLookup', 0)
 
+const auditInvalidPostcodeLookup = (config, req) => auditPostcodeLookup(config, req, 'InvalidPostcode', 0)
+
 const auditPostcodeLookup = (config, req, outcome, numberOfResults) => {
   const sessionId = req.session.id
   const ipAddress = req.headers['x-forwarded-for']
@@ -52,6 +54,12 @@ const behaviourForPost = (config) => async (req, res, next) => {
     auditSuccessfulPostcodeLookup(config, req, addressLookupResults.header.totalresults)
     return next()
   } catch (error) {
+    if (error.statusCode === 400) {
+      req.session.postcodeLookupResults = []
+      auditInvalidPostcodeLookup(config, req)
+      return next()
+    }
+
     auditFailedPostcodeLookup(config, req)
     logger.error(`Error looking up address for postcode: ${error}`)
     req.session.postcodeLookupError = true
