@@ -2,6 +2,7 @@ const { addressContentSummary } = require('../content-summary')
 const { compose, isNil, path } = require('ramda')
 const { validate } = require('./validate')
 const { sanitize } = require('../sanitize')
+const { requestBody } = require('../request-body')
 
 const pageContent = ({ translate }) => ({
   title: translate('address.title'),
@@ -29,7 +30,8 @@ const manualAddress = {
   validate,
   sanitize,
   contentSummary,
-  isNavigable
+  isNavigable,
+  requestBody
 }
 
 module.exports = {

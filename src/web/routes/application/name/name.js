@@ -15,15 +15,22 @@ const contentSummary = (req) => ({
   value: `${req.session.claim.firstName} ${req.session.claim.lastName}`.trim()
 })
 
+const requestBody = (session) => ({
+  firstName: session.claim.firstName,
+  lastName: session.claim.lastName
+})
+
 const name = {
   path: '/name',
   template: 'name',
   validate,
   pageContent,
-  contentSummary
+  contentSummary,
+  requestBody
 }
 
 module.exports = {
   contentSummary,
+  requestBody,
   name
 }

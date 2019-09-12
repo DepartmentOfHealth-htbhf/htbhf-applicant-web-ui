@@ -1,6 +1,7 @@
 const { validate } = require('./validate')
 const { YES } = require('../common/constants')
 const { formatDateForDisplay, getExampleDate } = require('../common/formatters')
+const { requestBody } = require('./request-body')
 
 const contentSummary = (req) => {
   const pregnantSummary = {
@@ -38,7 +39,8 @@ const areYouPregnant = {
   template: 'are-you-pregnant',
   pageContent,
   validate,
-  contentSummary
+  contentSummary,
+  requestBody
 }
 
 module.exports = {
