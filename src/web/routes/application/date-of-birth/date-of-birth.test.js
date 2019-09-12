@@ -1,5 +1,5 @@
 const test = require('tape')
-const { dateOfBirth } = require('./date-of-birth')
+const { contentSummary, requestBody } = require('./date-of-birth')
 
 const req = {
   t: string => string,
@@ -7,13 +7,14 @@ const req = {
     claim: {
       'dateOfBirth-day': '30',
       'dateOfBirth-month': '05',
-      'dateOfBirth-year': '1920'
+      'dateOfBirth-year': '1920',
+      'dateOfBirth': '1920-05-30'
     }
   }
 }
 
 test('Date of birth contentSummary() should return content summary in correct format', (t) => {
-  const result = dateOfBirth.contentSummary(req)
+  const result = contentSummary(req)
 
   const expected = {
     key: 'dateOfBirth.summaryKey',
@@ -21,5 +22,16 @@ test('Date of birth contentSummary() should return content summary in correct fo
   }
 
   t.deepEqual(result, expected, 'should return content summary in correct format')
+  t.end()
+})
+
+test('Date of birth requestBody() should return request body in correct format', (t) => {
+  const result = requestBody(req.session)
+
+  const expected = {
+    'dateOfBirth': '1920-05-30'
+  }
+
+  t.deepEqual(result, expected, 'should return request body in correct format')
   t.end()
 })

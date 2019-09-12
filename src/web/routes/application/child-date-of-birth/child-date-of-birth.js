@@ -6,6 +6,7 @@ const { setChildrenInSessionForGet, setChildrenInSessionForPost } = require('./s
 const { handleRemoveAction } = require('./handle-remove-action')
 const { handleAddAction } = require('./handle-add-action')
 const { PATH } = require('./constants')
+const { requestBody } = require('./request-body')
 
 const pageContent = ({ translate }) => ({
   title: translate('childDateOfBirth.title'),
@@ -44,7 +45,8 @@ const childDateOfBirth = {
   isNavigable,
   behaviourForGet,
   behaviourForPost,
-  validate
+  validate,
+  requestBody
 }
 
 module.exports = {

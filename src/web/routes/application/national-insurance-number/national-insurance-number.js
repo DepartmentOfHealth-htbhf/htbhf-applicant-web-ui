@@ -15,15 +15,21 @@ const contentSummary = (req) => ({
   value: req.session.claim.nino
 })
 
+const requestBody = (session) => ({
+  nino: session.claim.nino
+})
+
 const nationalInsuranceNumber = {
   path: '/national-insurance-number',
   template: 'national-insurance-number',
   sanitize,
   validate,
   pageContent,
-  contentSummary
+  contentSummary,
+  requestBody
 }
 
 module.exports = {
-  nationalInsuranceNumber
+  nationalInsuranceNumber,
+  requestBody
 }
