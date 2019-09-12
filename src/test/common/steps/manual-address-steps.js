@@ -60,6 +60,11 @@ Then(/^I am informed that the postcode is in the wrong format$/, async function 
   await assertPostcodeErrorFieldAndLink('Enter a correct postcode, like AA1 1AA')
 })
 
+Then(/^I am informed that you can only apply if I live in England, Wales or Northern Ireland$/, async function () {
+  await assertErrorHeaderTextPresent(pages.manualAddress)
+  await assertPostcodeErrorFieldAndLink('You can only apply if you live in England, Wales or Northern Ireland')
+})
+
 Then(/^I am informed that I need to enter an address on the 'address line 1' field$/, async function () {
   await assertErrorHeaderTextPresent(pages.manualAddress)
   await assertAddressLine1ErrorFieldAndLink('Enter a building and street')

@@ -77,6 +77,20 @@ Feature: Select address
 
   # TODO DW HTBHF-2037 include test once address lookup is enabled
   @ignore
+  Scenario Outline: Entering a postcode from the Channel Islands or Isle of Man shows an error
+    Given I have entered my details up to the postcode page
+    When I enter <postcode> as my postcode
+    Then I am informed that you can only apply if I live in England, Wales or Northern Ireland
+
+    Examples:
+      | postcode |
+      | GY1 1WR  |
+      | JE3 1FU  |
+      | IM1 3LY  |
+
+
+  # TODO DW HTBHF-2037 include test once address lookup is enabled
+  @ignore
   Scenario: I am shown an error response when a bad response is returned from os places and I can then enter my address manually
     Given I have entered my details up to the postcode page
     And OS places returns an error response
