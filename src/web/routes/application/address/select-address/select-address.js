@@ -1,7 +1,7 @@
 const { path } = require('ramda')
 const { transformAddress } = require('./adapters')
-
 const { addressContentSummary } = require('../content-summary')
+const { requestBody } = require('../request-body')
 
 const pageContent = ({ translate }) => ({
   title: translate('address.title'),
@@ -71,7 +71,8 @@ const selectAddress = {
   toggle: 'ADDRESS_LOOKUP_ENABLED',
   behaviourForGet,
   behaviourForPost,
-  contentSummary
+  contentSummary,
+  requestBody
 }
 
 module.exports = {

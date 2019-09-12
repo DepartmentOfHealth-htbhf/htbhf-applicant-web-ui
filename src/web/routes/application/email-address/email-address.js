@@ -28,17 +28,23 @@ const behaviourForPost = () => (req, res, next) => {
   next()
 }
 
+const requestBody = (session) => ({
+  emailAddress: session.claim.emailAddress
+})
+
 const emailAddress = {
   path: '/email-address',
   template: 'email-address',
   validate,
   pageContent,
   contentSummary,
-  behaviourForPost
+  behaviourForPost,
+  requestBody
 }
 
 module.exports = {
   contentSummary,
   emailAddress,
-  behaviourForPost
+  behaviourForPost,
+  requestBody
 }

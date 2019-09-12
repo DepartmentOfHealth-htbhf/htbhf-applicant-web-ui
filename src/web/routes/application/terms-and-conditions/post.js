@@ -38,7 +38,7 @@ const postTermsAndConditions = (steps, config) => (req, res, next) => {
       'X-Request-ID': req.headers[REQUEST_ID_HEADER],
       'X-Session-ID': req.sessionID
     },
-    body: createRequestBody(config, req),
+    body: createRequestBody(config, steps, req),
     simple: false,
     transform: handleErrorResponse
   })
