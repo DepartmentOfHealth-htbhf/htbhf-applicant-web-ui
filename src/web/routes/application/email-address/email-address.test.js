@@ -1,7 +1,7 @@
 const test = require('tape')
 const sinon = require('sinon')
 const proxyquire = require('proxyquire')
-const { contentSummary } = require('./email-address')
+const { contentSummary, requestBody } = require('./email-address')
 
 const { TEXT, EMAIL } = require('../common/constants')
 
@@ -87,5 +87,16 @@ test('behaviourForPost() does not reset confirmation code if the user has not up
 
   t.equal(handleConfirmationCodeReset.called, false)
   handleConfirmationCodeReset.resetHistory()
+  t.end()
+})
+
+test('requestBody() returns request body in correct format', (t) => {
+  const result = requestBody(req.session)
+
+  const expected = {
+    emailAddress: 'test@email.com'
+  }
+
+  t.deepEqual(result, expected, 'returns request body in correct format')
   t.end()
 })

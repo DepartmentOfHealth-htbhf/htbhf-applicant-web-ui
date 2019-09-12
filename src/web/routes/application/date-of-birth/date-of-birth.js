@@ -21,14 +21,21 @@ const contentSummary = (req) => ({
   )
 })
 
+const requestBody = (session) => ({
+  dateOfBirth: session.claim.dateOfBirth
+})
+
 const dateOfBirth = {
   path: '/date-of-birth',
   template: 'date-of-birth',
   pageContent,
   validate,
-  contentSummary
+  contentSummary,
+  requestBody
 }
 
 module.exports = {
-  dateOfBirth
+  dateOfBirth,
+  contentSummary,
+  requestBody
 }

@@ -29,6 +29,10 @@ const behaviourForPost = () => (req, res, next) => {
   next()
 }
 
+const requestBody = (session) => ({
+  phoneNumber: session.claim.formattedPhoneNumber
+})
+
 const phoneNumber = {
   path: '/phone-number',
   template: 'phone-number',
@@ -36,11 +40,13 @@ const phoneNumber = {
   sanitize,
   pageContent,
   contentSummary,
-  behaviourForPost
+  behaviourForPost,
+  requestBody
 }
 
 module.exports = {
   contentSummary,
   phoneNumber,
-  behaviourForPost
+  behaviourForPost,
+  requestBody
 }
