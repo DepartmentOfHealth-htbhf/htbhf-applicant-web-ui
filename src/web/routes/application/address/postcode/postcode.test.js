@@ -4,31 +4,29 @@ const test = require('tape')
 const sinon = require('sinon')
 const proxyquire = require('proxyquire')
 const TEST_FIXTURES = require('./test-fixtures.json')
-const { standardisePostcode } = require('./postcode')
 const { states } = require('../../common/state-machine')
 
 const errorSpy = sinon.spy()
 const logger = { error: errorSpy }
-const request = sinon.stub()
 const isEmpty = sinon.stub()
 const validationResult = () => ({ isEmpty })
 const auditSuccessfulPostcodeLookup = sinon.stub()
 const auditFailedPostcodeLookup = sinon.stub()
 const auditInvalidPostcodeLookup = sinon.stub()
+const getAddressLookupResults = sinon.stub()
 
 const { behaviourForPost, behaviourForGet } = proxyquire(
   './postcode', {
-    'request-promise': request,
     'express-validator': { validationResult },
     '../../../../logger': { logger },
-    './os-places': { auditSuccessfulPostcodeLookup, auditFailedPostcodeLookup, auditInvalidPostcodeLookup }
+    './os-places': { auditSuccessfulPostcodeLookup, auditFailedPostcodeLookup, auditInvalidPostcodeLookup, getAddressLookupResults }
   }
 )
 
 const config = { environment: { OS_PLACES_API_KEY: '123', GA_TRACKING_ID: 'UA-133839203-1', GOOGLE_ANALYTICS_URI: 'http://localhost:8150/collect' } }
 
 const resetStubs = () => {
-  request.reset()
+  getAddressLookupResults.reset()
   isEmpty.reset()
   errorSpy.resetHistory()
 }
@@ -36,7 +34,7 @@ const resetStubs = () => {
 test('behaviourForPost() handles successful address lookup', async (t) => {
   // Set return values for stubs
   isEmpty.returns(true)
-  request.resolves(TEST_FIXTURES)
+  getAddressLookupResults.resolves(TEST_FIXTURES)
 
   const req = {
     headers: { 'x-forwarded-for': '100.200.0.45' },
@@ -108,7 +106,7 @@ test('behaviourForPost() handles successful address lookup', async (t) => {
 test('behaviourForPost() handles address lookup error', async (t) => {
   // Set return values for stubs
   isEmpty.returns(true)
-  request.rejects(new Error('error'))
+  getAddressLookupResults.rejects(new Error('error'))
 
   const req = {
     headers: { 'x-forwarded-for': '100.200.0.45' },
@@ -139,7 +137,7 @@ test('behaviourForPost() does not call os places when there are validation error
   const next = () => {}
 
   await behaviourForPost(config)(req, res, next)
-  t.equal(request.called, false, 'should not call os places')
+  t.equal(getAddressLookupResults.called, false, 'should not call getAddressLookupResults()')
   resetStubs()
   t.end()
 })
@@ -148,7 +146,7 @@ test('behaviourForPost() handles 400 response from OS places API', async (t) => 
   // Set return values for stubs
   const osPlacesError = new Error('Os places error')
   osPlacesError.statusCode = 400
-  request.rejects(osPlacesError)
+  getAddressLookupResults.rejects(osPlacesError)
   isEmpty.returns(true)
 
   const req = {
@@ -167,14 +165,6 @@ test('behaviourForPost() handles 400 response from OS places API', async (t) => 
   t.equal(next.called, true, 'calls next()')
 
   resetStubs()
-  t.end()
-})
-
-test('standardisePostcode() standardises the postcode', (t) => {
-  t.equal(standardisePostcode('AB1 1AB'), 'AB11AB', 'should removes space from postcode')
-  t.equal(standardisePostcode('AB1      1AB'), 'AB11AB', 'should remove multiple spaces from postcode')
-  t.equal(standardisePostcode('   AB1 1AB '), 'AB11AB', 'should remove spaces from around postcode')
-  t.equal(standardisePostcode('ab11ab'), 'AB11AB', 'should upper case postcode')
   t.end()
 })
 
