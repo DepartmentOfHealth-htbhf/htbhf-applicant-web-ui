@@ -5,7 +5,7 @@
  */
 const UK_POSTCODE_PATTERN = /^([Gg][Ii][Rr] 0[Aa]{2})$|^((([A-Za-z][0-9]{1,2})|(([A-Za-z][A-Ha-hJ-Yj-y][0-9]{1,2})|(([A-Za-z][0-9][A-Za-z])|([A-Za-z][A-Ha-hJ-Yj-y][0-9][A-Za-z]?))))\s?[0-9][A-Za-z]{2})$/
 
-const CHANNEL_ISLANDS_AND_IOM_POSTCODE_PATTERN = /^[Gg][Yy]|[Jj][Ee]|[Ii][Mm]/
+const CHANNEL_ISLANDS_AND_IOM_POSTCODE_PATTERN = /^([Gg][Yy]|[Jj][Ee]|[Ii][Mm])/
 
 const OS_PLACES_ADDRESS_KEYS = [
   'ADDRESS',
