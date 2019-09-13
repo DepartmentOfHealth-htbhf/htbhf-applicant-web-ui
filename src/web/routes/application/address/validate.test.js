@@ -72,18 +72,18 @@ test('channel island and iom postcode regex matches channel island and iom postc
 
 test('channel island and iom postcode regex does not match UK postcodes', (t) => {
   const ukPostcodes = [
-    'EC11BB',
-    'W1A0AX',
+    'GA11BB',
+    'JA10AX',
     'M11AE',
-    'B338TH',
-    'CR26XH',
-    'DN551PT',
-    'DN55 1PT'
+    'IO338TH',
+    'CY26IM',
+    'DE551JE',
+    'DM55 1GY'
   ]
 
   ukPostcodes.forEach(postcode => {
     const match = CHANNEL_ISLANDS_AND_IOM_POSTCODE_PATTERN.test(postcode)
-    t.equal(match, false)
+    t.equal(match, false, `postcode=${postcode}`)
   })
 
   t.end()
