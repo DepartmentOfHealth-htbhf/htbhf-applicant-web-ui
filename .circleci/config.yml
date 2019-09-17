@@ -8,6 +8,8 @@ jobs:
       PORT: 8080
       SESSION_SECRET: notsosecret
       USE_UNSECURE_COOKIE: true
+      OS_PLACES_URI: http://localhost:8150
+      CLAIMANT_SERVICE_URL: http://localhost:8090
     steps:
       - checkout
       - add_ssh_keys:
