@@ -3,7 +3,7 @@ const { When, Then } = require('cucumber')
 const { path } = require('ramda')
 
 const pages = require('./pages')
-const { setupSuccessfulWiremockClaimMappingWithStatus, deleteAllWiremockMappings, setupSuccessfulWiremockUpdatedClaimMapping, getOutboundRequestsToUrl } = require('../wiremock')
+const { setupSuccessfulWiremockClaimMappingWithStatus, deleteAllWiremockMappings, setupSuccessfulWiremockUpdatedClaimMapping, getOutboundRequestsToClaimantService } = require('../wiremock')
 const { assertBackLinkPointsToPage } = require('./common-assertions')
 const { get } = require('./../request')
 const TESTS = process.env.TESTS
@@ -247,7 +247,7 @@ async function deleteWiremockMappings () {
 }
 
 async function getRequestsToClaimService () {
-  return getOutboundRequestsToUrl(CLAIMS_ENDPOINT)
+  return getOutboundRequestsToClaimantService(CLAIMS_ENDPOINT)
 }
 
 async function getBodyOfLastRequestToClaimService () {

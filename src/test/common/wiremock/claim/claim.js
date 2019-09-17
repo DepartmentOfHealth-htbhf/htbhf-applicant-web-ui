@@ -1,6 +1,6 @@
 const { postJsonData } = require('../../request')
 const { ELIGIBLE } = require('../../constants')
-const { WIREMOCK_MAPPING_URL } = require('../paths')
+const { WIREMOCK_CLAIMANT_MAPPING_URL } = require('../paths')
 
 const {
   createSuccessfulClaimsMapping,
@@ -9,19 +9,19 @@ const {
 } = require('./mappings')
 
 async function setupSuccessfulWiremockClaimMapping () {
-  await postJsonData(WIREMOCK_MAPPING_URL, createSuccessfulClaimsMapping(ELIGIBLE))
+  await postJsonData(WIREMOCK_CLAIMANT_MAPPING_URL, createSuccessfulClaimsMapping(ELIGIBLE))
 }
 
 async function setupSuccessfulWiremockUpdatedClaimMapping () {
-  await postJsonData(WIREMOCK_MAPPING_URL, createUpdatedClaimsMapping())
+  await postJsonData(WIREMOCK_CLAIMANT_MAPPING_URL, createUpdatedClaimsMapping())
 }
 
 async function setupSuccessfulWiremockClaimMappingWithStatus (status) {
-  await postJsonData(WIREMOCK_MAPPING_URL, createSuccessfulClaimsMapping(status))
+  await postJsonData(WIREMOCK_CLAIMANT_MAPPING_URL, createSuccessfulClaimsMapping(status))
 }
 
 async function setupErrorWiremockClaimMapping () {
-  await postJsonData(WIREMOCK_MAPPING_URL, ERROR_CLAIMS_MAPPING)
+  await postJsonData(WIREMOCK_CLAIMANT_MAPPING_URL, ERROR_CLAIMS_MAPPING)
 }
 
 module.exports = {
