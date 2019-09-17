@@ -11,7 +11,6 @@ const { registerErrorHandlers } = require('./error-handlers')
 const { setViewEngine } = require('./view-engine')
 const { internationalisation } = require('./internationalisation')
 const { requestID } = require('./headers')
-const numCores = require('os').cpus().length
 
 const configureStaticPaths = (app) => {
   /**
@@ -27,7 +26,8 @@ const configureStaticPaths = (app) => {
 const listen = (config, app) =>
   app.listen(config.server.PORT, () => {
     logger.info(`App listening on port ${config.server.PORT}`)
-    logger.info(`Number of cores available: ${numCores} (node uses only a single core)`)
+    logger.info(`OS_PLACES_URI=${config.environment.OS_PLACES_URI}`)
+    logger.info(`CLAIMANT_SERVICE_URL=${config.environment.CLAIMANT_SERVICE_URL}`)
   })
 
 const start = (config, app) => () => {

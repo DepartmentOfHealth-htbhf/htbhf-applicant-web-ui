@@ -7,8 +7,6 @@ jobs:
     environment:
       PORT: 8080
       SESSION_SECRET: notsosecret
-      WIREMOCK_PORT: 8090
-      WIREMOCK_URL: http://localhost:8090
       USE_UNSECURE_COOKIE: true
     steps:
       - checkout

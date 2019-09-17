@@ -36,12 +36,16 @@ download_acceptance_tests(){
       rm -rf htbhf-acceptance-tests-${ACCEPTANCE_TESTS_VERSION}
       rm acceptance-tests-tmp.zip
       touch ${ACCEPTANCE_TESTS_DIR}/version_${ACCEPTANCE_TESTS_VERSION}.info
+    else
+      echo "Using acceptance tests version ${ACCEPTANCE_TESTS_VERSION}"
     fi
+
 }
 
 run_acceptance_tests() {
     check_variable_is_set SESSION_DETAILS_PORT "The port (on localhost) on which the session details app is running."
     check_variable_is_set ACCEPTANCE_TESTS_DIR
+    echo "Running acceptance tests from ${ACCEPTANCE_TESTS_DIR}"
     # convert features.json into a set of cucumber tags - ' and not @FEATURE_NAME' for each FEATURE_NAME_ENABLED=false
     TAGS=$(cat ${WORKING_DIR}/features.json | grep false | sed 's/": false//g' | sed 's/"/ and not @/g' | sed "s/,//g" | sed "s/_ENABLED//g" | tr '\n' ' ')
     # download chromedriver
