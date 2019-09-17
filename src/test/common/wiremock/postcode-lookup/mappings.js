@@ -498,9 +498,23 @@ const createPostcodeLookupWithConnectionResetMapping = () => {
   })
 }
 
+const createGoogleAnalyticsMapping = () => {
+  return JSON.stringify({
+    'request': {
+      'method': 'GET',
+      'urlPath': '/collect'
+    },
+    'response': {
+      'status': 200,
+      'jsonBody': {}
+    }
+  })
+}
+
 module.exports = {
   createPostcodeLookupWithNoResultsMapping,
   createPostcodeLookupWithResultsMapping,
   createPostcodeLookupWithErrorResponseMapping,
-  createPostcodeLookupWithConnectionResetMapping
+  createPostcodeLookupWithConnectionResetMapping,
+  createGoogleAnalyticsMapping
 }
