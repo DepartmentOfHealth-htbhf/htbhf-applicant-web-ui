@@ -21,7 +21,7 @@
         <h2 class="govuk-heading-m govuk-!-margin-bottom-2">{{ postcodeLabel }}</h2>
         <div class="govuk-body govuk-!-margin-bottom-6">
             <strong class="govuk-!-margin-right-4">{{ claim.postcode | upper }}</strong>
-            <a class="govuk-link" href="/postcode">{{ change }}</a>
+            <a class="govuk-link" href="/postcode">{{ change }}<span class="govuk-visually-hidden"> {{ postcodeLabel | lower}}</span></a>
         </div>
 
         {% if addresses | length === 0 %}
