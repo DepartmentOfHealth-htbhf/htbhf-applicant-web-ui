@@ -168,6 +168,70 @@ test('behaviourForPost() handles 400 response from OS places API', async (t) => 
   t.end()
 })
 
+test('behaviourForPost() resets address in session', (t) => {
+  // Set return values for stubs
+  isEmpty.returns(true)
+  getAddressLookupResults.resolves(TEST_FIXTURES)
+
+  const req = {
+    session: {
+      claim: {
+        firstName: 'Eric',
+        addressLine1: '29 Acacia Road',
+        addressLine2: 'Downtown',
+        townOrCity: 'Nuttytown',
+        county: 'Bedfordshire',
+        postcode: 'BN11NA'
+      }
+    }
+  }
+
+  const res = {}
+  const next = () => {}
+
+  const expectedClaim = {
+    firstName: 'Eric',
+    addressLine1: '',
+    addressLine2: '',
+    townOrCity: '',
+    county: '',
+    postcode: ''
+  }
+
+  behaviourForPost()(req, res, next)
+
+  t.deepEqual(req.session.claim, expectedClaim, 'resets address in session')
+  resetStubs()
+  t.end()
+})
+
+test('behaviourForPost() does not reset address in session if validation errors exist', (t) => {
+  // Set return values for stubs
+  isEmpty.returns(false)
+  getAddressLookupResults.resolves(TEST_FIXTURES)
+
+  const claim = {
+    firstName: 'Eric',
+    addressLine1: '29 Acacia Road',
+    addressLine2: 'Downtown',
+    townOrCity: 'Nuttytown',
+    county: 'Bedfordshire',
+    postcode: 'BN11NA'
+  }
+
+  // Create copies of claim object to ensure they are compared by value
+  const req = { session: { claim: { ...claim } } }
+  const res = {}
+  const next = () => {}
+  const expectedClaim = { ...claim }
+
+  behaviourForPost()(req, res, next)
+
+  t.deepEqual(req.session.claim, expectedClaim, 'does not reset address in session')
+  resetStubs()
+  t.end()
+})
+
 test(`behaviourForGet() sets state to ${states.IN_PROGRESS} and resets postcodeLookupError`, (t) => {
   const req = {
     session: {

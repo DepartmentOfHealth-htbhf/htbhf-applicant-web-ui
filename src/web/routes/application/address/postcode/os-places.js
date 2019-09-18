@@ -39,8 +39,6 @@ const auditPostcodeLookup = (config, req, outcome, numberOfResults) => {
   }).catch(reason => logger.error('Failed to call Google Analytics to audit postcode: ', reason))
 }
 
-// TODO DW HTBHF-2177 Move call to os places lookup into this file.
-
 module.exports = {
   auditSuccessfulPostcodeLookup,
   auditFailedPostcodeLookup,
