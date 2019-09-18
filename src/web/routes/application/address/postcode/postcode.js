@@ -8,10 +8,18 @@ const { stateMachine, states } = require('../../common/state-machine')
 const { validate } = require('./validate')
 const { sanitize } = require('../sanitize')
 
+const ADDRESS_KEYS = ['addressLine1', 'addressLine2', 'townOrCity', 'county', 'postcode']
+
+const resetAddressKey = (address, key) => ({ ...address, [key]: '' })
+
+const resetAddressOnClaim = (claim) => ({ ...claim, ...ADDRESS_KEYS.reduce(resetAddressKey, {}) })
+
 const behaviourForPost = (config) => async (req, res, next) => {
   if (!validationResult(req).isEmpty()) {
     return next()
   }
+
+  req.session.claim = resetAddressOnClaim(req.session.claim)
 
   try {
     const addressLookupResults = await getAddressLookupResults(config, req.body.postcode)
