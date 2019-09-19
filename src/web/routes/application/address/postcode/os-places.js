@@ -1,5 +1,5 @@
 const request = require('request-promise')
-
+const moment = require('moment')
 const { logger } = require('../../../../logger')
 
 const REQUEST_TIMEOUT = 5000
@@ -10,12 +10,19 @@ const standardisePostcode = (postcode) => postcode.toUpperCase().replace(/\s/g, 
 const getAddressLookupResults = async (config, postcode) => {
   const { OS_PLACES_URI, OS_PLACES_API_KEY } = config.environment
   const standardisedPostcode = standardisePostcode(postcode)
+  const requestStartTime = moment()
 
-  return request({
+  const response = await request({
     uri: `${OS_PLACES_URI}${OS_PLACES_API_PATH}?postcode=${standardisedPostcode}&key=${OS_PLACES_API_KEY}`,
     json: true,
     timeout: REQUEST_TIMEOUT
   })
+
+  const requestEndTime = moment()
+  const requestTimeInSeconds = requestEndTime.diff(requestStartTime, 'seconds', true)
+  logger.debug(`OS Places API request time in seconds: ${requestTimeInSeconds}`)
+
+  return response
 }
 
 const buildGoogleAnalyticsFullUri = (gaBaseUrl, trackingId, result, ipAddress, numberOfResults, sessionId) =>
