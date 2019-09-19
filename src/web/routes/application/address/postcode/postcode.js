@@ -7,8 +7,7 @@ const { logger } = require('../../../../logger')
 const { stateMachine, states } = require('../../common/state-machine')
 const { validate } = require('./validate')
 const { sanitize } = require('../sanitize')
-
-const ADDRESS_KEYS = ['addressLine1', 'addressLine2', 'townOrCity', 'county', 'postcode']
+const { ADDRESS_KEYS } = require('../constants')
 
 const resetAddressKey = (address, key) => ({ ...address, [key]: '' })
 
