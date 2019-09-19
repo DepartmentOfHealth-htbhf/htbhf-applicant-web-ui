@@ -1,6 +1,7 @@
 const test = require('tape')
-const { transformAddress, transformOsPlacesApiResponse, toTitleCase, convertCase } = require('./adapters')
+const { transformAddress, transformOsPlacesApiResponse, toTitleCase, convertCase, SINGLE_WORD_REGEX } = require('./adapters')
 const TEST_FIXTURES = require('./test-fixtures.json')
+const safeRegex = require('safe-regex')
 
 test('toTitleCase() should uppercase the first letter of every word', (t) => {
   const result = toTitleCase('10A, MY STREET, WESTON-SUPER-MARE')
@@ -115,5 +116,10 @@ test('transformOsPlacesApiResponse() returns empty array if no results on respon
   const expected = []
 
   t.deepEqual(result, expected, 'returns empty array if no results on response')
+  t.end()
+})
+
+test('single word regex is safe()', (t) => {
+  t.equal(safeRegex(SINGLE_WORD_REGEX), true)
   t.end()
 })
