@@ -14,6 +14,8 @@ const { toTitleCase } = require('../formats')
  *    d) Locality
  * 3. Split a single part address into two parts if a comma exists in the first part
  * 4. Convert a multipart address into two parts by joining all parts except the first with a comma
+ * 5. Build the full address
+ * 5. Convert address to title case
  */
 
 const DELIMITER = ', '

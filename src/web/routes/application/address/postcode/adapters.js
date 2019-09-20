@@ -5,6 +5,9 @@ const { toTitleCase } = require('../formats')
 const RESULTS_PROP = 'results'
 const DELIVERY_POINT_ADDRESS_PROP = 'DPA'
 
+// Transform single line address field (ADDRESS) for use in UI:
+// - Convert to title case
+// - Remove postcode
 const transformAddressField = (address) => ({
   ...address,
   ADDRESS: toTitleCase(address.ADDRESS.replace(`, ${address.POSTCODE}`, ''))
