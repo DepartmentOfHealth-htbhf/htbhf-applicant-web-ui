@@ -1,53 +1,19 @@
 const test = require('tape')
-const { transformAddress, transformOsPlacesApiResponse, toTitleCase, convertCase, SINGLE_WORD_REGEX } = require('./adapters')
+const { transformAddress, transformOsPlacesApiResponse } = require('./adapters')
 const TEST_FIXTURES = require('./test-fixtures.json')
-const safeRegex = require('safe-regex')
-
-test('toTitleCase() should uppercase the first letter of every word', (t) => {
-  const result = toTitleCase('10A, MY STREET, WESTON-SUPER-MARE')
-
-  const expected = '10a, My Street, Weston-Super-Mare'
-
-  t.equals(result, expected, 'transforms string to title case correctly')
-  t.end()
-})
-
-test('convertCase() should convert the case of the address to title case', (t) => {
-  const original = {
-    ADDRESS: '10A, MAYFIELD AVENUE, WESTON-SUPER-MARE, BS22 6AA',
-    BUILDING_NAME: '10A',
-    THOROUGHFARE_NAME: 'MAYFIELD AVENUE',
-    POST_TOWN: 'WESTON-SUPER-MARE',
-    POSTCODE: 'BS22 6AA',
-    LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'NORTH SOMERSET'
-  }
-  const result = convertCase(original)
-
-  const expected = {
-    ADDRESS: '10a, Mayfield Avenue, Weston-Super-Mare',
-    BUILDING_NAME: '10a',
-    THOROUGHFARE_NAME: 'Mayfield Avenue',
-    POST_TOWN: 'Weston-Super-Mare',
-    POSTCODE: 'BS22 6AA',
-    LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'North Somerset'
-  }
-
-  t.deepEqual(result, expected, 'converts case of an address correctly')
-  t.end()
-})
 
 test('transformAddress() transforms address correctly', (t) => {
   const result = transformAddress(TEST_FIXTURES.results[0])
 
   const expected = {
     ADDRESS: 'Alan Jeffery Engineering, 1, Valley Road, Plymouth',
-    ORGANISATION_NAME: 'Alan Jeffery Engineering',
+    ORGANISATION_NAME: 'ALAN JEFFERY ENGINEERING',
     BUILDING_NUMBER: '1',
-    THOROUGHFARE_NAME: 'Valley Road',
-    DEPENDENT_THOROUGHFARE_NAME: 'Upper Valley Road',
-    POST_TOWN: 'Plymouth',
+    DEPENDENT_THOROUGHFARE_NAME: 'UPPER VALLEY ROAD',
+    THOROUGHFARE_NAME: 'VALLEY ROAD',
+    POST_TOWN: 'PLYMOUTH',
     POSTCODE: 'PL7 1RF',
-    LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'City Of Plymouth'
+    LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'CITY OF PLYMOUTH'
   }
 
   t.deepEqual(result, expected, 'transforms address correctly')
@@ -60,49 +26,53 @@ test('transformOsPlacesApiResponse() transforms OS Places API response correctly
   const expected = [
     {
       ADDRESS: 'Alan Jeffery Engineering, 1, Valley Road, Plymouth',
-      ORGANISATION_NAME: 'Alan Jeffery Engineering',
+      ORGANISATION_NAME: 'ALAN JEFFERY ENGINEERING',
       BUILDING_NUMBER: '1',
-      THOROUGHFARE_NAME: 'Valley Road',
-      DEPENDENT_THOROUGHFARE_NAME: 'Upper Valley Road',
-      POST_TOWN: 'Plymouth',
+      DEPENDENT_THOROUGHFARE_NAME: 'UPPER VALLEY ROAD',
+      THOROUGHFARE_NAME: 'VALLEY ROAD',
+      POST_TOWN: 'PLYMOUTH',
       POSTCODE: 'PL7 1RF',
-      LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'City Of Plymouth'
-    }, {
+      LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'CITY OF PLYMOUTH'
+    },
+    {
       ADDRESS: 'Dulux Decorator Centre, 2, Valley Road, Plymouth',
-      ORGANISATION_NAME: 'Dulux Decorator Centre',
+      ORGANISATION_NAME: 'DULUX DECORATOR CENTRE',
       BUILDING_NUMBER: '2',
-      THOROUGHFARE_NAME: 'Valley Road',
-      DEPENDENT_THOROUGHFARE_NAME: 'Upper Valley Road',
-      POST_TOWN: 'Plymouth',
+      DEPENDENT_THOROUGHFARE_NAME: 'UPPER VALLEY ROAD',
+      THOROUGHFARE_NAME: 'VALLEY ROAD',
+      POST_TOWN: 'PLYMOUTH',
       POSTCODE: 'PL7 1RF',
-      LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'City Of Plymouth'
-    }, {
+      LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'CITY OF PLYMOUTH'
+    },
+    {
       ADDRESS: 'Mill Autos, 3, Valley Road, Plymouth',
-      ORGANISATION_NAME: 'Mill Autos',
+      ORGANISATION_NAME: 'MILL AUTOS',
       BUILDING_NUMBER: '3',
-      THOROUGHFARE_NAME: 'Valley Road',
-      DEPENDENT_THOROUGHFARE_NAME: 'Upper Valley Road',
-      POST_TOWN: 'Plymouth',
+      DEPENDENT_THOROUGHFARE_NAME: 'UPPER VALLEY ROAD',
+      THOROUGHFARE_NAME: 'VALLEY ROAD',
+      POST_TOWN: 'PLYMOUTH',
       POSTCODE: 'PL7 1RF',
-      LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'City Of Plymouth'
-    }, {
+      LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'CITY OF PLYMOUTH'
+    },
+    {
       ADDRESS: 'Goat Hill Farm, 2, Troll Bridge, Goat Hill, Slaithwaite, Slaith, Huddersfield',
-      ORGANISATION_NAME: 'Goat Hill Farm',
+      ORGANISATION_NAME: 'GOAT HILL FARM',
       BUILDING_NUMBER: '2',
-      THOROUGHFARE_NAME: 'Goat Hill',
-      DEPENDENT_THOROUGHFARE_NAME: 'Troll Bridge',
-      DOUBLE_DEPENDENT_LOCALITY: 'Slaithwaite',
-      DEPENDENT_LOCALITY: 'Slaith',
-      POST_TOWN: 'Huddersfield',
+      DEPENDENT_THOROUGHFARE_NAME: 'TROLL BRIDGE',
+      THOROUGHFARE_NAME: 'GOAT HILL',
+      DOUBLE_DEPENDENT_LOCALITY: 'SLAITHWAITE',
+      DEPENDENT_LOCALITY: 'SLAITH',
+      POST_TOWN: 'HUDDERSFIELD',
       POSTCODE: 'HD7 5UZ',
-      LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'Kirklees'
-    }, {
+      LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'KIRKLEES'
+    },
+    {
       ADDRESS: '10a, Mayfield Avenue, Weston-Super-Mare',
-      BUILDING_NAME: '10a',
-      THOROUGHFARE_NAME: 'Mayfield Avenue',
-      POST_TOWN: 'Weston-Super-Mare',
+      BUILDING_NAME: '10A',
+      THOROUGHFARE_NAME: 'MAYFIELD AVENUE',
+      POST_TOWN: 'WESTON-SUPER-MARE',
       POSTCODE: 'BS22 6AA',
-      LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'North Somerset'
+      LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'NORTH SOMERSET'
     }
   ]
 
@@ -116,10 +86,5 @@ test('transformOsPlacesApiResponse() returns empty array if no results on respon
   const expected = []
 
   t.deepEqual(result, expected, 'returns empty array if no results on response')
-  t.end()
-})
-
-test('single word regex is safe()', (t) => {
-  t.equal(safeRegex(SINGLE_WORD_REGEX), true)
   t.end()
 })

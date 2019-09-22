@@ -47,49 +47,53 @@ test('behaviourForPost() handles successful address lookup', async (t) => {
   const expectedAddresses = [
     {
       ADDRESS: 'Alan Jeffery Engineering, 1, Valley Road, Plymouth',
-      ORGANISATION_NAME: 'Alan Jeffery Engineering',
+      ORGANISATION_NAME: 'ALAN JEFFERY ENGINEERING',
       BUILDING_NUMBER: '1',
-      THOROUGHFARE_NAME: 'Valley Road',
-      DEPENDENT_THOROUGHFARE_NAME: 'Upper Valley Road',
-      POST_TOWN: 'Plymouth',
+      DEPENDENT_THOROUGHFARE_NAME: 'UPPER VALLEY ROAD',
+      THOROUGHFARE_NAME: 'VALLEY ROAD',
+      POST_TOWN: 'PLYMOUTH',
       POSTCODE: 'PL7 1RF',
-      LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'City Of Plymouth'
-    }, {
+      LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'CITY OF PLYMOUTH'
+    },
+    {
       ADDRESS: 'Dulux Decorator Centre, 2, Valley Road, Plymouth',
-      ORGANISATION_NAME: 'Dulux Decorator Centre',
+      ORGANISATION_NAME: 'DULUX DECORATOR CENTRE',
       BUILDING_NUMBER: '2',
-      THOROUGHFARE_NAME: 'Valley Road',
-      DEPENDENT_THOROUGHFARE_NAME: 'Upper Valley Road',
-      POST_TOWN: 'Plymouth',
+      DEPENDENT_THOROUGHFARE_NAME: 'UPPER VALLEY ROAD',
+      THOROUGHFARE_NAME: 'VALLEY ROAD',
+      POST_TOWN: 'PLYMOUTH',
       POSTCODE: 'PL7 1RF',
-      LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'City Of Plymouth'
-    }, {
+      LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'CITY OF PLYMOUTH'
+    },
+    {
       ADDRESS: 'Mill Autos, 3, Valley Road, Plymouth',
-      ORGANISATION_NAME: 'Mill Autos',
+      ORGANISATION_NAME: 'MILL AUTOS',
       BUILDING_NUMBER: '3',
-      THOROUGHFARE_NAME: 'Valley Road',
-      DEPENDENT_THOROUGHFARE_NAME: 'Upper Valley Road',
-      POST_TOWN: 'Plymouth',
+      DEPENDENT_THOROUGHFARE_NAME: 'UPPER VALLEY ROAD',
+      THOROUGHFARE_NAME: 'VALLEY ROAD',
+      POST_TOWN: 'PLYMOUTH',
       POSTCODE: 'PL7 1RF',
-      LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'City Of Plymouth'
-    }, {
+      LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'CITY OF PLYMOUTH'
+    },
+    {
       ADDRESS: 'Goat Hill Farm, 2, Troll Bridge, Goat Hill, Slaithwaite, Slaith, Huddersfield',
-      ORGANISATION_NAME: 'Goat Hill Farm',
+      ORGANISATION_NAME: 'GOAT HILL FARM',
       BUILDING_NUMBER: '2',
-      THOROUGHFARE_NAME: 'Goat Hill',
-      DEPENDENT_THOROUGHFARE_NAME: 'Troll Bridge',
-      DOUBLE_DEPENDENT_LOCALITY: 'Slaithwaite',
-      DEPENDENT_LOCALITY: 'Slaith',
-      POST_TOWN: 'Huddersfield',
+      DEPENDENT_THOROUGHFARE_NAME: 'TROLL BRIDGE',
+      THOROUGHFARE_NAME: 'GOAT HILL',
+      DOUBLE_DEPENDENT_LOCALITY: 'SLAITHWAITE',
+      DEPENDENT_LOCALITY: 'SLAITH',
+      POST_TOWN: 'HUDDERSFIELD',
       POSTCODE: 'HD7 5UZ',
-      LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'Kirklees'
-    }, {
+      LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'KIRKLEES'
+    },
+    {
       ADDRESS: '10a, Mayfield Avenue, Weston-Super-Mare',
-      BUILDING_NAME: '10a',
-      THOROUGHFARE_NAME: 'Mayfield Avenue',
-      POST_TOWN: 'Weston-Super-Mare',
+      BUILDING_NAME: '10A',
+      THOROUGHFARE_NAME: 'MAYFIELD AVENUE',
+      POST_TOWN: 'WESTON-SUPER-MARE',
       POSTCODE: 'BS22 6AA',
-      LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'North Somerset'
+      LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'NORTH SOMERSET'
     }
   ]
 

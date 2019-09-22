@@ -13,10 +13,10 @@ test('transformAddress() builds address A', (t) => {
   }
 
   const expected = {
-    addressLine1: 'ALAN JEFFERY ENGINEERING',
-    addressLine2: '1 VALLEY ROAD',
-    townOrCity: 'PLYMOUTH',
-    county: 'CITY OF PLYMOUTH',
+    addressLine1: 'Alan Jeffery Engineering',
+    addressLine2: '1 Valley Road',
+    townOrCity: 'Plymouth',
+    county: 'City Of Plymouth',
     postcode: 'PL7 1RF'
   }
 
@@ -39,10 +39,10 @@ test('transformAddress() builds address B', (t) => {
   }
 
   const expected = {
-    addressLine1: 'TRELLEBORG MARINE SYSTEMS LTD',
-    addressLine2: 'AIRFIELD VIEW, MANOR LANE, HAWARDEN INDUSTRIAL PARK, PENARLAG',
-    townOrCity: 'GLANNAU DYFRDWY',
-    county: 'FLINTSHIRE',
+    addressLine1: 'Trelleborg Marine Systems Ltd',
+    addressLine2: 'Airfield View, Manor Lane, Hawarden Industrial Park, Penarlag',
+    townOrCity: 'Glannau Dyfrdwy',
+    county: 'Flintshire',
     postcode: 'CH5 3QW'
   }
 
@@ -62,10 +62,10 @@ test('transformAddress() builds address C', (t) => {
   }
 
   const expected = {
-    addressLine1: '101 ELECTRICITY HOUSE',
-    addressLine2: 'COLSTON AVENUE',
-    townOrCity: 'BRISTOL',
-    county: 'BRISTOL CITY',
+    addressLine1: '101 Electricity House',
+    addressLine2: 'Colston Avenue',
+    townOrCity: 'Bristol',
+    county: 'Bristol City',
     postcode: 'BS1 4TB'
   }
 
@@ -86,10 +86,10 @@ test('transformAddress() builds address D', (t) => {
   }
 
   const expected = {
-    addressLine1: '68 PARK ROAD',
-    addressLine2: 'STAPLETON',
-    townOrCity: 'BRISTOL',
-    county: 'BRISTOL CITY',
+    addressLine1: '68 Park Road',
+    addressLine2: 'Stapleton',
+    townOrCity: 'Bristol',
+    county: 'Bristol City',
     postcode: 'BS16 1AU'
   }
 
@@ -111,10 +111,10 @@ test('transformAddress() builds address E', (t) => {
   }
 
   const expected = {
-    addressLine1: '10, CONCERT SQUARE APARTMENTS',
-    addressLine2: '29 FLEET STREET',
-    townOrCity: 'LIVERPOOL',
-    county: 'LIVERPOOL',
+    addressLine1: '10, Concert Square Apartments',
+    addressLine2: '29 Fleet Street',
+    townOrCity: 'Liverpool',
+    county: 'Liverpool',
     postcode: 'L1 4AR'
   }
 
@@ -135,10 +135,10 @@ test('transformAddress() builds address F', (t) => {
   }
 
   const expected = {
-    addressLine1: 'GARDEN FLAT',
-    addressLine2: '51 LANSDOWN',
-    townOrCity: 'STROUD',
-    county: 'STROUD',
+    addressLine1: 'Garden Flat',
+    addressLine2: '51 Lansdown',
+    townOrCity: 'Stroud',
+    county: 'Stroud',
     postcode: 'GL5 1BN'
   }
 
@@ -158,10 +158,10 @@ test('transformAddress() builds address G', (t) => {
   }
 
   const expected = {
-    addressLine1: 'THE RETREAT',
-    addressLine2: 'BLACKERSTONE',
-    townOrCity: 'DUNS',
-    county: 'SCOTTISH BORDERS',
+    addressLine1: 'The Retreat',
+    addressLine2: 'Blackerstone',
+    townOrCity: 'Duns',
+    county: 'Scottish Borders',
     postcode: 'TD11 3RY'
   }
 
@@ -180,10 +180,10 @@ test('transformAddress() builds address H', (t) => {
   }
 
   const expected = {
-    addressLine1: 'BLACKERSTONE SHEPHERDS HOUSE',
+    addressLine1: 'Blackerstone Shepherds House',
     addressLine2: '',
-    townOrCity: 'DUNS',
-    county: 'SCOTTISH BORDERS',
+    townOrCity: 'Duns',
+    county: 'Scottish Borders',
     postcode: 'TD11 3RY'
   }
 
@@ -202,10 +202,10 @@ test('transformAddress() builds address I', (t) => {
   }
 
   const expected = {
-    addressLine1: '10A MAYFIELD AVENUE',
+    addressLine1: '10a Mayfield Avenue',
     addressLine2: '',
-    townOrCity: 'WESTON-SUPER-MARE',
-    county: 'NORTH SOMERSET',
+    townOrCity: 'Weston-Super-Mare',
+    county: 'North Somerset',
     postcode: 'BS22 6AA'
   }
 

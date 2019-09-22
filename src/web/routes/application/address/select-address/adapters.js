@@ -1,5 +1,6 @@
 const { props, propOr, pickAll, compose, map, join, filter, not, isEmpty, split, head, tail, defaultTo } = require('ramda')
 const { OS_PLACES_ADDRESS_KEYS } = require('../constants')
+const { toTitleCase } = require('../formats')
 
 /**
  * Map address returned from OS places API to format required by claimant service
@@ -13,6 +14,8 @@ const { OS_PLACES_ADDRESS_KEYS } = require('../constants')
  *    d) Locality
  * 3. Split a single part address into two parts if a comma exists in the first part
  * 4. Convert a multipart address into two parts by joining all parts except the first with a comma
+ * 5. Build the full address
+ * 5. Convert address to title case
  */
 
 const DELIMITER = ', '
@@ -67,10 +70,10 @@ const transformAddress = addressFields => {
   const addressLineOneAndTwo = buildAddressLineOneAndTwo(addressFields)
 
   return {
-    addressLine1: addressLineOneAndTwo[0],
-    addressLine2: addressLineOneAndTwo[1],
-    townOrCity: addressFields.POST_TOWN,
-    county: addressFields.LOCAL_CUSTODIAN_CODE_DESCRIPTION,
+    addressLine1: toTitleCase(addressLineOneAndTwo[0]),
+    addressLine2: toTitleCase(addressLineOneAndTwo[1]),
+    townOrCity: toTitleCase(addressFields.POST_TOWN),
+    county: toTitleCase(addressFields.LOCAL_CUSTODIAN_CODE_DESCRIPTION),
     postcode: addressFields.POSTCODE
   }
 }

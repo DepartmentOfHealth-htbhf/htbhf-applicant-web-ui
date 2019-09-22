@@ -122,10 +122,10 @@ test('behaviourForPost() adds transformed address to claim', (t) => {
 
   const expectedClaim = {
     nino: 'QQ123456C',
-    addressLine1: 'ALAN JEFFERY ENGINEERING',
-    addressLine2: '1 UPPER VALLEY ROAD, VALLEY ROAD',
-    townOrCity: 'PLYMOUTH',
-    county: 'CITY OF PLYMOUTH',
+    addressLine1: 'Alan Jeffery Engineering',
+    addressLine2: '1 Upper Valley Road, Valley Road',
+    townOrCity: 'Plymouth',
+    county: 'City Of Plymouth',
     postcode: 'PL7 1RF'
   }
 
