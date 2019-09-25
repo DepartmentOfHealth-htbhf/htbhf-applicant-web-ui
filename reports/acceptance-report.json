@@ -1,1529 +1,5 @@
 [
   {
-    "description": "  In order to facilitate the beta Apply for Healthy Start programme\n  As a potential claimant\n  I want to see the details of how cookies are use during the application process",
-    "keyword": "Feature",
-    "name": "Cookies page",
-    "line": 1,
-    "id": "cookies-page",
-    "tags": [],
-    "uri": "src/test/acceptance/features/cookies.feature",
-    "elements": [
-      {
-        "id": "cookies-page;the-back-link-on-the-cookies-page-is-not-shown-if-we-navigate-to-it-directly",
-        "keyword": "Scenario",
-        "line": 6,
-        "name": "The back link on the Cookies page is not shown if we navigate to it directly",
-        "tags": [],
-        "type": "scenario",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 15000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 7,
-            "name": "I navigate to the cookies page",
-            "match": {
-              "location": "src/test/common/steps/navigation/steps.js:20"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 537000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 8,
-            "name": "the cookies page is shown",
-            "match": {
-              "location": "src/test/common/steps/cookie-steps.js:12"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 4000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 9,
-            "name": "no back link is shown",
-            "match": {
-              "location": "src/test/common/steps/cookie-steps.js:20"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 5004000000
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:19"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1000000
-            }
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "description": "  In order to apply for the Apply for Healthy Start programme\n  As a potential claimant\n  I want to enter my date of birth",
-    "keyword": "Feature",
-    "name": "Date of birth",
-    "line": 1,
-    "id": "date-of-birth",
-    "tags": [],
-    "uri": "src/test/acceptance/features/date-of-birth.feature",
-    "elements": [
-      {
-        "id": "date-of-birth;enter-a-date-of-birth-in-the-future",
-        "keyword": "Scenario",
-        "line": 9,
-        "name": "Enter a date of birth in the future",
-        "tags": [],
-        "type": "scenario",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 7,
-            "name": "I have entered my details up to the enter date of birth page",
-            "match": {
-              "location": "src/test/common/steps/navigation/steps.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 712000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 10,
-            "name": "I enter my date of birth as day: 03, month: 09 and year: 9999",
-            "match": {
-              "location": "src/test/common/steps/date-of-birth-steps.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 300000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 11,
-            "name": "I am informed that my date of birth should be in the past",
-            "match": {
-              "location": "src/test/common/steps/date-of-birth-steps.js:20"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 133000000
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:19"
-            },
-            "result": {
-              "status": "passed"
-            }
-          }
-        ]
-      },
-      {
-        "id": "date-of-birth;enter-an-invalid-date-of-birth",
-        "keyword": "Scenario",
-        "line": 18,
-        "name": "Enter an invalid date of birth",
-        "tags": [],
-        "type": "scenario",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 7,
-            "name": "I have entered my details up to the enter date of birth page",
-            "match": {
-              "location": "src/test/common/steps/navigation/steps.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 677000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 14,
-            "name": "I enter my date of birth as day: , month:  and year: ",
-            "match": {
-              "location": "src/test/common/steps/date-of-birth-steps.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 273000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 15,
-            "name": "I am informed that a valid date of birth is required",
-            "match": {
-              "location": "src/test/common/steps/date-of-birth-steps.js:15"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 126000000
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:19"
-            },
-            "result": {
-              "status": "passed"
-            }
-          }
-        ]
-      },
-      {
-        "id": "date-of-birth;enter-an-invalid-date-of-birth",
-        "keyword": "Scenario",
-        "line": 19,
-        "name": "Enter an invalid date of birth",
-        "tags": [],
-        "type": "scenario",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 2000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 7,
-            "name": "I have entered my details up to the enter date of birth page",
-            "match": {
-              "location": "src/test/common/steps/navigation/steps.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 757000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 14,
-            "name": "I enter my date of birth as day: 30, month: 02 and year: 2000",
-            "match": {
-              "location": "src/test/common/steps/date-of-birth-steps.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 249000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 15,
-            "name": "I am informed that a valid date of birth is required",
-            "match": {
-              "location": "src/test/common/steps/date-of-birth-steps.js:15"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 120000000
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:19"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1000000
-            }
-          }
-        ]
-      },
-      {
-        "id": "date-of-birth;enter-an-invalid-date-of-birth",
-        "keyword": "Scenario",
-        "line": 20,
-        "name": "Enter an invalid date of birth",
-        "tags": [],
-        "type": "scenario",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 7,
-            "name": "I have entered my details up to the enter date of birth page",
-            "match": {
-              "location": "src/test/common/steps/navigation/steps.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 661000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 14,
-            "name": "I enter my date of birth as day: 40, month: 1 and year: 1985",
-            "match": {
-              "location": "src/test/common/steps/date-of-birth-steps.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 262000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 15,
-            "name": "I am informed that a valid date of birth is required",
-            "match": {
-              "location": "src/test/common/steps/date-of-birth-steps.js:15"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 119000000
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:19"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1000000
-            }
-          }
-        ]
-      },
-      {
-        "id": "date-of-birth;enter-an-invalid-date-of-birth",
-        "keyword": "Scenario",
-        "line": 21,
-        "name": "Enter an invalid date of birth",
-        "tags": [],
-        "type": "scenario",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 7,
-            "name": "I have entered my details up to the enter date of birth page",
-            "match": {
-              "location": "src/test/common/steps/navigation/steps.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 845000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 14,
-            "name": "I enter my date of birth as day: 03, month: 37 and year: 1978",
-            "match": {
-              "location": "src/test/common/steps/date-of-birth-steps.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 243000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 15,
-            "name": "I am informed that a valid date of birth is required",
-            "match": {
-              "location": "src/test/common/steps/date-of-birth-steps.js:15"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 116000000
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:19"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1000000
-            }
-          }
-        ]
-      },
-      {
-        "id": "date-of-birth;enter-a-valid-date-of-birth",
-        "keyword": "Scenario",
-        "line": 28,
-        "name": "Enter a valid date of birth",
-        "tags": [],
-        "type": "scenario",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 7,
-            "name": "I have entered my details up to the enter date of birth page",
-            "match": {
-              "location": "src/test/common/steps/navigation/steps.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1106000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 24,
-            "name": "I enter my date of birth as day: 30, month: 12 and year: 1980",
-            "match": {
-              "location": "src/test/common/steps/date-of-birth-steps.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 303000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 25,
-            "name": "I am shown the do you have children under four years old page",
-            "match": {
-              "location": "src/test/common/steps/do-you-have-children-steps.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 3000000
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:19"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1000000
-            }
-          }
-        ]
-      },
-      {
-        "id": "date-of-birth;enter-a-valid-date-of-birth",
-        "keyword": "Scenario",
-        "line": 29,
-        "name": "Enter a valid date of birth",
-        "tags": [],
-        "type": "scenario",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 7,
-            "name": "I have entered my details up to the enter date of birth page",
-            "match": {
-              "location": "src/test/common/steps/navigation/steps.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 666000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 24,
-            "name": "I enter my date of birth as day: 29, month: 02 and year: 2000",
-            "match": {
-              "location": "src/test/common/steps/date-of-birth-steps.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 303000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 25,
-            "name": "I am shown the do you have children under four years old page",
-            "match": {
-              "location": "src/test/common/steps/do-you-have-children-steps.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 2000000
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:19"
-            },
-            "result": {
-              "status": "passed"
-            }
-          }
-        ]
-      },
-      {
-        "id": "date-of-birth;enter-a-valid-date-of-birth",
-        "keyword": "Scenario",
-        "line": 30,
-        "name": "Enter a valid date of birth",
-        "tags": [],
-        "type": "scenario",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:7"
-            },
-            "result": {
-              "status": "passed"
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 7,
-            "name": "I have entered my details up to the enter date of birth page",
-            "match": {
-              "location": "src/test/common/steps/navigation/steps.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 691000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 24,
-            "name": "I enter my date of birth as day: 1, month: 1 and year: 1985",
-            "match": {
-              "location": "src/test/common/steps/date-of-birth-steps.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 296000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 25,
-            "name": "I am shown the do you have children under four years old page",
-            "match": {
-              "location": "src/test/common/steps/do-you-have-children-steps.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 2000000
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:19"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1000000
-            }
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "description": "  In order to apply for the Apply for Healthy Start programme\n  As a potential claimant\n  I want to select whether or not I have children who are 3 years old or younger",
-    "keyword": "Feature",
-    "name": "Do you have children under four years old?",
-    "line": 1,
-    "id": "do-you-have-children-under-four-years-old?",
-    "tags": [],
-    "uri": "src/test/acceptance/features/do-you-have-children.feature",
-    "elements": [
-      {
-        "id": "do-you-have-children-under-four-years-old?;yes-and-no-are-displayed",
-        "keyword": "Scenario",
-        "line": 9,
-        "name": "Yes and No are displayed",
-        "tags": [],
-        "type": "scenario",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 7,
-            "name": "I have entered my details up to the do you have children under four years old page",
-            "match": {
-              "location": "src/test/common/steps/navigation/steps.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 925000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 10,
-            "name": "Yes and No options are displayed on the do you have children under four years old page",
-            "match": {
-              "location": "src/test/common/steps/do-you-have-children-steps.js:37"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 43000000
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:19"
-            },
-            "result": {
-              "status": "passed"
-            }
-          }
-        ]
-      },
-      {
-        "id": "do-you-have-children-under-four-years-old?;do-not-select-an-option-on-the-do-you-have-children-under-four-years-old-page",
-        "keyword": "Scenario",
-        "line": 12,
-        "name": "Do not select an option on the do you have children under four years old page",
-        "tags": [],
-        "type": "scenario",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 7,
-            "name": "I have entered my details up to the do you have children under four years old page",
-            "match": {
-              "location": "src/test/common/steps/navigation/steps.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 941000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 13,
-            "name": "I do not select an option",
-            "match": {
-              "location": "src/test/common/steps/common-steps.js:261"
-            },
-            "result": {
-              "status": "passed"
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 14,
-            "name": "I click continue",
-            "match": {
-              "location": "src/test/common/steps/common-steps.js:265"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 73000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 15,
-            "name": "I am informed that I need to select an option for do you have children under four years old",
-            "match": {
-              "location": "src/test/common/steps/do-you-have-children-steps.js:29"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 126000000
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:19"
-            },
-            "result": {
-              "status": "passed"
-            }
-          }
-        ]
-      },
-      {
-        "id": "do-you-have-children-under-four-years-old?;select-the-no-option-on-the-do-you-have-children-under-four-years-old-page",
-        "keyword": "Scenario",
-        "line": 17,
-        "name": "Select the No option on the do you have children under four years old page",
-        "tags": [],
-        "type": "scenario",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 7,
-            "name": "I have entered my details up to the do you have children under four years old page",
-            "match": {
-              "location": "src/test/common/steps/navigation/steps.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 981000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 18,
-            "name": "I say No to the do you have children under four years old question",
-            "match": {
-              "location": "src/test/common/steps/do-you-have-children-steps.js:11"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 55000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 19,
-            "name": "I click continue",
-            "match": {
-              "location": "src/test/common/steps/common-steps.js:265"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 111000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 20,
-            "name": "I am shown the are you pregnant page",
-            "match": {
-              "location": "src/test/common/steps/are-you-pregnant.js:74"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 3000000
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:19"
-            },
-            "result": {
-              "status": "passed"
-            }
-          }
-        ]
-      },
-      {
-        "id": "do-you-have-children-under-four-years-old?;select-the-yes-option-and-i-am-asked-to-enter-my-children's-dates-of-birth",
-        "keyword": "Scenario",
-        "line": 22,
-        "name": "Select the Yes option and I am asked to enter my children's dates of birth",
-        "tags": [],
-        "type": "scenario",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:7"
-            },
-            "result": {
-              "status": "passed"
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 7,
-            "name": "I have entered my details up to the do you have children under four years old page",
-            "match": {
-              "location": "src/test/common/steps/navigation/steps.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1011000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 23,
-            "name": "I say Yes to the do you have children under four years old question",
-            "match": {
-              "location": "src/test/common/steps/do-you-have-children-steps.js:15"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 69000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 24,
-            "name": "I click continue",
-            "match": {
-              "location": "src/test/common/steps/common-steps.js:265"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 114000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 25,
-            "name": "I am shown the enter your childrens dates of birth page",
-            "match": {
-              "location": "src/test/common/steps/child-date-of-birth-steps.js:75"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 3000000
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:19"
-            },
-            "result": {
-              "status": "passed"
-            }
-          }
-        ]
-      },
-      {
-        "id": "do-you-have-children-under-four-years-old?;children’s-dates-of-birth-is-not-navigable-via-the-back-button-if-i’ve-said-i-have-no-children",
-        "keyword": "Scenario",
-        "line": 27,
-        "name": "Children’s dates of birth is not navigable via the back button if I’ve said I have no children",
-        "tags": [],
-        "type": "scenario",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 7,
-            "name": "I have entered my details up to the do you have children under four years old page",
-            "match": {
-              "location": "src/test/common/steps/navigation/steps.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 972000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 28,
-            "name": "I have said No to the do you have children under four years old question",
-            "match": {
-              "location": "src/test/common/steps/do-you-have-children-steps.js:19"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 187000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 29,
-            "name": "I am shown the are you pregnant page",
-            "match": {
-              "location": "src/test/common/steps/are-you-pregnant.js:74"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 3000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 30,
-            "name": "The back link points to the Do you have children under four years old page",
-            "match": {
-              "location": "src/test/common/steps/do-you-have-children-steps.js:41"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 36000000
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:19"
-            },
-            "result": {
-              "status": "passed"
-            }
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "description": "  In order to apply for the Apply for Healthy Start programme\n  As a potential claimant\n  I want to enter my email address",
-    "keyword": "Feature",
-    "name": "Enter email address",
-    "line": 1,
-    "id": "enter-email-address",
-    "tags": [],
-    "uri": "src/test/acceptance/features/email-address.feature",
-    "elements": [
-      {
-        "id": "enter-email-address;enter-a-valid-email-address",
-        "keyword": "Scenario",
-        "line": 9,
-        "name": "Enter a valid email address",
-        "tags": [],
-        "type": "scenario",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:7"
-            },
-            "result": {
-              "status": "passed"
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 7,
-            "name": "I have entered my details up to the email address page",
-            "match": {
-              "location": "src/test/common/steps/navigation/steps.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 3171000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 10,
-            "name": "I enter a valid email address",
-            "match": {
-              "location": "src/test/common/steps/email-address-steps.js:11"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 190000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 11,
-            "name": "I am shown the send code page",
-            "match": {
-              "location": "src/test/common/steps/send-code-steps.js:16"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 3000000
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:19"
-            },
-            "result": {
-              "status": "passed"
-            }
-          }
-        ]
-      },
-      {
-        "id": "enter-email-address;do-not-enter-an-email-address",
-        "keyword": "Scenario",
-        "line": 13,
-        "name": "Do not enter an email address",
-        "tags": [],
-        "type": "scenario",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 7,
-            "name": "I have entered my details up to the email address page",
-            "match": {
-              "location": "src/test/common/steps/navigation/steps.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 3128000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 14,
-            "name": "I do not enter an email address",
-            "match": {
-              "location": "src/test/common/steps/email-address-steps.js:15"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 118000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 15,
-            "name": "I am informed that I must enter in a valid email address",
-            "match": {
-              "location": "src/test/common/steps/email-address-steps.js:33"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 81000000
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:19"
-            },
-            "result": {
-              "status": "passed"
-            }
-          }
-        ]
-      },
-      {
-        "id": "enter-email-address;enter-an-email-that-is-too-long",
-        "keyword": "Scenario",
-        "line": 17,
-        "name": "Enter an email that is too long",
-        "tags": [],
-        "type": "scenario",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 7,
-            "name": "I have entered my details up to the email address page",
-            "match": {
-              "location": "src/test/common/steps/navigation/steps.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 3518000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 18,
-            "name": "I enter an email address that is too long",
-            "match": {
-              "location": "src/test/common/steps/email-address-steps.js:19"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 620000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 19,
-            "name": "I am informed that I must enter in a valid email address",
-            "match": {
-              "location": "src/test/common/steps/email-address-steps.js:33"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 91000000
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:19"
-            },
-            "result": {
-              "status": "passed"
-            }
-          }
-        ]
-      },
-      {
-        "id": "enter-email-address;enter-an-email-address-with-invalid-format",
-        "keyword": "Scenario",
-        "line": 28,
-        "name": "Enter an email address with invalid format",
-        "tags": [],
-        "type": "scenario",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 7,
-            "name": "I have entered my details up to the email address page",
-            "match": {
-              "location": "src/test/common/steps/navigation/steps.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 3368000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 22,
-            "name": "I enter plainaddress as my email address",
-            "match": {
-              "location": "src/test/common/steps/email-address-steps.js:23"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 166000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 23,
-            "name": "I am informed that I must enter in a valid email address",
-            "match": {
-              "location": "src/test/common/steps/email-address-steps.js:33"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 95000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 24,
-            "name": "I see the email address plainaddress in the textbox",
-            "match": {
-              "location": "src/test/common/steps/email-address-steps.js:40"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 30000000
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:19"
-            },
-            "result": {
-              "status": "passed"
-            }
-          }
-        ]
-      },
-      {
-        "id": "enter-email-address;enter-an-email-address-with-invalid-format",
-        "keyword": "Scenario",
-        "line": 29,
-        "name": "Enter an email address with invalid format",
-        "tags": [],
-        "type": "scenario",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 7,
-            "name": "I have entered my details up to the email address page",
-            "match": {
-              "location": "src/test/common/steps/navigation/steps.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 3217000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 22,
-            "name": "I enter #@%^%#$@#$@#.com as my email address",
-            "match": {
-              "location": "src/test/common/steps/email-address-steps.js:23"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 175000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 23,
-            "name": "I am informed that I must enter in a valid email address",
-            "match": {
-              "location": "src/test/common/steps/email-address-steps.js:33"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 83000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 24,
-            "name": "I see the email address #@%^%#$@#$@#.com in the textbox",
-            "match": {
-              "location": "src/test/common/steps/email-address-steps.js:40"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 25000000
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:19"
-            },
-            "result": {
-              "status": "passed"
-            }
-          }
-        ]
-      },
-      {
-        "id": "enter-email-address;enter-an-email-address-with-invalid-format",
-        "keyword": "Scenario",
-        "line": 30,
-        "name": "Enter an email address with invalid format",
-        "tags": [],
-        "type": "scenario",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:7"
-            },
-            "result": {
-              "status": "passed"
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 7,
-            "name": "I have entered my details up to the email address page",
-            "match": {
-              "location": "src/test/common/steps/navigation/steps.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 3138000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 22,
-            "name": "I enter @domain.com as my email address",
-            "match": {
-              "location": "src/test/common/steps/email-address-steps.js:23"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 168000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 23,
-            "name": "I am informed that I must enter in a valid email address",
-            "match": {
-              "location": "src/test/common/steps/email-address-steps.js:33"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 92000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 24,
-            "name": "I see the email address @domain.com in the textbox",
-            "match": {
-              "location": "src/test/common/steps/email-address-steps.js:40"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 20000000
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:19"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1000000
-            }
-          }
-        ]
-      }
-    ]
-  },
-  {
     "description": "  In order to apply for the Apply for Healthy Start programme\n  As a potential claimant\n  I want to enter my confirmation code",
     "keyword": "Feature",
     "name": "Enter confirmation code",
@@ -1548,7 +24,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1000000
+              "duration": 19000000
             }
           },
           {
@@ -1561,7 +37,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3597000000
+              "duration": 3341000000
             }
           },
           {
@@ -1574,7 +50,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 298000000
+              "duration": 243000000
             }
           },
           {
@@ -1587,7 +63,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3000000
+              "duration": 5000000
             }
           },
           {
@@ -1597,8 +73,7 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
@@ -1632,7 +107,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3737000000
+              "duration": 3199000000
             }
           },
           {
@@ -1645,7 +120,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 233000000
+              "duration": 196000000
             }
           },
           {
@@ -1658,7 +133,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 110000000
+              "duration": 92000000
             }
           },
           {
@@ -1702,7 +177,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3820000000
+              "duration": 3258000000
             }
           },
           {
@@ -1715,7 +190,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 35000000
+              "duration": 31000000
             }
           },
           {
@@ -1759,7 +234,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 4101000000
+              "duration": 3330000000
             }
           },
           {
@@ -1772,7 +247,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 235000000
+              "duration": 200000000
             }
           },
           {
@@ -1785,7 +260,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 92000000
+              "duration": 73000000
             }
           },
           {
@@ -1795,8 +270,7 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
@@ -1833,7 +307,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1000000
+              "duration": 2000000
             }
           },
           {
@@ -1846,7 +320,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 4139000000
+              "duration": 3424000000
             }
           },
           {
@@ -1859,7 +333,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 155000000
+              "duration": 135000000
             }
           },
           {
@@ -1872,7 +346,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 113000000
+              "duration": 92000000
             }
           },
           {
@@ -1885,7 +359,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 12000000
+              "duration": 10000000
             }
           },
           {
@@ -1941,7 +415,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 540000000
+              "duration": 463000000
             }
           },
           {
@@ -1967,7 +441,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 4000000
+              "duration": 3000000
             }
           },
           {
@@ -1980,7 +454,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 41000000
+              "duration": 32000000
             }
           },
           {
@@ -2024,7 +498,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 535000000
+              "duration": 430000000
             }
           },
           {
@@ -2037,7 +511,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 81000000
+              "duration": 77000000
             }
           },
           {
@@ -2063,7 +537,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 39000000
+              "duration": 32000000
             }
           },
           {
@@ -2107,7 +581,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 521000000
+              "duration": 458000000
             }
           },
           {
@@ -2120,7 +594,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 34000000
+              "duration": 30000000
             }
           },
           {
@@ -2133,7 +607,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 34000000
+              "duration": 31000000
             }
           },
           {
@@ -2143,7 +617,8 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           }
         ]
@@ -2188,7 +663,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 384000000
+              "duration": 360000000
             }
           },
           {
@@ -2201,7 +676,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 204000000
+              "duration": 184000000
             }
           },
           {
@@ -2211,7 +686,8 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           }
         ]
@@ -2232,7 +708,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 33000000
+              "duration": 1000000
             }
           },
           {
@@ -2245,7 +721,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 533000000
+              "duration": 435000000
             }
           },
           {
@@ -2258,7 +734,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 200000000
+              "duration": 175000000
             }
           },
           {
@@ -2268,8 +744,7 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
@@ -2290,7 +765,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2000000
+              "duration": 1000000
             }
           },
           {
@@ -2303,7 +778,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 374000000
+              "duration": 361000000
             }
           },
           {
@@ -2316,7 +791,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 213000000
+              "duration": 211000000
             }
           },
           {
@@ -2346,7 +821,8 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           },
           {
@@ -2359,7 +835,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 419000000
+              "duration": 352000000
             }
           },
           {
@@ -2372,7 +848,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 209000000
+              "duration": 196000000
             }
           },
           {
@@ -2382,8 +858,7 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
@@ -2403,7 +878,8 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           },
           {
@@ -2416,7 +892,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 440000000
+              "duration": 361000000
             }
           },
           {
@@ -2429,7 +905,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 198000000
+              "duration": 297000000
             }
           },
           {
@@ -2439,7 +915,8 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           }
         ]
@@ -2459,7 +936,8 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           },
           {
@@ -2472,7 +950,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 407000000
+              "duration": 348000000
             }
           },
           {
@@ -2485,7 +963,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 225000000
+              "duration": 172000000
             }
           },
           {
@@ -2530,7 +1008,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 446000000
+              "duration": 355000000
             }
           },
           {
@@ -2543,7 +1021,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 224000000
+              "duration": 177000000
             }
           },
           {
@@ -2599,7 +1077,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2480000000
+              "duration": 2237000000
             }
           },
           {
@@ -2612,7 +1090,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 494000000
+              "duration": 405000000
             }
           },
           {
@@ -2625,7 +1103,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3000000
+              "duration": 5000000
             }
           },
           {
@@ -2655,8 +1133,7 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           },
           {
@@ -2669,7 +1146,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2835000000
+              "duration": 2166000000
             }
           },
           {
@@ -2682,7 +1159,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 562000000
+              "duration": 421000000
             }
           },
           {
@@ -2695,7 +1172,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 4000000
+              "duration": 3000000
             }
           },
           {
@@ -2726,7 +1203,8 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           },
           {
@@ -2739,7 +1217,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2802000000
+              "duration": 2161000000
             }
           },
           {
@@ -2752,7 +1230,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 462000000
+              "duration": 406000000
             }
           },
           {
@@ -2765,7 +1243,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3000000
+              "duration": 2000000
             }
           },
           {
@@ -2795,7 +1273,8 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           },
           {
@@ -2808,7 +1287,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2556000000
+              "duration": 2302000000
             }
           },
           {
@@ -2821,7 +1300,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 475000000
+              "duration": 408000000
             }
           },
           {
@@ -2834,7 +1313,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3000000
+              "duration": 2000000
             }
           },
           {
@@ -2878,7 +1357,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2623000000
+              "duration": 2202000000
             }
           },
           {
@@ -2891,7 +1370,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 499000000
+              "duration": 389000000
             }
           },
           {
@@ -2904,7 +1383,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3000000
+              "duration": 2000000
             }
           },
           {
@@ -2948,7 +1427,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2628000000
+              "duration": 2190000000
             }
           },
           {
@@ -2961,7 +1440,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 504000000
+              "duration": 369000000
             }
           },
           {
@@ -2974,7 +1453,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 153000000
+              "duration": 104000000
             }
           },
           {
@@ -2984,8 +1463,7 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
@@ -3006,7 +1484,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2000000
+              "duration": 1000000
             }
           },
           {
@@ -3019,7 +1497,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2623000000
+              "duration": 2158000000
             }
           },
           {
@@ -3032,7 +1510,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 474000000
+              "duration": 371000000
             }
           },
           {
@@ -3045,7 +1523,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 143000000
+              "duration": 112000000
             }
           },
           {
@@ -3089,7 +1567,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2636000000
+              "duration": 2209000000
             }
           },
           {
@@ -3102,7 +1580,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 464000000
+              "duration": 390000000
             }
           },
           {
@@ -3115,7 +1593,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 122000000
+              "duration": 108000000
             }
           },
           {
@@ -3159,7 +1637,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2525000000
+              "duration": 2184000000
             }
           },
           {
@@ -3172,7 +1650,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 450000000
+              "duration": 384000000
             }
           },
           {
@@ -3185,7 +1663,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 119000000
+              "duration": 130000000
             }
           },
           {
@@ -3229,7 +1707,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2574000000
+              "duration": 2321000000
             }
           },
           {
@@ -3242,7 +1720,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 508000000
+              "duration": 402000000
             }
           },
           {
@@ -3255,7 +1733,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 136000000
+              "duration": 127000000
             }
           },
           {
@@ -3265,8 +1743,7 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
@@ -3300,7 +1777,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2469000000
+              "duration": 2402000000
             }
           },
           {
@@ -3313,7 +1790,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 487000000
+              "duration": 430000000
             }
           },
           {
@@ -3326,7 +1803,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 121000000
+              "duration": 109000000
             }
           },
           {
@@ -3336,8 +1813,7 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
@@ -3358,7 +1834,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2000000
+              "duration": 1000000
             }
           },
           {
@@ -3371,7 +1847,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2727000000
+              "duration": 2674000000
             }
           },
           {
@@ -3384,7 +1860,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 444000000
+              "duration": 404000000
             }
           },
           {
@@ -3397,7 +1873,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 300000000
+              "duration": 337000000
             }
           },
           {
@@ -3407,8 +1883,7 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
@@ -3428,7 +1903,8 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           },
           {
@@ -3441,7 +1917,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2764000000
+              "duration": 2432000000
             }
           },
           {
@@ -3454,7 +1930,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 435000000
+              "duration": 409000000
             }
           },
           {
@@ -3467,7 +1943,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 125000000
+              "duration": 101000000
             }
           },
           {
@@ -3497,8 +1973,7 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           },
           {
@@ -3511,7 +1986,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2484000000
+              "duration": 2441000000
             }
           },
           {
@@ -3524,7 +1999,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 470000000
+              "duration": 433000000
             }
           },
           {
@@ -3537,7 +2012,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 143000000
+              "duration": 122000000
             }
           },
           {
@@ -3581,7 +2056,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2556000000
+              "duration": 2379000000
             }
           },
           {
@@ -3594,7 +2069,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1705000000
+              "duration": 1445000000
             }
           },
           {
@@ -3607,7 +2082,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 112000000
+              "duration": 117000000
             }
           },
           {
@@ -3651,7 +2126,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2705000000
+              "duration": 2490000000
             }
           },
           {
@@ -3664,7 +2139,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1443000000
+              "duration": 1272000000
             }
           },
           {
@@ -3677,7 +2152,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 140000000
+              "duration": 106000000
             }
           },
           {
@@ -3687,7 +2162,8 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           }
         ]
@@ -3721,7 +2197,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2562000000
+              "duration": 2387000000
             }
           },
           {
@@ -3734,7 +2210,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1644000000
+              "duration": 1289000000
             }
           },
           {
@@ -3747,7 +2223,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 145000000
+              "duration": 140000000
             }
           },
           {
@@ -3757,8 +2233,7 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
@@ -3792,7 +2267,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2624000000
+              "duration": 2371000000
             }
           },
           {
@@ -3805,7 +2280,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2729000000
+              "duration": 2014000000
             }
           },
           {
@@ -3818,7 +2293,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 119000000
+              "duration": 108000000
             }
           },
           {
@@ -3828,7 +2303,8 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           }
         ]
@@ -3859,7 +2335,8 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           },
           {
@@ -3872,7 +2349,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1991000000
+              "duration": 1787000000
             }
           },
           {
@@ -3885,7 +2362,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2130000000
+              "duration": 1081000000
             }
           },
           {
@@ -3898,7 +2375,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 157000000
+              "duration": 104000000
             }
           },
           {
@@ -3911,7 +2388,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 27000000
+              "duration": 21000000
             }
           },
           {
@@ -3941,8 +2418,7 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           },
           {
@@ -3955,7 +2431,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2169000000
+              "duration": 1599000000
             }
           },
           {
@@ -3968,7 +2444,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2418000000
+              "duration": 995000000
             }
           },
           {
@@ -3981,7 +2457,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 169000000
+              "duration": 106000000
             }
           },
           {
@@ -3994,7 +2470,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 45000000
+              "duration": 20000000
             }
           },
           {
@@ -4038,7 +2514,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2231000000
+              "duration": 1627000000
             }
           },
           {
@@ -4051,7 +2527,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 250000000
+              "duration": 216000000
             }
           },
           {
@@ -4064,7 +2540,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 141000000
+              "duration": 125000000
             }
           },
           {
@@ -4108,7 +2584,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2216000000
+              "duration": 1744000000
             }
           },
           {
@@ -4121,7 +2597,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 257000000
+              "duration": 216000000
             }
           },
           {
@@ -4134,7 +2610,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 149000000
+              "duration": 144000000
             }
           },
           {
@@ -4179,7 +2655,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2180000000
+              "duration": 1897000000
             }
           },
           {
@@ -4192,7 +2668,78 @@
             },
             "result": {
               "status": "passed",
-              "duration": 479000000
+              "duration": 379000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 29,
+            "name": "I am shown the enter national insurance number page",
+            "match": {
+              "location": "src/test/common/steps/enter-nino-steps.js:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3000000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "src/test/common/steps/hooks.js:19"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "enter-name;valid-first-name-and-last-name-form-submission",
+        "keyword": "Scenario",
+        "line": 34,
+        "name": "Valid first name and last name form submission",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "match": {
+              "location": "src/test/common/steps/hooks.js:7"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I have entered my details up to the enter name page",
+            "match": {
+              "location": "src/test/common/steps/navigation/steps.js:7"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1823000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 28,
+            "name": "I enter Henrietta and Fulsome-Blues values",
+            "match": {
+              "location": "src/test/common/steps/name-steps.js:25"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 304000000
             }
           },
           {
@@ -4216,76 +2763,6 @@
             },
             "result": {
               "status": "passed"
-            }
-          }
-        ]
-      },
-      {
-        "id": "enter-name;valid-first-name-and-last-name-form-submission",
-        "keyword": "Scenario",
-        "line": 34,
-        "name": "Valid first name and last name form submission",
-        "tags": [],
-        "type": "scenario",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:7"
-            },
-            "result": {
-              "status": "passed"
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 7,
-            "name": "I have entered my details up to the enter name page",
-            "match": {
-              "location": "src/test/common/steps/navigation/steps.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 2503000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 28,
-            "name": "I enter Henrietta and Fulsome-Blues values",
-            "match": {
-              "location": "src/test/common/steps/name-steps.js:25"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 388000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 29,
-            "name": "I am shown the enter national insurance number page",
-            "match": {
-              "location": "src/test/common/steps/enter-nino-steps.js:32"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 6000000
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:19"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1000000
             }
           }
         ]
@@ -4319,7 +2796,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2305000000
+              "duration": 1886000000
             }
           },
           {
@@ -4332,7 +2809,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 349000000
+              "duration": 277000000
             }
           },
           {
@@ -4355,7 +2832,8 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           }
         ]
@@ -4389,7 +2867,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1907000000
+              "duration": 1811000000
             }
           },
           {
@@ -4402,7 +2880,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 262000000
+              "duration": 272000000
             }
           },
           {
@@ -4415,7 +2893,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2000000
+              "duration": 3000000
             }
           },
           {
@@ -4425,8 +2903,7 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
@@ -4471,7 +2948,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 389000000
+              "duration": 402000000
             }
           },
           {
@@ -4484,7 +2961,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 32000000
+              "duration": 36000000
             }
           },
           {
@@ -4494,8 +2971,7 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
@@ -4526,8 +3002,7 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           },
           {
@@ -4540,7 +3015,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3386000000
+              "duration": 2894000000
             }
           },
           {
@@ -4553,7 +3028,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 229000000
+              "duration": 178000000
             }
           },
           {
@@ -4566,7 +3041,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3000000
+              "duration": 2000000
             }
           },
           {
@@ -4596,7 +3071,8 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           },
           {
@@ -4609,7 +3085,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3343000000
+              "duration": 2903000000
             }
           },
           {
@@ -4622,7 +3098,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 189000000
+              "duration": 193000000
             }
           },
           {
@@ -4645,8 +3121,7 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
@@ -4666,8 +3141,7 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           },
           {
@@ -4680,7 +3154,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3086000000
+              "duration": 2883000000
             }
           },
           {
@@ -4693,7 +3167,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 185000000
+              "duration": 177000000
             }
           },
           {
@@ -4736,7 +3210,8 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           },
           {
@@ -4749,7 +3224,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2940000000
+              "duration": 2852000000
             }
           },
           {
@@ -4762,7 +3237,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 146000000
+              "duration": 133000000
             }
           },
           {
@@ -4775,7 +3250,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 122000000
+              "duration": 115000000
             }
           },
           {
@@ -4820,7 +3295,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3140000000
+              "duration": 3083000000
             }
           },
           {
@@ -4833,7 +3308,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 158000000
+              "duration": 168000000
             }
           },
           {
@@ -4846,7 +3321,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 150000000
+              "duration": 123000000
             }
           },
           {
@@ -4859,7 +3334,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 32000000
+              "duration": 22000000
             }
           },
           {
@@ -4903,7 +3378,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3319000000
+              "duration": 3449000000
             }
           },
           {
@@ -4916,7 +3391,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 179000000
+              "duration": 171000000
             }
           },
           {
@@ -4929,7 +3404,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 116000000
+              "duration": 138000000
             }
           },
           {
@@ -4942,7 +3417,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 23000000
+              "duration": 29000000
             }
           },
           {
@@ -4952,8 +3427,7 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
@@ -4987,7 +3461,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3737000000
+              "duration": 3491000000
             }
           },
           {
@@ -5000,7 +3474,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 255000000
+              "duration": 191000000
             }
           },
           {
@@ -5013,7 +3487,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 171000000
+              "duration": 136000000
             }
           },
           {
@@ -5026,7 +3500,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 24000000
+              "duration": 35000000
             }
           },
           {
@@ -5036,7 +3510,8 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           }
         ]
@@ -5081,7 +3556,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 531000000
+              "duration": 519000000
             }
           },
           {
@@ -5107,7 +3582,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 5032000000
+              "duration": 5020000000
             }
           },
           {
@@ -5117,8 +3592,7 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
@@ -5149,8 +3623,7 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           },
           {
@@ -5163,7 +3636,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 613000000
+              "duration": 553000000
             }
           },
           {
@@ -5176,7 +3649,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 46000000
+              "duration": 42000000
             }
           },
           {
@@ -5221,7 +3694,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 565000000
+              "duration": 516000000
             }
           },
           {
@@ -5246,7 +3719,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 102000000
+              "duration": 71000000
             }
           },
           {
@@ -5259,7 +3732,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 174000000
+              "duration": 120000000
             }
           },
           {
@@ -5289,8 +3762,7 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           },
           {
@@ -5303,7 +3775,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 668000000
+              "duration": 523000000
             }
           },
           {
@@ -5316,7 +3788,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 99000000
+              "duration": 80000000
             }
           },
           {
@@ -5329,7 +3801,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 151000000
+              "duration": 107000000
             }
           },
           {
@@ -5342,7 +3814,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 9000000
+              "duration": 2000000
             }
           },
           {
@@ -5355,7 +3827,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 47000000
+              "duration": 27000000
             }
           },
           {
@@ -5365,8 +3837,7 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
@@ -5400,7 +3871,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 549000000
+              "duration": 486000000
             }
           },
           {
@@ -5413,7 +3884,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 79000000
+              "duration": 85000000
             }
           },
           {
@@ -5426,7 +3897,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 136000000
+              "duration": 115000000
             }
           },
           {
@@ -5439,7 +3910,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 4000000
+              "duration": 2000000
             }
           },
           {
@@ -5452,7 +3923,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 78000000
+              "duration": 59000000
             }
           },
           {
@@ -5465,7 +3936,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 30000000
+              "duration": 29000000
             }
           },
           {
@@ -5475,8 +3946,7 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
@@ -5510,7 +3980,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 548000000
+              "duration": 474000000
             }
           },
           {
@@ -5523,7 +3993,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 4004000000
+              "duration": 3608000000
             }
           },
           {
@@ -5536,7 +4006,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 71000000
+              "duration": 67000000
             }
           },
           {
@@ -5549,7 +4019,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 76000000
+              "duration": 71000000
             }
           },
           {
@@ -5562,7 +4032,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 121000000
+              "duration": 123000000
             }
           },
           {
@@ -5575,7 +4045,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 4000000
+              "duration": 2000000
             }
           },
           {
@@ -5588,7 +4058,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 46000000
+              "duration": 33000000
             }
           },
           {
@@ -5643,7 +4113,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 4032000000
+              "duration": 3599000000
             }
           },
           {
@@ -5656,7 +4126,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 137000000
+              "duration": 151000000
             }
           },
           {
@@ -5669,7 +4139,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 33000000
+              "duration": 31000000
             }
           },
           {
@@ -5682,7 +4152,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 37000000
+              "duration": 31000000
             }
           },
           {
@@ -5725,7 +4195,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3931000000
+              "duration": 3948000000
             }
           },
           {
@@ -5750,7 +4220,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 80000000
+              "duration": 74000000
             }
           },
           {
@@ -5763,7 +4233,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 131000000
+              "duration": 118000000
             }
           },
           {
@@ -5795,7 +4265,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2000000
+              "duration": 1000000
             }
           },
           {
@@ -5808,7 +4278,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3741000000
+              "duration": 3452000000
             }
           },
           {
@@ -5821,7 +4291,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 77000000
+              "duration": 69000000
             }
           },
           {
@@ -5834,7 +4304,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 120000000
+              "duration": 82000000
             }
           },
           {
@@ -5847,7 +4317,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3000000
+              "duration": 4000000
             }
           },
           {
@@ -5857,8 +4327,7 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
@@ -5892,7 +4361,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3955000000
+              "duration": 3278000000
             }
           },
           {
@@ -5905,7 +4374,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 78000000
+              "duration": 64000000
             }
           },
           {
@@ -5918,7 +4387,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 85000000
+              "duration": 84000000
             }
           },
           {
@@ -5931,7 +4400,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2000000
+              "duration": 4000000
             }
           },
           {
@@ -5972,8 +4441,7 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           },
           {
@@ -5986,7 +4454,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 4902000000
+              "duration": 3938000000
             }
           },
           {
@@ -5999,7 +4467,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 184000000
+              "duration": 151000000
             }
           },
           {
@@ -6012,7 +4480,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 145000000
+              "duration": 155000000
             }
           },
           {
@@ -6072,7 +4540,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 492000000
+              "duration": 471000000
             }
           },
           {
@@ -6085,7 +4553,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 5447000000
+              "duration": 4010000000
             }
           },
           {
@@ -6098,7 +4566,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 20000000
+              "duration": 10000000
             }
           },
           {
@@ -6111,7 +4579,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 51000000
+              "duration": 42000000
             }
           },
           {
@@ -6146,8 +4614,7 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           },
           {
@@ -6160,7 +4627,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 525000000
+              "duration": 371000000
             }
           },
           {
@@ -6173,7 +4640,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 5229000000
+              "duration": 3911000000
             }
           },
           {
@@ -6186,7 +4653,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 11000000
+              "duration": 10000000
             }
           },
           {
@@ -6199,7 +4666,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 46000000
+              "duration": 40000000
             }
           },
           {
@@ -6234,8 +4701,7 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           },
           {
@@ -6248,7 +4714,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 442000000
+              "duration": 411000000
             }
           },
           {
@@ -6261,7 +4727,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 4312000000
+              "duration": 4218000000
             }
           },
           {
@@ -6274,7 +4740,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 10000000
+              "duration": 7000000
             }
           },
           {
@@ -6287,7 +4753,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 48000000
+              "duration": 38000000
             }
           },
           {
@@ -6297,8 +4763,7 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
@@ -6337,7 +4802,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 457000000
+              "duration": 372000000
             }
           },
           {
@@ -6350,7 +4815,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 4505000000
+              "duration": 3713000000
             }
           },
           {
@@ -6363,7 +4828,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 11000000
+              "duration": 6000000
             }
           },
           {
@@ -6376,7 +4841,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 54000000
+              "duration": 36000000
             }
           },
           {
@@ -6411,8 +4876,7 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed",
-              "duration": 2000000
+              "status": "passed"
             }
           },
           {
@@ -6425,7 +4889,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 491000000
+              "duration": 383000000
             }
           },
           {
@@ -6438,7 +4902,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 4437000000
+              "duration": 3738000000
             }
           },
           {
@@ -6451,7 +4915,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 10000000
+              "duration": 8000000
             }
           },
           {
@@ -6464,7 +4928,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 45000000
+              "duration": 43000000
             }
           },
           {
@@ -6474,8 +4938,7 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
