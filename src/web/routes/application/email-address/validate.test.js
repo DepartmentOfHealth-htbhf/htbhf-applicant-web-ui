@@ -1,7 +1,9 @@
 const test = require('tape')
 const Promise = require('bluebird')
 const { applyExpressValidation } = require('../common/test/apply-express-validation')
-const { validate, MAX_EMAIL_ADDRESS_LENGTH } = require('./validate')
+const { validate } = require('./validate')
+
+const MAX_EMAIL_ADDRESS_LENGTH = 256
 
 test('validation fails for long email addresses', async (t) => {
   const domain = '@domain.com'
