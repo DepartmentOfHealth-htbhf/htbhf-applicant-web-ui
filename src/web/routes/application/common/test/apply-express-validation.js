@@ -26,6 +26,9 @@ const applyExpressValidation = async (req, middleware) => {
     locals: {}
   }
 
+  // Ensure translation function is applied to request object
+  req.t = str => str
+
   try {
     await callMiddlewareQueue(req, res, middleware)
     return validationResult(req)
