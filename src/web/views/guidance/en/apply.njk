@@ -1,4 +1,5 @@
 {% extends "../../templates/guidance.njk" %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
 
 {% block guidanceContent %}
 <h2 class="govuk-heading-l">Apply for Healthy Start</h2>
@@ -16,7 +17,8 @@
 {{ govukButton({
     text: "Apply now",
     href: "/scotland",
-    classes: "govuk-button--start govuk-!-margin-bottom-8"
+    classes: "govuk-!-margin-bottom-8",
+    isStartButton: true
   })
 }}
 

@@ -1,7 +1,7 @@
 {% extends "templates/form.njk" %}
-{% from "fieldset/macro.njk" import govukFieldset %}
-{% from "inset-text/macro.njk" import govukInsetText %}
-{% from "select/macro.njk" import govukSelect %}
+{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+{% from "govuk/components/select/macro.njk" import govukSelect %}
 {% from "macros/htbhf-form-description.njk" import htbhfFormDescription %}
 
 {% set buttonText = enterManualAddress if (addresses | length === 0) else continue %}
