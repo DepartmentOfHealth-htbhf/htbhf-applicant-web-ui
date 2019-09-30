@@ -12,7 +12,7 @@ const PAGE_TITLES = {
 }
 
 const ARE_YOU_PREGNANT_ERROR_LINK_CSS = 'a[href="#are-you-pregnant-error"]'
-const ARE_YOU_PREGNANT_FIELD_ERROR_ID = 'areYouPregnant-error'
+const ARE_YOU_PREGNANT_FIELD_ERROR_ID = 'are-you-pregnant-error'
 const EXPECTED_DELIVERY_DATE_ERROR_LINK_CSS = 'a[href="#expected-delivery-date-error"]'
 const EXPECTED_DELIVERY_DATE_FIELD_ERROR_ID = 'expected-delivery-date-error'
 

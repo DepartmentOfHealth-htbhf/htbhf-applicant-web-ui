@@ -3,7 +3,7 @@
 const SubmittablePageWithRadioButtons = require('./submittable-page-with-radio-buttons')
 
 const DO_YOU_HAVE_CHILDREN_ERROR_LINK_CSS = 'a[href="#do-you-have-children-error"]'
-const DO_YOU_HAVE_CHILDREN_FIELD_ERROR_ID = 'doYouHaveChildren-error'
+const DO_YOU_HAVE_CHILDREN_FIELD_ERROR_ID = 'do-you-have-children-error'
 
 const PAGE_TITLES = {
   en: 'GOV.UK - Do you have any children under 4 years old?',
