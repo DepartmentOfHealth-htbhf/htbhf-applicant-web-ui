@@ -18,8 +18,8 @@ const configureStaticPaths = (app) => {
    * 2. GOV.UK Javascript
    * 3. GOV.UK local CSS compiled from SASS in node_modules/govuk-frontend
    */
-  app.use('/assets', express.static(path.resolve('node_modules/govuk-frontend/assets'))) /* 1 */
-  app.use('/assets', express.static(path.resolve('node_modules/govuk-frontend'))) /* 2 */
+  app.use('/assets', express.static(path.resolve('node_modules/govuk-frontend/govuk/assets'))) /* 1 */
+  app.use('/assets', express.static(path.resolve('node_modules/govuk-frontend/govuk'))) /* 2 */
   app.use('/assets', express.static(path.resolve('src/web/public'))) /* 3 */
 }
 

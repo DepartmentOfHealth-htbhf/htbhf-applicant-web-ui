@@ -5,8 +5,7 @@ const { camelToKebabCase, toErrorList, getErrorForField } = require('./filters')
 const setViewEngine = (config, app) => {
   const env = nunjucks.configure([
     'src/web/views',
-    'node_modules/govuk-frontend/',
-    'node_modules/govuk-frontend/components/'
+    'node_modules/govuk-frontend/'
   ], {
     autoescape: true,
     express: app,
