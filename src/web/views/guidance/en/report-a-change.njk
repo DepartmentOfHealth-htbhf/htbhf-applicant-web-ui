@@ -1,3 +1,4 @@
+{% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
 {% extends "../../templates/guidance.njk" %}
 
 {% block guidanceContent %}
@@ -26,13 +27,10 @@
 
 <p class="govuk-body">If you’re claiming any benefits you must also tell the <a class="govuk-link" href="https://www.gov.uk/report-benefits-change-circumstances"> benefit agencies</a> about these changes. </p>
 
-<div class="govuk-warning-text">
-    <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-    <strong class="govuk-warning-text__text">
-      <span class="govuk-warning-text__assistive">Warning</span>
-      If you deliberately do not report changes to the benefit agencies, you’re committing <a class="govuk-link" href="https://www.gov.uk/benefit-fraud"> benefit fraud</a>.
-    </strong>
-</div>
+{{ govukWarningText({
+    html: "If you deliberately do not report changes to the benefit agencies, you’re committing <a class=\"govuk-link\" href=\"https://www.gov.uk/benefit-fraud\"> benefit fraud</a>.",
+    iconFallbackText: "Warning"
+}) }}
 
 <h3 class="govuk-heading-m">Contact us</h3>
 <p class="govuk-body">To report a change:</p>
