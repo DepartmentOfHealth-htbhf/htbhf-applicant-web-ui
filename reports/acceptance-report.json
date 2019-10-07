@@ -1,1870 +1,5 @@
 [
   {
-    "description": "  In order to apply for the Apply for Healthy Start programme\n  As a potential claimant\n  I want to enter my address manually",
-    "keyword": "Feature",
-    "name": "Address",
-    "line": 1,
-    "id": "address",
-    "tags": [],
-    "uri": "src/test/acceptance/features/manual-address.feature",
-    "elements": [
-      {
-        "id": "address;enter-a-valid-address-with-all-fields-entered",
-        "keyword": "Scenario",
-        "line": 15,
-        "name": "Enter a valid address with all fields entered",
-        "tags": [],
-        "type": "scenario",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 14000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 7,
-            "name": "I have entered my details up to the manual address page",
-            "match": {
-              "location": "src/test/common/steps/navigation/steps.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 2235000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 10,
-            "name": "I enter an address with postcode EC11BB",
-            "match": {
-              "location": "src/test/common/steps/manual-address-steps.js:14"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 393000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 11,
-            "name": "I am shown the phone number page",
-            "match": {
-              "location": "src/test/common/steps/phone-number-steps.js:16"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 2000000
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:19"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1000000
-            }
-          }
-        ]
-      },
-      {
-        "id": "address;enter-a-valid-address-with-all-fields-entered",
-        "keyword": "Scenario",
-        "line": 16,
-        "name": "Enter a valid address with all fields entered",
-        "tags": [],
-        "type": "scenario",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 7,
-            "name": "I have entered my details up to the manual address page",
-            "match": {
-              "location": "src/test/common/steps/navigation/steps.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 2082000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 10,
-            "name": "I enter an address with postcode M11AE",
-            "match": {
-              "location": "src/test/common/steps/manual-address-steps.js:14"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 411000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 11,
-            "name": "I am shown the phone number page",
-            "match": {
-              "location": "src/test/common/steps/phone-number-steps.js:16"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 2000000
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:19"
-            },
-            "result": {
-              "status": "passed"
-            }
-          }
-        ]
-      },
-      {
-        "id": "address;enter-a-valid-address-with-all-fields-entered",
-        "keyword": "Scenario",
-        "line": 17,
-        "name": "Enter a valid address with all fields entered",
-        "tags": [],
-        "type": "scenario",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 3000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 7,
-            "name": "I have entered my details up to the manual address page",
-            "match": {
-              "location": "src/test/common/steps/navigation/steps.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 2097000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 10,
-            "name": "I enter an address with postcode DN55 1PT",
-            "match": {
-              "location": "src/test/common/steps/manual-address-steps.js:14"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 395000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 11,
-            "name": "I am shown the phone number page",
-            "match": {
-              "location": "src/test/common/steps/phone-number-steps.js:16"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 2000000
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:19"
-            },
-            "result": {
-              "status": "passed"
-            }
-          }
-        ]
-      },
-      {
-        "id": "address;enter-a-valid-address-without-an-optional-second-address-line",
-        "keyword": "Scenario",
-        "line": 19,
-        "name": "Enter a valid address without an optional second address line",
-        "tags": [],
-        "type": "scenario",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 7,
-            "name": "I have entered my details up to the manual address page",
-            "match": {
-              "location": "src/test/common/steps/navigation/steps.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 2049000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 20,
-            "name": "I do not enter the second line of an address",
-            "match": {
-              "location": "src/test/common/steps/manual-address-steps.js:46"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 357000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 21,
-            "name": "I am shown the phone number page",
-            "match": {
-              "location": "src/test/common/steps/phone-number-steps.js:16"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 2000000
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:19"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1000000
-            }
-          }
-        ]
-      },
-      {
-        "id": "address;enter-a-valid-address-without-an-optional-county-line",
-        "keyword": "Scenario",
-        "line": 23,
-        "name": "Enter a valid address without an optional county line",
-        "tags": [],
-        "type": "scenario",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 7,
-            "name": "I have entered my details up to the manual address page",
-            "match": {
-              "location": "src/test/common/steps/navigation/steps.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 2074000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 24,
-            "name": "I do not enter the 'county' of an address",
-            "match": {
-              "location": "src/test/common/steps/manual-address-steps.js:26"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 423000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 25,
-            "name": "I am shown the phone number page",
-            "match": {
-              "location": "src/test/common/steps/phone-number-steps.js:16"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 4000000
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:19"
-            },
-            "result": {
-              "status": "passed"
-            }
-          }
-        ]
-      },
-      {
-        "id": "address;enter-an-address-with-an-invalid-postcode",
-        "keyword": "Scenario",
-        "line": 33,
-        "name": "Enter an address with an invalid postcode",
-        "tags": [],
-        "type": "scenario",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 7,
-            "name": "I have entered my details up to the manual address page",
-            "match": {
-              "location": "src/test/common/steps/navigation/steps.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 2106000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 28,
-            "name": "I enter an address with postcode AA1122BB",
-            "match": {
-              "location": "src/test/common/steps/manual-address-steps.js:14"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 328000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 29,
-            "name": "I am informed that the postcode is in the wrong format",
-            "match": {
-              "location": "src/test/common/steps/manual-address-steps.js:58"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 93000000
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:19"
-            },
-            "result": {
-              "status": "passed"
-            }
-          }
-        ]
-      },
-      {
-        "id": "address;enter-an-address-with-an-invalid-postcode",
-        "keyword": "Scenario",
-        "line": 34,
-        "name": "Enter an address with an invalid postcode",
-        "tags": [],
-        "type": "scenario",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 7,
-            "name": "I have entered my details up to the manual address page",
-            "match": {
-              "location": "src/test/common/steps/navigation/steps.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 2037000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 28,
-            "name": "I enter an address with postcode A",
-            "match": {
-              "location": "src/test/common/steps/manual-address-steps.js:14"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 334000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 29,
-            "name": "I am informed that the postcode is in the wrong format",
-            "match": {
-              "location": "src/test/common/steps/manual-address-steps.js:58"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 97000000
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:19"
-            },
-            "result": {
-              "status": "passed"
-            }
-          }
-        ]
-      },
-      {
-        "id": "address;enter-an-address-with-an-invalid-postcode",
-        "keyword": "Scenario",
-        "line": 35,
-        "name": "Enter an address with an invalid postcode",
-        "tags": [],
-        "type": "scenario",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 7,
-            "name": "I have entered my details up to the manual address page",
-            "match": {
-              "location": "src/test/common/steps/navigation/steps.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 2099000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 28,
-            "name": "I enter an address with postcode 11AA21",
-            "match": {
-              "location": "src/test/common/steps/manual-address-steps.js:14"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 335000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 29,
-            "name": "I am informed that the postcode is in the wrong format",
-            "match": {
-              "location": "src/test/common/steps/manual-address-steps.js:58"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 92000000
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:19"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1000000
-            }
-          }
-        ]
-      },
-      {
-        "id": "address;entering-a-postcode-from-the-channel-islands-or-isle-of-man-shows-an-error",
-        "keyword": "Scenario",
-        "line": 43,
-        "name": "Entering a postcode from the Channel Islands or Isle of Man shows an error",
-        "tags": [],
-        "type": "scenario",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 7,
-            "name": "I have entered my details up to the manual address page",
-            "match": {
-              "location": "src/test/common/steps/navigation/steps.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 2036000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 38,
-            "name": "I enter an address with postcode GY1 1WR",
-            "match": {
-              "location": "src/test/common/steps/manual-address-steps.js:14"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 356000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 39,
-            "name": "I am informed that you can only apply if I live in England, Wales or Northern Ireland",
-            "match": {
-              "location": "src/test/common/steps/manual-address-steps.js:63"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 96000000
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:19"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1000000
-            }
-          }
-        ]
-      },
-      {
-        "id": "address;entering-a-postcode-from-the-channel-islands-or-isle-of-man-shows-an-error",
-        "keyword": "Scenario",
-        "line": 44,
-        "name": "Entering a postcode from the Channel Islands or Isle of Man shows an error",
-        "tags": [],
-        "type": "scenario",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 7,
-            "name": "I have entered my details up to the manual address page",
-            "match": {
-              "location": "src/test/common/steps/navigation/steps.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 2115000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 38,
-            "name": "I enter an address with postcode JE3 1FU",
-            "match": {
-              "location": "src/test/common/steps/manual-address-steps.js:14"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 345000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 39,
-            "name": "I am informed that you can only apply if I live in England, Wales or Northern Ireland",
-            "match": {
-              "location": "src/test/common/steps/manual-address-steps.js:63"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 110000000
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:19"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1000000
-            }
-          }
-        ]
-      },
-      {
-        "id": "address;entering-a-postcode-from-the-channel-islands-or-isle-of-man-shows-an-error",
-        "keyword": "Scenario",
-        "line": 45,
-        "name": "Entering a postcode from the Channel Islands or Isle of Man shows an error",
-        "tags": [],
-        "type": "scenario",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 7,
-            "name": "I have entered my details up to the manual address page",
-            "match": {
-              "location": "src/test/common/steps/navigation/steps.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 2053000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 38,
-            "name": "I enter an address with postcode IM1 3LY",
-            "match": {
-              "location": "src/test/common/steps/manual-address-steps.js:14"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 354000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 39,
-            "name": "I am informed that you can only apply if I live in England, Wales or Northern Ireland",
-            "match": {
-              "location": "src/test/common/steps/manual-address-steps.js:63"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 100000000
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:19"
-            },
-            "result": {
-              "status": "passed"
-            }
-          }
-        ]
-      },
-      {
-        "id": "address;do-not-enter-in-any-address-fields",
-        "keyword": "Scenario",
-        "line": 48,
-        "name": "Do not enter in any address fields",
-        "tags": [],
-        "type": "scenario",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 7,
-            "name": "I have entered my details up to the manual address page",
-            "match": {
-              "location": "src/test/common/steps/navigation/steps.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 2029000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 49,
-            "name": "I do not enter in any address fields",
-            "match": {
-              "location": "src/test/common/steps/manual-address-steps.js:50"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 299000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 50,
-            "name": "I am informed that I need to enter an address on the 'address line 1', 'town or city' and 'postcode' fields",
-            "match": {
-              "location": "src/test/common/steps/manual-address-steps.js:98"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 230000000
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:19"
-            },
-            "result": {
-              "status": "passed"
-            }
-          }
-        ]
-      },
-      {
-        "id": "address;do-not-enter-in-the-first-line-of-the-address",
-        "keyword": "Scenario",
-        "line": 52,
-        "name": "Do not enter in the first line of the address",
-        "tags": [],
-        "type": "scenario",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:7"
-            },
-            "result": {
-              "status": "passed"
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 7,
-            "name": "I have entered my details up to the manual address page",
-            "match": {
-              "location": "src/test/common/steps/navigation/steps.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 2101000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 53,
-            "name": "I do not enter the first line of an address",
-            "match": {
-              "location": "src/test/common/steps/manual-address-steps.js:18"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 334000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 54,
-            "name": "I am informed that I need to enter an address on the 'address line 1' field",
-            "match": {
-              "location": "src/test/common/steps/manual-address-steps.js:68"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 95000000
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:19"
-            },
-            "result": {
-              "status": "passed"
-            }
-          }
-        ]
-      },
-      {
-        "id": "address;do-not-enter-in-the-town-or-city",
-        "keyword": "Scenario",
-        "line": 56,
-        "name": "Do not enter in the town or city",
-        "tags": [],
-        "type": "scenario",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:7"
-            },
-            "result": {
-              "status": "passed"
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 7,
-            "name": "I have entered my details up to the manual address page",
-            "match": {
-              "location": "src/test/common/steps/navigation/steps.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 2020000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 57,
-            "name": "I do not enter the 'town or city' of an address",
-            "match": {
-              "location": "src/test/common/steps/manual-address-steps.js:22"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 331000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 58,
-            "name": "I am informed that I need to enter an address on the 'town or city' field",
-            "match": {
-              "location": "src/test/common/steps/manual-address-steps.js:73"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 97000000
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:19"
-            },
-            "result": {
-              "status": "passed"
-            }
-          }
-        ]
-      },
-      {
-        "id": "address;enter-in-an-address-where-the-first-line-is-too-long",
-        "keyword": "Scenario",
-        "line": 60,
-        "name": "Enter in an address where the first line is too long",
-        "tags": [],
-        "type": "scenario",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:7"
-            },
-            "result": {
-              "status": "passed"
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 7,
-            "name": "I have entered my details up to the manual address page",
-            "match": {
-              "location": "src/test/common/steps/navigation/steps.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 2033000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 61,
-            "name": "I enter in an address where the first line is too long",
-            "match": {
-              "location": "src/test/common/steps/manual-address-steps.js:30"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 951000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 62,
-            "name": "I am informed that the first line of the address is too long",
-            "match": {
-              "location": "src/test/common/steps/manual-address-steps.js:78"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 98000000
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:19"
-            },
-            "result": {
-              "status": "passed"
-            }
-          }
-        ]
-      },
-      {
-        "id": "address;enter-in-an-address-where-the-second-line-is-too-long",
-        "keyword": "Scenario",
-        "line": 64,
-        "name": "Enter in an address where the second line is too long",
-        "tags": [],
-        "type": "scenario",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 7,
-            "name": "I have entered my details up to the manual address page",
-            "match": {
-              "location": "src/test/common/steps/navigation/steps.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 2063000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 65,
-            "name": "I enter in an address where the second line is too long",
-            "match": {
-              "location": "src/test/common/steps/manual-address-steps.js:34"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 951000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 66,
-            "name": "I am informed that the second line of the address is too long",
-            "match": {
-              "location": "src/test/common/steps/manual-address-steps.js:83"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 92000000
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:19"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1000000
-            }
-          }
-        ]
-      },
-      {
-        "id": "address;enter-in-an-address-where-the-'town-or-city'-is-too-long",
-        "keyword": "Scenario",
-        "line": 68,
-        "name": "Enter in an address where the 'town or city' is too long",
-        "tags": [],
-        "type": "scenario",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 7,
-            "name": "I have entered my details up to the manual address page",
-            "match": {
-              "location": "src/test/common/steps/navigation/steps.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 2003000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 69,
-            "name": "I enter in an address where the 'town or city' is too long",
-            "match": {
-              "location": "src/test/common/steps/manual-address-steps.js:38"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 932000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 70,
-            "name": "I am informed that the 'town or city' of the address is too long",
-            "match": {
-              "location": "src/test/common/steps/manual-address-steps.js:88"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 91000000
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:19"
-            },
-            "result": {
-              "status": "passed"
-            }
-          }
-        ]
-      },
-      {
-        "id": "address;enter-in-an-address-where-the-'county'-is-too-long",
-        "keyword": "Scenario",
-        "line": 72,
-        "name": "Enter in an address where the 'county' is too long",
-        "tags": [],
-        "type": "scenario",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 7,
-            "name": "I have entered my details up to the manual address page",
-            "match": {
-              "location": "src/test/common/steps/navigation/steps.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1971000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 73,
-            "name": "I enter in an address where the 'county' is too long",
-            "match": {
-              "location": "src/test/common/steps/manual-address-steps.js:42"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1553000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 74,
-            "name": "I am informed that the 'county' of the address is too long",
-            "match": {
-              "location": "src/test/common/steps/manual-address-steps.js:93"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 91000000
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:19"
-            },
-            "result": {
-              "status": "passed"
-            }
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "description": "  In order to apply for the Apply for Healthy Start programme\n  As a potential claimant\n  I want to enter my name",
-    "keyword": "Feature",
-    "name": "Enter name",
-    "line": 1,
-    "id": "enter-name",
-    "tags": [],
-    "uri": "src/test/acceptance/features/name.feature",
-    "elements": [
-      {
-        "id": "enter-name;fill-“first-name”-textbox-with-text-which-exceeds-maximum-length",
-        "keyword": "Scenario",
-        "line": 9,
-        "name": "Fill “First name” textbox with text which exceeds maximum length",
-        "tags": [],
-        "type": "scenario",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 7,
-            "name": "I have entered my details up to the enter name page",
-            "match": {
-              "location": "src/test/common/steps/navigation/steps.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1420000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 10,
-            "name": "I enter a first name which is too long",
-            "match": {
-              "location": "src/test/common/steps/name-steps.js:9"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 763000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 11,
-            "name": "I am informed that the first name is too long",
-            "match": {
-              "location": "src/test/common/steps/name-steps.js:29"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 98000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 12,
-            "name": "I see the invalid first name I entered in the textbox",
-            "match": {
-              "location": "src/test/common/steps/name-steps.js:34"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 19000000
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:19"
-            },
-            "result": {
-              "status": "passed"
-            }
-          }
-        ]
-      },
-      {
-        "id": "enter-name;fill-“last-name”-textbox-with-text-which-exceeds-maximum-length",
-        "keyword": "Scenario",
-        "line": 14,
-        "name": "Fill “Last name” textbox with text which exceeds maximum length",
-        "tags": [],
-        "type": "scenario",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:7"
-            },
-            "result": {
-              "status": "passed"
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 7,
-            "name": "I have entered my details up to the enter name page",
-            "match": {
-              "location": "src/test/common/steps/navigation/steps.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1404000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 15,
-            "name": "I enter a last name which is too long",
-            "match": {
-              "location": "src/test/common/steps/name-steps.js:13"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 780000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 16,
-            "name": "I am informed that the last name is too long",
-            "match": {
-              "location": "src/test/common/steps/name-steps.js:44"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 93000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 17,
-            "name": "I see the last name I entered in the textbox",
-            "match": {
-              "location": "src/test/common/steps/name-steps.js:39"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 18000000
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:19"
-            },
-            "result": {
-              "status": "passed"
-            }
-          }
-        ]
-      },
-      {
-        "id": "enter-name;fail-to-fill-\"first-name\"-textbox-shows-error",
-        "keyword": "Scenario",
-        "line": 19,
-        "name": "Fail to fill \"First name\" textbox shows error",
-        "tags": [],
-        "type": "scenario",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:7"
-            },
-            "result": {
-              "status": "passed"
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 7,
-            "name": "I have entered my details up to the enter name page",
-            "match": {
-              "location": "src/test/common/steps/navigation/steps.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1401000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 20,
-            "name": "I enter last name only",
-            "match": {
-              "location": "src/test/common/steps/name-steps.js:17"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 167000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 21,
-            "name": "I am informed that a first name is required",
-            "match": {
-              "location": "src/test/common/steps/name-steps.js:49"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 92000000
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:19"
-            },
-            "result": {
-              "status": "passed"
-            }
-          }
-        ]
-      },
-      {
-        "id": "enter-name;fail-to-fill-\"last-name\"-textbox-shows-error",
-        "keyword": "Scenario",
-        "line": 23,
-        "name": "Fail to fill \"Last name\" textbox shows error",
-        "tags": [],
-        "type": "scenario",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:7"
-            },
-            "result": {
-              "status": "passed"
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 7,
-            "name": "I have entered my details up to the enter name page",
-            "match": {
-              "location": "src/test/common/steps/navigation/steps.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1392000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 24,
-            "name": "I enter first name only",
-            "match": {
-              "location": "src/test/common/steps/name-steps.js:21"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 164000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 25,
-            "name": "I am informed that a last name is required",
-            "match": {
-              "location": "src/test/common/steps/name-steps.js:54"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 92000000
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:19"
-            },
-            "result": {
-              "status": "passed"
-            }
-          }
-        ]
-      },
-      {
-        "id": "enter-name;valid-first-name-and-last-name-form-submission",
-        "keyword": "Scenario",
-        "line": 33,
-        "name": "Valid first name and last name form submission",
-        "tags": [],
-        "type": "scenario",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:7"
-            },
-            "result": {
-              "status": "passed"
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 7,
-            "name": "I have entered my details up to the enter name page",
-            "match": {
-              "location": "src/test/common/steps/navigation/steps.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1442000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 28,
-            "name": "I enter <script>window.location.href=“www.google.com”</script> and ‘;exec xp_cmdshell ‘dir’;– values",
-            "match": {
-              "location": "src/test/common/steps/name-steps.js:25"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 255000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 29,
-            "name": "I am shown the enter national insurance number page",
-            "match": {
-              "location": "src/test/common/steps/enter-nino-steps.js:32"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 2000000
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:19"
-            },
-            "result": {
-              "status": "passed"
-            }
-          }
-        ]
-      },
-      {
-        "id": "enter-name;valid-first-name-and-last-name-form-submission",
-        "keyword": "Scenario",
-        "line": 34,
-        "name": "Valid first name and last name form submission",
-        "tags": [],
-        "type": "scenario",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 7,
-            "name": "I have entered my details up to the enter name page",
-            "match": {
-              "location": "src/test/common/steps/navigation/steps.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1388000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 28,
-            "name": "I enter Henrietta and Fulsome-Blues values",
-            "match": {
-              "location": "src/test/common/steps/name-steps.js:25"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 222000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 29,
-            "name": "I am shown the enter national insurance number page",
-            "match": {
-              "location": "src/test/common/steps/enter-nino-steps.js:32"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 2000000
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:19"
-            },
-            "result": {
-              "status": "passed"
-            }
-          }
-        ]
-      },
-      {
-        "id": "enter-name;valid-first-name-and-last-name-form-submission",
-        "keyword": "Scenario",
-        "line": 35,
-        "name": "Valid first name and last name form submission",
-        "tags": [],
-        "type": "scenario",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:7"
-            },
-            "result": {
-              "status": "passed"
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 7,
-            "name": "I have entered my details up to the enter name page",
-            "match": {
-              "location": "src/test/common/steps/navigation/steps.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1427000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 28,
-            "name": "I enter Henrietta and Młynarczyk values",
-            "match": {
-              "location": "src/test/common/steps/name-steps.js:25"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 218000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 29,
-            "name": "I am shown the enter national insurance number page",
-            "match": {
-              "location": "src/test/common/steps/enter-nino-steps.js:32"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1000000
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:19"
-            },
-            "result": {
-              "status": "passed"
-            }
-          }
-        ]
-      },
-      {
-        "id": "enter-name;valid-first-name-and-last-name-form-submission",
-        "keyword": "Scenario",
-        "line": 36,
-        "name": "Valid first name and last name form submission",
-        "tags": [],
-        "type": "scenario",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:7"
-            },
-            "result": {
-              "status": "passed"
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 7,
-            "name": "I have entered my details up to the enter name page",
-            "match": {
-              "location": "src/test/common/steps/navigation/steps.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1423000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 28,
-            "name": "I enter Maria and Nowak values",
-            "match": {
-              "location": "src/test/common/steps/name-steps.js:25"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 206000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 29,
-            "name": "I am shown the enter national insurance number page",
-            "match": {
-              "location": "src/test/common/steps/enter-nino-steps.js:32"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1000000
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:19"
-            },
-            "result": {
-              "status": "passed"
-            }
-          }
-        ]
-      }
-    ]
-  },
-  {
     "description": "  In order to facilitate the beta Apply for Healthy Start programme\n  As a potential claimant\n  I want to see the page not found page if I go to a page that does not exist.",
     "keyword": "Feature",
     "name": "Page Not Found",
@@ -1889,7 +24,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1000000
+              "duration": 15000000
             }
           },
           {
@@ -1902,7 +37,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 328000000
+              "duration": 439000000
             }
           },
           {
@@ -1915,7 +50,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 26000000
+              "duration": 30000000
             }
           },
           {
@@ -1925,8 +60,7 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
@@ -1971,7 +105,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2350000000
+              "duration": 2481000000
             }
           },
           {
@@ -1984,7 +118,77 @@
             },
             "result": {
               "status": "passed",
-              "duration": 150000000
+              "duration": 165000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 11,
+            "name": "I am shown the email address page",
+            "match": {
+              "location": "src/test/common/steps/email-address-steps.js:29"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2000000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "match": {
+              "location": "src/test/common/steps/hooks.js:19"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "enter-phone-number;enter-in-a-valid-phone-number",
+        "keyword": "Scenario",
+        "line": 16,
+        "name": "Enter in a valid phone number",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "match": {
+              "location": "src/test/common/steps/hooks.js:7"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "I have entered my details up to the phone number page",
+            "match": {
+              "location": "src/test/common/steps/navigation/steps.js:7"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2484000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 10,
+            "name": "I enter +447123456789 as my phone number",
+            "match": {
+              "location": "src/test/common/steps/phone-number-steps.js:8"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 155000000
             }
           },
           {
@@ -2008,77 +212,6 @@
             },
             "result": {
               "status": "passed"
-            }
-          }
-        ]
-      },
-      {
-        "id": "enter-phone-number;enter-in-a-valid-phone-number",
-        "keyword": "Scenario",
-        "line": 16,
-        "name": "Enter in a valid phone number",
-        "tags": [],
-        "type": "scenario",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 7,
-            "name": "I have entered my details up to the phone number page",
-            "match": {
-              "location": "src/test/common/steps/navigation/steps.js:7"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 2350000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 10,
-            "name": "I enter +447123456789 as my phone number",
-            "match": {
-              "location": "src/test/common/steps/phone-number-steps.js:8"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 161000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 11,
-            "name": "I am shown the email address page",
-            "match": {
-              "location": "src/test/common/steps/email-address-steps.js:29"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 2000000
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "match": {
-              "location": "src/test/common/steps/hooks.js:19"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1000000
             }
           }
         ]
@@ -2112,7 +245,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2331000000
+              "duration": 2549000000
             }
           },
           {
@@ -2125,7 +258,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 149000000
+              "duration": 162000000
             }
           },
           {
@@ -2138,7 +271,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2000000
+              "duration": 3000000
             }
           },
           {
@@ -2168,7 +301,8 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           },
           {
@@ -2181,7 +315,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2345000000
+              "duration": 2466000000
             }
           },
           {
@@ -2194,7 +328,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 109000000
+              "duration": 104000000
             }
           },
           {
@@ -2207,7 +341,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 93000000
+              "duration": 116000000
             }
           },
           {
@@ -2251,7 +385,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2331000000
+              "duration": 2528000000
             }
           },
           {
@@ -2264,7 +398,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 106000000
+              "duration": 126000000
             }
           },
           {
@@ -2277,7 +411,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 93000000
+              "duration": 106000000
             }
           },
           {
@@ -2290,7 +424,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 19000000
+              "duration": 21000000
             }
           },
           {
@@ -2334,7 +468,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2364000000
+              "duration": 2554000000
             }
           },
           {
@@ -2347,7 +481,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 124000000
+              "duration": 122000000
             }
           },
           {
@@ -2360,7 +494,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 94000000
+              "duration": 103000000
             }
           },
           {
@@ -2373,7 +507,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 19000000
+              "duration": 20000000
             }
           },
           {
@@ -2403,7 +537,8 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           },
           {
@@ -2416,7 +551,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2361000000
+              "duration": 2568000000
             }
           },
           {
@@ -2429,7 +564,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 122000000
+              "duration": 124000000
             }
           },
           {
@@ -2442,7 +577,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 93000000
+              "duration": 97000000
             }
           },
           {
@@ -2455,7 +590,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 18000000
+              "duration": 20000000
             }
           },
           {
@@ -2509,7 +644,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 323000000
+              "duration": 339000000
             }
           },
           {
@@ -2535,7 +670,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 5179000000
+              "duration": 5190000000
             }
           },
           {
@@ -2576,8 +711,7 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed",
-              "duration": 36000000
+              "status": "passed"
             }
           },
           {
@@ -2590,7 +724,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 400000000
+              "duration": 435000000
             }
           },
           {
@@ -2603,7 +737,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 29000000
+              "duration": 31000000
             }
           },
           {
@@ -2633,7 +767,8 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           },
           {
@@ -2646,7 +781,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 389000000
+              "duration": 433000000
             }
           },
           {
@@ -2658,8 +793,7 @@
               "location": "src/test/common/steps/common-steps.js:261"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           },
           {
@@ -2672,7 +806,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 54000000
+              "duration": 71000000
             }
           },
           {
@@ -2685,7 +819,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 91000000
+              "duration": 104000000
             }
           },
           {
@@ -2695,7 +829,8 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           }
         ]
@@ -2715,7 +850,8 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           },
           {
@@ -2728,7 +864,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 384000000
+              "duration": 451000000
             }
           },
           {
@@ -2741,7 +877,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 57000000
+              "duration": 61000000
             }
           },
           {
@@ -2754,7 +890,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 115000000
+              "duration": 105000000
             }
           },
           {
@@ -2780,7 +916,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 22000000
+              "duration": 24000000
             }
           },
           {
@@ -2810,7 +946,8 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           },
           {
@@ -2823,7 +960,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 388000000
+              "duration": 434000000
             }
           },
           {
@@ -2836,7 +973,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 58000000
+              "duration": 62000000
             }
           },
           {
@@ -2849,7 +986,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 94000000
+              "duration": 107000000
             }
           },
           {
@@ -2862,7 +999,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2000000
+              "duration": 3000000
             }
           },
           {
@@ -2875,7 +1012,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 50000000
+              "duration": 58000000
             }
           },
           {
@@ -2888,7 +1025,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 24000000
+              "duration": 28000000
             }
           },
           {
@@ -2932,7 +1069,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 384000000
+              "duration": 418000000
             }
           },
           {
@@ -2945,7 +1082,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2882000000
+              "duration": 3024000000
             }
           },
           {
@@ -2958,7 +1095,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 59000000
+              "duration": 52000000
             }
           },
           {
@@ -2971,7 +1108,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 55000000
+              "duration": 58000000
             }
           },
           {
@@ -2984,7 +1121,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 93000000
+              "duration": 94000000
             }
           },
           {
@@ -3010,7 +1147,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 23000000
+              "duration": 27000000
             }
           },
           {
@@ -3020,8 +1157,7 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
@@ -3066,7 +1202,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2719000000
+              "duration": 2791000000
             }
           },
           {
@@ -3079,7 +1215,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 113000000
+              "duration": 116000000
             }
           },
           {
@@ -3092,7 +1228,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 26000000
+              "duration": 28000000
             }
           },
           {
@@ -3105,7 +1241,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 22000000
+              "duration": 25000000
             }
           },
           {
@@ -3149,7 +1285,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2721000000
+              "duration": 2817000000
             }
           },
           {
@@ -3187,7 +1323,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 95000000
+              "duration": 104000000
             }
           },
           {
@@ -3197,7 +1333,8 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           }
         ]
@@ -3231,7 +1368,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2730000000
+              "duration": 2835000000
             }
           },
           {
@@ -3244,7 +1381,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 61000000
+              "duration": 60000000
             }
           },
           {
@@ -3257,7 +1394,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 63000000
+              "duration": 62000000
             }
           },
           {
@@ -3314,7 +1451,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2908000000
+              "duration": 2855000000
             }
           },
           {
@@ -3327,7 +1464,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 63000000
+              "duration": 58000000
             }
           },
           {
@@ -3340,7 +1477,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 61000000
+              "duration": 64000000
             }
           },
           {
@@ -3394,7 +1531,8 @@
               "location": "src/test/common/steps/hooks.js:7"
             },
             "result": {
-              "status": "passed"
+              "status": "passed",
+              "duration": 1000000
             }
           },
           {
@@ -3407,7 +1545,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3166000000
+              "duration": 3174000000
             }
           },
           {
@@ -3420,7 +1558,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 123000000
+              "duration": 118000000
             }
           },
           {
@@ -3433,7 +1571,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 100000000
+              "duration": 92000000
             }
           },
           {
@@ -3443,8 +1581,7 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
@@ -3481,7 +1618,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1000000
+              "duration": 3000000
             }
           },
           {
@@ -3494,7 +1631,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 347000000
+              "duration": 332000000
             }
           },
           {
@@ -3507,7 +1644,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3180000000
+              "duration": 3294000000
             }
           },
           {
@@ -3533,7 +1670,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 36000000
+              "duration": 35000000
             }
           },
           {
@@ -3582,7 +1719,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 351000000
+              "duration": 339000000
             }
           },
           {
@@ -3595,7 +1732,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3250000000
+              "duration": 3348000000
             }
           },
           {
@@ -3608,7 +1745,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 7000000
+              "duration": 8000000
             }
           },
           {
@@ -3621,7 +1758,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 32000000
+              "duration": 38000000
             }
           },
           {
@@ -3669,7 +1806,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 388000000
+              "duration": 341000000
             }
           },
           {
@@ -3682,7 +1819,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3268000000
+              "duration": 3324000000
             }
           },
           {
@@ -3695,7 +1832,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 7000000
+              "duration": 9000000
             }
           },
           {
@@ -3708,7 +1845,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 35000000
+              "duration": 41000000
             }
           },
           {
@@ -3718,8 +1855,7 @@
               "location": "src/test/common/steps/hooks.js:19"
             },
             "result": {
-              "status": "passed",
-              "duration": 1000000
+              "status": "passed"
             }
           }
         ]
@@ -3758,7 +1894,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 355000000
+              "duration": 343000000
             }
           },
           {
@@ -3771,7 +1907,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3297000000
+              "duration": 3287000000
             }
           },
           {
@@ -3784,7 +1920,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 7000000
+              "duration": 8000000
             }
           },
           {
@@ -3797,7 +1933,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 31000000
+              "duration": 33000000
             }
           },
           {
@@ -3846,7 +1982,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 333000000
+              "duration": 345000000
             }
           },
           {
@@ -3859,7 +1995,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3247000000
+              "duration": 3309000000
             }
           },
           {
@@ -3872,7 +2008,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 6000000
+              "duration": 7000000
             }
           },
           {
@@ -3885,7 +2021,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 30000000
+              "duration": 34000000
             }
           },
           {
