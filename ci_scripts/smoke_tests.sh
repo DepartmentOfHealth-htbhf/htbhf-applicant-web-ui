@@ -2,6 +2,7 @@
 
 APP_HOST=https://$1
 export APP_HOST
-echo "Running smoke tests using APP_HOST=${APP_HOST}, APP_NAME=${APP_NAME}"
+export APP_BASE_URL=$APP_HOST
+echo "Running smoke tests using APP_BASE_URL=${APP_BASE_URL}, APP_NAME=${APP_NAME}"
 
-npm run test:smoke
+npm run test:integration
