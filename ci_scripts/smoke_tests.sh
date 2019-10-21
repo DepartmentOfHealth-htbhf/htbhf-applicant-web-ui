@@ -2,7 +2,11 @@
 
 APP_HOST=https://$1
 export APP_HOST
-export APP_BASE_URL=$APP_HOST
-echo "Running smoke tests using APP_BASE_URL=${APP_BASE_URL}, APP_NAME=${APP_NAME}"
+echo "Running smoke tests using APP_HOST=${APP_HOST}, APP_NAME=${APP_NAME}"
 
-npm run test:integration
+
+status=$(curl --write-out '%{http_code}' --silent --output /dev/null ${APP_HOST}/scotland)
+
+if [[ "$status" != "200" ]]; then
+  exit $status
+fi
