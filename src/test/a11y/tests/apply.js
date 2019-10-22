@@ -1,7 +1,7 @@
 const { get } = require('../../common/request')
 const { dateIn3Months, dateLastYear } = require('../../common/dates')
 const { VALID_ELIGIBLE_NINO, PHONE_NUMBER, EMAIL_ADDRESS, TEXT, POSTCODE } = require('../constants')
-const { SESSION_CONFIRMATION_CODE_URL } = require('../../common/config')
+const { SESSION_CONFIRMATION_CODE_URL } = require('../../session-details-provider')
 const { URLS } = require('../paths')
 
 const APPLICATION_COMPLETE_TITLE = 'GOV.UK - Application complete'
