@@ -1,6 +1,6 @@
 /* no-process-exit */
 'use strict'
-require('dotenv')
+
 const { runAllTests } = require('../a11y/test-suite')
 const { TEST_SUITE } = require('../a11y/tests')
 

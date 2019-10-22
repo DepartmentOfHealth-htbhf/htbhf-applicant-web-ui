@@ -1,5 +1,3 @@
-require('dotenv').config()
-
 const test = require('tape')
 const sinon = require('sinon')
 const proxyquire = require('proxyquire')
