@@ -3,7 +3,7 @@
 
 const pa11y = require('pa11y')
 const Promise = require('bluebird')
-const { getSIDCookieAndCSRFToken, postFormData } = require('../common/request')
+const { getSIDCookieAndCSRFToken, postFormData } = require('./request')
 const handleTestResults = require('./results')
 const IGNORE_RULES = require('./ignore-rules')
 const { URLS, BASE_URL } = require('./paths')
