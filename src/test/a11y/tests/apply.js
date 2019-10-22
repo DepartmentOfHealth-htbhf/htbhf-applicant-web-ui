@@ -1,5 +1,5 @@
-const { get } = require('../../common/request')
-const { dateIn3Months, dateLastYear } = require('../../common/dates')
+const { get } = require('../request')
+const { dateIn3Months, dateLastYear } = require('./dates')
 const { VALID_ELIGIBLE_NINO, PHONE_NUMBER, EMAIL_ADDRESS, TEXT, POSTCODE } = require('../constants')
 const { SESSION_CONFIRMATION_CODE_URL } = require('../../session-details-provider')
 const { URLS } = require('../paths')

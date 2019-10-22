@@ -1,7 +1,7 @@
 /* no-process-exit */
 'use strict'
 
-const { setupSuccessfulWiremockClaimMapping, deleteAllWiremockMappings, setupPostcodeLookupWithResults } = require('../common/wiremock')
+const { setupSuccessfulWiremockClaimMapping, deleteAllWiremockMappings, setupPostcodeLookupWithResults } = require('./wiremock')
 const { runAllTests } = require('./test-suite')
 const { TEST_SUITE } = require('./tests')
 const { POSTCODE } = require('./constants')
