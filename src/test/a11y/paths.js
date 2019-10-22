@@ -1,8 +1,7 @@
-require('dotenv')
-const { PORT } = require('../common/config')
+require('dotenv').config()
 
 const APP_BASE_URL = process.env.APP_BASE_URL || ''
-const BASE_URL = APP_BASE_URL === '' ? `http://localhost:${PORT}` : APP_BASE_URL
+const BASE_URL = APP_BASE_URL === '' ? `http://localhost:${process.env.PORT}` : APP_BASE_URL
 
 const URLS = {
   DO_YOU_LIVE_IN_SCOTLAND: `${BASE_URL}/scotland`,
