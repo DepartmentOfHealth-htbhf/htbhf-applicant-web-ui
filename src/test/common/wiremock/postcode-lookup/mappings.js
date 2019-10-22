@@ -1,52 +1,13 @@
-const createPostcodeLookupWithNoResultsMapping = (postcode) => {
-  return JSON.stringify({
-    'request': {
-      'method': 'GET',
-      'urlPath': '/places/v1/addresses/postcode',
-      'queryParameters': {
-        'postcode': {
-          'equalTo': postcode
-        },
-        'key': {
-          'matches': '.*'
-        }
-      }
-    },
-    'response': {
-      'status': 200,
-      'jsonBody': {
-        'header': {
-          'uri': `https://api.ordnancesurvey.co.uk/places/v1/addresses/postcode?postcode=${postcode}`,
-          'query': `postcode=${postcode}`,
-          'offset': 0,
-          'totalresults': 0,
-          'format': 'JSON',
-          'dataset': 'DPA',
-          'lr': 'EN,CY',
-          'maxresults': 100,
-          'epoch': '69',
-          'output_srs': 'EPSG:27700'
-        }
-      },
-      'headers': {
-        'Date': 'Fri, 23 Aug 2019 11:04:02 GMT',
-        'Content-Type': 'application/json;charset=UTF-8',
-        'Connection': 'keep-alive',
-        'tx_id': '1566558242864:864',
-        'status': 'success'
-      }
-    }
-  })
-}
+const { POSTCODE } = require('../../../a11y/constants')
 
-const createPostcodeLookupWithResultsMapping = (postcode) => {
+const createPostcodeLookupWithResultsMapping = () => {
   return JSON.stringify({
     'request': {
       'method': 'GET',
       'urlPath': '/places/v1/addresses/postcode',
       'queryParameters': {
         'postcode': {
-          'equalTo': postcode
+          'equalTo': POSTCODE
         },
         'key': {
           'matches': '.*'
@@ -57,8 +18,8 @@ const createPostcodeLookupWithResultsMapping = (postcode) => {
       'status': 200,
       'jsonBody': {
         'header': {
-          'uri': `https://api.ordnancesurvey.co.uk/places/v1/addresses/postcode?postcode=${postcode}`,
-          'query': `postcode=${postcode}`,
+          'uri': `https://api.ordnancesurvey.co.uk/places/v1/addresses/postcode?postcode=${POSTCODE}`,
+          'query': `postcode=${POSTCODE}`,
           'offset': 0,
           'totalresults': 43,
           'format': 'JSON',
@@ -73,12 +34,12 @@ const createPostcodeLookupWithResultsMapping = (postcode) => {
             'DPA': {
               'UPRN': '83001911',
               'UDPRN': '10668218',
-              'ADDRESS': `1, BIRKS, SLAITHWAITE, HUDDERSFIELD, ${postcode}`,
+              'ADDRESS': `1, BIRKS, SLAITHWAITE, HUDDERSFIELD, ${POSTCODE}`,
               'BUILDING_NUMBER': '1',
               'THOROUGHFARE_NAME': 'BIRKS',
               'DEPENDENT_LOCALITY': 'SLAITHWAITE',
               'POST_TOWN': 'HUDDERSFIELD',
-              'POSTCODE': postcode,
+              'POSTCODE': POSTCODE,
               'RPC': '2',
               'X_COORDINATE': 405859,
               'Y_COORDINATE': 414551.33,
@@ -106,12 +67,12 @@ const createPostcodeLookupWithResultsMapping = (postcode) => {
             'DPA': {
               'UPRN': '83001912',
               'UDPRN': '10668223',
-              'ADDRESS': `2, BIRKS, SLAITHWAITE, HUDDERSFIELD, ${postcode}`,
+              'ADDRESS': `2, BIRKS, SLAITHWAITE, HUDDERSFIELD, ${POSTCODE}`,
               'BUILDING_NUMBER': '2',
               'THOROUGHFARE_NAME': 'BIRKS',
               'DEPENDENT_LOCALITY': 'SLAITHWAITE',
               'POST_TOWN': 'HUDDERSFIELD',
-              'POSTCODE': postcode,
+              'POSTCODE': POSTCODE,
               'RPC': '1',
               'X_COORDINATE': 405877.83,
               'Y_COORDINATE': 414582.04,
@@ -138,12 +99,12 @@ const createPostcodeLookupWithResultsMapping = (postcode) => {
             'DPA': {
               'UPRN': '83002107',
               'UDPRN': '10668224',
-              'ADDRESS': `2, COCKLEY COTE, SLAITHWAITE, HUDDERSFIELD, ${postcode}`,
+              'ADDRESS': `2, COCKLEY COTE, SLAITHWAITE, HUDDERSFIELD, ${POSTCODE}`,
               'BUILDING_NUMBER': '2',
               'THOROUGHFARE_NAME': 'COCKLEY COTE',
               'DEPENDENT_LOCALITY': 'SLAITHWAITE',
               'POST_TOWN': 'HUDDERSFIELD',
-              'POSTCODE': postcode,
+              'POSTCODE': POSTCODE,
               'RPC': '2',
               'X_COORDINATE': 406088,
               'Y_COORDINATE': 414841,
@@ -171,12 +132,12 @@ const createPostcodeLookupWithResultsMapping = (postcode) => {
             'DPA': {
               'UPRN': '83002108',
               'UDPRN': '10668226',
-              'ADDRESS': `3, COCKLEY COTE, SLAITHWAITE, HUDDERSFIELD, ${postcode}`,
+              'ADDRESS': `3, COCKLEY COTE, SLAITHWAITE, HUDDERSFIELD, ${POSTCODE}`,
               'BUILDING_NUMBER': '3',
               'THOROUGHFARE_NAME': 'COCKLEY COTE',
               'DEPENDENT_LOCALITY': 'SLAITHWAITE',
               'POST_TOWN': 'HUDDERSFIELD',
-              'POSTCODE': postcode,
+              'POSTCODE': POSTCODE,
               'RPC': '1',
               'X_COORDINATE': 406094,
               'Y_COORDINATE': 414848,
@@ -204,13 +165,13 @@ const createPostcodeLookupWithResultsMapping = (postcode) => {
             'DPA': {
               'UPRN': '83221668',
               'UDPRN': '10668197',
-              'ADDRESS': `GOAT HILL FARM, 2, GOAT HILL, SLAITHWAITE, HUDDERSFIELD, ${postcode}`,
+              'ADDRESS': `GOAT HILL FARM, 2, GOAT HILL, SLAITHWAITE, HUDDERSFIELD, ${POSTCODE}`,
               'ORGANISATION_NAME': 'GOAT HILL FARM',
               'BUILDING_NUMBER': '2',
               'THOROUGHFARE_NAME': 'GOAT HILL',
               'DEPENDENT_LOCALITY': 'SLAITHWAITE',
               'POST_TOWN': 'HUDDERSFIELD',
-              'POSTCODE': postcode,
+              'POSTCODE': POSTCODE,
               'RPC': '2',
               'X_COORDINATE': 405439,
               'Y_COORDINATE': 414802,
@@ -237,12 +198,12 @@ const createPostcodeLookupWithResultsMapping = (postcode) => {
             'DPA': {
               'UPRN': '83002148',
               'UDPRN': '10668219',
-              'ADDRESS': `1, LAUNDS, SLAITHWAITE, HUDDERSFIELD, ${postcode}`,
+              'ADDRESS': `1, LAUNDS, SLAITHWAITE, HUDDERSFIELD, ${POSTCODE}`,
               'BUILDING_NUMBER': '1',
               'THOROUGHFARE_NAME': 'LAUNDS',
               'DEPENDENT_LOCALITY': 'SLAITHWAITE',
               'POST_TOWN': 'HUDDERSFIELD',
-              'POSTCODE': postcode,
+              'POSTCODE': POSTCODE,
               'RPC': '2',
               'X_COORDINATE': 406565,
               'Y_COORDINATE': 415268,
@@ -269,12 +230,12 @@ const createPostcodeLookupWithResultsMapping = (postcode) => {
             'DPA': {
               'UPRN': '83002149',
               'UDPRN': '10668225',
-              'ADDRESS': `2, LAUNDS, SLAITHWAITE, HUDDERSFIELD, ${postcode}`,
+              'ADDRESS': `2, LAUNDS, SLAITHWAITE, HUDDERSFIELD, ${POSTCODE}`,
               'BUILDING_NUMBER': '2',
               'THOROUGHFARE_NAME': 'LAUNDS',
               'DEPENDENT_LOCALITY': 'SLAITHWAITE',
               'POST_TOWN': 'HUDDERSFIELD',
-              'POSTCODE': postcode,
+              'POSTCODE': POSTCODE,
               'RPC': '1',
               'X_COORDINATE': 406556.79,
               'Y_COORDINATE': 415257.46,
@@ -301,13 +262,13 @@ const createPostcodeLookupWithResultsMapping = (postcode) => {
             'DPA': {
               'UPRN': '83185427',
               'UDPRN': '50645330',
-              'ADDRESS': `PHILIP SUNLEY TRANSPORT LTD, LOWER LAUND FARM, LOWER LAUNDS, SLAITHWAITE, HUDDERSFIELD, ${postcode}`,
+              'ADDRESS': `PHILIP SUNLEY TRANSPORT LTD, LOWER LAUND FARM, LOWER LAUNDS, SLAITHWAITE, HUDDERSFIELD, ${POSTCODE}`,
               'ORGANISATION_NAME': 'PHILIP SUNLEY TRANSPORT LTD',
               'BUILDING_NAME': 'LOWER LAUND FARM',
               'THOROUGHFARE_NAME': 'LOWER LAUNDS',
               'DEPENDENT_LOCALITY': 'SLAITHWAITE',
               'POST_TOWN': 'HUDDERSFIELD',
-              'POSTCODE': postcode,
+              'POSTCODE': POSTCODE,
               'RPC': '1',
               'X_COORDINATE': 406369.66,
               'Y_COORDINATE': 415141.25,
@@ -334,12 +295,12 @@ const createPostcodeLookupWithResultsMapping = (postcode) => {
             'DPA': {
               'UPRN': '83185424',
               'UDPRN': '10668211',
-              'ADDRESS': `OWLERS CLOUGH, LOWER LAUNDS, SLAITHWAITE, HUDDERSFIELD, ${postcode}`,
+              'ADDRESS': `OWLERS CLOUGH, LOWER LAUNDS, SLAITHWAITE, HUDDERSFIELD, ${POSTCODE}`,
               'BUILDING_NAME': 'OWLERS CLOUGH',
               'THOROUGHFARE_NAME': 'LOWER LAUNDS',
               'DEPENDENT_LOCALITY': 'SLAITHWAITE',
               'POST_TOWN': 'HUDDERSFIELD',
-              'POSTCODE': postcode,
+              'POSTCODE': POSTCODE,
               'RPC': '1',
               'X_COORDINATE': 406226.47,
               'Y_COORDINATE': 415272.35,
@@ -366,12 +327,12 @@ const createPostcodeLookupWithResultsMapping = (postcode) => {
             'DPA': {
               'UPRN': '83185428',
               'UDPRN': '10668217',
-              'ADDRESS': `1, LOWER WORTSHILL, SLAITHWAITE, HUDDERSFIELD, ${postcode}`,
+              'ADDRESS': `1, LOWER WORTSHILL, SLAITHWAITE, HUDDERSFIELD, ${POSTCODE}`,
               'BUILDING_NUMBER': '1',
               'THOROUGHFARE_NAME': 'LOWER WORTSHILL',
               'DEPENDENT_LOCALITY': 'SLAITHWAITE',
               'POST_TOWN': 'HUDDERSFIELD',
-              'POSTCODE': postcode,
+              'POSTCODE': POSTCODE,
               'RPC': '1',
               'X_COORDINATE': 405821.29,
               'Y_COORDINATE': 415059.91,
@@ -398,12 +359,12 @@ const createPostcodeLookupWithResultsMapping = (postcode) => {
             'DPA': {
               'UPRN': '83185422',
               'UDPRN': '10668227',
-              'ADDRESS': `3, LOWER WORTSHILL, SLAITHWAITE, HUDDERSFIELD, ${postcode}`,
+              'ADDRESS': `3, LOWER WORTSHILL, SLAITHWAITE, HUDDERSFIELD, ${POSTCODE}`,
               'BUILDING_NUMBER': '3',
               'THOROUGHFARE_NAME': 'LOWER WORTSHILL',
               'DEPENDENT_LOCALITY': 'SLAITHWAITE',
               'POST_TOWN': 'HUDDERSFIELD',
-              'POSTCODE': postcode,
+              'POSTCODE': POSTCODE,
               'RPC': '1',
               'X_COORDINATE': 406083,
               'Y_COORDINATE': 415435,
@@ -439,65 +400,6 @@ const createPostcodeLookupWithResultsMapping = (postcode) => {
   })
 }
 
-const createPostcodeLookupWithErrorResponseMapping = () => {
-  return JSON.stringify({
-    'request': {
-      'method': 'GET',
-      'urlPath': '/places/v1/addresses/postcode',
-      'queryParameters': {
-        'postcode': {
-          'matches': '.*'
-        },
-        'key': {
-          'matches': '.*'
-        }
-      }
-    },
-    'response': {
-      'status': 500,
-      'jsonBody': {
-        'header': {
-          'offset': 0,
-          'totalresults': 0,
-          'format': 'JSON',
-          'dataset': 'DPA',
-          'lr': 'EN,CY',
-          'maxresults': 100,
-          'epoch': '69',
-          'output_srs': 'EPSG:27700'
-        }
-      },
-      'headers': {
-        'Date': 'Fri, 23 Aug 2019 11:04:02 GMT',
-        'Content-Type': 'application/json;charset=UTF-8',
-        'Connection': 'keep-alive',
-        'tx_id': '1566558242864:864',
-        'status': 'bad_request'
-      }
-    }
-  })
-}
-
-const createPostcodeLookupWithConnectionResetMapping = () => {
-  return JSON.stringify({
-    'request': {
-      'method': 'GET',
-      'urlPath': '/places/v1/addresses/postcode',
-      'queryParameters': {
-        'postcode': {
-          'matches': '.*'
-        },
-        'key': {
-          'matches': '.*'
-        }
-      }
-    },
-    'response': {
-      'fault': 'CONNECTION_RESET_BY_PEER'
-    }
-  })
-}
-
 const createGoogleAnalyticsMapping = () => {
   return JSON.stringify({
     'request': {
@@ -512,9 +414,6 @@ const createGoogleAnalyticsMapping = () => {
 }
 
 module.exports = {
-  createPostcodeLookupWithNoResultsMapping,
   createPostcodeLookupWithResultsMapping,
-  createPostcodeLookupWithErrorResponseMapping,
-  createPostcodeLookupWithConnectionResetMapping,
   createGoogleAnalyticsMapping
 }
