@@ -12,6 +12,9 @@ const { isErrorStatusCode } = require('./predicates')
 const { CLAIMS_ENDPOINT, NO_ELIGIBILITY_STATUS_MESSAGE } = require('./constants')
 const { render } = require('./get')
 
+const { COMPLETED } = states
+const { GET_NEXT_PATH, SET_NEXT_ALLOWED_PATH } = actions
+
 const handleErrorResponse = (body, response) => {
   if (isErrorStatusCode(response.statusCode)) {
     throw new Error(JSON.stringify(body))
@@ -59,8 +62,9 @@ const postTermsAndConditions = (steps, config) => (req, res, next) => {
         req.session.voucherEntitlement = voucherEntitlement
         req.session.claimUpdated = claimUpdated
 
-        stateMachine.setState(states.COMPLETED, req)
-        req.session.nextAllowedStep = stateMachine.dispatch(actions.GET_NEXT_PATH, req, steps, req.path)
+        stateMachine.setState(COMPLETED, req)
+        const nextAllowedPath = stateMachine.dispatch(GET_NEXT_PATH, req, steps, req.path)
+        stateMachine.dispatch(SET_NEXT_ALLOWED_PATH, req, nextAllowedPath)
         return res.redirect('confirm')
       },
       (error) => {
