@@ -3,7 +3,8 @@ const { getPreviousPath } = require('../common/get-previous-path')
 const { getSummaryListsForSteps } = require('./get-row-data')
 const { getChildrensDatesOfBirthRows } = require('./get-childrens-dates-of-birth-rows')
 
-const { GET_NEXT_PATH, SET_NEXT_ALLOWED_PATH } = actions
+const { INCREMENT_NEXT_ALLOWED_PATH } = actions
+const { IN_REVIEW } = states
 
 const pageContent = ({ translate }) => ({
   title: translate('checkAnswers.title'),
@@ -37,9 +38,8 @@ const getCheckAnswers = (steps) => (req, res) => {
   const localisation = pageContent({ translate: req.t })
   const getLocalisedChildrensDatesOfBirthRows = getChildrensDatesOfBirthRows(localisation)
 
-  stateMachine.setState(states.IN_REVIEW, req)
-  const nextAllowedPath = stateMachine.dispatch(GET_NEXT_PATH, req, steps)
-  stateMachine.dispatch(SET_NEXT_ALLOWED_PATH, req, nextAllowedPath)
+  stateMachine.setState(IN_REVIEW, req)
+  stateMachine.dispatch(INCREMENT_NEXT_ALLOWED_PATH, req, steps)
 
   res.render('check-answers', {
     ...localisation,

@@ -3,7 +3,7 @@ const { validationResult } = require('express-validator')
 const { wrapError } = require('../common/formatters')
 const { stateMachine, actions } = require('../common/state-machine')
 
-const { GET_NEXT_PATH, INVALIDATE_REVIEW, SET_NEXT_ALLOWED_PATH } = actions
+const { INVALIDATE_REVIEW, INCREMENT_NEXT_ALLOWED_PATH } = actions
 
 const stepInvalidatesReview = (step, claim) => typeof step.shouldInvalidateReview === 'function' && step.shouldInvalidateReview(claim)
 
@@ -26,8 +26,7 @@ const handlePost = (steps, step) => (req, res, next) => {
       stateMachine.dispatch(INVALIDATE_REVIEW, req)
     }
 
-    const nextAllowedPath = stateMachine.dispatch(GET_NEXT_PATH, req, steps)
-    stateMachine.dispatch(SET_NEXT_ALLOWED_PATH, req, nextAllowedPath)
+    stateMachine.dispatch(INCREMENT_NEXT_ALLOWED_PATH, req, steps)
 
     return next()
   } catch (error) {
