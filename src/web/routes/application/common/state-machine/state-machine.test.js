@@ -10,7 +10,7 @@ const { stateMachine, states, actions, isPathAllowed } = proxyquire('./state-mac
   '../../../../logger': { logger }
 })
 
-const { GET_NEXT_PATH, INVALIDATE_REVIEW } = actions
+const { GET_NEXT_PATH, INVALIDATE_REVIEW, SET_NEXT_ALLOWED_PATH } = actions
 
 const steps = [
   { path: '/first', next: () => '/second' },
@@ -131,5 +131,28 @@ test('setState sets the state if the new state is different from the current sta
 
   t.equal(req.session.state, states.COMPLETED, 'Should set state')
   t.equal(info.called, true, 'Should log a change in state')
+  t.end()
+})
+
+test(`Dispatching ${SET_NEXT_ALLOWED_PATH} sets next allowed path in session`, (t) => {
+  const appStates = [
+    { state: states.IN_PROGRESS, path: '/name' },
+    { state: states.IN_REVIEW, path: '/check' },
+    { state: states.COMPLETED, path: '/success' }
+  ]
+
+  appStates.forEach(appState => {
+    const { state, path } = appState
+
+    const req = {
+      session: {
+        state
+      }
+    }
+
+    stateMachine.dispatch(SET_NEXT_ALLOWED_PATH, req, path)
+    t.equal(req.session.nextAllowedStep, path, `sets next allowed path in session for ${state}`)
+  })
+
   t.end()
 })
