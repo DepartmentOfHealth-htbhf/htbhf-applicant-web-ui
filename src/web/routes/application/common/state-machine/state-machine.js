@@ -8,11 +8,13 @@ const states = {
   IN_REVIEW: 'IN_REVIEW',
   COMPLETED: 'COMPLETED'
 }
+
 const actions = {
   GET_NEXT_PATH: 'getNextPath',
   IS_PATH_ALLOWED: 'isPathAllowed',
   GET_NEXT_ALLOWED_PATH: 'getNextAllowedPath',
   SET_NEXT_ALLOWED_PATH: 'setNextAllowedPath',
+  INCREMENT_NEXT_ALLOWED_PATH: 'incrementNextAllowedPath',
   INVALIDATE_REVIEW: 'invalidateReview'
 }
 
@@ -48,25 +50,30 @@ const setNextAllowedPath = (req, path) => {
   req.session.nextAllowedStep = path
 }
 
+const getNextInReviewPath = (req) => req.path === CHECK_ANSWERS_URL ? TERMS_AND_CONDITIONS_URL : CHECK_ANSWERS_URL
+
 const stateMachine = {
   [states.IN_PROGRESS]: {
     getNextPath: (req, steps) => getNextNavigablePath(req.path, req, steps),
     isPathAllowed: (req, sequence) => isPathAllowed(sequence, req.session.nextAllowedStep, req.path),
     getNextAllowedPath: (req) => req.session.nextAllowedStep,
-    setNextAllowedPath
+    setNextAllowedPath,
+    incrementNextAllowedPath: (req, steps) => setNextAllowedPath(req, getNextNavigablePath(req.path, req, steps))
   },
   [states.IN_REVIEW]: {
-    getNextPath: (req) => req.path === CHECK_ANSWERS_URL ? TERMS_AND_CONDITIONS_URL : CHECK_ANSWERS_URL,
+    getNextPath: getNextInReviewPath,
     isPathAllowed: (req, sequence) => isPathAllowed(sequence, req.session.nextAllowedStep, req.path),
     getNextAllowedPath: (req) => req.session.nextAllowedStep,
     setNextAllowedPath,
+    incrementNextAllowedPath: (req) => setNextAllowedPath(req, getNextInReviewPath(req)),
     invalidateReview: (req) => stateMachine.setState(states.IN_PROGRESS, req)
   },
   [states.COMPLETED]: {
     getNextPath: () => CONFIRM_URL,
     isPathAllowed: (req) => req.path === CONFIRM_URL,
     getNextAllowedPath: () => CONFIRM_URL,
-    setNextAllowedPath
+    setNextAllowedPath,
+    incrementNextAllowedPath: (req) => setNextAllowedPath(req, CONFIRM_URL)
   },
 
   getState: (req) => {

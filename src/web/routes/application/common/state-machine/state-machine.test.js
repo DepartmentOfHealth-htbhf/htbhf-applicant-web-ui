@@ -10,7 +10,7 @@ const { stateMachine, states, actions, isPathAllowed } = proxyquire('./state-mac
   '../../../../logger': { logger }
 })
 
-const { GET_NEXT_PATH, INVALIDATE_REVIEW, SET_NEXT_ALLOWED_PATH } = actions
+const { GET_NEXT_PATH, INVALIDATE_REVIEW, SET_NEXT_ALLOWED_PATH, INCREMENT_NEXT_ALLOWED_PATH } = actions
 
 const steps = [
   { path: '/first', next: () => '/second' },
@@ -152,6 +152,30 @@ test(`Dispatching ${SET_NEXT_ALLOWED_PATH} sets next allowed path in session`, (
 
     stateMachine.dispatch(SET_NEXT_ALLOWED_PATH, req, path)
     t.equal(req.session.nextAllowedStep, path, `sets next allowed path in session for ${state}`)
+  })
+
+  t.end()
+})
+
+test(`Dispatching ${INCREMENT_NEXT_ALLOWED_PATH} updates next allowed step in session with the next allowed path in sequence`, (t) => {
+  const appStates = [
+    { state: states.IN_PROGRESS, path: '/first', expectedNextPath: '/second' },
+    { state: states.IN_REVIEW, path: CHECK_ANSWERS_URL, expectedNextPath: TERMS_AND_CONDITIONS_URL },
+    { state: states.COMPLETED, path: CONFIRM_URL, expectedNextPath: CONFIRM_URL }
+  ]
+
+  appStates.forEach(appState => {
+    const { state, path, expectedNextPath } = appState
+
+    const req = {
+      path,
+      session: {
+        state
+      }
+    }
+
+    stateMachine.dispatch(INCREMENT_NEXT_ALLOWED_PATH, req, steps)
+    t.equal(req.session.nextAllowedStep, expectedNextPath, `increments next allowed path in session for ${state}`)
   })
 
   t.end()

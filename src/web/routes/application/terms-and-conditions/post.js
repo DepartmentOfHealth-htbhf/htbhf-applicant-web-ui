@@ -13,7 +13,7 @@ const { CLAIMS_ENDPOINT, NO_ELIGIBILITY_STATUS_MESSAGE } = require('./constants'
 const { render } = require('./get')
 
 const { COMPLETED } = states
-const { GET_NEXT_PATH, SET_NEXT_ALLOWED_PATH } = actions
+const { INCREMENT_NEXT_ALLOWED_PATH } = actions
 
 const handleErrorResponse = (body, response) => {
   if (isErrorStatusCode(response.statusCode)) {
@@ -63,8 +63,7 @@ const postTermsAndConditions = (steps, config) => (req, res, next) => {
         req.session.claimUpdated = claimUpdated
 
         stateMachine.setState(COMPLETED, req)
-        const nextAllowedPath = stateMachine.dispatch(GET_NEXT_PATH, req, steps, req.path)
-        stateMachine.dispatch(SET_NEXT_ALLOWED_PATH, req, nextAllowedPath)
+        stateMachine.dispatch(INCREMENT_NEXT_ALLOWED_PATH, req, steps)
         return res.redirect('confirm')
       },
       (error) => {
