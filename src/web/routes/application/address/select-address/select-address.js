@@ -2,6 +2,9 @@ const { path } = require('ramda')
 const { transformAddress } = require('./adapters')
 const { addressContentSummary } = require('../content-summary')
 const { requestBody } = require('../request-body')
+const { stateMachine, actions } = require('../../common/state-machine')
+
+const { SET_NEXT_ALLOWED_PATH } = actions
 
 const pageContent = ({ translate }) => ({
   title: translate('address.title'),
@@ -36,7 +39,7 @@ const behaviourForGet = () => (req, res, next) => {
     res.locals.addresses = req.session.postcodeLookupResults.map(buildAddressOption)
   }
   // Manual address is further in the flow than select-address, therefore this line is needed to prevent the state machine from redirecting the user back to select-address.
-  req.session.nextAllowedStep = '/manual-address'
+  stateMachine.dispatch(SET_NEXT_ALLOWED_PATH, req, '/manual-address')
   next()
 }
 
