@@ -6,7 +6,7 @@ const { registerHoldingRoute } = require('./holding')
 const { registerPageNotFoundRoute } = require('./page-not-found')
 const { registerGuidanceRoutes } = require('./guidance')
 const { registerSteps } = require('./register-steps')
-const { registerFormRoutes, steps } = require('./application')
+const { registerJourneyRoutes, steps } = require('./application')
 
 const setCommonTemplateValues = (req, res, next) => {
   res.locals.htmlLang = req.language
@@ -26,7 +26,7 @@ const registerRoutes = (config, app) => {
     const registeredSteps = registerSteps(config.features, steps)
     const csrfProtection = csrf()
 
-    registerFormRoutes(config, csrfProtection, registeredSteps, app)
+    registerJourneyRoutes(config, csrfProtection, registeredSteps, app)
     registerCookiesRoute(app)
     registerPrivacyNoticeRoute(app)
     registerGuidanceRoutes(app)
