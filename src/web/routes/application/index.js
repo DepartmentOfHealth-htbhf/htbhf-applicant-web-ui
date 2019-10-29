@@ -1,7 +1,6 @@
-const { registerJourneyRoutes } = require('./register-journey-routes')
-const { steps } = require('./journey-definitions')
+const { registerJourneys } = require('./register-journeys')
+const { JOURNEYS } = require('./journey-definitions')
 
 module.exports = {
-  registerJourneyRoutes,
-  steps
+  registerJourneys: registerJourneys(JOURNEYS)
 }
