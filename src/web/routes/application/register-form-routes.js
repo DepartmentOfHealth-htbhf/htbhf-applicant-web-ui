@@ -1,4 +1,7 @@
 const express = require('express')
+const { registerConfirmRoute } = require('./confirm')
+const { registerCheckAnswersRoutes } = require('./check-answers')
+const { registerTermsAndConditionsRoutes } = require('./terms-and-conditions')
 
 const {
   configureGet,
@@ -49,6 +52,10 @@ const registerFormRoutes = (config, csrfProtection, steps, app) => {
   const wizard = express.Router()
   steps.forEach(createRoute(config, csrfProtection, steps, wizard))
   app.use(wizard)
+
+  registerCheckAnswersRoutes(steps, config, app)
+  registerTermsAndConditionsRoutes(csrfProtection, steps, config, app)
+  registerConfirmRoute(config, steps, app)
 }
 
 module.exports = {
