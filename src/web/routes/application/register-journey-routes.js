@@ -48,8 +48,9 @@ const createRoute = (config, csrfProtection, steps, router) => (step) => {
     )
 }
 
-const registerJourneyRoutes = (config, csrfProtection, steps, app) => {
+const registerJourneyRoutes = (config, csrfProtection, app) => (journey) => {
   const wizard = express.Router()
+  const { steps } = journey
   steps.forEach(createRoute(config, csrfProtection, steps, wizard))
   app.use(wizard)
 
