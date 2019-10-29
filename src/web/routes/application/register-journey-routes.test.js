@@ -1,6 +1,6 @@
 const test = require('tape')
 const sinon = require('sinon')
-const { handleOptionalMiddleware } = require('./register-form-routes')
+const { handleOptionalMiddleware } = require('./register-journey-routes')
 
 test('handleOptionalMiddleware() should call the operation if defined with correct arguments', (t) => {
   const operation = sinon.spy()

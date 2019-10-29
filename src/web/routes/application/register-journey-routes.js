@@ -48,7 +48,7 @@ const createRoute = (config, csrfProtection, steps, router) => (step) => {
     )
 }
 
-const registerFormRoutes = (config, csrfProtection, steps, app) => {
+const registerJourneyRoutes = (config, csrfProtection, steps, app) => {
   const wizard = express.Router()
   steps.forEach(createRoute(config, csrfProtection, steps, wizard))
   app.use(wizard)
@@ -59,6 +59,6 @@ const registerFormRoutes = (config, csrfProtection, steps, app) => {
 }
 
 module.exports = {
-  registerFormRoutes,
+  registerJourneyRoutes,
   handleOptionalMiddleware
 }
