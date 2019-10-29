@@ -14,22 +14,26 @@ const { enterCode } = require('./enter-code')
 const { postcode } = require('./address/postcode')
 const { selectAddress } = require('./address/select-address')
 
-const steps = [
-  scotland,
-  inScotland,
-  dateOfBirth,
-  doYouHaveChildren,
-  childDateOfBirth,
-  areYouPregnant,
-  name,
-  nationalInsuranceNumber,
-  postcode,
-  selectAddress,
-  manualAddress,
-  phoneNumber,
-  emailAddress,
-  sendCode,
-  enterCode
-]
+const APPLY = {
+  steps: [
+    scotland,
+    inScotland,
+    dateOfBirth,
+    doYouHaveChildren,
+    childDateOfBirth,
+    areYouPregnant,
+    name,
+    nationalInsuranceNumber,
+    postcode,
+    selectAddress,
+    manualAddress,
+    phoneNumber,
+    emailAddress,
+    sendCode,
+    enterCode
+  ]
+}
 
-module.exports = { steps }
+// TODO do not add new user journeys until all stories in "Support Multiple User
+// Journeys in Web UI" epic (HTBHF-2515) are complete
+module.exports.JOURNEYS = [APPLY]
