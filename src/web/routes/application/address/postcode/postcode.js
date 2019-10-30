@@ -4,7 +4,7 @@ const { transformOsPlacesApiResponse } = require('./adapters')
 const { auditSuccessfulPostcodeLookup, auditInvalidPostcodeLookup, auditFailedPostcodeLookup, getAddressLookupResults } = require('./os-places')
 
 const { logger } = require('../../../../logger')
-const { stateMachine, states } = require('../../common/state-machine')
+const { stateMachine, states } = require('../../flow-control')
 const { validate } = require('./validate')
 const { sanitize } = require('../sanitize')
 const { ADDRESS_KEYS } = require('../constants')

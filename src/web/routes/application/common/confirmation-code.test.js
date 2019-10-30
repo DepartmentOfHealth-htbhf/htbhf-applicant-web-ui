@@ -1,7 +1,7 @@
 const test = require('tape')
 
 const { handleConfirmationCodeReset } = require('./confirmation-code')
-const { states } = require('../common/state-machine')
+const { states } = require('../flow-control')
 
 test('handleConfirmationCodeReset', (t) => {
   const req = {
