@@ -21,8 +21,8 @@ const handleOptionalMiddleware = (args) => (operation, fallback = middlewareNoop
 
 const createRoute = (config, csrfProtection, journey, router) => (step) => {
   const { steps } = journey
-  // Make [config, steps, step] available as arguments to all optional middleware
-  const optionalMiddleware = handleOptionalMiddleware([config, steps, step])
+  // Make [config, journey, step] available as arguments to all optional middleware
+  const optionalMiddleware = handleOptionalMiddleware([config, journey, step])
 
   return router
     .route(step.path)
