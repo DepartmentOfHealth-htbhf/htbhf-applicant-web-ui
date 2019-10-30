@@ -1,6 +1,6 @@
 const test = require('tape')
 const { getNextPathFromSteps, getNextForStep } = require('./get-next-for-step')
-const { CHECK_ANSWERS_URL } = require('../constants')
+const { CHECK_ANSWERS_URL } = require('../../common/constants')
 
 const step1 = {
   path: '/first'
