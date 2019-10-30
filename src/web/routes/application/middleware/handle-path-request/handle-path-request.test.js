@@ -4,7 +4,9 @@ const { CONFIRM_URL } = require('../../common/constants')
 const { handleRequestForPath } = require('./handle-path-request')
 const { states } = require('../../common/state-machine')
 
-const steps = [{ path: '/first', next: () => '/second' }, { path: '/second' }]
+const journey = {
+  steps: [{ path: '/first', next: () => '/second' }, { path: '/second' }]
+}
 
 const config = {
   environment: {
@@ -20,7 +22,7 @@ test('handleRequestForPath() should set next allowed path to first in sequence i
   const res = {}
   const next = sinon.spy()
 
-  handleRequestForPath(config, steps)(req, res, next)
+  handleRequestForPath(config, journey)(req, res, next)
 
   t.equal(req.session.nextAllowedStep, '/first', 'it should set next allowed path to first in sequence')
   t.equal(next.called, true, 'it should call next()')
@@ -39,7 +41,7 @@ test('handleRequestForPath() should redirect to next allowed step if requested p
   const res = { redirect }
   const next = sinon.spy()
 
-  handleRequestForPath(config, steps)(req, res, next)
+  handleRequestForPath(config, journey)(req, res, next)
 
   t.equal(redirect.calledWith('/first'), true, 'it should call redirect() with next allowed step')
   t.equal(next.called, false, 'it should not call next()')
@@ -58,7 +60,7 @@ test('handleRequestForPath() should call next() if requested path is allowed', (
   const res = { redirect }
   const next = sinon.spy()
 
-  handleRequestForPath(config, steps)(req, res, next)
+  handleRequestForPath(config, journey)(req, res, next)
 
   t.equal(redirect.called, false, 'it should not call redirect()')
   t.equal(next.called, true, 'it should call next()')
@@ -84,7 +86,7 @@ test(`handleRequestForPath() should destroy the session and redirect to root whe
     redirect
   }
 
-  handleRequestForPath(config, steps)(req, res, next)
+  handleRequestForPath(config, journey)(req, res, next)
 
   t.equal(destroy.called, true, 'it should destroy the session')
   t.equal(clearCookie.calledWith('lang'), true, 'it should clear language preference cookie')
@@ -111,7 +113,7 @@ test(`handleRequestForPath() should destroy the session when navigating away fro
     redirect
   }
 
-  handleRequestForPath(config, steps)(req, res, next)
+  handleRequestForPath(config, journey)(req, res, next)
 
   t.equal(destroy.called, true, 'it should destroy the session')
   t.equal(clearCookie.calledWith('lang'), true, 'it should clear language preference cookie')

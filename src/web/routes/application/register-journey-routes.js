@@ -30,7 +30,7 @@ const createRoute = (config, csrfProtection, journey, router) => (step) => {
       csrfProtection,
       configureGet(steps, step),
       getSessionDetails,
-      handleRequestForPath(config, steps, step),
+      handleRequestForPath(config, journey, step),
       optionalMiddleware(step.behaviourForGet),
       renderView(step)
     )
@@ -43,7 +43,7 @@ const createRoute = (config, csrfProtection, journey, router) => (step) => {
       getSessionDetails,
       optionalMiddleware(step.behaviourForPost),
       handlePost(steps, step),
-      handleRequestForPath(config, steps, step),
+      handleRequestForPath(config, journey, step),
       handlePostRedirects(steps),
       renderView(step)
     )
@@ -55,9 +55,9 @@ const registerJourneyRoutes = (config, csrfProtection, app) => (journey) => {
   steps.forEach(createRoute(config, csrfProtection, journey, wizard))
   app.use(wizard)
 
-  registerCheckAnswersRoutes(steps, config, app)
-  registerTermsAndConditionsRoutes(csrfProtection, steps, config, app)
-  registerConfirmRoute(config, steps, app)
+  registerCheckAnswersRoutes(journey, config, app)
+  registerTermsAndConditionsRoutes(csrfProtection, journey, config, app)
+  registerConfirmRoute(config, journey, app)
 }
 
 module.exports = {
