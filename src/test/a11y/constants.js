@@ -34,7 +34,7 @@ function generateEligibleNino () {
 
 // use a random nino for each test run to prevent duplication errors during compatibility and accessibility tests.
 const VALID_ELIGIBLE_NINO = generateEligibleNino()
-const POSTCODE = 'AA11BB'
+const POSTCODE = 'BS14TB'
 const PHONE_NUMBER = '07123456789'
 const EMAIL_ADDRESS = 'test@email.com'
 const TEXT = 'text'
