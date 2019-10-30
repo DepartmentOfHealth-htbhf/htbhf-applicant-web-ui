@@ -19,7 +19,8 @@ const middlewareNoop = () => (req, res, next) => next()
 const handleOptionalMiddleware = (args) => (operation, fallback = middlewareNoop) =>
   typeof operation === 'undefined' ? fallback.apply(null, args) : operation.apply(null, args)
 
-const createRoute = (config, csrfProtection, steps, router) => (step) => {
+const createRoute = (config, csrfProtection, journey, router) => (step) => {
+  const { steps } = journey
   // Make [config, steps, step] available as arguments to all optional middleware
   const optionalMiddleware = handleOptionalMiddleware([config, steps, step])
 
@@ -48,9 +49,10 @@ const createRoute = (config, csrfProtection, steps, router) => (step) => {
     )
 }
 
-const registerJourneyRoutes = (config, csrfProtection, steps, app) => {
+const registerJourneyRoutes = (config, csrfProtection, app) => (journey) => {
   const wizard = express.Router()
-  steps.forEach(createRoute(config, csrfProtection, steps, wizard))
+  const { steps } = journey
+  steps.forEach(createRoute(config, csrfProtection, journey, wizard))
   app.use(wizard)
 
   registerCheckAnswersRoutes(steps, config, app)
