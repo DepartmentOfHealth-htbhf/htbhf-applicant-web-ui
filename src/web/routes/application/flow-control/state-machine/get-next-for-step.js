@@ -1,5 +1,5 @@
 const { compose, equals, prop } = require('ramda')
-const { CHECK_ANSWERS_URL } = require('../constants')
+const { CHECK_ANSWERS_URL } = require('../../common/constants')
 
 const isMatchingPath = path => compose(equals(path), prop('path'))
 
