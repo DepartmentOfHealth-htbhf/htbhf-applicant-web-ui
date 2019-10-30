@@ -23,13 +23,14 @@ test('handlePost() should add errors and claim to locals if errors exist', (t) =
   })
 
   const steps = [{ path: '/first', next: () => '/second' }, { path: '/second' }]
+  const journey = { steps }
   const step = steps[0]
   const claim = 'claim'
   const req = { body: claim }
   const res = { locals: {} }
   const next = sinon.spy()
 
-  handlePost(steps, step)(req, res, next)
+  handlePost(journey, step)(req, res, next)
 
   t.deepEqual(res.locals.errors, errors, 'it should add errors to locals')
   t.deepEqual(res.locals.claim, claim, 'it should add claim to locals')
@@ -41,6 +42,7 @@ test('handlePost() adds body to the session if no errors exist', (t) => {
   const { handlePost } = proxyquire('./handle-post', { ...defaultValidator })
 
   const steps = [{ path: '/first', next: () => '/second' }, { path: '/second' }]
+  const journey = { steps }
   const step = steps[0]
   const req = {
     session: {
@@ -60,7 +62,7 @@ test('handlePost() adds body to the session if no errors exist', (t) => {
     new: 'claim data'
   }
 
-  handlePost(steps, step)(req, {}, next)
+  handlePost(journey, step)(req, {}, next)
 
   t.deepEqual(req.session.claim, expected, 'it should add body to session')
   t.equal(next.called, true, 'it should call next()')
@@ -78,6 +80,7 @@ test('handlePost() calls next() with error on error', (t) => {
   })
 
   const steps = [{ path: '/first', next: () => '/second' }, { path: '/second' }]
+  const journey = { steps }
   const step = steps[0]
   const req = {
     session: {
@@ -89,7 +92,7 @@ test('handlePost() calls next() with error on error', (t) => {
   const res = { locals: {} }
   const next = sinon.spy()
 
-  handlePost(steps, step)(req, res, next)
+  handlePost(journey, step)(req, res, next)
 
   t.equal(next.calledWith(sinon.match.instanceOf(Error)), true, 'it should call next() with error')
   t.end()
@@ -99,6 +102,7 @@ test('handlePost() adds next allowed step to session', (t) => {
   const { handlePost } = proxyquire('./handle-post', { ...defaultValidator })
 
   const steps = [{ path: '/first', next: () => '/second' }, { path: '/second' }]
+  const journey = { steps }
   const step = steps[0]
   const req = {
     session: {},
@@ -108,7 +112,7 @@ test('handlePost() adds next allowed step to session', (t) => {
   const res = {}
   const next = () => {}
 
-  handlePost(steps, step)(req, res, next)
+  handlePost(journey, step)(req, res, next)
 
   t.equal(req.session.nextAllowedStep, '/second', 'it should add next allowed step to session')
   t.end()
@@ -126,6 +130,7 @@ test('handlePost() should invalidate review if required by step', (t) => {
   })
 
   const steps = [{ path: '/first', next: () => '/second', shouldInvalidateReview: () => true }, { path: '/second' }]
+  const journey = { steps }
   const step = steps[0]
 
   const req = {
@@ -136,7 +141,7 @@ test('handlePost() should invalidate review if required by step', (t) => {
   const res = {}
   const next = () => {}
 
-  handlePost(steps, step)(req, res, next)
+  handlePost(journey, step)(req, res, next)
 
   t.equal(dispatch.calledWith(INVALIDATE_REVIEW, req), true, 'it calls dispatch with the correct arguments')
   t.end()

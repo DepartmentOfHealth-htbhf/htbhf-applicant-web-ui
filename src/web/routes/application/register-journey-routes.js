@@ -42,17 +42,16 @@ const createRoute = (config, csrfProtection, journey, router) => (step) => {
       optionalMiddleware(step.validate),
       getSessionDetails,
       optionalMiddleware(step.behaviourForPost),
-      handlePost(steps, step),
+      handlePost(journey, step),
       handleRequestForPath(config, journey, step),
-      handlePostRedirects(steps),
+      handlePostRedirects(journey),
       renderView(step)
     )
 }
 
 const registerJourneyRoutes = (config, csrfProtection, app) => (journey) => {
   const wizard = express.Router()
-  const { steps } = journey
-  steps.forEach(createRoute(config, csrfProtection, journey, wizard))
+  journey.steps.forEach(createRoute(config, csrfProtection, journey, wizard))
   app.use(wizard)
 
   registerCheckAnswersRoutes(journey, config, app)
