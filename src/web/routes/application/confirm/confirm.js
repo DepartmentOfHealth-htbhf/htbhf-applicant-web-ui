@@ -1,6 +1,6 @@
 const httpStatus = require('http-status-codes')
 const { path, isNil } = require('ramda')
-const { handleRequestForPath } = require('../middleware')
+const { handleRequestForPath } = require('../flow-control')
 const { CONFIRM_URL, ELIGIBLE } = require('../common/constants')
 const { wrapError } = require('../common/formatters')
 
