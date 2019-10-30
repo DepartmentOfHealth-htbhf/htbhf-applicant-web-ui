@@ -1,4 +1,4 @@
-const { stateMachine, states } = require('../common/state-machine')
+const { stateMachine, states } = require('../flow-control')
 const { CHECK_ANSWERS_URL } = require('../common/constants')
 
 const pageContent = ({ translate }) => ({

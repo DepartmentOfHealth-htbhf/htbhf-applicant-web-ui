@@ -1,6 +1,6 @@
 const test = require('tape')
 const sinon = require('sinon')
-const { states } = require('../application/common/state-machine')
+const { states } = require('../application/flow-control')
 const { handleSession } = require('./guidance')
 
 test(`handleSession() destroys session if journey state is ${states.COMPLETED}`, (t) => {

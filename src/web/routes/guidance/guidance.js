@@ -1,5 +1,5 @@
 const express = require('express')
-const { stateMachine, states } = require('../application/common/state-machine')
+const { stateMachine, states } = require('../application/flow-control')
 const { getLanguageBase } = require('../language')
 const { getPageMetadata } = require('./get-page-meta-data')
 const { PAGES } = require('./pages')

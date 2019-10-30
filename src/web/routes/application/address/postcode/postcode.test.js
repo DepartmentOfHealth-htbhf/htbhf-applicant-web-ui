@@ -2,7 +2,7 @@ const test = require('tape')
 const sinon = require('sinon')
 const proxyquire = require('proxyquire')
 const TEST_FIXTURES = require('./test-fixtures.json')
-const { states } = require('../../common/state-machine')
+const { states } = require('../../flow-control')
 
 const errorSpy = sinon.spy()
 const logger = { error: errorSpy }

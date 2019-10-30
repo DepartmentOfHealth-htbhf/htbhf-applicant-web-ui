@@ -1,7 +1,7 @@
 const test = require('tape')
 const sinon = require('sinon')
 const proxyquire = require('proxyquire')
-const { states } = require('../common/state-machine')
+const { states } = require('../flow-control')
 const { CHECK_ANSWERS_URL, CONFIRM_URL, ELIGIBLE } = require('../common/constants')
 
 const post = sinon.stub()

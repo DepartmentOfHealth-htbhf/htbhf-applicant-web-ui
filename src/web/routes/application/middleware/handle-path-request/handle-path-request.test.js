@@ -2,7 +2,7 @@ const test = require('tape')
 const sinon = require('sinon')
 const { CONFIRM_URL } = require('../../common/constants')
 const { handleRequestForPath } = require('./handle-path-request')
-const { states } = require('../../common/state-machine')
+const { states } = require('../../flow-control')
 
 const journey = {
   steps: [{ path: '/first', next: () => '/second' }, { path: '/second' }]
