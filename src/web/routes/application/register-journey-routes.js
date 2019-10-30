@@ -12,7 +12,7 @@ const {
   handlePostRedirects,
   renderView,
   sanitize
-} = require('./middleware')
+} = require('./flow-control')
 
 const middlewareNoop = () => (req, res, next) => next()
 
