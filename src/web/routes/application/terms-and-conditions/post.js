@@ -23,8 +23,9 @@ const handleErrorResponse = (body, response) => {
   return response
 }
 
-const postTermsAndConditions = (steps, config) => (req, res, next) => {
+const postTermsAndConditions = (config, journey) => (req, res, next) => {
   const errors = validationResult(req)
+  const { steps } = journey
 
   if (!errors.isEmpty()) {
     res.locals.errors = errors.array()

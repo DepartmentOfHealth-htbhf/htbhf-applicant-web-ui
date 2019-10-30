@@ -5,7 +5,7 @@ const { handleRequestForPath } = require('../middleware')
 const registerCheckAnswersRoutes = (journey, config, app) => {
   app
     .route(CHECK_ANSWERS_URL)
-    .get(handleRequestForPath(config, journey), getCheckAnswers(journey.steps))
+    .get(handleRequestForPath(config, journey), getCheckAnswers(journey))
 }
 
 module.exports = {

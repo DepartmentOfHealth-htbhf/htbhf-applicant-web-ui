@@ -16,7 +16,7 @@ function render (res, req) {
   })
 }
 
-const getTermsAndConditions = (steps) => (req, res) => {
+const getTermsAndConditions = (journey) => (req, res) => {
   stateMachine.setState(states.IN_REVIEW, req)
 
   render(res, req)
