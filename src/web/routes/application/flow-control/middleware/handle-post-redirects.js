@@ -1,4 +1,4 @@
-const { stateMachine, actions } = require('../flow-control')
+const { stateMachine, actions } = require('../state-machine')
 
 const handlePostRedirects = (journey) => (req, res, next) => {
   if (res.locals.errors) {

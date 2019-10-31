@@ -1,5 +1,5 @@
-const { CONFIRM_URL } = require('../../common/constants')
-const { stateMachine, actions, states } = require('../../flow-control')
+const { CONFIRM_URL } = require('../../../common/constants')
+const { stateMachine, actions, states } = require('../../state-machine')
 const { isPathInApplicationFlow, stepNotNavigable } = require('./predicates')
 const { getPathsInSequence } = require('./selectors')
 
