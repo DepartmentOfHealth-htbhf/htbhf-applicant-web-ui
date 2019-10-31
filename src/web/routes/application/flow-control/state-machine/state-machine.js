@@ -1,6 +1,6 @@
 const { equals, isNil } = require('ramda')
 const { getNextForStep } = require('./get-next-for-step')
-const { CHECK_ANSWERS_URL, TERMS_AND_CONDITIONS_URL, CONFIRM_URL } = require('../../steps/common/constants')
+const { CHECK_ANSWERS_URL, TERMS_AND_CONDITIONS_URL, CONFIRM_URL } = require('../../paths')
 const { logger } = require('../../../../logger')
 
 const states = {

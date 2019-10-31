@@ -1,7 +1,8 @@
 const httpStatus = require('http-status-codes')
 const { path, isNil } = require('ramda')
 const { handleRequestForPath } = require('../../flow-control')
-const { CONFIRM_URL, ELIGIBLE } = require('../common/constants')
+const { CONFIRM_URL } = require('../../paths')
+const { ELIGIBLE } = require('../common/constants')
 const { wrapError } = require('../common/formatters')
 
 const toPounds = pence => (parseInt(pence, 10) / 100).toFixed(2)
