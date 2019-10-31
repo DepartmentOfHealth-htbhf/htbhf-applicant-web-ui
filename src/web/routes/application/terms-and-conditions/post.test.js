@@ -60,7 +60,9 @@ test('failure to agree to terms and conditions returns to the terms-and-conditio
 
   const errors = ['error']
 
-  const steps = [{ path: '/first', next: () => '/second' }, { path: '/second' }]
+  const journey = {
+    steps: [{ path: '/first', next: () => '/second' }, { path: '/second' }]
+  }
 
   const { postTermsAndConditions } = proxyquire('./post', {
     'express-validator': {
@@ -71,7 +73,7 @@ test('failure to agree to terms and conditions returns to the terms-and-conditio
     }
   })
 
-  postTermsAndConditions(steps)(req, res)
+  postTermsAndConditions(config, journey)(req, res)
 
   t.deepEqual(res.locals.errors, errors, 'it should add errors to locals')
   t.equal(render.called, true, 'it should call render()')
@@ -90,7 +92,7 @@ test('unsuccessful post calls next with error', async (t) => {
   const error = new Error('error')
   post.returns(Promise.reject(error))
 
-  postTermsAndConditions({}, config)(req, res, next)
+  postTermsAndConditions(config, {})(req, res, next)
     .then(() => {
       t.equal(next.calledWith(sinon.match.instanceOf(Error)), true, 'calls next with error')
       t.end()
@@ -101,7 +103,7 @@ test('unsuccessful post calls next with error', async (t) => {
 })
 
 test(`successful post sets next allowed step to ${CONFIRM_URL} and returned fields`, async (t) => {
-  const steps = []
+  const journey = { steps: [] }
   const next = sinon.spy()
   const redirect = sinon.spy()
   const render = sinon.spy()
@@ -126,7 +128,7 @@ test(`successful post sets next allowed step to ${CONFIRM_URL} and returned fiel
     }
   }))
 
-  postTermsAndConditions(steps, config)(req, res, next)
+  postTermsAndConditions(config, journey)(req, res, next)
     .then(() => {
       t.equal(req.session.nextAllowedStep, CONFIRM_URL, `it sets next allowed step to ${CONFIRM_URL}`)
       t.equal(req.session.eligibilityStatus, ELIGIBLE, 'it sets the eligibility status to ELIGIBLE')

@@ -21,8 +21,8 @@ const handleOptionalMiddleware = (args) => (operation, fallback = middlewareNoop
 
 const createRoute = (config, csrfProtection, journey, router) => (step) => {
   const { steps } = journey
-  // Make [config, steps, step] available as arguments to all optional middleware
-  const optionalMiddleware = handleOptionalMiddleware([config, steps, step])
+  // Make [config, journey, step] available as arguments to all optional middleware
+  const optionalMiddleware = handleOptionalMiddleware([config, journey, step])
 
   return router
     .route(step.path)
@@ -30,7 +30,7 @@ const createRoute = (config, csrfProtection, journey, router) => (step) => {
       csrfProtection,
       configureGet(steps, step),
       getSessionDetails,
-      handleRequestForPath(config, steps, step),
+      handleRequestForPath(config, journey, step),
       optionalMiddleware(step.behaviourForGet),
       renderView(step)
     )
@@ -42,22 +42,21 @@ const createRoute = (config, csrfProtection, journey, router) => (step) => {
       optionalMiddleware(step.validate),
       getSessionDetails,
       optionalMiddleware(step.behaviourForPost),
-      handlePost(steps, step),
-      handleRequestForPath(config, steps, step),
-      handlePostRedirects(steps),
+      handlePost(journey, step),
+      handleRequestForPath(config, journey, step),
+      handlePostRedirects(journey),
       renderView(step)
     )
 }
 
 const registerJourneyRoutes = (config, csrfProtection, app) => (journey) => {
   const wizard = express.Router()
-  const { steps } = journey
-  steps.forEach(createRoute(config, csrfProtection, journey, wizard))
+  journey.steps.forEach(createRoute(config, csrfProtection, journey, wizard))
   app.use(wizard)
 
-  registerCheckAnswersRoutes(steps, config, app)
-  registerTermsAndConditionsRoutes(csrfProtection, steps, config, app)
-  registerConfirmRoute(config, steps, app)
+  registerCheckAnswersRoutes(journey, config, app)
+  registerTermsAndConditionsRoutes(csrfProtection, journey, config, app)
+  registerConfirmRoute(config, journey, app)
 }
 
 module.exports = {

@@ -7,7 +7,7 @@ const { INVALIDATE_REVIEW, INCREMENT_NEXT_ALLOWED_PATH } = actions
 
 const stepInvalidatesReview = (step, claim) => typeof step.shouldInvalidateReview === 'function' && step.shouldInvalidateReview(claim)
 
-const handlePost = (steps, step) => (req, res, next) => {
+const handlePost = (journey, step) => (req, res, next) => {
   try {
     const errors = validationResult(req)
 
@@ -26,7 +26,7 @@ const handlePost = (steps, step) => (req, res, next) => {
       stateMachine.dispatch(INVALIDATE_REVIEW, req)
     }
 
-    stateMachine.dispatch(INCREMENT_NEXT_ALLOWED_PATH, req, steps)
+    stateMachine.dispatch(INCREMENT_NEXT_ALLOWED_PATH, req, journey.steps)
 
     return next()
   } catch (error) {

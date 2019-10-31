@@ -8,11 +8,11 @@ const { handleRequestForPath } = require('../middleware')
 const validate = [
   check('agree').equals('agree').withMessage(translateValidationMessage('validation:acceptTermsAndConditions'))
 ]
-const registerTermsAndConditionsRoutes = (csrfProtection, steps, config, app) => {
+const registerTermsAndConditionsRoutes = (csrfProtection, journey, config, app) => {
   app
     .route(TERMS_AND_CONDITIONS_URL)
-    .get(csrfProtection, handleRequestForPath(config, steps), getTermsAndConditions(steps))
-    .post(csrfProtection, validate, handleRequestForPath(config, steps), postTermsAndConditions(steps, config))
+    .get(csrfProtection, handleRequestForPath(config, journey), getTermsAndConditions(journey))
+    .post(csrfProtection, validate, handleRequestForPath(config, journey), postTermsAndConditions(config, journey))
 }
 
 module.exports = {

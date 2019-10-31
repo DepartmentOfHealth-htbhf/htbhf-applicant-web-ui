@@ -33,10 +33,11 @@ const getLastNavigablePath = (steps, req) => {
     : getPreviousPath(steps, lastStep, req.session)
 }
 
-const getCheckAnswers = (steps) => (req, res) => {
+const getCheckAnswers = (journey) => (req, res) => {
   const { children } = req.session
   const localisation = pageContent({ translate: req.t })
   const getLocalisedChildrensDatesOfBirthRows = getChildrensDatesOfBirthRows(localisation)
+  const { steps } = journey
 
   stateMachine.setState(IN_REVIEW, req)
   stateMachine.dispatch(INCREMENT_NEXT_ALLOWED_PATH, req, steps)
