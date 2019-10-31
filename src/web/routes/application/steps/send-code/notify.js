@@ -1,8 +1,8 @@
 const { NotifyClient } = require('notifications-node-client')
 const uuid = require('uuidv4')
-const config = require('../../../../config')
+const config = require('../../../../../config')
 const notifyClient = new NotifyClient(config.environment.NOTIFY_API_KEY)
-const { logger } = require('../../../logger')
+const { logger } = require('../../../../logger')
 
 const { EMAIL, TEXT } = require('../common/constants')
 
