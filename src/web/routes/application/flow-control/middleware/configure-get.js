@@ -1,4 +1,4 @@
-const { getPreviousPath } = require('../../common/get-previous-path')
+const { getPreviousPath } = require('../../steps/common/get-previous-path')
 
 const configureGet = (steps, step) => (req, res, next) => {
   res.locals.previous = getPreviousPath(steps, step, req.session)

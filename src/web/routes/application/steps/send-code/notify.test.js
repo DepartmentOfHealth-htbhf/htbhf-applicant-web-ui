@@ -35,7 +35,7 @@ const logger = { info, error }
 
 const { sendConfirmationCode, SMS_TEMPLATE_ID, EMAIL_TEMPLATE_ID } = proxyquire('./notify', {
   'notifications-node-client': { NotifyClient },
-  '../../../logger': { logger }
+  '../../../../logger': { logger }
 })
 
 test('sendCodeToSMS', (t) => {

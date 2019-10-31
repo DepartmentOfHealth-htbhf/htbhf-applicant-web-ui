@@ -2,7 +2,7 @@ const { path } = require('ramda')
 const { transformAddress } = require('./adapters')
 const { addressContentSummary } = require('../content-summary')
 const { requestBody } = require('../request-body')
-const { stateMachine, actions } = require('../../flow-control')
+const { stateMachine, actions } = require('../../../flow-control')
 
 const { SET_NEXT_ALLOWED_PATH } = actions
 

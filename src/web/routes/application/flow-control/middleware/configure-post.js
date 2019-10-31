@@ -1,4 +1,4 @@
-const { getPreviousPath } = require('../../common/get-previous-path')
+const { getPreviousPath } = require('../../steps/common/get-previous-path')
 
 const configurePost = (steps, step) => (req, res, next) => {
   res.locals.errorTitleText = req.t('validation:errorTitleText')

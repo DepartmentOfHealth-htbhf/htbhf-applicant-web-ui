@@ -1,4 +1,4 @@
-const { isString } = require('../../../../common/predicates')
+const { isString } = require('../../../../../common/predicates')
 
 const SINGLE_WORD_REGEX = /\b\w+/g
 

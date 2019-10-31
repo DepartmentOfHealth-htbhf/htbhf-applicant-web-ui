@@ -1,7 +1,7 @@
 const express = require('express')
-const { registerConfirmRoute } = require('./confirm')
-const { registerCheckAnswersRoutes } = require('./check-answers')
-const { registerTermsAndConditionsRoutes } = require('./terms-and-conditions')
+const { registerConfirmRoute } = require('./steps/confirm')
+const { registerCheckAnswersRoutes } = require('./steps/check-answers')
+const { registerTermsAndConditionsRoutes } = require('./steps/terms-and-conditions')
 
 const {
   configureGet,

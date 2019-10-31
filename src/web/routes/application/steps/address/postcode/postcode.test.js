@@ -2,7 +2,7 @@ const test = require('tape')
 const sinon = require('sinon')
 const proxyquire = require('proxyquire')
 const TEST_FIXTURES = require('./test-fixtures.json')
-const { states } = require('../../flow-control')
+const { states } = require('../../../flow-control')
 
 const errorSpy = sinon.spy()
 const logger = { error: errorSpy }
@@ -16,7 +16,7 @@ const getAddressLookupResults = sinon.stub()
 const { behaviourForPost, behaviourForGet } = proxyquire(
   './postcode', {
     'express-validator': { validationResult },
-    '../../../../logger': { logger },
+    '../../../../../logger': { logger },
     './os-places': { auditSuccessfulPostcodeLookup, auditFailedPostcodeLookup, auditInvalidPostcodeLookup, getAddressLookupResults }
   }
 )

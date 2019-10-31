@@ -1,6 +1,6 @@
 const { join, filter, compose } = require('ramda')
 
-const { notIsNilOrEmpty } = require('../../../../common/predicates')
+const { notIsNilOrEmpty } = require('../../../../../common/predicates')
 const { ADDRESS_KEYS } = require('./constants')
 
 const newLineChar = '\n'

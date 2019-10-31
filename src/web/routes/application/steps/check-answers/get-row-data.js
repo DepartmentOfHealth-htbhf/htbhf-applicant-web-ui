@@ -1,5 +1,5 @@
 const { assoc, compose, filter, flatten, isNil, groupBy, propOr } = require('ramda')
-const { notIsNil } = require('../../../../common/predicates')
+const { notIsNil } = require('../../../../../common/predicates')
 const { DEFAULT_LIST, SUMMARY_LIST_KEY } = require('./constants')
 
 const assocPathWithContentSummary = (path, summary) => {

@@ -3,7 +3,7 @@ const { getTermsAndConditions } = require('./get')
 const { postTermsAndConditions } = require('./post')
 const { TERMS_AND_CONDITIONS_URL } = require('../common/constants')
 const { translateValidationMessage } = require('../common/translate-validation-message')
-const { handleRequestForPath } = require('../flow-control')
+const { handleRequestForPath } = require('../../flow-control')
 
 const validate = [
   check('agree').equals('agree').withMessage(translateValidationMessage('validation:acceptTermsAndConditions'))
