@@ -1,7 +1,7 @@
 const { check } = require('express-validator')
 const { getTermsAndConditions } = require('./get')
 const { postTermsAndConditions } = require('./post')
-const { TERMS_AND_CONDITIONS_URL } = require('../common/constants')
+const { TERMS_AND_CONDITIONS_URL } = require('../../paths')
 const { translateValidationMessage } = require('../common/translate-validation-message')
 const { handleRequestForPath } = require('../../flow-control')
 

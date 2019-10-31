@@ -2,7 +2,7 @@ const test = require('tape')
 const proxyquire = require('proxyquire')
 const sinon = require('sinon')
 
-const { CHECK_ANSWERS_URL, TERMS_AND_CONDITIONS_URL, CONFIRM_URL } = require('../../steps/common/constants')
+const { CHECK_ANSWERS_URL, TERMS_AND_CONDITIONS_URL, CONFIRM_URL } = require('../../paths')
 const info = sinon.spy()
 const logger = { info }
 

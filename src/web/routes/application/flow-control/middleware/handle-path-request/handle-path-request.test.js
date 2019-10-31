@@ -1,6 +1,6 @@
 const test = require('tape')
 const sinon = require('sinon')
-const { CONFIRM_URL } = require('../../../steps/common/constants')
+const { CONFIRM_URL } = require('../../../paths')
 const { handleRequestForPath } = require('./handle-path-request')
 const { states } = require('../../state-machine')
 
