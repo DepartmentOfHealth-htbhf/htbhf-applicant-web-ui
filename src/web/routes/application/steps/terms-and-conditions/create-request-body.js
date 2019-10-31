@@ -1,4 +1,4 @@
-const { isUndefined } = require('../../../../common/predicates')
+const { isUndefined } = require('../../../../../common/predicates')
 
 const buildRequestBodyForStep = (session) => (claimant, step) =>
   isUndefined(step.requestBody) ? claimant : { ...claimant, ...step.requestBody(session) }

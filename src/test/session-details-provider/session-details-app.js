@@ -6,7 +6,7 @@ const redis = require('redis')
 const config = require('../../config')
 const app = express()
 const { COOKIE_EXPIRES_MILLISECONDS } = require('../../web/server/session/cookie-settings')
-const { CONFIRMATION_CODE_SESSION_PROPERTY } = require('../../web/routes/application/common/constants')
+const { CONFIRMATION_CODE_SESSION_PROPERTY } = require('../../web/routes/application/steps/common/constants')
 const { SESSION_DETAILS_PORT, SESSION_DETAILS_PATH } = require('./constants')
 
 const client = redis.createClient(config.redis)

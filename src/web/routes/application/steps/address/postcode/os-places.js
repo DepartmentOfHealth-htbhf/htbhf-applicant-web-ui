@@ -1,6 +1,6 @@
 const request = require('request-promise')
 const moment = require('moment')
-const { logger } = require('../../../../logger')
+const { logger } = require('../../../../../logger')
 
 const REQUEST_TIMEOUT = 5000
 const OS_PLACES_API_PATH = '/places/v1/addresses/postcode'
