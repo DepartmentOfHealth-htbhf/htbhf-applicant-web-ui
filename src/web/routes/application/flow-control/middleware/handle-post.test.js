@@ -123,7 +123,7 @@ test('handlePost() should invalidate review if required by step', (t) => {
   const INVALIDATE_REVIEW = 'INVALIDATE_REVIEW'
   const { handlePost } = proxyquire('./handle-post', {
     ...defaultValidator,
-    '../flow-control': {
+    '../state-machine': {
       stateMachine: { dispatch },
       actions: { INVALIDATE_REVIEW }
     }
