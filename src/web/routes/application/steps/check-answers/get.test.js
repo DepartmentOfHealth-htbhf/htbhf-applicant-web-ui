@@ -3,7 +3,7 @@ const proxyquire = require('proxyquire')
 const sinon = require('sinon')
 
 const getPreviousPath = sinon.spy()
-const { getLastNavigablePath } = proxyquire('./get', { '../common/get-previous-path': { getPreviousPath } })
+const { getLastNavigablePath } = proxyquire('./get', { '../../flow-control': { getPreviousPath } })
 
 test('getLastNavigablePath returns path of last step if last step has no isNavigable function', (t) => {
   const steps = [{ path: '/first' }, { path: '/last' }]
