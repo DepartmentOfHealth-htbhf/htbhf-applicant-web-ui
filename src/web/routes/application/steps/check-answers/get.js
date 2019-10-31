@@ -1,5 +1,5 @@
 const { stateMachine, states, actions } = require('../../flow-control')
-const { getPreviousPath } = require('../common/get-previous-path')
+const { getPreviousPath } = require('../../flow-control')
 const { getSummaryListsForSteps } = require('./get-row-data')
 const { getChildrensDatesOfBirthRows } = require('./get-childrens-dates-of-birth-rows')
 
