@@ -1,18 +1,20 @@
-const { nationalInsuranceNumber } = require('./steps/national-insurance-number')
-const { name } = require('./steps/name')
-const { dateOfBirth } = require('./steps/date-of-birth')
-const { areYouPregnant } = require('./steps/are-you-pregnant')
-const { manualAddress } = require('./steps/address/manual-address')
-const { phoneNumber } = require('./steps/phone-number')
-const { scotland } = require('./steps/scotland')
-const { inScotland } = require('./steps/in-scotland')
-const { emailAddress } = require('./steps/email-address')
-const { doYouHaveChildren } = require('./steps/do-you-have-children')
-const { childDateOfBirth } = require('./steps/child-date-of-birth')
-const { sendCode } = require('./steps/send-code')
-const { enterCode } = require('./steps/enter-code')
-const { postcode } = require('./steps/address/postcode')
-const { selectAddress } = require('./steps/address/select-address')
+const {
+  scotland,
+  inScotland,
+  dateOfBirth,
+  doYouHaveChildren,
+  childDateOfBirth,
+  areYouPregnant,
+  name,
+  nationalInsuranceNumber,
+  postcode,
+  selectAddress,
+  manualAddress,
+  phoneNumber,
+  emailAddress,
+  sendCode,
+  enterCode
+} = require('./steps')
 
 const APPLY = {
   steps: [
