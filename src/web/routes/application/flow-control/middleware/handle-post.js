@@ -1,6 +1,6 @@
 const httpStatus = require('http-status-codes')
 const { validationResult } = require('express-validator')
-const { wrapError } = require('../../steps/common/formatters')
+const { wrapError } = require('../../errors')
 const { stateMachine, actions } = require('../state-machine')
 
 const { INVALIDATE_REVIEW, INCREMENT_NEXT_ALLOWED_PATH } = actions
