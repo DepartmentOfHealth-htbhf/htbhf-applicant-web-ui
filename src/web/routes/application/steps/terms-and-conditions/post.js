@@ -3,7 +3,7 @@ const request = require('request-promise')
 const { path } = require('ramda')
 const { validationResult } = require('express-validator')
 
-const { wrapError } = require('../common/formatters')
+const { wrapError } = require('../../errors')
 const { logger } = require('../../../../logger')
 const { REQUEST_ID_HEADER } = require('../../../../server/headers')
 const { stateMachine, states, actions } = require('../../flow-control')

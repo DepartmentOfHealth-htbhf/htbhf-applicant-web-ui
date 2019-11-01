@@ -6,7 +6,7 @@ const { ELIGIBLE } = require('../common/constants')
 const wrapError = sinon.spy()
 
 const { toPounds, isNilOrLteZero, getConfirmPage } = proxyquire('./confirm', {
-  '../common/formatters': { wrapError }
+  '../../errors': { wrapError }
 })
 
 const { getTitle } = require('./confirm')
