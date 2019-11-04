@@ -1,12 +1,13 @@
 const { CONFIRM_URL } = require('../../../paths')
 const { stateMachine, actions, states } = require('../../state-machine')
 const { isPathInApplicationFlow, stepNotNavigable } = require('./predicates')
-const { getPathsInSequence } = require('./selectors')
 
 const { COMPLETED } = states
 const { IS_PATH_ALLOWED, GET_NEXT_ALLOWED_PATH, SET_NEXT_ALLOWED_PATH } = actions
 
-const middleware = (config, pathsInSequence, step) => (req, res, next) => {
+const handleRequestForPath = (config, journey, step) => (req, res, next) => {
+  const { pathsInSequence } = journey
+
   // Destroy the session on navigating away from CONFIRM_URL
   if (stateMachine.getState(req) === COMPLETED && req.path !== CONFIRM_URL) {
     req.session.destroy()
@@ -42,8 +43,6 @@ const middleware = (config, pathsInSequence, step) => (req, res, next) => {
 
   next()
 }
-
-const handleRequestForPath = (config, journey, step) => middleware(config, getPathsInSequence(journey.steps), step)
 
 module.exports = {
   handleRequestForPath
