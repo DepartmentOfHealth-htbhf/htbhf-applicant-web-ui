@@ -8,7 +8,7 @@ const { CHECK_ANSWERS_URL, TERMS_AND_CONDITIONS_URL, CONFIRM_URL } = require('..
 const info = sinon.spy()
 const logger = { info }
 
-const { stateMachine, isPathAllowed } = proxyquire('./state-machine', {
+const { stateMachine } = proxyquire('./state-machine', {
   '../../../../logger': { logger }
 })
 
@@ -19,7 +19,6 @@ const steps = [
   { path: '/second', next: () => '/third' },
   { path: '/third', isNavigable: () => false, next: () => '/fourth' }
 ]
-const paths = ['/first', '/second', '/third', '/fourth']
 
 test(`Dispatching ${GET_NEXT_PATH} should return next property of associated step when no state defined in session`, async (t) => {
   const req = { method: 'POST', session: {}, path: '/first' }
@@ -67,24 +66,6 @@ test(`Dispatching an invalid action should return null`, async (t) => {
   const req = { method: 'POST', session: {}, path: '/first' }
 
   t.equal(stateMachine.dispatch('INVALID_ACTION', req, steps), null)
-  t.end()
-})
-
-test('isPathAllowed() should return true if path is before allowed in sequence', (t) => {
-  const result = isPathAllowed(paths, '/third', '/second')
-  t.equal(result, true, 'returns true if path is before allowed in sequence')
-  t.end()
-})
-
-test('isPathAllowed() should return true if path matches allowed', (t) => {
-  const result = isPathAllowed(paths, '/third', '/third')
-  t.equal(result, true, 'returns true if path matches allowed')
-  t.end()
-})
-
-test('isPathAllowed() should return false if path is after allowed in sequence', (t) => {
-  const result = isPathAllowed(paths, '/third', '/fourth')
-  t.equal(result, false, 'returns false if path is after allowed in sequence')
   t.end()
 })
 
