@@ -2,21 +2,9 @@ const { equals, isNil } = require('ramda')
 const { getNextForStep } = require('./get-next-for-step')
 const { CHECK_ANSWERS_URL, TERMS_AND_CONDITIONS_URL, CONFIRM_URL } = require('../../paths')
 const { logger } = require('../../../../logger')
+const states = require('./states')
 
-const states = {
-  IN_PROGRESS: 'IN_PROGRESS',
-  IN_REVIEW: 'IN_REVIEW',
-  COMPLETED: 'COMPLETED'
-}
-
-const actions = {
-  GET_NEXT_PATH: 'getNextPath',
-  IS_PATH_ALLOWED: 'isPathAllowed',
-  GET_NEXT_ALLOWED_PATH: 'getNextAllowedPath',
-  SET_NEXT_ALLOWED_PATH: 'setNextAllowedPath',
-  INCREMENT_NEXT_ALLOWED_PATH: 'incrementNextAllowedPath',
-  INVALIDATE_REVIEW: 'invalidateReview'
-}
+const { IN_PROGRESS, IN_REVIEW, COMPLETED } = states
 
 const getStepForPath = (path, steps) => steps.find(step => step.path === path)
 
@@ -53,22 +41,22 @@ const setNextAllowedPath = (req, path) => {
 const getNextInReviewPath = (req) => req.path === CHECK_ANSWERS_URL ? TERMS_AND_CONDITIONS_URL : CHECK_ANSWERS_URL
 
 const stateMachine = {
-  [states.IN_PROGRESS]: {
+  [IN_PROGRESS]: {
     getNextPath: (req, steps) => getNextNavigablePath(req.path, req, steps),
     isPathAllowed: (req, sequence) => isPathAllowed(sequence, req.session.nextAllowedStep, req.path),
     getNextAllowedPath: (req) => req.session.nextAllowedStep,
     setNextAllowedPath,
     incrementNextAllowedPath: (req, steps) => setNextAllowedPath(req, getNextNavigablePath(req.path, req, steps))
   },
-  [states.IN_REVIEW]: {
+  [IN_REVIEW]: {
     getNextPath: getNextInReviewPath,
     isPathAllowed: (req, sequence) => isPathAllowed(sequence, req.session.nextAllowedStep, req.path),
     getNextAllowedPath: (req) => req.session.nextAllowedStep,
     setNextAllowedPath,
     incrementNextAllowedPath: (req) => setNextAllowedPath(req, getNextInReviewPath(req)),
-    invalidateReview: (req) => stateMachine.setState(states.IN_PROGRESS, req)
+    invalidateReview: (req) => stateMachine.setState(IN_PROGRESS, req)
   },
-  [states.COMPLETED]: {
+  [COMPLETED]: {
     getNextPath: () => CONFIRM_URL,
     isPathAllowed: (req) => req.path === CONFIRM_URL,
     getNextAllowedPath: () => CONFIRM_URL,
@@ -77,7 +65,7 @@ const stateMachine = {
   },
 
   getState: (req) => {
-    return states.hasOwnProperty(req.session.state) ? states[req.session.state] : states.IN_PROGRESS
+    return req.session.hasOwnProperty('state') ? states[req.session.state] : IN_PROGRESS
   },
 
   setState: (state, req) => {
@@ -100,8 +88,6 @@ const stateMachine = {
 }
 
 module.exports = {
-  states,
   stateMachine,
-  actions,
   isPathAllowed
 }

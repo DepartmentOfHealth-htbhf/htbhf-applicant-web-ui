@@ -1,4 +1,6 @@
-const { states, actions, stateMachine } = require('./state-machine')
+const { stateMachine } = require('./state-machine')
+const states = require('./states')
+const actions = require('./actions')
 
 module.exports = {
   states,
