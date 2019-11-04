@@ -1,0 +1,7 @@
+module.exports.YES = 'yes'
+module.exports.NO = 'no'
+module.exports.ELIGIBLE = 'ELIGIBLE'
+module.exports.EMAIL = 'email'
+module.exports.TEXT = 'text'
+module.exports.CONFIRMATION_CODE_SESSION_PROPERTY = 'confirmationCode'
+module.exports.CONFIRMATION_CODE_ENTERED_SESSION_PROPERTY = 'confirmationCodeEntered'

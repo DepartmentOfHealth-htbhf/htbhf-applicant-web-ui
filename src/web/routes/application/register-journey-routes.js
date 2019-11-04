@@ -1,7 +1,10 @@
 const express = require('express')
-const { registerConfirmRoute } = require('./confirm')
-const { registerCheckAnswersRoutes } = require('./check-answers')
-const { registerTermsAndConditionsRoutes } = require('./terms-and-conditions')
+
+const {
+  registerConfirmRoute,
+  registerCheckAnswersRoutes,
+  registerTermsAndConditionsRoutes
+} = require('./steps')
 
 const {
   configureGet,
@@ -12,7 +15,7 @@ const {
   handlePostRedirects,
   renderView,
   sanitize
-} = require('./middleware')
+} = require('./flow-control')
 
 const middlewareNoop = () => (req, res, next) => next()
 

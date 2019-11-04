@@ -1,0 +1,6 @@
+module.exports.GET_NEXT_PATH = 'getNextPath'
+module.exports.IS_PATH_ALLOWED = 'isPathAllowed'
+module.exports.GET_NEXT_ALLOWED_PATH = 'getNextAllowedPath'
+module.exports.SET_NEXT_ALLOWED_PATH = 'setNextAllowedPath'
+module.exports.INCREMENT_NEXT_ALLOWED_PATH = 'incrementNextAllowedPath'
+module.exports.INVALIDATE_REVIEW = 'invalidateReview'
