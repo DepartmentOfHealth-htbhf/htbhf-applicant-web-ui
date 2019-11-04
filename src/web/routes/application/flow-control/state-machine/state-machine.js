@@ -3,12 +3,9 @@ const { logger } = require('../../../../logger')
 const states = require('./states')
 const { isPathAllowed } = require('./predicates')
 const { getNextNavigablePath, getNextInReviewPath } = require('./selectors')
+const { setNextAllowedPath } = require('./operators')
 
 const { IN_PROGRESS, IN_REVIEW, COMPLETED } = states
-
-const setNextAllowedPath = (req, path) => {
-  req.session.nextAllowedStep = path
-}
 
 const stateMachine = {
   [IN_PROGRESS]: {
