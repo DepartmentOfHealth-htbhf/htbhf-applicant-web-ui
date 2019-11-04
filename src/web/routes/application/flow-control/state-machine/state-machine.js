@@ -1,35 +1,14 @@
-const { getNextForStep } = require('./get-next-for-step')
-const { CHECK_ANSWERS_URL, TERMS_AND_CONDITIONS_URL, CONFIRM_URL } = require('../../paths')
+const { CONFIRM_URL } = require('../../paths')
 const { logger } = require('../../../../logger')
 const states = require('./states')
-const { isNextPathNavigable, isPathAllowed } = require('./predicates')
+const { isPathAllowed } = require('./predicates')
+const { getNextNavigablePath, getNextInReviewPath } = require('./selectors')
 
 const { IN_PROGRESS, IN_REVIEW, COMPLETED } = states
-
-const getStepForPath = (path, steps) => steps.find(step => step.path === path)
-
-/**
- * Ask the current step for the next path. Test whether the step matching that path is navigable. If not, ask that step for the next path; repeat.
- * @param path the path of the current step
- * @param req the current request
- * @param steps the steps of the apply journey
- * @returns the path of the next step
- */
-const getNextNavigablePath = (path, req, steps) => {
-  const thisStep = getStepForPath(path, steps)
-  const nextPath = getNextForStep(req, thisStep, steps)
-  const nextStep = getStepForPath(nextPath, steps)
-  if (isNextPathNavigable(nextStep, req)) {
-    return nextPath
-  }
-  return getNextNavigablePath(nextPath, req, steps)
-}
 
 const setNextAllowedPath = (req, path) => {
   req.session.nextAllowedStep = path
 }
-
-const getNextInReviewPath = (req) => req.path === CHECK_ANSWERS_URL ? TERMS_AND_CONDITIONS_URL : CHECK_ANSWERS_URL
 
 const stateMachine = {
   [IN_PROGRESS]: {
