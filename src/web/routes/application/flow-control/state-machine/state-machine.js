@@ -1,18 +1,12 @@
-const { equals, isNil } = require('ramda')
 const { getNextForStep } = require('./get-next-for-step')
 const { CHECK_ANSWERS_URL, TERMS_AND_CONDITIONS_URL, CONFIRM_URL } = require('../../paths')
 const { logger } = require('../../../../logger')
 const states = require('./states')
+const { isNextPathNavigable, isPathAllowed } = require('./predicates')
 
 const { IN_PROGRESS, IN_REVIEW, COMPLETED } = states
 
 const getStepForPath = (path, steps) => steps.find(step => step.path === path)
-
-/**
- * Next path is navigable if the next step does not exist, if it doesn't define an isNavigable function, or that function returns true.
- * E.g. if the current step is the end of the 'in-progress' journey, the next path will be /check-answers. There is no step matching /check-answers, so we assume it is navigable.
- */
-const isNextPathNavigable = (nextStep, req) => isNil(nextStep) || isNil(nextStep.isNavigable) || nextStep.isNavigable(req.session)
 
 /**
  * Ask the current step for the next path. Test whether the step matching that path is navigable. If not, ask that step for the next path; repeat.
@@ -30,9 +24,6 @@ const getNextNavigablePath = (path, req, steps) => {
   }
   return getNextNavigablePath(nextPath, req, steps)
 }
-
-const isPathAllowed = (sequence, allowed, path) =>
-  sequence.findIndex(equals(path)) <= sequence.findIndex(equals(allowed))
 
 const setNextAllowedPath = (req, path) => {
   req.session.nextAllowedStep = path
@@ -88,6 +79,5 @@ const stateMachine = {
 }
 
 module.exports = {
-  stateMachine,
-  isPathAllowed
+  stateMachine
 }
