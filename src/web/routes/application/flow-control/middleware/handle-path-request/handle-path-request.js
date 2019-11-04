@@ -1,6 +1,6 @@
 const { CONFIRM_URL } = require('../../../paths')
 const { stateMachine, actions, states } = require('../../state-machine')
-const { isPathInApplicationFlow, stepNotNavigable } = require('./predicates')
+const { stepNotNavigable } = require('./predicates')
 
 const { COMPLETED } = states
 const { IS_PATH_ALLOWED, GET_NEXT_ALLOWED_PATH, SET_NEXT_ALLOWED_PATH } = actions
@@ -13,7 +13,7 @@ const handleRequestForPath = (config, journey, step) => (req, res, next) => {
     req.session.destroy()
     res.clearCookie('lang')
 
-    if (isPathInApplicationFlow(req.path, pathsInSequence)) {
+    if (pathsInSequence.includes(req.path)) {
       return res.redirect(config.environment.OVERVIEW_URL)
     }
 
