@@ -5,7 +5,8 @@ const { handleRequestForPath } = require('./handle-path-request')
 const { states } = require('../../state-machine')
 
 const journey = {
-  steps: [{ path: '/first', next: () => '/second' }, { path: '/second' }]
+  steps: [{ path: '/first', next: () => '/second' }, { path: '/second' }],
+  pathsInSequence: ['/first', '/second']
 }
 
 const config = {
