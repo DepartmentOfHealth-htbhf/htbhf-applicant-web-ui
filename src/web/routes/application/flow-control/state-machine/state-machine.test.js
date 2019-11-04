@@ -1,12 +1,14 @@
 const test = require('tape')
 const proxyquire = require('proxyquire')
 const sinon = require('sinon')
-
+const states = require('./states')
+const actions = require('./actions')
 const { CHECK_ANSWERS_URL, TERMS_AND_CONDITIONS_URL, CONFIRM_URL } = require('../../paths')
+
 const info = sinon.spy()
 const logger = { info }
 
-const { stateMachine, states, actions, isPathAllowed } = proxyquire('./state-machine', {
+const { stateMachine, isPathAllowed } = proxyquire('./state-machine', {
   '../../../../logger': { logger }
 })
 
