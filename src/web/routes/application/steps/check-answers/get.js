@@ -40,7 +40,7 @@ const getCheckAnswers = (journey) => (req, res) => {
   const { steps } = journey
 
   stateMachine.setState(IN_REVIEW, req)
-  stateMachine.dispatch(INCREMENT_NEXT_ALLOWED_PATH, req, steps)
+  stateMachine.dispatch(INCREMENT_NEXT_ALLOWED_PATH, req, journey)
 
   res.render('check-answers', {
     ...localisation,

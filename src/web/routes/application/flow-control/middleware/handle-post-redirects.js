@@ -5,7 +5,7 @@ const handlePostRedirects = (journey) => (req, res, next) => {
     return next()
   }
 
-  const nextPage = stateMachine.dispatch(actions.GET_NEXT_PATH, req, journey.steps)
+  const nextPage = stateMachine.dispatch(actions.GET_NEXT_PATH, req, journey)
   return res.redirect(nextPage)
 }
 

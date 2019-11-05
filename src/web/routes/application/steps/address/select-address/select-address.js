@@ -32,14 +32,14 @@ const resetAddressState = (req) => {
   }
 }
 
-const behaviourForGet = () => (req, res, next) => {
+const behaviourForGet = (config, journey) => (req, res, next) => {
   resetAddressState(req)
   res.locals.postcodeLookupError = req.session.postcodeLookupError
   if (!res.locals.postcodeLookupError) {
     res.locals.addresses = req.session.postcodeLookupResults.map(buildAddressOption)
   }
   // Manual address is further in the flow than select-address, therefore this line is needed to prevent the state machine from redirecting the user back to select-address.
-  stateMachine.dispatch(SET_NEXT_ALLOWED_PATH, req, '/manual-address')
+  stateMachine.dispatch(SET_NEXT_ALLOWED_PATH, req, journey, '/manual-address')
   next()
 }
 

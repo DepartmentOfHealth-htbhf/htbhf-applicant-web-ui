@@ -26,7 +26,7 @@ const handlePost = (journey, step) => (req, res, next) => {
       stateMachine.dispatch(INVALIDATE_REVIEW, req)
     }
 
-    stateMachine.dispatch(INCREMENT_NEXT_ALLOWED_PATH, req, journey.steps)
+    stateMachine.dispatch(INCREMENT_NEXT_ALLOWED_PATH, req, journey)
 
     return next()
   } catch (error) {
