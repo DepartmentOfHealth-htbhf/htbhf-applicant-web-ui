@@ -14,58 +14,60 @@ const { stateMachine } = proxyquire('./state-machine', {
 
 const { GET_NEXT_PATH, INVALIDATE_REVIEW, SET_NEXT_ALLOWED_PATH, INCREMENT_NEXT_ALLOWED_PATH } = actions
 
-const steps = [
-  { path: '/first', next: () => '/second' },
-  { path: '/second', next: () => '/third' },
-  { path: '/third', isNavigable: () => false, next: () => '/fourth' }
-]
+const journey = {
+  steps: [
+    { path: '/first', next: () => '/second' },
+    { path: '/second', next: () => '/third' },
+    { path: '/third', isNavigable: () => false, next: () => '/fourth' }
+  ]
+}
 
 test(`Dispatching ${GET_NEXT_PATH} should return next property of associated step when no state defined in session`, async (t) => {
   const req = { method: 'POST', session: {}, path: '/first' }
 
-  t.equal(stateMachine.dispatch(GET_NEXT_PATH, req, steps), '/second')
+  t.equal(stateMachine.dispatch(GET_NEXT_PATH, req, journey), '/second')
   t.end()
 })
 
 test(`Dispatching ${GET_NEXT_PATH} should return should return next property of associated step when state of ${states.IN_PROGRESS} defined in session`, async (t) => {
   const req = { method: 'POST', session: { state: states.IN_PROGRESS }, path: '/first' }
 
-  t.equal(stateMachine.dispatch(GET_NEXT_PATH, req, steps), '/second')
+  t.equal(stateMachine.dispatch(GET_NEXT_PATH, req, journey), '/second')
   t.end()
 })
 
 test(`Dispatching ${GET_NEXT_PATH} should return next navigable path when state of ${states.IN_PROGRESS} defined in session and next step is not navigable`, async (t) => {
   const req = { method: 'POST', session: { state: states.IN_PROGRESS }, path: '/second' }
 
-  t.equal(stateMachine.dispatch(GET_NEXT_PATH, req, steps), '/fourth')
+  t.equal(stateMachine.dispatch(GET_NEXT_PATH, req, journey), '/fourth')
   t.end()
 })
 
 test(`Dispatching ${GET_NEXT_PATH} should return ${CHECK_ANSWERS_URL} path when state of ${states.IN_REVIEW} defined in session`, async (t) => {
   const req = { method: 'POST', session: { state: states.IN_REVIEW }, path: '/first' }
 
-  t.equal(stateMachine.dispatch(GET_NEXT_PATH, req, steps), CHECK_ANSWERS_URL)
+  t.equal(stateMachine.dispatch(GET_NEXT_PATH, req, journey), CHECK_ANSWERS_URL)
   t.end()
 })
 
 test(`Dispatching ${GET_NEXT_PATH} should return /terms-and-conditions when state of ${states.IN_REVIEW} and current path is ${CHECK_ANSWERS_URL}`, async (t) => {
   const req = { method: 'POST', session: { state: states.IN_REVIEW }, path: CHECK_ANSWERS_URL }
 
-  t.equal(stateMachine.dispatch(GET_NEXT_PATH, req, steps), TERMS_AND_CONDITIONS_URL)
+  t.equal(stateMachine.dispatch(GET_NEXT_PATH, req, journey), TERMS_AND_CONDITIONS_URL)
   t.end()
 })
 
 test(`Dispatching ${GET_NEXT_PATH} should return confirm path when state of ${states.COMPLETED} defined in session`, async (t) => {
   const req = { method: 'POST', session: { state: states.COMPLETED }, path: '/first' }
 
-  t.equal(stateMachine.dispatch(GET_NEXT_PATH, req, steps), CONFIRM_URL)
+  t.equal(stateMachine.dispatch(GET_NEXT_PATH, req, journey), CONFIRM_URL)
   t.end()
 })
 
 test(`Dispatching an invalid action should return null`, async (t) => {
   const req = { method: 'POST', session: {}, path: '/first' }
 
-  t.equal(stateMachine.dispatch('INVALID_ACTION', req, steps), null)
+  t.equal(stateMachine.dispatch('INVALID_ACTION', req, journey), null)
   t.end()
 })
 
@@ -133,7 +135,7 @@ test(`Dispatching ${SET_NEXT_ALLOWED_PATH} sets next allowed path in session`, (
       }
     }
 
-    stateMachine.dispatch(SET_NEXT_ALLOWED_PATH, req, path)
+    stateMachine.dispatch(SET_NEXT_ALLOWED_PATH, req, journey, path)
     t.equal(req.session.nextAllowedStep, path, `sets next allowed path in session for ${state}`)
   })
 
@@ -157,7 +159,7 @@ test(`Dispatching ${INCREMENT_NEXT_ALLOWED_PATH} updates next allowed step in se
       }
     }
 
-    stateMachine.dispatch(INCREMENT_NEXT_ALLOWED_PATH, req, steps)
+    stateMachine.dispatch(INCREMENT_NEXT_ALLOWED_PATH, req, journey)
     t.equal(req.session.nextAllowedStep, expectedNextPath, `increments next allowed path in session for ${state}`)
   })
 

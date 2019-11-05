@@ -21,15 +21,15 @@ const handleRequestForPath = (config, journey, step) => (req, res, next) => {
   }
 
   // Initialise nextAllowedPath if none exists in session
-  let nextAllowedPath = stateMachine.dispatch(GET_NEXT_ALLOWED_PATH, req)
+  let nextAllowedPath = stateMachine.dispatch(GET_NEXT_ALLOWED_PATH, req, journey)
 
   if (!nextAllowedPath) {
     const firstPathInSequence = pathsInSequence[0]
-    stateMachine.dispatch(SET_NEXT_ALLOWED_PATH, req, firstPathInSequence)
+    stateMachine.dispatch(SET_NEXT_ALLOWED_PATH, req, journey, firstPathInSequence)
     nextAllowedPath = firstPathInSequence
   }
 
-  const isPathAllowed = stateMachine.dispatch(IS_PATH_ALLOWED, req, pathsInSequence)
+  const isPathAllowed = stateMachine.dispatch(IS_PATH_ALLOWED, req, journey)
 
   // Redirect to nextAllowedPath on invalid path request
   if (!isPathAllowed) {

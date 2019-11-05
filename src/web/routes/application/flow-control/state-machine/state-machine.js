@@ -9,18 +9,18 @@ const { IN_PROGRESS, IN_REVIEW, COMPLETED } = states
 
 const stateMachine = {
   [IN_PROGRESS]: {
-    getNextPath: (req, steps) => getNextNavigablePath(req.path, req, steps),
-    isPathAllowed: (req, sequence) => isPathAllowed(sequence, req.session.nextAllowedStep, req.path),
+    getNextPath: (req, journey) => getNextNavigablePath(req.path, req, journey.steps),
+    isPathAllowed: (req, journey) => isPathAllowed(journey.pathsInSequence, req.session.nextAllowedStep, req.path),
     getNextAllowedPath: (req) => req.session.nextAllowedStep,
     setNextAllowedPath,
-    incrementNextAllowedPath: (req, steps) => setNextAllowedPath(req, getNextNavigablePath(req.path, req, steps))
+    incrementNextAllowedPath: (req, journey) => setNextAllowedPath(req, journey, getNextNavigablePath(req.path, req, journey.steps))
   },
   [IN_REVIEW]: {
     getNextPath: getNextInReviewPath,
-    isPathAllowed: (req, sequence) => isPathAllowed(sequence, req.session.nextAllowedStep, req.path),
+    isPathAllowed: (req, journey) => isPathAllowed(journey.pathsInSequence, req.session.nextAllowedStep, req.path),
     getNextAllowedPath: (req) => req.session.nextAllowedStep,
     setNextAllowedPath,
-    incrementNextAllowedPath: (req) => setNextAllowedPath(req, getNextInReviewPath(req)),
+    incrementNextAllowedPath: (req, journey) => setNextAllowedPath(req, journey, getNextInReviewPath(req)),
     invalidateReview: (req) => stateMachine.setState(IN_PROGRESS, req)
   },
   [COMPLETED]: {
@@ -28,7 +28,7 @@ const stateMachine = {
     isPathAllowed: (req) => req.path === CONFIRM_URL,
     getNextAllowedPath: () => CONFIRM_URL,
     setNextAllowedPath,
-    incrementNextAllowedPath: (req) => setNextAllowedPath(req, CONFIRM_URL)
+    incrementNextAllowedPath: (req, journey) => setNextAllowedPath(req, journey, CONFIRM_URL)
   },
 
   getState: (req) => {
@@ -42,12 +42,12 @@ const stateMachine = {
     }
   },
 
-  dispatch: (actionType, req, ...args) => {
+  dispatch: (actionType, req, journey, ...args) => {
     const state = stateMachine.getState(req)
     const action = stateMachine[state][actionType]
 
     if (typeof action !== 'undefined') {
-      return action(req, ...args)
+      return action(req, journey, ...args)
     }
 
     return null

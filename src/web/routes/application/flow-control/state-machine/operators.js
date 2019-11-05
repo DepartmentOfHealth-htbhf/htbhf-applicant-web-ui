@@ -1,4 +1,4 @@
-const setNextAllowedPath = (req, path) => {
+const setNextAllowedPath = (req, journey, path) => {
   req.session.nextAllowedStep = path
 }
 
