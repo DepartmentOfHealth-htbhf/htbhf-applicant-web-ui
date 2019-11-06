@@ -17,6 +17,7 @@ const {
 } = require('./steps')
 
 const APPLY = {
+  name: 'apply',
   steps: [
     scotland,
     inScotland,
