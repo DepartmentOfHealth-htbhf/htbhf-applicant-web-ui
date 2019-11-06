@@ -1,9 +1,20 @@
 const test = require('tape')
 const sinon = require('sinon')
+const { states } = require('../state-machine')
 const { getSessionDetails } = require('./session-details')
 
+const apply = {
+  name: 'apply',
+  pathsInSequence: ['/first', '/second']
+}
+
+const reportChange = {
+  name: 'report-a-change',
+  pathsInSequence: ['/one', '/two']
+}
+
 test('getSessionDetails() sets claim on res.locals', (t) => {
-  const journey = {}
+  const journey = apply
 
   const req = {
     session: {
@@ -29,14 +40,17 @@ test('getSessionDetails() sets claim on res.locals', (t) => {
 })
 
 test('getSessionDetails() initialises journey in session when session.journeys is undefined', (t) => {
-  const journey = { name: 'apply' }
+  const journey = apply
   const req = { session: {} }
   const res = { locals: {} }
   const next = sinon.stub()
 
   const expectedSession = {
     journeys: {
-      apply: {}
+      apply: {
+        nextAllowedStep: '/first',
+        state: states.IN_PROGRESS
+      }
     }
   }
 
@@ -47,21 +61,26 @@ test('getSessionDetails() initialises journey in session when session.journeys i
 })
 
 test('getSessionDetails() initialises journey in session when session.journeys is defined', (t) => {
-  const journey = { name: 'report-a-change' }
+  const journey = reportChange
+
   const req = {
     session: {
       journeys: {
-        apply: {}
+        apply
       }
     }
   }
+
   const res = { locals: {} }
   const next = sinon.stub()
 
   const expectedSession = {
     journeys: {
-      apply: {},
-      'report-a-change': {}
+      apply,
+      'report-a-change': {
+        nextAllowedStep: '/one',
+        state: states.IN_PROGRESS
+      }
     }
   }
 
@@ -72,11 +91,13 @@ test('getSessionDetails() initialises journey in session when session.journeys i
 })
 
 test('getSessionDetails() does not reinitialise a journey that already exists in session', (t) => {
-  const journey = { name: 'apply' }
+  const journey = apply
+
   const req = {
     session: {
       journeys: {
         apply: {
+          nextAllowedStep: '/second',
           state: 'IN_REVIEW'
         }
       }
@@ -88,6 +109,7 @@ test('getSessionDetails() does not reinitialise a journey that already exists in
   const expectedSession = {
     journeys: {
       apply: {
+        nextAllowedStep: '/second',
         state: 'IN_REVIEW'
       }
     }
