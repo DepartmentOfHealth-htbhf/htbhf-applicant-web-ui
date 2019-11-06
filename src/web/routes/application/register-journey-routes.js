@@ -32,7 +32,7 @@ const createRoute = (config, csrfProtection, journey, router) => (step) => {
     .get(
       csrfProtection,
       configureGet(steps, step),
-      getSessionDetails,
+      getSessionDetails(journey),
       handleRequestForPath(config, journey, step),
       optionalMiddleware(step.behaviourForGet),
       renderView(step)
@@ -43,7 +43,7 @@ const createRoute = (config, csrfProtection, journey, router) => (step) => {
       sanitize,
       optionalMiddleware(step.sanitize),
       optionalMiddleware(step.validate),
-      getSessionDetails,
+      getSessionDetails(journey),
       optionalMiddleware(step.behaviourForPost),
       handlePost(journey, step),
       handleRequestForPath(config, journey, step),
