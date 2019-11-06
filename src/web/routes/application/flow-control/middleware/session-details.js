@@ -13,7 +13,7 @@ const defaultJourneyState = (journey) => ({
   state: states.IN_PROGRESS
 })
 
-const getSessionDetails = (journey) => (req, res, next) => {
+const configureSessionDetails = (journey) => (req, res, next) => {
   res.locals.claim = req.session.claim
   req.session = initialiseProp('journeys', req.session)
   req.session.journeys = initialiseProp(journey.name, req.session.journeys, defaultJourneyState(journey))
@@ -21,5 +21,5 @@ const getSessionDetails = (journey) => (req, res, next) => {
 }
 
 module.exports = {
-  getSessionDetails
+  configureSessionDetails
 }
