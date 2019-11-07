@@ -68,7 +68,7 @@ test('handleRequestForPath() should call next() if requested path is allowed', (
   t.end()
 })
 
-test(`handleRequestForPath() should destroy the session and redirect to root when navigating away from ${CONFIRM_URL} to a path in sequence`, (t) => {
+test(`handleRequestForPath() should destroy the session and redirect to first step in journey when navigating away from ${CONFIRM_URL} to a path in sequence`, (t) => {
   const destroy = sinon.spy()
   const clearCookie = sinon.spy()
   const redirect = sinon.spy()
@@ -91,34 +91,6 @@ test(`handleRequestForPath() should destroy the session and redirect to root whe
 
   t.equal(destroy.called, true, 'it should destroy the session')
   t.equal(clearCookie.calledWith('lang'), true, 'it should clear language preference cookie')
-  t.equal(redirect.calledWith('/'), true, 'it should call redirect() with correct path')
-  t.end()
-})
-
-test(`handleRequestForPath() should destroy the session when navigating away from ${CONFIRM_URL} to a path not in sequence`, (t) => {
-  const destroy = sinon.spy()
-  const clearCookie = sinon.spy()
-  const redirect = sinon.spy()
-  const next = sinon.spy()
-
-  const req = {
-    path: '/what-you-get',
-    session: {
-      destroy,
-      state: states.COMPLETED
-    }
-  }
-
-  const res = {
-    clearCookie,
-    redirect
-  }
-
-  handleRequestForPath(config, journey)(req, res, next)
-
-  t.equal(destroy.called, true, 'it should destroy the session')
-  t.equal(clearCookie.calledWith('lang'), true, 'it should clear language preference cookie')
-  t.equal(next.called, true, 'it should call next()')
-  t.equal(redirect.called, false, 'it should not call redirect()')
+  t.equal(redirect.calledWith('/first'), true, 'it should call redirect() with correct path')
   t.end()
 })
