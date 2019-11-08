@@ -1,8 +1,83 @@
 const test = require('tape')
 const { JOURNEYS_KEY, NEXT_ALLOWED_PATH_KEY, STATE_KEY } = require('./keys')
-const { setNextAllowedPathInSession, setStateInSession, getNextAllowedPathFromSession, getStateFromSession } = require('./session-accessors')
+const {
+  setJourneySessionProp,
+  getJourneySessionProp,
+  setNextAllowedPathInSession,
+  setStateInSession,
+  getNextAllowedPathFromSession,
+  getStateFromSession
+} = require('./session-accessors')
 
 const JOURNEY = { name: 'report-a-change' }
+
+test('setJourneySessionProp() throws an error if journey is undefined', (t) => {
+  const req = {
+    session: {
+      [JOURNEYS_KEY]: {
+        'report-a-change': {
+          nextPath: '/first'
+        }
+      }
+    }
+  }
+
+  const result = () => setJourneySessionProp('nextPath')(req, undefined, '/second')
+
+  t.throws(result, /No journey defined when trying to set "nextPath" as "\/second"/, 'throws an error if journey name is undefined')
+  t.end()
+})
+
+test('setJourneySessionProp() throws an error if journey name is undefined', (t) => {
+  const req = {
+    session: {
+      [JOURNEYS_KEY]: {
+        'report-a-change': {
+          nextPath: '/first'
+        }
+      }
+    }
+  }
+
+  const result = () => setJourneySessionProp('nextPath')(req, {}, '/second')
+
+  t.throws(result, /No name defined for journey when trying to set "nextPath" as "\/second"/, 'throws an error if journey name is undefined')
+  t.end()
+})
+
+test('getJourneySessionProp() throws an error if journey name is undefined', (t) => {
+  const req = {
+    session: {
+      [JOURNEYS_KEY]: {
+        'report-a-change': {
+          nextPath: '/first'
+        }
+      }
+    }
+  }
+
+  const result = () => getJourneySessionProp('nextPath')(req, {})
+
+  t.throws(result, /Property "nextPath" does not exist in session for journey name "undefined"/, 'throws an error if journey name is undefined')
+  t.end()
+})
+
+test('getJourneySessionProp() throws an error if prop is undefined in session', (t) => {
+  const req = {
+    session: {
+      [JOURNEYS_KEY]: {
+        'report-a-change': {
+          nextPath: '/first'
+        }
+      }
+    }
+  }
+
+  const result = () => getJourneySessionProp('state')(req, JOURNEY)
+
+  t.throws(result, /Property "state" does not exist in session for journey name "report-a-change"/, 'throws an error if prop is undefined in session')
+  t.end()
+})
 
 test('setNextAllowedPathInSession() sets the next allowed path for the correct journey in session', (t) => {
   const req = {
