@@ -9,7 +9,7 @@ const {
   getStateFromSession
 } = require('./session-accessors')
 
-const JOURNEY = { name: 'report-a-change' }
+const REPORT_A_CHANGE_JOURNEY = { name: 'report-a-change' }
 
 test('setJourneySessionProp() throws an error if journey is undefined', (t) => {
   const req = {
@@ -73,7 +73,7 @@ test('getJourneySessionProp() throws an error if prop is undefined in session', 
     }
   }
 
-  const result = () => getJourneySessionProp('state')(req, JOURNEY)
+  const result = () => getJourneySessionProp('state')(req, REPORT_A_CHANGE_JOURNEY)
 
   t.throws(result, /Property "state" does not exist in session for journey name "report-a-change"/, 'throws an error if prop is undefined in session')
   t.end()
@@ -102,7 +102,7 @@ test('setNextAllowedPathInSession() sets the next allowed path for the correct j
     }
   }
 
-  setNextAllowedPathInSession(req, JOURNEY, '/second')
+  setNextAllowedPathInSession(req, REPORT_A_CHANGE_JOURNEY, '/second')
   t.deepEqual(req.session[JOURNEYS_KEY], expectedJourneysState, 'sets the next allowed path for the correct journey in session')
   t.end()
 })
@@ -130,7 +130,7 @@ test('setStateInSession() sets the state for the correct journey in session', (t
     }
   }
 
-  setStateInSession(req, JOURNEY, 'IN_REVIEW')
+  setStateInSession(req, REPORT_A_CHANGE_JOURNEY, 'IN_REVIEW')
   t.deepEqual(req.session[JOURNEYS_KEY], expectedJourneysState, 'sets the state for the correct journey in session')
   t.end()
 })
@@ -149,7 +149,7 @@ test('getNextAllowedPathFromSession() gets next allowed path for the correct jou
     }
   }
 
-  const result = getNextAllowedPathFromSession(req, JOURNEY)
+  const result = getNextAllowedPathFromSession(req, REPORT_A_CHANGE_JOURNEY)
   t.equal(result, '/first', 'gets next allowed path for the correct journey')
   t.end()
 })
@@ -168,7 +168,7 @@ test('getStateFromSession() gets state for the correct journey', (t) => {
     }
   }
 
-  const result = getStateFromSession(req, JOURNEY)
+  const result = getStateFromSession(req, REPORT_A_CHANGE_JOURNEY)
   t.equal(result, 'IN_REVIEW', 'gets state for the correct journey')
   t.end()
 })
