@@ -3,7 +3,7 @@ const { logger } = require('../../../../logger')
 const states = require('./states')
 const { isPathAllowed } = require('./predicates')
 const { getNextNavigablePath, getNextInReviewPath } = require('./selectors')
-const { setNextAllowedPath } = require('./operators')
+const { setNextAllowedPath } = require('./session-accessors')
 
 const { IN_PROGRESS, IN_REVIEW, COMPLETED } = states
 
