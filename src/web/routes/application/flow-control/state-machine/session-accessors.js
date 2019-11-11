@@ -19,6 +19,10 @@ const setJourneySessionProp = (prop) => (req, journey, value) => {
 }
 
 const getJourneySessionProp = (prop) => (req, journey) => {
+  if (isUndefined(journey)) {
+    throw new Error(`No journey defined when trying to get "${prop}"`)
+  }
+
   const sessionPath = ['session', JOURNEYS_KEY, journey.name, prop]
   const sessionProp = pathOr(undefined, sessionPath, req)
 

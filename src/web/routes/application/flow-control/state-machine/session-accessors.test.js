@@ -45,6 +45,23 @@ test('setJourneySessionProp() throws an error if journey name is undefined', (t)
   t.end()
 })
 
+test('getJourneySessionProp() throws an error if journey is undefined', (t) => {
+  const req = {
+    session: {
+      [JOURNEYS_KEY]: {
+        'report-a-change': {
+          nextPath: '/first'
+        }
+      }
+    }
+  }
+
+  const result = () => getJourneySessionProp('nextPath')(req, undefined)
+
+  t.throws(result, /No journey defined when trying to get "nextPath"/, 'throws an error if journey name is undefined')
+  t.end()
+})
+
 test('getJourneySessionProp() throws an error if journey name is undefined', (t) => {
   const req = {
     session: {
