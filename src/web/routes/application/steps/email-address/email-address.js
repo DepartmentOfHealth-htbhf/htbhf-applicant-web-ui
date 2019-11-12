@@ -20,9 +20,9 @@ const emailAddressHasBeenUpdated = req => req.body.emailAddress !== req.session.
 
 const confirmationChannelIsEmail = req => getConfirmationCodeChannel(req) === EMAIL
 
-const behaviourForPost = () => (req, res, next) => {
+const behaviourForPost = (config, journey) => (req, res, next) => {
   if (confirmationChannelIsEmail(req) && emailAddressHasBeenUpdated(req)) {
-    handleConfirmationCodeReset(req)
+    handleConfirmationCodeReset(req, journey)
   }
 
   next()

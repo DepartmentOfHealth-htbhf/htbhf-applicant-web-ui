@@ -2,7 +2,10 @@ const test = require('tape')
 const sinon = require('sinon')
 const proxyquire = require('proxyquire')
 const TEST_FIXTURES = require('./test-fixtures.json')
-const { states } = require('../../../flow-control')
+const { states, testUtils } = require('../../../flow-control')
+
+const { IN_PROGRESS, IN_REVIEW } = states
+const { buildSessionForJourney, getStateForJourney } = testUtils
 
 const errorSpy = sinon.spy()
 const logger = { error: errorSpy }
@@ -234,21 +237,24 @@ test('behaviourForPost() does not reset address in session if validation errors 
   t.end()
 })
 
-test(`behaviourForGet() sets state to ${states.IN_PROGRESS} and resets postcodeLookupError`, (t) => {
+test(`behaviourForGet() sets state to ${IN_PROGRESS} and resets postcodeLookupError`, (t) => {
+  const config = {}
+  const journey = { name: 'apply' }
+
   const req = {
     session: {
-      state: states.IN_REVIEW,
-      postcodeLookupError: true
+      postcodeLookupError: true,
+      ...buildSessionForJourney({ journeyName: 'apply', state: IN_REVIEW })
     }
   }
 
   const res = {}
   const next = sinon.spy()
 
-  behaviourForGet()(req, res, next)
+  behaviourForGet(config, journey)(req, res, next)
 
   t.equal(next.called, true, 'calls next()')
-  t.equal(req.session.state, states.IN_PROGRESS, `updates state to ${states.IN_PROGRESS}`)
+  t.equal(getStateForJourney('apply', req), IN_PROGRESS, `updates state to ${IN_PROGRESS}`)
   t.equal(req.session.postcodeLookupError, undefined, 'resets postcodeLookupError')
   t.end()
 })

@@ -1,6 +1,9 @@
 const test = require('tape')
 const sinon = require('sinon')
 const proxyquire = require('proxyquire')
+const { states, testUtils } = require('../state-machine')
+
+const { buildSessionForJourney, getNextAllowedPathForJourney } = testUtils
 
 const defaultValidator = {
   'express-validator': {
@@ -23,7 +26,7 @@ test('handlePost() should add errors and claim to locals if errors exist', (t) =
   })
 
   const steps = [{ path: '/first', next: () => '/second' }, { path: '/second' }]
-  const journey = { steps }
+  const journey = { name: 'apply', steps }
   const step = steps[0]
   const claim = 'claim'
   const req = { body: claim }
@@ -42,7 +45,7 @@ test('handlePost() adds body to the session if no errors exist', (t) => {
   const { handlePost } = proxyquire('./handle-post', { ...defaultValidator })
 
   const steps = [{ path: '/first', next: () => '/second' }, { path: '/second' }]
-  const journey = { steps }
+  const journey = { name: 'apply', steps }
   const step = steps[0]
   const req = {
     session: {
@@ -102,10 +105,13 @@ test('handlePost() adds next allowed step to session', (t) => {
   const { handlePost } = proxyquire('./handle-post', { ...defaultValidator })
 
   const steps = [{ path: '/first', next: () => '/second' }, { path: '/second' }]
-  const journey = { steps }
+  const journey = { name: 'apply', steps, pathsInSequence: ['/first', '/second'] }
   const step = steps[0]
+
   const req = {
-    session: {},
+    session: {
+      ...buildSessionForJourney({ journeyName: 'apply', state: states.IN_PROGRESS, nextAllowedPath: '/first' })
+    },
     path: '/first'
   }
 
@@ -114,7 +120,7 @@ test('handlePost() adds next allowed step to session', (t) => {
 
   handlePost(journey, step)(req, res, next)
 
-  t.equal(req.session.nextAllowedStep, '/second', 'it should add next allowed step to session')
+  t.equal(getNextAllowedPathForJourney('apply', req), '/second', 'it should add next allowed step to session')
   t.end()
 })
 

@@ -63,7 +63,7 @@ const postTermsAndConditions = (config, journey) => (req, res, next) => {
         req.session.voucherEntitlement = voucherEntitlement
         req.session.claimUpdated = claimUpdated
 
-        stateMachine.setState(COMPLETED, req)
+        stateMachine.setState(COMPLETED, req, journey)
         stateMachine.dispatch(INCREMENT_NEXT_ALLOWED_PATH, req, journey)
         return res.redirect('confirm')
       },

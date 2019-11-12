@@ -23,7 +23,7 @@ const handlePost = (journey, step) => (req, res, next) => {
     }
 
     if (stepInvalidatesReview(step, req.session.claim)) {
-      stateMachine.dispatch(INVALIDATE_REVIEW, req)
+      stateMachine.dispatch(INVALIDATE_REVIEW, req, journey)
     }
 
     stateMachine.dispatch(INCREMENT_NEXT_ALLOWED_PATH, req, journey)

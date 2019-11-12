@@ -38,7 +38,7 @@ test('getStateForJourney() gets the state for the correct journey', (t) => {
     }
   }
 
-  const result = getStateForJourney('apply')(req)
+  const result = getStateForJourney('apply', req)
   t.equal(result, 'IN_PROGRESS', 'gets the state for the correct journey')
   t.end()
 })
@@ -59,7 +59,7 @@ test('getNextAllowedPathForJourney() gets the next allowed path for the correct 
     }
   }
 
-  const result = getNextAllowedPathForJourney('apply')(req)
+  const result = getNextAllowedPathForJourney('apply', req)
   t.equal(result, '/name', 'gets the next allowed path for the correct journey')
   t.end()
 })

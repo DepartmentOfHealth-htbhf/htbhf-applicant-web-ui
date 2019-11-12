@@ -46,9 +46,9 @@ const resetPostcodeLookupError = (req) => {
   }
 }
 
-const behaviourForGet = () => (req, res, next) => {
+const behaviourForGet = (config, journey) => (req, res, next) => {
   resetPostcodeLookupError(req)
-  stateMachine.setState(states.IN_PROGRESS, req)
+  stateMachine.setState(states.IN_PROGRESS, req, journey)
   next()
 }
 

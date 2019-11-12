@@ -1,6 +1,17 @@
 const test = require('tape')
 const sinon = require('sinon')
+const { partial } = require('ramda')
 const { behaviourForGet, behaviourForPost, findAddress, contentSummary } = require('./select-address')
+const { states, testUtils } = require('../../../flow-control')
+
+const { buildSessionForJourney, getNextAllowedPathForJourney } = testUtils
+const { IN_PROGRESS } = states
+
+const CONFIG = {}
+const APPLY = 'apply'
+const JOURNEY = { name: APPLY }
+
+const getNextAllowedPathForApplyJourney = partial(getNextAllowedPathForJourney, [APPLY])
 
 const POSTCODE_LOOKUP_RESULTS = [
   {
@@ -40,9 +51,11 @@ test('behaviourForGet() adds addresses to res.locals and resets the address', (t
       postcodeLookupError: false,
       claim: {
         selectedAddress: 'ALAN JEFFERY ENGINEERING, 1, VALLEY ROAD, PLYMOUTH, PL7 1RF'
-      }
+      },
+      ...buildSessionForJourney({ journeyName: APPLY, state: IN_PROGRESS })
     }
   }
+
   const res = { locals: {} }
   const next = sinon.spy()
   const expected = [
@@ -58,10 +71,10 @@ test('behaviourForGet() adds addresses to res.locals and resets the address', (t
     }
   ]
 
-  behaviourForGet()(req, res, next)
+  behaviourForGet(CONFIG, JOURNEY)(req, res, next)
 
   t.equal(req.session.claim.selectAddress, undefined, 'should reset the selected address')
-  t.equal(req.session.nextAllowedStep, '/manual-address', 'next allowed step should be manual address')
+  t.equal(getNextAllowedPathForApplyJourney(req), '/manual-address', 'next allowed step should be manual address')
   t.deepEqual(res.locals.addresses, expected, 'adds addresses to res.locals')
   t.equal(res.locals.postcodeLookupError, false, 'sets res.locals.postcodeLookupError')
   t.equal(next.called, true, 'calls next()')
@@ -72,16 +85,20 @@ test('behaviourForGet() handles postcodeLookupErrors', (t) => {
   const req = {
     session: {
       postcodeLookupError: true,
-      claim: {}
+      claim: {
+        selectedAddress: {}
+      },
+      ...buildSessionForJourney({ journeyName: APPLY, state: IN_PROGRESS })
     }
   }
+
   const res = { locals: {} }
   const next = sinon.spy()
 
-  behaviourForGet()(req, res, next)
+  behaviourForGet(CONFIG, JOURNEY)(req, res, next)
 
   t.equal(res.locals.postcodeLookupError, true, 'should set res.locals.postcodeLookupError to value on session')
-  t.equal(req.session.nextAllowedStep, '/manual-address', 'next allowed step should be manual address')
+  t.equal(getNextAllowedPathForApplyJourney(req), '/manual-address', 'next allowed step should be manual address')
   t.end()
 })
 

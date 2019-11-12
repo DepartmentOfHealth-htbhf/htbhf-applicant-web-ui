@@ -17,7 +17,7 @@ function render (res, req) {
 }
 
 const getTermsAndConditions = (journey) => (req, res) => {
-  stateMachine.setState(states.IN_REVIEW, req)
+  stateMachine.setState(states.IN_REVIEW, req, journey)
 
   render(res, req)
 }

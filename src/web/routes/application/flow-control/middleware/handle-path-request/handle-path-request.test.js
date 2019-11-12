@@ -2,9 +2,15 @@ const test = require('tape')
 const sinon = require('sinon')
 const { CONFIRM_URL } = require('../../../paths')
 const { handleRequestForPath } = require('./handle-path-request')
-const { states } = require('../../state-machine')
+const { states, testUtils } = require('../../state-machine')
+
+const { IN_PROGRESS, COMPLETED } = states
+const { buildSessionForJourney } = testUtils
+
+const APPLY = 'apply'
 
 const journey = {
+  name: APPLY,
   steps: [{ path: '/first', next: () => '/second' }, { path: '/second' }],
   pathsInSequence: ['/first', '/second']
 }
@@ -15,26 +21,11 @@ const config = {
   }
 }
 
-test('handleRequestForPath() should set next allowed path to first in sequence if none exists on session', (t) => {
-  const req = {
-    session: {}
-  }
-
-  const res = {}
-  const next = sinon.spy()
-
-  handleRequestForPath(config, journey)(req, res, next)
-
-  t.equal(req.session.nextAllowedStep, '/first', 'it should set next allowed path to first in sequence')
-  t.equal(next.called, true, 'it should call next()')
-  t.end()
-})
-
 test('handleRequestForPath() should redirect to next allowed step if requested path is not allowed', (t) => {
   const req = {
     path: '/second',
     session: {
-      nextAllowedStep: '/first'
+      ...buildSessionForJourney({ journeyName: APPLY, state: IN_PROGRESS, nextAllowedPath: '/first' })
     }
   }
 
@@ -53,7 +44,7 @@ test('handleRequestForPath() should call next() if requested path is allowed', (
   const req = {
     path: '/second',
     session: {
-      nextAllowedStep: '/second'
+      ...buildSessionForJourney({ journeyName: APPLY, state: IN_PROGRESS, nextAllowedPath: '/second' })
     }
   }
 
@@ -78,7 +69,7 @@ test(`handleRequestForPath() should destroy the session and redirect to first st
     path: '/second',
     session: {
       destroy,
-      state: states.COMPLETED
+      ...buildSessionForJourney({ journeyName: APPLY, state: COMPLETED })
     }
   }
 

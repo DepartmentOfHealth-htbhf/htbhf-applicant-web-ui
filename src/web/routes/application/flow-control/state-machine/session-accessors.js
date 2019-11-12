@@ -2,10 +2,6 @@ const { pathOr } = require('ramda')
 const { isUndefined } = require('../../../../../common/predicates')
 const { JOURNEYS_KEY, NEXT_ALLOWED_PATH_KEY, STATE_KEY } = require('./keys')
 
-const setNextAllowedPath = (req, journey, path) => {
-  req.session.nextAllowedStep = path
-}
-
 const setJourneySessionProp = (prop) => (req, journey, value) => {
   if (isUndefined(journey)) {
     throw new Error(`No journey defined when trying to set "${prop}" as "${value}"`)
@@ -44,7 +40,6 @@ const getStateFromSession = getJourneySessionProp(STATE_KEY)
 module.exports = {
   setJourneySessionProp,
   getJourneySessionProp,
-  setNextAllowedPath,
   setNextAllowedPathInSession,
   setStateInSession,
   getNextAllowedPathFromSession,
