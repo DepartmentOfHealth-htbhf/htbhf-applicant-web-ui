@@ -23,6 +23,6 @@ test('handleConfirmationCodeReset', (t) => {
 
   t.equal(req.session.confirmationCodeEntered, false)
   t.equal(req.session.claim.confirmationCode, null)
-  t.equal(getStateForJourney('apply')(req), IN_PROGRESS)
+  t.equal(getStateForJourney('apply', req), IN_PROGRESS)
   t.end()
 })

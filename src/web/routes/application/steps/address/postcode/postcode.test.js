@@ -254,7 +254,7 @@ test(`behaviourForGet() sets state to ${IN_PROGRESS} and resets postcodeLookupEr
   behaviourForGet(config, journey)(req, res, next)
 
   t.equal(next.called, true, 'calls next()')
-  t.equal(getStateForJourney('apply')(req), IN_PROGRESS, `updates state to ${IN_PROGRESS}`)
+  t.equal(getStateForJourney('apply', req), IN_PROGRESS, `updates state to ${IN_PROGRESS}`)
   t.equal(req.session.postcodeLookupError, undefined, 'resets postcodeLookupError')
   t.end()
 })

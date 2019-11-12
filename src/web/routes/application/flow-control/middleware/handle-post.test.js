@@ -120,7 +120,7 @@ test('handlePost() adds next allowed step to session', (t) => {
 
   handlePost(journey, step)(req, res, next)
 
-  t.equal(getNextAllowedPathForJourney('apply')(req), '/second', 'it should add next allowed step to session')
+  t.equal(getNextAllowedPathForJourney('apply', req), '/second', 'it should add next allowed step to session')
   t.end()
 })
 

@@ -1,6 +1,7 @@
 const test = require('tape')
 const proxyquire = require('proxyquire')
 const sinon = require('sinon')
+const { partial } = require('ramda')
 const { IN_PROGRESS, IN_REVIEW, COMPLETED } = require('./states')
 const { GET_NEXT_PATH, INVALIDATE_REVIEW, SET_NEXT_ALLOWED_PATH, INCREMENT_NEXT_ALLOWED_PATH } = require('./actions')
 const { CHECK_ANSWERS_URL, TERMS_AND_CONDITIONS_URL, CONFIRM_URL } = require('../../paths')
@@ -25,9 +26,9 @@ const APPLY_JOURNEY = {
   pathsInSequence: ['/first', '/second', '/third']
 }
 
-const getStateForApplyJourney = getStateForJourney(APPLY)
+const getStateForApplyJourney = partial(getStateForJourney, [APPLY])
 
-const getNextAllowedPathForApplyJourney = getNextAllowedPathForJourney(APPLY)
+const getNextAllowedPathForApplyJourney = partial(getNextAllowedPathForJourney, [APPLY])
 
 test(`Dispatching ${GET_NEXT_PATH} should return next property of associated step when state of ${IN_PROGRESS} defined in session`, (t) => {
   const req = {

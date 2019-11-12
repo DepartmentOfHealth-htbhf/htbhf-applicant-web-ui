@@ -14,9 +14,9 @@ const JOURNEYS_PATH = ['session', JOURNEYS_KEY]
 
 const getJourneyPath = name => [...JOURNEYS_PATH, name]
 
-const getStateForJourney = name => path([...getJourneyPath(name), STATE_KEY])
+const getStateForJourney = (name, req) => path([...getJourneyPath(name), STATE_KEY], req)
 
-const getNextAllowedPathForJourney = (name) => path([...getJourneyPath(name), NEXT_ALLOWED_PATH_KEY])
+const getNextAllowedPathForJourney = (name, req) => path([...getJourneyPath(name), NEXT_ALLOWED_PATH_KEY], req)
 
 module.exports = {
   buildSessionForJourney,

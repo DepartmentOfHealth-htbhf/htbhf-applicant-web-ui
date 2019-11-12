@@ -139,7 +139,7 @@ test(`successful post sets next allowed step to ${CONFIRM_URL} and returned fiel
 
   postTermsAndConditions(config, journey)(req, res, next)
     .then(() => {
-      t.equal(getNextAllowedPathForJourney('apply')(req), CONFIRM_URL, `it sets next allowed step to ${CONFIRM_URL}`)
+      t.equal(getNextAllowedPathForJourney('apply', req), CONFIRM_URL, `it sets next allowed step to ${CONFIRM_URL}`)
       t.equal(req.session.eligibilityStatus, ELIGIBLE, 'it sets the eligibility status to ELIGIBLE')
       t.deepEqual(req.session.voucherEntitlement, { totalVoucherValueInPence: 310 }, 'it sets the voucher entitlement field')
       t.equal(req.session.claimUpdated, true, 'it sets the claim updated field')

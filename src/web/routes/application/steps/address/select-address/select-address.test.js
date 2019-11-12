@@ -1,5 +1,6 @@
 const test = require('tape')
 const sinon = require('sinon')
+const { partial } = require('ramda')
 const { behaviourForGet, behaviourForPost, findAddress, contentSummary } = require('./select-address')
 const { states, testUtils } = require('../../../flow-control')
 
@@ -10,7 +11,7 @@ const CONFIG = {}
 const APPLY = 'apply'
 const JOURNEY = { name: APPLY }
 
-const getNextAllowedPathForApplyJourney = getNextAllowedPathForJourney(APPLY)
+const getNextAllowedPathForApplyJourney = partial(getNextAllowedPathForJourney, [APPLY])
 
 const POSTCODE_LOOKUP_RESULTS = [
   {
