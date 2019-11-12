@@ -1,9 +1,11 @@
 const test = require('tape')
 const sinon = require('sinon')
 const proxyquire = require('proxyquire')
-const { states } = require('../../flow-control')
+const { states, testUtils } = require('../../flow-control')
 const { CHECK_ANSWERS_URL, CONFIRM_URL } = require('../../paths')
 const { ELIGIBLE } = require('../common/constants')
+
+const { buildSessionForJourney, getNextAllowedPathForJourney } = testUtils
 
 const post = sinon.stub()
 
@@ -104,19 +106,25 @@ test('unsuccessful post calls next with error', async (t) => {
 })
 
 test(`successful post sets next allowed step to ${CONFIRM_URL} and returned fields`, async (t) => {
-  const journey = { steps: [] }
+  const journey = {
+    name: 'apply',
+    steps: []
+  }
+
   const next = sinon.spy()
   const redirect = sinon.spy()
   const render = sinon.spy()
+
   const req = {
     path: CHECK_ANSWERS_URL,
     headers: [],
     sessionID: '123',
     claim: {},
     session: {
-      state: states.IN_REVIEW
+      ...buildSessionForJourney({ journeyName: 'apply', state: states.IN_REVIEW })
     }
   }
+
   const res = { redirect, render }
 
   post.returns(Promise.resolve({
@@ -131,7 +139,7 @@ test(`successful post sets next allowed step to ${CONFIRM_URL} and returned fiel
 
   postTermsAndConditions(config, journey)(req, res, next)
     .then(() => {
-      t.equal(req.session.nextAllowedStep, CONFIRM_URL, `it sets next allowed step to ${CONFIRM_URL}`)
+      t.equal(getNextAllowedPathForJourney('apply')(req), CONFIRM_URL, `it sets next allowed step to ${CONFIRM_URL}`)
       t.equal(req.session.eligibilityStatus, ELIGIBLE, 'it sets the eligibility status to ELIGIBLE')
       t.deepEqual(req.session.voucherEntitlement, { totalVoucherValueInPence: 310 }, 'it sets the voucher entitlement field')
       t.equal(req.session.claimUpdated, true, 'it sets the claim updated field')

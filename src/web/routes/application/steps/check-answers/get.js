@@ -39,7 +39,7 @@ const getCheckAnswers = (journey) => (req, res) => {
   const getLocalisedChildrensDatesOfBirthRows = getChildrensDatesOfBirthRows(localisation)
   const { steps } = journey
 
-  stateMachine.setState(IN_REVIEW, req)
+  stateMachine.setState(IN_REVIEW, req, journey)
   stateMachine.dispatch(INCREMENT_NEXT_ALLOWED_PATH, req, journey)
 
   res.render('check-answers', {

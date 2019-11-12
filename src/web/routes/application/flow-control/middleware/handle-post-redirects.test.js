@@ -1,8 +1,15 @@
 const test = require('tape')
 const sinon = require('sinon')
 const { handlePostRedirects } = require('./handle-post-redirects')
+const { states, testUtils } = require('../state-machine')
+
+const { buildSessionForJourney } = testUtils
+const { IN_PROGRESS } = states
+
+const APPLY = 'apply'
 
 const journey = {
+  name: APPLY,
   steps: [{ path: '/first', next: () => '/second' }, { path: '/second' }]
 }
 
@@ -11,7 +18,9 @@ test('handlePostRedirects() should redirect when no response errors', async (t) 
   const next = sinon.spy()
   const req = {
     method: 'POST',
-    session: {},
+    session: {
+      ...buildSessionForJourney({ journeyName: APPLY, state: IN_PROGRESS })
+    },
     path: '/first'
   }
 
@@ -35,7 +44,9 @@ test('handlePostRedirects() should call next() when response errors are present'
     method: 'POST',
     csrfToken: () => {},
     t: () => {},
-    session: {},
+    session: {
+      ...buildSessionForJourney({ journeyName: APPLY, state: IN_PROGRESS })
+    },
     path: '/first'
   }
 
