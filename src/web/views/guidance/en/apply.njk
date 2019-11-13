@@ -1,10 +1,16 @@
 {% extends "../../templates/guidance.njk" %}
+{% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
 
 {% block guidanceContent %}
 <h2 class="govuk-heading-l">Apply for Healthy Start</h2>
 
-<p class="govuk-body">It only takes about 5 minutes to apply.</p>
+{{ govukWarningText({
+    text: "You can only apply if your benefit has been approved.",
+    iconFallbackText: "Warning"
+}) }}
+
+    <p class="govuk-body">It only takes about 5 minutes to apply.</p>
 <p class="govuk-body">Before you apply you’ll need your:</p>
 <ul class="govuk-list govuk-list--bullet">
   <li>National Insurance number</li>
