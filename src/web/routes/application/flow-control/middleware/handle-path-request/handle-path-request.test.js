@@ -15,12 +15,6 @@ const journey = {
   pathsInSequence: ['/first', '/second']
 }
 
-const config = {
-  environment: {
-    OVERVIEW_URL: '/'
-  }
-}
-
 test('handleRequestForPath() should redirect to next allowed step if requested path is not allowed', (t) => {
   const req = {
     path: '/second',
@@ -33,7 +27,7 @@ test('handleRequestForPath() should redirect to next allowed step if requested p
   const res = { redirect }
   const next = sinon.spy()
 
-  handleRequestForPath(config, journey)(req, res, next)
+  handleRequestForPath(journey)(req, res, next)
 
   t.equal(redirect.calledWith('/first'), true, 'it should call redirect() with next allowed step')
   t.equal(next.called, false, 'it should not call next()')
@@ -52,7 +46,7 @@ test('handleRequestForPath() should call next() if requested path is allowed', (
   const res = { redirect }
   const next = sinon.spy()
 
-  handleRequestForPath(config, journey)(req, res, next)
+  handleRequestForPath(journey)(req, res, next)
 
   t.equal(redirect.called, false, 'it should not call redirect()')
   t.equal(next.called, true, 'it should call next()')
@@ -78,7 +72,7 @@ test(`handleRequestForPath() should destroy the session and redirect to first st
     redirect
   }
 
-  handleRequestForPath(config, journey)(req, res, next)
+  handleRequestForPath(journey)(req, res, next)
 
   t.equal(destroy.called, true, 'it should destroy the session')
   t.equal(clearCookie.calledWith('lang'), true, 'it should clear language preference cookie')

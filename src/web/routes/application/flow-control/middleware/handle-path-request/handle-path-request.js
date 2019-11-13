@@ -5,8 +5,7 @@ const { stepNotNavigable } = require('./predicates')
 const { COMPLETED } = states
 const { IS_PATH_ALLOWED, GET_NEXT_ALLOWED_PATH } = actions
 
-// TODO HTBHF-2506 remove config from signature as no longer required
-const handleRequestForPath = (config, journey, step) => (req, res, next) => {
+const handleRequestForPath = (journey, step) => (req, res, next) => {
   const { pathsInSequence } = journey
   const firstPathInSequence = pathsInSequence[0]
 
