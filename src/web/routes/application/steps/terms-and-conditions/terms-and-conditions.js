@@ -11,8 +11,8 @@ const validate = [
 const registerTermsAndConditionsRoutes = (csrfProtection, journey, config, app) => {
   app
     .route(TERMS_AND_CONDITIONS_URL)
-    .get(csrfProtection, handleRequestForPath(config, journey), getTermsAndConditions(journey))
-    .post(csrfProtection, validate, handleRequestForPath(config, journey), postTermsAndConditions(config, journey))
+    .get(csrfProtection, handleRequestForPath(journey), getTermsAndConditions(journey))
+    .post(csrfProtection, validate, handleRequestForPath(journey), postTermsAndConditions(config, journey))
 }
 
 module.exports = {
