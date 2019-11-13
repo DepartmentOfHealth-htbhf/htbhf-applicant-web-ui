@@ -49,8 +49,8 @@ const getConfirmPage = (req, res, next) => {
   })
 }
 
-const registerConfirmRoute = (config, journey, app) => {
-  app.get(CONFIRM_URL, handleRequestForPath(config, journey), getConfirmPage)
+const registerConfirmRoute = (journey, app) => {
+  app.get(CONFIRM_URL, handleRequestForPath(journey), getConfirmPage)
 }
 
 module.exports = {
