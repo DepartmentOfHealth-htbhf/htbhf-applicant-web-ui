@@ -1,7 +1,7 @@
 const { check } = require('express-validator')
 const { getTermsAndConditions } = require('./get')
 const { postTermsAndConditions } = require('./post')
-const { TERMS_AND_CONDITIONS_URL } = require('../../paths')
+const { TERMS_AND_CONDITIONS_URL, prefixPath } = require('../../paths')
 const { translateValidationMessage } = require('../common/translate-validation-message')
 const { handleRequestForPath } = require('../../flow-control')
 
@@ -10,7 +10,7 @@ const validate = [
 ]
 const registerTermsAndConditionsRoutes = (csrfProtection, journey, config, app) => {
   app
-    .route(TERMS_AND_CONDITIONS_URL)
+    .route(prefixPath(journey.pathPrefix, TERMS_AND_CONDITIONS_URL))
     .get(csrfProtection, handleRequestForPath(journey), getTermsAndConditions(journey))
     .post(csrfProtection, validate, handleRequestForPath(journey), postTermsAndConditions(config, journey))
 }

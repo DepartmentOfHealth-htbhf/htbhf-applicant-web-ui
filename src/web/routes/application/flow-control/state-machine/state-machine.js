@@ -1,4 +1,4 @@
-const { CONFIRM_URL } = require('../../paths')
+const { CONFIRM_URL, prefixPath } = require('../../paths')
 const { logger } = require('../../../../logger')
 const states = require('./states')
 const { isPathAllowed } = require('./predicates')
@@ -14,26 +14,26 @@ const { IN_PROGRESS, IN_REVIEW, COMPLETED } = states
 
 const stateMachine = {
   [IN_PROGRESS]: {
-    getNextPath: (req, journey) => getNextNavigablePath(req.path, req, journey.steps),
+    getNextPath: (req, journey) => getNextNavigablePath(req.path, req, journey),
     isPathAllowed: (req, journey) => isPathAllowed(journey.pathsInSequence, getNextAllowedPathFromSession(req, journey), req.path),
     getNextAllowedPath: getNextAllowedPathFromSession,
     setNextAllowedPath: setNextAllowedPathInSession,
-    incrementNextAllowedPath: (req, journey) => setNextAllowedPathInSession(req, journey, getNextNavigablePath(req.path, req, journey.steps))
+    incrementNextAllowedPath: (req, journey) => setNextAllowedPathInSession(req, journey, getNextNavigablePath(req.path, req, journey))
   },
   [IN_REVIEW]: {
-    getNextPath: getNextInReviewPath,
+    getNextPath: (req, journey) => getNextInReviewPath(req, journey.pathPrefix),
     isPathAllowed: (req, journey) => isPathAllowed(journey.pathsInSequence, getNextAllowedPathFromSession(req, journey), req.path),
     getNextAllowedPath: getNextAllowedPathFromSession,
     setNextAllowedPath: setNextAllowedPathInSession,
-    incrementNextAllowedPath: (req, journey) => setNextAllowedPathInSession(req, journey, getNextInReviewPath(req)),
+    incrementNextAllowedPath: (req, journey) => setNextAllowedPathInSession(req, journey, getNextInReviewPath(req, journey.pathPrefix)),
     invalidateReview: (req, journey) => setStateInSession(req, journey, IN_PROGRESS)
   },
   [COMPLETED]: {
-    getNextPath: () => CONFIRM_URL,
-    isPathAllowed: (req) => req.path === CONFIRM_URL,
-    getNextAllowedPath: () => CONFIRM_URL,
+    getNextPath: (req, journey) => prefixPath(journey.pathPrefix, CONFIRM_URL),
+    isPathAllowed: (req, journey) => req.path === prefixPath(journey.pathPrefix, CONFIRM_URL),
+    getNextAllowedPath: (req, journey) => prefixPath(journey.pathPrefix, CONFIRM_URL),
     setNextAllowedPath: setNextAllowedPathInSession,
-    incrementNextAllowedPath: (req, journey) => setNextAllowedPathInSession(req, journey, CONFIRM_URL)
+    incrementNextAllowedPath: (req, journey) => setNextAllowedPathInSession(req, journey, prefixPath(journey.pathPrefix, CONFIRM_URL))
   },
 
   getState: getStateFromSession,
