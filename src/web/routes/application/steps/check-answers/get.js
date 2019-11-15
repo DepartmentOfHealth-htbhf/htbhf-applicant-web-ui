@@ -2,6 +2,7 @@ const { stateMachine, states, actions } = require('../../flow-control')
 const { getPreviousPath } = require('../../flow-control')
 const { getSummaryListsForSteps } = require('./get-row-data')
 const { getChildrensDatesOfBirthRows } = require('./get-childrens-dates-of-birth-rows')
+const { TERMS_AND_CONDITIONS_URL, prefixPath } = require('../../paths')
 
 const { INCREMENT_NEXT_ALLOWED_PATH } = actions
 const { IN_REVIEW } = states
@@ -37,7 +38,7 @@ const getCheckAnswers = (journey) => (req, res) => {
   const { children } = req.session
   const localisation = pageContent({ translate: req.t })
   const getLocalisedChildrensDatesOfBirthRows = getChildrensDatesOfBirthRows(localisation)
-  const { steps } = journey
+  const { steps, pathPrefix } = journey
 
   stateMachine.setState(IN_REVIEW, req, journey)
   stateMachine.dispatch(INCREMENT_NEXT_ALLOWED_PATH, req, journey)
@@ -46,7 +47,8 @@ const getCheckAnswers = (journey) => (req, res) => {
     ...localisation,
     claimSummaryLists: getSummaryListsForSteps({ req, steps }),
     childrensDatesOfBirthRows: children ? getLocalisedChildrensDatesOfBirthRows(children) : [],
-    previous: getLastNavigablePath(steps, req)
+    previous: getLastNavigablePath(steps, req),
+    termsAndConditionsUrl: prefixPath(pathPrefix, TERMS_AND_CONDITIONS_URL)
   })
 }
 

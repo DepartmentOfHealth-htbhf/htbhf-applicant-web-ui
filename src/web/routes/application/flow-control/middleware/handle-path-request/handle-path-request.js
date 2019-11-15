@@ -1,4 +1,4 @@
-const { CONFIRM_URL } = require('../../../paths')
+const { CONFIRM_URL, prefixPath } = require('../../../paths')
 const { stateMachine, actions, states } = require('../../state-machine')
 const { stepNotNavigable } = require('./predicates')
 
@@ -6,11 +6,11 @@ const { COMPLETED } = states
 const { IS_PATH_ALLOWED, GET_NEXT_ALLOWED_PATH } = actions
 
 const handleRequestForPath = (journey, step) => (req, res, next) => {
-  const { pathsInSequence } = journey
+  const { pathsInSequence, pathPrefix } = journey
   const firstPathInSequence = pathsInSequence[0]
 
   // Destroy the session on navigating away from CONFIRM_URL
-  if (stateMachine.getState(req, journey) === COMPLETED && req.path !== CONFIRM_URL) {
+  if (stateMachine.getState(req, journey) === COMPLETED && req.path !== prefixPath(pathPrefix, CONFIRM_URL)) {
     req.session.destroy()
     res.clearCookie('lang')
     return res.redirect(firstPathInSequence)
