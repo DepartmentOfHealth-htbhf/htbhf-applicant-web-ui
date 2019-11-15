@@ -4,7 +4,7 @@ const { VALID_ELIGIBLE_NINO, PHONE_NUMBER, EMAIL_ADDRESS, TEXT, POSTCODE } = req
 const { SESSION_CONFIRMATION_CODE_URL } = require('../../session-details-provider')
 const { URLS } = require('../paths')
 
-const APPLICATION_COMPLETE_TITLE = 'GOV.UK - Application complete'
+const APPLICATION_SUCCESSFUL_TITLE = 'GOV.UK - Application successful'
 
 const apply = [
   {
@@ -128,8 +128,8 @@ const apply = [
     url: URLS['CONFIRM'],
     formData: () => ({}),
     issueChecks: [
-      (url, result) => result.documentTitle !== APPLICATION_COMPLETE_TITLE
-        ? `Expected title to be ${APPLICATION_COMPLETE_TITLE}, instead got ${result.documentTitle}`
+      (url, result) => result.documentTitle !== APPLICATION_SUCCESSFUL_TITLE
+        ? `Expected title to be ${APPLICATION_SUCCESSFUL_TITLE}, instead got ${result.documentTitle}`
         : null
     ]
   }

@@ -96,9 +96,9 @@ test('getConfirmPage() calls next with error when invalid voucher value in pence
   t.end()
 })
 
-test('getTitle() returns ’Application Complete’ when the claimUpdated field is false', (t) => {
+test('getTitle() returns ’Application successful’ when the claimUpdated field is false', (t) => {
   const req = {
-    t: (name) => { return name === 'confirm.updatedClaimTitle' ? 'Application Updated' : 'Application Complete' },
+    t: (name) => { return name === 'confirm.updatedClaimTitle' ? 'Application Updated' : 'Application successful' },
     session: {
       claimUpdated: false
     }
@@ -106,25 +106,25 @@ test('getTitle() returns ’Application Complete’ when the claimUpdated field 
 
   const result = getTitle(req)
 
-  t.equal(result, 'Application Complete', 'getTitle returns ’Application Complete’')
+  t.equal(result, 'Application successful', 'getTitle returns ’Application successful’')
   t.end()
 })
 
-test('getTitle() returns ’Application Complete’ when the claimUpdated field is undefined', (t) => {
+test('getTitle() returns ’Application successful’ when the claimUpdated field is undefined', (t) => {
   const req = {
-    t: (name) => { return name === 'confirm.updatedClaimTitle' ? 'Application Updated' : 'Application Complete' },
+    t: (name) => { return name === 'confirm.updatedClaimTitle' ? 'Application Updated' : 'Application successful' },
     session: {}
   }
 
   const result = getTitle(req)
 
-  t.equal(result, 'Application Complete', 'getTitle returns ’Application Complete’')
+  t.equal(result, 'Application successful', 'getTitle returns ’Application successful’')
   t.end()
 })
 
 test('getTitle() returns ’Application Updated’ when the claimUpdated field is true', (t) => {
   const req = {
-    t: (name) => { return name === 'confirm.updatedClaimTitle' ? 'Application Updated' : 'Application Complete' },
+    t: (name) => { return name === 'confirm.updatedClaimTitle' ? 'Application Updated' : 'Application successful' },
     session: {
       claimUpdated: true
     }
