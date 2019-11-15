@@ -4,7 +4,11 @@ const { getNextForStep } = require('./get-next-for-step')
 
 const getStepForPath = (path, steps) => steps.find(step => step.path === path)
 
-const getNextInReviewPath = (req, prefix) => req.path === prefixPath(prefix, CHECK_ANSWERS_URL) ? prefixPath(prefix, TERMS_AND_CONDITIONS_URL) : prefixPath(prefix, CHECK_ANSWERS_URL)
+const getNextInReviewPath = (req, prefix) => {
+  const checkAnswersUrl = prefixPath(prefix, CHECK_ANSWERS_URL)
+  const termsAndConditionsUrl = prefixPath(prefix, TERMS_AND_CONDITIONS_URL)
+  return req.path === checkAnswersUrl ? termsAndConditionsUrl : checkAnswersUrl
+}
 
 /**
  * Ask the current step for the next path. Test whether the step matching that path is navigable. If not, ask that step for the next path; repeat.
