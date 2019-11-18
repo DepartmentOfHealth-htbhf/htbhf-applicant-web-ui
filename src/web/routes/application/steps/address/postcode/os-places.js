@@ -7,7 +7,7 @@ const OS_PLACES_API_PATH = '/places/v1/addresses/postcode'
 
 const standardisePostcode = (postcode) => postcode.toUpperCase().replace(/\s/g, '')
 
-const getAddressLookupResults = async (config, postcode, language) => {
+const getAddressLookupResults = async (config, postcode) => {
   const { OS_PLACES_URI, OS_PLACES_API_KEY } = config.environment
   const standardisedPostcode = standardisePostcode(postcode)
   const requestStartTime = moment()

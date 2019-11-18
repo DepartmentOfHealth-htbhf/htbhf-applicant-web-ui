@@ -88,7 +88,7 @@ test('standardisePostcode() standardises the postcode', (t) => {
 })
 
 test('getAddressLookupResults() calls os places with the correct arguments', async (t) => {
-  await getAddressLookupResults(config, 'AB1 1AB', 'en')
+  await getAddressLookupResults(config, 'AB1 1AB')
 
   const expectedOSPlacesRequestArgs = {
     uri: 'localhost:8150/places/v1/addresses/postcode?postcode=AB11AB&key=123&lr=en',
