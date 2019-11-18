@@ -13,7 +13,7 @@ const getAddressLookupResults = async (config, postcode) => {
   const requestStartTime = moment()
 
   const response = await request({
-    uri: `${OS_PLACES_URI}${OS_PLACES_API_PATH}?postcode=${standardisedPostcode}&key=${OS_PLACES_API_KEY}`,
+    uri: `${OS_PLACES_URI}${OS_PLACES_API_PATH}?postcode=${standardisedPostcode}&key=${OS_PLACES_API_KEY}&lr=en`,
     json: true,
     timeout: REQUEST_TIMEOUT
   })
