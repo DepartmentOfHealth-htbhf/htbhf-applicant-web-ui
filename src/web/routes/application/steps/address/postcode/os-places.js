@@ -1,19 +1,23 @@
 const request = require('request-promise')
 const moment = require('moment')
+const { isNil } = require('ramda')
 const { logger } = require('../../../../../logger')
 
 const REQUEST_TIMEOUT = 5000
 const OS_PLACES_API_PATH = '/places/v1/addresses/postcode'
+const OS_PLACES_LANGUAGES = ['en', 'cy']
+const DEFAULT_LANGUAGE = 'en'
 
 const standardisePostcode = (postcode) => postcode.toUpperCase().replace(/\s/g, '')
 
-const getAddressLookupResults = async (config, postcode) => {
+const getAddressLookupResults = async (config, postcode, language) => {
   const { OS_PLACES_URI, OS_PLACES_API_KEY } = config.environment
   const standardisedPostcode = standardisePostcode(postcode)
   const requestStartTime = moment()
+  const osPlacesLanguage = getOSPlacesLanguage(language)
 
   const response = await request({
-    uri: `${OS_PLACES_URI}${OS_PLACES_API_PATH}?postcode=${standardisedPostcode}&key=${OS_PLACES_API_KEY}`,
+    uri: `${OS_PLACES_URI}${OS_PLACES_API_PATH}?postcode=${standardisedPostcode}&key=${OS_PLACES_API_KEY}&lr=${osPlacesLanguage}`,
     json: true,
     timeout: REQUEST_TIMEOUT
   })
@@ -23,6 +27,14 @@ const getAddressLookupResults = async (config, postcode) => {
   logger.debug(`OS Places API request time in seconds: ${requestTimeInSeconds}`)
 
   return response
+}
+
+const getOSPlacesLanguage = (language) => {
+  if (isNil(language)) {
+    return DEFAULT_LANGUAGE
+  }
+
+  return OS_PLACES_LANGUAGES.includes(language.toLowerCase()) ? language.toLowerCase() : DEFAULT_LANGUAGE
 }
 
 const buildGoogleAnalyticsFullUri = (gaBaseUrl, trackingId, result, ipAddress, numberOfResults, sessionId) =>
@@ -51,5 +63,6 @@ module.exports = {
   auditFailedPostcodeLookup,
   auditInvalidPostcodeLookup,
   getAddressLookupResults,
-  standardisePostcode
+  standardisePostcode,
+  getOSPlacesLanguage
 }

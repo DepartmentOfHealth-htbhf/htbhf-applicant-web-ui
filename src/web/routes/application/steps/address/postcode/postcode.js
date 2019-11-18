@@ -21,7 +21,7 @@ const behaviourForPost = (config) => async (req, res, next) => {
   req.session.claim = resetAddressOnClaim(req.session.claim)
 
   try {
-    const addressLookupResults = await getAddressLookupResults(config, req.body.postcode)
+    const addressLookupResults = await getAddressLookupResults(config, req.body.postcode, req.language)
 
     req.session.postcodeLookupResults = transformOsPlacesApiResponse(addressLookupResults)
     auditSuccessfulPostcodeLookup(config, req, addressLookupResults.header.totalresults)
