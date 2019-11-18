@@ -9,7 +9,6 @@ const {
   auditInvalidPostcodeLookup,
   auditFailedPostcodeLookup,
   standardisePostcode,
-  getOSPlacesLanguage,
   getAddressLookupResults } = proxyquire(
   './os-places', {
     'request-promise': request
@@ -100,33 +99,5 @@ test('getAddressLookupResults() calls os places with the correct arguments', asy
   t.deepEqual(request.getCall(0).args[0], expectedOSPlacesRequestArgs, 'should call os places with the correct arguments')
 
   request.resetHistory()
-  t.end()
-})
-
-test('getOSPlacesLanguage should return cy when user\'s language is welsh', (t) => {
-  const language = getOSPlacesLanguage('cy')
-
-  t.equal(language, 'cy')
-  t.end()
-})
-
-test('getOSPlacesLanguage should return lowercase when user\'s language is uppercase', (t) => {
-  const language = getOSPlacesLanguage('CY')
-
-  t.equal(language, 'cy')
-  t.end()
-})
-
-test('getOSPlacesLanguage should return en when user\'s language is not English or Welsh', (t) => {
-  const language = getOSPlacesLanguage('de')
-
-  t.equal(language, 'en')
-  t.end()
-})
-
-test('getOSPlacesLanguage should return en when user\'s language is undefined', (t) => {
-  const language = getOSPlacesLanguage(undefined)
-
-  t.equal(language, 'en')
   t.end()
 })
