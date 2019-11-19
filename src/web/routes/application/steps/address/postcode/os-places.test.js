@@ -91,7 +91,7 @@ test('getAddressLookupResults() calls os places with the correct arguments', asy
   await getAddressLookupResults(config, 'AB1 1AB')
 
   const expectedOSPlacesRequestArgs = {
-    uri: 'localhost:8150/places/v1/addresses/postcode?postcode=AB11AB&key=123',
+    uri: 'localhost:8150/places/v1/addresses/postcode?postcode=AB11AB&key=123&lr=en',
     json: true,
     timeout: 5000
   }
