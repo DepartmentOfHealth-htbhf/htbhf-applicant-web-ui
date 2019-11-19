@@ -21,9 +21,10 @@ const pageContent = ({ translate }) => ({
   errorWithPostcodeLookup: translate('address.errorWithPostcodeLookup')
 })
 
-const buildAddressOption = result => ({
+const buildAddressOption = addressId => result => ({
   value: result.ADDRESS,
-  text: result.ADDRESS
+  text: result.ADDRESS,
+  selected: result.UDPRN === addressId
 })
 
 const resetAddressState = (req) => {
@@ -34,9 +35,12 @@ const resetAddressState = (req) => {
 
 const behaviourForGet = (config, journey) => (req, res, next) => {
   resetAddressState(req)
+  const addressId = req.session.claim.addressId
   res.locals.postcodeLookupError = req.session.postcodeLookupError
   if (!res.locals.postcodeLookupError) {
-    res.locals.addresses = req.session.postcodeLookupResults.map(buildAddressOption)
+    res.locals.addresses = req.session.postcodeLookupResults.map(buildAddressOption(addressId))
+    res.locals.addressSelected = res.locals.addresses.some(addr => addr.selected)
+    res.locals.numberOfAddressesFound = req.t('address.numberOfAddressesFound', { count: res.locals.addresses.length })
   }
   // Manual address is further in the flow than select-address, therefore this line is needed to prevent the state machine from redirecting the user back to select-address.
   stateMachine.dispatch(SET_NEXT_ALLOWED_PATH, req, journey, '/manual-address')

@@ -13,7 +13,8 @@ test('transformAddress() transforms address correctly', (t) => {
     THOROUGHFARE_NAME: 'VALLEY ROAD',
     POST_TOWN: 'PLYMOUTH',
     POSTCODE: 'PL7 1RF',
-    LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'CITY OF PLYMOUTH'
+    LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'CITY OF PLYMOUTH',
+    UDPRN: '50265368'
   }
 
   t.deepEqual(result, expected, 'transforms address correctly')
@@ -32,7 +33,8 @@ test('transformOsPlacesApiResponse() transforms OS Places API response correctly
       THOROUGHFARE_NAME: 'VALLEY ROAD',
       POST_TOWN: 'PLYMOUTH',
       POSTCODE: 'PL7 1RF',
-      LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'CITY OF PLYMOUTH'
+      LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'CITY OF PLYMOUTH',
+      UDPRN: '50265368'
     },
     {
       ADDRESS: 'Dulux Decorator Centre, 2, Valley Road, Plymouth',
@@ -42,7 +44,8 @@ test('transformOsPlacesApiResponse() transforms OS Places API response correctly
       THOROUGHFARE_NAME: 'VALLEY ROAD',
       POST_TOWN: 'PLYMOUTH',
       POSTCODE: 'PL7 1RF',
-      LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'CITY OF PLYMOUTH'
+      LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'CITY OF PLYMOUTH',
+      UDPRN: '19000955'
     },
     {
       ADDRESS: 'Mill Autos, 3, Valley Road, Plymouth',
@@ -52,7 +55,8 @@ test('transformOsPlacesApiResponse() transforms OS Places API response correctly
       THOROUGHFARE_NAME: 'VALLEY ROAD',
       POST_TOWN: 'PLYMOUTH',
       POSTCODE: 'PL7 1RF',
-      LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'CITY OF PLYMOUTH'
+      LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'CITY OF PLYMOUTH',
+      UDPRN: '19000927'
     },
     {
       ADDRESS: 'Goat Hill Farm, 2, Troll Bridge, Goat Hill, Slaithwaite, Slaith, Huddersfield',
@@ -64,7 +68,8 @@ test('transformOsPlacesApiResponse() transforms OS Places API response correctly
       DEPENDENT_LOCALITY: 'SLAITH',
       POST_TOWN: 'HUDDERSFIELD',
       POSTCODE: 'HD7 5UZ',
-      LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'KIRKLEES'
+      LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'KIRKLEES',
+      UDPRN: '10668197'
     },
     {
       ADDRESS: '10a, Mayfield Avenue, Weston-Super-Mare',
@@ -72,7 +77,8 @@ test('transformOsPlacesApiResponse() transforms OS Places API response correctly
       THOROUGHFARE_NAME: 'MAYFIELD AVENUE',
       POST_TOWN: 'WESTON-SUPER-MARE',
       POSTCODE: 'BS22 6AA',
-      LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'NORTH SOMERSET'
+      LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'NORTH SOMERSET',
+      UDPRN: '2916679'
     }
   ]
 

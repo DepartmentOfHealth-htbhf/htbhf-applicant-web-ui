@@ -27,6 +27,13 @@
         {% if addresses | length === 0 %}
             <h2 class="govuk-heading-m">{{ addressNotFound }}</h2>
         {% else %}
+
+            {% set isSelected = false if addressSelected else true %}
+
+            {% set firstOption = { text: numberOfAddressesFound, value: "", disabled: true, selected: isSelected } %}
+
+            {% set newLength = addresses.unshift(firstOption) %}
+
             {{ govukSelect({
                 id: "address-results",
                 name: "selectedAddress",

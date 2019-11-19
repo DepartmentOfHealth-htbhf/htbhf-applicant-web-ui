@@ -20,7 +20,8 @@ test('normaliseAddressFields() replaces missing fields with empty strings', (t) 
     THOROUGHFARE_NAME: 'VALLEY ROAD',
     POST_TOWN: 'PLYMOUTH',
     POSTCODE: 'PL7 1RF',
-    LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'CITY OF PLYMOUTH'
+    LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'CITY OF PLYMOUTH',
+    UDPRN: '50265368'
   }
 
   const expected = {
@@ -35,7 +36,8 @@ test('normaliseAddressFields() replaces missing fields with empty strings', (t) 
     DEPENDENT_LOCALITY: '',
     POST_TOWN: 'PLYMOUTH',
     POSTCODE: 'PL7 1RF',
-    LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'CITY OF PLYMOUTH'
+    LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'CITY OF PLYMOUTH',
+    UDPRN: '50265368'
   }
 
   const result = normaliseAddressFields(fields)
