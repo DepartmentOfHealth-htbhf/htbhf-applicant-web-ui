@@ -12,10 +12,12 @@ const redirect = sinon.spy()
 const render = sinon.spy()
 const next = sinon.spy()
 
+const REQUEST_BODY = { name: 'Lisa' }
+
 const { handleErrorResponse, postTermsAndConditions } = proxyquire('./post', {
   'request-promise': { post },
   './create-request-body': {
-    createRequestBody: () => {}
+    createRequestBody: () => REQUEST_BODY
   }
 })
 
@@ -152,6 +154,36 @@ test(`successful post sets next allowed step to ${CONFIRM_URL} and sets returned
     })
     .catch((error) => {
       t.fail(error)
+    })
+    .finally(() => resetStubs())
+})
+
+test('sends a POST request with the correct paramaters', async (t) => {
+  const journey = {
+    name: 'apply',
+    steps: []
+  }
+
+  const req = {
+    session: {
+      ...buildSessionForJourney({ journeyName: 'apply', state: states.IN_REVIEW })
+    },
+    headers: {
+      'x-request-id': '456'
+    },
+    sessionID: '123'
+  }
+
+  const res = { redirect, render }
+
+  post.resolves(SUCCESSFUL_RESPONSE)
+
+  postTermsAndConditions(CONFIG, journey)(req, res, next)
+    .then(() => {
+      const { headers, body } = post.args[0][0]
+      t.deepEqual(headers, { 'X-Request-ID': '456', 'X-Session-ID': '123' }, 'sets the correct headers')
+      t.deepEqual(body, REQUEST_BODY, 'sets body to the result of calling createRequestBody()')
+      t.end()
     })
     .finally(() => resetStubs())
 })
