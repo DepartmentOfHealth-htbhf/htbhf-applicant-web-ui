@@ -8,7 +8,7 @@ const {
   setStateInSession,
   getNextAllowedPathFromSession,
   getStateFromSession
-} = require('./session-accessors')
+} = require('../session-accessors')
 
 const { IN_PROGRESS, IN_REVIEW, COMPLETED } = states
 
