@@ -1,13 +1,21 @@
 const csrf = require('csurf')
 const { registerJourneyRoutes } = require('./register-journey-routes')
 const { registerSteps } = require('../register-steps')
-const { CHECK_ANSWERS_URL, TERMS_AND_CONDITIONS_URL, CONFIRM_URL } = require('./paths')
+const { CHECK_ANSWERS_URL, TERMS_AND_CONDITIONS_URL, CONFIRM_URL, prefixPath } = require('./paths')
 
-const getPathsInSequence = (steps) => [...steps.map(step => step.path), CHECK_ANSWERS_URL, TERMS_AND_CONDITIONS_URL, CONFIRM_URL]
+const getPathsInSequence = (prefix, steps) => [
+  ...steps.map(step => prefixPath(prefix, step.path)),
+  prefixPath(prefix, CHECK_ANSWERS_URL),
+  prefixPath(prefix, TERMS_AND_CONDITIONS_URL),
+  prefixPath(prefix, CONFIRM_URL)
+]
+
+const prefixPathForStep = prefix => step => ({ ...step, path: prefixPath(prefix, step.path) })
 
 const registerJourney = (features) => (journey) => {
-  const steps = registerSteps(features, journey.steps)
-  const pathsInSequence = getPathsInSequence(steps)
+  const registeredSteps = registerSteps(features, journey.steps)
+  const steps = registeredSteps.map(prefixPathForStep(journey.pathPrefix))
+  const pathsInSequence = getPathsInSequence(journey.pathPrefix, registeredSteps)
 
   return {
     ...journey,
@@ -24,6 +32,7 @@ const registerJourneys = (journeys) => (config, app) => {
 }
 
 module.exports = {
+  prefixPath,
   getPathsInSequence,
   registerJourney,
   registerJourneys

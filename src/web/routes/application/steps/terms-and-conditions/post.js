@@ -30,7 +30,7 @@ const postTermsAndConditions = (config, journey) => (req, res, next) => {
   if (!errors.isEmpty()) {
     res.locals.errors = errors.array()
     res.locals.errorTitleText = req.t('validation:errorTitleText')
-    return render(res, req)
+    return render(req, res, journey)
   }
 
   logger.info('Sending claim', { req })

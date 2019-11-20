@@ -17,20 +17,23 @@ const step3 = {
 const steps = [step1, step2, step3]
 
 test('getNextPathFromSteps() gets the path for the next step in sequence of steps', (t) => {
-  const result = getNextPathFromSteps(steps, step1)
+  const journey = { steps }
+  const result = getNextPathFromSteps(journey, step1)
   t.equal(result, '/second')
   t.end()
 })
 
 test(`getNextPathFromSteps() returns ${CHECK_ANSWERS_URL} for final step`, (t) => {
-  const result = getNextPathFromSteps(steps, step3)
+  const journey = { steps }
+  const result = getNextPathFromSteps(journey, step3)
   t.equal(result, CHECK_ANSWERS_URL)
   t.end()
 })
 
 test('getNextForStep() returns path for next step in sequence if next property is undefined on step', (t) => {
   const req = {}
-  const result = getNextForStep(req, step2, steps)
+  const journey = { steps }
+  const result = getNextForStep(req, journey, step2)
 
   t.equal(result, '/third', 'returns path for next step in sequence if next property is undefined on step')
   t.end()
@@ -39,7 +42,8 @@ test('getNextForStep() returns path for next step in sequence if next property i
 test('getNextForStep() throws error if next is not a function', (t) => {
   const step = { next: 'This is not a function' }
   const req = {}
-  const result = () => getNextForStep(req, step, [...steps, step])
+  const journey = { steps: [...steps, step] }
+  const result = () => getNextForStep(req, journey, step)
 
   t.throws(result, /Next property for step must be a function/, 'throws error if next is not a function')
   t.end()
@@ -48,7 +52,8 @@ test('getNextForStep() throws error if next is not a function', (t) => {
 test('getNextForStep() throws error if result of calling next is not a string', (t) => {
   const step = { next: () => null }
   const req = {}
-  const result = () => getNextForStep(req, step, [...steps, step])
+  const journey = { steps: [...steps, step] }
+  const result = () => getNextForStep(req, journey, step)
 
   t.throws(result, /Next function must return a string starting with a forward slash/, 'throws error if result of calling next is not a string')
   t.end()
@@ -57,7 +62,8 @@ test('getNextForStep() throws error if result of calling next is not a string', 
 test('getNextForStep() throws error if result of calling next does not start with forward slash', (t) => {
   const step = { next: () => 'path-without-forward-slash' }
   const req = {}
-  const result = () => getNextForStep(req, step, [...steps, step])
+  const journey = { steps: [...steps, step] }
+  const result = () => getNextForStep(req, journey, step)
 
   t.throws(result, /Next function must return a string starting with a forward slash/, 'throws error if result of calling next does not start with forward slash')
   t.end()
@@ -66,7 +72,8 @@ test('getNextForStep() throws error if result of calling next does not start wit
 test('getNextForStep() should return the result of calling next', (t) => {
   const step = { next: () => '/the-next-path' }
   const req = {}
-  const result = getNextForStep(req, step, [...steps, step])
+  const journey = { steps: [...steps, step] }
+  const result = getNextForStep(req, journey, step)
 
   t.equals(result, '/the-next-path', 'return the result of calling next')
   t.end()
@@ -76,8 +83,8 @@ test('getNextForStep() passes request as an argument when calling next function'
   const req = { session: { some: '/path' } }
   const next = (req) => req.session.some
   const step = { next }
-
-  const result = getNextForStep(req, step, [...steps, step])
+  const journey = { steps: [...steps, step] }
+  const result = getNextForStep(req, journey, step)
 
   t.equals(result, '/path', 'passes request as an argument when calling next function')
   t.end()

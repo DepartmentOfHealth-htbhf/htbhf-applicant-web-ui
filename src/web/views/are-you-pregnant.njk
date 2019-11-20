@@ -2,33 +2,38 @@
 {% from "govuk/components/radios/macro.njk" import govukRadios %}
 {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
 {% from "macros/htbhf-date-input.njk" import htbhfDateInput %}
+{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+{% from "macros/htbhf-form-description.njk" import htbhfFormDescription %}
 
 {% set eddHtml %}
-{{ htbhfDateInput({
-  fieldNamePrefix: "expectedDeliveryDate",
-  claim: claim,
-  errors: errors,
-  legend: {
-    text: expectedDeliveryDateText
-  },
-  hint: {
-    text: expectedDeliveryDateHint
-  }
-}) }}
+  {{ htbhfDateInput({
+    fieldNamePrefix: "expectedDeliveryDate",
+    claim: claim,
+    errors: errors,
+    legend: {
+      text: expectedDeliveryDateText
+    },
+    hint: {
+      text: expectedDeliveryDateHint
+    }
+  }) }}
 {% endset -%}
 
 {% block formContent %}
+  {% call govukFieldset({
+    legend: {
+      text: heading,
+      classes: "govuk-fieldset__legend--xl",
+      isPageHeading: true
+    }
+  }) %}
+
+    {{ htbhfFormDescription(formDescription) }}
+
     {{ govukRadios({
       id: "are-you-pregnant",
       idPrefix: "are-you-pregnant",
       name: "areYouPregnant",
-      fieldset: {
-        legend: {
-          text: heading,
-          isPageHeading: true,
-          classes: "govuk-fieldset__legend--xl"
-        }
-      },
       errorMessage: errors | getErrorForField('areYouPregnant'),
       items: [
         {
@@ -36,8 +41,8 @@
           text: yes,
           checked : claim.areYouPregnant === "yes",
           conditional: {
-            html: eddHtml
-          }
+          html: eddHtml
+        }
         },
         {
           value: "no",
@@ -47,7 +52,10 @@
       ]
     }) }}
 
-  {{ govukInsetText({
-    text: explanation
-  }) }}
+    {{ govukInsetText({
+      text: explanation
+    }) }}
+
+  {% endcall %}
 {% endblock %}
+

@@ -1,6 +1,6 @@
 const { pathOr } = require('ramda')
 const { isUndefined } = require('../../../../../common/predicates')
-const { JOURNEYS_KEY, NEXT_ALLOWED_PATH_KEY, STATE_KEY } = require('./keys')
+const { JOURNEYS_KEY, NEXT_ALLOWED_PATH_KEY, STATE_KEY } = require('../keys')
 
 const setJourneySessionProp = (prop) => (req, journey, value) => {
   if (isUndefined(journey)) {

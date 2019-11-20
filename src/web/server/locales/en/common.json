@@ -11,8 +11,8 @@
     "title": "What’s your name?",
     "heading": "What’s your name?",
     "hint": "Use the name that’s on your official documents, such as passport, driving licence, or any benefit claims.",
-    "firstNameLabel": "First or given name",
-    "lastNameLabel": "Last or family name",
+    "firstNameLabel": "First name (given name)",
+    "lastNameLabel": "Last name (surname or family name)",
     "summaryKey": "Your name",
     "explanation": "We need this to confirm your identity and eligibility. Your name will also appear on your prepaid card."
   },
@@ -53,7 +53,8 @@
     "expectedDeliveryDateHint": "For example, {{exampleDate}}",
     "summaryKey": "Are you pregnant?",
     "expectedDeliveryDateSummaryKey": "Baby’s due date",
-    "explanation": "We need this to work out how much money you should get."
+    "explanation": "We need this to work out how much money you should get.",
+    "formDescription": "If you’re pregnant you must tell the benefits agency when your baby is born."
   },
   "address": {
     "title": "What’s your address?",
@@ -129,7 +130,7 @@
     "statement": "I confirm that I’ve read and will comply with these terms and conditions."
   },
   "confirm": {
-    "newClaimTitle": "Application complete",
+    "newClaimTitle": "Application successful",
     "updatedClaimTitle": "Application updated",
     "subTitle": "You’re entitled to\n<strong>£{{totalVoucherValue}}</strong> a week. Your first payment\nwill be <strong>£{{totalVoucherValueForFourWeeks}}</strong>."
   },
