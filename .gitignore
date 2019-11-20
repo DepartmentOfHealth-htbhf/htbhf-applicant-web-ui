@@ -1,3 +1,5 @@
+.gradle/
+
 # Logs
 logs
 *.log
@@ -31,6 +33,10 @@ node_modules/
 # intellij
 .idea/
 .DS_Store
+
+# eclipse
+.project
+.settings/
 
 # visual studio code
 .history/
