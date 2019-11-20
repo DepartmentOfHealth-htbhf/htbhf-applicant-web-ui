@@ -1,9 +1,8 @@
 const test = require('tape')
 const sinon = require('sinon')
 const proxyquire = require('proxyquire')
-const { states, testUtils } = require('../state-machine')
-
-const { buildSessionForJourney, getNextAllowedPathForJourney } = testUtils
+const { states } = require('../state-machine')
+const { buildSessionForJourney, getNextAllowedPathForJourney } = require('../test-utils')
 
 const defaultValidator = {
   'express-validator': {

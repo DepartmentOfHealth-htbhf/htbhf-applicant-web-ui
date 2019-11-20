@@ -5,7 +5,7 @@ const { partial } = require('ramda')
 const { IN_PROGRESS, IN_REVIEW, COMPLETED } = require('./states')
 const { GET_NEXT_PATH, INVALIDATE_REVIEW, SET_NEXT_ALLOWED_PATH, INCREMENT_NEXT_ALLOWED_PATH } = require('./actions')
 const { CHECK_ANSWERS_URL, TERMS_AND_CONDITIONS_URL, CONFIRM_URL } = require('../../paths')
-const { buildSessionForJourney, getStateForJourney, getNextAllowedPathForJourney } = require('./test-utils')
+const { buildSessionForJourney, getStateForJourney, getNextAllowedPathForJourney } = require('../test-utils')
 
 const info = sinon.spy()
 const logger = { info }
