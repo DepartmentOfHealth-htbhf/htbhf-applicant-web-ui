@@ -1,7 +1,7 @@
 const test = require('tape')
 const sinon = require('sinon')
 const proxyquire = require('proxyquire')
-const { states } = require('../state-machine')
+const states = require('../states')
 const { buildSessionForJourney, getNextAllowedPathForJourney } = require('../test-utils')
 
 const defaultValidator = {

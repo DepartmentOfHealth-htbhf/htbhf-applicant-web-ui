@@ -1,4 +1,4 @@
-const { states } = require('../state-machine')
+const states = require('../states')
 
 const initialiseProp = (prop, obj, value = {}) => {
   if (!obj.hasOwnProperty(prop)) {

@@ -1,6 +1,7 @@
 const { CONFIRM_URL, prefixPath } = require('../../../paths')
-const { stateMachine, actions, states } = require('../../state-machine')
+const { stateMachine, actions } = require('../../state-machine')
 const { stepNotNavigable } = require('./predicates')
+const states = require('../../states')
 
 const { COMPLETED } = states
 const { IS_PATH_ALLOWED, GET_NEXT_ALLOWED_PATH } = actions

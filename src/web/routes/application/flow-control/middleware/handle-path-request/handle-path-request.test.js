@@ -2,7 +2,7 @@ const test = require('tape')
 const sinon = require('sinon')
 const { CONFIRM_URL } = require('../../../paths')
 const { handleRequestForPath } = require('./handle-path-request')
-const { states } = require('../../state-machine')
+const states = require('../../states')
 const { buildSessionForJourney } = require('../../test-utils')
 
 const { IN_PROGRESS, COMPLETED } = states

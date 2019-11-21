@@ -1,6 +1,6 @@
 const { CONFIRM_URL, prefixPath } = require('../../paths')
 const { logger } = require('../../../../logger')
-const states = require('./states')
+const states = require('../states')
 const { isPathAllowed } = require('./predicates')
 const { getNextNavigablePath, getNextInReviewPath } = require('./selectors')
 const {

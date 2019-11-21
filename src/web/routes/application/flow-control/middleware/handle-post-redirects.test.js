@@ -1,7 +1,7 @@
 const test = require('tape')
 const sinon = require('sinon')
 const { handlePostRedirects } = require('./handle-post-redirects')
-const { states } = require('../state-machine')
+const states = require('../states')
 const { buildSessionForJourney } = require('../test-utils')
 
 const { IN_PROGRESS } = states
