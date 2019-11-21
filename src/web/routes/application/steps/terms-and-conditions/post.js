@@ -9,7 +9,7 @@ const { REQUEST_ID_HEADER } = require('../../../../server/headers')
 const { stateMachine, states, actions } = require('../../flow-control')
 const { createRequestBody } = require('./create-request-body')
 const { isErrorStatusCode } = require('./predicates')
-const { CLAIMS_ENDPOINT, NO_ELIGIBILITY_STATUS_MESSAGE } = require('./constants')
+const { NO_ELIGIBILITY_STATUS_MESSAGE } = require('./constants')
 const { render } = require('./get')
 
 const { COMPLETED } = states
@@ -36,7 +36,7 @@ const postTermsAndConditions = (config, journey) => (req, res, next) => {
   logger.info('Sending claim', { req })
 
   return request.post({
-    uri: `${config.environment.CLAIMANT_SERVICE_URL}${CLAIMS_ENDPOINT}`,
+    uri: `${config.environment.CLAIMANT_SERVICE_URL}${journey.endpoint}`,
     json: true,
     headers: {
       'X-Request-ID': req.headers[REQUEST_ID_HEADER],

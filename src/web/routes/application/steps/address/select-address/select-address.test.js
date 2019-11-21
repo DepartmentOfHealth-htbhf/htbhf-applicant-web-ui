@@ -22,7 +22,8 @@ const POSTCODE_LOOKUP_RESULTS = [
     DEPENDENT_THOROUGHFARE_NAME: 'UPPER VALLEY ROAD',
     POST_TOWN: 'PLYMOUTH',
     POSTCODE: 'PL7 1RF',
-    LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'CITY OF PLYMOUTH'
+    LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'CITY OF PLYMOUTH',
+    UDPRN: '50265368'
   }, {
     ADDRESS: 'DULUX DECORATOR CENTRE, 2, VALLEY ROAD, PLYMOUTH, PL7 1RF',
     ORGANISATION_NAME: 'DULUX DECORATOR CENTRE',
@@ -31,7 +32,8 @@ const POSTCODE_LOOKUP_RESULTS = [
     DEPENDENT_THOROUGHFARE_NAME: 'UPPER VALLEY ROAD',
     POST_TOWN: 'PLYMOUTH',
     POSTCODE: 'PL7 1RF',
-    LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'CITY OF PLYMOUTH'
+    LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'CITY OF PLYMOUTH',
+    UDPRN: '19000955'
   }, {
     ADDRESS: 'MILL AUTOS, 3, VALLEY ROAD, PLYMOUTH, PL7 1RF',
     ORGANISATION_NAME: 'MILL AUTOS',
@@ -40,17 +42,20 @@ const POSTCODE_LOOKUP_RESULTS = [
     DEPENDENT_THOROUGHFARE_NAME: 'UPPER VALLEY ROAD',
     POST_TOWN: 'PLYMOUTH',
     POSTCODE: 'PL7 1RF',
-    LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'CITY OF PLYMOUTH'
+    LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'CITY OF PLYMOUTH',
+    UDPRN: '19000927'
   }
 ]
 
 test('behaviourForGet() adds addresses to res.locals and resets the address', (t) => {
   const req = {
+    t: (key, parameters) => parameters.count,
     session: {
       postcodeLookupResults: POSTCODE_LOOKUP_RESULTS,
       postcodeLookupError: false,
       claim: {
-        selectedAddress: 'ALAN JEFFERY ENGINEERING, 1, VALLEY ROAD, PLYMOUTH, PL7 1RF'
+        selectedAddress: 'ALAN JEFFERY ENGINEERING, 1, VALLEY ROAD, PLYMOUTH, PL7 1RF',
+        addressId: '19000955'
       },
       ...buildSessionForJourney({ journeyName: APPLY, state: IN_PROGRESS })
     }
@@ -61,13 +66,16 @@ test('behaviourForGet() adds addresses to res.locals and resets the address', (t
   const expected = [
     {
       text: 'ALAN JEFFERY ENGINEERING, 1, VALLEY ROAD, PLYMOUTH, PL7 1RF',
-      value: 'ALAN JEFFERY ENGINEERING, 1, VALLEY ROAD, PLYMOUTH, PL7 1RF'
+      value: 'ALAN JEFFERY ENGINEERING, 1, VALLEY ROAD, PLYMOUTH, PL7 1RF',
+      selected: false
     }, {
       text: 'DULUX DECORATOR CENTRE, 2, VALLEY ROAD, PLYMOUTH, PL7 1RF',
-      value: 'DULUX DECORATOR CENTRE, 2, VALLEY ROAD, PLYMOUTH, PL7 1RF'
+      value: 'DULUX DECORATOR CENTRE, 2, VALLEY ROAD, PLYMOUTH, PL7 1RF',
+      selected: true
     }, {
       text: 'MILL AUTOS, 3, VALLEY ROAD, PLYMOUTH, PL7 1RF',
-      value: 'MILL AUTOS, 3, VALLEY ROAD, PLYMOUTH, PL7 1RF'
+      value: 'MILL AUTOS, 3, VALLEY ROAD, PLYMOUTH, PL7 1RF',
+      selected: false
     }
   ]
 
@@ -76,6 +84,8 @@ test('behaviourForGet() adds addresses to res.locals and resets the address', (t
   t.equal(req.session.claim.selectAddress, undefined, 'should reset the selected address')
   t.equal(getNextAllowedPathForApplyJourney(req), '/manual-address', 'next allowed step should be manual address')
   t.deepEqual(res.locals.addresses, expected, 'adds addresses to res.locals')
+  t.equal(res.locals.addressSelected, true, 'should show an address is selected')
+  t.equal(res.locals.numberOfAddressesFound, 3, 'should state the number of addresses found')
   t.equal(res.locals.postcodeLookupError, false, 'sets res.locals.postcodeLookupError')
   t.equal(next.called, true, 'calls next()')
   t.end()
@@ -117,7 +127,8 @@ test('behaviourForPost() adds transformed address to claim', (t) => {
           DEPENDENT_THOROUGHFARE_NAME: 'UPPER VALLEY ROAD',
           POST_TOWN: 'PLYMOUTH',
           POSTCODE: 'PL7 1RF',
-          LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'CITY OF PLYMOUTH'
+          LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'CITY OF PLYMOUTH',
+          UDPRN: '50265368'
         }, {
           ADDRESS: 'DULUX DECORATOR CENTRE, 2, VALLEY ROAD, PLYMOUTH, PL7 1RF',
           ORGANISATION_NAME: 'DULUX DECORATOR CENTRE',
@@ -126,7 +137,8 @@ test('behaviourForPost() adds transformed address to claim', (t) => {
           DEPENDENT_THOROUGHFARE_NAME: 'UPPER VALLEY ROAD',
           POST_TOWN: 'PLYMOUTH',
           POSTCODE: 'PL7 1RF',
-          LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'CITY OF PLYMOUTH'
+          LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'CITY OF PLYMOUTH',
+          UDPRN: '19000955'
         }
       ]
     },
@@ -143,7 +155,8 @@ test('behaviourForPost() adds transformed address to claim', (t) => {
     addressLine2: '1 Upper Valley Road, Valley Road',
     townOrCity: 'Plymouth',
     county: 'City Of Plymouth',
-    postcode: 'PL7 1RF'
+    postcode: 'PL7 1RF',
+    addressId: '50265368'
   }
 
   behaviourForPost()(req, res, next)

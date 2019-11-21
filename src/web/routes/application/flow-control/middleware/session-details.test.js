@@ -1,6 +1,6 @@
 const test = require('tape')
 const sinon = require('sinon')
-const { states } = require('../state-machine')
+const states = require('../states')
 const { configureSessionDetails } = require('./session-details')
 
 const apply = {

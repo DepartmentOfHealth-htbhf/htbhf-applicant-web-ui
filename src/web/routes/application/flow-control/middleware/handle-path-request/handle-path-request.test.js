@@ -2,10 +2,8 @@ const test = require('tape')
 const sinon = require('sinon')
 const { CONFIRM_URL } = require('../../../paths')
 const { handleRequestForPath } = require('./handle-path-request')
-const { states } = require('../../state-machine')
+const { IN_PROGRESS, COMPLETED } = require('../../states')
 const { buildSessionForJourney } = require('../../test-utils')
-
-const { IN_PROGRESS, COMPLETED } = states
 
 const APPLY = 'apply'
 
@@ -64,6 +62,34 @@ test(`handleRequestForPath() should destroy the session and redirect to first st
     session: {
       destroy,
       ...buildSessionForJourney({ journeyName: APPLY, state: COMPLETED })
+    }
+  }
+
+  const res = {
+    clearCookie,
+    redirect
+  }
+
+  handleRequestForPath(journey)(req, res, next)
+
+  t.equal(destroy.called, true, 'it should destroy the session')
+  t.equal(clearCookie.calledWith('lang'), true, 'it should clear language preference cookie')
+  t.equal(redirect.calledWith('/first'), true, 'it should call redirect() with correct path')
+  t.end()
+})
+
+test(`handleRequestForPath() destroys the session and redirects to first step in journey when a ${COMPLETED} journey exists in session`, (t) => {
+  const destroy = sinon.spy()
+  const clearCookie = sinon.spy()
+  const redirect = sinon.spy()
+  const next = sinon.spy()
+
+  const req = {
+    path: '/second',
+    session: {
+      destroy,
+      ...buildSessionForJourney({ journeyName: APPLY, state: IN_PROGRESS }),
+      ...buildSessionForJourney({ journeyName: 'another-journey', state: COMPLETED })
     }
   }
 

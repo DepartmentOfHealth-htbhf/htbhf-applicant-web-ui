@@ -6,7 +6,8 @@ const {
   setNextAllowedPathInSession,
   setStateInSession,
   getNextAllowedPathFromSession,
-  getStateFromSession
+  getStateFromSession,
+  getJourneysFromSession
 } = require('./session-accessors')
 
 const REPORT_A_CHANGE_JOURNEY = { name: 'report-a-change' }
@@ -187,5 +188,32 @@ test('getStateFromSession() gets state for the correct journey', (t) => {
 
   const result = getStateFromSession(req, REPORT_A_CHANGE_JOURNEY)
   t.equal(result, 'IN_REVIEW', 'gets state for the correct journey')
+  t.end()
+})
+
+test('getJourneysFromSession() returns list of associated journey name and properties from session', (t) => {
+  const req = {
+    session: {
+      [JOURNEYS_KEY]: {
+        apply: {
+          [STATE_KEY]: 'IN_PROGRESS',
+          [NEXT_ALLOWED_PATH_KEY]: '/first'
+        },
+        'report-a-change': {
+          [STATE_KEY]: 'IN_REVIEW',
+          [NEXT_ALLOWED_PATH_KEY]: '/last'
+        }
+      }
+    }
+  }
+
+  const result = getJourneysFromSession(req)
+
+  const expected = [
+    ['apply', { [STATE_KEY]: 'IN_PROGRESS', [NEXT_ALLOWED_PATH_KEY]: '/first' }],
+    ['report-a-change', { [STATE_KEY]: 'IN_REVIEW', [NEXT_ALLOWED_PATH_KEY]: '/last' }]
+  ]
+
+  t.deepEqual(result, expected, 'returns journey name and properties from session')
   t.end()
 })
