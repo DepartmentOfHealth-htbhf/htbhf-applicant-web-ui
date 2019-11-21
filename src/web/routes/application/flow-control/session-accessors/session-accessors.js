@@ -1,6 +1,8 @@
-const { pathOr } = require('ramda')
+const { pathOr, compose, toPairs } = require('ramda')
 const { isUndefined } = require('../../../../../common/predicates')
 const { JOURNEYS_KEY, NEXT_ALLOWED_PATH_KEY, STATE_KEY } = require('../keys')
+
+const JOURNEYS_PATH = ['session', JOURNEYS_KEY]
 
 const setJourneySessionProp = (prop) => (req, journey, value) => {
   if (isUndefined(journey)) {
@@ -19,7 +21,7 @@ const getJourneySessionProp = (prop) => (req, journey) => {
     throw new Error(`No journey defined when trying to get "${prop}"`)
   }
 
-  const sessionPath = ['session', JOURNEYS_KEY, journey.name, prop]
+  const sessionPath = [...JOURNEYS_PATH, journey.name, prop]
   const sessionProp = pathOr(undefined, sessionPath, req)
 
   if (isUndefined(sessionProp)) {
@@ -37,11 +39,14 @@ const getNextAllowedPathFromSession = getJourneySessionProp(NEXT_ALLOWED_PATH_KE
 
 const getStateFromSession = getJourneySessionProp(STATE_KEY)
 
+const getJourneysFromSession = compose(toPairs, pathOr({}, JOURNEYS_PATH))
+
 module.exports = {
   setJourneySessionProp,
   getJourneySessionProp,
   setNextAllowedPathInSession,
   setStateInSession,
   getNextAllowedPathFromSession,
-  getStateFromSession
+  getStateFromSession,
+  getJourneysFromSession
 }
