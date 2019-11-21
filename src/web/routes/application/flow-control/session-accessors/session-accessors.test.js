@@ -1,5 +1,5 @@
 const test = require('tape')
-const { JOURNEYS_KEY, NEXT_ALLOWED_PATH_KEY, STATE_KEY } = require('./keys')
+const { JOURNEYS_KEY, NEXT_ALLOWED_PATH_KEY, STATE_KEY } = require('../keys')
 const {
   setJourneySessionProp,
   getJourneySessionProp,
