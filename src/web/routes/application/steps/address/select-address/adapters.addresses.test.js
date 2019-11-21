@@ -9,7 +9,8 @@ test('transformAddress() builds address A', (t) => {
     THOROUGHFARE_NAME: 'VALLEY ROAD',
     POST_TOWN: 'PLYMOUTH',
     POSTCODE: 'PL7 1RF',
-    LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'CITY OF PLYMOUTH'
+    LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'CITY OF PLYMOUTH',
+    UDPRN: '50265368'
   }
 
   const expected = {
@@ -17,7 +18,8 @@ test('transformAddress() builds address A', (t) => {
     addressLine2: '1 Valley Road',
     townOrCity: 'Plymouth',
     county: 'City Of Plymouth',
-    postcode: 'PL7 1RF'
+    postcode: 'PL7 1RF',
+    addressId: '50265368'
   }
 
   const result = transformAddress(address)
@@ -35,7 +37,8 @@ test('transformAddress() builds address B', (t) => {
     LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'FLINTSHIRE',
     ORGANISATION_NAME: 'TRELLEBORG MARINE SYSTEMS LTD',
     DEPENDENT_THOROUGHFARE_NAME: 'AIRFIELD VIEW',
-    DOUBLE_DEPENDENT_LOCALITY: 'HAWARDEN INDUSTRIAL PARK'
+    DOUBLE_DEPENDENT_LOCALITY: 'HAWARDEN INDUSTRIAL PARK',
+    UDPRN: 'TMSL'
   }
 
   const expected = {
@@ -43,7 +46,8 @@ test('transformAddress() builds address B', (t) => {
     addressLine2: 'Airfield View, Manor Lane, Hawarden Industrial Park, Penarlag',
     townOrCity: 'Glannau Dyfrdwy',
     county: 'Flintshire',
-    postcode: 'CH5 3QW'
+    postcode: 'CH5 3QW',
+    addressId: 'TMSL'
   }
 
   const result = transformAddress(address)
@@ -58,7 +62,8 @@ test('transformAddress() builds address C', (t) => {
     POST_TOWN: 'BRISTOL',
     POSTCODE: 'BS1 4TB',
     LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'BRISTOL CITY',
-    BUILDING_NAME: '101 ELECTRICITY HOUSE'
+    BUILDING_NAME: '101 ELECTRICITY HOUSE',
+    UDPRN: '101EH'
   }
 
   const expected = {
@@ -66,7 +71,8 @@ test('transformAddress() builds address C', (t) => {
     addressLine2: 'Colston Avenue',
     townOrCity: 'Bristol',
     county: 'Bristol City',
-    postcode: 'BS1 4TB'
+    postcode: 'BS1 4TB',
+    addressId: '101EH'
   }
 
   const result = transformAddress(address)
@@ -82,7 +88,8 @@ test('transformAddress() builds address D', (t) => {
     DEPENDENT_LOCALITY: 'STAPLETON',
     POST_TOWN: 'BRISTOL',
     POSTCODE: 'BS16 1AU',
-    LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'BRISTOL CITY'
+    LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'BRISTOL CITY',
+    UDPRN: '68PR'
   }
 
   const expected = {
@@ -90,7 +97,8 @@ test('transformAddress() builds address D', (t) => {
     addressLine2: 'Stapleton',
     townOrCity: 'Bristol',
     county: 'Bristol City',
-    postcode: 'BS16 1AU'
+    postcode: 'BS16 1AU',
+    addressId: '68PR'
   }
 
   const result = transformAddress(address)
@@ -107,7 +115,8 @@ test('transformAddress() builds address E', (t) => {
     THOROUGHFARE_NAME: 'FLEET STREET',
     POST_TOWN: 'LIVERPOOL',
     POSTCODE: 'L1 4AR',
-    LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'LIVERPOOL'
+    LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'LIVERPOOL',
+    UDPRN: '10CSA'
   }
 
   const expected = {
@@ -115,7 +124,8 @@ test('transformAddress() builds address E', (t) => {
     addressLine2: '29 Fleet Street',
     townOrCity: 'Liverpool',
     county: 'Liverpool',
-    postcode: 'L1 4AR'
+    postcode: 'L1 4AR',
+    addressId: '10CSA'
   }
 
   const result = transformAddress(address)
@@ -131,7 +141,8 @@ test('transformAddress() builds address F', (t) => {
     THOROUGHFARE_NAME: 'LANSDOWN',
     POST_TOWN: 'STROUD',
     POSTCODE: 'GL5 1BN',
-    LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'STROUD'
+    LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'STROUD',
+    UDPRN: 'GF51'
   }
 
   const expected = {
@@ -139,7 +150,8 @@ test('transformAddress() builds address F', (t) => {
     addressLine2: '51 Lansdown',
     townOrCity: 'Stroud',
     county: 'Stroud',
-    postcode: 'GL5 1BN'
+    postcode: 'GL5 1BN',
+    addressId: 'GF51'
   }
 
   const result = transformAddress(address)
@@ -154,7 +166,8 @@ test('transformAddress() builds address G', (t) => {
     BUILDING_NAME: 'BLACKERSTONE',
     POST_TOWN: 'DUNS',
     POSTCODE: 'TD11 3RY',
-    LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'SCOTTISH BORDERS'
+    LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'SCOTTISH BORDERS',
+    UDPRN: 'TRB'
   }
 
   const expected = {
@@ -162,7 +175,8 @@ test('transformAddress() builds address G', (t) => {
     addressLine2: 'Blackerstone',
     townOrCity: 'Duns',
     county: 'Scottish Borders',
-    postcode: 'TD11 3RY'
+    postcode: 'TD11 3RY',
+    addressId: 'TRB'
   }
 
   const result = transformAddress(address)
@@ -176,7 +190,8 @@ test('transformAddress() builds address H', (t) => {
     BUILDING_NAME: 'BLACKERSTONE SHEPHERDS HOUSE',
     POST_TOWN: 'DUNS',
     POSTCODE: 'TD11 3RY',
-    LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'SCOTTISH BORDERS'
+    LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'SCOTTISH BORDERS',
+    UDPRN: 'BSH'
   }
 
   const expected = {
@@ -184,7 +199,8 @@ test('transformAddress() builds address H', (t) => {
     addressLine2: '',
     townOrCity: 'Duns',
     county: 'Scottish Borders',
-    postcode: 'TD11 3RY'
+    postcode: 'TD11 3RY',
+    addressId: 'BSH'
   }
 
   const result = transformAddress(address)
@@ -198,7 +214,8 @@ test('transformAddress() builds address I', (t) => {
     THOROUGHFARE_NAME: 'MAYFIELD AVENUE',
     POST_TOWN: 'WESTON-SUPER-MARE',
     POSTCODE: 'BS22 6AA',
-    LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'NORTH SOMERSET'
+    LOCAL_CUSTODIAN_CODE_DESCRIPTION: 'NORTH SOMERSET',
+    UDPRN: '2916679'
   }
 
   const expected = {
@@ -206,7 +223,8 @@ test('transformAddress() builds address I', (t) => {
     addressLine2: '',
     townOrCity: 'Weston-Super-Mare',
     county: 'North Somerset',
-    postcode: 'BS22 6AA'
+    postcode: 'BS22 6AA',
+    addressId: '2916679'
   }
 
   const result = transformAddress(address)

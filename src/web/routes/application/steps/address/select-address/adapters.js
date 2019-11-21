@@ -74,7 +74,8 @@ const transformAddress = addressFields => {
     addressLine2: toTitleCase(addressLineOneAndTwo[1]),
     townOrCity: toTitleCase(addressFields.POST_TOWN),
     county: toTitleCase(addressFields.LOCAL_CUSTODIAN_CODE_DESCRIPTION),
-    postcode: addressFields.POSTCODE
+    postcode: addressFields.POSTCODE,
+    addressId: addressFields.UDPRN
   }
 }
 
