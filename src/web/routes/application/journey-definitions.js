@@ -18,6 +18,7 @@ const {
 
 const APPLY = {
   name: 'apply',
+  endpoint: '/v2/claims',
   steps: [
     scotland,
     inScotland,
