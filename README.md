@@ -15,6 +15,7 @@ A developer's guide for working with the **Apply for Healthy Start** applicant w
 * [Defining a journey](https://github.com/DepartmentOfHealth-htbhf/htbhf-applicant-web-ui/wiki/Defining-a-journey)
 * [Journey flow control](https://github.com/DepartmentOfHealth-htbhf/htbhf-applicant-web-ui/wiki/Journey-flow-control)
 * [Feature toggle](https://github.com/DepartmentOfHealth-htbhf/htbhf-applicant-web-ui/wiki/Feature-toggle)
+* [Error handling](https://github.com/DepartmentOfHealth-htbhf/htbhf-applicant-web-ui/wiki/Error-handling)
 
 ## [Testing the application](https://github.com/DepartmentOfHealth-htbhf/htbhf-applicant-web-ui/wiki/Testing-the-application)
 
