@@ -1,6 +1,6 @@
 const test = require('tape')
 const sinon = require('sinon')
-const { CONFIRM_URL } = require('../../../paths')
+const { DECISION_URL } = require('../../../paths')
 const { handleRequestForPath } = require('./handle-path-request')
 const { IN_PROGRESS, COMPLETED } = require('../../states')
 const { buildSessionForJourney } = require('../../test-utils')
@@ -51,7 +51,7 @@ test('handleRequestForPath() should call next() if requested path is allowed', (
   t.end()
 })
 
-test(`handleRequestForPath() should destroy the session and redirect to first step in journey when navigating away from ${CONFIRM_URL} to a path in sequence`, (t) => {
+test(`handleRequestForPath() should destroy the session and redirect to first step in journey when navigating away from ${DECISION_URL} to a path in sequence`, (t) => {
   const destroy = sinon.spy()
   const clearCookie = sinon.spy()
   const redirect = sinon.spy()

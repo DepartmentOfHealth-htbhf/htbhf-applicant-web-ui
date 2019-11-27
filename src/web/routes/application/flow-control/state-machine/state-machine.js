@@ -1,4 +1,4 @@
-const { CONFIRM_URL, prefixPath } = require('../../paths')
+const { DECISION_URL, prefixPath } = require('../../paths')
 const { logger } = require('../../../../logger')
 const states = require('../states')
 const { isPathAllowed } = require('./predicates')
@@ -29,11 +29,11 @@ const stateMachine = {
     invalidateReview: (req, journey) => setStateInSession(req, journey, IN_PROGRESS)
   },
   [COMPLETED]: {
-    getNextPath: (req, journey) => prefixPath(journey.pathPrefix, CONFIRM_URL),
-    isPathAllowed: (req, journey) => req.path === prefixPath(journey.pathPrefix, CONFIRM_URL),
-    getNextAllowedPath: (req, journey) => prefixPath(journey.pathPrefix, CONFIRM_URL),
+    getNextPath: (req, journey) => prefixPath(journey.pathPrefix, DECISION_URL),
+    isPathAllowed: (req, journey) => req.path === prefixPath(journey.pathPrefix, DECISION_URL),
+    getNextAllowedPath: (req, journey) => prefixPath(journey.pathPrefix, DECISION_URL),
     setNextAllowedPath: setNextAllowedPathInSession,
-    incrementNextAllowedPath: (req, journey) => setNextAllowedPathInSession(req, journey, prefixPath(journey.pathPrefix, CONFIRM_URL))
+    incrementNextAllowedPath: (req, journey) => setNextAllowedPathInSession(req, journey, prefixPath(journey.pathPrefix, DECISION_URL))
   },
 
   getState: getStateFromSession,

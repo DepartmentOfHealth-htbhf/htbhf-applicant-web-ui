@@ -4,7 +4,7 @@ const sinon = require('sinon')
 const { partial } = require('ramda')
 const { IN_PROGRESS, IN_REVIEW, COMPLETED } = require('../states')
 const { GET_NEXT_PATH, INVALIDATE_REVIEW, SET_NEXT_ALLOWED_PATH, INCREMENT_NEXT_ALLOWED_PATH } = require('./actions')
-const { CHECK_ANSWERS_URL, TERMS_AND_CONDITIONS_URL, CONFIRM_URL } = require('../../paths')
+const { CHECK_ANSWERS_URL, TERMS_AND_CONDITIONS_URL, DECISION_URL } = require('../../paths')
 const { buildSessionForJourney, getStateForJourney, getNextAllowedPathForJourney } = require('../test-utils')
 
 const info = sinon.spy()
@@ -78,7 +78,7 @@ test(`Dispatching ${GET_NEXT_PATH} should return ${TERMS_AND_CONDITIONS_URL} whe
   t.end()
 })
 
-test(`Dispatching ${GET_NEXT_PATH} should return ${CONFIRM_URL} path when state of ${COMPLETED} defined in session`, (t) => {
+test(`Dispatching ${GET_NEXT_PATH} should return ${DECISION_URL} path when state of ${COMPLETED} defined in session`, (t) => {
   const req = {
     session: {
       ...buildSessionForJourney({ journeyName: APPLY, state: COMPLETED })
@@ -86,7 +86,7 @@ test(`Dispatching ${GET_NEXT_PATH} should return ${CONFIRM_URL} path when state 
     path: '/first'
   }
 
-  t.equal(stateMachine.dispatch(GET_NEXT_PATH, req, APPLY_JOURNEY), CONFIRM_URL)
+  t.equal(stateMachine.dispatch(GET_NEXT_PATH, req, APPLY_JOURNEY), DECISION_URL)
   t.end()
 })
 
@@ -185,7 +185,7 @@ test(`Dispatching ${INCREMENT_NEXT_ALLOWED_PATH} updates next allowed path in se
   const appStates = [
     { state: IN_PROGRESS, path: '/first', expectedNextPath: '/second' },
     { state: IN_REVIEW, path: CHECK_ANSWERS_URL, expectedNextPath: TERMS_AND_CONDITIONS_URL },
-    { state: COMPLETED, path: CONFIRM_URL, expectedNextPath: CONFIRM_URL }
+    { state: COMPLETED, path: DECISION_URL, expectedNextPath: DECISION_URL }
   ]
 
   appStates.forEach(appState => {

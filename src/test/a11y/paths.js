@@ -20,7 +20,7 @@ const URLS = {
   SEND_CODE: `${BASE_URL}/send-code`,
   ENTER_CODE: `${BASE_URL}/enter-code`,
   TERMS_AND_CONDITIONS: `${BASE_URL}/terms-and-conditions`,
-  CONFIRM: `${BASE_URL}/confirm`,
+  DECISION: `${BASE_URL}/decision`,
   HOW_IT_WORKS: `${BASE_URL}/`,
   ELIGIBILITY: `${BASE_URL}/eligibility`,
   WHAT_YOU_GET: `${BASE_URL}/what-you-get`,

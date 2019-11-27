@@ -11,6 +11,7 @@ const { createRequestBody } = require('./create-request-body')
 const { isErrorStatusCode } = require('./predicates')
 const { NO_ELIGIBILITY_STATUS_MESSAGE } = require('./constants')
 const { render } = require('./get')
+const { DECISION_URL } = require('../../paths')
 
 const { COMPLETED } = states
 const { INCREMENT_NEXT_ALLOWED_PATH } = actions
@@ -65,7 +66,7 @@ const postTermsAndConditions = (config, journey) => (req, res, next) => {
 
         stateMachine.setState(COMPLETED, req, journey)
         stateMachine.dispatch(INCREMENT_NEXT_ALLOWED_PATH, req, journey)
-        return res.redirect('confirm')
+        return res.redirect(DECISION_URL)
       },
       (error) => {
         next(wrapError({
