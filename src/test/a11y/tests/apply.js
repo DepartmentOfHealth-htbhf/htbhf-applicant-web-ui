@@ -125,7 +125,7 @@ const apply = [
     })
   },
   {
-    url: URLS['CONFIRM'],
+    url: URLS['DECISION'],
     formData: () => ({}),
     issueChecks: [
       (url, result) => result.documentTitle !== APPLICATION_SUCCESSFUL_TITLE

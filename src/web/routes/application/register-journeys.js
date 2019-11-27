@@ -1,13 +1,13 @@
 const csrf = require('csurf')
 const { registerJourneyRoutes } = require('./register-journey-routes')
 const { registerSteps } = require('../register-steps')
-const { CHECK_ANSWERS_URL, TERMS_AND_CONDITIONS_URL, CONFIRM_URL, prefixPath } = require('./paths')
+const { CHECK_ANSWERS_URL, TERMS_AND_CONDITIONS_URL, DECISION_URL, prefixPath } = require('./paths')
 
 const getPathsInSequence = (prefix, steps) => [
   ...steps.map(step => prefixPath(prefix, step.path)),
   prefixPath(prefix, CHECK_ANSWERS_URL),
   prefixPath(prefix, TERMS_AND_CONDITIONS_URL),
-  prefixPath(prefix, CONFIRM_URL)
+  prefixPath(prefix, DECISION_URL)
 ]
 
 const prefixPathForStep = prefix => step => ({ ...step, path: prefixPath(prefix, step.path) })
