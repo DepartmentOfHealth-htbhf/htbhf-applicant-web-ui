@@ -1,4 +1,4 @@
-const { CONFIRM_URL } = require('../../../paths')
+const { DECISION_URL } = require('../../../paths')
 const { stateMachine, actions } = require('../../state-machine')
 const { stepNotNavigable, completedJourneyExistsInSession } = require('./predicates')
 
@@ -8,8 +8,8 @@ const handleRequestForPath = (journey, step) => (req, res, next) => {
   const { pathsInSequence } = journey
   const firstPathInSequence = pathsInSequence[0]
 
-  // Destroy the session if any COMPLETED journeys exists in session, and path is not a CONFIRM_URL path
-  if (completedJourneyExistsInSession(req) && !req.path.endsWith(CONFIRM_URL)) {
+  // Destroy the session if any COMPLETED journeys exists in session, and path is not a DECISION_URL path
+  if (completedJourneyExistsInSession(req) && !req.path.endsWith(DECISION_URL)) {
     req.session.destroy()
     res.clearCookie('lang')
     return res.redirect(firstPathInSequence)

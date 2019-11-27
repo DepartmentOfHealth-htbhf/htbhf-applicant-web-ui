@@ -1,6 +1,6 @@
 const test = require('tape')
 const { getPathsInSequence, registerJourney } = require('./register-journeys')
-const { CHECK_ANSWERS_URL, TERMS_AND_CONDITIONS_URL, CONFIRM_URL } = require('./paths')
+const { CHECK_ANSWERS_URL, TERMS_AND_CONDITIONS_URL, DECISION_URL } = require('./paths')
 
 const steps = [
   {
@@ -16,7 +16,7 @@ const steps = [
 ]
 
 test('getPathsInSequence() returns the correct sequence of paths when no prefix is defined', (t) => {
-  const expected = ['/first', '/second', '/third', CHECK_ANSWERS_URL, TERMS_AND_CONDITIONS_URL, CONFIRM_URL]
+  const expected = ['/first', '/second', '/third', CHECK_ANSWERS_URL, TERMS_AND_CONDITIONS_URL, DECISION_URL]
   const result = getPathsInSequence(undefined, steps)
 
   t.deepEqual(result, expected, 'returns the correct sequence of paths')
@@ -25,7 +25,7 @@ test('getPathsInSequence() returns the correct sequence of paths when no prefix 
 
 test('getPathsInSequence() returns the correct sequence of paths when a prefix is defined', (t) => {
   const prefix = '/my-journey'
-  const expected = ['/my-journey/first', '/my-journey/second', '/my-journey/third', `/my-journey${CHECK_ANSWERS_URL}`, `/my-journey${TERMS_AND_CONDITIONS_URL}`, `/my-journey${CONFIRM_URL}`]
+  const expected = ['/my-journey/first', '/my-journey/second', '/my-journey/third', `/my-journey${CHECK_ANSWERS_URL}`, `/my-journey${TERMS_AND_CONDITIONS_URL}`, `/my-journey${DECISION_URL}`]
   const result = getPathsInSequence(prefix, steps)
 
   t.deepEqual(result, expected, 'returns the correct sequence of paths')
@@ -45,7 +45,7 @@ test('registerJourney() registers journeys with correct properties when no path 
 
   const expected = {
     steps: [{ path: '/first' }, { path: '/third' }],
-    pathsInSequence: ['/first', '/third', CHECK_ANSWERS_URL, TERMS_AND_CONDITIONS_URL, CONFIRM_URL]
+    pathsInSequence: ['/first', '/third', CHECK_ANSWERS_URL, TERMS_AND_CONDITIONS_URL, DECISION_URL]
   }
 
   t.deepEqual(result, expected, 'registers journeys with correct properties')
@@ -69,7 +69,7 @@ test('registerJourney() registers journeys with correct properties when path pre
   const expected = {
     steps: [{ path: '/my-journey/first' }, { path: '/my-journey/third' }],
     pathPrefix: '/my-journey',
-    pathsInSequence: ['/my-journey/first', '/my-journey/third', `/my-journey${CHECK_ANSWERS_URL}`, `/my-journey${TERMS_AND_CONDITIONS_URL}`, `/my-journey${CONFIRM_URL}`]
+    pathsInSequence: ['/my-journey/first', '/my-journey/third', `/my-journey${CHECK_ANSWERS_URL}`, `/my-journey${TERMS_AND_CONDITIONS_URL}`, `/my-journey${DECISION_URL}`]
   }
 
   t.deepEqual(result, expected, 'registers journeys with correct properties')

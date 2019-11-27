@@ -2,7 +2,7 @@ const test = require('tape')
 const sinon = require('sinon')
 const proxyquire = require('proxyquire')
 const { states, testUtils } = require('../../flow-control')
-const { CHECK_ANSWERS_URL, CONFIRM_URL } = require('../../paths')
+const { CHECK_ANSWERS_URL, DECISION_URL } = require('../../paths')
 const { ELIGIBLE } = require('../common/constants')
 
 const { buildSessionForJourney, getNextAllowedPathForJourney } = testUtils
@@ -122,7 +122,7 @@ test('unsuccessful post calls next with error', async (t) => {
     .finally(() => resetStubs())
 })
 
-test(`successful post sets next allowed step to ${CONFIRM_URL} and sets returned fields in session`, async (t) => {
+test(`successful post sets next allowed step to ${DECISION_URL} and sets returned fields in session`, async (t) => {
   const journey = {
     name: 'apply',
     steps: []
@@ -144,7 +144,7 @@ test(`successful post sets next allowed step to ${CONFIRM_URL} and sets returned
 
   postTermsAndConditions(CONFIG, journey)(req, res, next)
     .then(() => {
-      t.equal(getNextAllowedPathForJourney('apply', req), CONFIRM_URL, `it sets next allowed step to ${CONFIRM_URL}`)
+      t.equal(getNextAllowedPathForJourney('apply', req), DECISION_URL, `it sets next allowed step to ${DECISION_URL}`)
       t.equal(req.session.eligibilityStatus, ELIGIBLE, 'it sets the eligibility status to ELIGIBLE')
       t.deepEqual(req.session.voucherEntitlement, { totalVoucherValueInPence: 310 }, 'it sets the voucher entitlement field')
       t.equal(req.session.claimUpdated, true, 'it sets the claim updated field')

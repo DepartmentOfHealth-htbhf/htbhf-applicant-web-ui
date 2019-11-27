@@ -1,7 +1,7 @@
 const httpStatus = require('http-status-codes')
 const { path, isNil } = require('ramda')
 const { configureSessionDetails, handleRequestForPath } = require('../../flow-control')
-const { CONFIRM_URL, prefixPath } = require('../../paths')
+const { DECISION_URL, prefixPath } = require('../../paths')
 const { ELIGIBLE } = require('../common/constants')
 const { wrapError } = require('../../errors')
 
@@ -50,7 +50,7 @@ const getConfirmPage = (req, res, next) => {
 }
 
 const registerConfirmRoute = (journey, app) =>
-  app.get(prefixPath(journey.pathPrefix, CONFIRM_URL), configureSessionDetails(journey), handleRequestForPath(journey), getConfirmPage)
+  app.get(prefixPath(journey.pathPrefix, DECISION_URL), configureSessionDetails(journey), handleRequestForPath(journey), getConfirmPage)
 
 module.exports = {
   toPounds,
