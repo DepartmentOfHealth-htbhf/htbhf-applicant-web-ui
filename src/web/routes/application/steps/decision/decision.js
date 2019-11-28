@@ -17,7 +17,7 @@ const getTitle = req => {
   return req.t('decision.newClaimTitle')
 }
 
-const getConfirmPage = (req, res, next) => {
+const getDecisionPage = (req, res, next) => {
   if (req.session.eligibilityStatus === ELIGIBLE) {
     const totalVoucherValueInPence = path(['session', 'voucherEntitlement', 'totalVoucherValueInPence'], req)
 
@@ -49,13 +49,13 @@ const getConfirmPage = (req, res, next) => {
   })
 }
 
-const registerConfirmRoute = (journey, app) =>
-  app.get(prefixPath(journey.pathPrefix, DECISION_URL), configureSessionDetails(journey), handleRequestForPath(journey), getConfirmPage)
+const registerDecisionRoute = (journey, app) =>
+  app.get(prefixPath(journey.pathPrefix, DECISION_URL), configureSessionDetails(journey), handleRequestForPath(journey), getDecisionPage)
 
 module.exports = {
   toPounds,
   isNilOrLteZero,
-  registerConfirmRoute,
-  getConfirmPage,
+  registerDecisionRoute,
+  getDecisionPage,
   getTitle
 }

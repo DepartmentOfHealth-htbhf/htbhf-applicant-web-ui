@@ -1,7 +1,7 @@
 const express = require('express')
 
 const {
-  registerConfirmRoute,
+  registerDecisionRoute,
   registerCheckAnswersRoutes,
   registerTermsAndConditionsRoutes
 } = require('./steps')
@@ -59,7 +59,7 @@ const registerJourneyRoutes = (config, csrfProtection, app) => (journey) => {
 
   registerCheckAnswersRoutes(journey, app)
   registerTermsAndConditionsRoutes(csrfProtection, journey, config, app)
-  registerConfirmRoute(journey, app)
+  registerDecisionRoute(journey, app)
 }
 
 module.exports = {

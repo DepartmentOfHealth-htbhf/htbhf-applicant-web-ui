@@ -5,7 +5,7 @@ const { ELIGIBLE } = require('../common/constants')
 
 const wrapError = sinon.spy()
 
-const { toPounds, isNilOrLteZero, getConfirmPage } = proxyquire('./decision', {
+const { toPounds, isNilOrLteZero, getDecisionPage } = proxyquire('./decision', {
   '../../errors': { wrapError }
 })
 
@@ -26,7 +26,7 @@ test('isNilOrLteZero()', (t) => {
   t.end()
 })
 
-test(`getConfirmPage() calls render with confirm template when status is ${ELIGIBLE}`, (t) => {
+test(`getDecisionPage() calls render with decision template when status is ${ELIGIBLE}`, (t) => {
   const render = sinon.spy()
 
   const req = {
@@ -43,13 +43,13 @@ test(`getConfirmPage() calls render with confirm template when status is ${ELIGI
     render
   }
 
-  getConfirmPage(req, res)
+  getDecisionPage(req, res)
 
   t.equal(render.calledWith('decision'), true, 'calls render with decision template')
   t.end()
 })
 
-test(`getConfirmPage() calls render with unsuccessful-application template when status is not ${ELIGIBLE}`, (t) => {
+test(`getDecisionPage() calls render with unsuccessful-application template when status is not ${ELIGIBLE}`, (t) => {
   const render = sinon.spy()
 
   const req = {
@@ -66,13 +66,13 @@ test(`getConfirmPage() calls render with unsuccessful-application template when 
     render
   }
 
-  getConfirmPage(req, res)
+  getDecisionPage(req, res)
 
   t.equal(render.calledWith('unsuccessful-application'), true, 'calls render with unsuccessful-application template')
   t.end()
 })
 
-test('getConfirmPage() calls next with error when invalid voucher value in pence stored in session', (t) => {
+test('getDecisionPage() calls next with error when invalid voucher value in pence stored in session', (t) => {
   const req = {
     t: () => {},
     session: {
@@ -86,7 +86,7 @@ test('getConfirmPage() calls next with error when invalid voucher value in pence
   const res = {}
   const next = sinon.spy()
 
-  getConfirmPage(req, res, next)
+  getDecisionPage(req, res, next)
 
   const expectedErrorMessage = 'Invalid voucher value in pence returned from claimant service for ELIGIBLE status: -3'
   const actualErrorMessage = wrapError.getCall(0).args[0].message
