@@ -98,7 +98,7 @@ test('getConfirmPage() calls next with error when invalid voucher value in pence
 
 test('getTitle() returns ’Application successful’ when the claimUpdated field is false', (t) => {
   const req = {
-    t: (name) => { return name === 'confirm.updatedClaimTitle' ? 'Application Updated' : 'Application successful' },
+    t: (name) => { return name === 'decision.updatedClaimTitle' ? 'Application Updated' : 'Application successful' },
     session: {
       claimUpdated: false
     }
@@ -112,7 +112,7 @@ test('getTitle() returns ’Application successful’ when the claimUpdated fiel
 
 test('getTitle() returns ’Application successful’ when the claimUpdated field is undefined', (t) => {
   const req = {
-    t: (name) => { return name === 'confirm.updatedClaimTitle' ? 'Application Updated' : 'Application successful' },
+    t: (name) => { return name === 'decision.updatedClaimTitle' ? 'Application Updated' : 'Application successful' },
     session: {}
   }
 
@@ -124,7 +124,7 @@ test('getTitle() returns ’Application successful’ when the claimUpdated fiel
 
 test('getTitle() returns ’Application Updated’ when the claimUpdated field is true', (t) => {
   const req = {
-    t: (name) => { return name === 'confirm.updatedClaimTitle' ? 'Application Updated' : 'Application successful' },
+    t: (name) => { return name === 'decision.updatedClaimTitle' ? 'Application Updated' : 'Application successful' },
     session: {
       claimUpdated: true
     }
