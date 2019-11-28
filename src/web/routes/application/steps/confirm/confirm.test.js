@@ -45,7 +45,7 @@ test(`getConfirmPage() calls render with confirm template when status is ${ELIGI
 
   getConfirmPage(req, res)
 
-  t.equal(render.calledWith('confirm'), true, 'calls render with confirm template')
+  t.equal(render.calledWith('decision'), true, 'calls render with decision template')
   t.end()
 })
 
