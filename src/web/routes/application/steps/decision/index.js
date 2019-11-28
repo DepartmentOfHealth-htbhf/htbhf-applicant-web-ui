@@ -1,5 +1,5 @@
-const { registerConfirmRoute } = require('./decision')
+const { registerDecisionRoute } = require('./decision')
 
 module.exports = {
-  registerConfirmRoute
+  registerDecisionRoute
 }

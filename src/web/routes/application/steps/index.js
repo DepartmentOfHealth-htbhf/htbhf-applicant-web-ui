@@ -1,4 +1,4 @@
-const { registerConfirmRoute } = require('./decision')
+const { registerDecisionRoute } = require('./decision')
 const { registerCheckAnswersRoutes } = require('./check-answers')
 const { registerTermsAndConditionsRoutes } = require('./terms-and-conditions')
 const { nationalInsuranceNumber } = require('./national-insurance-number')
@@ -18,7 +18,7 @@ const { postcode } = require('./address/postcode')
 const { selectAddress } = require('./address/select-address')
 
 module.exports = {
-  registerConfirmRoute,
+  registerDecisionRoute,
   registerCheckAnswersRoutes,
   registerTermsAndConditionsRoutes,
   scotland,
