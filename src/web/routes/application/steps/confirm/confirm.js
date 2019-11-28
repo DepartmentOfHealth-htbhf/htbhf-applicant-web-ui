@@ -11,10 +11,10 @@ const isNilOrLteZero = value => isNil(value) || value <= 0
 
 const getTitle = req => {
   if (path(['session', 'claimUpdated'], req) === true) {
-    return req.t('confirm.updatedClaimTitle')
+    return req.t('decision.updatedClaimTitle')
   }
 
-  return req.t('confirm.newClaimTitle')
+  return req.t('decision.newClaimTitle')
 }
 
 const getConfirmPage = (req, res, next) => {
@@ -32,7 +32,7 @@ const getConfirmPage = (req, res, next) => {
 
     return res.render('confirm', {
       title: getTitle(req),
-      subTitle: req.t('confirm.subTitle',
+      subTitle: req.t('decision.subTitle',
         {
           totalVoucherValue: toPounds(totalVoucherValueInPence),
           totalVoucherValueForFourWeeks: toPounds(totalVoucherValueInPence * 4)
