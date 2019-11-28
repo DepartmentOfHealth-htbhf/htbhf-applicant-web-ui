@@ -30,7 +30,7 @@ const getConfirmPage = (req, res, next) => {
       }))
     }
 
-    return res.render('confirm', {
+    return res.render('decision', {
       title: getTitle(req),
       subTitle: req.t('decision.subTitle',
         {
