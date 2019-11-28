@@ -5,11 +5,11 @@ const { ELIGIBLE } = require('../common/constants')
 
 const wrapError = sinon.spy()
 
-const { toPounds, isNilOrLteZero, getConfirmPage } = proxyquire('./confirm', {
+const { toPounds, isNilOrLteZero, getConfirmPage } = proxyquire('./decision', {
   '../../errors': { wrapError }
 })
 
-const { getTitle } = require('./confirm')
+const { getTitle } = require('./decision')
 
 test('toPounds() converts value in pence to pounds', (t) => {
   const expected = '3.10'

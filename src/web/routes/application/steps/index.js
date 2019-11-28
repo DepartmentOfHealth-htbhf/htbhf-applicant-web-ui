@@ -1,4 +1,4 @@
-const { registerConfirmRoute } = require('./confirm')
+const { registerConfirmRoute } = require('./decision')
 const { registerCheckAnswersRoutes } = require('./check-answers')
 const { registerTermsAndConditionsRoutes } = require('./terms-and-conditions')
 const { nationalInsuranceNumber } = require('./national-insurance-number')
