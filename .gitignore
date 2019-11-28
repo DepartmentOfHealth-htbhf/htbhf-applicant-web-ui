@@ -32,6 +32,10 @@ node_modules/
 .idea/
 .DS_Store
 
+# eclipse
+.project
+.settings/
+
 # visual studio code
 .history/
 launch.json
