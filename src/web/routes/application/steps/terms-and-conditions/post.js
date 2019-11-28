@@ -11,7 +11,7 @@ const { createRequestBody } = require('./create-request-body')
 const { isErrorStatusCode } = require('./predicates')
 const { NO_ELIGIBILITY_STATUS_MESSAGE } = require('./constants')
 const { render } = require('./get')
-const { DECISION_URL } = require('../../paths')
+const { DECISION_URL, prefixPath } = require('../../paths')
 
 const { COMPLETED } = states
 const { INCREMENT_NEXT_ALLOWED_PATH } = actions
@@ -26,7 +26,7 @@ const handleErrorResponse = (body, response) => {
 
 const postTermsAndConditions = (config, journey) => (req, res, next) => {
   const errors = validationResult(req)
-  const { steps } = journey
+  const { steps, pathPrefix } = journey
 
   if (!errors.isEmpty()) {
     res.locals.errors = errors.array()
@@ -66,7 +66,7 @@ const postTermsAndConditions = (config, journey) => (req, res, next) => {
 
         stateMachine.setState(COMPLETED, req, journey)
         stateMachine.dispatch(INCREMENT_NEXT_ALLOWED_PATH, req, journey)
-        return res.redirect(DECISION_URL)
+        return res.redirect(prefixPath(pathPrefix, DECISION_URL))
       },
       (error) => {
         next(wrapError({
