@@ -125,6 +125,7 @@ test('unsuccessful post calls next with error', async (t) => {
 test(`successful post sets next allowed step to ${DECISION_URL} and sets returned fields in session`, async (t) => {
   const journey = {
     name: 'apply',
+    pathPrefix: '/apply',
     steps: []
   }
 
@@ -144,11 +145,11 @@ test(`successful post sets next allowed step to ${DECISION_URL} and sets returne
 
   postTermsAndConditions(CONFIG, journey)(req, res, next)
     .then(() => {
-      t.equal(getNextAllowedPathForJourney('apply', req), DECISION_URL, `it sets next allowed step to ${DECISION_URL}`)
+      t.equal(getNextAllowedPathForJourney('apply', req), `/apply${DECISION_URL}`, `it sets next allowed step to ${DECISION_URL}`)
       t.equal(req.session.eligibilityStatus, ELIGIBLE, 'it sets the eligibility status to ELIGIBLE')
       t.deepEqual(req.session.voucherEntitlement, { totalVoucherValueInPence: 310 }, 'it sets the voucher entitlement field')
       t.equal(req.session.claimUpdated, true, 'it sets the claim updated field')
-      t.equal(redirect.called, true, 'it calls redirect()')
+      t.equal(redirect.calledWith(`/apply${DECISION_URL}`), true, 'it calls redirect() with the correct URL')
       t.equal(render.called, false, 'it does not call render()')
       t.end()
     })
