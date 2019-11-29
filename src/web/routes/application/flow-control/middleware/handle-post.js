@@ -13,7 +13,10 @@ const handlePost = (journey, step) => (req, res, next) => {
 
     if (!errors.isEmpty()) {
       res.locals.errors = errors.array()
-      res.locals.claim = req.body
+      res.locals.claim = {
+        ...res.locals.claim,
+        ...req.body
+      }
       return next()
     }
 

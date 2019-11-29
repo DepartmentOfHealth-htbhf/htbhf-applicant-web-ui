@@ -27,15 +27,15 @@ test('handlePost() should add errors and claim to locals if errors exist', (t) =
   const steps = [{ path: '/first', next: () => '/second' }, { path: '/second' }]
   const journey = { name: 'apply', steps }
   const step = steps[0]
-  const claim = 'claim'
-  const req = { body: claim }
-  const res = { locals: {} }
+  const claim = { firstName: 'Joe', lastName: 'Bloggs' }
+  const req = { body: { lastName: '' } }
+  const res = { locals: { claim } }
   const next = sinon.spy()
 
   handlePost(journey, step)(req, res, next)
 
   t.deepEqual(res.locals.errors, errors, 'it should add errors to locals')
-  t.deepEqual(res.locals.claim, claim, 'it should add claim to locals')
+  t.deepEqual(res.locals.claim, { firstName: 'Joe', lastName: '' }, 'it should override claim properties with body properties')
   t.equal(next.called, true, 'it should call next()')
   t.end()
 })
