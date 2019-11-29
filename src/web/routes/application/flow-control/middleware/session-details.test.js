@@ -51,7 +51,8 @@ test('configureSessionDetails() initialises journey in session when session.jour
         nextAllowedStep: '/first',
         state: states.IN_PROGRESS
       }
-    }
+    },
+    additionalData: {}
   }
 
   configureSessionDetails(journey)(req, res, next)
@@ -67,7 +68,8 @@ test('configureSessionDetails() initialises journey in session when session.jour
     session: {
       journeys: {
         apply
-      }
+      },
+      additionalData: { foo: 'bar' }
     }
   }
 
@@ -81,7 +83,8 @@ test('configureSessionDetails() initialises journey in session when session.jour
         nextAllowedStep: '/one',
         state: states.IN_PROGRESS
       }
-    }
+    },
+    additionalData: { foo: 'bar' }
   }
 
   configureSessionDetails(journey)(req, res, next)
@@ -100,7 +103,8 @@ test('configureSessionDetails() does not reinitialise a journey that already exi
           nextAllowedStep: '/second',
           state: 'IN_REVIEW'
         }
-      }
+      },
+      additionalData: { foo: 'bar' }
     }
   }
   const res = { locals: {} }
@@ -112,7 +116,8 @@ test('configureSessionDetails() does not reinitialise a journey that already exi
         nextAllowedStep: '/second',
         state: 'IN_REVIEW'
       }
-    }
+    },
+    additionalData: { foo: 'bar' }
   }
 
   configureSessionDetails(journey)(req, res, next)

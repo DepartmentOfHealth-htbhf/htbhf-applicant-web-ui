@@ -7,7 +7,9 @@ const {
   setStateInSession,
   getNextAllowedPathFromSession,
   getStateFromSession,
-  getJourneysFromSession
+  getJourneysFromSession,
+  getAdditionalDataForStep,
+  setAdditionalDataForStep
 } = require('./session-accessors')
 
 const REPORT_A_CHANGE_JOURNEY = { name: 'report-a-change' }
@@ -215,5 +217,35 @@ test('getJourneysFromSession() returns list of associated journey name and prope
   ]
 
   t.deepEqual(result, expected, 'returns journey name and properties from session')
+  t.end()
+})
+
+test('setAdditionalDataForStep() inserts additionalData into session for step', (t) => {
+  const req = {
+    session: {
+      additionalData: {}
+    }
+  }
+  const step = { path: '/step-path' }
+  const stepData = { firstName: 'Joe', lastName: 'Bloggs' }
+
+  setAdditionalDataForStep(req, step, stepData)
+
+  t.deepEqual(req.session.additionalData[step.path], stepData, 'sets stepData on session.additionalData')
+  t.end()
+})
+
+test('getAdditionalDataForStep() inserts additionalData into session for step', (t) => {
+  const stepData = { firstName: 'Joe', lastName: 'Bloggs' }
+  const req = {
+    session: {
+      additionalData: { '/step-path': stepData }
+    }
+  }
+  const step = { path: '/step-path' }
+
+  const result = getAdditionalDataForStep(req, step)
+
+  t.deepEqual(result, stepData, 'gets stepData from session.additionalData')
   t.end()
 })
