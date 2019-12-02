@@ -2,7 +2,8 @@ const { path } = require('ramda')
 const { transformAddress } = require('./adapters')
 const { addressContentSummary } = require('../content-summary')
 const { requestBody } = require('../request-body')
-const { stateMachine, actions } = require('../../../flow-control')
+const { stateMachine, actions, setAdditionalDataForStep } = require('../../../flow-control')
+const { validate } = require('./validate')
 
 const { SET_NEXT_ALLOWED_PATH } = actions
 
@@ -33,14 +34,22 @@ const resetAddressState = (req) => {
   }
 }
 
-const behaviourForGet = (config, journey) => (req, res, next) => {
+const getAddressDataFromSession = (req, addressId) => {
+  const addresses = req.session.postcodeLookupResults.map(buildAddressOption(addressId))
+  return {
+    addresses,
+    addressSelected: addresses.some(addr => addr.selected),
+    numberOfAddressesFound: req.t('address.numberOfAddressesFound', { count: addresses.length })
+  }
+}
+
+const behaviourForGet = (config, journey, step) => (req, res, next) => {
   resetAddressState(req)
   const addressId = req.session.claim.addressId
   res.locals.postcodeLookupError = req.session.postcodeLookupError
   if (!res.locals.postcodeLookupError) {
-    res.locals.addresses = req.session.postcodeLookupResults.map(buildAddressOption(addressId))
-    res.locals.addressSelected = res.locals.addresses.some(addr => addr.selected)
-    res.locals.numberOfAddressesFound = req.t('address.numberOfAddressesFound', { count: res.locals.addresses.length })
+    const addressData = getAddressDataFromSession(req, addressId)
+    setAdditionalDataForStep(req, step, addressData)
   }
   // Manual address is further in the flow than select-address, therefore this line is needed to prevent the state machine from redirecting the user back to select-address.
   stateMachine.dispatch(SET_NEXT_ALLOWED_PATH, req, journey, '/manual-address')
@@ -76,6 +85,7 @@ const selectAddress = {
   template: 'select-address',
   pageContent,
   toggle: 'ADDRESS_LOOKUP_ENABLED',
+  validate,
   behaviourForGet,
   behaviourForPost,
   contentSummary,

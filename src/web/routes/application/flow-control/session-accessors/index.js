@@ -3,7 +3,9 @@ const {
   setStateInSession,
   getNextAllowedPathFromSession,
   getStateFromSession,
-  getJourneysFromSession
+  getJourneysFromSession,
+  getAdditionalDataForStep,
+  setAdditionalDataForStep
 } = require('./session-accessors')
 
 module.exports = {
@@ -11,5 +13,7 @@ module.exports = {
   setStateInSession,
   getNextAllowedPathFromSession,
   getStateFromSession,
-  getJourneysFromSession
+  getJourneysFromSession,
+  getAdditionalDataForStep,
+  setAdditionalDataForStep
 }

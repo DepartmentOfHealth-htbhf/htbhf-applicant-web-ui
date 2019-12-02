@@ -40,7 +40,8 @@
                 label: {
                     html: '<span class="govuk-heading-m govuk-!-margin-bottom-2">' + selectAddressLabel + '</span>'
                 },
-                items: addresses
+                items: addresses,
+                errorMessage: errors | getErrorForField('selectedAddress')
             }) }}
 
             <a class="govuk-link govuk-!-font-size-19" href="/manual-address">{{ addressNotListed }}</a>
