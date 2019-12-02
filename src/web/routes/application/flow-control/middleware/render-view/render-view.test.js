@@ -1,6 +1,12 @@
 const test = require('tape')
 const sinon = require('sinon')
-const { renderView } = require('./render-view')
+const proxyquire = require('proxyquire')
+
+const getAdditionalDataForStep = sinon.stub().returns({ foo: 'bar' })
+
+const { renderView } = proxyquire('./render-view', {
+  '../../session-accessors': { getAdditionalDataForStep }
+})
 
 const step = {
   template: 'template',
@@ -10,7 +16,7 @@ const step = {
 
 test('renderView() should call res.render() on GET request', async (t) => {
   const render = sinon.spy()
-  const csrfToken = sinon.spy()
+  const csrfToken = () => 'myCsrfToken'
 
   const req = {
     method: 'GET',
@@ -27,7 +33,12 @@ test('renderView() should call res.render() on GET request', async (t) => {
   renderView(step)(req, res)
 
   t.equal(render.called, true)
-  t.equal(csrfToken.called, true)
-  t.equals(render.getCall(0).args[1].hasOwnProperty('csrfToken'), true)
+
+  const expectedArg = {
+    title: 'What’s your name?',
+    foo: 'bar',
+    csrfToken: 'myCsrfToken'
+  }
+  t.deepEquals(render.getCall(0).args[1], expectedArg)
   t.end()
 })
