@@ -10,6 +10,7 @@ const { IN_PROGRESS } = states
 const CONFIG = {}
 const APPLY = 'apply'
 const JOURNEY = { name: APPLY }
+const STEP = { path: '/step-path' }
 
 const getNextAllowedPathForApplyJourney = partial(getNextAllowedPathForJourney, [APPLY])
 
@@ -47,7 +48,7 @@ const POSTCODE_LOOKUP_RESULTS = [
   }
 ]
 
-test('behaviourForGet() adds addresses to res.locals and resets the address', (t) => {
+test('behaviourForGet() adds addresses to session.stepData and resets the address', (t) => {
   const req = {
     t: (key, parameters) => parameters.count,
     session: {
@@ -57,6 +58,7 @@ test('behaviourForGet() adds addresses to res.locals and resets the address', (t
         selectedAddress: 'ALAN JEFFERY ENGINEERING, 1, VALLEY ROAD, PLYMOUTH, PL7 1RF',
         addressId: '19000955'
       },
+      stepData: {},
       ...buildSessionForJourney({ journeyName: APPLY, state: IN_PROGRESS })
     }
   }
@@ -79,13 +81,14 @@ test('behaviourForGet() adds addresses to res.locals and resets the address', (t
     }
   ]
 
-  behaviourForGet(CONFIG, JOURNEY)(req, res, next)
+  behaviourForGet(CONFIG, JOURNEY, STEP)(req, res, next)
 
   t.equal(req.session.claim.selectAddress, undefined, 'should reset the selected address')
   t.equal(getNextAllowedPathForApplyJourney(req), '/manual-address', 'next allowed step should be manual address')
-  t.deepEqual(res.locals.addresses, expected, 'adds addresses to res.locals')
-  t.equal(res.locals.addressSelected, true, 'should show an address is selected')
-  t.equal(res.locals.numberOfAddressesFound, 3, 'should state the number of addresses found')
+  const stepData = req.session.stepData['/step-path']
+  t.deepEqual(stepData.addresses, expected, 'adds addresses to stepData')
+  t.equal(stepData.addressSelected, true, 'should show an address is selected')
+  t.equal(stepData.numberOfAddressesFound, 3, 'should state the number of addresses found')
   t.equal(res.locals.postcodeLookupError, false, 'sets res.locals.postcodeLookupError')
   t.equal(next.called, true, 'calls next()')
   t.end()
@@ -98,6 +101,7 @@ test('behaviourForGet() handles postcodeLookupErrors', (t) => {
       claim: {
         selectedAddress: {}
       },
+      stepData: {},
       ...buildSessionForJourney({ journeyName: APPLY, state: IN_PROGRESS })
     }
   }
@@ -105,7 +109,7 @@ test('behaviourForGet() handles postcodeLookupErrors', (t) => {
   const res = { locals: {} }
   const next = sinon.spy()
 
-  behaviourForGet(CONFIG, JOURNEY)(req, res, next)
+  behaviourForGet(CONFIG, JOURNEY, STEP)(req, res, next)
 
   t.equal(res.locals.postcodeLookupError, true, 'should set res.locals.postcodeLookupError to value on session')
   t.equal(getNextAllowedPathForApplyJourney(req), '/manual-address', 'next allowed step should be manual address')
