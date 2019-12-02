@@ -52,7 +52,7 @@ test('configureSessionDetails() initialises journey in session when session.jour
         state: states.IN_PROGRESS
       }
     },
-    additionalData: {}
+    stepData: {}
   }
 
   configureSessionDetails(journey)(req, res, next)
@@ -69,7 +69,7 @@ test('configureSessionDetails() initialises journey in session when session.jour
       journeys: {
         apply
       },
-      additionalData: { foo: 'bar' }
+      stepData: { foo: 'bar' }
     }
   }
 
@@ -84,7 +84,7 @@ test('configureSessionDetails() initialises journey in session when session.jour
         state: states.IN_PROGRESS
       }
     },
-    additionalData: { foo: 'bar' }
+    stepData: { foo: 'bar' }
   }
 
   configureSessionDetails(journey)(req, res, next)
@@ -104,7 +104,7 @@ test('configureSessionDetails() does not reinitialise a journey that already exi
           state: 'IN_REVIEW'
         }
       },
-      additionalData: { foo: 'bar' }
+      stepData: { foo: 'bar' }
     }
   }
   const res = { locals: {} }
@@ -117,7 +117,7 @@ test('configureSessionDetails() does not reinitialise a journey that already exi
         state: 'IN_REVIEW'
       }
     },
-    additionalData: { foo: 'bar' }
+    stepData: { foo: 'bar' }
   }
 
   configureSessionDetails(journey)(req, res, next)

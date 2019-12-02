@@ -1,6 +1,6 @@
 const { pathOr, compose, toPairs } = require('ramda')
 const { isUndefined } = require('../../../../../common/predicates')
-const { JOURNEYS_KEY, NEXT_ALLOWED_PATH_KEY, STATE_KEY, ADDITIONAL_DATA_KEY } = require('../keys')
+const { JOURNEYS_KEY, NEXT_ALLOWED_PATH_KEY, STATE_KEY, STEP_DATA_KEY } = require('../keys')
 
 const JOURNEYS_PATH = ['session', JOURNEYS_KEY]
 
@@ -42,11 +42,11 @@ const getStateFromSession = getJourneySessionProp(STATE_KEY)
 const getJourneysFromSession = compose(toPairs, pathOr({}, JOURNEYS_PATH))
 
 const getAdditionalDataForStep = (req, step) => {
-  return pathOr({}, [ADDITIONAL_DATA_KEY, step.path], req.session)
+  return pathOr({}, [STEP_DATA_KEY, step.path], req.session)
 }
 
 const setAdditionalDataForStep = (req, step, stepData) => {
-  req.session[ADDITIONAL_DATA_KEY][step.path] = stepData
+  req.session[STEP_DATA_KEY][step.path] = stepData
 }
 
 module.exports = {

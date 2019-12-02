@@ -223,7 +223,7 @@ test('getJourneysFromSession() returns list of associated journey name and prope
 test('setAdditionalDataForStep() inserts additionalData into session for step', (t) => {
   const req = {
     session: {
-      additionalData: {}
+      stepData: {}
     }
   }
   const step = { path: '/step-path' }
@@ -231,21 +231,21 @@ test('setAdditionalDataForStep() inserts additionalData into session for step', 
 
   setAdditionalDataForStep(req, step, stepData)
 
-  t.deepEqual(req.session.additionalData[step.path], stepData, 'sets stepData on session.additionalData')
+  t.deepEqual(req.session.stepData[step.path], stepData, 'sets stepData on session.stepData')
   t.end()
 })
 
-test('getAdditionalDataForStep() inserts additionalData into session for step', (t) => {
+test('getAdditionalDataForStep() inserts stepData into session for step', (t) => {
   const stepData = { firstName: 'Joe', lastName: 'Bloggs' }
   const req = {
     session: {
-      additionalData: { '/step-path': stepData }
+      stepData: { '/step-path': stepData }
     }
   }
   const step = { path: '/step-path' }
 
   const result = getAdditionalDataForStep(req, step)
 
-  t.deepEqual(result, stepData, 'gets stepData from session.additionalData')
+  t.deepEqual(result, stepData, 'gets stepData from session.stepData')
   t.end()
 })

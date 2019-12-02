@@ -1,5 +1,5 @@
 const states = require('../states')
-const { JOURNEYS_KEY, ADDITIONAL_DATA_KEY } = require('../keys')
+const { JOURNEYS_KEY, STEP_DATA_KEY } = require('../keys')
 
 const initialiseProp = (prop, obj, value = {}) => {
   if (!obj.hasOwnProperty(prop)) {
@@ -17,7 +17,7 @@ const defaultJourneyState = (journey) => ({
 const configureSessionDetails = (journey) => (req, res, next) => {
   res.locals.claim = req.session.claim
   req.session = initialiseProp(JOURNEYS_KEY, req.session)
-  req.session = initialiseProp(ADDITIONAL_DATA_KEY, req.session)
+  req.session = initialiseProp(STEP_DATA_KEY, req.session)
   req.session.journeys = initialiseProp(journey.name, req.session.journeys, defaultJourneyState(journey))
   next()
 }
