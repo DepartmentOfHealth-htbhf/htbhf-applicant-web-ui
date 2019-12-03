@@ -1,7 +1,7 @@
 const test = require('tape')
 const sinon = require('sinon')
 const { ELIGIBLE } = require('../common/constants')
-const { toPounds, getTitle, getDecisionPage } = require('./decision')
+const { toPounds, getDecisionPage } = require('./decision')
 
 test('toPounds() converts value in pence to pounds', (t) => {
   const expected = '3.10'
@@ -53,45 +53,5 @@ test(`getDecisionPage() calls render with unsuccessful-application template when
   getDecisionPage(req, res)
 
   t.equal(render.calledWith('unsuccessful-application'), true, 'calls render with unsuccessful-application template')
-  t.end()
-})
-
-test('getTitle() returns ’Application successful’ when the claimUpdated field is false', (t) => {
-  const req = {
-    t: (name) => { return name === 'decision.updatedClaimTitle' ? 'Application Updated' : 'Application successful' },
-    session: {
-      claimUpdated: false
-    }
-  }
-
-  const result = getTitle(req)
-
-  t.equal(result, 'Application successful', 'getTitle returns ’Application successful’')
-  t.end()
-})
-
-test('getTitle() returns ’Application successful’ when the claimUpdated field is undefined', (t) => {
-  const req = {
-    t: (name) => { return name === 'decision.updatedClaimTitle' ? 'Application Updated' : 'Application successful' },
-    session: {}
-  }
-
-  const result = getTitle(req)
-
-  t.equal(result, 'Application successful', 'getTitle returns ’Application successful’')
-  t.end()
-})
-
-test('getTitle() returns ’Application Updated’ when the claimUpdated field is true', (t) => {
-  const req = {
-    t: (name) => { return name === 'decision.updatedClaimTitle' ? 'Application Updated' : 'Application successful' },
-    session: {
-      claimUpdated: true
-    }
-  }
-
-  const result = getTitle(req)
-
-  t.equal(result, 'Application Updated', 'getTitle returns ’Application Updated’')
   t.end()
 })
