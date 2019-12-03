@@ -50,7 +50,7 @@ const postTermsAndConditions = (config, journey) => (req, res, next) => {
     .then(
       (response) => {
         const responseBody = path(['body'], response)
-        const { eligibilityStatus, voucherEntitlement, claimUpdated } = responseBody
+        const { eligibilityStatus, voucherEntitlement } = responseBody
 
         if (!eligibilityStatus) {
           return next(wrapError({
@@ -62,7 +62,6 @@ const postTermsAndConditions = (config, journey) => (req, res, next) => {
 
         req.session.eligibilityStatus = eligibilityStatus
         req.session.voucherEntitlement = voucherEntitlement
-        req.session.claimUpdated = claimUpdated
 
         stateMachine.setState(COMPLETED, req, journey)
         stateMachine.dispatch(INCREMENT_NEXT_ALLOWED_PATH, req, journey)
