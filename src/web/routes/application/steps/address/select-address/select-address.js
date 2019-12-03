@@ -35,11 +35,16 @@ const resetAddressState = (req) => {
 }
 
 const getAddressDataFromSession = (req, addressId) => {
-  const addresses = req.session.postcodeLookupResults.map(buildAddressOption(addressId))
+  const results = req.session.postcodeLookupResults.map(buildAddressOption(addressId))
+  const addressCount = {
+    value: '',
+    text: req.t('address.numberOfAddressesFound', { count: results.length }),
+    disabled: true,
+    selected: !results.some(addr => addr.selected)
+  }
+  const addresses = results.length === 0 ? [] : [addressCount, ...results]
   return {
-    addresses,
-    addressSelected: addresses.some(addr => addr.selected),
-    numberOfAddressesFound: req.t('address.numberOfAddressesFound', { count: addresses.length })
+    addresses
   }
 }
 
