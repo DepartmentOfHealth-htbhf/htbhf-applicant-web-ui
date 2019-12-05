@@ -50,7 +50,7 @@ const POSTCODE_LOOKUP_RESULTS = [
 
 test('behaviourForGet() adds addresses to session.stepData and resets the address', (t) => {
   const req = {
-    t: (key, parameters) => parameters.count,
+    t: (key, parameters) => `${parameters.count} addresses found`,
     session: {
       postcodeLookupResults: POSTCODE_LOOKUP_RESULTS,
       postcodeLookupError: false,
@@ -67,6 +67,11 @@ test('behaviourForGet() adds addresses to session.stepData and resets the addres
   const next = sinon.spy()
   const expected = [
     {
+      value: '',
+      text: '3 addresses found',
+      disabled: true,
+      selected: false
+    }, {
       text: 'ALAN JEFFERY ENGINEERING, 1, VALLEY ROAD, PLYMOUTH, PL7 1RF',
       value: 'ALAN JEFFERY ENGINEERING, 1, VALLEY ROAD, PLYMOUTH, PL7 1RF',
       selected: false
@@ -87,8 +92,34 @@ test('behaviourForGet() adds addresses to session.stepData and resets the addres
   t.equal(getNextAllowedPathForApplyJourney(req), '/manual-address', 'next allowed step should be manual address')
   const stepData = req.session.stepData['/step-path']
   t.deepEqual(stepData.addresses, expected, 'adds addresses to stepData')
-  t.equal(stepData.addressSelected, true, 'should show an address is selected')
-  t.equal(stepData.numberOfAddressesFound, 3, 'should state the number of addresses found')
+  t.equal(res.locals.postcodeLookupError, false, 'sets res.locals.postcodeLookupError')
+  t.equal(next.called, true, 'calls next()')
+  t.end()
+})
+
+test('behaviourForGet() adds an empty array to stepData if no addresses found', (t) => {
+  const req = {
+    t: (key, parameters) => `${parameters.count} addresses found`,
+    session: {
+      postcodeLookupResults: [],
+      postcodeLookupError: false,
+      claim: {
+        selectedAddress: 'ALAN JEFFERY ENGINEERING, 1, VALLEY ROAD, PLYMOUTH, PL7 1RF',
+        addressId: '19000955'
+      },
+      stepData: {},
+      ...buildSessionForJourney({ journeyName: APPLY, state: IN_PROGRESS })
+    }
+  }
+
+  const res = { locals: {} }
+  const next = sinon.spy()
+  const expected = []
+
+  behaviourForGet(CONFIG, JOURNEY, STEP)(req, res, next)
+
+  const stepData = req.session.stepData['/step-path']
+  t.deepEqual(stepData.addresses, expected, 'adds empty addresses to stepData')
   t.equal(res.locals.postcodeLookupError, false, 'sets res.locals.postcodeLookupError')
   t.equal(next.called, true, 'calls next()')
   t.end()
