@@ -3,12 +3,17 @@ function randomCharFromChars (chars) {
 }
 
 /**
- * Generates a two character string where one character is always `E` to ensure an eligible
- * response is returned when mapping NINO to smart stub application
+ * Generates a two character string where neither character is "X" or any other characters
+ * considered invalid by DWP
  */
+const VALID_NINO_CHARS = 'ABCEGHJKLMNPRSTWYZ'
+
+function randomNinoChar () {
+  return randomCharFromChars(VALID_NINO_CHARS)
+}
+
 function randomEligibleTwoChars () {
-  const randomChar = randomCharFromChars('ABCDEFGHIJKLMNOPQRSTUVWXYZ')
-  return Math.random() < 0.5 ? `${randomChar}E` : `E${randomChar}`
+  return `${randomNinoChar()}${randomNinoChar()}`
 }
 
 /**
@@ -28,8 +33,20 @@ function randomFourDigitInteger () {
  * Generates an eligible NINO which always has one child under one and one child between one and four
  * when mapping NINO to smart stub application
  */
+const VALID_NINO_REGEXP = /(?!BG|GB|NK|KN|TN|NT|ZZ)[A-CEGHJ-PR-TW-Z][A-CEGHJ-NPR-TW-Z](\d{6})[A-D]/
+
+const isInvalidNino = nino => !nino.match(VALID_NINO_REGEXP)
+
 function generateEligibleNino () {
-  return `${randomEligibleTwoChars()}12${randomFourDigitInteger()}${randomCharAtoC()}`
+  // If it does then try again, repeat.
+  const nino = `${randomEligibleTwoChars()}12${randomFourDigitInteger()}${randomCharAtoC()}`
+
+  if (isInvalidNino(nino)) {
+    console.log(`Invalid NINO [${nino}], regenerating`)
+    return generateEligibleNino()
+  }
+
+  return nino
 }
 
 // use a random nino for each test run to prevent duplication errors during compatibility and accessibility tests.
