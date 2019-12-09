@@ -46,6 +46,7 @@ function generateEligibleNino () {
     return generateEligibleNino()
   }
 
+  console.log(`Generated eligible NINO [${nino}]`)
   return nino
 }
 
