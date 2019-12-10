@@ -8,8 +8,8 @@ const getDecisionPageFallback = (req, res) => {
     const totalVoucherValueInPence = path(['session', 'voucherEntitlement', 'totalVoucherValueInPence'], req)
 
     return res.render('decision-fallback-successful', {
-      title: req.t('decision.title'),
-      subTitle: req.t('decision.subTitle', {
+      title: req.t('decisionFallbackSuccessful.title'),
+      subTitle: req.t('decisionFallbackSuccessful.subTitle', {
         totalVoucherValue: toPounds(totalVoucherValueInPence),
         totalVoucherValueForFourWeeks: toPounds(totalVoucherValueInPence * 4)
       })
@@ -17,9 +17,9 @@ const getDecisionPageFallback = (req, res) => {
   }
 
   return res.render('decision-fallback-unsuccessful', {
-    title: req.t('unsuccessfulApplication.title'),
-    subTitle: req.t('unsuccessfulApplication.subTitle'),
-    heading: req.t('unsuccessfulApplication.title'),
+    title: req.t('decisionFallbackUnsuccessful.title'),
+    subTitle: req.t('decisionFallbackUnsuccessful.subTitle'),
+    heading: req.t('decisionFallbackUnsuccessful.title'),
     eligibilityStatus: req.session.eligibilityStatus.toLowerCase()
   })
 }

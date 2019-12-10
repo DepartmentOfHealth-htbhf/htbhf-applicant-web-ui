@@ -127,15 +127,21 @@
     "heading": "Risus sed vulputate odio ut enim blandit volutpat maecenas volutpat",
     "statement": "Risus sed vulputate odio ut enim blandit volutpat maecenas volutpat."
   },
-  "decision": {
+  "decisionFallbackSuccessful": {
     "title": "Ullamcorper malesuada",
     "subTitle": "Dui faucibus in ornare\n£{{totalVoucherValue}} ut labore. Eget felis eget nunc\nlobortis mattis {{totalVoucherValueForFourWeeks}}."
   },
-  "unsuccessfulApplication": {
+  "decisionFallbackUnsuccessful": {
     "title": "Lorem ipsum dolor sit amet",
     "subTitle": "Risus sed vulputate odio ut enim blandit",
     "heading": "Lorem ipsum dolor sit amet",
     "content": "See locales/cy/unsuccessful/*.html"
+  },
+  "decision": {
+    "failure": {
+      "title": "Risus sed vulputate odio ut enim",
+      "subTitle": "Risus sed vulputate odio ut enim"
+    }
   },
   "cookies": {
     "title": "Cwcis",
