@@ -1,8 +1,5 @@
 const { equals, compose, prop, cond, always } = require('ramda')
-
-const SUCCESS = 'success'
-const FAIL = 'fail'
-const PENDING = 'pending'
+const { FAIL } = require('./statuses')
 
 const outcomeNotMatched = equals('not_matched')
 const outcomeNotConfirmed = equals('not_confirmed')
@@ -17,10 +14,5 @@ const getDecisionStatus = cond([
 ])
 
 module.exports = {
-  statuses: {
-    SUCCESS,
-    FAIL,
-    PENDING
-  },
   getDecisionStatus
 }
