@@ -1,7 +1,6 @@
 const test = require('tape')
-const { statuses, getDecisionStatus } = require('./get-decision-status')
-
-const { FAIL } = statuses
+const { getDecisionStatus } = require('./get-decision-status')
+const { FAIL } = require('./statuses')
 
 const SUCCESSFUL_RESULT = {
   deathVerificationFlag: 'n/a',
