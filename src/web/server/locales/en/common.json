@@ -130,15 +130,21 @@
     "heading": "Terms and conditions",
     "statement": "I confirm that I’ve read and will comply with these terms and conditions."
   },
-  "decision": {
+  "decisionFallbackSuccessful": {
     "title": "Application successful",
     "subTitle": "You’re entitled to\n<strong>£{{totalVoucherValue}}</strong> a week. Your first payment\nwill be <strong>£{{totalVoucherValueForFourWeeks}}</strong>."
   },
-  "unsuccessfulApplication": {
+  "decisionFallbackUnsuccessful": {
     "title": "Application not successful",
     "subTitle": "You will not be sent a prepaid money card",
     "heading": "Application not successful",
     "content": "See locales/en/unsuccessful/*.html"
+  },
+  "decision": {
+    "failure": {
+      "title": "Application not successful",
+      "subTitle": "You will not be sent a prepaid money card"
+    }
   },
   "cookies": {
     "title": "Cookies",
