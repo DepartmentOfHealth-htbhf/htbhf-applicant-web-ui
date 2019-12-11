@@ -2,7 +2,7 @@ const test = require('tape')
 const sinon = require('sinon')
 const proxyquire = require('proxyquire')
 const { identity } = require('ramda')
-const { FAIL } = require('./statuses')
+const { FAIL } = require('./decision-statuses')
 
 const getDecisionStatus = sinon.stub()
 

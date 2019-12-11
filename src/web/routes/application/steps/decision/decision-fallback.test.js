@@ -1,6 +1,6 @@
 const test = require('tape')
 const sinon = require('sinon')
-const { ELIGIBLE } = require('../common/constants')
+const { ELIGIBLE } = require('./eligibility-statuses')
 const { toPounds, getDecisionPageFallback } = require('./decision-fallback')
 
 test('toPounds() converts value in pence to pounds', (t) => {

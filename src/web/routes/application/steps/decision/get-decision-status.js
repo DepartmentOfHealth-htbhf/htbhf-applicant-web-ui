@@ -1,5 +1,5 @@
 const { equals, compose, prop, cond, always } = require('ramda')
-const { FAIL } = require('./statuses')
+const { FAIL } = require('./decision-statuses')
 
 const outcomeNotMatched = equals('not_matched')
 const outcomeNotConfirmed = equals('not_confirmed')
