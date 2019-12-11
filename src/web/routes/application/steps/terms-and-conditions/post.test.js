@@ -3,7 +3,6 @@ const sinon = require('sinon')
 const proxyquire = require('proxyquire')
 const { states, testUtils } = require('../../flow-control')
 const { CHECK_ANSWERS_URL, DECISION_URL } = require('../../paths')
-const { ELIGIBLE } = require('../common/constants')
 
 const { buildSessionForJourney, getNextAllowedPathForJourney } = testUtils
 
@@ -29,7 +28,7 @@ const CONFIG = {
 
 const SUCCESSFUL_RESPONSE = {
   body: {
-    eligibilityStatus: ELIGIBLE,
+    eligibilityStatus: 'ELIGIBLE',
     voucherEntitlement: {
       totalVoucherValueInPence: 310
     },
@@ -148,9 +147,9 @@ test(`successful post sets next allowed step to ${DECISION_URL} and sets returne
   postTermsAndConditions(CONFIG, journey)(req, res, next)
     .then(() => {
       t.equal(getNextAllowedPathForJourney('apply', req), `/apply${DECISION_URL}`, `it sets next allowed step to ${DECISION_URL}`)
-      t.equal(req.session.eligibilityStatus, ELIGIBLE, 'it sets the eligibility status to ELIGIBLE')
-      t.deepEqual(req.session.voucherEntitlement, { totalVoucherValueInPence: 310 }, 'it sets the voucher entitlement field')
-      t.deepEqual(req.session.verificationResult, { eligibilityOutcome: 'confirmed' }, 'it sets the verification result field')
+      t.equal(req.session.eligibilityStatus, 'ELIGIBLE', 'it sets the eligibility status in session')
+      t.deepEqual(req.session.voucherEntitlement, { totalVoucherValueInPence: 310 }, 'it sets the voucher entitlement in session')
+      t.deepEqual(req.session.verificationResult, { eligibilityOutcome: 'confirmed' }, 'it sets the verification result in session')
       t.equal(redirect.calledWith(`/apply${DECISION_URL}`), true, 'it calls redirect() with the correct URL')
       t.equal(render.called, false, 'it does not call render()')
       t.end()

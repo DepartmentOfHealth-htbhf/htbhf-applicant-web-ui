@@ -1,5 +1,5 @@
 const { path } = require('ramda')
-const { ELIGIBLE } = require('../common/constants')
+const { ELIGIBLE } = require('./eligibility-statuses')
 
 const toPounds = pence => (parseInt(pence, 10) / 100).toFixed(2)
 

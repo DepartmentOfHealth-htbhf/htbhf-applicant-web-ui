@@ -1,6 +1,6 @@
 const test = require('tape')
 const { getDecisionStatus } = require('./get-decision-status')
-const { FAIL } = require('./statuses')
+const { FAIL } = require('./decision-statuses')
 
 const SUCCESSFUL_RESULT = {
   deathVerificationFlag: 'n/a',
@@ -26,7 +26,7 @@ const PENDING_RESULT = {
   eligibilityOutcome: 'confirmed'
 }
 
-const IDENTITY_NOT_MATCHED = {
+const IDENTITY_NOT_MATCHED_RESULT = {
   deathVerificationFlag: 'n/a',
   mobilePhoneMatch: 'not_set',
   emailAddressMatch: 'not_set',
@@ -38,7 +38,7 @@ const IDENTITY_NOT_MATCHED = {
   eligibilityOutcome: 'not_set'
 }
 
-const ELIGIBILITY_NOT_CONFIRMED = {
+const ELIGIBILITY_NOT_CONFIRMED_RESULT = {
   deathVerificationFlag: 'n/a',
   mobilePhoneMatch: 'not_set',
   emailAddressMatch: 'not_set',
@@ -60,11 +60,11 @@ test('getDecisionStatus() should return undefined if verification result has no 
 })
 
 test(`getDecisionStatus() should return ${FAIL} if identity not matched`, (t) => {
-  t.equal(getDecisionStatus(IDENTITY_NOT_MATCHED), FAIL, `returns ${FAIL} if identity not matched`)
+  t.equal(getDecisionStatus(IDENTITY_NOT_MATCHED_RESULT), FAIL, `returns ${FAIL} if identity not matched`)
   t.end()
 })
 
 test(`getDecisionStatus() should return ${FAIL} if eligibility not confirmed`, (t) => {
-  t.equal(getDecisionStatus(ELIGIBILITY_NOT_CONFIRMED), FAIL, `returns ${FAIL} if eligibility not confirmed`)
+  t.equal(getDecisionStatus(ELIGIBILITY_NOT_CONFIRMED_RESULT), FAIL, `returns ${FAIL} if eligibility not confirmed`)
   t.end()
 })
