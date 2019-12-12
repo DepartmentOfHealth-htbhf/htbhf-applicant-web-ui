@@ -2,7 +2,7 @@ const test = require('tape')
 const sinon = require('sinon')
 const proxyquire = require('proxyquire')
 const { identity } = require('ramda')
-const { FAIL } = require('./decision-statuses')
+const { FAIL, PENDING } = require('./decision-statuses')
 
 const getDecisionStatus = sinon.stub()
 
@@ -63,6 +63,32 @@ test(`getDecisionPage() renders failure view if decision status is ${FAIL}`, (t)
 
   t.equal(next.called, false, 'it does not call next()')
   t.equal(render.calledWith('decision/failure'), true, 'it calls render() with correct template')
+  resetStubs()
+  t.end()
+})
+
+test(`getDecisionPage() renders pending view if decision status is ${PENDING}`, (t) => {
+  getDecisionStatus.returns(PENDING)
+
+  const render = sinon.spy()
+  const next = sinon.spy()
+
+  const req = {
+    t: identity,
+    language: 'en',
+    session: {
+      verificationResult: {}
+    }
+  }
+
+  const res = {
+    render
+  }
+
+  getDecisionPage(req, res, next)
+
+  t.equal(next.called, false, 'it does not call next()')
+  t.equal(render.calledWith('decision/pending'), true, 'it calls render() with correct template')
   resetStubs()
   t.end()
 })
