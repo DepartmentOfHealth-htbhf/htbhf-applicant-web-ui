@@ -20,7 +20,8 @@ const getRenderArgsForStatus = (req, status) => {
 // TODO: Remove references to "decision fallback" once all stories for epic HTBHF-2014 (receive my decision) are complete.
 // After removal of fallback, update handler to throw error if `decisionStatus` is undefined.
 const getDecisionPage = (req, res, next) => {
-  const decisionStatus = getDecisionStatus(req.session.verificationResult)
+  const { verificationResult, eligibilityStatus } = req.session
+  const decisionStatus = getDecisionStatus({ verificationResult, eligibilityStatus })
 
   return isUndefined(decisionStatus)
     ? next()

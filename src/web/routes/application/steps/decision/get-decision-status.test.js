@@ -1,6 +1,7 @@
 const test = require('tape')
 const { getDecisionStatus } = require('./get-decision-status')
 const { FAIL } = require('./decision-statuses')
+const { DUPLICATE } = require('./eligibility-statuses')
 
 const SUCCESSFUL_RESULT = {
   deathVerificationFlag: 'n/a',
@@ -50,21 +51,28 @@ const ELIGIBILITY_NOT_CONFIRMED_RESULT = {
   eligibilityOutcome: 'not_confirmed'
 }
 
+const DUPLICATE_RESULT = undefined // A DUPLICATE response from the claimant service will not return a verification result
+
 test('getDecisionStatus() should return undefined if verification result has no matching decision', (t) => {
   // TODO these non matching results will need to be updated as stories for epic 'receive my decision' are completed
   const nonMatchingResults = [{}, SUCCESSFUL_RESULT, PENDING_RESULT]
-  nonMatchingResults.forEach(result => {
-    t.equal(getDecisionStatus(result), undefined, 'non matching result returns undefined')
+  nonMatchingResults.forEach(verificationResult => {
+    t.equal(getDecisionStatus({ verificationResult }), undefined, 'non matching result returns undefined')
   })
   t.end()
 })
 
 test(`getDecisionStatus() should return ${FAIL} if identity not matched`, (t) => {
-  t.equal(getDecisionStatus(IDENTITY_NOT_MATCHED_RESULT), FAIL, `returns ${FAIL} if identity not matched`)
+  t.equal(getDecisionStatus({ verificationResult: IDENTITY_NOT_MATCHED_RESULT }), FAIL, `returns ${FAIL} if identity not matched`)
   t.end()
 })
 
 test(`getDecisionStatus() should return ${FAIL} if eligibility not confirmed`, (t) => {
-  t.equal(getDecisionStatus(ELIGIBILITY_NOT_CONFIRMED_RESULT), FAIL, `returns ${FAIL} if eligibility not confirmed`)
+  t.equal(getDecisionStatus({ verificationResult: ELIGIBILITY_NOT_CONFIRMED_RESULT }), FAIL, `returns ${FAIL} if eligibility not confirmed`)
+  t.end()
+})
+
+test(`getDecisionStatus() should return ${FAIL} if eligibility status is duplicate`, (t) => {
+  t.equal(getDecisionStatus({ verificationResult: DUPLICATE_RESULT, eligibilityStatus: DUPLICATE }), FAIL, `returns ${FAIL} if eligibility status is duplicate`)
   t.end()
 })
