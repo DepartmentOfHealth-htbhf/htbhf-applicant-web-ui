@@ -1,7 +1,7 @@
 const test = require('tape')
 const { getDecisionStatus } = require('./get-decision-status')
-const { FAIL } = require('./decision-statuses')
-const { DUPLICATE } = require('./eligibility-statuses')
+const { FAIL, PENDING } = require('./decision-statuses')
+const { DUPLICATE, ELIGIBLE } = require('./eligibility-statuses')
 
 const SUCCESSFUL_RESULT = {
   deathVerificationFlag: 'n/a',
@@ -51,6 +51,18 @@ const ELIGIBILITY_NOT_CONFIRMED_RESULT = {
   eligibilityOutcome: 'not_confirmed'
 }
 
+const ELIGIBILITY_CONFIRMED_RESULT = {
+  deathVerificationFlag: 'n/a',
+  mobilePhoneMatch: 'not_set',
+  emailAddressMatch: 'not_set',
+  addressLine1Match: 'not_set',
+  postcodeMatch: 'not_set',
+  pregnantChildDOBMatch: 'not_set',
+  qualifyingBenefits: 'not_set',
+  identityOutcome: 'matched',
+  eligibilityOutcome: 'confirmed'
+}
+
 const DUPLICATE_RESULT = undefined // A DUPLICATE response from the claimant service will not return a verification result
 
 test('getDecisionStatus() should return undefined if verification result has no matching decision', (t) => {
@@ -74,5 +86,18 @@ test(`getDecisionStatus() should return ${FAIL} if eligibility not confirmed`, (
 
 test(`getDecisionStatus() should return ${FAIL} if eligibility status is duplicate`, (t) => {
   t.equal(getDecisionStatus({ verificationResult: DUPLICATE_RESULT, eligibilityStatus: DUPLICATE }), FAIL, `returns ${FAIL} if eligibility status is duplicate`)
+  t.end()
+})
+
+test(`getDecisionStatus() should return ${PENDING} if address mismatches`, (t) => {
+  const mismatchingAddressResults = [
+    { ...ELIGIBILITY_CONFIRMED_RESULT, addressLine1Match: 'not_matched', postcodeMatch: 'matched' },
+    { ...ELIGIBILITY_CONFIRMED_RESULT, addressLine1Match: 'matched', postcodeMatch: 'not_matched' },
+    { ...ELIGIBILITY_CONFIRMED_RESULT, addressLine1Match: 'not_matched', postcodeMatch: 'not_matched' }
+  ]
+
+  mismatchingAddressResults.forEach(verificationResult => {
+    t.equal(getDecisionStatus({ verificationResult, eligibilityStatus: ELIGIBLE }), PENDING, `returns ${PENDING} if address mismatches`)
+  })
   t.end()
 })
