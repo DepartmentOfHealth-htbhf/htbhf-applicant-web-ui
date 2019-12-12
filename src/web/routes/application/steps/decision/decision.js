@@ -2,11 +2,12 @@ const { configureSessionDetails, handleRequestForPath } = require('../../flow-co
 const { DECISION_URL, prefixPath } = require('../../paths')
 const { isUndefined } = require('../../../../../common/predicates')
 const { getDecisionStatus } = require('./get-decision-status')
-const { FAIL } = require('./decision-statuses')
+const { FAIL, PENDING } = require('./decision-statuses')
 const { getDecisionPageFallback } = require('./decision-fallback')
 
 const STATUS_TEMPLATE_MAP = {
-  [FAIL]: 'failure'
+  [FAIL]: 'failure',
+  [PENDING]: 'pending'
 }
 
 const getRenderArgsForStatus = (req, status) => {

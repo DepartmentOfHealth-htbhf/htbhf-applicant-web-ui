@@ -144,6 +144,9 @@
     "failure": {
       "title": "Application not successful",
       "body": "You will not be sent a prepaid money card"
+    },
+    "pending": {
+      "title": "We’re considering your application"
     }
   },
   "cookies": {
