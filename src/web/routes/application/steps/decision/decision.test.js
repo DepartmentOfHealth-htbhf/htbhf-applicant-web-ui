@@ -61,8 +61,14 @@ test(`getDecisionPage() renders failure view if decision status is ${FAIL}`, (t)
 
   getDecisionPage(req, res, next)
 
+  const expectedTemplateVariables = {
+    title: 'decision.failure.title',
+    body: 'decision.failure.body',
+    template: 'failure'
+  }
+
   t.equal(next.called, false, 'it does not call next()')
-  t.equal(render.calledWith('decision/failure'), true, 'it calls render() with correct template')
+  t.equal(render.calledWith('decision', expectedTemplateVariables), true, 'it calls render() with the correct arguments')
   resetStubs()
   t.end()
 })
@@ -87,8 +93,14 @@ test(`getDecisionPage() renders pending view if decision status is ${PENDING}`, 
 
   getDecisionPage(req, res, next)
 
+  const expectedTemplateVariables = {
+    title: 'decision.pending.title',
+    body: 'decision.pending.body',
+    template: 'pending'
+  }
+
   t.equal(next.called, false, 'it does not call next()')
-  t.equal(render.calledWith('decision/pending'), true, 'it calls render() with correct template')
+  t.equal(render.calledWith('decision', expectedTemplateVariables), true, 'it calls render() with the correct arguments')
   resetStubs()
   t.end()
 })
