@@ -12,7 +12,8 @@ const SUCCESSFUL_RESULT = {
   pregnantChildDOBMatch: 'not_supplied',
   qualifyingBenefits: 'universal_credit',
   identityOutcome: 'matched',
-  eligibilityOutcome: 'confirmed'
+  eligibilityOutcome: 'confirmed',
+  isPregnantOrAtLeast1ChildMatched: 'true'
 }
 
 const PENDING_RESULT = {
@@ -60,7 +61,22 @@ const ELIGIBILITY_CONFIRMED_RESULT = {
   pregnantChildDOBMatch: 'not_set',
   qualifyingBenefits: 'not_set',
   identityOutcome: 'matched',
-  eligibilityOutcome: 'confirmed'
+  eligibilityOutcome: 'confirmed',
+  isPregnantOrAtLeast1ChildMatched: 'true'
+
+}
+
+const NOT_PREGNANT_AND_NO_CHILDREN_MATCHED_RESULT = {
+  deathVerificationFlag: 'n/a',
+  mobilePhoneMatch: 'not_held',
+  emailAddressMatch: 'not_held',
+  addressLine1Match: 'matched',
+  postcodeMatch: 'matched',
+  pregnantChildDOBMatch: 'not_held',
+  qualifyingBenefits: 'universal_credit',
+  identityOutcome: 'matched',
+  eligibilityOutcome: 'confirmed',
+  isPregnantOrAtLeast1ChildMatched: false
 }
 
 const DUPLICATE_RESULT = undefined // A DUPLICATE response from the claimant service will not return a verification result
@@ -86,6 +102,12 @@ test(`getDecisionStatus() should return ${FAIL} if eligibility not confirmed`, (
 
 test(`getDecisionStatus() should return ${FAIL} if eligibility status is duplicate`, (t) => {
   t.equal(getDecisionStatus({ verificationResult: DUPLICATE_RESULT, eligibilityStatus: DUPLICATE }), FAIL, `returns ${FAIL} if eligibility status is duplicate`)
+  t.end()
+})
+
+test(`getDecisionStatus() should return ${FAIL} if isPregnantOrAtLeast1ChildMatched flag is false`, (t) => {
+  t.equal(getDecisionStatus({ verificationResult: NOT_PREGNANT_AND_NO_CHILDREN_MATCHED_RESULT, eligibilityStatus: ELIGIBLE }), FAIL,
+    `returns ${FAIL} if eligibility status is duplicate`)
   t.end()
 })
 
