@@ -68,11 +68,11 @@ const ELIGIBILITY_CONFIRMED_RESULT = {
 
 const NOT_PREGNANT_AND_NO_CHILDREN_MATCHED_RESULT = {
   deathVerificationFlag: 'n/a',
-  mobilePhoneMatch: 'not_set',
-  emailAddressMatch: 'not_set',
+  mobilePhoneMatch: 'not_held',
+  emailAddressMatch: 'not_held',
   addressLine1Match: 'matched',
   postcodeMatch: 'matched',
-  pregnantChildDOBMatch: 'not_set',
+  pregnantChildDOBMatch: 'not_held',
   qualifyingBenefits: 'universal_credit',
   identityOutcome: 'matched',
   eligibilityOutcome: 'confirmed',
