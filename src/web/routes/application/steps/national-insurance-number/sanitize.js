@@ -1,11 +1,10 @@
-const removeWhiteSpace = (text) => { return text.replace(/\s/g, '') }
+const getSanitizedNino = (nino) => nino.replace(/\s/g, '')
 
 const sanitize = () => (req, res, next) => {
-  req.body.nino = removeWhiteSpace(req.body.nino)
+  req.body.sanitizedNino = getSanitizedNino(req.body.nino)
   next()
 }
 
 module.exports = {
-  sanitize,
-  removeWhiteSpace
+  sanitize
 }
