@@ -16,7 +16,7 @@ const contentSummary = (req) => ({
 })
 
 const requestBody = (session) => ({
-  nino: session.claim.nino
+  nino: session.claim.sanitizedNino
 })
 
 const nationalInsuranceNumber = {
