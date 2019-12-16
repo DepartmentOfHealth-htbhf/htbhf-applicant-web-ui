@@ -6,6 +6,5 @@ const sanitize = () => (req, res, next) => {
 }
 
 module.exports = {
-  sanitize,
-  getSanitizedNino
+  sanitize
 }
