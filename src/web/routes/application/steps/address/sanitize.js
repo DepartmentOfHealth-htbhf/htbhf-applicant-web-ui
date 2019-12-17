@@ -3,11 +3,10 @@ const replaceMultipleSpacesWithOne = (value) => {
 }
 
 const sanitize = () => (req, res, next) => {
-  req.body.postcode = replaceMultipleSpacesWithOne(req.body.postcode)
+  req.body.sanitizedPostcode = replaceMultipleSpacesWithOne(req.body.postcode)
   next()
 }
 
 module.exports = {
-  sanitize,
-  replaceMultipleSpacesWithOne
+  sanitize
 }
