@@ -11,21 +11,21 @@ test('invalid national insurance number does not match regex', (t) => {
   const ninoStartingWithZZ = 'ZZ999999D'
   const ninoStartingWithQQ = 'QQ999999D'
 
-  const invalidMatches = invalidNino.match(NINO_PATTERN)
-  const followedByTextMatches = ninoFollowedByText.match(NINO_PATTERN)
-  const prefixByTextMatches = ninoPrefixByText.match(NINO_PATTERN)
-  const duplicateNinoMatches = duplicateNino.match(NINO_PATTERN)
-  const emptyNinoMatches = emptyNino.match(NINO_PATTERN)
-  const ninoStartingWithZZMatches = ninoStartingWithZZ.match(NINO_PATTERN)
-  const ninoStartingWithQQMatches = ninoStartingWithQQ.match(NINO_PATTERN)
+  const invalidMatches = NINO_PATTERN.test(invalidNino)
+  const followedByTextMatches = NINO_PATTERN.test(ninoFollowedByText)
+  const prefixByTextMatches = NINO_PATTERN.test(ninoPrefixByText)
+  const duplicateNinoMatches = NINO_PATTERN.test(duplicateNino)
+  const emptyNinoMatches = NINO_PATTERN.test(emptyNino)
+  const ninoStartingWithZZMatches = NINO_PATTERN.test(ninoStartingWithZZ)
+  const ninoStartingWithQQMatches = NINO_PATTERN.test(ninoStartingWithQQ)
 
-  t.equal(invalidMatches, null)
-  t.equal(followedByTextMatches, null)
-  t.equal(prefixByTextMatches, null)
-  t.equal(duplicateNinoMatches, null)
-  t.equal(emptyNinoMatches, null)
-  t.equal(ninoStartingWithZZMatches, null)
-  t.equal(ninoStartingWithQQMatches, null)
+  t.equal(invalidMatches, false)
+  t.equal(followedByTextMatches, false)
+  t.equal(prefixByTextMatches, false)
+  t.equal(duplicateNinoMatches, false)
+  t.equal(emptyNinoMatches, false)
+  t.equal(ninoStartingWithZZMatches, false)
+  t.equal(ninoStartingWithQQMatches, false)
 
   t.end()
 })
@@ -33,9 +33,9 @@ test('invalid national insurance number does not match regex', (t) => {
 test('valid national insurance number matches regex', (t) => {
   const validNino = 'AA123456C'
 
-  const matches = validNino.match(NINO_PATTERN)
+  const matches = NINO_PATTERN.test(validNino)
 
-  t.deepEqual(matches[0], validNino)
+  t.equal(matches, true)
   t.end()
 })
 
