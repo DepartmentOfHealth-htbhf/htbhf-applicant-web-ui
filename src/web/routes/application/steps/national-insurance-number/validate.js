@@ -1,7 +1,7 @@
 const { check } = require('express-validator')
 const { translateValidationMessage } = require('../common/translate-validation-message')
 
-const NINO_PATTERN = /^[a-zA-Z]{2}[\d]{6}[a-dA-D]$/
+const NINO_PATTERN = /^(?!BG|GB|NK|KN|TN|NT|ZZ)[A-CEGHJ-PR-TW-Z][A-CEGHJ-NPR-TW-Z](\d{6})[A-D]$/
 
 const validateNino = (_, { req }) => NINO_PATTERN.test(req.body.sanitizedNino)
 
