@@ -2,13 +2,13 @@ const test = require('tape')
 const sinon = require('sinon')
 const { sanitize } = require('./sanitize')
 
-test('sanitize removes white space and saves to a new variable', (t) => {
+test('sanitize removes white space, converts to uppercase and saves to a new variable', (t) => {
   const req = {
     body: {
       nino: 'ab 12 34 56 c '
     }
   }
-  const expectedSanitized = 'ab123456c'
+  const expectedSanitized = 'AB123456C'
   const expectedNino = 'ab 12 34 56 c '
   const next = sinon.spy()
 

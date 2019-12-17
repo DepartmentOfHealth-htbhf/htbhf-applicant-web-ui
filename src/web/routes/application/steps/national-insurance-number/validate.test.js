@@ -8,24 +8,30 @@ test('invalid national insurance number does not match regex', (t) => {
   const ninoPrefixByText = 'TESTqq123456c'
   const duplicateNino = 'qq123456cqq123456c'
   const emptyNino = ''
+  const ninoStartingWithZZ = 'ZZ999999D'
+  const ninoStartingWithQQ = 'QQ999999D'
 
   const invalidMatches = invalidNino.match(NINO_PATTERN)
   const followedByTextMatches = ninoFollowedByText.match(NINO_PATTERN)
   const prefixByTextMatches = ninoPrefixByText.match(NINO_PATTERN)
   const duplicateNinoMatches = duplicateNino.match(NINO_PATTERN)
   const emptyNinoMatches = emptyNino.match(NINO_PATTERN)
+  const ninoStartingWithZZMatches = ninoStartingWithZZ.match(NINO_PATTERN)
+  const ninoStartingWithQQMatches = ninoStartingWithQQ.match(NINO_PATTERN)
 
   t.equal(invalidMatches, null)
   t.equal(followedByTextMatches, null)
   t.equal(prefixByTextMatches, null)
   t.equal(duplicateNinoMatches, null)
   t.equal(emptyNinoMatches, null)
+  t.equal(ninoStartingWithZZMatches, null)
+  t.equal(ninoStartingWithQQMatches, null)
 
   t.end()
 })
 
 test('valid national insurance number matches regex', (t) => {
-  const validNino = 'qq123456c'
+  const validNino = 'AA123456C'
 
   const matches = validNino.match(NINO_PATTERN)
 
