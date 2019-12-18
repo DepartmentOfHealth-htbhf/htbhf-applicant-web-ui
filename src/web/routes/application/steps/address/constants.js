@@ -1,9 +1,4 @@
-/*
- * Regex for matching UK postcodes matching BS7666 format.
- * see https://www.gov.uk/government/publications/bulk-data-transfer-for-sponsors-xml-schema  The format is in the file BulkDataCommon-v2.1.xsd
- * see https://stackoverflow.com/questions/164979/uk-postcode-regex-comprehensive
- */
-const UK_POSTCODE_PATTERN = /^([Gg][Ii][Rr] 0[Aa]{2})$|^((([A-Za-z][0-9]{1,2})|(([A-Za-z][A-Ha-hJ-Yj-y][0-9]{1,2})|(([A-Za-z][0-9][A-Za-z])|([A-Za-z][A-Ha-hJ-Yj-y][0-9][A-Za-z]?))))\s?[0-9][A-Za-z]{2})$/
+const UK_POSTCODE_PATTERN = /^(GIR ?0AA|[A-PR-UWYZ]([0-9]{1,2}|([A-HK-Y][0-9]([0-9ABEHMNPRV-Y])?)|[0-9][A-HJKPS-UW]) ?[0-9][ABD-HJLNP-UW-Z]{2})$/
 
 const CHANNEL_ISLANDS_AND_IOM_POSTCODE_PATTERN = /^([Gg][Yy]|[Jj][Ee]|[Ii][Mm])/
 
