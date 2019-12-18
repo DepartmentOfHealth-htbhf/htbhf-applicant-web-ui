@@ -4,86 +4,89 @@ const { FAIL, PENDING } = require('./decision-statuses')
 const { DUPLICATE, ELIGIBLE } = require('./eligibility-statuses')
 
 const SUCCESSFUL_RESULT = {
-  deathVerificationFlag: 'n/a',
-  mobilePhoneMatch: 'matched',
-  emailAddressMatch: 'matched',
-  addressLine1Match: 'matched',
-  postcodeMatch: 'matched',
-  pregnantChildDOBMatch: 'not_supplied',
-  qualifyingBenefits: 'universal_credit',
   identityOutcome: 'matched',
   eligibilityOutcome: 'confirmed',
-  isPregnantOrAtLeast1ChildMatched: 'true'
-}
-
-const PENDING_RESULT = {
-  deathVerificationFlag: 'n/a',
-  mobilePhoneMatch: 'not_matched',
-  emailAddressMatch: 'not_matched',
   addressLine1Match: 'matched',
   postcodeMatch: 'matched',
-  pregnantChildDOBMatch: 'not_supplied',
+  isPregnantOrAtLeast1ChildMatched: 'true',
+  mobilePhoneMatch: 'matched',
+  emailAddressMatch: 'matched',
   qualifyingBenefits: 'universal_credit',
+  pregnantChildDOBMatch: 'not_supplied',
+  deathVerificationFlag: 'n/a'
+}
+
+const PENDING_RESULT_PHONE_OR_EMAIL_MISMATCH = {
   identityOutcome: 'matched',
-  eligibilityOutcome: 'confirmed'
+  eligibilityOutcome: 'confirmed',
+  addressLine1Match: 'matched',
+  postcodeMatch: 'matched',
+  isPregnantOrAtLeast1ChildMatched: 'true',
+  mobilePhoneMatch: 'not_matched',
+  emailAddressMatch: 'not_matched',
+  qualifyingBenefits: 'universal_credit',
+  pregnantChildDOBMatch: 'not_supplied',
+  deathVerificationFlag: 'n/a'
 }
 
 const IDENTITY_NOT_MATCHED_RESULT = {
-  deathVerificationFlag: 'n/a',
-  mobilePhoneMatch: 'not_set',
-  emailAddressMatch: 'not_set',
+  identityOutcome: 'not_matched',
+  eligibilityOutcome: 'not_set',
   addressLine1Match: 'not_set',
   postcodeMatch: 'not_set',
-  pregnantChildDOBMatch: 'not_set',
+  isPregnantOrAtLeast1ChildMatched: 'true',
+  mobilePhoneMatch: 'not_set',
+  emailAddressMatch: 'not_set',
   qualifyingBenefits: 'not_set',
-  identityOutcome: 'not_matched',
-  eligibilityOutcome: 'not_set'
+  pregnantChildDOBMatch: 'not_set',
+  deathVerificationFlag: 'n/a'
 }
 
 const ELIGIBILITY_NOT_CONFIRMED_RESULT = {
-  deathVerificationFlag: 'n/a',
-  mobilePhoneMatch: 'not_set',
-  emailAddressMatch: 'not_set',
+  identityOutcome: 'matched',
+  eligibilityOutcome: 'not_confirmed',
   addressLine1Match: 'not_set',
   postcodeMatch: 'not_set',
-  pregnantChildDOBMatch: 'not_set',
+  isPregnantOrAtLeast1ChildMatched: 'true',
+  mobilePhoneMatch: 'not_set',
+  emailAddressMatch: 'not_set',
   qualifyingBenefits: 'not_set',
-  identityOutcome: 'matched',
-  eligibilityOutcome: 'not_confirmed'
+  pregnantChildDOBMatch: 'not_set',
+  deathVerificationFlag: 'n/a'
 }
 
 const ELIGIBILITY_CONFIRMED_RESULT = {
-  deathVerificationFlag: 'n/a',
-  mobilePhoneMatch: 'not_set',
-  emailAddressMatch: 'not_set',
-  addressLine1Match: 'not_set',
-  postcodeMatch: 'not_set',
-  pregnantChildDOBMatch: 'not_set',
-  qualifyingBenefits: 'not_set',
   identityOutcome: 'matched',
   eligibilityOutcome: 'confirmed',
-  isPregnantOrAtLeast1ChildMatched: 'true'
+  addressLine1Match: 'not_set',
+  postcodeMatch: 'not_set',
+  isPregnantOrAtLeast1ChildMatched: 'true',
+  mobilePhoneMatch: 'not_set',
+  emailAddressMatch: 'not_set',
+  qualifyingBenefits: 'not_set',
+  pregnantChildDOBMatch: 'not_set',
+  deathVerificationFlag: 'n/a'
 
 }
 
 const NOT_PREGNANT_AND_NO_CHILDREN_MATCHED_RESULT = {
-  deathVerificationFlag: 'n/a',
-  mobilePhoneMatch: 'not_held',
-  emailAddressMatch: 'not_held',
-  addressLine1Match: 'matched',
-  postcodeMatch: 'matched',
-  pregnantChildDOBMatch: 'not_held',
-  qualifyingBenefits: 'universal_credit',
   identityOutcome: 'matched',
   eligibilityOutcome: 'confirmed',
-  isPregnantOrAtLeast1ChildMatched: false
+  addressLine1Match: 'matched',
+  postcodeMatch: 'matched',
+  isPregnantOrAtLeast1ChildMatched: false,
+  mobilePhoneMatch: 'not_held',
+  emailAddressMatch: 'not_held',
+  qualifyingBenefits: 'universal_credit',
+  pregnantChildDOBMatch: 'not_held',
+  deathVerificationFlag: 'n/a'
 }
 
 const DUPLICATE_RESULT = undefined // A DUPLICATE response from the claimant service will not return a verification result
 
 test('getDecisionStatus() should return undefined if verification result has no matching decision', (t) => {
   // TODO these non matching results will need to be updated as stories for epic 'receive my decision' are completed
-  const nonMatchingResults = [{}, SUCCESSFUL_RESULT, PENDING_RESULT]
+  const nonMatchingResults = [{}, SUCCESSFUL_RESULT, PENDING_RESULT_PHONE_OR_EMAIL_MISMATCH]
   nonMatchingResults.forEach(verificationResult => {
     t.equal(getDecisionStatus({ verificationResult }), undefined, 'non matching result returns undefined')
   })
@@ -115,7 +118,8 @@ test(`getDecisionStatus() should return ${PENDING} if address mismatches`, (t) =
   const mismatchingAddressResults = [
     { ...ELIGIBILITY_CONFIRMED_RESULT, addressLine1Match: 'not_matched', postcodeMatch: 'matched' },
     { ...ELIGIBILITY_CONFIRMED_RESULT, addressLine1Match: 'matched', postcodeMatch: 'not_matched' },
-    { ...ELIGIBILITY_CONFIRMED_RESULT, addressLine1Match: 'not_matched', postcodeMatch: 'not_matched' }
+    { ...ELIGIBILITY_CONFIRMED_RESULT, addressLine1Match: 'not_matched', postcodeMatch: 'not_matched' },
+    { ...ELIGIBILITY_CONFIRMED_RESULT, addressLine1Match: 'not_matched', postcodeMatch: 'not_matched', isPregnantOrAtLeast1ChildMatched: false }
   ]
 
   mismatchingAddressResults.forEach(verificationResult => {

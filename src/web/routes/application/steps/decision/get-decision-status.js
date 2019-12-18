@@ -16,14 +16,14 @@ const postcodeMatchNotMatched = compose(outcomeNotMatched, verificationResultPro
 
 const isDuplicateClaim = compose(equals(DUPLICATE), prop('eligibilityStatus'))
 
-const isFailure = anyPass([identityOutcomeNotMatched, eligibilityOutcomeNotConfirmed, notPregnantAndNoChildMatched])
-
 const addressMismatches = anyPass([addressLine1MatchNotMatched, postcodeMatchNotMatched])
 
 const getDecisionStatus = cond([
   [isDuplicateClaim, always(FAIL)],
-  [isFailure, always(FAIL)],
-  [addressMismatches, always(PENDING)]
+  [identityOutcomeNotMatched, always(FAIL)],
+  [eligibilityOutcomeNotConfirmed, always(FAIL)],
+  [addressMismatches, always(PENDING)],
+  [notPregnantAndNoChildMatched, always(FAIL)]
 ])
 
 module.exports = {
