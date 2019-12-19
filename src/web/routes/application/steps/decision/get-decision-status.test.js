@@ -16,19 +16,6 @@ const SUCCESSFUL_RESULT = {
   deathVerificationFlag: 'n/a'
 }
 
-const PENDING_RESULT_PHONE_OR_EMAIL_MISMATCH = {
-  identityOutcome: 'matched',
-  eligibilityOutcome: 'confirmed',
-  addressLine1Match: 'matched',
-  postcodeMatch: 'matched',
-  isPregnantOrAtLeast1ChildMatched: 'true',
-  mobilePhoneMatch: 'not_matched',
-  emailAddressMatch: 'not_matched',
-  qualifyingBenefits: 'universal_credit',
-  pregnantChildDOBMatch: 'not_supplied',
-  deathVerificationFlag: 'n/a'
-}
-
 const IDENTITY_NOT_MATCHED_RESULT = {
   identityOutcome: 'not_matched',
   eligibilityOutcome: 'not_set',
@@ -66,7 +53,19 @@ const ELIGIBILITY_CONFIRMED_RESULT = {
   qualifyingBenefits: 'not_set',
   pregnantChildDOBMatch: 'not_set',
   deathVerificationFlag: 'n/a'
+}
 
+const ADDRESS_MATCHED_RESULT = {
+  identityOutcome: 'matched',
+  eligibilityOutcome: 'confirmed',
+  addressLine1Match: 'matched',
+  postcodeMatch: 'matched',
+  isPregnantOrAtLeast1ChildMatched: 'true',
+  mobilePhoneMatch: 'not_matched',
+  emailAddressMatch: 'not_matched',
+  qualifyingBenefits: 'not_set',
+  pregnantChildDOBMatch: 'not_set',
+  deathVerificationFlag: 'n/a'
 }
 
 const NOT_PREGNANT_AND_NO_CHILDREN_MATCHED_RESULT = {
@@ -86,10 +85,7 @@ const DUPLICATE_RESULT = undefined // A DUPLICATE response from the claimant ser
 
 test('getDecisionStatus() should return undefined if verification result has no matching decision', (t) => {
   // TODO these non matching results will need to be updated as stories for epic 'receive my decision' are completed
-  const nonMatchingResults = [{}, SUCCESSFUL_RESULT, PENDING_RESULT_PHONE_OR_EMAIL_MISMATCH]
-  nonMatchingResults.forEach(verificationResult => {
-    t.equal(getDecisionStatus({ verificationResult }), undefined, 'non matching result returns undefined')
-  })
+  t.equal(getDecisionStatus({ verificationResult: SUCCESSFUL_RESULT }), undefined, 'non matching result returns undefined')
   t.end()
 })
 
@@ -124,6 +120,30 @@ test(`getDecisionStatus() should return ${PENDING} if address mismatches`, (t) =
 
   mismatchingAddressResults.forEach(verificationResult => {
     t.equal(getDecisionStatus({ verificationResult, eligibilityStatus: ELIGIBLE }), PENDING, `returns ${PENDING} if address mismatches`)
+  })
+  t.end()
+})
+
+test(`getDecisionStatus() should return ${PENDING} if email and/or phone mismatches`, (t) => {
+  const mismatchingAddressResults = [
+    { ...ADDRESS_MATCHED_RESULT, mobilePhoneMatch: 'not_matched', emailAddressMatch: 'matched' },
+    { ...ADDRESS_MATCHED_RESULT, mobilePhoneMatch: 'not_matched', emailAddressMatch: 'not_matched' },
+    { ...ADDRESS_MATCHED_RESULT, mobilePhoneMatch: 'not_matched', emailAddressMatch: 'not_set' },
+    { ...ADDRESS_MATCHED_RESULT, mobilePhoneMatch: 'not_matched', emailAddressMatch: 'not_held' },
+    { ...ADDRESS_MATCHED_RESULT, mobilePhoneMatch: 'not_set', emailAddressMatch: 'matched' },
+    { ...ADDRESS_MATCHED_RESULT, mobilePhoneMatch: 'not_set', emailAddressMatch: 'not_matched' },
+    { ...ADDRESS_MATCHED_RESULT, mobilePhoneMatch: 'not_set', emailAddressMatch: 'not_held' },
+    { ...ADDRESS_MATCHED_RESULT, mobilePhoneMatch: 'matched', emailAddressMatch: 'not_set' },
+    { ...ADDRESS_MATCHED_RESULT, mobilePhoneMatch: 'matched', emailAddressMatch: 'not_matched' },
+    { ...ADDRESS_MATCHED_RESULT, mobilePhoneMatch: 'matched', emailAddressMatch: 'not_held' },
+    { ...ADDRESS_MATCHED_RESULT, mobilePhoneMatch: 'not_held', emailAddressMatch: 'matched' },
+    { ...ADDRESS_MATCHED_RESULT, mobilePhoneMatch: 'not_held', emailAddressMatch: 'not_matched' },
+    { ...ADDRESS_MATCHED_RESULT, mobilePhoneMatch: 'not_held', emailAddressMatch: 'not_set' },
+    { ...ADDRESS_MATCHED_RESULT, mobilePhoneMatch: 'not_held', emailAddressMatch: 'not_held' }
+  ]
+
+  mismatchingAddressResults.forEach(verificationResult => {
+    t.equal(getDecisionStatus({ verificationResult, eligibilityStatus: ELIGIBLE }), PENDING, `returns ${PENDING} if email and/or phone mismatches`)
   })
   t.end()
 })
