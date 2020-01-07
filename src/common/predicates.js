@@ -2,6 +2,10 @@ const { compose, isNil, isEmpty, or, not, equals, type } = require('ramda')
 
 const isNilOrEmpty = (string) => or(isNil(string), isEmpty(string))
 
+const isNilOrEmptyOrUndefined = (value) => or(isUndefined(value), isNilOrEmpty(value))
+
+const notIsUndefinedOrNullOrEmpty = compose(not, isNilOrEmptyOrUndefined)
+
 const notIsNilOrEmpty = compose(not, isNilOrEmpty)
 
 const notIsNil = compose(not, isNil)
@@ -20,5 +24,6 @@ module.exports = {
   notIsNil,
   isUndefined,
   isBoolean,
-  isString
+  isString,
+  notIsUndefinedOrNullOrEmpty
 }
