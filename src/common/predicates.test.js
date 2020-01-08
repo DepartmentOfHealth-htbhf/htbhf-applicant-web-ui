@@ -1,5 +1,5 @@
 const test = require('tape')
-const { isNilOrEmpty, isUndefined, isBoolean, isString } = require('./predicates')
+const { isNilOrEmpty, isUndefined, isBoolean, isString, notIsUndefinedOrNullOrEmpty } = require('./predicates')
 
 test('isNilOrEmpty', (t) => {
   t.equal(isNilOrEmpty(''), true, 'should be marked as empty')
@@ -36,5 +36,15 @@ test('isString()', (t) => {
   t.equal(isString(false), false)
   t.equal(isString(44), false)
   t.equal(isString('a string'), true)
+  t.end()
+})
+
+test('notIsUndefinedOrNullOrEmpty()', (t) => {
+  t.equal(notIsUndefinedOrNullOrEmpty(undefined), false)
+  t.equal(notIsUndefinedOrNullOrEmpty(null), false)
+  t.equal(notIsUndefinedOrNullOrEmpty([]), false)
+  t.equal(notIsUndefinedOrNullOrEmpty(''), false)
+  t.equal(notIsUndefinedOrNullOrEmpty('Address'), true)
+  t.equal(notIsUndefinedOrNullOrEmpty(['Item 1', 'Item 2']), true)
   t.end()
 })
