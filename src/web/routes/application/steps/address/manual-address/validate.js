@@ -1,6 +1,6 @@
 const { check } = require('express-validator')
 const { translateValidationMessage } = require('../../common/translate-validation-message')
-const { UK_POSTCODE_PATTERN, CHANNEL_ISLANDS_AND_IOM_POSTCODE_PATTERN } = require('../constants')
+const { checkPostcodeIsValid, checkPostcodeIsNotInChannelOrIslandOrIOM } = require('../validate-common')
 
 const ADDRESS_LINE_MAX_LENGTH = 500
 
@@ -30,11 +30,11 @@ const validate = () => [
     .withMessage(translateValidationMessage('validation:informationTooLong')),
 
   check('postcode')
-    .matches(UK_POSTCODE_PATTERN)
+    .custom(checkPostcodeIsValid)
     .withMessage(translateValidationMessage('validation:invalidPostcode')),
 
   check('postcode')
-    .not().matches(CHANNEL_ISLANDS_AND_IOM_POSTCODE_PATTERN)
+    .custom(checkPostcodeIsNotInChannelOrIslandOrIOM)
     .withMessage(translateValidationMessage('validation:geographicEligibility'))
 ]
 

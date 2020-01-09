@@ -16,7 +16,8 @@ const req = {
     addressLine2: '221 Baker Street',
     townOrCity: 'London',
     county: 'Greater London',
-    postcode: 'AA1 1AA'
+    postcode: 'aa1 1aa',
+    sanitizedPostcode: 'AA1 1AA'
   }
 }
 
@@ -51,7 +52,7 @@ test('validation middleware errors for empty town or city field', async (t) => {
 })
 
 test('validation middleware errors for empty postcode field', async (t) => {
-  const testReq = assocPath(['body', 'postcode'], null, req)
+  const testReq = assocPath(['body', 'sanitizedPostcode'], null, req)
 
   const result = await applyExpressValidation(testReq, validate())
   const error = result.array()[0]
@@ -62,13 +63,24 @@ test('validation middleware errors for empty postcode field', async (t) => {
 })
 
 test('validation middleware errors for invalid postcode field', async (t) => {
-  const testReq = assocPath(['body', 'postcode'], 'A1', req)
+  const testReq = assocPath(['body', 'sanitizedPostcode'], 'A1', req)
 
   const result = await applyExpressValidation(testReq, validate())
   const error = result.array()[0]
   t.equal(result.array().length, 1, 'should have exactly one error')
   t.equal(error.param, 'postcode', 'error should be associated with correct field')
   t.equal(error.msg, 'validation:invalidPostcode', 'error should have correct message')
+  t.end()
+})
+
+test('validation middleware errors for non UK postcode field', async (t) => {
+  const testReq = assocPath(['body', 'sanitizedPostcode'], 'IM1 1AA', req)
+
+  const result = await applyExpressValidation(testReq, validate())
+  const error = result.array()[0]
+  t.equal(result.array().length, 1, 'should have exactly one error')
+  t.equal(error.param, 'postcode', 'error should be associated with correct field')
+  t.equal(error.msg, 'validation:geographicEligibility', 'error should have correct message')
   t.end()
 })
 
