@@ -8,7 +8,8 @@ const req = {
       addressLine2: '221 Baker street',
       townOrCity: 'London',
       county: 'Devon',
-      postcode: 'aa1 1ab'
+      postcode: 'aa1  1ab',
+      sanitizedPostcode: 'AA1 1AB'
     }
   }
 }
@@ -22,7 +23,7 @@ test('requestBody() returns request body in correct format', (t) => {
       addressLine2: '221 Baker street',
       townOrCity: 'London',
       county: 'Devon',
-      postcode: 'aa1 1ab'
+      postcode: 'AA1 1AB'
     }
   }
 
