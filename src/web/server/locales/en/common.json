@@ -132,7 +132,7 @@
   },
   "decisionFallbackSuccessful": {
     "title": "Application successful",
-    "subTitle": "You’re entitled to\n<strong>£{{totalVoucherValue}}</strong> a week. Your first payment\nwill be <strong>£{{totalVoucherValueForFourWeeks}}</strong>."
+    "subTitle": "You’re entitled to<br/><strong>£{{totalVoucherValue}}</strong> a week. Your first payment<br/>will be <strong>£{{totalVoucherValueForFourWeeks}}</strong>."
   },
   "decisionFallbackUnsuccessful": {
     "title": "Application not successful",
@@ -148,6 +148,10 @@
     "pending": {
       "title": "We’re considering your application",
       "body": ""
+    },
+    "success": {
+      "title": "Application successful",
+      "body": "You’re entitled to<br/><strong>£{{totalVoucherValue}}</strong> a week. Your first payment<br/>will be <strong>£{{totalVoucherValueForFourWeeks}}</strong>."
     }
   },
   "cookies": {
