@@ -20,7 +20,8 @@ module.exports = {
       pregnantChildDOBMatch: 'not_supplied',
       qualifyingBenefits: 'universal_credit',
       identityOutcome: 'matched',
-      eligibilityOutcome: 'confirmed'
+      eligibilityOutcome: 'confirmed',
+      isPregnantOrAtLeast1ChildMatched: true
     }
   },
   headers: {
