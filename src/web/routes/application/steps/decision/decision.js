@@ -4,7 +4,6 @@ const { DECISION_URL, prefixPath } = require('../../paths')
 const { isUndefined } = require('../../../../../common/predicates')
 const { getDecisionStatus } = require('./get-decision-status')
 const { FAIL, PENDING, SUCCESS } = require('./decision-statuses')
-const { getDecisionPageFallback } = require('./decision-fallback')
 
 const toPounds = pence => (parseInt(pence, 10) / 100).toFixed(2)
 
@@ -14,12 +13,14 @@ const STATUS_TEMPLATE_MAP = {
   [SUCCESS]: 'success'
 }
 
-// TODO: Remove references to "decision fallback" once all stories for epic HTBHF-2014 (receive my decision) are complete.
-// After removal of fallback, update handler to throw error if `decisionStatus` is undefined.
-const getDecisionPage = (req, res, next) => {
+const getDecisionPage = (req, res) => {
   const { verificationResult, eligibilityStatus } = req.session
   const decisionStatus = getDecisionStatus({ verificationResult, eligibilityStatus })
   const template = STATUS_TEMPLATE_MAP[decisionStatus]
+
+  if (isUndefined(decisionStatus)) {
+    throw new Error(`No decision status generated from EligibilityStatus: ${eligibilityStatus} and VerificationResult: ${JSON.stringify(verificationResult)}`)
+  }
 
   if (decisionStatus === SUCCESS) {
     const totalVoucherValueInPence = path(['session', 'voucherEntitlement', 'totalVoucherValueInPence'], req)
@@ -34,13 +35,11 @@ const getDecisionPage = (req, res, next) => {
     })
   }
 
-  return isUndefined(decisionStatus)
-    ? next()
-    : res.render('decision', {
-      title: req.t(`decision.${template}.title`),
-      body: req.t(`decision.${template}.body`),
-      template
-    })
+  return res.render('decision', {
+    title: req.t(`decision.${template}.title`),
+    body: req.t(`decision.${template}.body`),
+    template
+  })
 }
 
 const registerDecisionRoute = (journey, app) =>
@@ -48,8 +47,7 @@ const registerDecisionRoute = (journey, app) =>
     prefixPath(journey.pathPrefix, DECISION_URL),
     configureSessionDetails(journey),
     handleRequestForPath(journey),
-    getDecisionPage,
-    getDecisionPageFallback
+    getDecisionPage
   )
 
 module.exports = {
