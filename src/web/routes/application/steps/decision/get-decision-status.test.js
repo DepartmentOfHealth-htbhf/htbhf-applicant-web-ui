@@ -1,6 +1,6 @@
 const test = require('tape')
 const { getDecisionStatus } = require('./get-decision-status')
-const { FAIL, PENDING } = require('./decision-statuses')
+const { FAIL, PENDING, SUCCESS } = require('./decision-statuses')
 const { DUPLICATE, ELIGIBLE } = require('./eligibility-statuses')
 
 const SUCCESSFUL_RESULT = {
@@ -8,7 +8,7 @@ const SUCCESSFUL_RESULT = {
   eligibilityOutcome: 'confirmed',
   addressLine1Match: 'matched',
   postcodeMatch: 'matched',
-  isPregnantOrAtLeast1ChildMatched: 'true',
+  isPregnantOrAtLeast1ChildMatched: true,
   mobilePhoneMatch: 'matched',
   emailAddressMatch: 'matched',
   qualifyingBenefits: 'universal_credit',
@@ -21,7 +21,7 @@ const IDENTITY_NOT_MATCHED_RESULT = {
   eligibilityOutcome: 'not_set',
   addressLine1Match: 'not_set',
   postcodeMatch: 'not_set',
-  isPregnantOrAtLeast1ChildMatched: 'true',
+  isPregnantOrAtLeast1ChildMatched: true,
   mobilePhoneMatch: 'not_set',
   emailAddressMatch: 'not_set',
   qualifyingBenefits: 'not_set',
@@ -34,7 +34,7 @@ const ELIGIBILITY_NOT_CONFIRMED_RESULT = {
   eligibilityOutcome: 'not_confirmed',
   addressLine1Match: 'not_set',
   postcodeMatch: 'not_set',
-  isPregnantOrAtLeast1ChildMatched: 'true',
+  isPregnantOrAtLeast1ChildMatched: true,
   mobilePhoneMatch: 'not_set',
   emailAddressMatch: 'not_set',
   qualifyingBenefits: 'not_set',
@@ -47,7 +47,7 @@ const ELIGIBILITY_CONFIRMED_RESULT = {
   eligibilityOutcome: 'confirmed',
   addressLine1Match: 'not_set',
   postcodeMatch: 'not_set',
-  isPregnantOrAtLeast1ChildMatched: 'true',
+  isPregnantOrAtLeast1ChildMatched: true,
   mobilePhoneMatch: 'not_set',
   emailAddressMatch: 'not_set',
   qualifyingBenefits: 'not_set',
@@ -60,7 +60,7 @@ const ADDRESS_MATCHED_RESULT = {
   eligibilityOutcome: 'confirmed',
   addressLine1Match: 'matched',
   postcodeMatch: 'matched',
-  isPregnantOrAtLeast1ChildMatched: 'true',
+  isPregnantOrAtLeast1ChildMatched: true,
   mobilePhoneMatch: 'not_matched',
   emailAddressMatch: 'not_matched',
   qualifyingBenefits: 'not_set',
@@ -83,9 +83,8 @@ const NOT_PREGNANT_AND_NO_CHILDREN_MATCHED_RESULT = {
 
 const DUPLICATE_RESULT = undefined // A DUPLICATE response from the claimant service will not return a verification result
 
-test('getDecisionStatus() should return undefined if verification result has no matching decision', (t) => {
-  // TODO these non matching results will need to be updated as stories for epic 'receive my decision' are completed
-  t.equal(getDecisionStatus({ verificationResult: SUCCESSFUL_RESULT }), undefined, 'non matching result returns undefined')
+test(`getDecisionStatus() should return ${SUCCESS} if verification result has no matching decision`, (t) => {
+  t.equal(getDecisionStatus({ verificationResult: SUCCESSFUL_RESULT }), SUCCESS, `returns ${SUCCESS} when full pass result is matched`)
   t.end()
 })
 
