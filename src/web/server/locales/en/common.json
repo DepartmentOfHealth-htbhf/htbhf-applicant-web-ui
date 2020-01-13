@@ -132,7 +132,7 @@
   },
   "decisionFallbackSuccessful": {
     "title": "Application successful",
-    "subTitle": "You’re entitled to<br/><strong>£{{totalVoucherValue}}</strong> a week. Your first payment<br/>will be <strong>£{{totalVoucherValueForFourWeeks}}</strong>."
+    "subTitle": "You’re entitled to <strong>£{{totalVoucherValue}}</strong> a week. Your first payment will be <strong>£{{totalVoucherValueForFourWeeks}}</strong>."
   },
   "decisionFallbackUnsuccessful": {
     "title": "Application not successful",
@@ -151,7 +151,7 @@
     },
     "success": {
       "title": "Application successful",
-      "body": "You’re entitled to<br/><strong>£{{totalVoucherValue}}</strong> a week. Your first payment<br/>will be <strong>£{{totalVoucherValueForFourWeeks}}</strong>."
+      "body": "You’re entitled to <strong>£{{totalVoucherValue}}</strong> a week. Your first payment will be <strong>£{{totalVoucherValueForFourWeeks}}</strong>."
     }
   },
   "cookies": {

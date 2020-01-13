@@ -129,7 +129,7 @@
   },
   "decisionFallbackSuccessful": {
     "title": "Ullamcorper malesuada",
-    "subTitle": "Dui faucibus in ornare\n£{{totalVoucherValue}} ut labore. Eget felis eget nunc\nlobortis mattis {{totalVoucherValueForFourWeeks}}."
+    "subTitle": "Dui faucibus in ornare £{{totalVoucherValue}} ut labore. Eget felis eget nunc lobortis mattis {{totalVoucherValueForFourWeeks}}."
   },
   "decisionFallbackUnsuccessful": {
     "title": "Lorem ipsum dolor sit amet",
@@ -148,7 +148,7 @@
     },
     "success": {
       "title": "Ullamcorper malesuada",
-      "body": "Dui faucibus in ornare\n£{{totalVoucherValue}} ut labore. Eget felis eget nunc\nlobortis mattis {{totalVoucherValueForFourWeeks}}."
+      "body": "Dui faucibus in ornare £{{totalVoucherValue}} ut labore. Eget felis eget nunc lobortis mattis {{totalVoucherValueForFourWeeks}}."
     }
   },
   "cookies": {
