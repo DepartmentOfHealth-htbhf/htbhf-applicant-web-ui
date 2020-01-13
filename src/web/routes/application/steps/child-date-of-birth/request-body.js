@@ -18,7 +18,7 @@ const createChildrenDobArray = (children) => {
 }
 
 const requestBody = (session) => ({
-  childrenDob: createChildrenDobArray(session.children)
+  initiallyDeclaredChildrenDob: createChildrenDobArray(session.children)
 })
 
 module.exports = {
