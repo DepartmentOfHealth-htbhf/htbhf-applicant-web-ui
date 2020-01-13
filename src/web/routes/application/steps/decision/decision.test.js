@@ -2,7 +2,7 @@ const test = require('tape')
 const sinon = require('sinon')
 const proxyquire = require('proxyquire')
 const { identity } = require('ramda')
-const { FAIL, PENDING } = require('./decision-statuses')
+const { FAIL, PENDING, SUCCESS } = require('./decision-statuses')
 const { toPounds } = require('./decision')
 
 const getDecisionStatus = sinon.stub()
@@ -17,16 +17,24 @@ const resetStubs = () => {
   getDecisionStatus.reset()
 }
 
-test('getDecisionPage() calls next if decision status is undefined', (t) => {
+const req = {
+  t: identity,
+  language: 'en',
+  session: {
+    verificationResult: {}
+  }
+}
+
+test('getDecisionPage() throws error if decision status is undefined', (t) => {
   getDecisionStatus.returns(undefined)
 
   const render = sinon.spy()
-  const next = sinon.spy()
 
-  const req = {
+  const ineligibleReq = {
     t: identity,
     session: {
-      verificationResult: {}
+      verificationResult: {},
+      eligibilityStatus: 'INELIGIBLE'
     }
   }
 
@@ -34,10 +42,32 @@ test('getDecisionPage() calls next if decision status is undefined', (t) => {
     render
   }
 
-  getDecisionPage(req, res, next)
-
-  t.equal(next.called, true, 'it calls next()')
+  t.throws(() => getDecisionPage(ineligibleReq, res),
+    /No decision status generated from EligibilityStatus: INELIGIBLE and VerificationResult: {}/,
+    'throws an error for undefined decision status')
   t.equal(render.called, false, 'it does not call render()')
+  resetStubs()
+  t.end()
+})
+
+test(`getDecisionPage() renders success view if decision status is ${SUCCESS}`, (t) => {
+  getDecisionStatus.returns(SUCCESS)
+
+  const render = sinon.spy()
+
+  const res = {
+    render
+  }
+
+  getDecisionPage(req, res)
+
+  const expectedTemplateVariables = {
+    title: 'decision.success.title',
+    body: 'decision.success.body',
+    template: 'success'
+  }
+
+  t.equal(render.calledWith('decision', expectedTemplateVariables), true, 'it calls render() with the correct arguments')
   resetStubs()
   t.end()
 })
@@ -46,21 +76,12 @@ test(`getDecisionPage() renders failure view if decision status is ${FAIL}`, (t)
   getDecisionStatus.returns(FAIL)
 
   const render = sinon.spy()
-  const next = sinon.spy()
-
-  const req = {
-    t: identity,
-    language: 'en',
-    session: {
-      verificationResult: {}
-    }
-  }
 
   const res = {
     render
   }
 
-  getDecisionPage(req, res, next)
+  getDecisionPage(req, res)
 
   const expectedTemplateVariables = {
     title: 'decision.failure.title',
@@ -68,7 +89,6 @@ test(`getDecisionPage() renders failure view if decision status is ${FAIL}`, (t)
     template: 'failure'
   }
 
-  t.equal(next.called, false, 'it does not call next()')
   t.equal(render.calledWith('decision', expectedTemplateVariables), true, 'it calls render() with the correct arguments')
   resetStubs()
   t.end()
@@ -78,21 +98,12 @@ test(`getDecisionPage() renders pending view if decision status is ${PENDING}`, 
   getDecisionStatus.returns(PENDING)
 
   const render = sinon.spy()
-  const next = sinon.spy()
-
-  const req = {
-    t: identity,
-    language: 'en',
-    session: {
-      verificationResult: {}
-    }
-  }
 
   const res = {
     render
   }
 
-  getDecisionPage(req, res, next)
+  getDecisionPage(req, res)
 
   const expectedTemplateVariables = {
     title: 'decision.pending.title',
@@ -100,7 +111,6 @@ test(`getDecisionPage() renders pending view if decision status is ${PENDING}`, 
     template: 'pending'
   }
 
-  t.equal(next.called, false, 'it does not call next()')
   t.equal(render.calledWith('decision', expectedTemplateVariables), true, 'it calls render() with the correct arguments')
   resetStubs()
   t.end()
