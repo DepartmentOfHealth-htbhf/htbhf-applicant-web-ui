@@ -172,6 +172,18 @@
     "heading": "Get money off milk, food and vitamins (Healthy Start)",
     "navigationHeading": "Contents"
   },
+  "nhsNumber": {
+    "title": "Enter your NHS Number",
+    "heading": "Enter your NHS Number",
+    "nhsNumberLabel": "For example: AB123",
+    "explanation": "This is some indentent explanation messaging"
+  },
+  "nhsNumberUpdate": {
+    "title": "Update your NHS Number",
+    "heading": "Update your NHS Number",
+    "nhsNumberUpdateLabel": "For example: AB123",
+    "summaryKey": "NHS Number Update"
+  },
   "yes": "Yes",
   "no": "No",
   "back": "Back",

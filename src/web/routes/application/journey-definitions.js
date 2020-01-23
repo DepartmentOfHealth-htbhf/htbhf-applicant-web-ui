@@ -1,4 +1,6 @@
 const {
+  nhsNumber,
+  nhsNumberUpdate,
   scotland,
   inScotland,
   dateOfBirth,
@@ -20,6 +22,8 @@ const APPLY = {
   name: 'apply',
   endpoint: '/v3/claims',
   steps: [
+    nhsNumber,
+    nhsNumberUpdate,
     scotland,
     inScotland,
     dateOfBirth,
@@ -36,8 +40,19 @@ const APPLY = {
     sendCode,
     enterCode
   ]
+} 
+
+const TESTJOURNEY = {
+  name: 'testUpdate',
+  pathPrefix: '/test',
+  endpoint: '/v3/claims',
+  steps: [
+    nhsNumber,
+    name,
+    dateOfBirth,
+    nhsNumberUpdate,
+  ]
 }
 
-// TODO do not add new user journeys until all stories in "Support Multiple User
-// Journeys in Web UI" epic (HTBHF-2515) are complete
-module.exports.JOURNEYS = [APPLY]
+module.exports.JOURNEYS = [APPLY, TESTJOURNEY]
+

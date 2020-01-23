@@ -1,0 +1,33 @@
+{% extends "templates/form.njk" %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+{% from "macros/htbhf-form-description.njk" import htbhfFormDescription %}
+
+{% block formContent %}
+
+  {% call govukFieldset({
+    legend: {
+      text: heading,
+      classes: "govuk-fieldset__legend--xl",
+      isPageHeading: true
+    }
+  }) %}
+
+    {{ htbhfFormDescription(hint) }}
+
+    {{ govukInput({
+      label: {
+        text: nhsNumberUpdateLabel
+      },
+      id: 'nhs-number-update',
+      name: 'nhsNumberUpdate',
+      value: claim.nhsNumberUpdate,
+      errorMessage: errors | getErrorForField('nhsNumberUpdate'),
+      autocomplete: "off"
+    }) }}
+
+  {% endcall %}
+
+{% endblock %}
+

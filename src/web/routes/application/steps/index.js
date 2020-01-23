@@ -16,6 +16,8 @@ const { sendCode } = require('./send-code')
 const { enterCode } = require('./enter-code')
 const { postcode } = require('./address/postcode')
 const { selectAddress } = require('./address/select-address')
+const { nhsNumber } = require('./nhs-number')
+const { nhsNumberUpdate } = require('./nhs-number-update')
 
 module.exports = {
   registerDecisionRoute,
@@ -35,5 +37,7 @@ module.exports = {
   phoneNumber,
   emailAddress,
   sendCode,
-  enterCode
+  enterCode,
+  nhsNumber,
+  nhsNumberUpdate
 }
