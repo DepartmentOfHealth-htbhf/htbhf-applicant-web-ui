@@ -17,9 +17,9 @@
     {% block formContent %}{% endblock %}
     {{ govukButton({
       text: buttonText,
+      preventDoubleClick: true,
       attributes: {
-        id: 'submit-button',
-        preventDoubleClick: true
+        id: 'submit-button'
       }
     }) }}
   </form>
