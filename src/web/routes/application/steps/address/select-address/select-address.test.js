@@ -300,11 +300,11 @@ test('Address contentSummary() should return content summary in correct format w
     session: {
       claim: {
         addressLine1: 'Flat b',
-        addressLine2: '221 Baker street',
-        townOrCity: 'London',
+        addressLine2: '123 Fake Street',
+        townOrCity: 'Springfield',
         county: 'Devon',
-        postcode: 'aa1 1ab',
-        selectedAddress: 'Flat b, 221 Baker Street, London, Devon, aa1 1ab'
+        postcode: 'bs1 4tb',
+        selectedAddress: 'Flat b, 123 Fake Street, Springfield, Devon, bs1 4tb'
       }
     }
   }
@@ -313,7 +313,7 @@ test('Address contentSummary() should return content summary in correct format w
 
   const expected = {
     key: 'address.summaryKey',
-    value: 'Flat b\n221 Baker street\nLondon\nDevon\naa1 1ab'
+    value: 'Flat b\n123 Fake Street\nSpringfield\nDevon\nbs1 4tb'
   }
 
   t.deepEqual(result, expected, 'should return content summary in correct format when there is a selected address on the session')
