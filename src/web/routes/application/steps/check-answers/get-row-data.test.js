@@ -53,7 +53,7 @@ test('normaliseRows() flattens nested iterables and removes empty values', (t) =
       },
       {
         key: 'addressline2',
-        value: 'London'
+        value: 'Springfield'
       }
     ],
     null
@@ -70,7 +70,7 @@ test('normaliseRows() flattens nested iterables and removes empty values', (t) =
     },
     {
       key: 'addressline2',
-      value: 'London'
+      value: 'Springfield'
     }
   ]
 

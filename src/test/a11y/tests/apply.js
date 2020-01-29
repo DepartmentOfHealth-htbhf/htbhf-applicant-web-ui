@@ -83,10 +83,10 @@ const apply = [
     url: URLS['MANUAL_ADDRESS'],
     formData: () => ({
       'addressLine1': 'Flat B',
-      'addressLine2': 'Baker Street',
-      'townOrCity': 'London',
-      'county': 'Greater London',
-      'postcode': 'AA1 1AA'
+      'addressLine2': 'Fake Street',
+      'townOrCity': 'Springfield',
+      'county': 'Greater Springfield',
+      'postcode': 'BS1 4TB'
     })
   },
   {

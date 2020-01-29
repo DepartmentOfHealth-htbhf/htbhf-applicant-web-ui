@@ -8,10 +8,10 @@ test('contentSummary() should return content summary in correct format', (t) => 
     session: {
       claim: {
         addressLine1: 'Flat b',
-        addressLine2: '221 Baker street',
-        townOrCity: 'London',
+        addressLine2: '123 Fake Street',
+        townOrCity: 'Springfield',
         county: 'Devon',
-        postcode: 'aa1 1ab'
+        postcode: 'bs1 4tb'
       }
     }
   }
@@ -20,7 +20,7 @@ test('contentSummary() should return content summary in correct format', (t) => 
 
   const expected = {
     key: 'address.summaryKey',
-    value: 'Flat b\n221 Baker street\nLondon\nDevon\naa1 1ab'
+    value: 'Flat b\n123 Fake Street\nSpringfield\nDevon\nbs1 4tb'
   }
 
   t.deepEqual(result, expected, 'should return content summary in correct format')
@@ -33,9 +33,9 @@ test('contentSummary() should return content summary in correct format with no c
     session: {
       claim: {
         addressLine1: 'Flat b',
-        addressLine2: '221 Baker street',
-        townOrCity: 'London',
-        postcode: 'aa1 1ab'
+        addressLine2: '123 Fake Street',
+        townOrCity: 'Springfield',
+        postcode: 'bs1 4tb'
       }
     }
   }
@@ -44,7 +44,7 @@ test('contentSummary() should return content summary in correct format with no c
 
   const expected = {
     key: 'address.summaryKey',
-    value: 'Flat b\n221 Baker street\nLondon\naa1 1ab'
+    value: 'Flat b\n123 Fake Street\nSpringfield\nbs1 4tb'
   }
 
   t.deepEqual(result, expected, 'should return content summary in correct format with no county')
@@ -57,9 +57,9 @@ test('contentSummary() should return content summary in correct format with no a
     session: {
       claim: {
         addressLine1: 'Flat b',
-        townOrCity: 'London',
+        townOrCity: 'Springfield',
         county: 'Devon',
-        postcode: 'aa1 1ab'
+        postcode: 'bs1 4tb'
       }
     }
   }
@@ -68,7 +68,7 @@ test('contentSummary() should return content summary in correct format with no a
 
   const expected = {
     key: 'address.summaryKey',
-    value: 'Flat b\nLondon\nDevon\naa1 1ab'
+    value: 'Flat b\nSpringfield\nDevon\nbs1 4tb'
   }
 
   t.deepEqual(result, expected, 'should return content summary in correct format with no addressLine2')

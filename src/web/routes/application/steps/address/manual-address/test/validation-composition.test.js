@@ -13,11 +13,11 @@ const req = {
   t: translate,
   body: {
     addressLine1: 'Flat B',
-    addressLine2: '221 Baker Street',
-    townOrCity: 'London',
-    county: 'Greater London',
-    postcode: 'aa1 1aa',
-    sanitizedPostcode: 'AA1 1AA'
+    addressLine2: '123 Fake Street',
+    townOrCity: 'Springfield',
+    county: 'Greater Springfield',
+    postcode: 'bs1 4tb',
+    sanitizedPostcode: 'BS1 4TB'
   }
 }
 
