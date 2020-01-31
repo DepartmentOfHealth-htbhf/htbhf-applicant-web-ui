@@ -11,7 +11,7 @@ const SUCCESSFUL_RESULT = {
   isPregnantOrAtLeast1ChildMatched: true,
   mobilePhoneMatch: 'matched',
   emailAddressMatch: 'matched',
-  qualifyingBenefits: 'universal_credit',
+  qualifyingReason: 'universal_credit',
   pregnantChildDOBMatch: 'not_supplied',
   deathVerificationFlag: 'n/a'
 }
@@ -24,7 +24,7 @@ const IDENTITY_NOT_MATCHED_RESULT = {
   isPregnantOrAtLeast1ChildMatched: true,
   mobilePhoneMatch: 'not_set',
   emailAddressMatch: 'not_set',
-  qualifyingBenefits: 'not_set',
+  qualifyingReason: 'not_set',
   pregnantChildDOBMatch: 'not_set',
   deathVerificationFlag: 'n/a'
 }
@@ -37,7 +37,7 @@ const ELIGIBILITY_NOT_CONFIRMED_RESULT = {
   isPregnantOrAtLeast1ChildMatched: true,
   mobilePhoneMatch: 'not_set',
   emailAddressMatch: 'not_set',
-  qualifyingBenefits: 'not_set',
+  qualifyingReason: 'not_set',
   pregnantChildDOBMatch: 'not_set',
   deathVerificationFlag: 'n/a'
 }
@@ -50,7 +50,7 @@ const ELIGIBILITY_CONFIRMED_RESULT = {
   isPregnantOrAtLeast1ChildMatched: true,
   mobilePhoneMatch: 'not_set',
   emailAddressMatch: 'not_set',
-  qualifyingBenefits: 'not_set',
+  qualifyingReason: 'not_set',
   pregnantChildDOBMatch: 'not_set',
   deathVerificationFlag: 'n/a'
 }
@@ -63,7 +63,7 @@ const ADDRESS_MATCHED_RESULT = {
   isPregnantOrAtLeast1ChildMatched: true,
   mobilePhoneMatch: 'not_matched',
   emailAddressMatch: 'not_matched',
-  qualifyingBenefits: 'not_set',
+  qualifyingReason: 'not_set',
   pregnantChildDOBMatch: 'not_set',
   deathVerificationFlag: 'n/a'
 }
@@ -76,7 +76,7 @@ const NOT_PREGNANT_AND_NO_CHILDREN_MATCHED_RESULT = {
   isPregnantOrAtLeast1ChildMatched: false,
   mobilePhoneMatch: 'not_held',
   emailAddressMatch: 'not_held',
-  qualifyingBenefits: 'universal_credit',
+  qualifyingReason: 'universal_credit',
   pregnantChildDOBMatch: 'not_held',
   deathVerificationFlag: 'n/a'
 }
