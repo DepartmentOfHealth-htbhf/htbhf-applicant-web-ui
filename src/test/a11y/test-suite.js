@@ -7,17 +7,9 @@ const { getSIDCookieAndCSRFToken, postFormData } = require('./request')
 const handleTestResults = require('./results')
 const IGNORE_RULES = require('./ignore-rules')
 const { URLS, BASE_URL } = require('./paths')
+const { notIsNil } = require('../../common/predicates')
 
 const FIRST_APPLY_PAGE_URL = URLS['DO_YOU_LIVE_IN_SCOTLAND']
-
-const runAndAggregateIssueChecks = (url, result) => (results, checkFn) => {
-  const resultOfCheck = checkFn(url, result)
-  if (resultOfCheck !== null) {
-    return [...results, resultOfCheck]
-  }
-
-  return results
-}
 
 /*
   Runs though the application, evaluating each page and performing post requests to populate the necessary
@@ -34,8 +26,10 @@ const runPa11yTests = async (pages) => {
       console.log('Testing', page.url)
 
       // GET page URL and run a11y
-      const result = await pa11y(page.url, { IGNORE_RULES, headers, timeout: 45000 })
-      result.issues = page.issueChecks.reduce(runAndAggregateIssueChecks(page.url, result), [])
+      const result = await pa11y(page.url, { ignore: IGNORE_RULES, headers, timeout: 45000 })
+      const customIssues = page.issueChecks.map(checkFn => checkFn(page.url, result))
+      result.issues = result.issues.concat(customIssues.filter(notIsNil))
+
       results.push(result)
 
       // POST form data to allow next a11y page test
