@@ -14,7 +14,6 @@ applications:
     - nodejs_buildpack
   services:
     - apply-for-healthy-start-redis
-    - logit-ssl-drain
     - variable-service
     - notify-variable-service
     - os-places-variable-service

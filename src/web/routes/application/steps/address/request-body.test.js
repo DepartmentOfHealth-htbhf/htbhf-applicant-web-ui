@@ -5,11 +5,11 @@ const req = {
   session: {
     claim: {
       addressLine1: 'Flat b',
-      addressLine2: '221 Baker street',
-      townOrCity: 'London',
+      addressLine2: '123 Fake Street',
+      townOrCity: 'Springfield',
       county: 'Devon',
-      postcode: 'aa1  1ab',
-      sanitizedPostcode: 'AA1 1AB'
+      postcode: 'bs1  4tb',
+      sanitizedPostcode: 'BS1 4TB'
     }
   }
 }
@@ -20,10 +20,10 @@ test('requestBody() returns request body in correct format', (t) => {
   const expected = {
     address: {
       addressLine1: 'Flat b',
-      addressLine2: '221 Baker street',
-      townOrCity: 'London',
+      addressLine2: '123 Fake Street',
+      townOrCity: 'Springfield',
       county: 'Devon',
-      postcode: 'AA1 1AB'
+      postcode: 'BS1 4TB'
     }
   }
 

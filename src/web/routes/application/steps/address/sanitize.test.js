@@ -5,11 +5,11 @@ const { sanitize } = require('./sanitize')
 test('sanitize replaces multiple whitespace with one, converts to uppercase and saves to a new variable', (t) => {
   const req = {
     body: {
-      postcode: 'aa1     1aa'
+      postcode: 'bs1     4tb'
     }
   }
-  const expectedSanitizedPostcode = 'AA1 1AA'
-  const expectedPostcode = 'aa1     1aa'
+  const expectedSanitizedPostcode = 'BS1 4TB'
+  const expectedPostcode = 'bs1     4tb'
   const next = sinon.spy()
 
   sanitize()(req, {}, next)
