@@ -27,7 +27,8 @@ const URLS = {
   WHAT_YOU_CAN_BUY: `${BASE_URL}/buy`,
   USING_YOUR_CARD: `${BASE_URL}/using-your-card`,
   APPLY: `${BASE_URL}/apply`,
-  REPORT_A_CHANGE: `${BASE_URL}/report-a-change`
+  REPORT_A_CHANGE: `${BASE_URL}/report-a-change`,
+  WHAT_IS_YOUR_NHS_NUMBER: `${BASE_URL}/nhs-number`
 }
 
 module.exports = {

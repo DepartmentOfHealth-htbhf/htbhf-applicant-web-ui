@@ -16,7 +16,7 @@ function randomEligibleTwoChars () {
   return `${randomNinoChar()}${randomNinoChar()}`
 }
 
-/**
+/*
  * Generates a random character from A, B or C. D is not included as this is used
  * by performance tests.
  */
@@ -56,11 +56,13 @@ const POSTCODE = 'BS14TB'
 const PHONE_NUMBER = '07123456789'
 const EMAIL_ADDRESS = 'test@email.com'
 const TEXT = 'text'
+const NHS_NUMBER = 'H1234'
 
 module.exports = {
   VALID_ELIGIBLE_NINO,
   POSTCODE,
   PHONE_NUMBER,
   EMAIL_ADDRESS,
-  TEXT
+  TEXT,
+  NHS_NUMBER
 }

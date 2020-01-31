@@ -40,7 +40,7 @@ const APPLY = {
     sendCode,
     enterCode
   ]
-} 
+}
 
 const TESTJOURNEY = {
   name: 'testUpdate',
@@ -50,9 +50,8 @@ const TESTJOURNEY = {
     nhsNumber,
     name,
     dateOfBirth,
-    nhsNumberUpdate,
+    nhsNumberUpdate
   ]
 }
 
 module.exports.JOURNEYS = [APPLY, TESTJOURNEY]
-

@@ -1,5 +1,5 @@
-const { nhsNumberUpdate } = require('./nhs-number-update');
+const { nhsNumberUpdate } = require('./nhs-number-update')
 
 module.exports = {
-    nhsNumberUpdate
+  nhsNumberUpdate
 }
