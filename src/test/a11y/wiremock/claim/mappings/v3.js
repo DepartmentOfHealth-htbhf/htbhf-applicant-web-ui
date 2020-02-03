@@ -18,7 +18,7 @@ module.exports = {
       addressLine1Match: 'matched',
       postcodeMatch: 'matched',
       pregnantChildDOBMatch: 'not_supplied',
-      qualifyingBenefits: 'universal_credit',
+      qualifyingReason: 'universal_credit',
       identityOutcome: 'matched',
       eligibilityOutcome: 'confirmed',
       isPregnantOrAtLeast1ChildMatched: true

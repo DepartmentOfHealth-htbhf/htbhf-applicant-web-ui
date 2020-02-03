@@ -9,7 +9,7 @@ source ${SCRIPT_DIR}/wait_for_url.sh
 
 mkdir -p ${bin_dir}
 if [ ! -f ${bin_dir}/wiremock.jar ]; then
-  wget http://repo1.maven.org/maven2/com/github/tomakehurst/wiremock-standalone/2.21.0/wiremock-standalone-2.21.0.jar -O ${bin_dir}/wiremock.jar
+  wget https://repo1.maven.org/maven2/com/github/tomakehurst/wiremock-standalone/2.21.0/wiremock-standalone-2.21.0.jar -O ${bin_dir}/wiremock.jar
 fi
 
 echo "Starting Wiremock on port ${claimant_service_port} for claimant service"
