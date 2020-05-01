@@ -27,7 +27,9 @@
     "test:wait": "./npm_scripts/wait_for_app_to_start.sh",
     "test:wiremock:start": "./npm_scripts/start_wiremock.sh",
     "test:wiremock:stop": "./npm_scripts/stop_wiremock.sh",
-    "watch:sass": "node-sass -w src/web/assets/sass -o src/web/public/styles"
+    "watch:sass": "node-sass -w src/web/assets/sass -o src/web/public/styles",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "author": "",
   "license": "MIT",
@@ -73,6 +75,8 @@
     "request": "^2.88.0",
     "request-promise": "^4.2.2",
     "uuidv4": "^3.0.1",
-    "winston": "^3.2.1"
-  }
+    "winston": "^3.2.1",
+    "snyk": "^1.316.1"
+  },
+  "snyk": true
 }
