@@ -48,7 +48,7 @@
   },
   "dependencies": {
     "body-parser": "^1.18.3",
-    "cfenv": "^1.2.2",
+    "cfenv": "^1.2.5",
     "compression": "^1.7.3",
     "connect-redis": "^3.4.0",
     "csurf": "^1.9.0",
@@ -65,13 +65,13 @@
     "i18next-node-fs-backend": "^2.1.3",
     "libphonenumber-js": "^1.7.19",
     "moment": "^2.24.0",
-    "node-sass": "^4.13.1",
-    "notifications-node-client": "^4.6.0",
-    "nunjucks": "^3.2.0",
+    "node-sass": "^9.0.0",
+    "notifications-node-client": "^5.0.0",
+    "nunjucks": "^3.2.1",
     "ramda": "^0.26.1",
     "redis": "^2.8.0",
     "request": "^2.88.0",
-    "request-promise": "^4.2.2",
+    "request-promise": "^4.2.6",
     "uuidv4": "^3.0.1",
     "winston": "^3.2.1"
   }
